@@ -26,17 +26,20 @@ public class StudentPersonalConverter extends HitsConverter<StudentPersonalType,
       target.setRefId(source.getRefId());
       target.setLocalId(source.getLocalId());
       target.setPersonInfo(personInfoConverter.toSifModel(source));
-      
-      MostRecent mostRecent = getJAXBValue(target.getMostRecent());
-      if (mostRecent == null) {
-        mostRecent = new MostRecent();
-      }
-      YearLevelType yearLevel = getJAXBValue(mostRecent.getYearLevel());
-      if (yearLevel == null) {
-        yearLevel = new YearLevelType();
-      }
+      target.setStateProvinceId(objectFactory.createStudentPersonalTypeStateProvinceId(source.getStateProvinceId()));
+
+      MostRecent mostRecent = new MostRecent();
+      YearLevelType yearLevel = new YearLevelType();
       yearLevel.setCode(source.getMostRecentYearLevel());
-      mostRecent.setYearLevel(objectFactory.createYearLevel(yearLevel));
+      mostRecent.setYearLevel(objectFactory.createStudentPersonalTypeMostRecentYearLevel(yearLevel));
+      mostRecent.setParent1Language(objectFactory.createStudentPersonalTypeMostRecentParent1Language(source.getMostRecentParent1Language()));
+      mostRecent.setParent2Language(objectFactory.createStudentPersonalTypeMostRecentParent2Language(source.getMostRecentParent2Language()));
+      mostRecent.setParent1SchoolEducationLevel(objectFactory.createStudentPersonalTypeMostRecentParent1SchoolEducationLevel(source.getMostRecentParent1SchoolEducation()));
+      mostRecent.setParent2SchoolEducationLevel(objectFactory.createStudentPersonalTypeMostRecentParent2SchoolEducationLevel(source.getMostRecentParent2SchoolEducation()));
+      mostRecent.setParent1NonSchoolEducation(objectFactory.createStudentPersonalTypeMostRecentParent1NonSchoolEducation(source.getMostRecentParent1NonSchoolEducation()));
+      mostRecent.setParent2NonSchoolEducation(objectFactory.createStudentPersonalTypeMostRecentParent2NonSchoolEducation(source.getMostRecentParent2NonSchoolEducation()));
+      mostRecent.setParent1EmploymentType(objectFactory.createStudentPersonalTypeMostRecentParent1EmploymentType(source.getMostRecentParent1EmploymentType()));
+      mostRecent.setParent2EmploymentType(objectFactory.createStudentPersonalTypeMostRecentParent2EmploymentType(source.getMostRecentParent2EmploymentType()));
       
       target.setMostRecent(objectFactory.createStudentPersonalTypeMostRecent(mostRecent));
     }
@@ -47,10 +50,25 @@ public class StudentPersonalConverter extends HitsConverter<StudentPersonalType,
     if (source != null && target != null) {
       target.setRefId(source.getRefId());
       target.setLocalId(source.getLocalId());
+      target.setStateProvinceId(getJAXBValue(source.getStateProvinceId()));
       personInfoConverter.toHitsModel(source.getPersonInfo(), target);
 
-    
-    
+      MostRecent mostRecent = getJAXBValue(source.getMostRecent());
+      if (mostRecent != null) {
+        YearLevelType yearLevel = getJAXBValue(mostRecent.getYearLevel());
+        if (yearLevel != null) {
+          target.setYearLevel(yearLevel.getCode());
+          target.setMostRecentYearLevel(yearLevel.getCode());
+          target.setMostRecentParent1Language(getJAXBValue(mostRecent.getParent1Language()));
+          target.setMostRecentParent2Language(getJAXBValue(mostRecent.getParent2Language()));
+          target.setMostRecentParent1SchoolEducation(getJAXBValue(mostRecent.getParent1SchoolEducationLevel()));
+          target.setMostRecentParent2SchoolEducation(getJAXBValue(mostRecent.getParent2SchoolEducationLevel()));
+          target.setMostRecentParent1NonSchoolEducation(getJAXBValue(mostRecent.getParent1NonSchoolEducation()));
+          target.setMostRecentParent2NonSchoolEducation(getJAXBValue(mostRecent.getParent2NonSchoolEducation()));
+          target.setMostRecentParent1EmploymentType(getJAXBValue(mostRecent.getParent1EmploymentType()));
+          target.setMostRecentParent2EmploymentType(getJAXBValue(mostRecent.getParent2EmploymentType()));
+        }
+      }
     }
   }
 }
