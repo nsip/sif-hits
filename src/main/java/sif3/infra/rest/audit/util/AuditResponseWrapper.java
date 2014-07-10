@@ -2,8 +2,6 @@ package sif3.infra.rest.audit.util;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
-import java.io.PrintWriter;
-import java.io.StringWriter;
 import java.util.Collection;
 
 import javax.servlet.ServletOutputStream;
@@ -12,10 +10,8 @@ import javax.servlet.http.HttpServletResponseWrapper;
 
 public class AuditResponseWrapper extends HttpServletResponseWrapper implements HttpHeaders {
 
-  private TeeOutputStream outputStream = null;
-  private TeeWriter writer = null;
-  private StringWriter stringWriter = null;
-  private ByteArrayOutputStream byteArrayOutputStream = null;
+  private ByteArrayOutputStream outputStream = null;
+  private TeeOutputStream teeOutputStream = null;
 
   public AuditResponseWrapper(HttpServletResponse response) {
     super(response);
@@ -23,24 +19,15 @@ public class AuditResponseWrapper extends HttpServletResponseWrapper implements 
 
   @Override
   public ServletOutputStream getOutputStream() throws IOException {
-    byteArrayOutputStream = new ByteArrayOutputStream();
-    this.outputStream = new TeeOutputStream(super.getOutputStream(), byteArrayOutputStream);
-    return this.outputStream;
-  }
-
-  @Override
-  public PrintWriter getWriter() throws IOException {
-    stringWriter = new StringWriter();
-    this.writer = new TeeWriter(super.getWriter(), stringWriter);
-    return this.writer;
+    this.outputStream = new ByteArrayOutputStream();
+    this.teeOutputStream = new TeeOutputStream(super.getOutputStream(), this.outputStream);
+    return this.teeOutputStream;
   }
 
   public String getContent() {
     String result = null;
-    if (byteArrayOutputStream != null) {
-      result = new String(byteArrayOutputStream.toByteArray());
-    } else if (stringWriter != null) {
-      result = stringWriter.toString();
+    if (outputStream != null) {
+      result = new String(outputStream.toByteArray());
     }
     return result;
   }

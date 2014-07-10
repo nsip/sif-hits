@@ -1,6 +1,5 @@
 package sif3.infra.rest.audit.util;
 
-import java.io.BufferedReader;
 import java.io.IOException;
 import java.util.Collection;
 import java.util.Collections;
@@ -22,7 +21,6 @@ public class AuditRequestWrapper extends HttpServletRequestWrapper implements Ht
 
   private AuditRecord auditRecord = null;
   private RecordingInputStream inputStream = null;
-  private RecordingReader reader = null;
   private BaseResource resource = null;
   
   public AuditRequestWrapper(HttpServletRequest request) {
@@ -37,13 +35,7 @@ public class AuditRequestWrapper extends HttpServletRequestWrapper implements Ht
     inputStream = new RecordingInputStream(super.getInputStream(), this);
     return inputStream;
   }
-  
-  @Override
-  public BufferedReader getReader() throws IOException {
-    reader = new RecordingReader(super.getReader());
-    return reader;
-  }
-  
+   
   public void setResource(BaseResource resource) {
     this.resource = resource;
   }
@@ -52,9 +44,7 @@ public class AuditRequestWrapper extends HttpServletRequestWrapper implements Ht
     String result = null;
     if (inputStream != null) {
       result = inputStream.getContent();
-    } else if (reader != null) {
-      result = reader.getContent();
-    }
+    } 
     return result;
   }
   
@@ -81,7 +71,6 @@ public class AuditRequestWrapper extends HttpServletRequestWrapper implements Ht
 
         resource.validSession();
         SIF3Session session = resource.getEnvironmentManager().getSessionBySessionToken(auditRecord.getSessionToken());
-//        environmentManager.getEnvironmentInfo().
         if (session != null) {
           auditRecord.setSolutionId(session.getSolutionID());
           auditRecord.setAppKey(session.getApplicationKey());
@@ -104,6 +93,7 @@ public class AuditRequestWrapper extends HttpServletRequestWrapper implements Ht
     if (result != null) {
       result.setRequest(this.getContent());
       result.setMethod(this.getMethod());
+      result.setClientIp(this.getRemoteAddr());
       result.setResponseTime(new Date());
       result.setResponse(httpResponse.getContent());
       result.setHttpStatus(httpResponse.getStatus());

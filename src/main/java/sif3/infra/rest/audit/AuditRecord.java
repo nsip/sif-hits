@@ -11,6 +11,7 @@ public class AuditRecord implements Serializable {
 
   private Date requestTime;
   private Date responseTime;
+  private String clientIp;
   private String url;
   private String solutionId;
   private String appKey;
@@ -45,6 +46,16 @@ public class AuditRecord implements Serializable {
   public void setResponseTime(Date responseTime) {
     if ((this.responseTime == null || "".equals(this.responseTime)) && responseTime != null && !"".equals(responseTime)) {
       this.responseTime = responseTime;
+    }
+  }
+  
+  public String getClientIp() {
+    return clientIp;
+  }
+  
+  public void setClientIp(String clientIp) {
+    if ((this.clientIp == null || "".equals(this.clientIp)) && clientIp != null && !"".equals(clientIp)) {
+      this.clientIp = clientIp;
     }
   }
 

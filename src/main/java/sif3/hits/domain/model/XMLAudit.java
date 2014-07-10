@@ -7,8 +7,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
-import sif3.infra.rest.audit.AuditRecord;
-
 @Entity
 public class XMLAudit implements Serializable {
   private static final long serialVersionUID = -2236904251271994413L;
@@ -16,6 +14,7 @@ public class XMLAudit implements Serializable {
   private Long id;
   private Date requestTime;
   private Date responseTime;
+  private String clientIp;
   private String url;
   private String solutionId;
   private String appKey;
@@ -56,6 +55,14 @@ public class XMLAudit implements Serializable {
 
   public void setResponseTime(Date responseTime) {
     this.responseTime = responseTime;
+  }
+  
+  public String getClientIp() {
+    return clientIp;
+  }
+  
+  public void setClientIp(String clientIp) {
+    this.clientIp = clientIp;
   }
 
   public String getUrl() {
