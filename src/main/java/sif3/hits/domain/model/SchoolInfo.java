@@ -31,6 +31,9 @@ public class SchoolInfo extends HitsEntity {
   private String entityOpen;
   private String entityClose;
   private String zoneId;
+  private String campusId;
+  private String campusAdminStatus;
+  private String campusType;
 
   @Id
   public String getRefId() {
@@ -211,5 +214,31 @@ public class SchoolInfo extends HitsEntity {
 
   public void setZoneId(String zoneId) {
     this.zoneId = zoneId;
+  }
+  
+  @Column(name = "CampusSchoolCampusId")
+  public String getCampusId() {
+    return campusId;
+  }
+  
+  public void setCampusId(String campusId) {
+    this.campusId = campusId;
+  }
+  
+  public String getCampusAdminStatus() {
+    return campusAdminStatus;
+  }
+  
+  public void setCampusAdminStatus(String campusAdminStatus) {
+    this.campusAdminStatus = campusAdminStatus;
+  }
+
+  @Column(name = "CampusCampusType")
+  public String getCampusType() {
+    return campusType;
+  }
+  
+  public void setCampusType(String campusType) {
+    this.campusType = campusType;
   }
 }

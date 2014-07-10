@@ -16,6 +16,7 @@ import sif.dd.au30.model.AddressType.Street;
 import sif.dd.au30.model.GridLocationType;
 import sif.dd.au30.model.ObjectFactory;
 import sif.dd.au30.model.SchoolInfoType;
+import sif.dd.au30.model.SchoolInfoType.Campus;
 import sif3.hits.domain.model.SchoolInfo;
 
 @Component
@@ -63,12 +64,22 @@ public class SchoolInfoConverter extends HitsConverter<SchoolInfoType, SchoolInf
       addressList.getAddress().add(address);
       target.setAddressList(objFactory.createSchoolInfoTypeAddressList(addressList));
       
+      target.setSchoolGeographicLocation(objFactory.createSchoolInfoTypeSchoolGeographicLocation(source.getAddressGeographicLocation()));
+      
       BigDecimal aria = getBigDecimalValue(source.getAddressARIA());
       target.setARIA(objFactory.createSchoolInfoTypeARIA(aria));
       XMLGregorianCalendar entityOpen = getDateValue(source.getEntityOpen());
       target.setEntityOpen(objFactory.createSchoolInfoTypeEntityOpen(entityOpen));
       XMLGregorianCalendar entityClose = getDateValue(source.getEntityClose());
       target.setEntityClose(objFactory.createSchoolInfoTypeEntityOpen(entityClose));
+      
+      Campus campus = new Campus();
+      campus.setSchoolCampusId(source.getCampusId());
+      AUCodeSetsYesOrNoCategoryType adminStatus = getEnumValue(source.getCampusAdminStatus(), AUCodeSetsYesOrNoCategoryType.class);
+      campus.setAdminStatus(adminStatus);
+      AUCodeSetsSchoolLevelType campusType = getEnumValue(source.getCampusType(), AUCodeSetsSchoolLevelType.class);
+      campus.setCampusType(objFactory.createSchoolInfoTypeCampusCampusType(campusType));
+      target.setCampus(objFactory.createSchoolInfoTypeCampus(campus));
     }
   }
 
@@ -99,6 +110,7 @@ public class SchoolInfoConverter extends HitsConverter<SchoolInfoType, SchoolInf
           target.setAddressStreetName(getJAXBValue(street.getStreetName()));
         }
         
+        
         GridLocationType gridLocation = getJAXBValue(address.getGridLocation());
         if (gridLocation != null) {
           target.setAddressLatitude(getBigDecimalValue(gridLocation.getLatitude()));
@@ -106,9 +118,18 @@ public class SchoolInfoConverter extends HitsConverter<SchoolInfoType, SchoolInf
         }
       }
       
+      target.setAddressGeographicLocation(getJAXBValue(source.getSchoolGeographicLocation()));
+      
       target.setAddressARIA(getBigDecimalValue(getJAXBValue(source.getARIA())));
       target.setEntityOpen(getDateValue(getJAXBValue(source.getEntityOpen())));
       target.setEntityClose(getDateValue(getJAXBValue(source.getEntityClose())));
+      
+      Campus campus = getJAXBValue(source.getCampus());
+      if (campus != null) {
+        target.setCampusId(campus.getSchoolCampusId());
+        target.setCampusAdminStatus(getEnumValue(campus.getAdminStatus()));
+        target.setCampusType(getJAXBEnumValue(campus.getCampusType()));
+      }
     }
   }
 

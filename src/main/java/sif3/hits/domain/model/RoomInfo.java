@@ -13,6 +13,8 @@ public class RoomInfo extends HitsEntity implements ZoneFilterable {
   private String roomNumber;
   private String description;
   private String capacity;
+  private String roomSize;
+  private String roomType;
 
   @Id
   public String getRefId() {
@@ -54,5 +56,21 @@ public class RoomInfo extends HitsEntity implements ZoneFilterable {
 
   public void setCapacity(String capacity) {
     this.capacity = capacity;
+  }
+  
+  public String getRoomSize() {
+    return roomSize;
+  }
+  
+  public void setRoomSize(String roomSize) {
+    this.roomSize = roomSize;
+  }
+  
+  public String getRoomType() {
+    return roomType;
+  }
+  
+  public void setRoomType(String roomType) {
+    this.roomType = roomType;
   }
 }
