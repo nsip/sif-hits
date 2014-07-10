@@ -7,6 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
+
 @Entity
 public class XMLAudit implements Serializable {
   private static final long serialVersionUID = -2236904251271994413L;
@@ -19,6 +20,7 @@ public class XMLAudit implements Serializable {
   private String solutionId;
   private String appKey;
   private String userToken;
+  private String instanceId;
   private String context;
   private String zone;
   private String environmentToken;
@@ -95,6 +97,14 @@ public class XMLAudit implements Serializable {
 
   public void setUserToken(String userToken) {
     this.userToken = userToken;
+  }
+  
+  public String getInstanceId() {
+    return instanceId;
+  }
+  
+  public void setInstanceId(String instanceId) {
+    this.instanceId = instanceId;
   }
 
   public String getContext() {
