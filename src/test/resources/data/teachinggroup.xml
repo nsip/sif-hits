@@ -1,0 +1,54 @@
+<TeachingGroup RefId="b2ae74f2-faa5-45b8-8bbd-2b545781846c"
+	xmlns="http://www.sifassociation.org/au/datamodel/1.3">
+	<SchoolYear>2007</SchoolYear>
+	<LocalId>Local</LocalId>
+	<ShortName>Short</ShortName>
+	<LongName>Long</LongName>
+	<SchoolInfoRefId>DC56C532026B11E3A5325DE06940ABA3</SchoolInfoRefId>
+	<SchoolLocalId>27</SchoolLocalId>
+	<StudentList>
+		<TeachingGroupStudent>
+			<StudentPersonalRefId>164da5d9bcbf4cf8a058ba0b0efde9ba</StudentPersonalRefId>
+			<StudentLocalId>98765</StudentLocalId>
+			<Name>
+				<FamilyName>DAVEY</FamilyName>
+				<GivenName>Tim</GivenName>
+			</Name>
+		</TeachingGroupStudent>
+		<TeachingGroupStudent>
+			<StudentPersonalRefId>3ff35abed3da4c9b88a7a1c9db28acc6</StudentPersonalRefId>
+			<StudentLocalId>98765</StudentLocalId>
+			<Name>
+				<FamilyName>SNOWMAN</FamilyName>
+				<GivenName>Frosty</GivenName>
+			</Name>
+		</TeachingGroupStudent>
+		<TeachingGroupStudent>
+			<StudentPersonalRefId>c420ca3f-fe7c-45d1-a59f-15330ffea677</StudentPersonalRefId>
+			<StudentLocalId>879</StudentLocalId>
+			<Name>
+				<FamilyName>Barker</FamilyName>
+				<GivenName>Bob</GivenName>
+			</Name>
+		</TeachingGroupStudent>
+	</StudentList>
+	<TeacherList>
+		<TeachingGroupTeacher>
+			<StaffPersonalRefId>E9E07EDC026B11E3A5325DE06940ABA3</StaffPersonalRefId>
+			<StaffLocalId>CORA</StaffLocalId>
+			<Name>
+				<FamilyName>CORR  </FamilyName>
+				<GivenName>Anne</GivenName>
+			</Name>
+		</TeachingGroupTeacher>
+	</TeacherList>
+	<TeachingGroupPeriodList>
+		<TeachingGroupPeriod>
+			<TimeTableCellRefId>c93432a809664ff7b8e1172188a33327
+			</TimeTableCellRefId>
+			<PeriodId xsi:nil="true"
+				xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" />
+			<CellType>CT</CellType>
+		</TeachingGroupPeriod>
+	</TeachingGroupPeriodList>
+</TeachingGroup>

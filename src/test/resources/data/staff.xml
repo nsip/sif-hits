@@ -1,0 +1,9 @@
+<StaffPersonal RefId="E9F19488026B11E3A5325DE06940ABA2" xmlns="http://www.sifassociation.org/au/datamodel/1.3">
+    <LocalId>SMIT</LocalId>
+    <PersonInfo>
+        <Name>
+            <FamilyName>SMITH</FamilyName>
+            <GivenName>Tony</GivenName>
+        </Name>
+    </PersonInfo>
+</StaffPersonal>

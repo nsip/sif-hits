@@ -1,0 +1,17 @@
+<StudentPersonal RefId="6BB0C404C02949BD9956D6BE93B7B128"
+  xmlns="http://www.sifassociation.org/au/datamodel/1.3">
+  <LocalId>123456</LocalId>
+  <PersonInfo>
+    <Name>
+      <FamilyName>Smith</FamilyName>
+      <GivenName>Fred</GivenName>
+    </Name>
+  </PersonInfo>
+  <MostRecent>
+    <SchoolLocalId>S1234567</SchoolLocalId>
+    <HomeroomLocalId>hr12345</HomeroomLocalId>
+    <YearLevel>
+      <Code>1</Code>
+    </YearLevel>
+  </MostRecent>
+</StudentPersonal>
