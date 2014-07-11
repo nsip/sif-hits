@@ -1,6 +1,8 @@
 package sif3.hits.domain.model;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.Id;
 
 @Entity
 public class StudentSchoolEnrollment extends HitsEntity implements ZoneFilterable {
@@ -9,6 +11,7 @@ public class StudentSchoolEnrollment extends HitsEntity implements ZoneFilterabl
 
   private String refId;
   private String schoolInfoRefId;
+  private String studentPersonalRefId;
   private String membershipType;
   private String schoolYear;
   private String timeFrame;
@@ -16,6 +19,7 @@ public class StudentSchoolEnrollment extends HitsEntity implements ZoneFilterabl
   private String fte;
   private String entryDate;
 
+  @Id
   public String getRefId() {
     return refId;
   }
@@ -24,12 +28,22 @@ public class StudentSchoolEnrollment extends HitsEntity implements ZoneFilterabl
     this.refId = refId;
   }
 
+  @Column(name = "SchoolInfo_RefId")
   public String getSchoolInfoRefId() {
     return schoolInfoRefId;
   }
 
   public void setSchoolInfoRefId(String schoolInfoRefId) {
     this.schoolInfoRefId = schoolInfoRefId;
+  }
+  
+  @Column(name = "StudentPersonal_RefId")
+  public String getStudentPersonalRefId() {
+    return studentPersonalRefId;
+  }
+  
+  public void setStudentPersonalRefId(String studentPersonalRefId) {
+    this.studentPersonalRefId = studentPersonalRefId;
   }
 
   public String getMembershipType() {

@@ -2,6 +2,7 @@ package sif3.hits.domain.model;
 
 import java.util.Set;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.Id;
@@ -19,6 +20,9 @@ public class TimeTableSubject extends HitsEntity implements ZoneFilterable {
   private String subjectShortName;
   private String subjectLongName;
   private String subjectType;
+  private String proposedMinClassSize;
+  private String semester;
+  private String schoolYear;
   private Set<TimeTableSubjectOtherCode> otherCodes;
 
   @Id
@@ -30,6 +34,7 @@ public class TimeTableSubject extends HitsEntity implements ZoneFilterable {
     this.refId = refId;
   }
 
+  @Column(name="SchoolInfo_RefId")
   public String getSchoolInfoRefId() {
     return schoolInfoRefId;
   }
@@ -85,13 +90,37 @@ public class TimeTableSubject extends HitsEntity implements ZoneFilterable {
   public void setSubjectType(String subjectType) {
     this.subjectType = subjectType;
   }
-  
-  @OneToMany(fetch = FetchType.EAGER, mappedBy="timeTableSubjectOtherCodeId.timeTableSubject")
+
+  @OneToMany(fetch = FetchType.EAGER, mappedBy = "timeTableSubjectOtherCodeId.timeTableSubject")
   public Set<TimeTableSubjectOtherCode> getOtherCodes() {
     return otherCodes;
   }
-  
+
   public void setOtherCodes(Set<TimeTableSubjectOtherCode> otherCodes) {
     this.otherCodes = otherCodes;
+  }
+
+  public String getProposedMinClassSize() {
+    return proposedMinClassSize;
+  }
+
+  public void setProposedMinClassSize(String proposedMinClassSize) {
+    this.proposedMinClassSize = proposedMinClassSize;
+  }
+
+  public String getSemester() {
+    return semester;
+  }
+
+  public void setSemester(String semester) {
+    this.semester = semester;
+  }
+
+  public String getSchoolYear() {
+    return schoolYear;
+  }
+
+  public void setSchoolYear(String schoolYear) {
+    this.schoolYear = schoolYear;
   }
 }

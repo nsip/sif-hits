@@ -1,11 +1,14 @@
 package sif3.hits.domain.converter;
 
+import org.springframework.stereotype.Component;
+
 import sif.dd.au30.model.AUCodeSetsEnrollmentTimeFrameType;
 import sif.dd.au30.model.ObjectFactory;
 import sif.dd.au30.model.StudentSchoolEnrollmentType;
 import sif.dd.au30.model.YearLevelType;
 import sif3.hits.domain.model.StudentSchoolEnrollment;
 
+@Component
 public class StudentSchoolEnrollmentConverter extends
     HitsConverter<StudentSchoolEnrollmentType, StudentSchoolEnrollment> {
 
@@ -19,6 +22,7 @@ public class StudentSchoolEnrollmentConverter extends
     ObjectFactory objectFactory = getObjectFactory();
       target.setRefId(source.getRefId());
       target.setSchoolInfoRefId(source.getSchoolInfoRefId());
+      target.setStudentPersonalRefId(source.getStudentPersonalRefId());
       target.setMembershipType(source.getMembershipType());
       target.setSchoolYear(getYearValue(source.getSchoolYear()));
       
@@ -38,6 +42,7 @@ public class StudentSchoolEnrollmentConverter extends
   public void toHitsModel(StudentSchoolEnrollmentType source, StudentSchoolEnrollment target) {
     target.setRefId(source.getRefId());
     target.setSchoolInfoRefId(source.getSchoolInfoRefId());
+    target.setStudentPersonalRefId(source.getStudentPersonalRefId());
     target.setMembershipType(source.getMembershipType());
     target.setSchoolYear(getYearValue(source.getSchoolYear()));
     target.setTimeFrame(getEnumValue(source.getTimeFrame()));

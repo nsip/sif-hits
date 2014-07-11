@@ -2,16 +2,17 @@ package sif3.hits.domain.model;
 
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
+import javax.persistence.Table;
 import javax.persistence.Transient;
 
 @Entity
+@Table(name = "TimeTableSubject_OtherCodeList")
 public class TimeTableSubjectOtherCode extends HitsEntity {
   private static final long serialVersionUID = 1161008894259012408L;
 
-  private TimeTableSubjectOtherCodeId timeTableSubjectOtherCodeId;
-  private String codeSet;
-
   @EmbeddedId
+  private TimeTableSubjectOtherCodeId timeTableSubjectOtherCodeId;
+
   public TimeTableSubjectOtherCodeId getTimeTableSubjectOtherCodeId() {
     return timeTableSubjectOtherCodeId;
   }
@@ -54,11 +55,20 @@ public class TimeTableSubjectOtherCode extends HitsEntity {
     this.timeTableSubjectOtherCodeId.setOtherCode(otherCode);
   }
 
+  @Transient
   public String getCodeSet() {
-    return codeSet;
+    String result = null;
+    if (timeTableSubjectOtherCodeId != null) {
+      result = timeTableSubjectOtherCodeId.getCodeSet();
+    }
+    return result;
   }
 
+  @Transient
   public void setCodeSet(String codeSet) {
-    this.codeSet = codeSet;
+    if (timeTableSubjectOtherCodeId == null) {
+      timeTableSubjectOtherCodeId = new TimeTableSubjectOtherCodeId();
+    }
+    this.timeTableSubjectOtherCodeId.setCodeSet(codeSet);
   }
 }

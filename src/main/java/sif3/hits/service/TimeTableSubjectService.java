@@ -52,10 +52,9 @@ public class TimeTableSubjectService extends
   protected TimeTableSubject getFiltered(String refId, java.util.List<String> schoolRefIds) {
     TimeTableSubject result = null;
     if (schoolRefIds != null && !schoolRefIds.isEmpty()) {
-      result = timeTableSubjectDAO.findOne(refId);
+      result = getDAO().findOne(refId);
       if (result != null) {
-        if (result.getSchoolInfo() == null || result.getSchoolInfo().getRefId() == null
-            || !schoolRefIds.contains(result.getSchoolInfo().getRefId())) {
+        if (!schoolRefIds.contains(result.getSchoolInfoRefId())) {
           result = null;
         }
       }
