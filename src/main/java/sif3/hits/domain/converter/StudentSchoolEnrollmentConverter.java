@@ -1,12 +1,13 @@
 package sif3.hits.domain.converter;
 
+import sif.dd.au30.model.AUCodeSetsEnrollmentTimeFrameType;
+import sif.dd.au30.model.ObjectFactory;
 import sif.dd.au30.model.StudentSchoolEnrollmentType;
+import sif.dd.au30.model.YearLevelType;
 import sif3.hits.domain.model.StudentSchoolEnrollment;
 
 public class StudentSchoolEnrollmentConverter extends
     HitsConverter<StudentSchoolEnrollmentType, StudentSchoolEnrollment> {
-
-  // TODO: Implementation
 
   public StudentSchoolEnrollmentConverter() {
     super(StudentSchoolEnrollmentType.class, StudentSchoolEnrollment.class);
@@ -14,25 +15,39 @@ public class StudentSchoolEnrollmentConverter extends
 
   @Override
   public void toSifModel(StudentSchoolEnrollment source, StudentSchoolEnrollmentType target) {
-    // private String refId;
-    // private String schoolInfoRefId;
-    // private String membershipType;
-    // private String schoolYear;
-    // private String timeFrame;
-    // private String yearLevel;
-    // private BigDecimal fte;
-    // private Date entryDate;
+    if (source != null && target != null) {
+    ObjectFactory objectFactory = getObjectFactory();
+      target.setRefId(source.getRefId());
+      target.setSchoolInfoRefId(source.getSchoolInfoRefId());
+      target.setMembershipType(source.getMembershipType());
+      target.setSchoolYear(getYearValue(source.getSchoolYear()));
+      
+      AUCodeSetsEnrollmentTimeFrameType timeFrame = getEnumValue(source.getTimeFrame(), AUCodeSetsEnrollmentTimeFrameType.class);
+      target.setTimeFrame(timeFrame);
+      
+      YearLevelType yearLevel = new YearLevelType();
+      yearLevel.setCode(source.getYearLevel());
+      target.setYearLevel(objectFactory.createStudentSchoolEnrollmentTypeYearLevel(yearLevel));
+      
+      target.setFTE(objectFactory.createStudentSchoolEnrollmentTypeFTE(getBigDecimalValue(source.getFte())));
+      target.setEntryDate(getDateValue(source.getEntryDate()));
+    }
   }
 
   @Override
   public void toHitsModel(StudentSchoolEnrollmentType source, StudentSchoolEnrollment target) {
-    // private String refId;
-    // private String schoolInfoRefId;
-    // private String membershipType;
-    // private String schoolYear;
-    // private String timeFrame;
-    // private String yearLevel;
-    // private BigDecimal fte;
-    // private Date entryDate;
+    target.setRefId(source.getRefId());
+    target.setSchoolInfoRefId(source.getSchoolInfoRefId());
+    target.setMembershipType(source.getMembershipType());
+    target.setSchoolYear(getYearValue(source.getSchoolYear()));
+    target.setTimeFrame(getEnumValue(source.getTimeFrame()));
+    
+    YearLevelType yearLevel = getJAXBValue(source.getYearLevel());
+    if (yearLevel != null) {
+      target.setYearLevel(yearLevel.getCode());
+    }
+    
+    target.setFte(getBigDecimalValue(getJAXBValue(source.getFTE())));
+    target.setEntryDate(getDateValue(source.getEntryDate()));
   }
 }

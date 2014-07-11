@@ -1,8 +1,5 @@
 package sif3.hits.domain.model;
 
-import java.math.BigDecimal;
-import java.util.Date;
-
 import javax.persistence.Entity;
 
 @Entity
@@ -16,8 +13,8 @@ public class StudentSchoolEnrollment extends HitsEntity implements ZoneFilterabl
   private String schoolYear;
   private String timeFrame;
   private String yearLevel;
-  private BigDecimal fte;
-  private Date entryDate;
+  private String fte;
+  private String entryDate;
 
   public String getRefId() {
     return refId;
@@ -67,19 +64,19 @@ public class StudentSchoolEnrollment extends HitsEntity implements ZoneFilterabl
     this.yearLevel = yearLevel;
   }
 
-  public BigDecimal getFte() {
+  public String getFte() {
     return fte;
   }
 
-  public void setFte(BigDecimal fte) {
+  public void setFte(String fte) {
     this.fte = fte;
   }
 
-  public Date getEntryDate() {
+  public String getEntryDate() {
     return entryDate;
   }
 
-  public void setEntryDate(Date entryDate) {
+  public void setEntryDate(String entryDate) {
     this.entryDate = entryDate;
   }
 }
