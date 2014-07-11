@@ -1,22 +1,25 @@
 package sif3.hits.domain.model;
 
+import java.util.Set;
+
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 @Entity
-public class TimeTableSubject extends HitsEntity {
+public class TimeTableSubject extends HitsEntity implements ZoneFilterable {
   private static final long serialVersionUID = 2582961677925949934L;
 
   private String refId;
+  private String schoolInfoRefId;
   private String subjectLocalId;
   private String academicYear;
   private String faculty;
   private String subjectShortName;
   private String subjectLongName;
   private String subjectType;
-  private SchoolInfo schoolInfo;
+  private Set<TimeTableSubjectOtherCode> otherCodes;
 
   @Id
   public String getRefId() {
@@ -25,6 +28,14 @@ public class TimeTableSubject extends HitsEntity {
 
   public void setRefId(String refId) {
     this.refId = refId;
+  }
+
+  public String getSchoolInfoRefId() {
+    return schoolInfoRefId;
+  }
+
+  public void setSchoolInfoRefId(String schoolInfoRefId) {
+    this.schoolInfoRefId = schoolInfoRefId;
   }
 
   public String getSubjectLocalId() {
@@ -74,14 +85,13 @@ public class TimeTableSubject extends HitsEntity {
   public void setSubjectType(String subjectType) {
     this.subjectType = subjectType;
   }
-
-  @ManyToOne
-  @JoinColumn(name = "SchoolInfo_RefId", referencedColumnName = "RefId")
-  public SchoolInfo getSchoolInfo() {
-    return schoolInfo;
+  
+  @OneToMany(fetch = FetchType.EAGER, mappedBy="timeTableSubjectOtherCodeId.timeTableSubject")
+  public Set<TimeTableSubjectOtherCode> getOtherCodes() {
+    return otherCodes;
   }
-
-  public void setSchoolInfo(SchoolInfo schoolInfo) {
-    this.schoolInfo = schoolInfo;
+  
+  public void setOtherCodes(Set<TimeTableSubjectOtherCode> otherCodes) {
+    this.otherCodes = otherCodes;
   }
 }
