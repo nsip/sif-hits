@@ -12,7 +12,7 @@ import sif3.common.ws.Response;
 import sif3.infra.rest.consumer.ConsumerLoader;
 
 public class TimeTableConsumerTest {
-  private ConsumerTest<TimeTableType, TimeTableCollectionType> studentSchoolEnrollmentTester = null;
+  private ConsumerTest<TimeTableType, TimeTableCollectionType> timeTableTester = null;
   
 //  private final String REF_ID_1 = "6BB0C404C02949BD9956D6BE93B7B128";
 //  private final String REF_ID_2 = "6BB0C404C02949BD9956D6BE93B7B124";
@@ -21,7 +21,7 @@ public class TimeTableConsumerTest {
   @Before
   public void setup() {
     ConsumerLoader.initialise("TestConsumer");
-    studentSchoolEnrollmentTester = new ConsumerTest<TimeTableType, TimeTableCollectionType>(
+    timeTableTester = new ConsumerTest<TimeTableType, TimeTableCollectionType>(
         TimeTableType.class, "TimeTable", TimeTableCollectionType.class, "TimeTables");
 //    studentSchoolEnrollmentTester.testDeleteMany(REF_IDS);
     
@@ -30,7 +30,7 @@ public class TimeTableConsumerTest {
   @Test
   public void testGetSingle() {
     final String REF_ID = "0d409bc9-048c-4057-94b3-3692e76dd2ed";
-    List<Response> responses = studentSchoolEnrollmentTester.testGetSingle(REF_ID);
+    List<Response> responses = timeTableTester.testGetSingle(REF_ID);
     Assert.assertNotNull(responses);
     Assert.assertEquals(1, responses.size());
     Response response = responses.get(0);
@@ -41,7 +41,7 @@ public class TimeTableConsumerTest {
   
   @Test
   public void testGetMany() {
-    List<Response> responses = studentSchoolEnrollmentTester.testGetMany(5, 0);
+    List<Response> responses = timeTableTester.testGetMany(5, 0);
     Assert.assertNotNull(responses);
     Assert.assertEquals(1, responses.size());
     Response response = responses.get(0);
