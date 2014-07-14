@@ -6,13 +6,13 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-import sif.dd.au30.model.TimeTableSubjectCollectionType;
-import sif.dd.au30.model.TimeTableSubjectType;
+import sif.dd.au30.model.TimeTableCollectionType;
+import sif.dd.au30.model.TimeTableType;
 import sif3.common.ws.Response;
 import sif3.infra.rest.consumer.ConsumerLoader;
 
-public class TimeTableSubjectConsumerTest {
-  private ConsumerTest<TimeTableSubjectType, TimeTableSubjectCollectionType> studentSchoolEnrollmentTester = null;
+public class TimeTableConsumerTest {
+  private ConsumerTest<TimeTableType, TimeTableCollectionType> studentSchoolEnrollmentTester = null;
   
 //  private final String REF_ID_1 = "6BB0C404C02949BD9956D6BE93B7B128";
 //  private final String REF_ID_2 = "6BB0C404C02949BD9956D6BE93B7B124";
@@ -21,8 +21,8 @@ public class TimeTableSubjectConsumerTest {
   @Before
   public void setup() {
     ConsumerLoader.initialise("TestConsumer");
-    studentSchoolEnrollmentTester = new ConsumerTest<TimeTableSubjectType, TimeTableSubjectCollectionType>(
-        TimeTableSubjectType.class, "TimeTableSubject", TimeTableSubjectCollectionType.class, "TimeTableSubjects");
+    studentSchoolEnrollmentTester = new ConsumerTest<TimeTableType, TimeTableCollectionType>(
+        TimeTableType.class, "TimeTable", TimeTableCollectionType.class, "TimeTables");
 //    studentSchoolEnrollmentTester.testDeleteMany(REF_IDS);
     
   }
@@ -35,8 +35,8 @@ public class TimeTableSubjectConsumerTest {
     Assert.assertEquals(1, responses.size());
     Response response = responses.get(0);
     Assert.assertNotNull(response.getDataObject());
-    TimeTableSubjectType timeTableSubject = (TimeTableSubjectType) response.getDataObject();
-    Assert.assertEquals(REF_ID, timeTableSubject.getRefId());
+    TimeTableType timeTable = (TimeTableType) response.getDataObject();
+    Assert.assertEquals(REF_ID, timeTable.getRefId());
   }
   
   @Test
@@ -46,9 +46,9 @@ public class TimeTableSubjectConsumerTest {
     Assert.assertEquals(1, responses.size());
     Response response = responses.get(0);
     Assert.assertNotNull(response.getDataObject());
-    TimeTableSubjectCollectionType timeTableSubjects = (TimeTableSubjectCollectionType) response.getDataObject();
-    Assert.assertNotNull(timeTableSubjects.getTimeTableSubject());
-    Assert.assertEquals(5, timeTableSubjects.getTimeTableSubject().size());
+    TimeTableCollectionType timeTables = (TimeTableCollectionType) response.getDataObject();
+    Assert.assertNotNull(timeTables.getTimeTable());
+    Assert.assertEquals(5, timeTables.getTimeTable().size());
   }
   
   @Test

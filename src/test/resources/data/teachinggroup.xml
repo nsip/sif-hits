@@ -1,54 +1,305 @@
 <TeachingGroup RefId="b2ae74f2-faa5-45b8-8bbd-2b545781846c"
 	xmlns="http://www.sifassociation.org/au/datamodel/1.3">
-	<SchoolYear>2007</SchoolYear>
-	<LocalId>Local</LocalId>
-	<ShortName>Short</ShortName>
-	<LongName>Long</LongName>
-	<SchoolInfoRefId>DC56C532026B11E3A5325DE06940ABA3</SchoolInfoRefId>
-	<SchoolLocalId>27</SchoolLocalId>
-	<StudentList>
-		<TeachingGroupStudent>
-			<StudentPersonalRefId>164da5d9bcbf4cf8a058ba0b0efde9ba</StudentPersonalRefId>
-			<StudentLocalId>98765</StudentLocalId>
-			<Name>
-				<FamilyName>DAVEY</FamilyName>
-				<GivenName>Tim</GivenName>
-			</Name>
-		</TeachingGroupStudent>
-		<TeachingGroupStudent>
-			<StudentPersonalRefId>3ff35abed3da4c9b88a7a1c9db28acc6</StudentPersonalRefId>
-			<StudentLocalId>98765</StudentLocalId>
-			<Name>
-				<FamilyName>SNOWMAN</FamilyName>
-				<GivenName>Frosty</GivenName>
-			</Name>
-		</TeachingGroupStudent>
-		<TeachingGroupStudent>
-			<StudentPersonalRefId>c420ca3f-fe7c-45d1-a59f-15330ffea677</StudentPersonalRefId>
-			<StudentLocalId>879</StudentLocalId>
-			<Name>
-				<FamilyName>Barker</FamilyName>
-				<GivenName>Bob</GivenName>
-			</Name>
-		</TeachingGroupStudent>
-	</StudentList>
-	<TeacherList>
-		<TeachingGroupTeacher>
-			<StaffPersonalRefId>E9E07EDC026B11E3A5325DE06940ABA3</StaffPersonalRefId>
-			<StaffLocalId>CORA</StaffLocalId>
-			<Name>
-				<FamilyName>CORR  </FamilyName>
-				<GivenName>Anne</GivenName>
-			</Name>
-		</TeachingGroupTeacher>
-	</TeacherList>
-	<TeachingGroupPeriodList>
-		<TeachingGroupPeriod>
-			<TimeTableCellRefId>c93432a809664ff7b8e1172188a33327
-			</TimeTableCellRefId>
-			<PeriodId xsi:nil="true"
-				xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" />
-			<CellType>CT</CellType>
-		</TeachingGroupPeriod>
-	</TeachingGroupPeriodList>
-</TeachingGroup>
+        <SchoolYear>0006</SchoolYear>
+        <LocalId>Room 737</LocalId>
+        <ShortName>VIS</ShortName>
+        <LongName>Visual Design</LongName>
+        <SchoolInfoRefId>6DAFB630-C439-11E3-9AA0-81F4DBD909AB</SchoolInfoRefId>
+        <SchoolLocalId>139 Delana Walk, OLNEY, NSW, 2325</SchoolLocalId>
+        <StudentList>
+            <TeachingGroupStudent>
+                <StudentPersonalRefId>2F510906-C43F-11E3-A7FB-E1F4DBD909AB</StudentPersonalRefId>
+                <StudentLocalId>287 Jerrold Square, PULLETOP, NSW, 2650</StudentLocalId>
+                <Name>
+                    <FamilyName>Kieth</FamilyName>
+                    <GivenName>Banuelos</GivenName>
+                    <MiddleName xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+                    <PreferredGivenName xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+                </Name>
+            </TeachingGroupStudent>
+            <TeachingGroupStudent>
+                <StudentPersonalRefId>309D0DAE-C440-11E3-8B54-ECF4DBD909AB</StudentPersonalRefId>
+                <StudentLocalId>267 Jeanetta Crescent, KOOKABOOKRA, NSW, 2370</StudentLocalId>
+                <Name>
+                    <FamilyName>Alisia</FamilyName>
+                    <GivenName>Bulat</GivenName>
+                    <MiddleName xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+                    <PreferredGivenName xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+                </Name>
+            </TeachingGroupStudent>
+            <TeachingGroupStudent>
+                <StudentPersonalRefId>2D68FDBA-C43F-11E3-A7FB-E1F4DBD909AB</StudentPersonalRefId>
+                <StudentLocalId>219 Marcos Crescent, MELDRUM DOWNS, NSW, 2453</StudentLocalId>
+                <Name>
+                    <FamilyName>Artie</FamilyName>
+                    <GivenName>Robbinson</GivenName>
+                    <MiddleName xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+                    <PreferredGivenName xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+                </Name>
+            </TeachingGroupStudent>
+            <TeachingGroupStudent>
+                <StudentPersonalRefId>2B763EFA-C43F-11E3-A7FB-E1F4DBD909AB</StudentPersonalRefId>
+                <StudentLocalId>195 Patrick Lane, FLINDERS PARK, SA, 5025</StudentLocalId>
+                <Name>
+                    <FamilyName>Dean</FamilyName>
+                    <GivenName>Jonnson</GivenName>
+                    <MiddleName xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+                    <PreferredGivenName xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+                </Name>
+            </TeachingGroupStudent>
+            <TeachingGroupStudent>
+                <StudentPersonalRefId>23ADADA6-C440-11E3-8B54-ECF4DBD909AB</StudentPersonalRefId>
+                <StudentLocalId>268 Robt Boulevard, UPPER LOCKYER, QLD, 4352</StudentLocalId>
+                <Name>
+                    <FamilyName>Trula</FamilyName>
+                    <GivenName>Alepin</GivenName>
+                    <MiddleName xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+                    <PreferredGivenName xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+                </Name>
+            </TeachingGroupStudent>
+            <TeachingGroupStudent>
+                <StudentPersonalRefId>24B85580-C43F-11E3-A7FB-E1F4DBD909AB</StudentPersonalRefId>
+                <StudentLocalId>277 Teressa Crescent, MAGENTA, WA, 6355</StudentLocalId>
+                <Name>
+                    <FamilyName>Kyle</FamilyName>
+                    <GivenName>Clagon</GivenName>
+                    <MiddleName xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+                    <PreferredGivenName xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+                </Name>
+            </TeachingGroupStudent>
+            <TeachingGroupStudent>
+                <StudentPersonalRefId>249C0556-C43F-11E3-A7FB-E1F4DBD909AB</StudentPersonalRefId>
+                <StudentLocalId>86 Tuan Drive, ERLDUNDA, NT, 0872</StudentLocalId>
+                <Name>
+                    <FamilyName>Mary</FamilyName>
+                    <GivenName>Carpente</GivenName>
+                    <MiddleName xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+                    <PreferredGivenName xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+                </Name>
+            </TeachingGroupStudent>
+            <TeachingGroupStudent>
+                <StudentPersonalRefId>23FB6EFC-C43F-11E3-A7FB-E1F4DBD909AB</StudentPersonalRefId>
+                <StudentLocalId>107 Ji Drive, SUGARLOAF, QLD, 4380</StudentLocalId>
+                <Name>
+                    <FamilyName>Margarito</FamilyName>
+                    <GivenName>Alie</GivenName>
+                    <MiddleName xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+                    <PreferredGivenName xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+                </Name>
+            </TeachingGroupStudent>
+            <TeachingGroupStudent>
+                <StudentPersonalRefId>2E47C176-C43F-11E3-A7FB-E1F4DBD909AB</StudentPersonalRefId>
+                <StudentLocalId>70 Darwin Walk, ABERCROMBIE RIVER, NSW, 2795</StudentLocalId>
+                <Name>
+                    <FamilyName>Latia</FamilyName>
+                    <GivenName>Thongchanh</GivenName>
+                    <MiddleName xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+                    <PreferredGivenName xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+                </Name>
+            </TeachingGroupStudent>
+            <TeachingGroupStudent>
+                <StudentPersonalRefId>26BBFDD6-C440-11E3-8B54-ECF4DBD909AB</StudentPersonalRefId>
+                <StudentLocalId>261 Benedict Walk, MELINGA, NSW, 2430</StudentLocalId>
+                <Name>
+                    <FamilyName>Marcos</FamilyName>
+                    <GivenName>Hookano</GivenName>
+                    <MiddleName xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+                    <PreferredGivenName xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+                </Name>
+            </TeachingGroupStudent>
+            <TeachingGroupStudent>
+                <StudentPersonalRefId>2D335204-C440-11E3-8B54-ECF4DBD909AB</StudentPersonalRefId>
+                <StudentLocalId>102 Allyson Square, DOYALSON, NSW, 2262</StudentLocalId>
+                <Name>
+                    <FamilyName>Shayna</FamilyName>
+                    <GivenName>Althaus</GivenName>
+                    <MiddleName xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+                    <PreferredGivenName xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+                </Name>
+            </TeachingGroupStudent>
+            <TeachingGroupStudent>
+                <StudentPersonalRefId>3214C1FE-C440-11E3-8B54-ECF4DBD909AB</StudentPersonalRefId>
+                <StudentLocalId>117 Sachiko Walk, GOOLBOO, QLD, 4856</StudentLocalId>
+                <Name>
+                    <FamilyName>Zachery</FamilyName>
+                    <GivenName>Bonomini</GivenName>
+                    <MiddleName xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+                    <PreferredGivenName xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+                </Name>
+            </TeachingGroupStudent>
+            <TeachingGroupStudent>
+                <StudentPersonalRefId>256906AE-C440-11E3-8B54-ECF4DBD909AB</StudentPersonalRefId>
+                <StudentLocalId>203 Gaye Lane, SEAFORTH, QLD, 4741</StudentLocalId>
+                <Name>
+                    <FamilyName>Shanon</FamilyName>
+                    <GivenName>Merna</GivenName>
+                    <MiddleName xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+                    <PreferredGivenName xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+                </Name>
+            </TeachingGroupStudent>
+            <TeachingGroupStudent>
+                <StudentPersonalRefId>24776C68-C440-11E3-8B54-ECF4DBD909AB</StudentPersonalRefId>
+                <StudentLocalId>295 Cassey Street, DUNDATHU, QLD, 4650</StudentLocalId>
+                <Name>
+                    <FamilyName>Jefferson</FamilyName>
+                    <GivenName>Hauersperger</GivenName>
+                    <MiddleName xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+                    <PreferredGivenName xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+                </Name>
+            </TeachingGroupStudent>
+            <TeachingGroupStudent>
+                <StudentPersonalRefId>2DDBD726-C440-11E3-8B54-ECF4DBD909AB</StudentPersonalRefId>
+                <StudentLocalId>250 Adam Road, SWEDE FLAT, SA, 5270</StudentLocalId>
+                <Name>
+                    <FamilyName>Randee</FamilyName>
+                    <GivenName>Phillips</GivenName>
+                    <MiddleName xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+                    <PreferredGivenName xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+                </Name>
+            </TeachingGroupStudent>
+            <TeachingGroupStudent>
+                <StudentPersonalRefId>340751D4-C440-11E3-8B54-ECF4DBD909AB</StudentPersonalRefId>
+                <StudentLocalId>244 Freeman Court, MELLONG, NSW, 2756</StudentLocalId>
+                <Name>
+                    <FamilyName>Ilona</FamilyName>
+                    <GivenName>Both</GivenName>
+                    <MiddleName xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+                    <PreferredGivenName xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+                </Name>
+            </TeachingGroupStudent>
+            <TeachingGroupStudent>
+                <StudentPersonalRefId>32CA36A6-C440-11E3-8B54-ECF4DBD909AB</StudentPersonalRefId>
+                <StudentLocalId>56 Oma Court, BALGOWAN, SA, 5573</StudentLocalId>
+                <Name>
+                    <FamilyName>Magdalen</FamilyName>
+                    <GivenName>Bellar</GivenName>
+                    <MiddleName xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+                    <PreferredGivenName xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+                </Name>
+            </TeachingGroupStudent>
+            <TeachingGroupStudent>
+                <StudentPersonalRefId>27FAEB4E-C440-11E3-8B54-ECF4DBD909AB</StudentPersonalRefId>
+                <StudentLocalId>250 Belkis Drive, BRAY PARK, QLD, 4500</StudentLocalId>
+                <Name>
+                    <FamilyName>Heike</FamilyName>
+                    <GivenName>Straathof</GivenName>
+                    <MiddleName xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+                    <PreferredGivenName xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+                </Name>
+            </TeachingGroupStudent>
+            <TeachingGroupStudent>
+                <StudentPersonalRefId>253FC0D8-C43F-11E3-A7FB-E1F4DBD909AB</StudentPersonalRefId>
+                <StudentLocalId>21 Milo Boulevard, CHINNOCK, NSW, 2550</StudentLocalId>
+                <Name>
+                    <FamilyName>Shannan</FamilyName>
+                    <GivenName>Patao</GivenName>
+                    <MiddleName xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+                    <PreferredGivenName xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+                </Name>
+            </TeachingGroupStudent>
+            <TeachingGroupStudent>
+                <StudentPersonalRefId>2B18803E-C440-11E3-8B54-ECF4DBD909AB</StudentPersonalRefId>
+                <StudentLocalId>165 Darren Lane, IRON GATES, NSW, 2473</StudentLocalId>
+                <Name>
+                    <FamilyName>Jadwiga</FamilyName>
+                    <GivenName>Scavo</GivenName>
+                    <MiddleName xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+                    <PreferredGivenName xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+                </Name>
+            </TeachingGroupStudent>
+            <TeachingGroupStudent>
+                <StudentPersonalRefId>2794B03C-C43F-11E3-A7FB-E1F4DBD909AB</StudentPersonalRefId>
+                <StudentLocalId>74 Maurice Boulevard, NERIDUP, WA, 6450</StudentLocalId>
+                <Name>
+                    <FamilyName>Alexander</FamilyName>
+                    <GivenName>Golba</GivenName>
+                    <MiddleName xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+                    <PreferredGivenName xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+                </Name>
+            </TeachingGroupStudent>
+            <TeachingGroupStudent>
+                <StudentPersonalRefId>266D07B8-C43F-11E3-A7FB-E1F4DBD909AB</StudentPersonalRefId>
+                <StudentLocalId>140 Reggie Square, TOTHILL CREEK, SA, 5413</StudentLocalId>
+                <Name>
+                    <FamilyName>Latrice</FamilyName>
+                    <GivenName>Reidhead</GivenName>
+                    <MiddleName xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+                    <PreferredGivenName xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+                </Name>
+            </TeachingGroupStudent>
+            <TeachingGroupStudent>
+                <StudentPersonalRefId>2EA2D3E0-C43F-11E3-A7FB-E1F4DBD909AB</StudentPersonalRefId>
+                <StudentLocalId>277 Leonard Drive, BRENDA PARK, SA, 5320</StudentLocalId>
+                <Name>
+                    <FamilyName>Willy</FamilyName>
+                    <GivenName>Calcagino</GivenName>
+                    <MiddleName xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+                    <PreferredGivenName xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+                </Name>
+            </TeachingGroupStudent>
+            <TeachingGroupStudent>
+                <StudentPersonalRefId>2BCFEC84-C43F-11E3-A7FB-E1F4DBD909AB</StudentPersonalRefId>
+                <StudentLocalId>198 Freeda Way, HARVEY, WA, 6220</StudentLocalId>
+                <Name>
+                    <FamilyName>Ozie</FamilyName>
+                    <GivenName>Dolhun</GivenName>
+                    <MiddleName xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+                    <PreferredGivenName xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+                </Name>
+            </TeachingGroupStudent>
+            <TeachingGroupStudent>
+                <StudentPersonalRefId>2CEA3368-C43F-11E3-A7FB-E1F4DBD909AB</StudentPersonalRefId>
+                <StudentLocalId>251 Augustine Road, BARANGAROO, NSW, 2000</StudentLocalId>
+                <Name>
+                    <FamilyName>Davis</FamilyName>
+                    <GivenName>Vesperas</GivenName>
+                    <MiddleName xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+                    <PreferredGivenName xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+                </Name>
+            </TeachingGroupStudent>
+            <TeachingGroupStudent>
+                <StudentPersonalRefId>25E2A60E-C43F-11E3-A7FB-E1F4DBD909AB</StudentPersonalRefId>
+                <StudentLocalId>78 Russ Drive, WATTLE CAMP, QLD, 4615</StudentLocalId>
+                <Name>
+                    <FamilyName>Tawny</FamilyName>
+                    <GivenName>Mccoo</GivenName>
+                    <MiddleName xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+                    <PreferredGivenName xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+                </Name>
+            </TeachingGroupStudent>
+            <TeachingGroupStudent>
+                <StudentPersonalRefId>29A89CB2-C43F-11E3-A7FB-E1F4DBD909AB</StudentPersonalRefId>
+                <StudentLocalId>251 Jeremiah Lane, SOUTHEDGE, QLD, 4871</StudentLocalId>
+                <Name>
+                    <FamilyName>Noe</FamilyName>
+                    <GivenName>Grune</GivenName>
+                    <MiddleName xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+                    <PreferredGivenName xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+                </Name>
+            </TeachingGroupStudent>
+            <TeachingGroupStudent>
+                <StudentPersonalRefId>2A1915EA-C440-11E3-8B54-ECF4DBD909AB</StudentPersonalRefId>
+                <StudentLocalId>38 Bronwyn Walk, EAST PERTH, WA, 6892</StudentLocalId>
+                <Name>
+                    <FamilyName>Barbra</FamilyName>
+                    <GivenName>Jahnke</GivenName>
+                    <MiddleName xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+                    <PreferredGivenName xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+                </Name>
+            </TeachingGroupStudent>
+        </StudentList>
+        <TeacherList>
+            <TeachingGroupTeacher>
+                <StaffPersonalRefId>6dfd77d7-2cea-40b3-a3ba-1a1965086d4c</StaffPersonalRefId>
+                <StaffLocalId>148 Woodrow Street, BLAKNEY CREEK, NSW, 2581</StaffLocalId>
+                <Name>
+                    <Title>Mr</Title>
+                    <FamilyName>Brady</FamilyName>
+                    <GivenName>Carpente</GivenName>
+                    <MiddleName xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+                    <PreferredGivenName xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+                </Name>
+            </TeachingGroupTeacher>
+        </TeacherList>
+        <TeachingGroupPeriodList/>
+    </TeachingGroup>

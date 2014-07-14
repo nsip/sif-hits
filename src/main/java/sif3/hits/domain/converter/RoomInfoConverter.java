@@ -23,6 +23,7 @@ public class RoomInfoConverter extends HitsConverter<RoomInfoType, RoomInfo> {
       target.setDescription(objectFactory.createRoomInfoTypeDescription(source.getDescription()));
       target.setCapacity(objectFactory.createRoomInfoTypeCapacity(getLongValue(source.getCapacity())));
       target.setSize(objectFactory.createRoomInfoTypeSize(getBigDecimalValue(source.getRoomSize())));
+      target.setRoomType(objectFactory.createRoomInfoTypeRoomType(source.getRoomType()));
     }
   }
 
@@ -34,6 +35,7 @@ public class RoomInfoConverter extends HitsConverter<RoomInfoType, RoomInfo> {
       target.setDescription(getJAXBValue(source.getDescription()));
       target.setCapacity(getLongValue(getJAXBValue(source.getCapacity())));
       target.setRoomSize(getBigDecimalValue(getJAXBValue(source.getSize())));
+      target.setRoomType(getJAXBValue(source.getRoomType()));
     }
   }
 }

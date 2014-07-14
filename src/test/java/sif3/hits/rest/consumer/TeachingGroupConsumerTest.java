@@ -33,7 +33,7 @@ public class TeachingGroupConsumerTest {
 
   @Test
   public void testGetSingle() {
-    final String REF_ID = "fake01";
+    final String REF_ID = "45616492-03ac-44a7-a274-6d4b59688198";
     List<Response> responses = teachingGroupTester.testGetSingle(REF_ID);
     Assert.assertNotNull(responses);
     Assert.assertEquals(1, responses.size());
@@ -53,7 +53,6 @@ public class TeachingGroupConsumerTest {
     TeachingGroupCollectionType teachingGroupCollection = (TeachingGroupCollectionType) response.getDataObject();
     Assert.assertNotNull(teachingGroupCollection.getTeachingGroup());
     Assert.assertEquals(5, teachingGroupCollection.getTeachingGroup().size());
-//    5bD-rke-qXL-r8D
   }
 
   @Test

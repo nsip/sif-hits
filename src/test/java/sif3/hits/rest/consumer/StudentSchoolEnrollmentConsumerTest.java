@@ -52,6 +52,7 @@ public class StudentSchoolEnrollmentConsumerTest {
   
   @Test
   public void testCreateDelete() {   
+    Assert.fail("NYI");
 //    List<Response> createResponses = studentTester.testCreateOne("student.xml");
 //    Assert.assertNotNull(createResponses);
 //    Assert.assertEquals(1, createResponses.size());
@@ -70,6 +71,7 @@ public class StudentSchoolEnrollmentConsumerTest {
   
   @Test
   public void testCreateDeleteMany() {
+    Assert.fail("NYI");
 //    final List<String> REF_ID_LIST = Arrays.asList(REF_IDS);
 //    
 //    List<BulkOperationResponse<CreateOperationStatus>> createResponses = studentTester.testCreateMany("students.xml");

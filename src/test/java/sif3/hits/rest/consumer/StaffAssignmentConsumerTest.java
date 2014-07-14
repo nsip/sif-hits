@@ -33,7 +33,7 @@ public class StaffAssignmentConsumerTest {
   
   @Test
   public void testGetSingle() {
-    final String REF_ID = "598d8194-1cd5-4734-8772-f49e7a897ab3";
+    final String REF_ID = "FEB9F24C198048EB9015FF804C36BB68";
     List<Response> responses = staffAssignmentTester.testGetSingle(REF_ID);
     Assert.assertNotNull(responses);
     Assert.assertEquals(1, responses.size());
