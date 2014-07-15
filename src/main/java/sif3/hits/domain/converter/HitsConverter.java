@@ -139,6 +139,30 @@ public abstract class HitsConverter<S, H> {
     return result;
   }
   
+  protected XMLGregorianCalendar getTimeValue(String value) {
+    XMLGregorianCalendar result = null;
+    try {
+      if (value != null) {
+        result = DatatypeFactory.newInstance().newXMLGregorianCalendar(value);
+      }
+    } catch (Exception ex) {
+      logger.error("Unable to convert value [" + value + "] to xml calendar.", ex);
+    }
+    return result;
+  }
+  
+  protected String getTimeValue(XMLGregorianCalendar value) {
+    String result = null;
+    try {
+      if (value != null) {
+        result = value.toString();
+      }
+    } catch (Exception ex) {
+      logger.error("Unable to convert value [" + value + "] to xml calendar.", ex);
+    }
+    return result;
+  }  
+  
   protected XMLGregorianCalendar getYearValue(String value) {
     XMLGregorianCalendar result = null;
     if (value != null) {

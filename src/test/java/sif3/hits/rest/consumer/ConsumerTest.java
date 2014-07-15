@@ -85,6 +85,27 @@ public class ConsumerTest<S, M> {
     return result;
   }
 
+  protected List<Response> testUpdateOne(String filename, String refId) {
+    List<Response> result = null;
+    System.out.println("Start 'Update " + getSingleName() + "' in all connected environments...");
+    try {
+      String contents = getFileContents(filename);
+      Object object = testConsumer.getUnmarshaller().unmarshalFromXML(contents, SINGLE_CLASS);
+      S input = null;
+      if (SINGLE_CLASS.isAssignableFrom(object.getClass())) {
+        input = SINGLE_CLASS.cast(object);
+      }
+      result = testConsumer.updateSingle(input, refId, null);
+      System.out.println("Responses from attempt to 'Update " + getSingleName() + "':");
+      printResponses(result);
+    } catch (Exception ex) {
+      ex.printStackTrace();
+    }
+    System.out.println("Finished 'Update " + getSingleName() + "' in all connected environments...");
+    return result;
+  }
+
+  
   protected List<BulkOperationResponse<CreateOperationStatus>> testCreateMany(String filename) {
     List<BulkOperationResponse<CreateOperationStatus>> result = null;
     System.out.println("Start 'Create " + getMultiName() + "' in all connected environments...");

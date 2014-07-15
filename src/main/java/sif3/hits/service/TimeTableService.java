@@ -1,6 +1,8 @@
 package sif3.hits.service;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -13,10 +15,14 @@ import sif3.common.exception.PersistenceException;
 import sif3.hits.domain.converter.HitsConverter;
 import sif3.hits.domain.converter.TimeTableConverter;
 import sif3.hits.domain.dao.TimeTableDAO;
+import sif3.hits.domain.dao.TimeTableDayDAO;
+import sif3.hits.domain.dao.TimeTablePeriodDAO;
 import sif3.hits.domain.dao.ZoneDAO;
 import sif3.hits.domain.dao.ZoneFilterableRepository;
 import sif3.hits.domain.model.SchoolInfo;
 import sif3.hits.domain.model.TimeTable;
+import sif3.hits.domain.model.TimeTableDay;
+import sif3.hits.domain.model.TimeTablePeriod;
 import sif3.hits.rest.dto.RequestDTO;
 
 @Service
@@ -24,6 +30,12 @@ public class TimeTableService extends BaseService<TimeTableType, TimeTableCollec
 
   @Autowired
   private TimeTableDAO timeTableDAO;
+  
+  @Autowired
+  private TimeTableDayDAO timeTableDayDAO;
+  
+  @Autowired
+  private TimeTablePeriodDAO timeTablePeriodDAO;
   
   @Autowired
   private ZoneDAO zoneDAO;
@@ -74,54 +86,45 @@ public class TimeTableService extends BaseService<TimeTableType, TimeTableCollec
   protected TimeTable save(TimeTable hitsObject, RequestDTO<TimeTableType> dto, String zoneId)
       throws PersistenceException {
     
-    // Save and/or find list of TimeTableCells
-//    HashMap<String, StaffPersonal> teachingGroupTeachers = new HashMap<String, StaffPersonal>();
-//    if (hitsObject.getStaffPersonals() != null) {
-//      for (StaffPersonal staffPersonal : hitsObject.getStaffPersonals()) {
-//        String key = staffPersonal.getRefId();
-//        StaffPersonal teachingGroupTeacher = saveTeachingGroupTeacher(staffPersonal, dto, zoneId);
-//        teachingGroupTeachers.put(key, teachingGroupTeacher);
-//      }
-//    }
-//    hitsObject.setStaffPersonals(new HashSet<StaffPersonal>(teachingGroupTeachers.values()));
-
-    return super.save(hitsObject, dto, zoneId);
+    TimeTable result = null;
+    if (hitsObject.getTimeTableDays() != null) {
+      deleteTimeTablePeriods(hitsObject);
+      deleteTimeTableDays(hitsObject);
+      Set<TimeTableDay> days = new HashSet<TimeTableDay>();
+      days.addAll(hitsObject.getTimeTableDays());
+      hitsObject.getTimeTableDays().clear();
+      result = super.save(hitsObject, dto, zoneId);
+      for (TimeTableDay day : days) {
+        Set<TimeTablePeriod> periods = new HashSet<TimeTablePeriod>();
+        if (day.getPeriods() != null) {
+          periods.addAll(day.getPeriods());
+          day.getPeriods().clear();
+        }
+        day.setTimeTable(hitsObject);
+        timeTableDayDAO.save(day);
+        for (TimeTablePeriod period : periods) {
+          period.setTimeTableDay(day);
+          timeTablePeriodDAO.save(period);
+        }
+        day.setPeriods(periods);
+      }
+      result.setTimeTableDays(days);
+    } else {
+      result = super.save(hitsObject, dto, zoneId); 
+    }
+    return result;
   }
   
-//  private TimeTableCell saveTimeTablePeriod(TimeTableCell timeTableCell, HashMap<String, StaffPersonal> teachingGroupTeachers, RequestDTO<TeachingGroupType> dto,
-//      String zoneId) {
-//    TimeTableCell result = null;
-//    if (timeTableCell != null) {
-//      TimeTableCell existingCell = null;
-//      if (timeTableCell.getRefId() != null) {
-//        existingCell = timeTableCellDAO.findOne(timeTableCell.getRefId());
-//      }
-//      if (existingCell == null) {
-//        existingCell = timeTableCell;
-//      } else {
-//        // We only want to copy fields from "timeTableCell" onto "existingCell" that are supplied in the
-//        // TeachingGroup calls. Does this need another "converter"?
-//        existingCell.setCellType(timeTableCell.getCellType());
-//        existingCell.setDayId(timeTableCell.getDayId());
-//        existingCell.setPeriodId(timeTableCell.getPeriodId());
-//        existingCell.setRefId(timeTableCell.getRefId());
-//      }
-//      StaffPersonal teacher = null;
-//      if (timeTableCell.getStaffPersonal() != null && timeTableCell.getStaffPersonal().getRefId() != null) {
-//        teacher = teachingGroupTeachers.get(timeTableCell.getStaffPersonal().getRefId());
-//      }
-//      existingCell.setStaffPersonal(teacher);
-//      
-//      // Only RoomNumber supplied.
-//      if (existingCell.getRoomInfo() != null && existingCell.getRoomInfo().getRoomNumber() != null && timeTableCell.getRoomInfo() != null && !existingCell.getRoomInfo().getRoomNumber().equals(timeTableCell.getRoomInfo().getRoomNumber())) {
-//        timeTableCell.getRoomInfo().setRefId(RefIdGenerator.getRefId());
-//        existingCell.setRoomInfo(roomInfoDAO.save(timeTableCell.getRoomInfo()));
-//      }
-//      result = timeTableCellDAO.save(existingCell);
-//    }
-//    return result;
-//  }
   
+    
+  private void deleteTimeTablePeriods(TimeTable hitsObject) {
+    timeTablePeriodDAO.deleteAllWithTimeTable(hitsObject);
+  }
+
+  private void deleteTimeTableDays(TimeTable hitsObject) {
+    timeTableDayDAO.deleteAllWithTimeTable(hitsObject);    
+  }
+
   @Override
   protected boolean assignZoneId(TimeTable hitsObject, String zoneId) {
     boolean result = false;
@@ -135,9 +138,8 @@ public class TimeTableService extends BaseService<TimeTableType, TimeTableCollec
 
   @Override
   protected void delete(TimeTable hitsObject, RequestDTO<TimeTableType> dto) {
-    // Before deleting we need to make sure that all referential integrity jazz
-    // is looked after...
-    // May not need to do anything here.
+    deleteTimeTablePeriods(hitsObject);
+    deleteTimeTableDays(hitsObject);
     super.delete(hitsObject, dto);
   }
 }

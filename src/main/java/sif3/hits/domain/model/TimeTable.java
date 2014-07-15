@@ -23,7 +23,7 @@ public class TimeTable implements Serializable, ZoneFilterable {
   private String title;
   private String daysPerCycle;
   private String periodsPerCycle;
-  private Set<TimeTableCell> cells;
+  private Set<TimeTableDay> timeTableDays;
 
   @Id
   public String getRefId() {
@@ -83,14 +83,14 @@ public class TimeTable implements Serializable, ZoneFilterable {
   public void setPeriodsPerCycle(String periodsPerCycle) {
     this.periodsPerCycle = periodsPerCycle;
   }
-
-  @OneToMany(fetch = FetchType.EAGER, mappedBy = "timeTable")
-  public Set<TimeTableCell> getCells() {
-    return cells;
+  
+  @OneToMany(fetch = FetchType.EAGER, mappedBy = "timeTableDayId.timeTable")
+  public Set<TimeTableDay> getTimeTableDays() {
+    return timeTableDays;
   }
-
-  public void setCells(Set<TimeTableCell> cells) {
-    this.cells = cells;
+  
+  public void setTimeTableDays(Set<TimeTableDay> timeTableDays) {
+    this.timeTableDays = timeTableDays;
   }
 
   @Override

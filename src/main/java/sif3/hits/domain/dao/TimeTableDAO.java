@@ -8,7 +8,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
-import sif3.hits.domain.model.TeachingGroup;
 import sif3.hits.domain.model.TimeTable;
 
 public interface TimeTableDAO extends JpaRepository<TimeTable, String>, ZoneFilterableRepository<TimeTable> {
