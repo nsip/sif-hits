@@ -3,10 +3,8 @@ package sif3.hits.domain.model;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.NamedQuery;
 
 @Entity
-@NamedQuery(name = "SchoolInfo.findAllByFilter", query = "select s from SchoolInfo s where s.refId in ?1")
 public class SchoolInfo extends HitsEntity {
   private static final long serialVersionUID = -4248855637746217708L;
 
