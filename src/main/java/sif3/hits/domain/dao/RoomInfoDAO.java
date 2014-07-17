@@ -12,8 +12,11 @@ import sif3.hits.domain.model.RoomInfo;
 
 public interface RoomInfoDAO extends JpaRepository<RoomInfo, String>, ZoneFilterableRepository<RoomInfo> {
 
-  @Query("select s from RoomInfo s where s.schoolInfoRefId in :schoolRefIds")
+  @Query("select r from RoomInfo r where r.schoolInfoRefId in :schoolRefIds")
   @Override
   public Page<RoomInfo> findAllWithFilter(@Param("schoolRefIds") List<String> schoolRefIds, Pageable pageable);
   
+  @Query("select r from RoomInfo r where r.refId = :refId and r.schoolInfoRefId in :schoolRefIds")
+  @Override
+  public RoomInfo findOneWithFilter(@Param("refId") String refId, @Param("schoolRefIds") List<String> schoolRefIds);
 }

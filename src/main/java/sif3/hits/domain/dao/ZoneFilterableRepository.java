@@ -8,5 +8,7 @@ import org.springframework.data.domain.Pageable;
 public interface ZoneFilterableRepository<T> {
 
   public Page<T> findAllWithFilter(List<String> schoolRefIds, Pageable pageable);
+  
+  public T findOneWithFilter(String refId, List<String> schoolRefIds);
 
 }
