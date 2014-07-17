@@ -16,5 +16,8 @@ public interface StudentSchoolEnrollmentDAO extends JpaRepository<StudentSchoolE
   @Query("select s from StudentSchoolEnrollment s where s.schoolInfoRefId in :schoolRefIds")
   @Override
   public Page<StudentSchoolEnrollment> findAllWithFilter(@Param("schoolRefIds") List<String> schoolRefIds, Pageable pageable);
-
+  
+  @Query("select s from StudentSchoolEnrollment s where s.refId = :refId and s.schoolInfoRefId in :schoolRefIds")
+  @Override
+  public StudentSchoolEnrollment findOneWithFilter(@Param("refId") String refId, @Param("schoolRefIds") List<String> schoolRefIds);
 }

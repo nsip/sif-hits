@@ -16,4 +16,7 @@ public interface TimeTableSubjectDAO extends JpaRepository<TimeTableSubject, Str
   @Override
   public Page<TimeTableSubject> findAllWithFilter(@Param("schoolRefIds") List<String> schoolRefIds, Pageable pageable);
   
+  @Query("select t from TimeTableSubject t where t.refId = :refId and t.schoolInfoRefId in :schoolRefIds")
+  @Override
+  public TimeTableSubject findOneWithFilter(@Param("refId") String refId, @Param("schoolRefIds") List<String> schoolRefIds);
 }

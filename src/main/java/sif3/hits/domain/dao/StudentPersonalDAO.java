@@ -16,5 +16,8 @@ public interface StudentPersonalDAO extends JpaRepository<StudentPersonal, Strin
   @Query("select s from StudentPersonal s where s.schoolInfoRefId in :schoolRefIds")
   @Override
   public Page<StudentPersonal> findAllWithFilter(@Param("schoolRefIds") List<String> schoolRefIds, Pageable pageable);
-
+  
+  @Override
+  @Query("select s from StudentPersonal s where s.refId = :refId and s.schoolInfoRefId in :schoolRefIds")
+  public StudentPersonal findOneWithFilter(@Param("refId") String refId, @Param("schoolRefIds") List<String> schoolRefIds);
 }

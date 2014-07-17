@@ -17,4 +17,7 @@ public interface StaffAssignmentDAO extends JpaRepository<StaffAssignment, Strin
   @Override
   public Page<StaffAssignment> findAllWithFilter(@Param("schoolRefIds") List<String> schoolRefIds, Pageable pageable);
 
+  @Override
+  @Query("select s from StaffAssignment s where s.refId = :refId and s.schoolInfoRefId in :schoolRefIds")
+  public StaffAssignment findOneWithFilter(@Param("refId") String refId, @Param("schoolRefIds") List<String> schoolRefIds);
 }
