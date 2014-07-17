@@ -18,8 +18,10 @@ import sif3.hits.domain.dao.TeachingGroupDAO;
 import sif3.hits.domain.dao.TimeTableCellDAO;
 import sif3.hits.domain.dao.TimeTableDAO;
 import sif3.hits.domain.dao.TimeTableSubjectDAO;
+import sif3.hits.domain.dao.ZoneDAO;
 import sif3.hits.domain.dao.ZoneFilterableRepository;
 import sif3.hits.domain.model.RoomInfo;
+import sif3.hits.domain.model.SchoolInfo;
 import sif3.hits.domain.model.StaffPersonal;
 import sif3.hits.domain.model.TeachingGroup;
 import sif3.hits.domain.model.TimeTable;
@@ -47,6 +49,9 @@ public class TimeTableCellService extends BaseService<TimeTableCellType, TimeTab
   
   @Autowired
   private RoomInfoDAO roomInfoDAO;
+  
+  @Autowired
+  private ZoneDAO zoneDAO;
 
   @Override
   public JpaRepository<TimeTableCell, String> getDAO() {
@@ -146,8 +151,11 @@ public class TimeTableCellService extends BaseService<TimeTableCellType, TimeTab
   @Override
   protected boolean assignZoneId(TimeTableCell hitsObject, String zoneId) {
     boolean result = false;
-    result = hitsObject != null && hitsObject.getTimeTable() != null && hitsObject.getTimeTable().getSchoolInfo() != null
-        && hitsObject.getTimeTable().getSchoolInfo().getRefId() != null && hitsObject.getTimeTable().getSchoolInfo().getZoneId().equals(zoneId);
+    if (hitsObject != null && hitsObject.getTimeTable() != null && hitsObject.getTimeTable().getSchoolInfo() != null && hitsObject.getTimeTable().getSchoolInfo().getRefId() != null) {
+      SchoolInfo schoolInfo = zoneDAO.findByRefIdAndZoneId(hitsObject.getTimeTable().getSchoolInfoRefId(), zoneId);
+      hitsObject.getTimeTable().setSchoolInfo(schoolInfo);
+      result = hitsObject.getTimeTable().getSchoolInfo() != null;
+    }
     return result;
   }
 }

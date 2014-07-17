@@ -75,10 +75,9 @@ public class TimeTableConsumerTest {
   
   @Test
   public void testCreateDeleteMany() {
-    Assert.fail("NYI");
     final List<String> REF_ID_LIST = Arrays.asList(REF_IDS);
 
-    List<BulkOperationResponse<CreateOperationStatus>> createResponses = timeTableTester.testCreateMany("students.xml");
+    List<BulkOperationResponse<CreateOperationStatus>> createResponses = timeTableTester.testCreateMany("timetables.xml");
     Assert.assertNotNull(createResponses);
     Assert.assertEquals(1, createResponses.size());
     BulkOperationResponse<CreateOperationStatus> createResponse = createResponses.get(0);

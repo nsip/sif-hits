@@ -1,29 +1,34 @@
 package sif3.hits.rest.consumer;
 
+import java.util.Arrays;
 import java.util.List;
 
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
+import org.springframework.http.HttpStatus;
 
 import sif.dd.au30.model.StudentSchoolEnrollmentCollectionType;
 import sif.dd.au30.model.StudentSchoolEnrollmentType;
+import sif3.common.ws.BulkOperationResponse;
+import sif3.common.ws.CreateOperationStatus;
+import sif3.common.ws.OperationStatus;
 import sif3.common.ws.Response;
 import sif3.infra.rest.consumer.ConsumerLoader;
 
 public class StudentSchoolEnrollmentConsumerTest {
   private ConsumerTest<StudentSchoolEnrollmentType, StudentSchoolEnrollmentCollectionType> studentSchoolEnrollmentTester = null;
   
-//  private final String REF_ID_1 = "6BB0C404C02949BD9956D6BE93B7B128";
-//  private final String REF_ID_2 = "6BB0C404C02949BD9956D6BE93B7B124";
-//  private final String[] REF_IDS = { REF_ID_1, REF_ID_2 };
+  private final String REF_ID_1 = "ECCDBCBF96814791A8253CDBF8CD138F";
+  private final String REF_ID_2 = "DCCEC3172371465E854AE1AF585DA93A";
+  private final String[] REF_IDS = { REF_ID_1, REF_ID_2 };
   
   @Before
   public void setup() {
     ConsumerLoader.initialise("TestConsumer");
     studentSchoolEnrollmentTester = new ConsumerTest<StudentSchoolEnrollmentType, StudentSchoolEnrollmentCollectionType>(
         StudentSchoolEnrollmentType.class, "StudentSchoolEnrollment", StudentSchoolEnrollmentCollectionType.class, "StudentSchoolEnrollments");
-//    studentSchoolEnrollmentTester.testDeleteMany(REF_IDS);
+    studentSchoolEnrollmentTester.testDeleteMany(REF_IDS);
   }
   
   @Test
@@ -52,48 +57,46 @@ public class StudentSchoolEnrollmentConsumerTest {
   
   @Test
   public void testCreateDelete() {   
-    Assert.fail("NYI");
-//    List<Response> createResponses = studentTester.testCreateOne("student.xml");
-//    Assert.assertNotNull(createResponses);
-//    Assert.assertEquals(1, createResponses.size());
-//    Response createResponse = createResponses.get(0);
-//    Assert.assertNotNull(createResponse.getDataObject());
-//    StudentPersonalType studentPersonal = (StudentPersonalType) createResponse.getDataObject();
-//    Assert.assertEquals(REF_ID_1, studentPersonal.getRefId());
-//    
-//    List<Response> deleteResponses = studentTester.testDeleteOne(REF_ID_1);
-//    Assert.assertNotNull(deleteResponses);
-//    Assert.assertEquals(1, deleteResponses.size());
-//    Response deleteResponse = deleteResponses.get(0);
-//    Assert.assertNull(deleteResponse.getDataObject());
-//    Assert.assertEquals(HttpStatus.NO_CONTENT.value(), deleteResponse.getStatus());
+    List<Response> createResponses = studentSchoolEnrollmentTester.testCreateOne("studentschoolenrollment.xml");
+    Assert.assertNotNull(createResponses);
+    Assert.assertEquals(1, createResponses.size());
+    Response createResponse = createResponses.get(0);
+    Assert.assertNotNull(createResponse.getDataObject());
+    StudentSchoolEnrollmentType studentSchoolEnrollment = (StudentSchoolEnrollmentType) createResponse.getDataObject();
+    Assert.assertEquals(REF_ID_1, studentSchoolEnrollment.getRefId());
+    
+    List<Response> deleteResponses = studentSchoolEnrollmentTester.testDeleteOne(REF_ID_1);
+    Assert.assertNotNull(deleteResponses);
+    Assert.assertEquals(1, deleteResponses.size());
+    Response deleteResponse = deleteResponses.get(0);
+    Assert.assertNull(deleteResponse.getDataObject());
+    Assert.assertEquals(HttpStatus.NO_CONTENT.value(), deleteResponse.getStatus());
   }
   
   @Test
   public void testCreateDeleteMany() {
-    Assert.fail("NYI");
-//    final List<String> REF_ID_LIST = Arrays.asList(REF_IDS);
-//    
-//    List<BulkOperationResponse<CreateOperationStatus>> createResponses = studentTester.testCreateMany("students.xml");
-//    Assert.assertNotNull(createResponses);
-//    Assert.assertEquals(1, createResponses.size());
-//    BulkOperationResponse<CreateOperationStatus> createResponse = createResponses.get(0);
-//    Assert.assertNotNull(createResponse.getOperationStatuses());
-//    Assert.assertEquals(2, createResponse.getOperationStatuses().size());
-//    for (CreateOperationStatus operationStatus : createResponse.getOperationStatuses()) {
-//      Assert.assertTrue(REF_ID_LIST.contains(operationStatus.getAdvisoryID()));
-//      Assert.assertEquals(HttpStatus.CREATED.value(), operationStatus.getStatus());
-//    }
-//    
-//    List<BulkOperationResponse<OperationStatus>> deleteResponses = studentTester.testDeleteMany(REF_IDS);
-//    Assert.assertNotNull(deleteResponses);
-//    Assert.assertEquals(1, deleteResponses.size());
-//    BulkOperationResponse<OperationStatus> deleteResponse = deleteResponses.get(0);
-//    Assert.assertNotNull(deleteResponse.getOperationStatuses());
-//    Assert.assertEquals(2, deleteResponse.getOperationStatuses().size());
-//    for (OperationStatus operationStatus : deleteResponse.getOperationStatuses()) {
-//      Assert.assertTrue(REF_ID_LIST.contains(operationStatus.getResourceID()));
-//      Assert.assertEquals(HttpStatus.OK.value(), operationStatus.getStatus());
-//    }
+    final List<String> REF_ID_LIST = Arrays.asList(REF_IDS);
+
+    List<BulkOperationResponse<CreateOperationStatus>> createResponses = studentSchoolEnrollmentTester.testCreateMany("studentschoolenrollments.xml");
+    Assert.assertNotNull(createResponses);
+    Assert.assertEquals(1, createResponses.size());
+    BulkOperationResponse<CreateOperationStatus> createResponse = createResponses.get(0);
+    Assert.assertNotNull(createResponse.getOperationStatuses());
+    Assert.assertEquals(2, createResponse.getOperationStatuses().size());
+    for (CreateOperationStatus operationStatus : createResponse.getOperationStatuses()) {
+      Assert.assertTrue(REF_ID_LIST.contains(operationStatus.getAdvisoryID()));
+      Assert.assertEquals(HttpStatus.CREATED.value(), operationStatus.getStatus());
+    }
+
+    List<BulkOperationResponse<OperationStatus>> deleteResponses = studentSchoolEnrollmentTester.testDeleteMany(REF_IDS);
+    Assert.assertNotNull(deleteResponses);
+    Assert.assertEquals(1, deleteResponses.size());
+    BulkOperationResponse<OperationStatus> deleteResponse = deleteResponses.get(0);
+    Assert.assertNotNull(deleteResponse.getOperationStatuses());
+    Assert.assertEquals(2, deleteResponse.getOperationStatuses().size());
+    for (OperationStatus operationStatus : deleteResponse.getOperationStatuses()) {
+      Assert.assertTrue(REF_ID_LIST.contains(operationStatus.getResourceID()));
+      Assert.assertEquals(HttpStatus.OK.value(), operationStatus.getStatus());
+    }
   }
 }

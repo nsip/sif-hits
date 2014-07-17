@@ -19,8 +19,8 @@ import sif3.infra.rest.consumer.ConsumerLoader;
 public class TimeTableCellConsumerTest {
   private ConsumerTest<TimeTableCellType, TimeTableCellCollectionType> timeTableCellTester = null;
 
-  private final String REF_ID_1 = "68681573638E4AA7ABDC4FE19788F772";
-  private final String REF_ID_2 = "369D4B5D95E54751BE8884DD439C4C21";
+  private final String REF_ID_1 = "2D108D351AB946CDB2E9480AAA3F58B8";
+  private final String REF_ID_2 = "02721649360240E9BE341427424B87B2";
   private final String[] REF_IDS = { REF_ID_1, REF_ID_2 };
 
   @Before
@@ -33,8 +33,7 @@ public class TimeTableCellConsumerTest {
 
   @Test
   public void testGetSingle() {
-    Assert.fail("NYI");
-    final String REF_ID = "757fd572-7fd4-4b71-8bb2-f6c145c564fa";
+    final String REF_ID = "69C059F450854EA992FFFF87040C7461";
     List<Response> responses = timeTableCellTester.testGetSingle(REF_ID);
     Assert.assertNotNull(responses);
     Assert.assertEquals(1, responses.size());
@@ -58,14 +57,13 @@ public class TimeTableCellConsumerTest {
 
   @Test
   public void testCreateDelete() {
-    Assert.fail("NYI");
-    List<Response> createResponses = timeTableCellTester.testCreateOne("timetable.xml");
+    List<Response> createResponses = timeTableCellTester.testCreateOne("timetablecell.xml");
     Assert.assertNotNull(createResponses);
     Assert.assertEquals(1, createResponses.size());
     Response createResponse = createResponses.get(0);
     Assert.assertNotNull(createResponse.getDataObject());
-    TimeTableCellType timeTable = (TimeTableCellType) createResponse.getDataObject();
-    Assert.assertEquals(REF_ID_1, timeTable.getRefId());
+    TimeTableCellType timeTableCell = (TimeTableCellType) createResponse.getDataObject();
+    Assert.assertEquals(REF_ID_1, timeTableCell.getRefId());
 
     List<Response> deleteResponses = timeTableCellTester.testDeleteOne(REF_ID_1);
     Assert.assertNotNull(deleteResponses);
@@ -77,10 +75,9 @@ public class TimeTableCellConsumerTest {
 
   @Test
   public void testCreateDeleteMany() {
-    Assert.fail("NYI");
     final List<String> REF_ID_LIST = Arrays.asList(REF_IDS);
 
-    List<BulkOperationResponse<CreateOperationStatus>> createResponses = timeTableCellTester.testCreateMany("students.xml");
+    List<BulkOperationResponse<CreateOperationStatus>> createResponses = timeTableCellTester.testCreateMany("timetablecells.xml");
     Assert.assertNotNull(createResponses);
     Assert.assertEquals(1, createResponses.size());
     BulkOperationResponse<CreateOperationStatus> createResponse = createResponses.get(0);
@@ -90,7 +87,7 @@ public class TimeTableCellConsumerTest {
       Assert.assertTrue(REF_ID_LIST.contains(operationStatus.getAdvisoryID()));
       Assert.assertEquals(HttpStatus.CREATED.value(), operationStatus.getStatus());
     }
-
+    
     List<BulkOperationResponse<OperationStatus>> deleteResponses = timeTableCellTester.testDeleteMany(REF_IDS);
     Assert.assertNotNull(deleteResponses);
     Assert.assertEquals(1, deleteResponses.size());

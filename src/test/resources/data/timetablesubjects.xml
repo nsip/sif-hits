@@ -1,0 +1,38 @@
+<TimeTableSubjects  xmlns="http://www.sifassociation.org/au/datamodel/1.3">
+  <TimeTableSubject RefId="4609142F63E443F4A384CB81D309438F">
+      <SubjectLocalId>ENG 472</SubjectLocalId>
+      <AcademicYear>
+          <Code>2</Code>
+      </AcademicYear>
+      <Faculty>Faculty of English</Faculty>
+      <SubjectShortName>ENG</SubjectShortName>
+      <SubjectLongName>English</SubjectLongName>
+      <SubjectType>Core</SubjectType>
+      <ProposedMinClassSize>25</ProposedMinClassSize>
+      <SchoolInfoRefId>6DAFB630-C439-11E3-9AA0-81F4DBD909AB</SchoolInfoRefId>
+      <Semester>2</Semester>
+      <SchoolYear>2014</SchoolYear>
+      <OtherCodeList>
+          <OtherCode Codeset="BCD">c</OtherCode>
+          <OtherCode Codeset="ABC">d</OtherCode>
+      </OtherCodeList>
+  </TimeTableSubject>
+  <TimeTableSubject RefId="6BB0C404C02949BD9956D6BE93B7B124">
+      <SubjectLocalId>ENG 472</SubjectLocalId>
+      <AcademicYear>
+          <Code>2</Code>
+      </AcademicYear>
+      <Faculty>Faculty of English</Faculty>
+      <SubjectShortName>ENG</SubjectShortName>
+      <SubjectLongName>English</SubjectLongName>
+      <SubjectType>Core</SubjectType>
+      <ProposedMinClassSize>25</ProposedMinClassSize>
+      <SchoolInfoRefId>6DAFB630-C439-11E3-9AA0-81F4DBD909AB</SchoolInfoRefId>
+      <Semester>2</Semester>
+      <SchoolYear>2014</SchoolYear>
+      <OtherCodeList>
+          <OtherCode Codeset="BCD">c</OtherCode>
+          <OtherCode Codeset="ABC">d</OtherCode>
+      </OtherCodeList>
+  </TimeTableSubject>
+</TimeTableSubjects>

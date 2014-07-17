@@ -1,5 +1,6 @@
 package sif3.hits.rest.consumer;
 
+import java.util.Arrays;
 import java.util.List;
 
 import org.junit.Assert;
@@ -9,6 +10,9 @@ import org.springframework.http.HttpStatus;
 
 import sif.dd.au30.model.TimeTableSubjectCollectionType;
 import sif.dd.au30.model.TimeTableSubjectType;
+import sif3.common.ws.BulkOperationResponse;
+import sif3.common.ws.CreateOperationStatus;
+import sif3.common.ws.OperationStatus;
 import sif3.common.ws.Response;
 import sif3.infra.rest.consumer.ConsumerLoader;
 
@@ -101,29 +105,28 @@ public class TimeTableSubjectConsumerTest {
   
   @Test
   public void testCreateDeleteMany() {
-    Assert.fail("NYI");
-//    final List<String> REF_ID_LIST = Arrays.asList(REF_IDS);
-//    
-//    List<BulkOperationResponse<CreateOperationStatus>> createResponses = studentTester.testCreateMany("students.xml");
-//    Assert.assertNotNull(createResponses);
-//    Assert.assertEquals(1, createResponses.size());
-//    BulkOperationResponse<CreateOperationStatus> createResponse = createResponses.get(0);
-//    Assert.assertNotNull(createResponse.getOperationStatuses());
-//    Assert.assertEquals(2, createResponse.getOperationStatuses().size());
-//    for (CreateOperationStatus operationStatus : createResponse.getOperationStatuses()) {
-//      Assert.assertTrue(REF_ID_LIST.contains(operationStatus.getAdvisoryID()));
-//      Assert.assertEquals(HttpStatus.CREATED.value(), operationStatus.getStatus());
-//    }
-//    
-//    List<BulkOperationResponse<OperationStatus>> deleteResponses = studentTester.testDeleteMany(REF_IDS);
-//    Assert.assertNotNull(deleteResponses);
-//    Assert.assertEquals(1, deleteResponses.size());
-//    BulkOperationResponse<OperationStatus> deleteResponse = deleteResponses.get(0);
-//    Assert.assertNotNull(deleteResponse.getOperationStatuses());
-//    Assert.assertEquals(2, deleteResponse.getOperationStatuses().size());
-//    for (OperationStatus operationStatus : deleteResponse.getOperationStatuses()) {
-//      Assert.assertTrue(REF_ID_LIST.contains(operationStatus.getResourceID()));
-//      Assert.assertEquals(HttpStatus.OK.value(), operationStatus.getStatus());
-//    }
+    final List<String> REF_ID_LIST = Arrays.asList(REF_IDS);
+
+    List<BulkOperationResponse<CreateOperationStatus>> createResponses = timeTableSubjectTester.testCreateMany("timetablesubjects.xml");
+    Assert.assertNotNull(createResponses);
+    Assert.assertEquals(1, createResponses.size());
+    BulkOperationResponse<CreateOperationStatus> createResponse = createResponses.get(0);
+    Assert.assertNotNull(createResponse.getOperationStatuses());
+    Assert.assertEquals(2, createResponse.getOperationStatuses().size());
+    for (CreateOperationStatus operationStatus : createResponse.getOperationStatuses()) {
+      Assert.assertTrue(REF_ID_LIST.contains(operationStatus.getAdvisoryID()));
+      Assert.assertEquals(HttpStatus.CREATED.value(), operationStatus.getStatus());
+    }
+
+    List<BulkOperationResponse<OperationStatus>> deleteResponses = timeTableSubjectTester.testDeleteMany(REF_IDS);
+    Assert.assertNotNull(deleteResponses);
+    Assert.assertEquals(1, deleteResponses.size());
+    BulkOperationResponse<OperationStatus> deleteResponse = deleteResponses.get(0);
+    Assert.assertNotNull(deleteResponse.getOperationStatuses());
+    Assert.assertEquals(2, deleteResponse.getOperationStatuses().size());
+    for (OperationStatus operationStatus : deleteResponse.getOperationStatuses()) {
+      Assert.assertTrue(REF_ID_LIST.contains(operationStatus.getResourceID()));
+      Assert.assertEquals(HttpStatus.OK.value(), operationStatus.getStatus());
+    }
   }
 }

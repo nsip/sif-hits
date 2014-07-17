@@ -25,7 +25,7 @@ public class TimeTableCellSchoolInfoConverter extends HitsConverter<TimeTableCel
   @Override
   public void toHitsModel(TimeTableCellType source, SchoolInfo target) {
     if (source != null && target != null) {
-
+      target.setRefId(getJAXBValue(source.getSchoolInfoRefId()));
     }
   }
 }
