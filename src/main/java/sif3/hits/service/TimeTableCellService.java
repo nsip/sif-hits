@@ -110,7 +110,7 @@ public class TimeTableCellService extends BaseService<TimeTableCellType, TimeTab
 
   private TeachingGroup getTeachingGroup(TeachingGroup teachingGroup, String zoneId) {
     TeachingGroup result = null;
-    if (teachingGroup != null) {
+    if (teachingGroup != null && teachingGroup.getRefId() != null) {
       result = teachingGroupDAO.findOneWithFilter(teachingGroup.getRefId(), getSchoolRefIds(zoneId));
     }
     return result;
@@ -118,7 +118,7 @@ public class TimeTableCellService extends BaseService<TimeTableCellType, TimeTab
 
   private TimeTableSubject getTimeTableSubject(TimeTableSubject timeTableSubject, String zoneId) {
     TimeTableSubject result = null;
-    if (timeTableSubject != null) {
+    if (timeTableSubject != null && timeTableSubject.getRefId() != null) {
       result = timeTableSubjectDAO.findOneWithFilter(timeTableSubject.getRefId(), getSchoolRefIds(zoneId));
     }
     return result;
@@ -126,7 +126,7 @@ public class TimeTableCellService extends BaseService<TimeTableCellType, TimeTab
 
   private StaffPersonal getStaffPersonal(StaffPersonal staffPersonal, String zoneId) {
     StaffPersonal result = null;
-    if (staffPersonal != null) {
+    if (staffPersonal != null && staffPersonal.getRefId() != null) {
       result = staffPersonalDAO.findOneWithFilter(staffPersonal.getRefId(), getSchoolRefIds(zoneId));
     }
     return result;
@@ -134,7 +134,7 @@ public class TimeTableCellService extends BaseService<TimeTableCellType, TimeTab
 
   private TimeTable getTimeTable(TimeTable timeTable, String zoneId) {
     TimeTable result = null;
-    if (timeTable != null) {
+    if (timeTable != null && timeTable.getRefId() != null) {
       result = timeTableDAO.findOneWithFilter(timeTable.getRefId(), getSchoolRefIds(zoneId));
     }
     return result;
@@ -142,7 +142,7 @@ public class TimeTableCellService extends BaseService<TimeTableCellType, TimeTab
 
   private RoomInfo getRoomInfo(RoomInfo roomInfo, String zoneId) {
     RoomInfo result = null;
-    if (roomInfo != null) {
+    if (roomInfo != null && roomInfo.getRefId() != null) {
       result = roomInfoDAO.findOneWithFilter(roomInfo.getRefId(), getSchoolRefIds(zoneId));
     }
     return result;

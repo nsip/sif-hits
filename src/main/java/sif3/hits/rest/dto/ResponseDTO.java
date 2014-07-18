@@ -12,10 +12,16 @@ public class ResponseDTO<S> implements Serializable {
     this.sifObject = sifObject;
     this.operationStatus = operationStatus;
   }
+  
+  public ResponseDTO(RequestDTO<S> requestDTO, S sifObject, OperationStatus operationStatus, String detailMessage) {
+    this(requestDTO, sifObject, operationStatus);
+    this.detailMessage = detailMessage;
+  }
 
   private RequestDTO<S> requestDTO;
   private S sifObject;
   private OperationStatus operationStatus;
+  private String detailMessage;
 
   public RequestDTO<S> getRequestDTO() {
     return requestDTO;
@@ -39,5 +45,13 @@ public class ResponseDTO<S> implements Serializable {
 
   public void setOperationStatus(OperationStatus operationStatus) {
     this.operationStatus = operationStatus;
+  }
+  
+  public String getDetailMessage() {
+    return detailMessage;
+  }
+  
+  public void setDetailMessage(String detailMessage) {
+    this.detailMessage = detailMessage;
   }
 }

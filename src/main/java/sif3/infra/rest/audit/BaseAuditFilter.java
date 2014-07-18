@@ -21,14 +21,14 @@ public class BaseAuditFilter implements Filter {
 
   public static Logger L = LoggerFactory.getLogger(BaseAuditFilter.class);
   public static final String AUDITOR_CLASS = "AUDITOR_CLASS";
-  
+
   private Auditor auditor = null;
 
   @Override
   public void destroy() {
     // nothing to do here.
   }
-  
+
   @Override
   public void init(FilterConfig config) throws ServletException {
     // nothing to do here.
@@ -50,8 +50,7 @@ public class BaseAuditFilter implements Filter {
           L.error("Auditing disabled with : " + className + " - Invalid Type");
         }
       } catch (ClassNotFoundException e) {
-        L.error("Auditing disabled with : "
-      + className + " - ClassNotFound", e);
+        L.error("Auditing disabled with : " + className + " - ClassNotFound", e);
       }
     } else {
       L.info("Auditing disabled");
@@ -61,15 +60,19 @@ public class BaseAuditFilter implements Filter {
   @Override
   public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException,
       ServletException {
-    
-    if (auditor != null && HttpServletRequest.class.isAssignableFrom(request.getClass()) && HttpServletResponse.class.isAssignableFrom(response.getClass())) {
-      AuditRequestWrapper httpRequest = new AuditRequestWrapper(HttpServletRequest.class.cast(request));
-      AuditResponseWrapper httpResponse = new AuditResponseWrapper(HttpServletResponse.class.cast(response));
-      chain.doFilter(httpRequest, httpResponse);
-      AuditRecord auditRecord = httpRequest.getAuditRecord(httpResponse);
-      auditor.audit(auditRecord);
-    } else {
-      chain.doFilter(request, response);
+    try {
+      if (auditor != null && HttpServletRequest.class.isAssignableFrom(request.getClass())
+          && HttpServletResponse.class.isAssignableFrom(response.getClass())) {
+        AuditRequestWrapper httpRequest = new AuditRequestWrapper(HttpServletRequest.class.cast(request));
+        AuditResponseWrapper httpResponse = new AuditResponseWrapper(HttpServletResponse.class.cast(response));
+        chain.doFilter(httpRequest, httpResponse);
+        AuditRecord auditRecord = httpRequest.getAuditRecord(httpResponse);
+        auditor.audit(auditRecord);
+      } else {
+        chain.doFilter(request, response);
+      }
+    } catch (Exception ex) {
+      ex.printStackTrace();
     }
   }
 }

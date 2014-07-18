@@ -30,7 +30,7 @@ public class TimeTableCell extends HitsEntity {
   }
 
   @ManyToOne
-  @JoinColumn(name = "TimeTable_RefId", referencedColumnName = "RefId")
+  @JoinColumn(name = "TimeTable_RefId", referencedColumnName = "RefId", nullable = false)
   public TimeTable getTimeTable() {
     return timeTable;
   }

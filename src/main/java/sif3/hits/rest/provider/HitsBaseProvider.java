@@ -279,10 +279,13 @@ public abstract class HitsBaseProvider<S, SC, H, HS extends BaseService<S, SC, H
       status = new CreateOperationStatus(response.getRequestDTO().getRefId(), response.getRequestDTO().getAdvisoryId(),
           response.getOperationStatus().getHttpStatus());
     } else {
+      String message = SINGLE_NAME + " - " + response.getOperationStatus().getMessage();
+      if (response.getDetailMessage() != null) {
+        message += " - " + response.getDetailMessage();
+      }
       status = new CreateOperationStatus(response.getRequestDTO().getRefId(), response.getRequestDTO().getAdvisoryId(),
           response.getOperationStatus().getHttpStatus(), new ErrorDetails(
-              response.getOperationStatus().getHttpStatus(), SINGLE_NAME + " - "
-                  + response.getOperationStatus().getMessage()));
+              response.getOperationStatus().getHttpStatus(), message));
     }
     return status;
   }
@@ -302,9 +305,12 @@ public abstract class HitsBaseProvider<S, SC, H, HS extends BaseService<S, SC, H
     if (response.getOperationStatus().isOk()) {
       status = new OperationStatus(response.getRequestDTO().getRefId(), response.getOperationStatus().getHttpStatus());
     } else {
+      String message = SINGLE_NAME + " - " + response.getOperationStatus().getMessage();
+      if (response.getDetailMessage() != null) {
+        message += " - " + response.getDetailMessage();
+      }
       status = new OperationStatus(response.getRequestDTO().getRefId(), response.getOperationStatus().getHttpStatus(),
-          new ErrorDetails(response.getOperationStatus().getHttpStatus(), SINGLE_NAME + " - "
-              + response.getOperationStatus().getMessage()));
+          new ErrorDetails(response.getOperationStatus().getHttpStatus(), message));
     }
     return status;
   }

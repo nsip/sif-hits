@@ -15,6 +15,8 @@ import static sif3.hits.service.e.OperationStatus.UPDATE_OK;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.RollbackException;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -57,31 +59,35 @@ public abstract class BaseService<S, SC, H> {
     return result;
   }
 
-  @Transactional
   public ResponseDTO<S> createSingle(RequestDTO<S> dto, String zoneId) {
-    ResponseDTO<S> result = null;
     try {
-      if (!StringUtils.isEmpty(dto.getRefId())) {
-        H checkExists = getDAO().findOne(dto.getRefId());
-        if (checkExists == null) {
-          H hitsObject = getConverter().toHitsModel(dto.getSifObject());
-          boolean zone = assignZoneId(hitsObject, zoneId);
-          if (zone) {
-            H savedHitsObject = save(hitsObject, dto, zoneId);
-            S resultObject = getConverter().toSifModel(savedHitsObject);
-            result = new ResponseDTO<S>(dto, resultObject, CREATE_OK);
-          } else {
-            result = new ResponseDTO<S>(dto, null, CREATE_ERR_ZONE);
-          }
-        } else {
-          result = new ResponseDTO<S>(dto, null, CREATE_ERR_EXISTS);
-        }
-      } else {
-        result = new ResponseDTO<S>(dto, null, CREATE_ERR_NO_ADVISORY);
-      }
+      return createSingleTransaction(dto, zoneId);
     } catch (Exception ex) {
       L.error(CREATE_ERR_OTHER.getMessage(), ex);
-      result = new ResponseDTO<S>(dto, null, CREATE_ERR_OTHER);
+      return new ResponseDTO<S>(dto, null, CREATE_ERR_OTHER, ex.getMessage());
+    }
+  }
+
+  @Transactional()
+  private ResponseDTO<S> createSingleTransaction(RequestDTO<S> dto, String zoneId) throws PersistenceException {
+    ResponseDTO<S> result = null;
+    if (!StringUtils.isEmpty(dto.getRefId())) {
+      H checkExists = getDAO().findOne(dto.getRefId());
+      if (checkExists == null) {
+        H hitsObject = getConverter().toHitsModel(dto.getSifObject());
+        boolean zone = assignZoneId(hitsObject, zoneId);
+        if (zone) {
+          H savedHitsObject = save(hitsObject, dto, zoneId);
+          S resultObject = getConverter().toSifModel(savedHitsObject);
+          result = new ResponseDTO<S>(dto, resultObject, CREATE_OK);
+        } else {
+          result = new ResponseDTO<S>(dto, null, CREATE_ERR_ZONE);
+        }
+      } else {
+        result = new ResponseDTO<S>(dto, null, CREATE_ERR_EXISTS);
+      }
+    } else {
+      result = new ResponseDTO<S>(dto, null, CREATE_ERR_NO_ADVISORY);
     }
     return result;
   }
@@ -119,48 +125,56 @@ public abstract class BaseService<S, SC, H> {
     return result;
   }
 
-  @Transactional
   public ResponseDTO<S> updateSingle(RequestDTO<S> dto, String zoneId) {
-    ResponseDTO<S> result = null;
     try {
-      if (!StringUtils.isEmpty(dto.getRefId())) {
-        H hitsObject = getDAO().findOne(dto.getRefId());
-        if (hitsObject != null) {
-          getConverter().toHitsModel(dto.getSifObject(), hitsObject);
-          H savedHitsObject = save(hitsObject, dto, zoneId);
-          S resultObject = getConverter().toSifModel(savedHitsObject);
-          result = new ResponseDTO<S>(dto, resultObject, UPDATE_OK);
-        } else {
-          result = new ResponseDTO<S>(dto, null, UPDATE_ERR_NO_OBJECT);
-        }
+      return updateSingleTransaction(dto, zoneId);
+    } catch (Exception ex) {
+      L.error(UPDATE_ERR_OTHER.getMessage(), ex);
+      return new ResponseDTO<S>(dto, null, UPDATE_ERR_OTHER, ex.getMessage());
+    }
+  }
+
+  @Transactional
+  private ResponseDTO<S> updateSingleTransaction(RequestDTO<S> dto, String zoneId) throws PersistenceException {
+    ResponseDTO<S> result = null;
+    if (!StringUtils.isEmpty(dto.getRefId())) {
+      H hitsObject = getDAO().findOne(dto.getRefId());
+      if (hitsObject != null) {
+        getConverter().toHitsModel(dto.getSifObject(), hitsObject);
+        H savedHitsObject = save(hitsObject, dto, zoneId);
+        S resultObject = getConverter().toSifModel(savedHitsObject);
+        result = new ResponseDTO<S>(dto, resultObject, UPDATE_OK);
       } else {
         result = new ResponseDTO<S>(dto, null, UPDATE_ERR_NO_OBJECT);
       }
-    } catch (Exception ex) {
-      L.error(UPDATE_ERR_OTHER.getMessage(), ex);
-      result = new ResponseDTO<S>(dto, null, UPDATE_ERR_OTHER);
+    } else {
+      result = new ResponseDTO<S>(dto, null, UPDATE_ERR_NO_OBJECT);
     }
     return result;
   }
 
-  @Transactional
   public ResponseDTO<S> deleteSingle(RequestDTO<S> dto, String zoneId) {
-    ResponseDTO<S> result = null;
     try {
-      if (!StringUtils.isEmpty(dto.getRefId())) {
-        H hitsObject = getDAO().findOne(dto.getRefId());
-        if (hitsObject != null) {
-          delete(hitsObject, dto);
-          result = new ResponseDTO<S>(dto, null, DELETE_OK);
-        } else {
-          result = new ResponseDTO<S>(dto, null, DELETE_ERR_NO_OBJECT);
-        }
+      return deleteSingleTransaction(dto, zoneId);
+    } catch (Exception ex) {
+      L.error(DELETE_ERR_OTHER.getMessage(), ex);
+      return new ResponseDTO<S>(dto, null, DELETE_ERR_OTHER, ex.getMessage());
+    }
+  }
+
+  @Transactional
+  private ResponseDTO<S> deleteSingleTransaction(RequestDTO<S> dto, String zoneId) {
+    ResponseDTO<S> result = null;
+    if (!StringUtils.isEmpty(dto.getRefId())) {
+      H hitsObject = getDAO().findOne(dto.getRefId());
+      if (hitsObject != null) {
+        delete(hitsObject, dto);
+        result = new ResponseDTO<S>(dto, null, DELETE_OK);
       } else {
         result = new ResponseDTO<S>(dto, null, DELETE_ERR_NO_OBJECT);
       }
-    } catch (Exception ex) {
-      L.error(DELETE_ERR_OTHER.getMessage(), ex);
-      result = new ResponseDTO<S>(dto, null, DELETE_ERR_OTHER);
+    } else {
+      result = new ResponseDTO<S>(dto, null, DELETE_ERR_NO_OBJECT);
     }
     return result;
   }
