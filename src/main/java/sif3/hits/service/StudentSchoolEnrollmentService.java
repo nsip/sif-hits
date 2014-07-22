@@ -51,12 +51,7 @@ public class StudentSchoolEnrollmentService extends BaseService<StudentSchoolEnr
   protected StudentSchoolEnrollment getFiltered(String refId, List<String> schoolRefIds) {
     StudentSchoolEnrollment result = null;
     if (schoolRefIds != null && !schoolRefIds.isEmpty()) {
-      result = studentSchoolEnrollmentDAO.findOne(refId);
-      if (result != null) {
-        if (!schoolRefIds.contains(result.getSchoolInfoRefId())) {
-          result = null;
-        }
-      }
+      result = studentSchoolEnrollmentDAO.findOneWithFilter(refId, schoolRefIds);
     }
     return result;
   }

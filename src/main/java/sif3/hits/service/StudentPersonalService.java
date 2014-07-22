@@ -51,12 +51,7 @@ public class StudentPersonalService extends BaseService<StudentPersonalType, Stu
   protected StudentPersonal getFiltered(String refId, java.util.List<String> schoolRefIds) {
     StudentPersonal result = null;
     if (schoolRefIds != null && !schoolRefIds.isEmpty()) {
-      result = studentPersonalDAO.findOne(refId);
-      if (result != null) {
-        if (!schoolRefIds.contains(result.getSchoolInfoRefId())) {
-          result = null;
-        }
-      }
+      result = studentPersonalDAO.findOneWithFilter(refId, schoolRefIds);
     }
     return result;
   }

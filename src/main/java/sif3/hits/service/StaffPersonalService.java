@@ -51,12 +51,7 @@ public class StaffPersonalService extends BaseService<StaffPersonalType, StaffCo
   protected StaffPersonal getFiltered(String refId, List<String> schoolRefIds) {
     StaffPersonal result = null;
     if (schoolRefIds != null && !schoolRefIds.isEmpty()) {
-      result = staffPersonalDAO.findOne(refId);
-      if (result != null) {
-        if (!schoolRefIds.contains(result.getSchoolInfoRefId())) {
-          result = null;
-        }
-      }
+      result = staffPersonalDAO.findOneWithFilter(refId, schoolRefIds);
     }
     return result;
   }

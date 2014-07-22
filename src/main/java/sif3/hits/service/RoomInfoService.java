@@ -51,12 +51,7 @@ public class RoomInfoService extends BaseService<RoomInfoType, RoomInfoCollectio
   protected RoomInfo getFiltered(String refId, java.util.List<String> schoolRefIds) {
     RoomInfo result = null;
     if (schoolRefIds != null && !schoolRefIds.isEmpty()) {
-      result = roomInfoDAO.findOne(refId);
-      if (result != null) {
-        if (!schoolRefIds.contains(result.getSchoolInfoRefId())) {
-          result = null;
-        }
-      }
+      result = roomInfoDAO.findOneWithFilter(refId, schoolRefIds);
     }
     return result;
   }

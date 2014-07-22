@@ -52,12 +52,7 @@ public class StaffAssignmentService extends
   protected StaffAssignment getFiltered(String refId, List<String> schoolRefIds) {
     StaffAssignment result = null;
     if (schoolRefIds != null && !schoolRefIds.isEmpty()) {
-      result = staffAssignmentDAO.findOne(refId);
-      if (result != null) {
-        if (!schoolRefIds.contains(result.getSchoolInfoRefId())) {
-          result = null;
-        }
-      }
+      result = staffAssignmentDAO.findOneWithFilter(refId, schoolRefIds);
     }
     return result;
   }
