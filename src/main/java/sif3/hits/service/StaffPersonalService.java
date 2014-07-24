@@ -18,7 +18,7 @@ import sif3.hits.domain.model.StaffPersonal;
 public class StaffPersonalService extends BaseService<StaffPersonalType, StaffCollectionType, StaffPersonal> {
 
   @Autowired
-  StaffPersonalDAO staffPersonalDAO;
+  private StaffPersonalDAO staffPersonalDAO;
 
   @Autowired
   private StaffPersonalConverter staffPersonalConverter;

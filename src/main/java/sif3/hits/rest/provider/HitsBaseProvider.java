@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import sif3.common.conversion.ModelObjectInfo;
 import sif3.common.exception.PersistenceException;
@@ -16,9 +17,11 @@ import sif3.common.ws.CreateOperationStatus;
 import sif3.common.ws.ErrorDetails;
 import sif3.common.ws.OperationStatus;
 import sif3.hits.config.HitsSpringContext;
+import sif3.hits.domain.helper.HitsDatabaseContext;
 import sif3.hits.rest.dto.RequestDTO;
 import sif3.hits.rest.dto.ResponseDTO;
 import sif3.hits.service.BaseService;
+import sif3.hits.service.SchemaMapService;
 import au.com.systemic.framework.utils.StringUtils;
 
 public abstract class HitsBaseProvider<S, SC, H, HS extends BaseService<S, SC, H>> extends AUDataModelProvider {
@@ -32,6 +35,14 @@ public abstract class HitsBaseProvider<S, SC, H, HS extends BaseService<S, SC, H
   private static final Logger L = LoggerFactory.getLogger(HitsBaseProvider.class);
 
   private HS service = null;
+  
+  @Autowired
+  private SchemaMapService schemaMapService;
+  
+  private void setDatabaseContext(SIFZone zone, SIFContext context) {
+    String database = schemaMapService.getDatabaseUrl(getZoneId(zone), getContextId(context));
+    HitsDatabaseContext.setDatabase(database);
+  }
 
   public HitsBaseProvider(Class<S> sifClass, String singleName, Class<SC> sifCollectionClass, String collectionName,
       Class<HS> hitsServiceClass) {
@@ -60,6 +71,8 @@ public abstract class HitsBaseProvider<S, SC, H, HS extends BaseService<S, SC, H
   public Object retrievByPrimaryKey(String resourceID, SIFZone zone, SIFContext context)
       throws IllegalArgumentException, PersistenceException {
 
+    setDatabaseContext(zone, context);
+    
     if (StringUtils.isEmpty(resourceID)) {
       throw new IllegalArgumentException("Resource ID is null or empty. It must be provided to retrieve an entity.");
     }
@@ -79,6 +92,8 @@ public abstract class HitsBaseProvider<S, SC, H, HS extends BaseService<S, SC, H
   public Object createSingle(Object data, boolean useAdvisory, SIFZone zone, SIFContext context)
       throws IllegalArgumentException, PersistenceException {
 
+    setDatabaseContext(zone, context);
+    
     // Must be of type SIF_CLASS
     if (data != null && SIF_CLASS.isAssignableFrom(data.getClass())) {
       S sifObject = SIF_CLASS.cast(data);
@@ -91,8 +106,12 @@ public abstract class HitsBaseProvider<S, SC, H, HS extends BaseService<S, SC, H
         throw new PersistenceException(createOperationStatus.getError().getMessage());
       }
     } else {
+      String receivedType = "invalid";
+      if (data != null && data.getClass() != null) {
+        receivedType = data.getClass().getSimpleName();
+      }
       throw new IllegalArgumentException("Expected Object Type = " + SIF_CLASS.getSimpleName()
-          + ". Received Object Type = " + data.getClass().getSimpleName());
+          + ". Received Object Type = " + receivedType);
     }
   }
 
@@ -105,6 +124,9 @@ public abstract class HitsBaseProvider<S, SC, H, HS extends BaseService<S, SC, H
   @Override
   public boolean updateSingle(Object data, String resourceID, SIFZone zone, SIFContext context)
       throws IllegalArgumentException, PersistenceException {
+    
+    setDatabaseContext(zone, context);
+    
     if (StringUtils.isEmpty(resourceID)) {
       throw new IllegalArgumentException("Resource ID is null or empty. It must be provided to update an entity.");
     }
@@ -122,8 +144,12 @@ public abstract class HitsBaseProvider<S, SC, H, HS extends BaseService<S, SC, H
         throw new PersistenceException(operationStatus.getError().getMessage());
       }
     } else {
-      throw new IllegalArgumentException("Expected Object Type  = " + SIF_CLASS.getSimpleName()
-          + ". Received Object Type = " + data.getClass().getSimpleName());
+      String receivedType = "invalid";
+      if (data != null && data.getClass() != null) {
+        receivedType = data.getClass().getSimpleName();
+      }
+      throw new IllegalArgumentException("Expected Object Type = " + SIF_CLASS.getSimpleName()
+          + ". Received Object Type = " + receivedType);
     }
   }
 
@@ -136,6 +162,9 @@ public abstract class HitsBaseProvider<S, SC, H, HS extends BaseService<S, SC, H
   @Override
   public boolean deleteSingle(String resourceID, SIFZone zone, SIFContext context) throws IllegalArgumentException,
       PersistenceException {
+    
+    setDatabaseContext(zone, context);
+    
     if (StringUtils.isEmpty(resourceID)) {
       throw new IllegalArgumentException("Resource ID is null or empty. It must be provided to delete an entity.");
     }
@@ -161,6 +190,9 @@ public abstract class HitsBaseProvider<S, SC, H, HS extends BaseService<S, SC, H
   @Override
   public Object retrieve(SIFZone zone, SIFContext context, PagingInfo pagingInfo) throws PersistenceException,
       UnsupportedQueryException {
+    
+    setDatabaseContext(zone, context);
+    
     L.debug("Find many " + COLLECTION_NAME + "...");
     return getService().findAll(pagingInfo, getZoneId(zone));
   }
@@ -175,6 +207,8 @@ public abstract class HitsBaseProvider<S, SC, H, HS extends BaseService<S, SC, H
   public List<CreateOperationStatus> createMany(Object data, boolean useAdvisory, SIFZone zone, SIFContext context)
       throws IllegalArgumentException, PersistenceException {
 
+    setDatabaseContext(zone, context);
+    
     // Must be of type SIF_COLLECTION_TYPE
     if (data != null && SIF_COLLECTION_CLASS.isAssignableFrom(data.getClass())) {
       L.debug("Create many " + COLLECTION_NAME + "...");
@@ -183,8 +217,12 @@ public abstract class HitsBaseProvider<S, SC, H, HS extends BaseService<S, SC, H
       List<ResponseDTO<S>> responseList = getService().createMany(dtoList, getZoneId(zone));
       return getCreateOperationStatusList(responseList);
     } else {
-      throw new IllegalArgumentException("Expected Object Type  = " + SIF_COLLECTION_CLASS.getSimpleName()
-          + ". Received Object Type = " + data.getClass().getSimpleName());
+      String receivedType = "invalid";
+      if (data != null && data.getClass() != null) {
+        receivedType = data.getClass().getSimpleName();
+      }
+      throw new IllegalArgumentException("Expected Object Type = " + SIF_COLLECTION_CLASS.getSimpleName()
+          + ". Received Object Type = " + receivedType);
     }
   }
 
@@ -197,6 +235,9 @@ public abstract class HitsBaseProvider<S, SC, H, HS extends BaseService<S, SC, H
   @Override
   public List<OperationStatus> updateMany(Object data, SIFZone zone, SIFContext context)
       throws IllegalArgumentException, PersistenceException {
+    
+    setDatabaseContext(zone, context);
+    
     // Must be of type SchoolCollectionType
     if (data != null && SIF_COLLECTION_CLASS.isAssignableFrom(data.getClass())) {
       L.debug("Update many " + COLLECTION_NAME + "...");
@@ -205,8 +246,12 @@ public abstract class HitsBaseProvider<S, SC, H, HS extends BaseService<S, SC, H
       List<ResponseDTO<S>> responseList = getService().updateMany(dtoList, getZoneId(zone));
       return getOperationStatusList(responseList);
     } else {
-      throw new IllegalArgumentException("Expected Object Type  = " + SIF_COLLECTION_CLASS.getSimpleName()
-          + ". Received Object Type = " + data.getClass().getSimpleName());
+      String receivedType = "invalid";
+      if (data != null && data.getClass() != null) {
+        receivedType = data.getClass().getSimpleName();
+      }
+      throw new IllegalArgumentException("Expected Object Type = " + SIF_COLLECTION_CLASS.getSimpleName()
+          + ". Received Object Type = " + receivedType);
     }
   }
 
@@ -220,6 +265,8 @@ public abstract class HitsBaseProvider<S, SC, H, HS extends BaseService<S, SC, H
   public List<OperationStatus> deleteMany(List<String> resourceIDs, SIFZone zone, SIFContext context)
       throws IllegalArgumentException, PersistenceException {
 
+    setDatabaseContext(zone, context);
+    
     if (resourceIDs != null) {
       L.debug("Delete many " + COLLECTION_NAME + "...");
       List<RequestDTO<S>> dtoList = getDTOList(resourceIDs);

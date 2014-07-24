@@ -4,6 +4,7 @@ import sif.dd.au30.conversion.DataModelMarshalFactory;
 import sif.dd.au30.conversion.DataModelUnmarshalFactory;
 import sif3.common.conversion.MarshalFactory;
 import sif3.common.conversion.UnmarshalFactory;
+import sif3.common.model.SIFContext;
 import sif3.common.model.SIFZone;
 import sif3.infra.rest.provider.BaseProvider;
 
@@ -35,6 +36,14 @@ public abstract class AUDataModelProvider extends BaseProvider {
     if (zone != null) {
       result = zone.getId();
     }
+    return result;
+  }
+  
+  protected String getContextId(SIFContext context) {
+    String result = null;
+    if (context != null) {
+      result = context.getId();
+    } 
     return result;
   }
 }

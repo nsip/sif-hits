@@ -38,7 +38,7 @@ public abstract class BaseService<S, SC, H> {
 
   @Autowired
   private ZoneDAO zoneDAO;
-
+  
   private static final Logger L = LoggerFactory.getLogger(BaseService.class);
 
   public abstract JpaRepository<H, String> getDAO();
@@ -46,7 +46,7 @@ public abstract class BaseService<S, SC, H> {
   public abstract ZoneFilterableRepository<H> getZoneFilterableDAO();
 
   public abstract HitsConverter<S, H> getConverter();
-
+  
   @Transactional(readOnly = true)
   public S getSingle(String refId, String zoneId) {
     S result = null;
