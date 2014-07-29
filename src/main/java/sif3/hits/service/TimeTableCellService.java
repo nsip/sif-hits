@@ -18,8 +18,8 @@ import sif3.hits.domain.dao.TeachingGroupDAO;
 import sif3.hits.domain.dao.TimeTableCellDAO;
 import sif3.hits.domain.dao.TimeTableDAO;
 import sif3.hits.domain.dao.TimeTableSubjectDAO;
-import sif3.hits.domain.dao.ZoneDAO;
 import sif3.hits.domain.dao.ZoneFilterableRepository;
+import sif3.hits.domain.dao.ZoneSchoolDAO;
 import sif3.hits.domain.model.RoomInfo;
 import sif3.hits.domain.model.SchoolInfo;
 import sif3.hits.domain.model.StaffPersonal;
@@ -51,7 +51,7 @@ public class TimeTableCellService extends BaseService<TimeTableCellType, TimeTab
   private RoomInfoDAO roomInfoDAO;
   
   @Autowired
-  private ZoneDAO zoneDAO;
+  private ZoneSchoolDAO zoneDAO;
 
   @Override
   public JpaRepository<TimeTableCell, String> getDAO() {

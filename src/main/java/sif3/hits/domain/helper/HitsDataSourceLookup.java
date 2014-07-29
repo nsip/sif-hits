@@ -1,6 +1,7 @@
 package sif3.hits.domain.helper;
 
 import java.beans.PropertyVetoException;
+import java.text.MessageFormat;
 import java.util.Properties;
 
 import javax.sql.DataSource;
@@ -26,8 +27,10 @@ public class HitsDataSourceLookup implements DataSourceLookup {
   @Override
   public DataSource getDataSource(String dataSourceName) throws DataSourceLookupFailureException {
     ComboPooledDataSource cpds = new ComboPooledDataSource();
-    
-    if (!shared && dataSourceName != null) {
+    String format = databaseProperties.getProperty("hits.connection.format");
+    if (!shared && dataSourceName != null && format != null) {
+      cpds.setJdbcUrl(MessageFormat.format(format, dataSourceName));
+    } else if (!shared && dataSourceName != null) {
       cpds.setJdbcUrl(dataSourceName);
     } else {
       cpds.setJdbcUrl(databaseProperties.getProperty("hits.connection.url"));

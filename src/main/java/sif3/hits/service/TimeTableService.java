@@ -17,8 +17,8 @@ import sif3.hits.domain.converter.TimeTableConverter;
 import sif3.hits.domain.dao.TimeTableDAO;
 import sif3.hits.domain.dao.TimeTableDayDAO;
 import sif3.hits.domain.dao.TimeTablePeriodDAO;
-import sif3.hits.domain.dao.ZoneDAO;
 import sif3.hits.domain.dao.ZoneFilterableRepository;
+import sif3.hits.domain.dao.ZoneSchoolDAO;
 import sif3.hits.domain.model.SchoolInfo;
 import sif3.hits.domain.model.TimeTable;
 import sif3.hits.domain.model.TimeTableDay;
@@ -38,7 +38,7 @@ public class TimeTableService extends BaseService<TimeTableType, TimeTableCollec
   private TimeTablePeriodDAO timeTablePeriodDAO;
   
   @Autowired
-  private ZoneDAO zoneDAO;
+  private ZoneSchoolDAO zoneDAO;
 
   @Override
   public JpaRepository<TimeTable, String> getDAO() {

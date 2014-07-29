@@ -10,8 +10,6 @@ import org.springframework.http.HttpStatus;
 
 import sif.dd.au30.model.ScheduledActivityCollectionType;
 import sif.dd.au30.model.ScheduledActivityType;
-import sif.dd.au30.model.SchoolCollectionType;
-import sif.dd.au30.model.SchoolInfoType;
 import sif3.common.ws.BulkOperationResponse;
 import sif3.common.ws.CreateOperationStatus;
 import sif3.common.ws.OperationStatus;

@@ -4,24 +4,24 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import sif3.hits.domain.shared.dao.SchemaMapDAO;
-import sif3.hits.domain.shared.model.SchemaMap;
+import sif3.hits.domain.shared.dao.ZoneDAO;
+import sif3.hits.domain.shared.model.Zone;
 
 @Service
-public class SchemaMapService {
+public class ZoneService {
   
   @Autowired
-  private SchemaMapDAO schemaMapDAO;
+  private ZoneDAO zoneDAO;
   
   @Transactional(readOnly = true, value = "sharedTransactionManager")
   public String getDatabaseUrl(String zoneId, String contextId) {
     String result = null;
-    SchemaMap schemaMap = schemaMapDAO.findOneWithZoneIdAndContextId(zoneId, contextId);
+    Zone schemaMap = zoneDAO.findOneWithZoneIdAndContextId(zoneId, contextId);
     if (schemaMap == null && contextId != null) {
-      schemaMap = schemaMapDAO.findDefaultForZone(zoneId);
+      schemaMap = zoneDAO.findDefaultForZone(zoneId);
     }
     if (schemaMap == null) {
-      schemaMap = schemaMapDAO.findDefault();
+      schemaMap = zoneDAO.findDefault();
     }
     if (schemaMap != null) {
       result = schemaMap.getDatabaseUrl();

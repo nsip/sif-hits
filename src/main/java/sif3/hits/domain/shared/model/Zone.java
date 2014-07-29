@@ -5,11 +5,9 @@ import java.io.Serializable;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.Table;
 
 @Entity
-@Table(name = "ZONE_DATABASE")
-public class SchemaMap implements Serializable {
+public class Zone implements Serializable {
   private static final long serialVersionUID = 1353507158086603487L;
 
   private Long id;

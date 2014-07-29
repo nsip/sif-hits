@@ -23,8 +23,8 @@ import org.springframework.transaction.annotation.Transactional;
 import sif3.common.exception.PersistenceException;
 import sif3.common.model.PagingInfo;
 import sif3.hits.domain.converter.HitsConverter;
-import sif3.hits.domain.dao.ZoneDAO;
 import sif3.hits.domain.dao.ZoneFilterableRepository;
+import sif3.hits.domain.dao.ZoneSchoolDAO;
 import sif3.hits.domain.helper.HitsDatabaseContext;
 import sif3.hits.domain.model.SchoolInfo;
 import sif3.hits.domain.model.ZoneFilterable;
@@ -36,7 +36,7 @@ import au.com.systemic.framework.utils.StringUtils;
 public abstract class BaseService<S, SC, H> {
 
   @Autowired
-  private ZoneDAO zoneDAO;
+  private ZoneSchoolDAO zoneDAO;
 
   private static final Logger L = LoggerFactory.getLogger(BaseService.class);
 
@@ -47,11 +47,11 @@ public abstract class BaseService<S, SC, H> {
   public abstract HitsConverter<S, H> getConverter();
 
   @Autowired
-  private SchemaMapService schemaMapService;
+  private ZoneService zoneService;
 
   public void setDatabaseContext(String zoneId, String contextId) {
     HitsDatabaseContext.clearDatabase();
-    String database = schemaMapService.getDatabaseUrl(zoneId, contextId);
+    String database = zoneService.getDatabaseUrl(zoneId, contextId);
     L.info("Setting current database : " + database);
     HitsDatabaseContext.setDatabase(database);
   }
