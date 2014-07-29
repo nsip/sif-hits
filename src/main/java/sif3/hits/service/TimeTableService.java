@@ -82,8 +82,8 @@ public class TimeTableService extends BaseService<TimeTableType, TimeTableCollec
   }
 
   @Override
-  @Transactional
-  protected TimeTable save(TimeTable hitsObject, RequestDTO<TimeTableType> dto, String zoneId)
+  @Transactional(value = "transactionManager")
+  protected TimeTable save(TimeTable hitsObject, RequestDTO<TimeTableType> dto, String zoneId, boolean create)
       throws PersistenceException {
     
     TimeTable result = null;
@@ -93,7 +93,7 @@ public class TimeTableService extends BaseService<TimeTableType, TimeTableCollec
       Set<TimeTableDay> days = new HashSet<TimeTableDay>();
       days.addAll(hitsObject.getTimeTableDays());
       hitsObject.getTimeTableDays().clear();
-      result = super.save(hitsObject, dto, zoneId);
+      result = super.save(hitsObject, dto, zoneId, create);
       for (TimeTableDay day : days) {
         Set<TimeTablePeriod> periods = new HashSet<TimeTablePeriod>();
         if (day.getPeriods() != null) {
@@ -110,7 +110,7 @@ public class TimeTableService extends BaseService<TimeTableType, TimeTableCollec
       }
       result.setTimeTableDays(days);
     } else {
-      result = super.save(hitsObject, dto, zoneId); 
+      result = super.save(hitsObject, dto, zoneId, create); 
     }
     return result;
   }

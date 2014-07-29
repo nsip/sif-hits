@@ -11,7 +11,7 @@ public class HitsDatabaseContext {
   public static String getDatabase() {
     return contextHolder.get();
   }
-
+  
   public static void clearDatabase() {
     contextHolder.remove();
   }

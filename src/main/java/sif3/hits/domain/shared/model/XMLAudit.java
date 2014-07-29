@@ -1,4 +1,4 @@
-package sif3.hits.domain.model;
+package sif3.hits.domain.shared.model;
 
 import java.io.Serializable;
 import java.util.Date;

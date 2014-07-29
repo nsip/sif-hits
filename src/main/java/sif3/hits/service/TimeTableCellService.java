@@ -95,8 +95,8 @@ public class TimeTableCellService extends BaseService<TimeTableCellType, TimeTab
   }
 
   @Override
-  @Transactional
-  protected TimeTableCell save(TimeTableCell hitsObject, RequestDTO<TimeTableCellType> dto, String zoneId)
+  @Transactional(value = "transactionManager")
+  protected TimeTableCell save(TimeTableCell hitsObject, RequestDTO<TimeTableCellType> dto, String zoneId, boolean create)
       throws PersistenceException {
 
     // need to populate foreign keys
@@ -105,7 +105,7 @@ public class TimeTableCellService extends BaseService<TimeTableCellType, TimeTab
     hitsObject.setStaffPersonal(getStaffPersonal(hitsObject.getStaffPersonal(), zoneId));
     hitsObject.setTimeTableSubject(getTimeTableSubject(hitsObject.getTimeTableSubject(), zoneId));
     hitsObject.setTeachingGroup(getTeachingGroup(hitsObject.getTeachingGroup(), zoneId));
-    return super.save(hitsObject, dto, zoneId);
+    return super.save(hitsObject, dto, zoneId, create);
   }
 
   private TeachingGroup getTeachingGroup(TeachingGroup teachingGroup, String zoneId) {

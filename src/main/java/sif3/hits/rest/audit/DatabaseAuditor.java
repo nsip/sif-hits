@@ -5,8 +5,8 @@ import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
 import sif3.hits.config.HitsSpringContext;
-import sif3.hits.domain.dao.XMLAuditDAO;
-import sif3.hits.domain.model.XMLAudit;
+import sif3.hits.domain.shared.dao.XMLAuditDAO;
+import sif3.hits.domain.shared.model.XMLAudit;
 import sif3.infra.rest.audit.AuditRecord;
 import sif3.infra.rest.audit.Auditor;
 
@@ -26,7 +26,7 @@ public class DatabaseAuditor implements Auditor {
   }
 
   @Override
-  @Transactional
+  @Transactional(value = "sharedTransactionManager")
   public void audit(AuditRecord auditRecord) {
     XMLAudit xmlAudit = new XMLAudit();
     BeanUtils.copyProperties(auditRecord, xmlAudit);

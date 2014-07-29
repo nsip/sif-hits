@@ -91,8 +91,8 @@ public class TeachingGroupService extends BaseService<TeachingGroupType, Teachin
   }
 
   @Override
-  @Transactional
-  protected TeachingGroup save(TeachingGroup hitsObject, RequestDTO<TeachingGroupType> dto, String zoneId)
+  @Transactional(value = "transactionManager")
+  protected TeachingGroup save(TeachingGroup hitsObject, RequestDTO<TeachingGroupType> dto, String zoneId, boolean create)
       throws PersistenceException {
 
     // Populate list of Teachers
@@ -134,7 +134,7 @@ public class TeachingGroupService extends BaseService<TeachingGroupType, Teachin
     }
     hitsObject.setTimeTablePeriods(timeTablePeriods);
 
-    return super.save(hitsObject, dto, zoneId);
+    return super.save(hitsObject, dto, zoneId, create);
   }
 
   private StaffPersonal getTeachingGroupTeacher(StaffPersonal staffPersonal, String zoneId) {

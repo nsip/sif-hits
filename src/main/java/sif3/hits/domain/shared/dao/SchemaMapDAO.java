@@ -1,10 +1,10 @@
-package sif3.hits.domain.dao;
+package sif3.hits.domain.shared.dao;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
-import sif3.hits.domain.model.SchemaMap;
+import sif3.hits.domain.shared.model.SchemaMap;
 
 public interface SchemaMapDAO extends JpaRepository<SchemaMap, Long> {
 

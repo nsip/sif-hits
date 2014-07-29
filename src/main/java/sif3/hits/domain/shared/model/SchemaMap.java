@@ -1,12 +1,14 @@
-package sif3.hits.domain.model;
+package sif3.hits.domain.shared.model;
 
 import java.io.Serializable;
 
-import javax.persistence.Table;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
 @Entity
-@Table(name = "HITS_SCHEMA_MAP")
+@Table(name = "ZONE_DATABASE")
 public class SchemaMap implements Serializable {
   private static final long serialVersionUID = 1353507158086603487L;
 
@@ -15,6 +17,8 @@ public class SchemaMap implements Serializable {
   private String contextId;
   private String databaseUrl;
 
+  @Id
+  @GeneratedValue
   public Long getId() {
     return id;
   }

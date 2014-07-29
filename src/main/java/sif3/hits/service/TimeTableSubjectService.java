@@ -26,7 +26,7 @@ public class TimeTableSubjectService extends
 
   @Autowired
   private TimeTableSubjectDAO timeTableSubjectDAO;
-  
+
   @Autowired
   private TimeTableSubjectOtherCodeDAO timeTableSubjectOtherCodeDAO;
 
@@ -70,33 +70,35 @@ public class TimeTableSubjectService extends
     }
     return result;
   }
-  
+
   @Override
   protected void delete(TimeTableSubject hitsObject, RequestDTO<TimeTableSubjectType> dto) {
     deleteOtherCodes(hitsObject);
     super.delete(hitsObject, dto);
   }
-  
+
   private void deleteOtherCodes(TimeTableSubject hitsObject) {
     timeTableSubjectOtherCodeDAO.deleteAllWithTimeTableSubject(hitsObject);
   }
-  
+
   @Override
-  protected TimeTableSubject save(TimeTableSubject hitsObject, RequestDTO<TimeTableSubjectType> dto, String zoneId)
-      throws PersistenceException {
+  protected TimeTableSubject save(TimeTableSubject hitsObject, RequestDTO<TimeTableSubjectType> dto, String zoneId,
+      boolean create) throws PersistenceException {
     TimeTableSubject result = null;
-    if (hitsObject.getOtherCodes() != null && hitsObject.getOtherCodes().size() > 0) {
+    if (!create) {
       deleteOtherCodes(hitsObject);
+    }
+    if (hitsObject.getOtherCodes() != null && hitsObject.getOtherCodes().size() > 0) {
       Set<TimeTableSubjectOtherCode> otherCodes = new HashSet<TimeTableSubjectOtherCode>();
       otherCodes.addAll(hitsObject.getOtherCodes());
       hitsObject.getOtherCodes().clear();
-      result = super.save(hitsObject, dto, zoneId);
+      result = super.save(hitsObject, dto, zoneId, create);
       for (TimeTableSubjectOtherCode otherCode : otherCodes) {
         timeTableSubjectOtherCodeDAO.save(otherCode);
       }
       result.setOtherCodes(otherCodes);
     } else {
-      result = super.save(hitsObject, dto, zoneId); 
+      result = super.save(hitsObject, dto, zoneId, create);
     }
     return result;
   }

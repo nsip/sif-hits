@@ -1,11 +1,14 @@
 package sif3.hits.rest.provider;
 
+import static sif3.hits.service.e.OperationStatus.CREATE_ERR_OTHER;
+import static sif3.hits.service.e.OperationStatus.DELETE_ERR_OTHER;
+import static sif3.hits.service.e.OperationStatus.UPDATE_ERR_OTHER;
+
 import java.util.ArrayList;
 import java.util.List;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 
 import sif3.common.conversion.ModelObjectInfo;
 import sif3.common.exception.PersistenceException;
@@ -17,11 +20,9 @@ import sif3.common.ws.CreateOperationStatus;
 import sif3.common.ws.ErrorDetails;
 import sif3.common.ws.OperationStatus;
 import sif3.hits.config.HitsSpringContext;
-import sif3.hits.domain.helper.HitsDatabaseContext;
 import sif3.hits.rest.dto.RequestDTO;
 import sif3.hits.rest.dto.ResponseDTO;
 import sif3.hits.service.BaseService;
-import sif3.hits.service.SchemaMapService;
 import au.com.systemic.framework.utils.StringUtils;
 
 public abstract class HitsBaseProvider<S, SC, H, HS extends BaseService<S, SC, H>> extends AUDataModelProvider {
@@ -35,14 +36,6 @@ public abstract class HitsBaseProvider<S, SC, H, HS extends BaseService<S, SC, H
   private static final Logger L = LoggerFactory.getLogger(HitsBaseProvider.class);
 
   private HS service = null;
-  
-  @Autowired
-  private SchemaMapService schemaMapService;
-  
-  private void setDatabaseContext(SIFZone zone, SIFContext context) {
-    String database = schemaMapService.getDatabaseUrl(getZoneId(zone), getContextId(context));
-    HitsDatabaseContext.setDatabase(database);
-  }
 
   public HitsBaseProvider(Class<S> sifClass, String singleName, Class<SC> sifCollectionClass, String collectionName,
       Class<HS> hitsServiceClass) {
@@ -72,14 +65,18 @@ public abstract class HitsBaseProvider<S, SC, H, HS extends BaseService<S, SC, H
       throws IllegalArgumentException, PersistenceException {
 
     setDatabaseContext(zone, context);
-    
+
     if (StringUtils.isEmpty(resourceID)) {
       throw new IllegalArgumentException("Resource ID is null or empty. It must be provided to retrieve an entity.");
     }
 
     L.debug("Retrieve " + SINGLE_NAME + " with Resoucre ID = " + resourceID);
 
-    return getService().getSingle(resourceID, getZoneId(zone));
+    return getService().get(resourceID, getZoneId(zone));
+  }
+
+  private void setDatabaseContext(SIFZone zone, SIFContext context) {
+    getService().setDatabaseContext(getZoneId(zone), getContextId(context));
   }
 
   /*
@@ -93,12 +90,12 @@ public abstract class HitsBaseProvider<S, SC, H, HS extends BaseService<S, SC, H
       throws IllegalArgumentException, PersistenceException {
 
     setDatabaseContext(zone, context);
-    
+
     // Must be of type SIF_CLASS
     if (data != null && SIF_CLASS.isAssignableFrom(data.getClass())) {
       S sifObject = SIF_CLASS.cast(data);
       RequestDTO<S> baseDTO = RequestDTO.getInstance(sifObject, useAdvisory, SIF_CLASS);
-      ResponseDTO<S> result = getService().createSingle(baseDTO, getZoneId(zone));
+      ResponseDTO<S> result = createSingle(baseDTO, getZoneId(zone));
       CreateOperationStatus createOperationStatus = getCreateOperationStatus(result);
       if (result.getOperationStatus().isOk()) {
         return result.getSifObject();
@@ -115,6 +112,26 @@ public abstract class HitsBaseProvider<S, SC, H, HS extends BaseService<S, SC, H
     }
   }
 
+  private ResponseDTO<S> createSingle(RequestDTO<S> baseDTO, String zoneId) {
+    try {
+      return getService().createSingle(baseDTO, zoneId);
+    } catch (Exception ex) {
+      L.error(CREATE_ERR_OTHER.getMessage(), ex);
+      return new ResponseDTO<S>(baseDTO, null, CREATE_ERR_OTHER, ex.getMessage());
+    }
+  }
+
+  private List<ResponseDTO<S>> createMany(List<RequestDTO<S>> dtoList, String zoneId) {
+    List<ResponseDTO<S>> result = new ArrayList<ResponseDTO<S>>();
+    if (dtoList != null) {
+      for (RequestDTO<S> dto : dtoList) {
+        ResponseDTO<S> sifResult = createSingle(dto, zoneId);
+        result.add(sifResult);
+      }
+    }
+    return result;
+  }
+
   /*
    * (non-Javadoc)
    * 
@@ -124,9 +141,9 @@ public abstract class HitsBaseProvider<S, SC, H, HS extends BaseService<S, SC, H
   @Override
   public boolean updateSingle(Object data, String resourceID, SIFZone zone, SIFContext context)
       throws IllegalArgumentException, PersistenceException {
-    
+
     setDatabaseContext(zone, context);
-    
+
     if (StringUtils.isEmpty(resourceID)) {
       throw new IllegalArgumentException("Resource ID is null or empty. It must be provided to update an entity.");
     }
@@ -136,7 +153,7 @@ public abstract class HitsBaseProvider<S, SC, H, HS extends BaseService<S, SC, H
       L.debug("Update " + SINGLE_NAME + " with Resoucre ID = " + resourceID);
       S sifObject = SIF_CLASS.cast(data);
       RequestDTO<S> dto = RequestDTO.getInstance(sifObject, resourceID, SIF_CLASS);
-      ResponseDTO<S> result = getService().updateSingle(dto, getZoneId(zone));
+      ResponseDTO<S> result = updateSingle(dto, getZoneId(zone));
       OperationStatus operationStatus = getOperationStatus(result);
       if (result.getOperationStatus().isOk()) {
         return true;
@@ -153,6 +170,15 @@ public abstract class HitsBaseProvider<S, SC, H, HS extends BaseService<S, SC, H
     }
   }
 
+  private ResponseDTO<S> updateSingle(RequestDTO<S> dto, String zoneId) {
+    try {
+      return getService().updateSingle(dto, zoneId);
+    } catch (Exception ex) {
+      L.error(UPDATE_ERR_OTHER.getMessage(), ex);
+      return new ResponseDTO<S>(dto, null, UPDATE_ERR_OTHER, ex.getMessage());
+    }
+  }
+
   /*
    * (non-Javadoc)
    * 
@@ -162,22 +188,30 @@ public abstract class HitsBaseProvider<S, SC, H, HS extends BaseService<S, SC, H
   @Override
   public boolean deleteSingle(String resourceID, SIFZone zone, SIFContext context) throws IllegalArgumentException,
       PersistenceException {
-    
+
     setDatabaseContext(zone, context);
-    
+
     if (StringUtils.isEmpty(resourceID)) {
       throw new IllegalArgumentException("Resource ID is null or empty. It must be provided to delete an entity.");
     }
 
     L.debug("Remove " + SINGLE_NAME + " with Resoucre ID = " + resourceID);
     S object = null;
-    ResponseDTO<S> result = getService().deleteSingle(RequestDTO.getInstance(object, resourceID, SIF_CLASS),
-        getZoneId(zone));
+    ResponseDTO<S> result = deleteSingle(RequestDTO.getInstance(object, resourceID, SIF_CLASS), getZoneId(zone));
     OperationStatus operationStatus = getOperationStatus(result);
     if (result.getOperationStatus().isOk()) {
       return true;
     } else {
       throw new PersistenceException(operationStatus.getError().getMessage());
+    }
+  }
+
+  private ResponseDTO<S> deleteSingle(RequestDTO<S> dto, String zoneId) {
+    try {
+      return getService().deleteSingle(dto, zoneId);
+    } catch (Exception ex) {
+      L.error(DELETE_ERR_OTHER.getMessage(), ex);
+      return new ResponseDTO<S>(dto, null, DELETE_ERR_OTHER, ex.getMessage());
     }
   }
 
@@ -190,9 +224,9 @@ public abstract class HitsBaseProvider<S, SC, H, HS extends BaseService<S, SC, H
   @Override
   public Object retrieve(SIFZone zone, SIFContext context, PagingInfo pagingInfo) throws PersistenceException,
       UnsupportedQueryException {
-    
+
     setDatabaseContext(zone, context);
-    
+
     L.debug("Find many " + COLLECTION_NAME + "...");
     return getService().findAll(pagingInfo, getZoneId(zone));
   }
@@ -208,13 +242,13 @@ public abstract class HitsBaseProvider<S, SC, H, HS extends BaseService<S, SC, H
       throws IllegalArgumentException, PersistenceException {
 
     setDatabaseContext(zone, context);
-    
+
     // Must be of type SIF_COLLECTION_TYPE
     if (data != null && SIF_COLLECTION_CLASS.isAssignableFrom(data.getClass())) {
       L.debug("Create many " + COLLECTION_NAME + "...");
       SC sifCollection = SIF_COLLECTION_CLASS.cast(data);
       List<RequestDTO<S>> dtoList = getDTOList(sifCollection, useAdvisory);
-      List<ResponseDTO<S>> responseList = getService().createMany(dtoList, getZoneId(zone));
+      List<ResponseDTO<S>> responseList = createMany(dtoList, getZoneId(zone));
       return getCreateOperationStatusList(responseList);
     } else {
       String receivedType = "invalid";
@@ -235,15 +269,15 @@ public abstract class HitsBaseProvider<S, SC, H, HS extends BaseService<S, SC, H
   @Override
   public List<OperationStatus> updateMany(Object data, SIFZone zone, SIFContext context)
       throws IllegalArgumentException, PersistenceException {
-    
+
     setDatabaseContext(zone, context);
-    
+
     // Must be of type SchoolCollectionType
     if (data != null && SIF_COLLECTION_CLASS.isAssignableFrom(data.getClass())) {
       L.debug("Update many " + COLLECTION_NAME + "...");
       SC sifCollection = SIF_COLLECTION_CLASS.cast(data);
       List<RequestDTO<S>> dtoList = getDTOList(sifCollection);
-      List<ResponseDTO<S>> responseList = getService().updateMany(dtoList, getZoneId(zone));
+      List<ResponseDTO<S>> responseList = updateMany(dtoList, getZoneId(zone));
       return getOperationStatusList(responseList);
     } else {
       String receivedType = "invalid";
@@ -253,6 +287,17 @@ public abstract class HitsBaseProvider<S, SC, H, HS extends BaseService<S, SC, H
       throw new IllegalArgumentException("Expected Object Type = " + SIF_COLLECTION_CLASS.getSimpleName()
           + ". Received Object Type = " + receivedType);
     }
+  }
+
+  private List<ResponseDTO<S>> updateMany(List<RequestDTO<S>> dtoList, String zoneId) {
+    List<ResponseDTO<S>> result = new ArrayList<ResponseDTO<S>>();
+    if (dtoList != null) {
+      for (RequestDTO<S> dto : dtoList) {
+        ResponseDTO<S> sifResult = updateSingle(dto, zoneId);
+        result.add(sifResult);
+      }
+    }
+    return result;
   }
 
   /*
@@ -266,15 +311,26 @@ public abstract class HitsBaseProvider<S, SC, H, HS extends BaseService<S, SC, H
       throws IllegalArgumentException, PersistenceException {
 
     setDatabaseContext(zone, context);
-    
+
     if (resourceIDs != null) {
       L.debug("Delete many " + COLLECTION_NAME + "...");
       List<RequestDTO<S>> dtoList = getDTOList(resourceIDs);
-      List<ResponseDTO<S>> responseList = getService().deleteMany(dtoList, getZoneId(zone));
+      List<ResponseDTO<S>> responseList = deleteMany(dtoList, getZoneId(zone));
       return getOperationStatusList(responseList);
     } else {
       return new ArrayList<OperationStatus>();
     }
+  }
+
+  public List<ResponseDTO<S>> deleteMany(List<RequestDTO<S>> dtoList, String zoneId) {
+    List<ResponseDTO<S>> result = new ArrayList<ResponseDTO<S>>();
+    if (dtoList != null) {
+      for (RequestDTO<S> dto : dtoList) {
+        ResponseDTO<S> sifResult = deleteSingle(dto, zoneId);
+        result.add(sifResult);
+      }
+    }
+    return result;
   }
 
   private List<RequestDTO<S>> getDTOList(SC sifCollection) throws PersistenceException {
