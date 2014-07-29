@@ -1,10 +1,14 @@
 package sif3.infra.rest.audit.util;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Date;
 import java.util.Enumeration;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 import javax.servlet.ServletInputStream;
 import javax.servlet.http.HttpServletRequest;
@@ -98,41 +102,35 @@ public class AuditRequestWrapper extends HttpServletRequestWrapper implements Ht
       result.setResponse(httpResponse.getContent());
       result.setHttpStatus(httpResponse.getStatus());
       result.setQueryParameters(this.getQueryString());
-      result.setRequestHeaders(getHeaderString(this));
-      result.setResponseHeaders(getHeaderString(httpResponse));
+      result.setRequestHeaders(getHeaders(this));
+      result.setResponseHeaders(getHeaders(httpResponse));
       auditResource(resource);
     }
     return result;
   }
   
-  private String getHeaderString(HttpHeaders httpRequest) {
-    String result = null;
+  private Map<String, Object> getHeaders(HttpHeaders httpRequest) {
+    Map<String, Object> result = new HashMap<String, Object>();
     if (httpRequest != null) {
-      result = "";
-      String prefix = "[ ";   
       Collection<String> headerNames = httpRequest.getHeaderNamesCollection();
       if (headerNames != null) {
         for (String header : headerNames) {
-          result += prefix + header + " : " + getHeaderValue(httpRequest.getHeadersCollection(header));
-          prefix = " , ";
+          result.put(header, getHeaderValue(httpRequest.getHeadersCollection(header)));
         }
       }
     }
     return result;
   }
   
-  private String getHeaderValue(Collection<String> headerValues) {
-    String result = null;
+  private Object getHeaderValue(Collection<String> headerValues) {
+    List<String> result = new ArrayList<String>();
     if (headerValues != null) {
-      boolean array = false;   
-      result = "";
       for (String value : headerValues) {
-        array = !"".equals(result);
-        result += (array ? " , " : "") + value;
+        result.add(value);
       }
-      if (array) {
-        result = "[ " + result + " ]";
-      }
+    }
+    if (result.size() == 1) {
+      return result.get(0);
     }
     return result;
   }

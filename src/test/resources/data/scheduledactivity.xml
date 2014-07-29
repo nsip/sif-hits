@@ -1,0 +1,36 @@
+<ScheduledActivity RefId="596BD11814CB485A84D3593FC5703958" xmlns="http://www.sifassociation.org/au/datamodel/1.3" >
+ <TimeTableCellRefId>9BCC0528813346B9AD7DBBB09CFBD1B6</TimeTableCellRefId >
+ <DayId>0</DayId>
+ <TimeTableRefId>24C8F9B4ED7547E3B44B71EFA39E953F</TimeTableRefId>
+ <SchoolYear>2014</SchoolYear>
+ <ActivityDate>2014-10-10</ActivityDate>
+ <StartTime>12:05:00</StartTime>
+ <FinishTime>13:30:00</FinishTime>
+ <TeacherList>
+   <TeacherCover>
+     <StaffPersonalRefId>6c9080c6-dbc0-453e-9815-f517c4cc3642</StaffPersonalRefId>
+     <StaffPersonalLocalId>US8923</StaffPersonalLocalId>
+     <StartTime>12:05:00</StartTime>
+     <FinishTime>13:00:00</FinishTime>
+     <Credit>In-lieu</Credit>
+     <Supervision>MinimalSupervision</Supervision>
+     <Weighting>0.5</Weighting>
+   </TeacherCover>
+   <TeacherCover>
+     <StaffPersonalRefId>6dfd77d7-2cea-40b3-a3ba-1a1965086d4c</StaffPersonalRefId>
+     <StaffPersonalLocalId>ZY3213</StaffPersonalLocalId>
+     <StartTime>13:00:00</StartTime>
+     <FinishTime>13:30:00</FinishTime>
+     <Credit>Extra</Credit>
+     <Supervision>MinimalSupervision</Supervision>
+     <Weighting>0.5</Weighting>
+   </TeacherCover>
+ </TeacherList>
+ <RoomList>
+   <RoomInfoRefId>00bb7707-011f-43a0-8b2e-048f8634a0b9</RoomInfoRefId>
+ </RoomList>
+ <Type>Incursion</Type>
+ <TeachingGroupList>
+   <TeachingGroupRefId>0ce9181e-6d85-4f29-9079-e53db16bbeeb</TeachingGroupRefId>
+ </TeachingGroupList>
+</ScheduledActivity>

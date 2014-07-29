@@ -17,6 +17,7 @@ public class ScheduledActivityTeacherConverter extends HitsConverter<TeacherCove
   public void toSifModel(ScheduledActivityTeacher source, TeacherCover target) {
     if (source != null && target != null) {
       ObjectFactory objectFactory = getObjectFactory();
+      target.setStaffPersonalRefId(source.getStaffPersonalRefId());
       target.setStaffLocalId(objectFactory.createScheduledActivityTypeTeacherListTeacherCoverStaffLocalId(source.getTeacherLocalId()));
       target.setStartTime(objectFactory.createScheduledActivityTypeTeacherListTeacherCoverStartTime(getTimeValue(source.getStartTime())));
       target.setFinishTime(objectFactory.createScheduledActivityTypeTeacherListTeacherCoverFinishTime(getTimeValue(source.getFinishTime())));
@@ -29,7 +30,13 @@ public class ScheduledActivityTeacherConverter extends HitsConverter<TeacherCove
   @Override
   public void toHitsModel(TeacherCover source, ScheduledActivityTeacher target) {
     if (source != null && target != null) {
-      
+      target.setStaffPersonalRefId(source.getStaffPersonalRefId());
+      target.setTeacherLocalId(getJAXBValue(source.getStaffLocalId()));
+      target.setStartTime(getTimeValue(getJAXBValue(source.getStartTime())));
+      target.setFinishTime(getTimeValue(getJAXBValue(source.getFinishTime())));
+      target.setCredit(getJAXBValue(source.getCredit()));
+      target.setSupervision(getJAXBValue(source.getSupervision()));
+      target.setWeighting(getBigDecimalValue(getJAXBValue(source.getWeighting())));
     }
   }
 }

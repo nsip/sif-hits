@@ -21,8 +21,8 @@ import sif3.infra.rest.consumer.ConsumerLoader;
 public class ScheduledActivityTest {
   private ConsumerTest<ScheduledActivityType, ScheduledActivityCollectionType> scheduledActivityTester = null;
   
-  private final String REF_ID_1 = "830c3bcb-0bfc-4adc-96b2-f08318ff8627";
-  private final String REF_ID_2 = "58a322e4-a353-4198-8602-25f124c5836c";
+  private final String REF_ID_1 = "596BD11814CB485A84D3593FC5703958";
+  private final String REF_ID_2 = "DF54713ADB1C4428A418D8A5964D893A";
   private final String[] REF_IDS = { REF_ID_1, REF_ID_2 };
   
   @Before
@@ -35,14 +35,14 @@ public class ScheduledActivityTest {
   
   @Test
   public void testGetSingle() {
-    final String REF_ID = "6DAFB630-C439-11E3-9AA0-81F4DBD909AB";
+    final String REF_ID = "9830F851B7534AECA0DCC0EC66649CA4";
     List<Response> responses = scheduledActivityTester.testGetSingle(REF_ID);
     Assert.assertNotNull(responses);
     Assert.assertEquals(1, responses.size());
     Response response = responses.get(0);
     Assert.assertNotNull(response.getDataObject());
-    SchoolInfoType schoolInfoPersonal = (SchoolInfoType) response.getDataObject();
-    Assert.assertEquals(REF_ID, schoolInfoPersonal.getRefId());
+    ScheduledActivityType scheduledActivity = (ScheduledActivityType) response.getDataObject();
+    Assert.assertEquals(REF_ID, scheduledActivity.getRefId());
   }
   
   @Test
@@ -52,21 +52,20 @@ public class ScheduledActivityTest {
     Assert.assertEquals(1, responses.size());
     Response response = responses.get(0);
     Assert.assertNotNull(response.getDataObject());
-    SchoolCollectionType schoolInfoCollection = (SchoolCollectionType) response.getDataObject();
-    Assert.assertNotNull(schoolInfoCollection.getSchoolInfo());
-    Assert.assertEquals(1, schoolInfoCollection.getSchoolInfo().size());
+    ScheduledActivityCollectionType scheduledActivityCollection = (ScheduledActivityCollectionType) response.getDataObject();
+    Assert.assertNotNull(scheduledActivityCollection.getScheduledActivity());
+    Assert.assertEquals(1, scheduledActivityCollection.getScheduledActivity().size());
   }
   
   @Test
-  public void testCreateDelete() {   
-    Assert.fail("NYI");
-    List<Response> createResponses = scheduledActivityTester.testCreateOne("school.xml");
+  public void testCreateDelete() {
+    List<Response> createResponses = scheduledActivityTester.testCreateOne("scheduledactivity.xml");
     Assert.assertNotNull(createResponses);
     Assert.assertEquals(1, createResponses.size());
     Response createResponse = createResponses.get(0);
     Assert.assertNotNull(createResponse.getDataObject());
-    SchoolInfoType schoolInfoPersonal = (SchoolInfoType) createResponse.getDataObject();
-    Assert.assertEquals(REF_ID_1, schoolInfoPersonal.getRefId());
+    ScheduledActivityType scheduledActivity = (ScheduledActivityType) createResponse.getDataObject();
+    Assert.assertEquals(REF_ID_1, scheduledActivity.getRefId());
     
     List<Response> deleteResponses = scheduledActivityTester.testDeleteOne(REF_ID_1);
     Assert.assertNotNull(deleteResponses);
@@ -80,9 +79,7 @@ public class ScheduledActivityTest {
   public void testCreateDeleteMany() {
     final List<String> REF_ID_LIST = Arrays.asList(REF_IDS);
     
-    Assert.fail("NYI");
-    
-    List<BulkOperationResponse<CreateOperationStatus>> createResponses = scheduledActivityTester.testCreateMany("schools.xml");
+    List<BulkOperationResponse<CreateOperationStatus>> createResponses = scheduledActivityTester.testCreateMany("scheduledactivities.xml");
     Assert.assertNotNull(createResponses);
     Assert.assertEquals(1, createResponses.size());
     BulkOperationResponse<CreateOperationStatus> createResponse = createResponses.get(0);

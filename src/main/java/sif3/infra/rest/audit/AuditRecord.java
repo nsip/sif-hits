@@ -2,6 +2,7 @@ package sif3.infra.rest.audit;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.Map;
 
 /**
  * Value Object to hold all values of interest when auditing.
@@ -23,10 +24,10 @@ public class AuditRecord implements Serializable {
   private String sessionToken;
   private String method;
   private String queryParameters;
-  private String requestHeaders;
+  private Map<String, Object> requestHeaders;
   private String request;
   private Integer httpStatus;
-  private String responseHeaders;
+  private Map<String, Object> responseHeaders;
   private String response;
 
   public Date getRequestTime() {
@@ -171,22 +172,22 @@ public class AuditRecord implements Serializable {
     }
   }
 
-  public String getRequestHeaders() {
+  public Map<String, Object> getRequestHeaders() {
     return requestHeaders;
   }
 
-  public void setRequestHeaders(String requestHeaders) {
+  public void setRequestHeaders(Map<String, Object> requestHeaders) {
     if ((this.requestHeaders == null || "".equals(this.requestHeaders)) && requestHeaders != null
         && !"".equals(requestHeaders)) {
       this.requestHeaders = requestHeaders;
     }
   }
 
-  public String getResponseHeaders() {
+  public Map<String, Object> getResponseHeaders() {
     return responseHeaders;
   }
 
-  public void setResponseHeaders(String responseHeaders) {
+  public void setResponseHeaders(Map<String, Object> responseHeaders) {
     if ((this.responseHeaders == null || "".equals(this.responseHeaders)) && responseHeaders != null
         && !"".equals(responseHeaders)) {
       this.responseHeaders = responseHeaders;
