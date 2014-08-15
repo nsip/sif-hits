@@ -1,5 +1,6 @@
 package sif3.hits.domain.helper;
 
+
 public class HitsDatabaseContext {
 
   private static final ThreadLocal<String> contextHolder = new ThreadLocal<String>();

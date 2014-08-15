@@ -55,16 +55,4 @@ public class SchoolInfoService extends BaseService<SchoolInfoType, SchoolCollect
     }
     return result;
   }
-
-  @Override
-  protected boolean assignZoneId(SchoolInfo hitsObject, String zoneId) {
-    if (hitsObject != null) {
-      if (zoneId != null) {
-        hitsObject.setZoneId(zoneId);
-      } else {
-        hitsObject.setZoneId(hitsObject.getRefId());
-      }
-    }
-    return hitsObject != null && hitsObject.getZoneId() != null;
-  }
 }

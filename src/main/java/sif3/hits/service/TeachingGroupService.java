@@ -92,8 +92,8 @@ public class TeachingGroupService extends BaseService<TeachingGroupType, Teachin
 
   @Override
   @Transactional(value = "transactionManager")
-  protected TeachingGroup save(TeachingGroup hitsObject, RequestDTO<TeachingGroupType> dto, String zoneId, boolean create)
-      throws PersistenceException {
+  protected TeachingGroup save(TeachingGroup hitsObject, RequestDTO<TeachingGroupType> dto, String zoneId,
+      boolean create) throws PersistenceException {
 
     // Populate list of Teachers
     Set<StaffPersonal> teachingGroupTeachers = new HashSet<StaffPersonal>();
@@ -165,18 +165,6 @@ public class TeachingGroupService extends BaseService<TeachingGroupType, Teachin
     TimeTableCell result = null;
     if (timeTableCell != null) {
       result = timeTableCellDAO.findOneWithFilter(timeTableCell.getRefId(), getSchoolRefIds(zoneId));
-    }
-    return result;
-  }
-
-  @Override
-  protected boolean assignZoneId(TeachingGroup hitsObject, String zoneId) {
-    boolean result = false;
-    if (hitsObject != null && hitsObject.getSchoolInfo() != null && hitsObject.getSchoolInfo().getRefId() != null) {
-      SchoolInfo schoolInfo = schoolInfoDAO.findOne(hitsObject.getSchoolInfo().getRefId());
-      hitsObject.setSchoolInfo(schoolInfo);
-      result = hitsObject.getSchoolInfo() != null && hitsObject.getSchoolInfo().getZoneId() != null
-          && hitsObject.getSchoolInfo().getZoneId().equals(zoneId);
     }
     return result;
   }

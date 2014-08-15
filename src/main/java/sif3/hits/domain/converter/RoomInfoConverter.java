@@ -36,6 +36,7 @@ public class RoomInfoConverter extends HitsConverter<RoomInfoType, RoomInfo> {
       target.setCapacity(getLongValue(getJAXBValue(source.getCapacity())));
       target.setRoomSize(getBigDecimalValue(getJAXBValue(source.getSize())));
       target.setRoomType(getJAXBValue(source.getRoomType()));
+      target.setSchoolInfoRefId(source.getSchoolInfoRefId());
     }
   }
 }

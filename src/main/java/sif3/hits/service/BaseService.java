@@ -2,7 +2,6 @@ package sif3.hits.service;
 
 import static sif3.hits.service.e.OperationStatus.CREATE_ERR_EXISTS;
 import static sif3.hits.service.e.OperationStatus.CREATE_ERR_NO_ADVISORY;
-import static sif3.hits.service.e.OperationStatus.CREATE_ERR_ZONE;
 import static sif3.hits.service.e.OperationStatus.CREATE_OK;
 import static sif3.hits.service.e.OperationStatus.DELETE_ERR_NO_OBJECT;
 import static sif3.hits.service.e.OperationStatus.DELETE_OK;
@@ -24,19 +23,14 @@ import sif3.common.exception.PersistenceException;
 import sif3.common.model.PagingInfo;
 import sif3.hits.domain.converter.HitsConverter;
 import sif3.hits.domain.dao.ZoneFilterableRepository;
-import sif3.hits.domain.dao.ZoneSchoolDAO;
 import sif3.hits.domain.helper.HitsDatabaseContext;
-import sif3.hits.domain.model.SchoolInfo;
-import sif3.hits.domain.model.ZoneFilterable;
+import sif3.hits.domain.shared.model.Zone;
 import sif3.hits.rest.dto.RequestDTO;
 import sif3.hits.rest.dto.ResponseDTO;
 import au.com.systemic.framework.utils.StringUtils;
 
 @Transactional(value = "transactionManager")
 public abstract class BaseService<S, SC, H> {
-
-  @Autowired
-  private ZoneSchoolDAO zoneDAO;
 
   private static final Logger L = LoggerFactory.getLogger(BaseService.class);
 
@@ -48,12 +42,15 @@ public abstract class BaseService<S, SC, H> {
 
   @Autowired
   private ZoneService zoneService;
+  
+  private final ThreadLocal<Zone> currentZone = new ThreadLocal<Zone>();
 
   public void setDatabaseContext(String zoneId, String contextId) {
     HitsDatabaseContext.clearDatabase();
-    String database = zoneService.getDatabaseUrl(zoneId, contextId);
-    L.info("Setting current database : " + database);
-    HitsDatabaseContext.setDatabase(database);
+    Zone zone = zoneService.getZone(zoneId, contextId);
+    currentZone.set(zone);
+    L.info("Setting current database : " + zone.getDatabaseUrl());
+    HitsDatabaseContext.setDatabase(zone.getDatabaseUrl());
   }
 
   // Create
@@ -63,14 +60,9 @@ public abstract class BaseService<S, SC, H> {
       H checkExists = getDAO().findOne(dto.getRefId());
       if (checkExists == null) {
         H hitsObject = getConverter().toHitsModel(dto.getSifObject());
-        boolean zone = assignZoneId(hitsObject, zoneId);
-        if (zone) {
-          H savedHitsObject = save(hitsObject, dto, zoneId, true);
-          S resultObject = getConverter().toSifModel(savedHitsObject);
-          result = new ResponseDTO<S>(dto, resultObject, CREATE_OK);
-        } else {
-          result = new ResponseDTO<S>(dto, null, CREATE_ERR_ZONE);
-        }
+        H savedHitsObject = save(hitsObject, dto, zoneId, true);
+        S resultObject = getConverter().toSifModel(savedHitsObject);
+        result = new ResponseDTO<S>(dto, resultObject, CREATE_OK);
       } else {
         result = new ResponseDTO<S>(dto, null, CREATE_ERR_EXISTS);
       }
@@ -161,27 +153,6 @@ public abstract class BaseService<S, SC, H> {
   }
 
   /**
-   * Override this to manage different zone id linkage.
-   * 
-   * @param hitsObject
-   * @param zoneId
-   * @return
-   */
-  protected boolean assignZoneId(H hitsObject, String zoneId) {
-    boolean result = false;
-    if (hitsObject instanceof ZoneFilterable) {
-      ZoneFilterable zoneFilterableObject = (ZoneFilterable) hitsObject;
-      List<String> schoolRefIds = getSchoolRefIds(zoneId);
-      if (schoolRefIds != null && !schoolRefIds.isEmpty()) {
-        // TODO: Derive this somehow? Currently assuming zone:school is 1:1
-        zoneFilterableObject.setSchoolInfoRefId(schoolRefIds.get(0));
-        result = true;
-      }
-    }
-    return result;
-  }
-
-  /**
    * Override this in services that need child objects managed.
    * 
    * @param hitsObject
@@ -201,12 +172,11 @@ public abstract class BaseService<S, SC, H> {
   }
 
   protected List<String> getSchoolRefIds(String zoneId) {
-    List<SchoolInfo> schools = zoneDAO.findByZoneId(zoneId);
     List<String> result = new ArrayList<String>();
-    if (schools != null) {
-      for (SchoolInfo school : schools) {
-        result.add(school.getRefId());
-      }
+    if (currentZone.get() != null && currentZone.get().getSchoolRefIds() != null && currentZone.get().getSchoolRefIds().size() > 0) {
+      result = currentZone.get().getSchoolRefIds();
+    } else {
+//      result.add(zoneId);
     }
     return result;
   }

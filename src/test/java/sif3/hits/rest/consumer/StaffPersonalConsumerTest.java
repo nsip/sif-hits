@@ -52,7 +52,7 @@ public class StaffPersonalConsumerTest {
     Assert.assertNotNull(response.getDataObject());
     StaffCollectionType staffCollection = (StaffCollectionType) response.getDataObject();
     Assert.assertNotNull(staffCollection.getStaffPersonal());
-    Assert.assertEquals(5, staffCollection.getStaffPersonal().size());
+    Assert.assertEquals(1, staffCollection.getStaffPersonal().size());
   }
   
   @Test

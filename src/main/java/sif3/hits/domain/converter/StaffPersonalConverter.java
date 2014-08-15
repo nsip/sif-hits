@@ -39,7 +39,6 @@ public class StaffPersonalConverter extends HitsConverter<StaffPersonalType, Sta
       target.setLocalId(source.getLocalId());
       target.setStateProvinceId(getJAXBValue(source.getStateProvinceId()));
       target.setEmploymentStatus(getJAXBEnumValue(source.getEmploymentStatus()));
-      
       personInfoConverter.toHitsModel(source.getPersonInfo(), target);
     }
   }

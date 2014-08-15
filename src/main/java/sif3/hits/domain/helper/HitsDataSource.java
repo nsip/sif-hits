@@ -66,7 +66,6 @@ public class HitsDataSource extends AbstractDataSource implements InitializingBe
   }
 
   protected DataSource determineTargetDataSource() {
-    L.error("WHAT IS HAPPENING?");
     String lookupKey = determineCurrentLookupKey();
     DataSource dataSource = this.resolvedDataSources.get(lookupKey);
     if (dataSource == null && lookupKey != null) {

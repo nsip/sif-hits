@@ -9,24 +9,23 @@ import sif3.hits.domain.shared.model.Zone;
 
 @Service
 public class ZoneService {
-  
+
   @Autowired
   private ZoneDAO zoneDAO;
-  
+
   @Transactional(readOnly = true, value = "sharedTransactionManager")
-  public String getDatabaseUrl(String zoneId, String contextId) {
-    String result = null;
-    Zone schemaMap = zoneDAO.findOneWithZoneIdAndContextId(zoneId, contextId);
-    if (schemaMap == null && contextId != null) {
-      schemaMap = zoneDAO.findDefaultForZone(zoneId);
+  public Zone getZone(String zoneId, String contextId) {
+    Zone result = null;
+    Zone zone = zoneDAO.findOneWithZoneIdAndContextId(zoneId, contextId);
+    if (zone == null && contextId != null) {
+      zone = zoneDAO.findDefaultForZone(zoneId);
     }
-    if (schemaMap == null) {
-      schemaMap = zoneDAO.findDefault();
+    if (zone == null) {
+      zone = zoneDAO.findDefault();
     }
-    if (schemaMap != null) {
-      result = schemaMap.getDatabaseUrl();
+    if (zone != null) {
+      result = zone;
     }
     return result;
   }
-  
 }

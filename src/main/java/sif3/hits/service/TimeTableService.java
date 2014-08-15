@@ -14,11 +14,11 @@ import sif.dd.au30.model.TimeTableType;
 import sif3.common.exception.PersistenceException;
 import sif3.hits.domain.converter.HitsConverter;
 import sif3.hits.domain.converter.TimeTableConverter;
+import sif3.hits.domain.dao.SchoolInfoDAO;
 import sif3.hits.domain.dao.TimeTableDAO;
 import sif3.hits.domain.dao.TimeTableDayDAO;
 import sif3.hits.domain.dao.TimeTablePeriodDAO;
 import sif3.hits.domain.dao.ZoneFilterableRepository;
-import sif3.hits.domain.dao.ZoneSchoolDAO;
 import sif3.hits.domain.model.SchoolInfo;
 import sif3.hits.domain.model.TimeTable;
 import sif3.hits.domain.model.TimeTableDay;
@@ -38,7 +38,7 @@ public class TimeTableService extends BaseService<TimeTableType, TimeTableCollec
   private TimeTablePeriodDAO timeTablePeriodDAO;
   
   @Autowired
-  private ZoneSchoolDAO zoneDAO;
+  private SchoolInfoDAO schoolInfoDAO;
 
   @Override
   public JpaRepository<TimeTable, String> getDAO() {
@@ -87,6 +87,8 @@ public class TimeTableService extends BaseService<TimeTableType, TimeTableCollec
       throws PersistenceException {
     
     TimeTable result = null;
+    SchoolInfo schoolInfo = schoolInfoDAO.findOne(hitsObject.getSchoolInfoRefId());
+    hitsObject.setSchoolInfo(schoolInfo);
     if (hitsObject.getTimeTableDays() != null) {
       deleteTimeTablePeriods(hitsObject);
       deleteTimeTableDays(hitsObject);
@@ -123,17 +125,6 @@ public class TimeTableService extends BaseService<TimeTableType, TimeTableCollec
 
   private void deleteTimeTableDays(TimeTable hitsObject) {
     timeTableDayDAO.deleteAllWithTimeTable(hitsObject);    
-  }
-
-  @Override
-  protected boolean assignZoneId(TimeTable hitsObject, String zoneId) {
-    boolean result = false;
-    if (hitsObject != null && hitsObject.getSchoolInfo() != null && hitsObject.getSchoolInfo().getRefId() != null) {
-      SchoolInfo schoolInfo = zoneDAO.findByRefIdAndZoneId(hitsObject.getSchoolInfoRefId(), zoneId);
-      hitsObject.setSchoolInfo(schoolInfo);
-      result = hitsObject.getSchoolInfo() != null;
-    }
-    return result;
   }
 
   @Override
