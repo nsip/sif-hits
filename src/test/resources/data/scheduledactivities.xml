@@ -1,4 +1,4 @@
-<ScheduledActivities xmlns="http://www.sifassociation.org/au/datamodel/1.3">
+<ScheduledActivitys xmlns="http://www.sifassociation.org/au/datamodel/1.3">
     <ScheduledActivity RefId="596BD11814CB485A84D3593FC5703958">
         <SchoolInfoRefId>6DAFB630-C439-11E3-9AA0-81F4DBD909AB</SchoolInfoRefId>
         <TimeTableCellRefId>9BCC0528813346B9AD7DBBB09CFBD1B6</TimeTableCellRefId>
@@ -93,4 +93,4 @@
         </YearLevels>
         <Override/>
     </ScheduledActivity>
-</ScheduledActivities>
+</ScheduledActivitys>

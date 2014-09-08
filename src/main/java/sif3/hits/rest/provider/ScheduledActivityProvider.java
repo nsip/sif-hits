@@ -22,7 +22,7 @@ public class ScheduledActivityProvider extends
    *          values of provider property file.
    */
   public ScheduledActivityProvider() {
-    super(ScheduledActivityType.class, "ScheduledActivity", ScheduledActivityCollectionType.class, "ScheduledActivities",
+    super(ScheduledActivityType.class, "ScheduledActivity", ScheduledActivityCollectionType.class, "ScheduledActivitys",
         ScheduledActivityService.class);
   }
 

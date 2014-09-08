@@ -27,7 +27,7 @@ public class ScheduledActivityTest {
   public void setup() {
     ConsumerLoader.initialise("TestConsumer");
     scheduledActivityTester = new ConsumerTest<ScheduledActivityType, ScheduledActivityCollectionType>(
-        ScheduledActivityType.class, "ScheduledActivity", ScheduledActivityCollectionType.class, "ScheduledActivities");
+        ScheduledActivityType.class, "ScheduledActivity", ScheduledActivityCollectionType.class, "ScheduledActivitys");
     scheduledActivityTester.testDeleteMany(REF_IDS);
   }
   

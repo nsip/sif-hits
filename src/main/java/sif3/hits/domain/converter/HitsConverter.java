@@ -95,7 +95,7 @@ public abstract class HitsConverter<S, H> {
   /* Getter + Setter Helpers */
   /***************************/
   protected ObjectFactory getObjectFactory() {
-    return new ObjectFactory();
+    return new HitsObjectFactory();
   }
   
   protected <V> V getJAXBValue(JAXBElement<V> element) {
