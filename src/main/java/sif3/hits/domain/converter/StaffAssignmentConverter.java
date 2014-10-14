@@ -24,14 +24,16 @@ public class StaffAssignmentConverter extends HitsConverter<StaffAssignmentType,
       target.setStaffPersonalRefId(source.getStaffPersonalRefId());
       target.setSchoolYear(objectFactory.createStaffAssignmentTypeSchoolYear(getYearValue(source.getSchoolYear())));
       target.setDescription(objectFactory.createStaffAssignmentTypeDescription(source.getDescription()));
-      
-      AUCodeSetsYesOrNoCategoryType primaryAssignment = getEnumValue(source.getPrimaryAssignment(), AUCodeSetsYesOrNoCategoryType.class);
+
+      AUCodeSetsYesOrNoCategoryType primaryAssignment = getEnumValue(source.getPrimaryAssignment(),
+          AUCodeSetsYesOrNoCategoryType.class);
       target.setPrimaryAssignment(primaryAssignment);
-      
-      target.setJobStartDate(objectFactory.createStaffAssignmentTypeJobStartDate(getDateValue(source.getJobStartDate())));
+
+      target
+          .setJobStartDate(objectFactory.createStaffAssignmentTypeJobStartDate(getDateValue(source.getJobStartDate())));
       target.setJobEndDate(objectFactory.createStaffAssignmentTypeJobEndDate(getDateValue(source.getJobEndDate())));
       target.setJobFunction(objectFactory.createStaffAssignmentTypeJobFunction(source.getJobFunction()));
-      
+
       StaffActivity staffActivity = new StaffActivity();
       staffActivity.setCode(source.getStaffActivityCode());
       target.setStaffActivity(objectFactory.createStaffAssignmentTypeStaffActivity(staffActivity));
@@ -47,11 +49,11 @@ public class StaffAssignmentConverter extends HitsConverter<StaffAssignmentType,
       target.setDescription(getJAXBValue(source.getDescription()));
       target.setSchoolYear(getYearValue(getJAXBValue(source.getSchoolYear())));
       target.setPrimaryAssignment(getEnumValue(source.getPrimaryAssignment()));
-      
+
       target.setJobStartDate(getDateValue(getJAXBValue(source.getJobStartDate())));
       target.setJobEndDate(getDateValue(getJAXBValue(source.getJobEndDate())));
       target.setJobFunction(getJAXBValue(source.getJobFunction()));
-      
+
       StaffActivity staffActivity = getJAXBValue(source.getStaffActivity());
       if (staffActivity != null) {
         target.setStaffActivityCode(staffActivity.getCode());

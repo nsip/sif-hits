@@ -10,11 +10,12 @@ import sif3.hits.domain.model.TimeTableDay;
 import sif3.hits.domain.model.TimeTablePeriod;
 
 @Component
-public class TimeTableDayConverter extends HitsConverter<sif.dd.au30.model.TimeTableType.TimeTableDayList.TimeTableDay, TimeTableDay> {
+public class TimeTableDayConverter extends
+    HitsConverter<sif.dd.au30.model.TimeTableType.TimeTableDayList.TimeTableDay, TimeTableDay> {
 
   @Autowired
   private TimeTablePeriodConverter timeTablePeriodConverter;
-  
+
   public TimeTableDayConverter() {
     super(sif.dd.au30.model.TimeTableType.TimeTableDayList.TimeTableDay.class, TimeTableDay.class);
   }
@@ -37,7 +38,8 @@ public class TimeTableDayConverter extends HitsConverter<sif.dd.au30.model.TimeT
       target.setDayTitle(source.getDayTitle());
       target.setPeriods(new HashSet<TimeTablePeriod>());
       if (source.getTimeTablePeriodList() != null) {
-        target.getPeriods().addAll(timeTablePeriodConverter.toHitsModelList(source.getTimeTablePeriodList().getTimeTablePeriod()));
+        target.getPeriods().addAll(
+            timeTablePeriodConverter.toHitsModelList(source.getTimeTablePeriodList().getTimeTablePeriod()));
       }
     }
   }

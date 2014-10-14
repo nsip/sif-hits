@@ -90,14 +90,14 @@ public abstract class HitsConverter<S, H> {
     }
     return result;
   }
-  
+
   /***************************/
   /* Getter + Setter Helpers */
   /***************************/
   protected ObjectFactory getObjectFactory() {
     return new HitsObjectFactory();
   }
-  
+
   protected <V> V getJAXBValue(JAXBElement<V> element) {
     V result = null;
     if (element != null && element.getValue() != null) {
@@ -105,7 +105,7 @@ public abstract class HitsConverter<S, H> {
     }
     return result;
   }
-  
+
   protected <E extends Enum<E>> String getJAXBEnumValue(JAXBElement<E> element) {
     String result = null;
     if (element != null && element.getValue() != null) {
@@ -126,7 +126,7 @@ public abstract class HitsConverter<S, H> {
     }
     return result;
   }
-  
+
   protected String getDateValue(XMLGregorianCalendar value) {
     String result = null;
     try {
@@ -138,7 +138,7 @@ public abstract class HitsConverter<S, H> {
     }
     return result;
   }
-  
+
   protected XMLGregorianCalendar getTimeValue(String value) {
     XMLGregorianCalendar result = null;
     try {
@@ -150,7 +150,7 @@ public abstract class HitsConverter<S, H> {
     }
     return result;
   }
-  
+
   protected String getTimeValue(XMLGregorianCalendar value) {
     String result = null;
     try {
@@ -161,8 +161,8 @@ public abstract class HitsConverter<S, H> {
       logger.error("Unable to convert value [" + value + "] to xml calendar.", ex);
     }
     return result;
-  }  
-  
+  }
+
   protected XMLGregorianCalendar getYearValue(String value) {
     XMLGregorianCalendar result = null;
     if (value != null) {
@@ -172,11 +172,11 @@ public abstract class HitsConverter<S, H> {
         result.setYear(year);
       } catch (Exception ex) {
         logger.error("Unable to convert value [" + value + "] to xml calendar year.", ex);
-      } 
+      }
     }
     return result;
   }
-  
+
   protected String getYearValue(XMLGregorianCalendar value) {
     String result = null;
     if (value != null) {
@@ -197,7 +197,7 @@ public abstract class HitsConverter<S, H> {
     }
     return result;
   }
-  
+
   protected String getBigDecimalValue(BigDecimal value) {
     String result = null;
     if (value != null) {
@@ -209,7 +209,7 @@ public abstract class HitsConverter<S, H> {
     }
     return result;
   }
-  
+
   protected Long getLongValue(String value) {
     Long result = null;
     if (value != null) {
@@ -221,7 +221,7 @@ public abstract class HitsConverter<S, H> {
     }
     return result;
   }
-  
+
   protected String getLongValue(Long value) {
     String result = null;
     if (value != null) {
@@ -233,7 +233,7 @@ public abstract class HitsConverter<S, H> {
     }
     return result;
   }
-  
+
   protected <E extends Enum<E>> E getEnumValue(String value, Class<E> clazz) {
     E result = null;
     try {
@@ -241,11 +241,13 @@ public abstract class HitsConverter<S, H> {
         result = E.valueOf(clazz, value);
       }
     } catch (Exception ex) {
-      logger.error("Unable to convert value [" + value + "] to enum [" + (clazz == null ? "unknown" : clazz.getSimpleName()) + "].", ex);
+      logger.error(
+          "Unable to convert value [" + value + "] to enum [" + (clazz == null ? "unknown" : clazz.getSimpleName())
+              + "].", ex);
     }
     return result;
   }
-  
+
   protected <E extends Enum<E>> String getEnumValue(E enumValue) {
     String result = null;
     if (enumValue != null) {
@@ -255,4 +257,3 @@ public abstract class HitsConverter<S, H> {
   }
 
 }
-

@@ -5,8 +5,8 @@ import org.springframework.stereotype.Component;
 
 import sif.dd.au30.model.ObjectFactory;
 import sif.dd.au30.model.StudentPersonalType;
-import sif.dd.au30.model.YearLevelType;
 import sif.dd.au30.model.StudentPersonalType.MostRecent;
+import sif.dd.au30.model.YearLevelType;
 import sif3.hits.domain.model.StudentPersonal;
 
 @Component
@@ -32,15 +32,31 @@ public class StudentPersonalConverter extends HitsConverter<StudentPersonalType,
       YearLevelType yearLevel = new YearLevelType();
       yearLevel.setCode(source.getMostRecentYearLevel());
       mostRecent.setYearLevel(objectFactory.createStudentPersonalTypeMostRecentYearLevel(yearLevel));
-      mostRecent.setParent1Language(objectFactory.createStudentPersonalTypeMostRecentParent1Language(source.getMostRecentParent1Language()));
-      mostRecent.setParent2Language(objectFactory.createStudentPersonalTypeMostRecentParent2Language(source.getMostRecentParent2Language()));
-      mostRecent.setParent1SchoolEducationLevel(objectFactory.createStudentPersonalTypeMostRecentParent1SchoolEducationLevel(source.getMostRecentParent1SchoolEducation()));
-      mostRecent.setParent2SchoolEducationLevel(objectFactory.createStudentPersonalTypeMostRecentParent2SchoolEducationLevel(source.getMostRecentParent2SchoolEducation()));
-      mostRecent.setParent1NonSchoolEducation(objectFactory.createStudentPersonalTypeMostRecentParent1NonSchoolEducation(source.getMostRecentParent1NonSchoolEducation()));
-      mostRecent.setParent2NonSchoolEducation(objectFactory.createStudentPersonalTypeMostRecentParent2NonSchoolEducation(source.getMostRecentParent2NonSchoolEducation()));
-      mostRecent.setParent1EmploymentType(objectFactory.createStudentPersonalTypeMostRecentParent1EmploymentType(source.getMostRecentParent1EmploymentType()));
-      mostRecent.setParent2EmploymentType(objectFactory.createStudentPersonalTypeMostRecentParent2EmploymentType(source.getMostRecentParent2EmploymentType()));
-      
+      mostRecent.setParent1Language(objectFactory.createStudentPersonalTypeMostRecentParent1Language(source
+          .getMostRecentParent1Language()));
+      mostRecent.setParent2Language(objectFactory.createStudentPersonalTypeMostRecentParent2Language(source
+          .getMostRecentParent2Language()));
+      mostRecent
+          .setParent1SchoolEducationLevel(objectFactory
+              .createStudentPersonalTypeMostRecentParent1SchoolEducationLevel(source
+                  .getMostRecentParent1SchoolEducation()));
+      mostRecent
+          .setParent2SchoolEducationLevel(objectFactory
+              .createStudentPersonalTypeMostRecentParent2SchoolEducationLevel(source
+                  .getMostRecentParent2SchoolEducation()));
+      mostRecent
+          .setParent1NonSchoolEducation(objectFactory
+              .createStudentPersonalTypeMostRecentParent1NonSchoolEducation(source
+                  .getMostRecentParent1NonSchoolEducation()));
+      mostRecent
+          .setParent2NonSchoolEducation(objectFactory
+              .createStudentPersonalTypeMostRecentParent2NonSchoolEducation(source
+                  .getMostRecentParent2NonSchoolEducation()));
+      mostRecent.setParent1EmploymentType(objectFactory.createStudentPersonalTypeMostRecentParent1EmploymentType(source
+          .getMostRecentParent1EmploymentType()));
+      mostRecent.setParent2EmploymentType(objectFactory.createStudentPersonalTypeMostRecentParent2EmploymentType(source
+          .getMostRecentParent2EmploymentType()));
+
       target.setMostRecent(objectFactory.createStudentPersonalTypeMostRecent(mostRecent));
     }
   }

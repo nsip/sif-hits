@@ -17,11 +17,10 @@ public class TimeTableConverter extends HitsConverter<TimeTableType, TimeTable> 
 
   @Autowired
   private TimeTableDayConverter timeTableDayConverter;
-  
+
   @Autowired
   private TimeTableSchoolInfoConverter timeTableSchoolInfoConverter;
-  
-  
+
   public TimeTableConverter() {
     super(TimeTableType.class, TimeTable.class);
   }
@@ -37,7 +36,8 @@ public class TimeTableConverter extends HitsConverter<TimeTableType, TimeTable> 
       target.setPeriodsPerDay(getLongValue(source.getPeriodsPerCycle()));
       target.setSchoolYear(getYearValue(source.getSchoolYear()));
       target.setTimeTableDayList(new TimeTableDayList());
-      target.getTimeTableDayList().getTimeTableDay().addAll(timeTableDayConverter.toSifModelList(source.getTimeTableDays()));
+      target.getTimeTableDayList().getTimeTableDay()
+          .addAll(timeTableDayConverter.toSifModelList(source.getTimeTableDays()));
       timeTableSchoolInfoConverter.toSifModel(source.getSchoolInfo(), target);
     }
   }

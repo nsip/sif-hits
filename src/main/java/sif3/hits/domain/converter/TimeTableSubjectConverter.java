@@ -7,8 +7,8 @@ import java.util.Set;
 import org.springframework.stereotype.Component;
 
 import sif.dd.au30.model.ObjectFactory;
-import sif.dd.au30.model.OtherCodeListType.OtherCode;
 import sif.dd.au30.model.OtherCodeListType;
+import sif.dd.au30.model.OtherCodeListType.OtherCode;
 import sif.dd.au30.model.TimeTableSubjectType;
 import sif.dd.au30.model.YearLevelType;
 import sif3.hits.domain.model.TimeTableSubject;
@@ -28,16 +28,17 @@ public class TimeTableSubjectConverter extends HitsConverter<TimeTableSubjectTyp
       target.setRefId(source.getRefId());
       target.setSchoolInfoRefId(objectFactory.createTimeTableSubjectTypeSchoolInfoRefId(source.getSchoolInfoRefId()));
       target.setSubjectLocalId(source.getSubjectLocalId());
-      
+
       YearLevelType yearLevel = new YearLevelType();
       yearLevel.setCode(source.getAcademicYear());
       target.setAcademicYear(objectFactory.createTimeTableSubjectTypeAcademicYear(yearLevel));
-      
+
       target.setFaculty(objectFactory.createTimeTableSubjectTypeFaculty(source.getFaculty()));
-      target.setSubjectShortName(objectFactory.createTimeTableSubjectTypeSubjectShortName(source.getSubjectShortName()));
+      target
+          .setSubjectShortName(objectFactory.createTimeTableSubjectTypeSubjectShortName(source.getSubjectShortName()));
       target.setSubjectLongName(source.getSubjectLongName());
       target.setSubjectType(objectFactory.createTimeTableSubjectTypeSubjectType(source.getSubjectType()));
-      
+
       ArrayList<OtherCode> otherCodes = new ArrayList<OtherCode>();
       if (source.getOtherCodes() != null) {
         for (TimeTableSubjectOtherCode timeTableSubjectOtherCode : source.getOtherCodes()) {
@@ -50,8 +51,9 @@ public class TimeTableSubjectConverter extends HitsConverter<TimeTableSubjectTyp
       OtherCodeListType otherCodeList = new OtherCodeListType();
       otherCodeList.getOtherCode().addAll(otherCodes);
       target.setOtherCodeList(objectFactory.createTimeTableSubjectTypeOtherCodeList(otherCodeList));
-      
-      target.setProposedMinClassSize(objectFactory.createTimeTableSubjectTypeProposedMinClassSize(getBigDecimalValue(source.getProposedMinClassSize())));
+
+      target.setProposedMinClassSize(objectFactory
+          .createTimeTableSubjectTypeProposedMinClassSize(getBigDecimalValue(source.getProposedMinClassSize())));
       target.setSemester(objectFactory.createTimeTableSubjectTypeSemester(getLongValue(source.getSemester())));
       target.setSchoolYear(objectFactory.createTimeTableSubjectTypeSchoolYear(getYearValue(source.getSchoolYear())));
     }
@@ -63,7 +65,7 @@ public class TimeTableSubjectConverter extends HitsConverter<TimeTableSubjectTyp
       target.setRefId(source.getRefId());
       target.setSchoolInfoRefId(getJAXBValue(source.getSchoolInfoRefId()));
       target.setSubjectLocalId(source.getSubjectLocalId());
-      
+
       YearLevelType academicYear = getJAXBValue(source.getAcademicYear());
       if (academicYear != null) {
         target.setAcademicYear(academicYear.getCode());
@@ -72,7 +74,7 @@ public class TimeTableSubjectConverter extends HitsConverter<TimeTableSubjectTyp
       target.setSubjectShortName(getJAXBValue(source.getSubjectShortName()));
       target.setSubjectLongName(source.getSubjectLongName());
       target.setSubjectType(getJAXBValue(source.getSubjectType()));
-      
+
       Set<TimeTableSubjectOtherCode> otherCodes = new HashSet<TimeTableSubjectOtherCode>();
       OtherCodeListType otherCodeList = getJAXBValue(source.getOtherCodeList());
       if (otherCodeList != null && otherCodeList.getOtherCode() != null) {
@@ -85,7 +87,7 @@ public class TimeTableSubjectConverter extends HitsConverter<TimeTableSubjectTyp
         }
       }
       target.setOtherCodes(otherCodes);
-      
+
       target.setProposedMinClassSize(getBigDecimalValue(getJAXBValue(source.getProposedMinClassSize())));
       target.setSemester(getLongValue(getJAXBValue(source.getSemester())));
       target.setSchoolYear(getYearValue(getJAXBValue(source.getSchoolYear())));

@@ -11,19 +11,19 @@ public class TimeTableCellConverter extends HitsConverter<TimeTableCellType, Tim
 
   @Autowired
   private TimeTableCellRoomInfoConverter timeTableCellRoomInfoConverter;
-    
+
   @Autowired
   private TimeTableCellStaffPersonalConverter timeTableCellStaffPersonalConverter;
-  
+
   @Autowired
   private TimeTableCellTimeTableConverter timeTableCellTimeTableConverter;
-  
+
   @Autowired
   private TimeTableCellTimeTableSubjectConverter timeTableCellTimeTableSubjectConverter;
-  
+
   @Autowired
   private TimeTableCellTeachingGroupConverter timeTableCellTeachingGroupConverter;
-  
+
   public TimeTableCellConverter() {
     super(TimeTableCellType.class, TimeTableCell.class);
   }

@@ -12,7 +12,7 @@ public class TimeTableCellTimeTableConverter extends HitsConverter<TimeTableCell
 
   @Autowired
   private TimeTableCellSchoolInfoConverter timeTableCellSchoolInfoConverter;
-  
+
   public TimeTableCellTimeTableConverter() {
     super(null, TimeTable.class);
   }

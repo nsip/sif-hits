@@ -14,6 +14,7 @@ import sif3.common.conversion.ModelObjectInfo;
 import sif3.common.exception.PersistenceException;
 import sif3.common.exception.UnsupportedQueryException;
 import sif3.common.model.PagingInfo;
+import sif3.common.model.RequestMetadata;
 import sif3.common.model.SIFContext;
 import sif3.common.model.SIFZone;
 import sif3.common.ws.CreateOperationStatus;
@@ -61,7 +62,7 @@ public abstract class HitsBaseProvider<S, SC, H, HS extends BaseService<S, SC, H
    * sif3.common.model.SIFContext)
    */
   @Override
-  public Object retrievByPrimaryKey(String resourceID, SIFZone zone, SIFContext context)
+  public Object retrievByPrimaryKey(String resourceID, SIFZone zone, SIFContext context, RequestMetadata metadata)
       throws IllegalArgumentException, PersistenceException {
 
     setDatabaseContext(zone, context);
@@ -87,7 +88,7 @@ public abstract class HitsBaseProvider<S, SC, H, HS extends BaseService<S, SC, H
    * sif3.common.model.SIFContext)
    */
   @Override
-  public Object createSingle(Object data, boolean useAdvisory, SIFZone zone, SIFContext context)
+  public Object createSingle(Object data, boolean useAdvisory, SIFZone zone, SIFContext context, RequestMetadata metadata)
       throws IllegalArgumentException, PersistenceException {
 
     setDatabaseContext(zone, context);
@@ -140,7 +141,7 @@ public abstract class HitsBaseProvider<S, SC, H, HS extends BaseService<S, SC, H
    * sif3.common.model.SIFContext)
    */
   @Override
-  public boolean updateSingle(Object data, String resourceID, SIFZone zone, SIFContext context)
+  public boolean updateSingle(Object data, String resourceID, SIFZone zone, SIFContext context, RequestMetadata metadata)
       throws IllegalArgumentException, PersistenceException {
 
     setDatabaseContext(zone, context);
@@ -187,7 +188,7 @@ public abstract class HitsBaseProvider<S, SC, H, HS extends BaseService<S, SC, H
    * sif3.common.model.SIFContext)
    */
   @Override
-  public boolean deleteSingle(String resourceID, SIFZone zone, SIFContext context) throws IllegalArgumentException,
+  public boolean deleteSingle(String resourceID, SIFZone zone, SIFContext context, RequestMetadata metadata) throws IllegalArgumentException,
       PersistenceException {
 
     setDatabaseContext(zone, context);
@@ -223,7 +224,7 @@ public abstract class HitsBaseProvider<S, SC, H, HS extends BaseService<S, SC, H
    * sif3.common.model.PagingInfo)
    */
   @Override
-  public Object retrieve(SIFZone zone, SIFContext context, PagingInfo pagingInfo) throws PersistenceException,
+  public Object retrieve(SIFZone zone, SIFContext context, PagingInfo pagingInfo, RequestMetadata metadata) throws PersistenceException,
       UnsupportedQueryException {
 
     setDatabaseContext(zone, context);
@@ -239,7 +240,7 @@ public abstract class HitsBaseProvider<S, SC, H, HS extends BaseService<S, SC, H
    * sif3.common.model.SIFContext)
    */
   @Override
-  public List<CreateOperationStatus> createMany(Object data, boolean useAdvisory, SIFZone zone, SIFContext context)
+  public List<CreateOperationStatus> createMany(Object data, boolean useAdvisory, SIFZone zone, SIFContext context, RequestMetadata metadata)
       throws IllegalArgumentException, PersistenceException {
 
     setDatabaseContext(zone, context);
@@ -268,7 +269,7 @@ public abstract class HitsBaseProvider<S, SC, H, HS extends BaseService<S, SC, H
    * sif3.common.model.SIFContext)
    */
   @Override
-  public List<OperationStatus> updateMany(Object data, SIFZone zone, SIFContext context)
+  public List<OperationStatus> updateMany(Object data, SIFZone zone, SIFContext context, RequestMetadata metadata)
       throws IllegalArgumentException, PersistenceException {
 
     setDatabaseContext(zone, context);
@@ -308,7 +309,7 @@ public abstract class HitsBaseProvider<S, SC, H, HS extends BaseService<S, SC, H
    * sif3.common.model.SIFContext)
    */
   @Override
-  public List<OperationStatus> deleteMany(List<String> resourceIDs, SIFZone zone, SIFContext context)
+  public List<OperationStatus> deleteMany(List<String> resourceIDs, SIFZone zone, SIFContext context, RequestMetadata metadata)
       throws IllegalArgumentException, PersistenceException {
 
     setDatabaseContext(zone, context);

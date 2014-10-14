@@ -20,7 +20,7 @@ public class PersonInfoConverter extends HitsConverter<PersonInfoType, Person> {
   public PersonInfoConverter() {
     super(PersonInfoType.class, null);
   }
-  
+
   @Autowired
   private NameOfRecordConverter nameOfRecordConverter;
 
@@ -37,6 +37,7 @@ public class PersonInfoConverter extends HitsConverter<PersonInfoType, Person> {
 
       EmailListType emailList = new EmailListType();
       Email email = new Email();
+      email.setType("01"); // AUCodeSetsEmailTypeType.PRIMARY
       email.setValue(source.getEmail());
       emailList.getEmail().add(email);
       target.setEmailList(objectFactory.createEmailList(emailList));

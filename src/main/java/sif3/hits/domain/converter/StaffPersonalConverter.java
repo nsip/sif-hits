@@ -25,9 +25,10 @@ public class StaffPersonalConverter extends HitsConverter<StaffPersonalType, Sta
       target.setRefId(source.getRefId());
       target.setLocalId(source.getLocalId());
       target.setStateProvinceId(objectFactory.createStaffPersonalTypeStateProvinceId(source.getStateProvinceId()));
-      AUCodeSetsStaffStatusType employmentStatus = getEnumValue(source.getEmploymentStatus(), AUCodeSetsStaffStatusType.class);
+      AUCodeSetsStaffStatusType employmentStatus = getEnumValue(source.getEmploymentStatus(),
+          AUCodeSetsStaffStatusType.class);
       target.setEmploymentStatus(objectFactory.createStaffPersonalTypeEmploymentStatus(employmentStatus));
-      
+
       target.setPersonInfo(personInfoConverter.toSifModel(source));
     }
   }
