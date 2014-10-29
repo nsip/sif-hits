@@ -25,6 +25,10 @@ public class StudentPersonalProvider extends
     super(StudentPersonalType.class, "StudentPersonal", StudentCollectionType.class, "StudentPersonals",
         StudentPersonalService.class);
   }
+  
+//  public Object findBySchoolInfos(String referenceId, SIFZone zone, SIFContext context, PagingInfo pagingInfo, RequestMetadata metadata) throws PersistenceException, UnsupportedQueryException {   
+//    return super.retrieve(zone, context, pagingInfo, metadata);
+//  }
 
   @Override
   protected List<StudentPersonalType> getSifList(StudentCollectionType sifCollection) {

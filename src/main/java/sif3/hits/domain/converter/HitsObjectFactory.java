@@ -966,4 +966,20 @@ public class HitsObjectFactory extends ObjectFactory {
       return null;
     }
   }
+  
+  public JAXBElement<XMLGregorianCalendar> createCalendarSummaryTypeStartDate(XMLGregorianCalendar value) {
+    if (value != null) {
+      return super.createCalendarSummaryTypeStartDate(value);
+    } else {
+      return null;
+    }
+  }
+  
+  public JAXBElement<XMLGregorianCalendar> createCalendarSummaryTypeEndDate(XMLGregorianCalendar value) {
+    if (value != null) {
+      return super.createCalendarSummaryTypeEndDate(value);
+    } else {
+      return null;
+    }
+  }
 }

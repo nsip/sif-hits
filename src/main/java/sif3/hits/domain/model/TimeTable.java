@@ -102,10 +102,4 @@ public class TimeTable implements Serializable, ZoneFilterable {
     }
     return result;
   }
-
-  @Override
-  @Transient
-  public void setSchoolInfoRefId(String schoolInfoRefId) {
-    
-  }
 }

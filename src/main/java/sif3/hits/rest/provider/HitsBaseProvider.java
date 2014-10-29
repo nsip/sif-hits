@@ -77,7 +77,6 @@ public abstract class HitsBaseProvider<S, SC, H, HS extends BaseService<S, SC, H
   }
 
   private void setDatabaseContext(SIFZone zone, SIFContext context) {
-    L.info("HERE!!! " + getProviderEnvironment().getEnvironmentKey().getApplicationKey());
     getService().setDatabaseContext(getZoneId(zone), getContextId(context));
   }
 

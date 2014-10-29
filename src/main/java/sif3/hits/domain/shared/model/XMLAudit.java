@@ -7,7 +7,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
-
 @Entity
 public class XMLAudit implements Serializable {
   private static final long serialVersionUID = -2236904251271994413L;
@@ -32,6 +31,8 @@ public class XMLAudit implements Serializable {
   private Integer httpStatus;
   private String responseHeaders;
   private String response;
+  private String requestMediaType;
+  private String responseMediaType;
 
   @Id
   @GeneratedValue
@@ -58,11 +59,11 @@ public class XMLAudit implements Serializable {
   public void setResponseTime(Date responseTime) {
     this.responseTime = responseTime;
   }
-  
+
   public String getClientIp() {
     return clientIp;
   }
-  
+
   public void setClientIp(String clientIp) {
     this.clientIp = clientIp;
   }
@@ -98,11 +99,11 @@ public class XMLAudit implements Serializable {
   public void setUserToken(String userToken) {
     this.userToken = userToken;
   }
-  
+
   public String getInstanceId() {
     return instanceId;
   }
-  
+
   public void setInstanceId(String instanceId) {
     this.instanceId = instanceId;
   }
@@ -193,5 +194,21 @@ public class XMLAudit implements Serializable {
 
   public void setResponse(String response) {
     this.response = response;
+  }
+
+  public String getRequestMediaType() {
+    return requestMediaType;
+  }
+
+  public void setRequestMediaType(String requestMediaType) {
+    this.requestMediaType = requestMediaType;
+  }
+
+  public String getResponseMediaType() {
+    return responseMediaType;
+  }
+
+  public void setResponseMediaType(String responseMediaType) {
+    this.responseMediaType = responseMediaType;
   }
 }
