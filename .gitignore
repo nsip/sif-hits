@@ -1,5 +1,6 @@
 sifhits.internal.database.properties
 .settings/
+.metadata/
 .project
 .classpath
 bin/
