@@ -1,6 +1,5 @@
 package sif3.hits.domain.converter;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import sif.dd.au30.model.CalendarSummaryType;
@@ -13,9 +12,6 @@ public class CalendarSummaryConverter extends HitsConverter<CalendarSummaryType,
   public CalendarSummaryConverter() {
     super(CalendarSummaryType.class, CalendarSummary.class);
   }
-
-  @Autowired
-  private PersonInfoConverter personInfoConverter;
 
   @Override
   public void toSifModel(CalendarSummary source, CalendarSummaryType target) {

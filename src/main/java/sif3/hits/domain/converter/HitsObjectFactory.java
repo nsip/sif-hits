@@ -966,7 +966,7 @@ public class HitsObjectFactory extends ObjectFactory {
       return null;
     }
   }
-  
+
   public JAXBElement<XMLGregorianCalendar> createCalendarSummaryTypeStartDate(XMLGregorianCalendar value) {
     if (value != null) {
       return super.createCalendarSummaryTypeStartDate(value);
@@ -974,10 +974,34 @@ public class HitsObjectFactory extends ObjectFactory {
       return null;
     }
   }
-  
+
   public JAXBElement<XMLGregorianCalendar> createCalendarSummaryTypeEndDate(XMLGregorianCalendar value) {
     if (value != null) {
       return super.createCalendarSummaryTypeEndDate(value);
+    } else {
+      return null;
+    }
+  }
+
+  public JAXBElement<String> createCalendarDateCalendarDateRefId(String value) {
+    if (value != null) {
+      return super.createCalendarDateCalendarDateRefId(value);
+    } else {
+      return null;
+    }
+  }
+
+  public JAXBElement<Long> createCalendarDateCalendarDateNumber(Long value) {
+    if (value != null) {
+      return super.createCalendarDateCalendarDateNumber(value);
+    } else {
+      return null;
+    }
+  }
+
+  public JAXBElement<OtherCodeListType> createCalendarDateCalendarDateTypeOtherCodeList(OtherCodeListType value) {
+    if (value != null) {
+      return super.createCalendarDateCalendarDateTypeOtherCodeList(value);
     } else {
       return null;
     }

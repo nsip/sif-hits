@@ -1,12 +1,8 @@
 package sif3.hits.domain.model;
 
-import java.util.Set;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
 
 @Entity
 public class CalendarSummary extends HitsEntity implements ZoneFilterable {
@@ -19,8 +15,6 @@ public class CalendarSummary extends HitsEntity implements ZoneFilterable {
   private String daysInSession;
   private String startDate;
   private String endDate;
-
-  private Set<CalendarDate> calendarDates;
 
   @Id
   public String getRefId() {
@@ -79,14 +73,5 @@ public class CalendarSummary extends HitsEntity implements ZoneFilterable {
 
   public void setEndDate(String endDate) {
     this.endDate = endDate;
-  }
-
-  @OneToMany(fetch = FetchType.EAGER, mappedBy = "calendarSummary")
-  public Set<CalendarDate> getCalendarDates() {
-    return calendarDates;
-  }
-
-  public void setCalendarDates(Set<CalendarDate> calendarDates) {
-    this.calendarDates = calendarDates;
   }
 }
