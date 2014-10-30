@@ -1,5 +1,8 @@
 package sif3.hits.domain.converter;
 
+import java.lang.reflect.InvocationHandler;
+import java.lang.reflect.Method;
+import java.lang.reflect.Proxy;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -19,6 +22,19 @@ public abstract class HitsConverter<S, H> {
   private Logger logger = LoggerFactory.getLogger(HitsConverter.class);
   private Class<S> sifClass;
   private Class<H> hitsClass;
+  private static final ObjectFactory objectFactory = new ObjectFactory();
+  private static final InvocationHandler nullValueInvocationHandler = new InvocationHandler() {
+    @Override
+    public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
+      // if this method has one parameter and the parameter value is null return null otherwise
+      // invoke the method on the objectFactory
+      if (args != null && args.length == 1 && args[0] == null) {
+        return null;
+      } else {
+        return method.invoke(objectFactory, args); 
+      }
+    }
+  };
 
   protected HitsConverter(Class<S> sifClass, Class<H> hitsClass) {
     this.sifClass = sifClass;
@@ -95,7 +111,7 @@ public abstract class HitsConverter<S, H> {
   /* Getter + Setter Helpers */
   /***************************/
   protected ObjectFactory getObjectFactory() {
-    return new HitsObjectFactory();
+    return (ObjectFactory) Proxy.newProxyInstance(this.getClass().getClassLoader(),new Class[] { sif.dd.au30.model.ObjectFactory.class }, nullValueInvocationHandler);
   }
 
   protected <V> V getJAXBValue(JAXBElement<V> element) {

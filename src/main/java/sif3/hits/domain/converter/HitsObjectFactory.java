@@ -31,6 +31,7 @@ import sif.dd.au30.model.YearLevelsType;
  * @author Ben Carter
  */
 public class HitsObjectFactory extends ObjectFactory {
+  @Override
   public JAXBElement<GridLocationType> createAddressTypeGridLocation(sif.dd.au30.model.GridLocationType value) {
     if (value != null) {
       return super.createAddressTypeGridLocation(value);
@@ -39,6 +40,7 @@ public class HitsObjectFactory extends ObjectFactory {
     }
   }
 
+  @Override
   public JAXBElement<String> createAddressTypeStateProvince(java.lang.String value) {
     if (value != null) {
       return super.createAddressTypeStateProvince(value);
@@ -47,6 +49,7 @@ public class HitsObjectFactory extends ObjectFactory {
     }
   }
 
+  @Override
   public JAXBElement<String> createAddressTypeStreetStreetName(java.lang.String value) {
     if (value != null) {
       return super.createAddressTypeStreetStreetName(value);
@@ -55,6 +58,7 @@ public class HitsObjectFactory extends ObjectFactory {
     }
   }
 
+  @Override
   public JAXBElement<String> createAddressTypeStreetStreetNumber(java.lang.String value) {
     if (value != null) {
       return super.createAddressTypeStreetStreetNumber(value);
@@ -63,6 +67,7 @@ public class HitsObjectFactory extends ObjectFactory {
     }
   }
 
+  @Override
   public JAXBElement<String> createBaseNameTypeFamilyName(java.lang.String value) {
     if (value != null) {
       return super.createBaseNameTypeFamilyName(value);
@@ -71,6 +76,7 @@ public class HitsObjectFactory extends ObjectFactory {
     }
   }
 
+  @Override
   public JAXBElement<String> createBaseNameTypeGivenName(java.lang.String value) {
     if (value != null) {
       return super.createBaseNameTypeGivenName(value);
@@ -79,6 +85,7 @@ public class HitsObjectFactory extends ObjectFactory {
     }
   }
 
+  @Override
   public JAXBElement<String> createBaseNameTypeMiddleName(java.lang.String value) {
     if (value != null) {
       return super.createBaseNameTypeMiddleName(value);
@@ -87,6 +94,7 @@ public class HitsObjectFactory extends ObjectFactory {
     }
   }
 
+  @Override
   public JAXBElement<String> createBaseNameTypePreferredGivenName(java.lang.String value) {
     if (value != null) {
       return super.createBaseNameTypePreferredGivenName(value);
@@ -95,6 +103,7 @@ public class HitsObjectFactory extends ObjectFactory {
     }
   }
 
+  @Override
   public JAXBElement<String> createBaseNameTypeTitle(java.lang.String value) {
     if (value != null) {
       return super.createBaseNameTypeTitle(value);
@@ -103,6 +112,7 @@ public class HitsObjectFactory extends ObjectFactory {
     }
   }
 
+  @Override
   public JAXBElement<DemographicsType> createDemographics(sif.dd.au30.model.DemographicsType value) {
     if (value != null) {
       return super.createDemographics(value);
@@ -111,6 +121,7 @@ public class HitsObjectFactory extends ObjectFactory {
     }
   }
 
+  @Override
   public JAXBElement<XMLGregorianCalendar> createDemographicsTypeBirthDate(javax.xml.datatype.XMLGregorianCalendar value) {
     if (value != null) {
       return super.createDemographicsTypeBirthDate(value);
@@ -119,6 +130,7 @@ public class HitsObjectFactory extends ObjectFactory {
     }
   }
 
+  @Override
   public JAXBElement<String> createDemographicsTypeCountryOfBirth(java.lang.String value) {
     if (value != null) {
       return super.createDemographicsTypeCountryOfBirth(value);
@@ -127,6 +139,7 @@ public class HitsObjectFactory extends ObjectFactory {
     }
   }
 
+  @Override
   public JAXBElement<String> createDemographicsTypeIndigenousStatus(java.lang.String value) {
     if (value != null) {
       return super.createDemographicsTypeIndigenousStatus(value);
@@ -135,6 +148,7 @@ public class HitsObjectFactory extends ObjectFactory {
     }
   }
 
+  @Override
   public JAXBElement<String> createDemographicsTypeSex(java.lang.String value) {
     if (value != null) {
       return super.createDemographicsTypeSex(value);
@@ -143,6 +157,7 @@ public class HitsObjectFactory extends ObjectFactory {
     }
   }
 
+  @Override
   public JAXBElement<EmailListType> createEmailList(sif.dd.au30.model.EmailListType value) {
     if (value != null) {
       return super.createEmailList(value);
@@ -151,6 +166,7 @@ public class HitsObjectFactory extends ObjectFactory {
     }
   }
 
+  @Override
   public JAXBElement<PhoneNumberListType> createPhoneNumberList(sif.dd.au30.model.PhoneNumberListType value) {
     if (value != null) {
       return super.createPhoneNumberList(value);
@@ -159,6 +175,7 @@ public class HitsObjectFactory extends ObjectFactory {
     }
   }
 
+  @Override
   public JAXBElement<Long> createRoomInfoTypeCapacity(java.lang.Long value) {
     if (value != null) {
       return super.createRoomInfoTypeCapacity(value);
@@ -167,6 +184,7 @@ public class HitsObjectFactory extends ObjectFactory {
     }
   }
 
+  @Override
   public JAXBElement<String> createRoomInfoTypeDescription(java.lang.String value) {
     if (value != null) {
       return super.createRoomInfoTypeDescription(value);
@@ -175,6 +193,7 @@ public class HitsObjectFactory extends ObjectFactory {
     }
   }
 
+  @Override
   public JAXBElement<String> createRoomInfoTypeRoomType(java.lang.String value) {
     if (value != null) {
       return super.createRoomInfoTypeRoomType(value);
@@ -183,6 +202,7 @@ public class HitsObjectFactory extends ObjectFactory {
     }
   }
 
+  @Override
   public JAXBElement<BigDecimal> createRoomInfoTypeSize(java.math.BigDecimal value) {
     if (value != null) {
       return super.createRoomInfoTypeSize(value);
@@ -191,6 +211,7 @@ public class HitsObjectFactory extends ObjectFactory {
     }
   }
 
+  @Override
   public JAXBElement<String> createScheduledActivityTypeActivityComment(java.lang.String value) {
     if (value != null) {
       return super.createScheduledActivityTypeActivityComment(value);
@@ -199,6 +220,7 @@ public class HitsObjectFactory extends ObjectFactory {
     }
   }
 
+  @Override
   public JAXBElement<String> createScheduledActivityTypeActivityName(java.lang.String value) {
     if (value != null) {
       return super.createScheduledActivityTypeActivityName(value);
@@ -207,6 +229,7 @@ public class HitsObjectFactory extends ObjectFactory {
     }
   }
 
+  @Override
   public JAXBElement<String> createScheduledActivityTypeActivityType(java.lang.String value) {
     if (value != null) {
       return super.createScheduledActivityTypeActivityType(value);
@@ -215,6 +238,7 @@ public class HitsObjectFactory extends ObjectFactory {
     }
   }
 
+  @Override
   public JAXBElement<String> createScheduledActivityTypeCellType(java.lang.String value) {
     if (value != null) {
       return super.createScheduledActivityTypeCellType(value);
@@ -223,6 +247,7 @@ public class HitsObjectFactory extends ObjectFactory {
     }
   }
 
+  @Override
   public JAXBElement<String> createScheduledActivityTypeDayId(java.lang.String value) {
     if (value != null) {
       return super.createScheduledActivityTypeDayId(value);
@@ -231,6 +256,7 @@ public class HitsObjectFactory extends ObjectFactory {
     }
   }
 
+  @Override
   public JAXBElement<String> createScheduledActivityTypeLocation(java.lang.String value) {
     if (value != null) {
       return super.createScheduledActivityTypeLocation(value);
@@ -239,6 +265,7 @@ public class HitsObjectFactory extends ObjectFactory {
     }
   }
 
+  @Override
   public JAXBElement<ScheduledActivityType.Override> createScheduledActivityTypeOverride(
       sif.dd.au30.model.ScheduledActivityType.Override value) {
     if (value != null) {
@@ -248,6 +275,7 @@ public class HitsObjectFactory extends ObjectFactory {
     }
   }
 
+  @Override
   public JAXBElement<String> createScheduledActivityTypePeriodId(java.lang.String value) {
     if (value != null) {
       return super.createScheduledActivityTypePeriodId(value);
@@ -256,6 +284,7 @@ public class HitsObjectFactory extends ObjectFactory {
     }
   }
 
+  @Override
   public JAXBElement<ScheduledActivityType.RoomList> createScheduledActivityTypeRoomList(
       sif.dd.au30.model.ScheduledActivityType.RoomList value) {
     if (value != null) {
@@ -265,6 +294,7 @@ public class HitsObjectFactory extends ObjectFactory {
     }
   }
 
+  @Override
   public JAXBElement<ScheduledActivityType.StudentList> createScheduledActivityTypeStudentList(
       sif.dd.au30.model.ScheduledActivityType.StudentList value) {
     if (value != null) {
@@ -274,6 +304,7 @@ public class HitsObjectFactory extends ObjectFactory {
     }
   }
 
+  @Override
   public JAXBElement<ScheduledActivityType.TeacherList> createScheduledActivityTypeTeacherList(
       sif.dd.au30.model.ScheduledActivityType.TeacherList value) {
     if (value != null) {
@@ -283,6 +314,7 @@ public class HitsObjectFactory extends ObjectFactory {
     }
   }
 
+  @Override
   public JAXBElement<String> createScheduledActivityTypeTeacherListTeacherCoverCredit(java.lang.String value) {
     if (value != null) {
       return super.createScheduledActivityTypeTeacherListTeacherCoverCredit(value);
@@ -291,6 +323,7 @@ public class HitsObjectFactory extends ObjectFactory {
     }
   }
 
+  @Override
   public JAXBElement<XMLGregorianCalendar> createScheduledActivityTypeTeacherListTeacherCoverFinishTime(
       javax.xml.datatype.XMLGregorianCalendar value) {
     if (value != null) {
@@ -300,6 +333,7 @@ public class HitsObjectFactory extends ObjectFactory {
     }
   }
 
+  @Override
   public JAXBElement<String> createScheduledActivityTypeTeacherListTeacherCoverStaffLocalId(java.lang.String value) {
     if (value != null) {
       return super.createScheduledActivityTypeTeacherListTeacherCoverStaffLocalId(value);
@@ -308,6 +342,7 @@ public class HitsObjectFactory extends ObjectFactory {
     }
   }
 
+  @Override
   public JAXBElement<XMLGregorianCalendar> createScheduledActivityTypeTeacherListTeacherCoverStartTime(
       javax.xml.datatype.XMLGregorianCalendar value) {
     if (value != null) {
@@ -317,6 +352,7 @@ public class HitsObjectFactory extends ObjectFactory {
     }
   }
 
+  @Override
   public JAXBElement<String> createScheduledActivityTypeTeacherListTeacherCoverSupervision(java.lang.String value) {
     if (value != null) {
       return super.createScheduledActivityTypeTeacherListTeacherCoverSupervision(value);
@@ -325,6 +361,7 @@ public class HitsObjectFactory extends ObjectFactory {
     }
   }
 
+  @Override
   public JAXBElement<BigDecimal> createScheduledActivityTypeTeacherListTeacherCoverWeighting(java.math.BigDecimal value) {
     if (value != null) {
       return super.createScheduledActivityTypeTeacherListTeacherCoverWeighting(value);
@@ -333,6 +370,7 @@ public class HitsObjectFactory extends ObjectFactory {
     }
   }
 
+  @Override
   public JAXBElement<ScheduledActivityType.TeachingGroupList> createScheduledActivityTypeTeachingGroupList(
       sif.dd.au30.model.ScheduledActivityType.TeachingGroupList value) {
     if (value != null) {
@@ -342,6 +380,7 @@ public class HitsObjectFactory extends ObjectFactory {
     }
   }
 
+  @Override
   public JAXBElement<String> createScheduledActivityTypeTimeTableCellRefId(java.lang.String value) {
     if (value != null) {
       return super.createScheduledActivityTypeTimeTableCellRefId(value);
@@ -350,6 +389,7 @@ public class HitsObjectFactory extends ObjectFactory {
     }
   }
 
+  @Override
   public JAXBElement<String> createScheduledActivityTypeTimeTableRefId(java.lang.String value) {
     if (value != null) {
       return super.createScheduledActivityTypeTimeTableRefId(value);
@@ -358,6 +398,7 @@ public class HitsObjectFactory extends ObjectFactory {
     }
   }
 
+  @Override
   public JAXBElement<String> createScheduledActivityTypeTimeTableSubjectRefId(java.lang.String value) {
     if (value != null) {
       return super.createScheduledActivityTypeTimeTableSubjectRefId(value);
@@ -366,6 +407,7 @@ public class HitsObjectFactory extends ObjectFactory {
     }
   }
 
+  @Override
   public JAXBElement<YearLevelsType> createScheduledActivityTypeYearLevels(sif.dd.au30.model.YearLevelsType value) {
     if (value != null) {
       return super.createScheduledActivityTypeYearLevels(value);
@@ -374,6 +416,7 @@ public class HitsObjectFactory extends ObjectFactory {
     }
   }
 
+  @Override
   public JAXBElement<AddressListType> createSchoolInfoTypeAddressList(sif.dd.au30.model.AddressListType value) {
     if (value != null) {
       return super.createSchoolInfoTypeAddressList(value);
@@ -382,6 +425,7 @@ public class HitsObjectFactory extends ObjectFactory {
     }
   }
 
+  @Override
   public JAXBElement<BigDecimal> createSchoolInfoTypeARIA(java.math.BigDecimal value) {
     if (value != null) {
       return super.createSchoolInfoTypeARIA(value);
@@ -390,6 +434,7 @@ public class HitsObjectFactory extends ObjectFactory {
     }
   }
 
+  @Override
   public JAXBElement<SchoolInfoType.Campus> createSchoolInfoTypeCampus(sif.dd.au30.model.SchoolInfoType.Campus value) {
     if (value != null) {
       return super.createSchoolInfoTypeCampus(value);
@@ -398,6 +443,7 @@ public class HitsObjectFactory extends ObjectFactory {
     }
   }
 
+  @Override
   public JAXBElement<AUCodeSetsSchoolLevelType> createSchoolInfoTypeCampusCampusType(
       sif.dd.au30.model.AUCodeSetsSchoolLevelType value) {
     if (value != null) {
@@ -407,6 +453,7 @@ public class HitsObjectFactory extends ObjectFactory {
     }
   }
 
+  @Override
   public JAXBElement<String> createSchoolInfoTypeCommonwealthId(java.lang.String value) {
     if (value != null) {
       return super.createSchoolInfoTypeCommonwealthId(value);
@@ -415,6 +462,7 @@ public class HitsObjectFactory extends ObjectFactory {
     }
   }
 
+  @Override
   public JAXBElement<XMLGregorianCalendar> createSchoolInfoTypeEntityClose(javax.xml.datatype.XMLGregorianCalendar value) {
     if (value != null) {
       return super.createSchoolInfoTypeEntityClose(value);
@@ -423,6 +471,7 @@ public class HitsObjectFactory extends ObjectFactory {
     }
   }
 
+  @Override
   public JAXBElement<XMLGregorianCalendar> createSchoolInfoTypeEntityOpen(javax.xml.datatype.XMLGregorianCalendar value) {
     if (value != null) {
       return super.createSchoolInfoTypeEntityOpen(value);
@@ -431,6 +480,7 @@ public class HitsObjectFactory extends ObjectFactory {
     }
   }
 
+  @Override
   public JAXBElement<AUCodeSetsYesOrNoCategoryType> createSchoolInfoTypeIndependentSchool(
       sif.dd.au30.model.AUCodeSetsYesOrNoCategoryType value) {
     if (value != null) {
@@ -440,6 +490,7 @@ public class HitsObjectFactory extends ObjectFactory {
     }
   }
 
+  @Override
   public JAXBElement<String> createSchoolInfoTypeLocalId(java.lang.String value) {
     if (value != null) {
       return super.createSchoolInfoTypeLocalId(value);
@@ -448,6 +499,7 @@ public class HitsObjectFactory extends ObjectFactory {
     }
   }
 
+  @Override
   public JAXBElement<AUCodeSetsOperationalStatusType> createSchoolInfoTypeOperationalStatus(
       sif.dd.au30.model.AUCodeSetsOperationalStatusType value) {
     if (value != null) {
@@ -457,6 +509,7 @@ public class HitsObjectFactory extends ObjectFactory {
     }
   }
 
+  @Override
   public JAXBElement<String> createSchoolInfoTypeSchoolGeographicLocation(java.lang.String value) {
     if (value != null) {
       return super.createSchoolInfoTypeSchoolGeographicLocation(value);
@@ -465,6 +518,7 @@ public class HitsObjectFactory extends ObjectFactory {
     }
   }
 
+  @Override
   public JAXBElement<AUCodeSetsSchoolLevelType> createSchoolInfoTypeSchoolType(
       sif.dd.au30.model.AUCodeSetsSchoolLevelType value) {
     if (value != null) {
@@ -474,6 +528,7 @@ public class HitsObjectFactory extends ObjectFactory {
     }
   }
 
+  @Override
   public JAXBElement<String> createSchoolInfoTypeStateProvinceId(java.lang.String value) {
     if (value != null) {
       return super.createSchoolInfoTypeStateProvinceId(value);
@@ -482,6 +537,7 @@ public class HitsObjectFactory extends ObjectFactory {
     }
   }
 
+  @Override
   public JAXBElement<String> createStaffAssignmentTypeDescription(java.lang.String value) {
     if (value != null) {
       return super.createStaffAssignmentTypeDescription(value);
@@ -490,6 +546,7 @@ public class HitsObjectFactory extends ObjectFactory {
     }
   }
 
+  @Override
   public JAXBElement<XMLGregorianCalendar> createStaffAssignmentTypeJobEndDate(
       javax.xml.datatype.XMLGregorianCalendar value) {
     if (value != null) {
@@ -499,6 +556,7 @@ public class HitsObjectFactory extends ObjectFactory {
     }
   }
 
+  @Override
   public JAXBElement<String> createStaffAssignmentTypeJobFunction(java.lang.String value) {
     if (value != null) {
       return super.createStaffAssignmentTypeJobFunction(value);
@@ -507,6 +565,7 @@ public class HitsObjectFactory extends ObjectFactory {
     }
   }
 
+  @Override
   public JAXBElement<XMLGregorianCalendar> createStaffAssignmentTypeJobStartDate(
       javax.xml.datatype.XMLGregorianCalendar value) {
     if (value != null) {
@@ -516,6 +575,7 @@ public class HitsObjectFactory extends ObjectFactory {
     }
   }
 
+  @Override
   public JAXBElement<XMLGregorianCalendar> createStaffAssignmentTypeSchoolYear(
       javax.xml.datatype.XMLGregorianCalendar value) {
     if (value != null) {
@@ -525,6 +585,7 @@ public class HitsObjectFactory extends ObjectFactory {
     }
   }
 
+  @Override
   public JAXBElement<StaffAssignmentType.StaffActivity> createStaffAssignmentTypeStaffActivity(
       sif.dd.au30.model.StaffAssignmentType.StaffActivity value) {
     if (value != null) {
@@ -534,6 +595,7 @@ public class HitsObjectFactory extends ObjectFactory {
     }
   }
 
+  @Override
   public JAXBElement<AUCodeSetsStaffStatusType> createStaffPersonalTypeEmploymentStatus(
       sif.dd.au30.model.AUCodeSetsStaffStatusType value) {
     if (value != null) {
@@ -543,6 +605,7 @@ public class HitsObjectFactory extends ObjectFactory {
     }
   }
 
+  @Override
   public JAXBElement<String> createStaffPersonalTypeStateProvinceId(java.lang.String value) {
     if (value != null) {
       return super.createStaffPersonalTypeStateProvinceId(value);
@@ -551,6 +614,7 @@ public class HitsObjectFactory extends ObjectFactory {
     }
   }
 
+  @Override
   public JAXBElement<StudentPersonalType.MostRecent> createStudentPersonalTypeMostRecent(
       sif.dd.au30.model.StudentPersonalType.MostRecent value) {
     if (value != null) {
@@ -560,6 +624,7 @@ public class HitsObjectFactory extends ObjectFactory {
     }
   }
 
+  @Override
   public JAXBElement<String> createStudentPersonalTypeMostRecentParent1EmploymentType(java.lang.String value) {
     if (value != null) {
       return super.createStudentPersonalTypeMostRecentParent1EmploymentType(value);
@@ -568,6 +633,7 @@ public class HitsObjectFactory extends ObjectFactory {
     }
   }
 
+  @Override
   public JAXBElement<String> createStudentPersonalTypeMostRecentParent1Language(java.lang.String value) {
     if (value != null) {
       return super.createStudentPersonalTypeMostRecentParent1Language(value);
@@ -576,6 +642,7 @@ public class HitsObjectFactory extends ObjectFactory {
     }
   }
 
+  @Override
   public JAXBElement<String> createStudentPersonalTypeMostRecentParent1NonSchoolEducation(java.lang.String value) {
     if (value != null) {
       return super.createStudentPersonalTypeMostRecentParent1NonSchoolEducation(value);
@@ -584,6 +651,7 @@ public class HitsObjectFactory extends ObjectFactory {
     }
   }
 
+  @Override
   public JAXBElement<String> createStudentPersonalTypeMostRecentParent1SchoolEducationLevel(java.lang.String value) {
     if (value != null) {
       return super.createStudentPersonalTypeMostRecentParent1SchoolEducationLevel(value);
@@ -592,6 +660,7 @@ public class HitsObjectFactory extends ObjectFactory {
     }
   }
 
+  @Override
   public JAXBElement<String> createStudentPersonalTypeMostRecentParent2EmploymentType(java.lang.String value) {
     if (value != null) {
       return super.createStudentPersonalTypeMostRecentParent2EmploymentType(value);
@@ -600,6 +669,7 @@ public class HitsObjectFactory extends ObjectFactory {
     }
   }
 
+  @Override
   public JAXBElement<String> createStudentPersonalTypeMostRecentParent2Language(java.lang.String value) {
     if (value != null) {
       return super.createStudentPersonalTypeMostRecentParent2Language(value);
@@ -608,6 +678,7 @@ public class HitsObjectFactory extends ObjectFactory {
     }
   }
 
+  @Override
   public JAXBElement<String> createStudentPersonalTypeMostRecentParent2NonSchoolEducation(java.lang.String value) {
     if (value != null) {
       return super.createStudentPersonalTypeMostRecentParent2NonSchoolEducation(value);
@@ -616,6 +687,7 @@ public class HitsObjectFactory extends ObjectFactory {
     }
   }
 
+  @Override
   public JAXBElement<String> createStudentPersonalTypeMostRecentParent2SchoolEducationLevel(java.lang.String value) {
     if (value != null) {
       return super.createStudentPersonalTypeMostRecentParent2SchoolEducationLevel(value);
@@ -624,6 +696,7 @@ public class HitsObjectFactory extends ObjectFactory {
     }
   }
 
+  @Override
   public JAXBElement<YearLevelType> createStudentPersonalTypeMostRecentYearLevel(sif.dd.au30.model.YearLevelType value) {
     if (value != null) {
       return super.createStudentPersonalTypeMostRecentYearLevel(value);
@@ -632,6 +705,7 @@ public class HitsObjectFactory extends ObjectFactory {
     }
   }
 
+  @Override
   public JAXBElement<String> createStudentPersonalTypeStateProvinceId(java.lang.String value) {
     if (value != null) {
       return super.createStudentPersonalTypeStateProvinceId(value);
@@ -640,6 +714,7 @@ public class HitsObjectFactory extends ObjectFactory {
     }
   }
 
+  @Override
   public JAXBElement<BigDecimal> createStudentSchoolEnrollmentTypeFTE(java.math.BigDecimal value) {
     if (value != null) {
       return super.createStudentSchoolEnrollmentTypeFTE(value);
@@ -648,6 +723,7 @@ public class HitsObjectFactory extends ObjectFactory {
     }
   }
 
+  @Override
   public JAXBElement<YearLevelType> createStudentSchoolEnrollmentTypeYearLevel(sif.dd.au30.model.YearLevelType value) {
     if (value != null) {
       return super.createStudentSchoolEnrollmentTypeYearLevel(value);
@@ -656,6 +732,7 @@ public class HitsObjectFactory extends ObjectFactory {
     }
   }
 
+  @Override
   public JAXBElement<String> createTeachingGroupTypeLongName(java.lang.String value) {
     if (value != null) {
       return super.createTeachingGroupTypeLongName(value);
@@ -664,6 +741,7 @@ public class HitsObjectFactory extends ObjectFactory {
     }
   }
 
+  @Override
   public JAXBElement<String> createTeachingGroupTypeSchoolInfoRefId(java.lang.String value) {
     if (value != null) {
       return super.createTeachingGroupTypeSchoolInfoRefId(value);
@@ -672,6 +750,7 @@ public class HitsObjectFactory extends ObjectFactory {
     }
   }
 
+  @Override
   public JAXBElement<String> createTeachingGroupTypeSchoolLocalId(java.lang.String value) {
     if (value != null) {
       return super.createTeachingGroupTypeSchoolLocalId(value);
@@ -680,6 +759,7 @@ public class HitsObjectFactory extends ObjectFactory {
     }
   }
 
+  @Override
   public JAXBElement<TeachingGroupType.StudentList> createTeachingGroupTypeStudentList(
       sif.dd.au30.model.TeachingGroupType.StudentList value) {
     if (value != null) {
@@ -689,6 +769,7 @@ public class HitsObjectFactory extends ObjectFactory {
     }
   }
 
+  @Override
   public JAXBElement<String> createTeachingGroupTypeStudentListTeachingGroupStudentStudentPersonalRefId(
       java.lang.String value) {
     if (value != null) {
@@ -698,6 +779,7 @@ public class HitsObjectFactory extends ObjectFactory {
     }
   }
 
+  @Override
   public JAXBElement<TeachingGroupType.TeacherList> createTeachingGroupTypeTeacherList(
       sif.dd.au30.model.TeachingGroupType.TeacherList value) {
     if (value != null) {
@@ -707,6 +789,7 @@ public class HitsObjectFactory extends ObjectFactory {
     }
   }
 
+  @Override
   public JAXBElement<String> createTeachingGroupTypeTeacherListTeachingGroupTeacherStaffPersonalRefId(
       java.lang.String value) {
     if (value != null) {
@@ -716,6 +799,7 @@ public class HitsObjectFactory extends ObjectFactory {
     }
   }
 
+  @Override
   public JAXBElement<TeachingGroupType.TeachingGroupPeriodList> createTeachingGroupTypeTeachingGroupPeriodList(
       sif.dd.au30.model.TeachingGroupType.TeachingGroupPeriodList value) {
     if (value != null) {
@@ -725,6 +809,7 @@ public class HitsObjectFactory extends ObjectFactory {
     }
   }
 
+  @Override
   public JAXBElement<String> createTeachingGroupTypeTeachingGroupPeriodListTeachingGroupPeriodCellType(
       java.lang.String value) {
     if (value != null) {
@@ -734,6 +819,7 @@ public class HitsObjectFactory extends ObjectFactory {
     }
   }
 
+  @Override
   public JAXBElement<String> createTeachingGroupTypeTeachingGroupPeriodListTeachingGroupPeriodPeriodId(
       java.lang.String value) {
     if (value != null) {
@@ -743,6 +829,7 @@ public class HitsObjectFactory extends ObjectFactory {
     }
   }
 
+  @Override
   public JAXBElement<String> createTeachingGroupTypeTeachingGroupPeriodListTeachingGroupPeriodRoomNumber(
       java.lang.String value) {
     if (value != null) {
@@ -752,6 +839,7 @@ public class HitsObjectFactory extends ObjectFactory {
     }
   }
 
+  @Override
   public JAXBElement<String> createTeachingGroupTypeTeachingGroupPeriodListTeachingGroupPeriodStaffLocalId(
       java.lang.String value) {
     if (value != null) {
@@ -761,6 +849,7 @@ public class HitsObjectFactory extends ObjectFactory {
     }
   }
 
+  @Override
   public JAXBElement<String> createTeachingGroupTypeTeachingGroupPeriodListTeachingGroupPeriodTimeTableCellRefId(
       java.lang.String value) {
     if (value != null) {
@@ -770,6 +859,7 @@ public class HitsObjectFactory extends ObjectFactory {
     }
   }
 
+  @Override
   public JAXBElement<String> createTimeTableCellTypeRoomNumber(java.lang.String value) {
     if (value != null) {
       return super.createTimeTableCellTypeRoomNumber(value);
@@ -778,6 +868,7 @@ public class HitsObjectFactory extends ObjectFactory {
     }
   }
 
+  @Override
   public JAXBElement<String> createTimeTableCellTypeSchoolInfoRefId(java.lang.String value) {
     if (value != null) {
       return super.createTimeTableCellTypeSchoolInfoRefId(value);
@@ -786,6 +877,7 @@ public class HitsObjectFactory extends ObjectFactory {
     }
   }
 
+  @Override
   public JAXBElement<String> createTimeTableCellTypeSchoolLocalId(java.lang.String value) {
     if (value != null) {
       return super.createTimeTableCellTypeSchoolLocalId(value);
@@ -794,6 +886,7 @@ public class HitsObjectFactory extends ObjectFactory {
     }
   }
 
+  @Override
   public JAXBElement<String> createTimeTableCellTypeStaffLocalId(java.lang.String value) {
     if (value != null) {
       return super.createTimeTableCellTypeStaffLocalId(value);
@@ -802,6 +895,7 @@ public class HitsObjectFactory extends ObjectFactory {
     }
   }
 
+  @Override
   public JAXBElement<String> createTimeTableCellTypeStaffPersonalRefId(java.lang.String value) {
     if (value != null) {
       return super.createTimeTableCellTypeStaffPersonalRefId(value);
@@ -810,6 +904,7 @@ public class HitsObjectFactory extends ObjectFactory {
     }
   }
 
+  @Override
   public JAXBElement<String> createTimeTableCellTypeSubjectLocalId(java.lang.String value) {
     if (value != null) {
       return super.createTimeTableCellTypeSubjectLocalId(value);
@@ -818,6 +913,7 @@ public class HitsObjectFactory extends ObjectFactory {
     }
   }
 
+  @Override
   public JAXBElement<String> createTimeTableCellTypeTeachingGroupLocalId(java.lang.String value) {
     if (value != null) {
       return super.createTimeTableCellTypeTeachingGroupLocalId(value);
@@ -826,6 +922,7 @@ public class HitsObjectFactory extends ObjectFactory {
     }
   }
 
+  @Override
   public JAXBElement<String> createTimeTableCellTypeTimeTableLocalId(java.lang.String value) {
     if (value != null) {
       return super.createTimeTableCellTypeTimeTableLocalId(value);
@@ -834,6 +931,7 @@ public class HitsObjectFactory extends ObjectFactory {
     }
   }
 
+  @Override
   public JAXBElement<YearLevelType> createTimeTableSubjectTypeAcademicYear(sif.dd.au30.model.YearLevelType value) {
     if (value != null) {
       return super.createTimeTableSubjectTypeAcademicYear(value);
@@ -842,6 +940,7 @@ public class HitsObjectFactory extends ObjectFactory {
     }
   }
 
+  @Override
   public JAXBElement<String> createTimeTableSubjectTypeFaculty(java.lang.String value) {
     if (value != null) {
       return super.createTimeTableSubjectTypeFaculty(value);
@@ -850,6 +949,7 @@ public class HitsObjectFactory extends ObjectFactory {
     }
   }
 
+  @Override
   public JAXBElement<OtherCodeListType> createTimeTableSubjectTypeOtherCodeList(
       sif.dd.au30.model.OtherCodeListType value) {
     if (value != null) {
@@ -859,6 +959,7 @@ public class HitsObjectFactory extends ObjectFactory {
     }
   }
 
+  @Override
   public JAXBElement<BigDecimal> createTimeTableSubjectTypeProposedMinClassSize(java.math.BigDecimal value) {
     if (value != null) {
       return super.createTimeTableSubjectTypeProposedMinClassSize(value);
@@ -867,6 +968,7 @@ public class HitsObjectFactory extends ObjectFactory {
     }
   }
 
+  @Override
   public JAXBElement<String> createTimeTableSubjectTypeSchoolInfoRefId(java.lang.String value) {
     if (value != null) {
       return super.createTimeTableSubjectTypeSchoolInfoRefId(value);
@@ -875,6 +977,7 @@ public class HitsObjectFactory extends ObjectFactory {
     }
   }
 
+  @Override
   public JAXBElement<XMLGregorianCalendar> createTimeTableSubjectTypeSchoolYear(
       javax.xml.datatype.XMLGregorianCalendar value) {
     if (value != null) {
@@ -884,6 +987,7 @@ public class HitsObjectFactory extends ObjectFactory {
     }
   }
 
+  @Override
   public JAXBElement<Long> createTimeTableSubjectTypeSemester(java.lang.Long value) {
     if (value != null) {
       return super.createTimeTableSubjectTypeSemester(value);
@@ -892,6 +996,7 @@ public class HitsObjectFactory extends ObjectFactory {
     }
   }
 
+  @Override
   public JAXBElement<String> createTimeTableSubjectTypeSubjectShortName(java.lang.String value) {
     if (value != null) {
       return super.createTimeTableSubjectTypeSubjectShortName(value);
@@ -900,6 +1005,7 @@ public class HitsObjectFactory extends ObjectFactory {
     }
   }
 
+  @Override
   public JAXBElement<String> createTimeTableSubjectTypeSubjectType(java.lang.String value) {
     if (value != null) {
       return super.createTimeTableSubjectTypeSubjectType(value);
@@ -908,6 +1014,7 @@ public class HitsObjectFactory extends ObjectFactory {
     }
   }
 
+  @Override
   public JAXBElement<String> createTimeTableTypeLocalId(java.lang.String value) {
     if (value != null) {
       return super.createTimeTableTypeLocalId(value);
@@ -916,6 +1023,7 @@ public class HitsObjectFactory extends ObjectFactory {
     }
   }
 
+  @Override
   public JAXBElement<String> createTimeTableTypeSchoolInfoRefId(java.lang.String value) {
     if (value != null) {
       return super.createTimeTableTypeSchoolInfoRefId(value);
@@ -924,6 +1032,7 @@ public class HitsObjectFactory extends ObjectFactory {
     }
   }
 
+  @Override
   public JAXBElement<String> createTimeTableTypeSchoolLocalId(java.lang.String value) {
     if (value != null) {
       return super.createTimeTableTypeSchoolLocalId(value);
@@ -932,6 +1041,7 @@ public class HitsObjectFactory extends ObjectFactory {
     }
   }
 
+  @Override
   public JAXBElement<String> createTimeTableTypeSchoolName(java.lang.String value) {
     if (value != null) {
       return super.createTimeTableTypeSchoolName(value);
@@ -940,6 +1050,7 @@ public class HitsObjectFactory extends ObjectFactory {
     }
   }
 
+  @Override
   public JAXBElement<String> createTimeTableTypeTimeTableDayListTimeTableDayTimeTablePeriodListTimeTablePeriodBellPeriod(
       java.lang.String value) {
     if (value != null) {
@@ -949,6 +1060,7 @@ public class HitsObjectFactory extends ObjectFactory {
     }
   }
 
+  @Override
   public JAXBElement<XMLGregorianCalendar> createTimeTableTypeTimeTableDayListTimeTableDayTimeTablePeriodListTimeTablePeriodEndTime(
       javax.xml.datatype.XMLGregorianCalendar value) {
     if (value != null) {
@@ -958,6 +1070,7 @@ public class HitsObjectFactory extends ObjectFactory {
     }
   }
 
+  @Override
   public JAXBElement<XMLGregorianCalendar> createTimeTableTypeTimeTableDayListTimeTableDayTimeTablePeriodListTimeTablePeriodStartTime(
       javax.xml.datatype.XMLGregorianCalendar value) {
     if (value != null) {
@@ -967,6 +1080,7 @@ public class HitsObjectFactory extends ObjectFactory {
     }
   }
 
+  @Override
   public JAXBElement<XMLGregorianCalendar> createCalendarSummaryTypeStartDate(XMLGregorianCalendar value) {
     if (value != null) {
       return super.createCalendarSummaryTypeStartDate(value);
@@ -975,6 +1089,7 @@ public class HitsObjectFactory extends ObjectFactory {
     }
   }
 
+  @Override
   public JAXBElement<XMLGregorianCalendar> createCalendarSummaryTypeEndDate(XMLGregorianCalendar value) {
     if (value != null) {
       return super.createCalendarSummaryTypeEndDate(value);
@@ -983,6 +1098,7 @@ public class HitsObjectFactory extends ObjectFactory {
     }
   }
 
+  @Override
   public JAXBElement<String> createCalendarDateCalendarDateRefId(String value) {
     if (value != null) {
       return super.createCalendarDateCalendarDateRefId(value);
@@ -991,6 +1107,7 @@ public class HitsObjectFactory extends ObjectFactory {
     }
   }
 
+  @Override
   public JAXBElement<Long> createCalendarDateCalendarDateNumber(Long value) {
     if (value != null) {
       return super.createCalendarDateCalendarDateNumber(value);
@@ -999,9 +1116,46 @@ public class HitsObjectFactory extends ObjectFactory {
     }
   }
 
+  @Override
   public JAXBElement<OtherCodeListType> createCalendarDateCalendarDateTypeOtherCodeList(OtherCodeListType value) {
     if (value != null) {
       return super.createCalendarDateCalendarDateTypeOtherCodeList(value);
+    } else {
+      return null;
+    }
+  }
+
+  @Override
+  public JAXBElement<String> createStudentAttendanceSummaryTypeStudentAttendanceSummaryRefId(String value) {
+    if (value != null) {
+      return super.createStudentAttendanceSummaryTypeStudentAttendanceSummaryRefId(value);
+    } else {
+      return null;
+    }
+  }
+
+  @Override
+  public JAXBElement<Long> createStudentAttendanceSummaryTypeStartDay(Long value) {
+    if (value != null) {
+      return super.createStudentAttendanceSummaryTypeStartDay(value);
+    } else {
+      return null;
+    }
+  }
+  
+  @Override
+  public JAXBElement<Long> createStudentAttendanceSummaryTypeEndDay(Long value) {
+    if (value != null) {
+      return super.createStudentAttendanceSummaryTypeEndDay(value);
+    } else {
+      return null;
+    }
+  }
+  
+  @Override
+  public JAXBElement<BigDecimal> createStudentAttendanceSummaryTypeFTE(BigDecimal value) {
+    if (value != null) {
+      return super.createStudentAttendanceSummaryTypeFTE(value);
     } else {
       return null;
     }

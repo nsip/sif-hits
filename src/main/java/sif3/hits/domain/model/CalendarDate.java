@@ -9,7 +9,7 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
 @Entity
-public class CalendarDate extends HitsEntity {
+public class CalendarDate extends HitsEntity implements ZoneFilterable {
   private static final long serialVersionUID = -8738735661622663019L;
 
   private String refId;
