@@ -2,7 +2,7 @@ package sif3.hits.domain.converter;
 
 import org.springframework.stereotype.Component;
 
-import sif.dd.au30.model.ObjectFactory;
+import sif3.hits.domain.converter.factory.ObjectFactory;
 import sif.dd.au30.model.TimeTableCellType;
 import sif3.hits.domain.model.TeachingGroup;
 

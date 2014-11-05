@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import sif.dd.au30.model.CalendarDate.CalendarDateType;
-import sif.dd.au30.model.ObjectFactory;
+import sif3.hits.domain.converter.factory.ObjectFactory;
 import sif.dd.au30.model.OtherCodeListType;
 import sif.dd.au30.model.OtherCodeListType.OtherCode;
 import sif3.hits.domain.model.CalendarDate;

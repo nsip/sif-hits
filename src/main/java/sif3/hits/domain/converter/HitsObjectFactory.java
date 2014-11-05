@@ -13,7 +13,6 @@ import sif.dd.au30.model.AddressListType;
 import sif.dd.au30.model.DemographicsType;
 import sif.dd.au30.model.EmailListType;
 import sif.dd.au30.model.GridLocationType;
-import sif.dd.au30.model.ObjectFactory;
 import sif.dd.au30.model.OtherCodeListType;
 import sif.dd.au30.model.PhoneNumberListType;
 import sif.dd.au30.model.ScheduledActivityType;
@@ -23,6 +22,7 @@ import sif.dd.au30.model.StudentPersonalType;
 import sif.dd.au30.model.TeachingGroupType;
 import sif.dd.au30.model.YearLevelType;
 import sif.dd.au30.model.YearLevelsType;
+import sif3.hits.domain.converter.factory.ObjectFactory;
 
 /**
  * Proxy for the Object Factory to treat nulls as null instead of nil.
@@ -30,7 +30,7 @@ import sif.dd.au30.model.YearLevelsType;
  * @see sif.dd.au30.model.ObjectFactory
  * @author Ben Carter
  */
-public class HitsObjectFactory extends ObjectFactory {
+public class HitsObjectFactory extends sif.dd.au30.model.ObjectFactory implements ObjectFactory {
   @Override
   public JAXBElement<GridLocationType> createAddressTypeGridLocation(sif.dd.au30.model.GridLocationType value) {
     if (value != null) {

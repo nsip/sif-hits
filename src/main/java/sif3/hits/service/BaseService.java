@@ -27,6 +27,7 @@ import sif3.hits.domain.helper.HitsDatabaseContext;
 import sif3.hits.domain.shared.model.Zone;
 import sif3.hits.rest.dto.RequestDTO;
 import sif3.hits.rest.dto.ResponseDTO;
+import sif3.hits.rest.exception.NotYetImplementedException;
 import au.com.systemic.framework.utils.StringUtils;
 
 @Transactional(value = "transactionManager")
@@ -94,6 +95,34 @@ public abstract class BaseService<S, SC, H> {
       }
     }
     return result;
+  }
+  
+  // Read All
+  public SC findWithServicePath(String parentName, String parentKey, PagingInfo pagingInfo, String zoneId) throws NotYetImplementedException {
+    SC result = getCollection(new ArrayList<S>());
+    if (pagingInfo != null) {
+      PageRequest pageRequest = new PageRequest(pagingInfo.getCurrentPageNo(), pagingInfo.getPageSize());
+      Page<H> results = findWithServicePath(parentName, parentKey, getSchoolRefIds(zoneId), pageRequest);
+      if (results != null) {
+        List<S> sifResultObjects = getConverter().toSifModelList(results.getContent());
+        result = getCollection(sifResultObjects);
+      }
+    }
+    return result;
+  }
+  
+  /**
+   * Find with Service path
+   * Override this in service layer to provide service path filtering.
+   * @param parentName
+   * @param parentKey
+   * @param schoolRefIds
+   * @param pageRequest
+   * @return
+   * @throws NotYetImplementedException 
+   */
+  protected Page<H> findWithServicePath(String parentName, String parentKey, List<String> schoolRefIds, PageRequest pageRequest) throws NotYetImplementedException {
+    throw new NotYetImplementedException();
   }
 
   // Update

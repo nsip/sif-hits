@@ -1,7 +1,5 @@
 package sif3.hits.rest.provider;
 
-import java.util.List;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -24,14 +22,5 @@ public class StaffAssignmentProvider extends
   public StaffAssignmentProvider() {
     super(StaffAssignmentType.class, "StaffAssignment", StaffAssignmentCollectionType.class, "StaffAssignments",
         StaffAssignmentService.class);
-  }
-
-  @Override
-  protected List<StaffAssignmentType> getSifList(StaffAssignmentCollectionType sifCollection) {
-    List<StaffAssignmentType> result = null;
-    if (sifCollection != null) {
-      result = sifCollection.getStaffAssignment();
-    }
-    return result;
   }
 }

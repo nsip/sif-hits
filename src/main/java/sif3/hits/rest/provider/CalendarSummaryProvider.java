@@ -1,7 +1,5 @@
 package sif3.hits.rest.provider;
 
-import java.util.List;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -24,14 +22,5 @@ public class CalendarSummaryProvider extends
   public CalendarSummaryProvider() {
     super(CalendarSummaryType.class, "CalendarSummary", CalendarSummaryCollectionType.class, "CalendarSummarys",
         CalendarSummaryService.class);
-  }
-
-  @Override
-  protected List<CalendarSummaryType> getSifList(CalendarSummaryCollectionType sifCollection) {
-    List<CalendarSummaryType> result = null;
-    if (sifCollection != null) {
-      result = sifCollection.getCalendarSummary();
-    }
-    return result;
   }
 }

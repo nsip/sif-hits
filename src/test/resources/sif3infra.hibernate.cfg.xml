@@ -19,7 +19,7 @@
           
         <property name="dialect">org.hibernate.dialect.MySQLInnoDBDialect</property>
         <property name="connection.driver_class">com.mysql.jdbc.Driver</property>
-        <property name="connection.url">jdbc:mysql://localhost:3306/sif3_infra</property>
+        <property name="connection.url">jdbc:mysql://localhost:3306/hits_sif3_infra</property>
         <property name="connection.username">sif3</property>
         <property name="connection.password">sif3</property>
 

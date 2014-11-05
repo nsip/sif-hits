@@ -1,7 +1,5 @@
 package sif3.hits.rest.provider;
 
-import java.util.List;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -29,13 +27,4 @@ public class StudentPersonalProvider extends
 //  public Object findBySchoolInfos(String referenceId, SIFZone zone, SIFContext context, PagingInfo pagingInfo, RequestMetadata metadata) throws PersistenceException, UnsupportedQueryException {   
 //    return super.retrieve(zone, context, pagingInfo, metadata);
 //  }
-
-  @Override
-  protected List<StudentPersonalType> getSifList(StudentCollectionType sifCollection) {
-    List<StudentPersonalType> result = null;
-    if (sifCollection != null) {
-      result = sifCollection.getStudentPersonal();
-    }
-    return result;
-  }
 }

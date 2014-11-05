@@ -4,7 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import sif.dd.au30.model.NameOfRecordType;
-import sif.dd.au30.model.ObjectFactory;
+import sif3.hits.domain.converter.factory.ObjectFactory;
 import sif.dd.au30.model.TeachingGroupType.TeacherList.TeachingGroupTeacher;
 import sif3.hits.domain.model.StaffPersonal;
 

@@ -8,7 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import sif.dd.au30.model.AUCodeSetsYesOrNoCategoryType;
-import sif.dd.au30.model.ObjectFactory;
+import sif3.hits.domain.converter.factory.ObjectFactory;
 import sif.dd.au30.model.ScheduledActivityType;
 import sif.dd.au30.model.ScheduledActivityType.RoomList;
 import sif.dd.au30.model.ScheduledActivityType.StudentList;

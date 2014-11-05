@@ -2,8 +2,10 @@ package sif3.hits.rest.provider;
 
 import static sif3.hits.service.e.OperationStatus.CREATE_ERR_OTHER;
 import static sif3.hits.service.e.OperationStatus.DELETE_ERR_OTHER;
+import static sif3.hits.service.e.OperationStatus.SERVICE_PATH_NOT_FOUND;
 import static sif3.hits.service.e.OperationStatus.UPDATE_ERR_OTHER;
 
+import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -23,6 +25,7 @@ import sif3.common.ws.OperationStatus;
 import sif3.hits.config.HitsSpringContext;
 import sif3.hits.rest.dto.RequestDTO;
 import sif3.hits.rest.dto.ResponseDTO;
+import sif3.hits.rest.exception.NotYetImplementedException;
 import sif3.hits.service.BaseService;
 import au.com.systemic.framework.utils.StringUtils;
 
@@ -35,7 +38,8 @@ public abstract class HitsBaseProvider<S, SC, H, HS extends BaseService<S, SC, H
   private final String COLLECTION_NAME;
 
   private static final Logger L = LoggerFactory.getLogger(HitsBaseProvider.class);
-
+  private static Method GET_COLLECTION_METHOD;
+  
   private HS service = null;
 
   public HitsBaseProvider(Class<S> sifClass, String singleName, Class<SC> sifCollectionClass, String collectionName,
@@ -46,8 +50,9 @@ public abstract class HitsBaseProvider<S, SC, H, HS extends BaseService<S, SC, H
     this.SIF_COLLECTION_CLASS = sifCollectionClass;
     this.COLLECTION_NAME = collectionName;
     this.HITS_SERVICE_CLASS = hitsServiceClass;
+    initialise(sifCollectionClass, singleName);
   }
-
+  
   private HS getService() {
     if (service == null) {
       service = HitsSpringContext.getBean(HITS_SERVICE_CLASS);
@@ -230,6 +235,18 @@ public abstract class HitsBaseProvider<S, SC, H, HS extends BaseService<S, SC, H
 
     L.debug("Find many " + COLLECTION_NAME + "...");
     return getService().findAll(pagingInfo, getZoneId(zone));
+  }
+  
+  public Object retrieveWithServicePath(String parentName, String parentKey, SIFZone zone, SIFContext context, PagingInfo pagingInfo, RequestMetadata metadata) {
+    setDatabaseContext(zone, context);
+    
+    L.debug("Find many " + COLLECTION_NAME + " ... where " + parentName + " = " + parentKey);
+    
+    try {
+      return getService().findWithServicePath(parentName,  parentKey, pagingInfo, getZoneId(zone));
+    } catch (NotYetImplementedException ex) {
+      return new ResponseDTO<S>(null, null, SERVICE_PATH_NOT_FOUND);
+    }
   }
 
   /*
@@ -419,7 +436,32 @@ public abstract class HitsBaseProvider<S, SC, H, HS extends BaseService<S, SC, H
     return status;
   }
 
-  protected abstract List<S> getSifList(SC sifCollection);
+  private static void initialise(Class<?> collectionClass, String singleName) {
+    if (GET_COLLECTION_METHOD == null) {
+      assignCollectionMethod(collectionClass, singleName);
+    }
+  }
+  
+  private static synchronized void assignCollectionMethod(Class<?> collectionClass, String singleName) {
+    if (GET_COLLECTION_METHOD == null) {
+      try {
+        GET_COLLECTION_METHOD = collectionClass.getMethod("get" + singleName, new Class[] {});
+      } catch (Exception e) {
+        L.error("Unable to determine get collection method. - get" + singleName, e);
+      }
+    }
+  }
+  
+  @SuppressWarnings("unchecked")
+  protected List<S> getSifList(SC sifCollection) {
+    try {
+      return (List<S>) GET_COLLECTION_METHOD.invoke(sifCollection, new Object[] {});
+    } catch (Exception e) {
+      L.error("Unable to get collection list from collection type. - " + SINGLE_NAME, e);
+      // Probably need to override this method if you get this exception.
+    }
+    return null;
+  }
 
   @Override
   public ModelObjectInfo getSingleObjectClassInfo() {

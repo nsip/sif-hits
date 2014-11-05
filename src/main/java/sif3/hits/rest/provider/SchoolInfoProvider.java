@@ -1,7 +1,5 @@
 package sif3.hits.rest.provider;
 
-import java.util.List;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -23,14 +21,5 @@ public class SchoolInfoProvider extends
    */
   public SchoolInfoProvider() {
     super(SchoolInfoType.class, "SchoolInfo", SchoolCollectionType.class, "SchoolInfos", SchoolInfoService.class);
-  }
-
-  @Override
-  protected List<SchoolInfoType> getSifList(SchoolCollectionType sifCollection) {
-    List<SchoolInfoType> result = null;
-    if (sifCollection != null) {
-      result = sifCollection.getSchoolInfo();
-    }
-    return result;
   }
 }

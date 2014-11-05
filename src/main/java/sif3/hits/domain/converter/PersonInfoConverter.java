@@ -7,7 +7,7 @@ import sif.dd.au30.model.DemographicsType;
 import sif.dd.au30.model.EmailListType;
 import sif.dd.au30.model.EmailListType.Email;
 import sif.dd.au30.model.NameOfRecordType;
-import sif.dd.au30.model.ObjectFactory;
+import sif3.hits.domain.converter.factory.ObjectFactory;
 import sif.dd.au30.model.PersonInfoType;
 import sif.dd.au30.model.PhoneNumberListType;
 import sif.dd.au30.model.PhoneNumberListType.PhoneNumber;

@@ -1,7 +1,5 @@
 package sif3.hits.rest.provider;
 
-import java.util.List;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -24,14 +22,5 @@ public class StaffPersonalProvider extends
   public StaffPersonalProvider() {
     super(StaffPersonalType.class, "StaffPersonal", StaffCollectionType.class, "StaffPersonals",
         StaffPersonalService.class);
-  }
-
-  @Override
-  protected List<StaffPersonalType> getSifList(StaffCollectionType sifCollection) {
-    List<StaffPersonalType> result = null;
-    if (sifCollection != null) {
-      result = sifCollection.getStaffPersonal();
-    }
-    return result;
   }
 }

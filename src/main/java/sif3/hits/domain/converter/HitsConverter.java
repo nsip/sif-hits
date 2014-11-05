@@ -15,14 +15,14 @@ import javax.xml.datatype.XMLGregorianCalendar;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import sif.dd.au30.model.ObjectFactory;
+import sif3.hits.domain.converter.factory.ObjectFactory;
 
 public abstract class HitsConverter<S, H> {
 
   private Logger logger = LoggerFactory.getLogger(HitsConverter.class);
   private Class<S> sifClass;
   private Class<H> hitsClass;
-  private static final ObjectFactory objectFactory = new ObjectFactory();
+  private static final ObjectFactory objectFactory = new HitsObjectFactory();
   private static final InvocationHandler nullValueInvocationHandler = new InvocationHandler() {
     @Override
     public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
@@ -111,7 +111,7 @@ public abstract class HitsConverter<S, H> {
   /* Getter + Setter Helpers */
   /***************************/
   protected ObjectFactory getObjectFactory() {
-    return (ObjectFactory) Proxy.newProxyInstance(this.getClass().getClassLoader(),new Class[] { sif.dd.au30.model.ObjectFactory.class }, nullValueInvocationHandler);
+    return (ObjectFactory) Proxy.newProxyInstance(this.getClass().getClassLoader(),new Class[] { ObjectFactory.class }, nullValueInvocationHandler);
   }
 
   protected <V> V getJAXBValue(JAXBElement<V> element) {

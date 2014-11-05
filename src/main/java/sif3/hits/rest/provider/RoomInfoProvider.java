@@ -1,7 +1,5 @@
 package sif3.hits.rest.provider;
 
-import java.util.List;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -10,8 +8,7 @@ import sif.dd.au30.model.RoomInfoType;
 import sif3.hits.domain.model.RoomInfo;
 import sif3.hits.service.RoomInfoService;
 
-public class RoomInfoProvider extends
-    HitsBaseProvider<RoomInfoType, RoomInfoCollectionType, RoomInfo, RoomInfoService> {
+public class RoomInfoProvider extends HitsBaseProvider<RoomInfoType, RoomInfoCollectionType, RoomInfo, RoomInfoService> {
 
   protected static final Logger L = LoggerFactory.getLogger(RoomInfoProvider.class);
 
@@ -22,16 +19,6 @@ public class RoomInfoProvider extends
    *          values of provider property file.
    */
   public RoomInfoProvider() {
-    super(RoomInfoType.class, "RoomInfo", RoomInfoCollectionType.class, "RoomInfos",
-        RoomInfoService.class);
-  }
-
-  @Override
-  protected List<RoomInfoType> getSifList(RoomInfoCollectionType sifCollection) {
-    List<RoomInfoType> result = null;
-    if (sifCollection != null) {
-      result = sifCollection.getRoomInfo();
-    }
-    return result;
+    super(RoomInfoType.class, "RoomInfo", RoomInfoCollectionType.class, "RoomInfos", RoomInfoService.class);
   }
 }

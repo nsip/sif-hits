@@ -1,7 +1,5 @@
 package sif3.hits.rest.provider;
 
-import java.util.List;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -24,14 +22,5 @@ public class StudentSchoolEnrollmentProvider extends
   public StudentSchoolEnrollmentProvider() {
     super(StudentSchoolEnrollmentType.class, "StudentSchoolEnrollment", StudentSchoolEnrollmentCollectionType.class, "StudentSchoolEnrollments",
         StudentSchoolEnrollmentService.class);
-  }
-
-  @Override
-  protected List<StudentSchoolEnrollmentType> getSifList(StudentSchoolEnrollmentCollectionType sifCollection) {
-    List<StudentSchoolEnrollmentType> result = null;
-    if (sifCollection != null) {
-      result = sifCollection.getStudentSchoolEnrollment();
-    }
-    return result;
   }
 }

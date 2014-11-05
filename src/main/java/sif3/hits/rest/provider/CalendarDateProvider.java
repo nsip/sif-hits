@@ -1,7 +1,5 @@
 package sif3.hits.rest.provider;
 
-import java.util.List;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -23,14 +21,5 @@ public class CalendarDateProvider extends
   public CalendarDateProvider() {
     super(sif.dd.au30.model.CalendarDate.class, "CalendarDate", CalendarDateCollectionType.class, "CalendarDates",
         CalendarDateService.class);
-  }
-
-  @Override
-  protected List<sif.dd.au30.model.CalendarDate> getSifList(CalendarDateCollectionType sifCollection) {
-    List<sif.dd.au30.model.CalendarDate> result = null;
-    if (sifCollection != null) {
-      result = sifCollection.getCalendarDate();
-    }
-    return result;
   }
 }
