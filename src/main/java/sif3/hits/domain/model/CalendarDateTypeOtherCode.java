@@ -2,6 +2,7 @@ package sif3.hits.domain.model;
 
 import java.io.Serializable;
 
+import javax.persistence.Column;
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 import javax.persistence.Table;
@@ -14,6 +15,7 @@ public class CalendarDateTypeOtherCode implements Serializable {
 
   @EmbeddedId
   private CalendarDateTypeOtherCodeId calendarDateTypeOtherCodeId;
+  @Column(name = "OtherCode_CodeSet")
   private String codeSet;
 
   public CalendarDateTypeOtherCodeId getCalendarDateTypeOtherCodeId() {

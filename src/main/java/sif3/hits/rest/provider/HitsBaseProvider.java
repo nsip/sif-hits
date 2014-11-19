@@ -2,12 +2,13 @@ package sif3.hits.rest.provider;
 
 import static sif3.hits.service.e.OperationStatus.CREATE_ERR_OTHER;
 import static sif3.hits.service.e.OperationStatus.DELETE_ERR_OTHER;
-import static sif3.hits.service.e.OperationStatus.SERVICE_PATH_NOT_FOUND;
 import static sif3.hits.service.e.OperationStatus.UPDATE_ERR_OTHER;
 
 import java.lang.reflect.Method;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -15,7 +16,10 @@ import org.slf4j.LoggerFactory;
 import sif3.common.conversion.ModelObjectInfo;
 import sif3.common.exception.PersistenceException;
 import sif3.common.exception.UnsupportedQueryException;
+import sif3.common.interfaces.QueryProvider;
 import sif3.common.model.PagingInfo;
+import sif3.common.model.QueryCriteria;
+import sif3.common.model.QueryPredicate;
 import sif3.common.model.RequestMetadata;
 import sif3.common.model.SIFContext;
 import sif3.common.model.SIFZone;
@@ -23,13 +27,14 @@ import sif3.common.ws.CreateOperationStatus;
 import sif3.common.ws.ErrorDetails;
 import sif3.common.ws.OperationStatus;
 import sif3.hits.config.HitsSpringContext;
+import sif3.hits.rest.dto.KeyValuePair;
 import sif3.hits.rest.dto.RequestDTO;
 import sif3.hits.rest.dto.ResponseDTO;
-import sif3.hits.rest.exception.NotYetImplementedException;
 import sif3.hits.service.BaseService;
+import sif3.hits.utils.RefIdGenerator;
 import au.com.systemic.framework.utils.StringUtils;
 
-public abstract class HitsBaseProvider<S, SC, H, HS extends BaseService<S, SC, H>> extends AUDataModelProvider {
+public abstract class HitsBaseProvider<S, SC, H, HS extends BaseService<S, SC, H>> extends AUDataModelProvider implements QueryProvider {
 
   private final Class<S> SIF_CLASS;
   private final Class<SC> SIF_COLLECTION_CLASS;
@@ -38,8 +43,8 @@ public abstract class HitsBaseProvider<S, SC, H, HS extends BaseService<S, SC, H
   private final String COLLECTION_NAME;
 
   private static final Logger L = LoggerFactory.getLogger(HitsBaseProvider.class);
-  private static Method GET_COLLECTION_METHOD;
-  
+  private static final Map<Class<?>, Method> GET_COLLECTION_METHODS = new HashMap<Class<?>, Method>();
+
   private HS service = null;
 
   public HitsBaseProvider(Class<S> sifClass, String singleName, Class<SC> sifCollectionClass, String collectionName,
@@ -52,7 +57,7 @@ public abstract class HitsBaseProvider<S, SC, H, HS extends BaseService<S, SC, H
     this.HITS_SERVICE_CLASS = hitsServiceClass;
     initialise(sifCollectionClass, singleName);
   }
-  
+
   private HS getService() {
     if (service == null) {
       service = HitsSpringContext.getBean(HITS_SERVICE_CLASS);
@@ -63,8 +68,8 @@ public abstract class HitsBaseProvider<S, SC, H, HS extends BaseService<S, SC, H
   /*
    * (non-Javadoc)
    * 
-   * @see sif3.common.interfaces.Provider#retrievByPrimaryKey(java.lang.String, sif3.common.model.SIFZone,
-   * sif3.common.model.SIFContext)
+   * @see sif3.common.interfaces.Provider#retrievByPrimaryKey(java.lang.String,
+   * sif3.common.model.SIFZone, sif3.common.model.SIFContext)
    */
   @Override
   public Object retrievByPrimaryKey(String resourceID, SIFZone zone, SIFContext context, RequestMetadata metadata)
@@ -88,19 +93,19 @@ public abstract class HitsBaseProvider<S, SC, H, HS extends BaseService<S, SC, H
   /*
    * (non-Javadoc)
    * 
-   * @see sif3.common.interfaces.Provider#createSingle(java.lang.Object, sif3.common.model.SIFZone,
-   * sif3.common.model.SIFContext)
+   * @see sif3.common.interfaces.Provider#createSingle(java.lang.Object,
+   * sif3.common.model.SIFZone, sif3.common.model.SIFContext)
    */
   @Override
-  public Object createSingle(Object data, boolean useAdvisory, SIFZone zone, SIFContext context, RequestMetadata metadata)
-      throws IllegalArgumentException, PersistenceException {
+  public Object createSingle(Object data, boolean useAdvisory, SIFZone zone, SIFContext context,
+      RequestMetadata metadata) throws IllegalArgumentException, PersistenceException {
 
     setDatabaseContext(zone, context);
 
     // Must be of type SIF_CLASS
     if (data != null && SIF_CLASS.isAssignableFrom(data.getClass())) {
       S sifObject = SIF_CLASS.cast(data);
-      RequestDTO<S> baseDTO = RequestDTO.getInstance(sifObject, useAdvisory, SIF_CLASS);
+      RequestDTO<S> baseDTO = getRequestDTO(sifObject, null, useAdvisory, SIF_CLASS);
       ResponseDTO<S> result = createSingle(baseDTO, getZoneId(zone));
       CreateOperationStatus createOperationStatus = getCreateOperationStatus(result);
       if (result.getOperationStatus().isOk()) {
@@ -141,8 +146,8 @@ public abstract class HitsBaseProvider<S, SC, H, HS extends BaseService<S, SC, H
   /*
    * (non-Javadoc)
    * 
-   * @see sif3.common.interfaces.Provider#updateSingle(java.lang.Object, java.lang.String, sif3.common.model.SIFZone,
-   * sif3.common.model.SIFContext)
+   * @see sif3.common.interfaces.Provider#updateSingle(java.lang.Object,
+   * java.lang.String, sif3.common.model.SIFZone, sif3.common.model.SIFContext)
    */
   @Override
   public boolean updateSingle(Object data, String resourceID, SIFZone zone, SIFContext context, RequestMetadata metadata)
@@ -158,7 +163,7 @@ public abstract class HitsBaseProvider<S, SC, H, HS extends BaseService<S, SC, H
     if (data != null && SIF_CLASS.isAssignableFrom(data.getClass())) {
       L.debug("Update " + SINGLE_NAME + " with Resoucre ID = " + resourceID);
       S sifObject = SIF_CLASS.cast(data);
-      RequestDTO<S> dto = RequestDTO.getInstance(sifObject, resourceID, SIF_CLASS);
+      RequestDTO<S> dto = getRequestDTO(sifObject, resourceID, null, SIF_CLASS);
       ResponseDTO<S> result = updateSingle(dto, getZoneId(zone));
       OperationStatus operationStatus = getOperationStatus(result);
       if (result.getOperationStatus().isOk()) {
@@ -188,12 +193,12 @@ public abstract class HitsBaseProvider<S, SC, H, HS extends BaseService<S, SC, H
   /*
    * (non-Javadoc)
    * 
-   * @see sif3.common.interfaces.Provider#deleteSingle(java.lang.String, sif3.common.model.SIFZone,
-   * sif3.common.model.SIFContext)
+   * @see sif3.common.interfaces.Provider#deleteSingle(java.lang.String,
+   * sif3.common.model.SIFZone, sif3.common.model.SIFContext)
    */
   @Override
-  public boolean deleteSingle(String resourceID, SIFZone zone, SIFContext context, RequestMetadata metadata) throws IllegalArgumentException,
-      PersistenceException {
+  public boolean deleteSingle(String resourceID, SIFZone zone, SIFContext context, RequestMetadata metadata)
+      throws IllegalArgumentException, PersistenceException {
 
     setDatabaseContext(zone, context);
 
@@ -203,7 +208,7 @@ public abstract class HitsBaseProvider<S, SC, H, HS extends BaseService<S, SC, H
 
     L.debug("Remove " + SINGLE_NAME + " with Resoucre ID = " + resourceID);
     S object = null;
-    ResponseDTO<S> result = deleteSingle(RequestDTO.getInstance(object, resourceID, SIF_CLASS), getZoneId(zone));
+    ResponseDTO<S> result = deleteSingle(getRequestDTO(object, resourceID, null, SIF_CLASS), getZoneId(zone));
     OperationStatus operationStatus = getOperationStatus(result);
     if (result.getOperationStatus().isOk()) {
       return true;
@@ -224,40 +229,48 @@ public abstract class HitsBaseProvider<S, SC, H, HS extends BaseService<S, SC, H
   /*
    * (non-Javadoc)
    * 
-   * @see sif3.common.interfaces.Provider#retrive(sif3.common.model.SIFZone, sif3.common.model.SIFContext,
-   * sif3.common.model.PagingInfo)
+   * @see sif3.common.interfaces.Provider#retrive(sif3.common.model.SIFZone,
+   * sif3.common.model.SIFContext, sif3.common.model.PagingInfo)
    */
   @Override
-  public Object retrieve(SIFZone zone, SIFContext context, PagingInfo pagingInfo, RequestMetadata metadata) throws PersistenceException,
-      UnsupportedQueryException {
+  public Object retrieve(SIFZone zone, SIFContext context, PagingInfo pagingInfo, RequestMetadata metadata)
+      throws PersistenceException, UnsupportedQueryException {
 
     setDatabaseContext(zone, context);
 
     L.debug("Find many " + COLLECTION_NAME + "...");
     return getService().findAll(pagingInfo, getZoneId(zone));
   }
-  
-  public Object retrieveWithServicePath(String parentName, String parentKey, SIFZone zone, SIFContext context, PagingInfo pagingInfo, RequestMetadata metadata) {
+
+  public Object retrieveByServicePath(QueryCriteria criteria, SIFZone zone, SIFContext context,
+      PagingInfo pagingInfo, RequestMetadata metadata) throws UnsupportedQueryException {
     setDatabaseContext(zone, context);
+
+    L.debug("Find many " + COLLECTION_NAME + " ... ");
     
-    L.debug("Find many " + COLLECTION_NAME + " ... where " + parentName + " = " + parentKey);
-    
-    try {
-      return getService().findWithServicePath(parentName,  parentKey, pagingInfo, getZoneId(zone));
-    } catch (NotYetImplementedException ex) {
-      return new ResponseDTO<S>(null, null, SERVICE_PATH_NOT_FOUND);
+    List<KeyValuePair> filters = new ArrayList<KeyValuePair>();
+    for (QueryPredicate predicate : criteria.getPredicates()) {
+      filters.add(new KeyValuePair(predicate.getSubject(), predicate.getValue()));
     }
+
+    return getService().findByServicePath(filters, pagingInfo, getZoneId(zone));
+  }
+  
+  @Override
+  public Object retrieveByDynamicQuery(QueryCriteria criteria, SIFZone zone, SIFContext context,
+      PagingInfo pagingInfo, RequestMetadata metadata) throws PersistenceException, UnsupportedQueryException {
+    throw new UnsupportedQueryException("Not yet implemented");
   }
 
   /*
    * (non-Javadoc)
    * 
-   * @see sif3.common.interfaces.Provider#createMany(java.lang.Object, sif3.common.model.SIFZone,
-   * sif3.common.model.SIFContext)
+   * @see sif3.common.interfaces.Provider#createMany(java.lang.Object,
+   * sif3.common.model.SIFZone, sif3.common.model.SIFContext)
    */
   @Override
-  public List<CreateOperationStatus> createMany(Object data, boolean useAdvisory, SIFZone zone, SIFContext context, RequestMetadata metadata)
-      throws IllegalArgumentException, PersistenceException {
+  public List<CreateOperationStatus> createMany(Object data, boolean useAdvisory, SIFZone zone, SIFContext context,
+      RequestMetadata metadata) throws IllegalArgumentException, PersistenceException {
 
     setDatabaseContext(zone, context);
 
@@ -281,8 +294,8 @@ public abstract class HitsBaseProvider<S, SC, H, HS extends BaseService<S, SC, H
   /*
    * (non-Javadoc)
    * 
-   * @see sif3.common.interfaces.Provider#updateMany(java.lang.Object, sif3.common.model.SIFZone,
-   * sif3.common.model.SIFContext)
+   * @see sif3.common.interfaces.Provider#updateMany(java.lang.Object,
+   * sif3.common.model.SIFZone, sif3.common.model.SIFContext)
    */
   @Override
   public List<OperationStatus> updateMany(Object data, SIFZone zone, SIFContext context, RequestMetadata metadata)
@@ -321,12 +334,12 @@ public abstract class HitsBaseProvider<S, SC, H, HS extends BaseService<S, SC, H
   /*
    * (non-Javadoc)
    * 
-   * @see sif3.common.interfaces.Provider#deleteMany(java.lang.Object, sif3.common.model.SIFZone,
-   * sif3.common.model.SIFContext)
+   * @see sif3.common.interfaces.Provider#deleteMany(java.lang.Object,
+   * sif3.common.model.SIFZone, sif3.common.model.SIFContext)
    */
   @Override
-  public List<OperationStatus> deleteMany(List<String> resourceIDs, SIFZone zone, SIFContext context, RequestMetadata metadata)
-      throws IllegalArgumentException, PersistenceException {
+  public List<OperationStatus> deleteMany(List<String> resourceIDs, SIFZone zone, SIFContext context,
+      RequestMetadata metadata) throws IllegalArgumentException, PersistenceException {
 
     setDatabaseContext(zone, context);
 
@@ -356,7 +369,7 @@ public abstract class HitsBaseProvider<S, SC, H, HS extends BaseService<S, SC, H
     List<RequestDTO<S>> dtoList = new ArrayList<RequestDTO<S>>();
     if (sifList != null) {
       for (S sifObject : sifList) {
-        dtoList.add(RequestDTO.getInstance(sifObject, SIF_CLASS));
+        dtoList.add(getRequestDTO(sifObject, null, null, SIF_CLASS));
       }
     }
     return dtoList;
@@ -367,7 +380,7 @@ public abstract class HitsBaseProvider<S, SC, H, HS extends BaseService<S, SC, H
     if (resourceIds != null) {
       for (String resourceId : resourceIds) {
         S object = null;
-        dtoList.add(RequestDTO.getInstance(object, resourceId, SIF_CLASS));
+        dtoList.add(getRequestDTO(object, resourceId, false, SIF_CLASS));
       }
     }
     return dtoList;
@@ -378,7 +391,7 @@ public abstract class HitsBaseProvider<S, SC, H, HS extends BaseService<S, SC, H
     List<RequestDTO<S>> dtoList = new ArrayList<RequestDTO<S>>();
     if (sifList != null) {
       for (S sifObject : sifList) {
-        dtoList.add(RequestDTO.getInstance(sifObject, useAdvisory, SIF_CLASS));
+        dtoList.add(getRequestDTO(sifObject, null, useAdvisory, SIF_CLASS));
       }
     }
     return dtoList;
@@ -436,26 +449,78 @@ public abstract class HitsBaseProvider<S, SC, H, HS extends BaseService<S, SC, H
     return status;
   }
 
+  protected RequestDTO<S> getRequestDTO(S sifObject, String resourceId, Boolean useAdvisory, Class<S> sifClass)
+      throws PersistenceException {
+    String advisoryId = resourceId;
+    String refId = resourceId;
+    if (sifObject != null) {
+      advisoryId = getRefId(sifObject, sifClass);
+      refId = advisoryId;
+      if (Boolean.FALSE.equals(useAdvisory)) {
+        refId = RefIdGenerator.getRefId();
+        setRefId(sifObject, sifClass, refId);
+      }
+    }
+    return new RequestDTO<S>(advisoryId, refId, useAdvisory, sifObject);
+  }
+
+  /**
+   * Override this method if the sif object does not have a getRefId Method
+   * 
+   * @param sifObject
+   * @param sifClass
+   * @param refId
+   * @return
+   * @throws PersistenceException
+   */
+  protected String getRefId(S sifObject, Class<S> sifClass) throws PersistenceException {
+    try {
+      return (String) sifClass.getMethod("getRefId").invoke(sifObject);
+    } catch (Exception ex) {
+      L.error("Override this method getRefId not implemented on SifObject - " + SINGLE_NAME, ex);
+      throw new PersistenceException(SINGLE_NAME + " - Unable to perform conversion.");
+    }
+  }
+
+  /**
+   * Override this method if the sif object does not have a setRefId Method
+   * 
+   * @param sifObject
+   * @param sifClass
+   * @param refId
+   * @return
+   * @throws PersistenceException
+   */
+  protected void setRefId(S sifObject, Class<S> sifClass, String refId) throws PersistenceException {
+    try {
+      sifClass.getMethod("setRefId").invoke(sifObject, refId);
+    } catch (Exception ex) {
+      L.error("Override this method setRefId not implemented on SifObject - " + SINGLE_NAME, ex);
+      throw new PersistenceException(SINGLE_NAME + " - Unable to perform conversion.");
+    }
+  }
+
   private static void initialise(Class<?> collectionClass, String singleName) {
-    if (GET_COLLECTION_METHOD == null) {
+    if (GET_COLLECTION_METHODS.get(collectionClass) == null) {
       assignCollectionMethod(collectionClass, singleName);
     }
   }
-  
-  private static synchronized void assignCollectionMethod(Class<?> collectionClass, String singleName) {
-    if (GET_COLLECTION_METHOD == null) {
+
+  private synchronized static void assignCollectionMethod(Class<?> collectionClass, String singleName) {
+    if (GET_COLLECTION_METHODS.get(collectionClass) == null) {
       try {
-        GET_COLLECTION_METHOD = collectionClass.getMethod("get" + singleName, new Class[] {});
+        Method method = collectionClass.getMethod("get" + singleName, new Class[] {});
+        GET_COLLECTION_METHODS.put(collectionClass, method);
       } catch (Exception e) {
         L.error("Unable to determine get collection method. - get" + singleName, e);
       }
     }
   }
-  
+
   @SuppressWarnings("unchecked")
   protected List<S> getSifList(SC sifCollection) {
     try {
-      return (List<S>) GET_COLLECTION_METHOD.invoke(sifCollection, new Object[] {});
+      return (List<S>) GET_COLLECTION_METHODS.get(sifCollection.getClass()).invoke(sifCollection, new Object[] {});
     } catch (Exception e) {
       L.error("Unable to get collection list from collection type. - " + SINGLE_NAME, e);
       // Probably need to override this method if you get this exception.

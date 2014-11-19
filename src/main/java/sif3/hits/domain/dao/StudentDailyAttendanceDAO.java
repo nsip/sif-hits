@@ -19,4 +19,8 @@ public interface StudentDailyAttendanceDAO extends JpaRepository<StudentDailyAtt
   @Override
   @Query("select distinct a from StudentDailyAttendance a where a.schoolInfoRefId in :schoolRefIds and a.refId = :refId")
   public StudentDailyAttendance findOneWithFilter(@Param("refId") String refId, @Param("schoolRefIds") List<String> schoolRefIds);
+  
+  @Query("select distinct a from StudentDailyAttendance a where a.schoolInfoRefId in :schoolRefIds and a.studentPersonalRefId = :studentPersonalRefId")
+  public Page<StudentDailyAttendance> findAllWithStudentPersonalAndFilter(@Param("studentPersonalRefId") String studentPersonalRefId, @Param("schoolRefIds") List<String> schoolRefIds, Pageable pageable);
+  
 }

@@ -3,16 +3,20 @@ package sif3.hits.service;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Service;
 
 import sif.dd.au30.model.StudentDailyAttendanceCollectionType;
 import sif.dd.au30.model.StudentDailyAttendanceType;
+import sif3.common.exception.UnsupportedQueryException;
 import sif3.hits.domain.converter.HitsConverter;
 import sif3.hits.domain.converter.StudentDailyAttendanceConverter;
 import sif3.hits.domain.dao.StudentDailyAttendanceDAO;
 import sif3.hits.domain.dao.ZoneFilterableRepository;
 import sif3.hits.domain.model.StudentDailyAttendance;
+import sif3.hits.rest.dto.KeyValuePair;
 
 @Service
 public class StudentDailyAttendanceService extends
@@ -55,5 +59,16 @@ public class StudentDailyAttendanceService extends
       result = studentDailyAttendanceDAO.findOneWithFilter(refId, schoolRefIds);
     }
     return result;
+  }
+  
+  @Override
+  protected Page<StudentDailyAttendance> findByServicePath(List<KeyValuePair> filters, List<String> schoolRefIds,
+      PageRequest pageRequest) throws UnsupportedQueryException {
+
+    if (filters != null && filters.size() == 1 && "StudentPersonals".equals(filters.get(0).getKey())) {
+      return studentDailyAttendanceDAO.findAllWithStudentPersonalAndFilter(filters.get(0).getValue(), schoolRefIds, pageRequest);
+    } else {
+      return super.findByServicePath(filters, schoolRefIds, pageRequest);
+    }
   }
 }

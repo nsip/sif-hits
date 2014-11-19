@@ -15,6 +15,7 @@ import javax.xml.datatype.XMLGregorianCalendar;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import sif3.hits.domain.converter.factory.HitsObjectFactory;
 import sif3.hits.domain.converter.factory.ObjectFactory;
 
 public abstract class HitsConverter<S, H> {

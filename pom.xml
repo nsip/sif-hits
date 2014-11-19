@@ -86,7 +86,7 @@
 			<artifactId>jersey-client</artifactId>
 			<version>${jersey.version}</version>
 		</dependency>
-		<dependency>
+ 		<dependency>
 			<groupId>com.sun.jersey</groupId>
 			<artifactId>jersey-server</artifactId>
 			<version>${jersey.version}</version>
@@ -97,7 +97,7 @@
 			<version>${jersey.version}</version>
 		</dependency>
 
-		<!-- hibernate -->
+	<!--	hibernate -->
 		<dependency>
 			<groupId>org.hibernate</groupId>
 			<artifactId>hibernate-core</artifactId>
