@@ -33,7 +33,7 @@ public class ScheduledActivityTest {
   
   @Test
   public void testGetSingle() {
-    final String REF_ID = "9830F851B7534AECA0DCC0EC66649CA4";
+    final String REF_ID = "AF7D1111419B4FF5A3E8D49BCB8456E5";
     List<Response> responses = scheduledActivityTester.testGetSingle(REF_ID);
     Assert.assertNotNull(responses);
     Assert.assertEquals(1, responses.size());
@@ -52,7 +52,7 @@ public class ScheduledActivityTest {
     Assert.assertNotNull(response.getDataObject());
     ScheduledActivityCollectionType scheduledActivityCollection = (ScheduledActivityCollectionType) response.getDataObject();
     Assert.assertNotNull(scheduledActivityCollection.getScheduledActivity());
-    Assert.assertEquals(1, scheduledActivityCollection.getScheduledActivity().size());
+    Assert.assertEquals(5, scheduledActivityCollection.getScheduledActivity().size());
   }
   
   @Test

@@ -33,7 +33,7 @@ public class TimeTableCellConsumerTest {
 
   @Test
   public void testGetSingle() {
-    final String REF_ID = "69C059F450854EA992FFFF87040C7461";
+    final String REF_ID = "301C949D376945FC9C827119C1F9DF03";
     List<Response> responses = timeTableCellTester.testGetSingle(REF_ID);
     Assert.assertNotNull(responses);
     Assert.assertEquals(1, responses.size());

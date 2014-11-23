@@ -33,7 +33,7 @@ public class RoomInfoConsumerTest {
   
   @Test
   public void testGetSingle() {
-    final String REF_ID = "00bb7707-011f-43a0-8b2e-048f8634a0b9";
+    final String REF_ID = "E20724A4C8764E6EABB16D42CFF084CC";
     List<Response> responses = roomInfoTester.testGetSingle(REF_ID);
     Assert.assertNotNull(responses);
     Assert.assertEquals(1, responses.size());

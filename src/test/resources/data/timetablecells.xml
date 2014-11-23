@@ -1,36 +1,36 @@
 <TimeTableCells xmlns="http://www.sifassociation.org/au/datamodel/1.3">
-    <TimeTableCell RefId="2D108D351AB946CDB2E9480AAA3F58B8">
-        <TimeTableRefId>24C8F9B4ED7547E3B44B71EFA39E953F</TimeTableRefId>
-        <TimeTableSubjectRefId>0546d1e3-728c-440f-b305-2a54f431db7e</TimeTableSubjectRefId>
-        <TeachingGroupRefId>45616492-03ac-44a7-a274-6d4b59688198</TeachingGroupRefId>
-        <RoomInfoRefId>00bb7707-011f-43a0-8b2e-048f8634a0b9</RoomInfoRefId>
-        <StaffPersonalRefId>6dfd77d7-2cea-40b3-a3ba-1a1965086d4c</StaffPersonalRefId>
-        <TimeTableLocalId>63 Carmen Court, MITCHELL, QLD, 4465</TimeTableLocalId>
-        <SubjectLocalId>VIS 136</SubjectLocalId>
-        <TeachingGroupLocalId>Room 737</TeachingGroupLocalId>
-        <RoomNumber>604.741833843259</RoomNumber>
-        <StaffLocalId>148 Woodrow Street, BLAKNEY CREEK, NSW, 2581</StaffLocalId>
-        <DayId>0</DayId>
-        <PeriodId>0</PeriodId>
-        <CellType>Teaching</CellType>
-        <SchoolInfoRefId>6DAFB630-C439-11E3-9AA0-81F4DBD909AB</SchoolInfoRefId>
-        <SchoolLocalId>139 Delana Walk, OLNEY, NSW, 2325</SchoolLocalId>
-    </TimeTableCell>
-    <TimeTableCell RefId="02721649360240E9BE341427424B87B2">
-        <TimeTableRefId>24C8F9B4ED7547E3B44B71EFA39E953F</TimeTableRefId>
-        <TimeTableSubjectRefId>0546d1e3-728c-440f-b305-2a54f431db7e</TimeTableSubjectRefId>
-        <TeachingGroupRefId>45616492-03ac-44a7-a274-6d4b59688198</TeachingGroupRefId>
-        <RoomInfoRefId>00bb7707-011f-43a0-8b2e-048f8634a0b9</RoomInfoRefId>
-        <StaffPersonalRefId>6dfd77d7-2cea-40b3-a3ba-1a1965086d4c</StaffPersonalRefId>
-        <TimeTableLocalId>63 Carmen Court, MITCHELL, QLD, 4465</TimeTableLocalId>
-        <SubjectLocalId>VIS 136</SubjectLocalId>
-        <TeachingGroupLocalId>Room 737</TeachingGroupLocalId>
-        <RoomNumber>604.741833843259</RoomNumber>
-        <StaffLocalId>148 Woodrow Street, BLAKNEY CREEK, NSW, 2581</StaffLocalId>
-        <DayId>0</DayId>
-        <PeriodId>0</PeriodId>
-        <CellType>Teaching</CellType>
-        <SchoolInfoRefId>6DAFB630-C439-11E3-9AA0-81F4DBD909AB</SchoolInfoRefId>
-        <SchoolLocalId>139 Delana Walk, OLNEY, NSW, 2325</SchoolLocalId>
-    </TimeTableCell>    
+	<TimeTableCell RefId="2D108D351AB946CDB2E9480AAA3F58B8">
+	    <TimeTableRefId>DE29035F54FD4865B41A29658BD23FD8</TimeTableRefId>
+	    <TimeTableSubjectRefId>6A13825FDA8143BFA65F74955043A2BF</TimeTableSubjectRefId>
+	    <TeachingGroupRefId>9332a0b1-3a4c-4aac-bc48-b87bf9f543c1</TeachingGroupRefId>
+	    <RoomInfoRefId>D62CF611EC5B4C1E87236B67830273A7</RoomInfoRefId>
+	    <StaffPersonalRefId>6dfd77d7-2cea-40b3-a3ba-1a1965086d4c</StaffPersonalRefId>
+	    <TimeTableLocalId>63 Carmen Court, MITCHELL, QLD, 4465</TimeTableLocalId>
+	    <SubjectLocalId>ENG 472</SubjectLocalId>
+	    <TeachingGroupLocalId>Room 292</TeachingGroupLocalId>
+	    <RoomNumber>604.741833843259</RoomNumber>
+	    <StaffLocalId>148 Woodrow Street, BLAKNEY CREEK, NSW, 2581</StaffLocalId>
+	    <DayId>0</DayId>
+	    <PeriodId>0</PeriodId>
+	    <CellType>Teaching</CellType>
+	    <SchoolInfoRefId>6DAFB630-C439-11E3-9AA0-81F4DBD909AB</SchoolInfoRefId>
+	    <SchoolLocalId>139 Delana Walk, OLNEY, NSW, 2325</SchoolLocalId>
+	</TimeTableCell>
+	<TimeTableCell RefId="02721649360240E9BE341427424B87B2">
+	    <TimeTableRefId>DE29035F54FD4865B41A29658BD23FD8</TimeTableRefId>
+	    <TimeTableSubjectRefId>6A13825FDA8143BFA65F74955043A2BF</TimeTableSubjectRefId>
+	    <TeachingGroupRefId>9332a0b1-3a4c-4aac-bc48-b87bf9f543c1</TeachingGroupRefId>
+	    <RoomInfoRefId>D62CF611EC5B4C1E87236B67830273A7</RoomInfoRefId>
+	    <StaffPersonalRefId>6dfd77d7-2cea-40b3-a3ba-1a1965086d4c</StaffPersonalRefId>
+	    <TimeTableLocalId>63 Carmen Court, MITCHELL, QLD, 4465</TimeTableLocalId>
+	    <SubjectLocalId>ENG 472</SubjectLocalId>
+	    <TeachingGroupLocalId>Room 292</TeachingGroupLocalId>
+	    <RoomNumber>604.741833843259</RoomNumber>
+	    <StaffLocalId>148 Woodrow Street, BLAKNEY CREEK, NSW, 2581</StaffLocalId>
+	    <DayId>0</DayId>
+	    <PeriodId>0</PeriodId>
+	    <CellType>Teaching</CellType>
+	    <SchoolInfoRefId>6DAFB630-C439-11E3-9AA0-81F4DBD909AB</SchoolInfoRefId>
+	    <SchoolLocalId>139 Delana Walk, OLNEY, NSW, 2325</SchoolLocalId>
+	</TimeTableCell>    
 </TimeTableCells>

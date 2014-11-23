@@ -1,96 +1,78 @@
 <ScheduledActivitys xmlns="http://www.sifassociation.org/au/datamodel/1.3">
-    <ScheduledActivity RefId="596BD11814CB485A84D3593FC5703958">
-        <SchoolInfoRefId>6DAFB630-C439-11E3-9AA0-81F4DBD909AB</SchoolInfoRefId>
-        <TimeTableCellRefId>9BCC0528813346B9AD7DBBB09CFBD1B6</TimeTableCellRefId>
-        <DayId>0</DayId>
-        <PeriodId xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
-        <TimeTableRefId>24C8F9B4ED7547E3B44B71EFA39E953F</TimeTableRefId>
-        <ActivityDate>2014-10-10</ActivityDate>
-        <StartTime>12:05:00</StartTime>
-        <FinishTime>13:30:00</FinishTime>
-        <CellType xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
-        <TimeTableSubjectRefId xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
-        <TeacherList>
-            <TeacherCover>
-                <StaffPersonalRefId>6dfd77d7-2cea-40b3-a3ba-1a1965086d4c</StaffPersonalRefId>
-                <StaffLocalId xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
-                <StartTime>13:00:00</StartTime>
-                <FinishTime>13:30:00</FinishTime>
-                <Credit>Extra</Credit>
-                <Supervision>MinimalSupervision</Supervision>
-                <Weighting>0.5</Weighting>
-            </TeacherCover>
-            <TeacherCover>
-                <StaffPersonalRefId>6c9080c6-dbc0-453e-9815-f517c4cc3642</StaffPersonalRefId>
-                <StaffLocalId xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
-                <StartTime>12:05:00</StartTime>
-                <FinishTime>13:00:00</FinishTime>
-                <Credit>In-lieu</Credit>
-                <Supervision>MinimalSupervision</Supervision>
-                <Weighting>0.5</Weighting>
-            </TeacherCover>
-        </TeacherList>
-        <RoomList>
-            <RoomInfoRefId>00bb7707-011f-43a0-8b2e-048f8634a0b9</RoomInfoRefId>
-        </RoomList>
-        <Location xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
-        <ActivityType xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
-        <ActivityName xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
-        <ActivityComment xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
-        <StudentList/>
-        <TeachingGroupList>
-            <TeachingGroupRefId>0ce9181e-6d85-4f29-9079-e53db16bbeeb</TeachingGroupRefId>
-        </TeachingGroupList>
-        <YearLevels>
-            <YearLevel/>
-        </YearLevels>
-        <Override/>
-    </ScheduledActivity>
-    <ScheduledActivity RefId="DF54713ADB1C4428A418D8A5964D893A">
-        <SchoolInfoRefId>6DAFB630-C439-11E3-9AA0-81F4DBD909AB</SchoolInfoRefId>
-        <TimeTableCellRefId>9BCC0528813346B9AD7DBBB09CFBD1B6</TimeTableCellRefId>
-        <DayId>0</DayId>
-        <PeriodId xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
-        <TimeTableRefId>24C8F9B4ED7547E3B44B71EFA39E953F</TimeTableRefId>
-        <ActivityDate>2014-10-10</ActivityDate>
-        <StartTime>12:05:00</StartTime>
-        <FinishTime>13:30:00</FinishTime>
-        <CellType xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
-        <TimeTableSubjectRefId xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
-        <TeacherList>
-            <TeacherCover>
-                <StaffPersonalRefId>6c9080c6-dbc0-453e-9815-f517c4cc3642</StaffPersonalRefId>
-                <StaffLocalId xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
-                <StartTime>12:05:00</StartTime>
-                <FinishTime>13:00:00</FinishTime>
-                <Credit>In-lieu</Credit>
-                <Supervision>MinimalSupervision</Supervision>
-                <Weighting>0.5</Weighting>
-            </TeacherCover>
-            <TeacherCover>
-                <StaffPersonalRefId>6dfd77d7-2cea-40b3-a3ba-1a1965086d4c</StaffPersonalRefId>
-                <StaffLocalId xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
-                <StartTime>13:00:00</StartTime>
-                <FinishTime>13:30:00</FinishTime>
-                <Credit>Extra</Credit>
-                <Supervision>MinimalSupervision</Supervision>
-                <Weighting>0.5</Weighting>
-            </TeacherCover>
-        </TeacherList>
-        <RoomList>
-            <RoomInfoRefId>00bb7707-011f-43a0-8b2e-048f8634a0b9</RoomInfoRefId>
-        </RoomList>
-        <Location xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
-        <ActivityType xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
-        <ActivityName xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
-        <ActivityComment xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
-        <StudentList/>
-        <TeachingGroupList>
-            <TeachingGroupRefId>0ce9181e-6d85-4f29-9079-e53db16bbeeb</TeachingGroupRefId>
-        </TeachingGroupList>
-        <YearLevels>
-            <YearLevel/>
-        </YearLevels>
-        <Override/>
-    </ScheduledActivity>
+<ScheduledActivity RefId="596BD11814CB485A84D3593FC5703958">
+ <SchoolInfoRefId>6DAFB630-C439-11E3-9AA0-81F4DBD909AB</SchoolInfoRefId>
+ <TimeTableCellRefId>89E75827A6AD40FC9AF134A59AD0F016</TimeTableCellRefId >
+ <DayId>0</DayId>
+ <TimeTableRefId>DE29035F54FD4865B41A29658BD23FD8</TimeTableRefId>
+ <SchoolYear>2014</SchoolYear>
+ <ActivityDate>2014-10-10</ActivityDate>
+ <StartTime>12:05:00</StartTime>
+ <FinishTime>13:30:00</FinishTime>
+ <TimeTableSubjectRefId>6A13825FDA8143BFA65F74955043A2BF</TimeTableSubjectRefId>
+ <TeacherList>
+   <TeacherCover>
+     <StaffPersonalRefId>6c9080c6-dbc0-453e-9815-f517c4cc3642</StaffPersonalRefId>
+     <StaffPersonalLocalId>US8923</StaffPersonalLocalId>
+     <StartTime>12:05:00</StartTime>
+     <FinishTime>13:00:00</FinishTime>
+     <Credit>In-lieu</Credit>
+     <Supervision>MinimalSupervision</Supervision>
+     <Weighting>0.5</Weighting>
+   </TeacherCover>
+   <TeacherCover>
+     <StaffPersonalRefId>6dfd77d7-2cea-40b3-a3ba-1a1965086d4c</StaffPersonalRefId>
+     <StaffPersonalLocalId>ZY3213</StaffPersonalLocalId>
+     <StartTime>13:00:00</StartTime>
+     <FinishTime>13:30:00</FinishTime>
+     <Credit>Extra</Credit>
+     <Supervision>MinimalSupervision</Supervision>
+     <Weighting>0.5</Weighting>
+   </TeacherCover>
+ </TeacherList>
+ <RoomList>
+   <RoomInfoRefId>00bb7707-011f-43a0-8b2e-048f8634a0b9</RoomInfoRefId>
+ </RoomList>
+ <Type>Incursion</Type>
+ <TeachingGroupList>
+   <TeachingGroupRefId>0ce9181e-6d85-4f29-9079-e53db16bbeeb</TeachingGroupRefId>
+ </TeachingGroupList>
+</ScheduledActivity>
+<ScheduledActivity RefId="DF54713ADB1C4428A418D8A5964D893A">
+ <SchoolInfoRefId>6DAFB630-C439-11E3-9AA0-81F4DBD909AB</SchoolInfoRefId>
+ <TimeTableCellRefId>89E75827A6AD40FC9AF134A59AD0F016</TimeTableCellRefId >
+ <DayId>0</DayId>
+ <TimeTableRefId>DE29035F54FD4865B41A29658BD23FD8</TimeTableRefId>
+ <SchoolYear>2014</SchoolYear>
+ <ActivityDate>2014-10-10</ActivityDate>
+ <StartTime>12:05:00</StartTime>
+ <FinishTime>13:30:00</FinishTime>
+ <TimeTableSubjectRefId>6A13825FDA8143BFA65F74955043A2BF</TimeTableSubjectRefId>
+ <TeacherList>
+   <TeacherCover>
+     <StaffPersonalRefId>6c9080c6-dbc0-453e-9815-f517c4cc3642</StaffPersonalRefId>
+     <StaffPersonalLocalId>US8923</StaffPersonalLocalId>
+     <StartTime>12:05:00</StartTime>
+     <FinishTime>13:00:00</FinishTime>
+     <Credit>In-lieu</Credit>
+     <Supervision>MinimalSupervision</Supervision>
+     <Weighting>0.5</Weighting>
+   </TeacherCover>
+   <TeacherCover>
+     <StaffPersonalRefId>6dfd77d7-2cea-40b3-a3ba-1a1965086d4c</StaffPersonalRefId>
+     <StaffPersonalLocalId>ZY3213</StaffPersonalLocalId>
+     <StartTime>13:00:00</StartTime>
+     <FinishTime>13:30:00</FinishTime>
+     <Credit>Extra</Credit>
+     <Supervision>MinimalSupervision</Supervision>
+     <Weighting>0.5</Weighting>
+   </TeacherCover>
+ </TeacherList>
+ <RoomList>
+   <RoomInfoRefId>00bb7707-011f-43a0-8b2e-048f8634a0b9</RoomInfoRefId>
+ </RoomList>
+ <Type>Incursion</Type>
+ <TeachingGroupList>
+   <TeachingGroupRefId>0ce9181e-6d85-4f29-9079-e53db16bbeeb</TeachingGroupRefId>
+ </TeachingGroupList>
+</ScheduledActivity>
 </ScheduledActivitys>

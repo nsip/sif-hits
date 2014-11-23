@@ -493,7 +493,7 @@ public abstract class HitsBaseProvider<S, SC, H, HS extends BaseService<S, SC, H
    */
   protected void setRefId(S sifObject, Class<S> sifClass, String refId) throws PersistenceException {
     try {
-      sifClass.getMethod("setRefId").invoke(sifObject, refId);
+      sifClass.getMethod("setRefId", new Class<?>[] { String.class }).invoke(sifObject, refId);
     } catch (Exception ex) {
       L.error("Override this method setRefId not implemented on SifObject - " + SINGLE_NAME, ex);
       throw new PersistenceException(SINGLE_NAME + " - Unable to perform conversion.");
