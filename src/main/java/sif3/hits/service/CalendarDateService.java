@@ -9,7 +9,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Service;
 
 import sif.dd.au30.model.CalendarDateCollectionType;
-import sif.dd.au30.model.TimeTableSubjectType;
 import sif3.common.exception.PersistenceException;
 import sif3.hits.domain.converter.CalendarDateConverter;
 import sif3.hits.domain.converter.HitsConverter;
@@ -18,8 +17,6 @@ import sif3.hits.domain.dao.CalendarDateOtherCodeDAO;
 import sif3.hits.domain.dao.ZoneFilterableRepository;
 import sif3.hits.domain.model.CalendarDate;
 import sif3.hits.domain.model.CalendarDateTypeOtherCode;
-import sif3.hits.domain.model.TimeTableSubject;
-import sif3.hits.domain.model.TimeTableSubjectOtherCode;
 import sif3.hits.rest.dto.RequestDTO;
 
 @Service

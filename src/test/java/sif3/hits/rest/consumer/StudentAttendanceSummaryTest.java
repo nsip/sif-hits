@@ -10,7 +10,6 @@ import org.springframework.http.HttpStatus;
 
 import sif.dd.au30.model.StudentAttendanceSummaryCollectionType;
 import sif.dd.au30.model.StudentAttendanceSummaryType;
-import sif.dd.au30.model.StudentDailyAttendanceType;
 import sif3.common.ws.BulkOperationResponse;
 import sif3.common.ws.CreateOperationStatus;
 import sif3.common.ws.OperationStatus;

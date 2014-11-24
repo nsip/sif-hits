@@ -22,5 +22,13 @@ public interface StudentDailyAttendanceDAO extends JpaRepository<StudentDailyAtt
   
   @Query("select distinct a from StudentDailyAttendance a where a.schoolInfoRefId in :schoolRefIds and a.studentPersonalRefId = :studentPersonalRefId")
   public Page<StudentDailyAttendance> findAllWithStudentPersonalAndFilter(@Param("studentPersonalRefId") String studentPersonalRefId, @Param("schoolRefIds") List<String> schoolRefIds, Pageable pageable);
+
+  @Query("select distinct a from StudentDailyAttendance a where a.schoolInfoRefId in :schoolRefIds and a.schoolInfoRefId = :schoolInfoRefId")
+  public Page<StudentDailyAttendance> findAllWithSchoolInfoAndFilter(@Param("schoolInfoRefId") String schoolInfoRefId, @Param("schoolRefIds") List<String> schoolRefIds, Pageable pageable);
+  
+  @Query("select distinct a from StudentDailyAttendance a where a.schoolInfoRefId in :schoolRefIds and a.studentPersonalRefId = :studentPersonalRefId and a.schoolInfoRefId = :schoolInfoRefId")
+  public Page<StudentDailyAttendance> findAllWithSchoolInfoAndStudentPersonalAndFilter(@Param("studentPersonalRefId") String studentPersonalRefId, @Param("schoolInfoRefId") String schoolInfoRefId, @Param("schoolRefIds") List<String> schoolRefIds, Pageable pageable);
+  
+  
   
 }
