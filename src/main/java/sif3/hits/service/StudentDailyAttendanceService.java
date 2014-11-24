@@ -86,7 +86,7 @@ public class StudentDailyAttendanceService extends
     } else if (studentPersonalRefId != null) {
       return studentDailyAttendanceDAO.findAllWithStudentPersonalAndFilter(studentPersonalRefId, schoolRefIds, pageRequest);
     } else if (schoolInfoRefId != null) {
-      return studentDailyAttendanceDAO.findAllWithSchoolInfoAndFilter(studentPersonalRefId, schoolRefIds, pageRequest);
+      return studentDailyAttendanceDAO.findAllWithSchoolInfoAndFilter(schoolInfoRefId, schoolRefIds, pageRequest);
     } else {
       return super.findByServicePath(filters, schoolRefIds, pageRequest);
     }
