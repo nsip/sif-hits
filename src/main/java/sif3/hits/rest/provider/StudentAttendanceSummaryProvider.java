@@ -33,7 +33,7 @@ public class StudentAttendanceSummaryProvider
     ObjectFactory objectFactory = new ObjectFactory();
     sifObject.setStudentAttendanceSummaryRefId(objectFactory.createStudentAttendanceSummaryTypeStudentAttendanceSummaryRefId(refId));
   }
-  
+
   @Override
   protected String getRefId(StudentAttendanceSummaryType sifObject, Class<StudentAttendanceSummaryType> sifClass)
       throws PersistenceException {

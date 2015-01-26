@@ -256,11 +256,6 @@ public abstract class HitsBaseProvider<S, SC, H, HS extends BaseService<S, SC, H
     return getService().findByServicePath(filters, pagingInfo, getZoneId(zone));
   }
   
-  @Override
-  public Object retrieveByDynamicQuery(QueryCriteria criteria, SIFZone zone, SIFContext context,
-      PagingInfo pagingInfo, RequestMetadata metadata) throws PersistenceException, UnsupportedQueryException {
-    throw new UnsupportedQueryException("Not yet implemented");
-  }
 
   /*
    * (non-Javadoc)
