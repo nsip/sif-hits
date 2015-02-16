@@ -5,6 +5,7 @@ import java.lang.reflect.Method;
 import java.lang.reflect.Proxy;
 import java.math.BigDecimal;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Collection;
 import java.util.List;
 
@@ -12,6 +13,7 @@ import javax.xml.bind.JAXBElement;
 import javax.xml.datatype.DatatypeFactory;
 import javax.xml.datatype.XMLGregorianCalendar;
 
+import org.apache.commons.lang3.time.FastDateFormat;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -149,6 +151,34 @@ public abstract class HitsConverter<S, H> {
     try {
       if (value != null) {
         result = value.toString();
+      }
+    } catch (Exception ex) {
+      logger.error("Unable to convert value [" + value + "] to xml calendar.", ex);
+    }
+    return result;
+  }
+  
+  private static final FastDateFormat calendarFormat = FastDateFormat.getInstance("yyyyMMddHHmmssSSS");
+  
+  protected Calendar getCalendarValue(String value) {
+    Calendar result = null;
+    try {
+      if (value != null) {
+        Calendar temp = Calendar.getInstance();
+        temp.setTime(calendarFormat.parse(value));
+        result = temp;
+      }
+    } catch (Exception ex) {
+      logger.error("Unable to convert value [" + value + "] to xml calendar.", ex);
+    }
+    return result;
+  }
+
+  protected String getCalendarValue(Calendar value) {
+    String result = null;
+    try {
+      if (value != null) {
+        result = calendarFormat.format(value);
       }
     } catch (Exception ex) {
       logger.error("Unable to convert value [" + value + "] to xml calendar.", ex);

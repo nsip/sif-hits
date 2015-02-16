@@ -14,8 +14,8 @@ public class TestConsumer<S, M> extends AbstractConsumer {
   private final String SINGLE_NAME;
   private final String MULTI_NAME;
   
-  private final MarshalFactory MARSHALLER = new DataModelMarshalFactory();
-  private final UnmarshalFactory UNMARSHALLER = new DataModelUnmarshalFactory();
+  private MarshalFactory MARSHALLER;
+  private UnmarshalFactory UNMARSHALLER;
 
   /**
    * @param consumerID
@@ -27,6 +27,8 @@ public class TestConsumer<S, M> extends AbstractConsumer {
     this.SINGLE_NAME = singleName;
     this.MULTI_CLASS = multiClass;
     this.MULTI_NAME = multiName;
+    this.MARSHALLER = new DataModelMarshalFactory();
+    this.UNMARSHALLER = new DataModelUnmarshalFactory();
   }
 
   @Override
@@ -41,11 +43,18 @@ public class TestConsumer<S, M> extends AbstractConsumer {
   
   @Override
   public MarshalFactory getMarshaller() {
+    if (MARSHALLER == null) {
+      MARSHALLER = new DataModelMarshalFactory();
+    }
     return MARSHALLER;
   }
   
   @Override
   public UnmarshalFactory getUnmarshaller() {
+    if (UNMARSHALLER == null) {
+      UNMARSHALLER = new DataModelUnmarshalFactory();
+    }
+
     return UNMARSHALLER;
   }
   

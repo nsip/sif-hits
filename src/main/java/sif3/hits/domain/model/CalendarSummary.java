@@ -1,8 +1,12 @@
 package sif3.hits.domain.model;
 
+import java.util.Set;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 @Entity
 public class CalendarSummary extends HitsEntity implements ZoneFilterable {
@@ -15,6 +19,11 @@ public class CalendarSummary extends HitsEntity implements ZoneFilterable {
   private String daysInSession;
   private String startDate;
   private String endDate;
+  private String firstInstructionDate;
+  private String lastInstructionDate;
+  private String instructionalMinutes;
+  private String minutesPerDay;
+  private Set<CalendarSummaryYearLevel> calendarSummaryYearLevels;
 
   @Id
   public String getRefId() {
@@ -73,5 +82,46 @@ public class CalendarSummary extends HitsEntity implements ZoneFilterable {
 
   public void setEndDate(String endDate) {
     this.endDate = endDate;
+  }
+
+  public String getFirstInstructionDate() {
+    return firstInstructionDate;
+  }
+
+  public void setFirstInstructionDate(String firstInstructionDate) {
+    this.firstInstructionDate = firstInstructionDate;
+  }
+
+  public String getLastInstructionDate() {
+    return lastInstructionDate;
+  }
+
+  public void setLastInstructionDate(String lastInstructionDate) {
+    this.lastInstructionDate = lastInstructionDate;
+  }
+
+  public String getInstructionalMinutes() {
+    return instructionalMinutes;
+  }
+
+  public void setInstructionalMinutes(String instructionalMinutes) {
+    this.instructionalMinutes = instructionalMinutes;
+  }
+
+  public String getMinutesPerDay() {
+    return minutesPerDay;
+  }
+
+  public void setMinutesPerDay(String minutesPerDay) {
+    this.minutesPerDay = minutesPerDay;
+  }
+  
+  @OneToMany(fetch = FetchType.EAGER, mappedBy = "calendarSummaryYearLevelId.calendarSummary")
+  public Set<CalendarSummaryYearLevel> getCalendarSummaryYearLevels() {
+    return calendarSummaryYearLevels;
+  }
+
+  public void setCalendarSummaryYearLevels(Set<CalendarSummaryYearLevel> calendarSummaryYearLevels) {
+    this.calendarSummaryYearLevels = calendarSummaryYearLevels;
   }
 }

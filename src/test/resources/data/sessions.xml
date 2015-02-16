@@ -1,0 +1,36 @@
+<SessionInfos xmlns="http://www.sifassociation.org/au/datamodel/1.3">
+	<SessionInfo RefId="5F18D34A4B9B49599AF55C991378DE99">
+		<SchoolInfoRefId>6DAFB630-C439-11E3-9AA0-81F4DBD909AB</SchoolInfoRefId>
+		<TimeTableCellRefId>301C949D376945FC9C827119C1F9DF03</TimeTableCellRefId>
+		<SchoolYear>2015</SchoolYear>
+		<LocalId>1245566</LocalId>
+		<TimeTableSubjectLocalId>123456</TimeTableSubjectLocalId>
+		<TeachingGroupLocalId>12356</TeachingGroupLocalId>
+		<SchoolLocalId>124566</SchoolLocalId>
+		<StaffPersonalLocalId>124555</StaffPersonalLocalId>
+		<RoomNumber>604.741833843259</RoomNumber>
+		<DayId>123455</DayId>
+		<PeriodId>231555</PeriodId>
+		<SessionDate>2015-01-01</SessionDate>
+		<StartTime>08:30:00</StartTime>
+		<FinishTime>15:30:00</FinishTime>
+		<RollMarked>Y</RollMarked>
+	</SessionInfo>
+	<SessionInfo RefId="D66F4094F23044F68B3376EEB11E2DFF">
+    <SchoolInfoRefId>6DAFB630-C439-11E3-9AA0-81F4DBD909AB</SchoolInfoRefId>
+    <TimeTableCellRefId>301C949D376945FC9C827119C1F9DF03</TimeTableCellRefId>
+    <SchoolYear>2015</SchoolYear>
+    <LocalId>1245566</LocalId>
+    <TimeTableSubjectLocalId>123456</TimeTableSubjectLocalId>
+    <TeachingGroupLocalId>12356</TeachingGroupLocalId>
+    <SchoolLocalId>124566</SchoolLocalId>
+    <StaffPersonalLocalId>124555</StaffPersonalLocalId>
+    <RoomNumber>604.741833843259</RoomNumber>
+    <DayId>123455</DayId>
+    <PeriodId>231555</PeriodId>
+    <SessionDate>2015-01-01</SessionDate>
+    <StartTime>08:30:00</StartTime>
+    <FinishTime>15:30:00</FinishTime>
+    <RollMarked>Y</RollMarked>
+	</SessionInfo>
+</SessionInfos>

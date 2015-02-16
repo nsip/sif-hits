@@ -79,7 +79,6 @@ public class StudentDailyAttendanceService extends
         } 
       }
     }
-    
 
     if (studentPersonalRefId != null && schoolInfoRefId != null) {
       return studentDailyAttendanceDAO.findAllWithSchoolInfoAndStudentPersonalAndFilter(studentPersonalRefId, schoolInfoRefId, schoolRefIds, pageRequest);      
