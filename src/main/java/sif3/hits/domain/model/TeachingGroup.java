@@ -24,7 +24,7 @@ public class TeachingGroup extends HitsEntity {
   private String kla;
   private SchoolInfo schoolInfo;
   private Set<StudentPersonal> studentPersonals;
-  private Set<StaffPersonal> staffPersonals;
+  private Set<TeachingGroupTeacher> teachingGroupTeachers;
   private Set<TimeTableCell> timeTablePeriods;
 
   @Id
@@ -77,7 +77,7 @@ public class TeachingGroup extends HitsEntity {
     this.kla = kla;
   }
 
-  @ManyToOne
+  @ManyToOne(fetch = FetchType.EAGER)
   @JoinColumn(name = "SchoolInfo_RefId", referencedColumnName = "RefId")
   public SchoolInfo getSchoolInfo() {
     return schoolInfo;
@@ -87,7 +87,7 @@ public class TeachingGroup extends HitsEntity {
     this.schoolInfo = schoolInfo;
   }
 
-  @ManyToMany(fetch = FetchType.EAGER)
+  @ManyToMany(fetch = FetchType.LAZY)
   @JoinTable(name = "TeachingGroup_Student", joinColumns = { @JoinColumn(name = "TeachingGroup_RefId", referencedColumnName = "RefId") }, inverseJoinColumns = { @JoinColumn(name = "StudentPersonal_RefId", referencedColumnName = "RefId") })
   public Set<StudentPersonal> getStudentPersonals() {
     return studentPersonals;
@@ -97,14 +97,13 @@ public class TeachingGroup extends HitsEntity {
     this.studentPersonals = studentPersonals;
   }
 
-  @ManyToMany(fetch = FetchType.EAGER)
-  @JoinTable(name = "TeachingGroup_Teacher", joinColumns = { @JoinColumn(name = "TeachingGroup_RefId") }, inverseJoinColumns = { @JoinColumn(name = "StaffPersonal_RefId") })
-  public Set<StaffPersonal> getStaffPersonals() {
-    return staffPersonals;
+  @OneToMany(fetch = FetchType.EAGER, mappedBy = "teachingGroupTeacherId.teachingGroup")
+  public Set<TeachingGroupTeacher> getTeachingGroupTeachers() {
+    return teachingGroupTeachers;
   }
 
-  public void setStaffPersonals(Set<StaffPersonal> staffPersonals) {
-    this.staffPersonals = staffPersonals;
+  public void setTeachingGroupTeachers(Set<TeachingGroupTeacher> teachingGroupTeachers) {
+    this.teachingGroupTeachers = teachingGroupTeachers;
   }
 
   @OneToMany(mappedBy = "teachingGroup", fetch = FetchType.EAGER)

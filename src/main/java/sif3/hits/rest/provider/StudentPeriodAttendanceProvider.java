@@ -8,7 +8,8 @@ import sif.dd.au30.model.StudentPeriodAttendanceType;
 import sif3.hits.domain.model.StudentPeriodAttendance;
 import sif3.hits.service.StudentPeriodAttendanceService;
 
-public class StudentPeriodAttendanceProvider extends
+public class StudentPeriodAttendanceProvider
+    extends
     HitsBaseProvider<StudentPeriodAttendanceType, StudentPeriodAttendanceCollectionType, StudentPeriodAttendance, StudentPeriodAttendanceService> {
 
   protected static final Logger L = LoggerFactory.getLogger(StudentPeriodAttendanceProvider.class);
@@ -20,7 +21,7 @@ public class StudentPeriodAttendanceProvider extends
    *          values of provider property file.
    */
   public StudentPeriodAttendanceProvider() {
-    super(StudentPeriodAttendanceType.class, "StudentPeriodAttendance", StudentPeriodAttendanceCollectionType.class, "StudentPeriodAttendances",
-        StudentPeriodAttendanceService.class);
+    super(StudentPeriodAttendanceType.class, "StudentPeriodAttendance", StudentPeriodAttendanceCollectionType.class,
+        "StudentPeriodAttendances", StudentPeriodAttendanceService.class);
   }
 }

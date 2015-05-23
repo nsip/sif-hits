@@ -6,9 +6,9 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import sif3.hits.domain.converter.factory.ObjectFactory;
 import sif.dd.au30.model.TimeTableType;
 import sif.dd.au30.model.TimeTableType.TimeTableDayList;
+import sif3.hits.domain.converter.factory.ObjectFactory;
 import sif3.hits.domain.model.TimeTable;
 import sif3.hits.domain.model.TimeTableDay;
 
@@ -35,6 +35,10 @@ public class TimeTableConverter extends HitsConverter<TimeTableType, TimeTable> 
       target.setDaysPerCycle(getLongValue(source.getDaysPerCycle()));
       target.setPeriodsPerDay(getLongValue(source.getPeriodsPerCycle()));
       target.setSchoolYear(getYearValue(source.getSchoolYear()));
+      target.setTimeTableCreationDate(objectFactory.createTimeTableTypeTimeTableCreationDate(getDateValue(source.getTimeTableCreationDate())));
+      target.setStartDate(objectFactory.createTimeTableTypeStartDate(getDateValue(source.getStartDate())));
+      target.setEndDate(objectFactory.createTimeTableTypeEndDate(getDateValue(source.getEndDate())));
+      
       target.setTimeTableDayList(new TimeTableDayList());
       target.getTimeTableDayList().getTimeTableDay()
           .addAll(timeTableDayConverter.toSifModelList(source.getTimeTableDays()));
@@ -52,6 +56,10 @@ public class TimeTableConverter extends HitsConverter<TimeTableType, TimeTable> 
       target.setPeriodsPerCycle(getLongValue(source.getPeriodsPerDay()));
       target.setSchoolYear(getYearValue(source.getSchoolYear()));
       target.setSchoolInfo(timeTableSchoolInfoConverter.toHitsModel(source));
+      target.setTimeTableCreationDate(getDateValue(getJAXBValue(source.getTimeTableCreationDate())));
+      target.setStartDate(getDateValue(getJAXBValue(source.getStartDate())));
+      target.setEndDate(getDateValue(getJAXBValue(source.getEndDate())));
+
       if (source.getTimeTableDayList() != null) {
         List<TimeTableDay> days = timeTableDayConverter.toHitsModelList(source.getTimeTableDayList().getTimeTableDay());
         target.setTimeTableDays(new HashSet<TimeTableDay>(days));

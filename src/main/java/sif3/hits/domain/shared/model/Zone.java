@@ -55,14 +55,14 @@ public class Zone implements Serializable {
   public void setDatabaseUrl(String databaseUrl) {
     this.databaseUrl = databaseUrl;
   }
-  
+
   @ElementCollection(fetch = FetchType.EAGER)
-  @CollectionTable(name = "Zone_School", joinColumns = { @JoinColumn(name="zone_id") } )
+  @CollectionTable(name = "Zone_School", joinColumns = { @JoinColumn(name = "zone_id") })
   @Column(name = "SchoolInfo_RefId")
   public List<String> getSchoolRefIds() {
     return schoolRefIds;
   }
-  
+
   public void setSchoolRefIds(List<String> schoolRefIds) {
     this.schoolRefIds = schoolRefIds;
   }

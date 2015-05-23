@@ -10,6 +10,8 @@ import java.util.List;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.Resource;
 
+import sif3.common.exception.MarshalException;
+import sif3.common.exception.UnsupportedMediaTypeExcpetion;
 import sif3.common.header.HeaderValues.RequestType;
 import sif3.common.model.PagingInfo;
 import sif3.common.model.SIFContext;
@@ -85,6 +87,46 @@ public class ConsumerTest<S, M> {
     return result;
   }
 
+  protected List<Response> doCreateOne(S object) {
+    List<Response> result = null;
+    System.out.println("Start 'Create " + getSingleName() + "' in all connected environments...");
+    try {
+      if (object != null) {
+        result = testConsumer.createSingle(object, null);
+        System.out.println("Responses from attempt to 'Create " + getSingleName() + "':");
+        printResponses(result);
+      }
+    } catch (Exception ex) {
+      ex.printStackTrace();
+    }
+    System.out.println("Finished 'Create " + getSingleName() + "' in all connected environments...");
+    return result;
+  }
+  
+  protected List<Response> doUpdateOne(S object, String refId) {
+    List<Response> result = null;
+    System.out.println("Start 'Update " + getSingleName() + "' in all connected environments...");
+    try {
+      if (object != null) {
+        result = testConsumer.updateSingle(object, refId, null);
+        System.out.println("Responses from attempt to 'Update " + getSingleName() + "':");
+        printResponses(result);
+      }
+    } catch (Exception ex) {
+      ex.printStackTrace();
+    }
+    System.out.println("Finished 'Update " + getSingleName() + "' in all connected environments...");
+    return result;
+  }
+  
+  protected String getXML(S object) throws MarshalException, UnsupportedMediaTypeExcpetion {
+    String result = null;
+    if (object != null) {
+      result = testConsumer.getMarshaller().marshalToXML(object);
+    }
+    return result;
+  }
+
   protected List<Response> testUpdateOne(String filename, String refId) {
     List<Response> result = null;
     System.out.println("Start 'Update " + getSingleName() + "' in all connected environments...");
@@ -105,7 +147,6 @@ public class ConsumerTest<S, M> {
     return result;
   }
 
-  
   protected List<BulkOperationResponse<CreateOperationStatus>> testCreateMany(String filename) {
     List<BulkOperationResponse<CreateOperationStatus>> result = null;
     System.out.println("Start 'Create " + getMultiName() + "' in all connected environments...");
@@ -226,5 +267,18 @@ public class ConsumerTest<S, M> {
     } catch (Exception ex) {
       ex.printStackTrace();
     }
+  }
+
+  @SuppressWarnings("unchecked")
+  public S doGetOne(String refId) throws Exception {
+    S result = null;
+    List<Response> responses = testGetSingle(refId);
+    if (responses != null && responses.size() == 1) {
+      Response response = responses.get(0);
+      result = (S) response.getDataObject();
+    } else {
+      throw new Exception("Bad result"); 
+    }
+    return result;
   }
 }

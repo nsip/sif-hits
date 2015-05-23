@@ -15,7 +15,7 @@ public interface TimeTableCellDAO extends JpaRepository<TimeTableCell, String>, 
   @Query("select t from TimeTableCell t where t.timeTable.schoolInfo.refId in :schoolRefIds")
   @Override
   public Page<TimeTableCell> findAllWithFilter(@Param("schoolRefIds") List<String> schoolRefIds, Pageable pageable);
-  
+
   @Query("select t from TimeTableCell t where t.refId = :refId and t.timeTable.schoolInfo.refId in :schoolRefIds")
   @Override
   public TimeTableCell findOneWithFilter(@Param("refId") String refId, @Param("schoolRefIds") List<String> schoolRefIds);

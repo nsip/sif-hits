@@ -14,9 +14,9 @@ import sif.dd.au30.model.AddressListType;
 import sif.dd.au30.model.AddressListType.Address;
 import sif.dd.au30.model.AddressType.Street;
 import sif.dd.au30.model.GridLocationType;
-import sif3.hits.domain.converter.factory.ObjectFactory;
 import sif.dd.au30.model.SchoolInfoType;
 import sif.dd.au30.model.SchoolInfoType.Campus;
+import sif3.hits.domain.converter.factory.ObjectFactory;
 import sif3.hits.domain.model.SchoolInfo;
 
 @Component
@@ -84,7 +84,9 @@ public class SchoolInfoConverter extends HitsConverter<SchoolInfoType, SchoolInf
       campus.setAdminStatus(adminStatus);
       AUCodeSetsSchoolLevelType campusType = getEnumValue(source.getCampusType(), AUCodeSetsSchoolLevelType.class);
       campus.setCampusType(objFactory.createSchoolInfoTypeCampusCampusType(campusType));
+      campus.setParentSchoolId(objFactory.createSchoolInfoTypeCampusParentSchoolId(source.getCampusParentSchoolId()));
       target.setCampus(objFactory.createSchoolInfoTypeCampus(campus));
+
     }
   }
 
@@ -133,6 +135,7 @@ public class SchoolInfoConverter extends HitsConverter<SchoolInfoType, SchoolInf
         target.setCampusId(campus.getSchoolCampusId());
         target.setCampusAdminStatus(getEnumValue(campus.getAdminStatus()));
         target.setCampusType(getJAXBEnumValue(campus.getCampusType()));
+        target.setCampusParentSchoolId(getJAXBValue(campus.getParentSchoolId()));
       }
     }
   }

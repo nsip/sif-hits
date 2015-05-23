@@ -14,14 +14,14 @@ import com.mchange.v2.c3p0.ComboPooledDataSource;
 
 @Component
 public class HitsDataSourceLookup implements DataSourceLookup {
-  
+
   private boolean shared = false;
-  
+
   public HitsDataSourceLookup(Properties databaseProperties, boolean shared) {
     this.databaseProperties = databaseProperties;
     this.shared = shared;
   }
-  
+
   private Properties databaseProperties;
 
   @Override
@@ -47,15 +47,14 @@ public class HitsDataSourceLookup implements DataSourceLookup {
     cpds.setAcquireIncrement(getIntegerProperty("hits.c3p0.acquire_increment"));
     cpds.setMaxPoolSize(getIntegerProperty("hits.c3p0.max_size"));
     cpds.setMinPoolSize(getIntegerProperty("hits.c3p0.min_size"));
-    cpds.setMaxStatements(getIntegerProperty("hits.c3p0.max_statements"));    
-    
+    cpds.setMaxStatements(getIntegerProperty("hits.c3p0.max_statements"));
+
     return cpds;
   }
-  
+
   private Integer getIntegerProperty(String property) {
     String value = databaseProperties.getProperty(property);
-    return Integer.parseInt(value, 10);  
+    return Integer.parseInt(value, 10);
   }
-  
-  
+
 }

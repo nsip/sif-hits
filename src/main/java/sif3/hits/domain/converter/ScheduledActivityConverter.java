@@ -7,8 +7,7 @@ import java.util.Set;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import sif.dd.au30.model.AUCodeSetsYesOrNoCategoryType;
-import sif3.hits.domain.converter.factory.ObjectFactory;
+import sif.dd.au30.model.AUCodeSetsScheduledActivityTypeType;
 import sif.dd.au30.model.ScheduledActivityType;
 import sif.dd.au30.model.ScheduledActivityType.RoomList;
 import sif.dd.au30.model.ScheduledActivityType.StudentList;
@@ -17,6 +16,7 @@ import sif.dd.au30.model.ScheduledActivityType.TeacherList.TeacherCover;
 import sif.dd.au30.model.ScheduledActivityType.TeachingGroupList;
 import sif.dd.au30.model.YearLevelType;
 import sif.dd.au30.model.YearLevelsType;
+import sif3.hits.domain.converter.factory.ObjectFactory;
 import sif3.hits.domain.model.ScheduledActivity;
 import sif3.hits.domain.model.ScheduledActivityTeacher;
 
@@ -48,7 +48,8 @@ public class ScheduledActivityConverter extends HitsConverter<ScheduledActivityT
       target.setFinishTime(getTimeValue(source.getFinishTime()));
       target.setCellType(objectFactory.createScheduledActivityTypeCellType(source.getCellType()));
       target.setLocation(objectFactory.createScheduledActivityTypeLocation(source.getLocation()));
-      target.setActivityType(objectFactory.createScheduledActivityTypeActivityType(source.getType()));
+      target.setActivityType(objectFactory.createScheduledActivityTypeActivityType(getEnumValue(source.getType(),
+          AUCodeSetsScheduledActivityTypeType.class)));
       target.setActivityName(objectFactory.createScheduledActivityTypeActivityName(source.getName()));
       target.setActivityComment(objectFactory.createScheduledActivityTypeActivityComment(source.getComment()));
 
@@ -82,7 +83,7 @@ public class ScheduledActivityConverter extends HitsConverter<ScheduledActivityT
       target.setYearLevels(objectFactory.createScheduledActivityTypeYearLevels(yearLevelsType));
 
       sif.dd.au30.model.ScheduledActivityType.Override override = objectFactory.createScheduledActivityTypeOverride();
-      override.setValue(getEnumValue(source.getOverride(), AUCodeSetsYesOrNoCategoryType.class));
+      override.setValue(source.getOverride());
       override.setDateOfOverride(getDateValue(source.getDateOfOverride()));
       target.setOverride(objectFactory.createScheduledActivityTypeOverride(override));
     }
@@ -103,7 +104,7 @@ public class ScheduledActivityConverter extends HitsConverter<ScheduledActivityT
       target.setFinishTime(getTimeValue(source.getFinishTime()));
       target.setCellType(getJAXBValue(source.getCellType()));
       target.setLocation(getJAXBValue(source.getLocation()));
-      target.setType(getJAXBValue(source.getActivityType()));
+      target.setType(getJAXBEnumValue(source.getActivityType()));
       target.setName(getJAXBValue(source.getActivityName()));
       target.setComment(getJAXBValue(source.getActivityComment()));
 
@@ -145,7 +146,7 @@ public class ScheduledActivityConverter extends HitsConverter<ScheduledActivityT
 
       sif.dd.au30.model.ScheduledActivityType.Override override = getJAXBValue(source.getOverride());
       if (override != null) {
-        target.setOverride(getEnumValue(override.getValue()));
+        target.setOverride(override.getValue());
         target.setDateOfOverride(getDateValue(override.getDateOfOverride()));
       }
     }

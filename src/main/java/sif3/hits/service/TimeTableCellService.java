@@ -9,7 +9,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import sif.dd.au30.model.TimeTableCellCollectionType;
 import sif.dd.au30.model.TimeTableCellType;
-import sif3.common.exception.PersistenceException;
 import sif3.hits.domain.converter.HitsConverter;
 import sif3.hits.domain.converter.TimeTableCellConverter;
 import sif3.hits.domain.dao.RoomInfoDAO;
@@ -32,19 +31,19 @@ public class TimeTableCellService extends BaseService<TimeTableCellType, TimeTab
 
   @Autowired
   private TimeTableCellDAO timeTableCellDAO;
-  
+
   @Autowired
   private TimeTableSubjectDAO timeTableSubjectDAO;
-  
+
   @Autowired
   private TimeTableDAO timeTableDAO;
-  
+
   @Autowired
   private StaffPersonalDAO staffPersonalDAO;
-  
+
   @Autowired
   private TeachingGroupDAO teachingGroupDAO;
-  
+
   @Autowired
   private RoomInfoDAO roomInfoDAO;
 
@@ -91,8 +90,8 @@ public class TimeTableCellService extends BaseService<TimeTableCellType, TimeTab
 
   @Override
   @Transactional(value = "transactionManager")
-  protected TimeTableCell save(TimeTableCell hitsObject, RequestDTO<TimeTableCellType> dto, String zoneId, boolean create)
-      throws PersistenceException {
+  protected TimeTableCell save(TimeTableCell hitsObject, RequestDTO<TimeTableCellType> dto, String zoneId,
+      boolean create) {
 
     // need to populate foreign keys
     hitsObject.setRoomInfo(getRoomInfo(hitsObject.getRoomInfo(), zoneId));

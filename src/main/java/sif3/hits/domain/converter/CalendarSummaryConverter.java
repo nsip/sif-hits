@@ -33,7 +33,7 @@ public class CalendarSummaryConverter extends HitsConverter<CalendarSummaryType,
       target.setLocalId(source.getLocalId());
       target.setDaysInSession(getLongValue(source.getDaysInSession()));
       target.setStartDate(objectFactory.createCalendarSummaryTypeStartDate(getDateValue(source.getStartDate())));
-      target.setStartDate(objectFactory.createCalendarSummaryTypeEndDate(getDateValue(source.getEndDate())));
+      target.setEndDate(objectFactory.createCalendarSummaryTypeEndDate(getDateValue(source.getEndDate())));
       target.setFirstInstructionDate(objectFactory.createCalendarSummaryTypeFirstInstructionDate(getDateValue(source
           .getFirstInstructionDate())));
       target.setLastInstructionDate(objectFactory.createCalendarSummaryTypeLastInstructionDate(getDateValue(source
@@ -66,7 +66,7 @@ public class CalendarSummaryConverter extends HitsConverter<CalendarSummaryType,
       target.setLocalId(source.getLocalId());
       target.setDaysInSession(getLongValue(source.getDaysInSession()));
       target.setStartDate(getDateValue(getJAXBValue(source.getStartDate())));
-      target.setStartDate(getDateValue(getJAXBValue(source.getEndDate())));
+      target.setEndDate(getDateValue(getJAXBValue(source.getEndDate())));
       target.setFirstInstructionDate(getDateValue(getJAXBValue(source.getFirstInstructionDate())));
       target.setLastInstructionDate(getDateValue(getJAXBValue(source.getLastInstructionDate())));
       target.setInstructionalMinutes(getLongValue(getJAXBValue(source.getInstructionalMinutes())));

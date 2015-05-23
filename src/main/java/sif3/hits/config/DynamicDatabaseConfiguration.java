@@ -20,8 +20,9 @@ import sif3.hits.domain.helper.HitsDataSourceLookup;
 @Configuration
 @EnableJpaRepositories(basePackages = { "sif3.hits.domain.dao" }, entityManagerFactoryRef = "dynamicEntityManagerFactory", transactionManagerRef = "transactionManager")
 public class DynamicDatabaseConfiguration {
-//  private static final Logger L = LoggerFactory.getLogger(DynamicDatabaseConfiguration.class);
-  
+  // private static final Logger L =
+  // LoggerFactory.getLogger(DynamicDatabaseConfiguration.class);
+
   @Resource(name = "databaseProperties")
   private Properties databaseProperties;
 
@@ -31,7 +32,8 @@ public class DynamicDatabaseConfiguration {
     factoryBean.setPersistenceUnitName("sif3.hits.dynamic");
     factoryBean.setDataSource(this.dynamicDataSource());
     factoryBean.setPackagesToScan(new String[] { "sif3.hits.domain.model" });
-    factoryBean.setJpaVendorAdapter(new HibernateJpaVendorAdapter() {});
+    factoryBean.setJpaVendorAdapter(new HibernateJpaVendorAdapter() {
+    });
     factoryBean.setJpaProperties(this.databaseProperties);
     factoryBean.setJpaDialect(new HibernateJpaDialect());
     return factoryBean;

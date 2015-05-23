@@ -32,7 +32,8 @@ import sif3.hits.rest.dto.RequestDTO;
 import sif3.hits.rest.dto.ResponseDTO;
 import au.com.systemic.framework.utils.StringUtils;
 
-@Transactional(value = "transactionManager")
+@Transactional(value = "transactionManager", rollbackForClassName = { "PersistenceException",
+    "UnsupportedQueryException" })
 public abstract class BaseService<S, SC, H> {
 
   private static final Logger L = LoggerFactory.getLogger(BaseService.class);
@@ -45,7 +46,7 @@ public abstract class BaseService<S, SC, H> {
 
   @Autowired
   private ZoneService zoneService;
-  
+
   private final ThreadLocal<Zone> currentZone = new ThreadLocal<Zone>();
 
   public void setDatabaseContext(String zoneId, String contextId) {
@@ -57,7 +58,7 @@ public abstract class BaseService<S, SC, H> {
   }
 
   // Create
-  public ResponseDTO<S> createSingle(RequestDTO<S> dto, String zoneId) throws PersistenceException {
+  public ResponseDTO<S> createSingle(RequestDTO<S> dto, String zoneId) {
     ResponseDTO<S> result = null;
     if (!StringUtils.isEmpty(dto.getRefId())) {
       H checkExists = getDAO().findOne(dto.getRefId());
@@ -78,6 +79,7 @@ public abstract class BaseService<S, SC, H> {
   // Read
   public S get(String refId, String zoneId) {
     S result = null;
+
     if (!StringUtils.isEmpty(refId)) {
       H hitsObject = getFiltered(refId, zoneId);
       result = getConverter().toSifModel(hitsObject);
@@ -98,9 +100,10 @@ public abstract class BaseService<S, SC, H> {
     }
     return result;
   }
-  
+
   // Read All
-  public SC findByServicePath(List<KeyValuePair> filters, PagingInfo pagingInfo, String zoneId) throws UnsupportedQueryException {
+  public SC findByServicePath(List<KeyValuePair> filters, PagingInfo pagingInfo, String zoneId)
+      throws UnsupportedQueryException {
     SC result = getCollection(new ArrayList<S>());
     if (pagingInfo != null) {
       PageRequest pageRequest = new PageRequest(pagingInfo.getCurrentPageNo(), pagingInfo.getPageSize());
@@ -112,23 +115,25 @@ public abstract class BaseService<S, SC, H> {
     }
     return result;
   }
-  
+
   /**
-   * Find with Service path
-   * Override this in service layer to provide service path filtering.
+   * Find with Service path Override this in service layer to provide service
+   * path filtering.
+   * 
    * @param parentName
    * @param parentKey
    * @param schoolRefIds
    * @param pageRequest
    * @return
-   * @throws NotYetImplementedException 
+   * @throws NotYetImplementedException
    */
-  protected Page<H> findByServicePath(List<KeyValuePair> filters, List<String> schoolRefIds, PageRequest pageRequest) throws UnsupportedQueryException {
+  protected Page<H> findByServicePath(List<KeyValuePair> filters, List<String> schoolRefIds, PageRequest pageRequest)
+      throws UnsupportedQueryException {
     throw new UnsupportedQueryException("Service path filter not supported for this service path.");
   }
 
   // Update
-  public ResponseDTO<S> updateSingle(RequestDTO<S> dto, String zoneId) throws PersistenceException {
+  public ResponseDTO<S> updateSingle(RequestDTO<S> dto, String zoneId) {
     ResponseDTO<S> result = null;
     if (!StringUtils.isEmpty(dto.getRefId())) {
       H hitsObject = getDAO().findOne(dto.getRefId());
@@ -179,7 +184,7 @@ public abstract class BaseService<S, SC, H> {
    * @param zoneId
    * @throws PersistenceException
    */
-  protected H save(H hitsObject, RequestDTO<S> dto, String zoneId, boolean create) throws PersistenceException {
+  protected H save(H hitsObject, RequestDTO<S> dto, String zoneId, boolean create) {
     return getDAO().save(hitsObject);
   }
 
@@ -204,10 +209,11 @@ public abstract class BaseService<S, SC, H> {
 
   protected List<String> getSchoolRefIds(String zoneId) {
     List<String> result = new ArrayList<String>();
-    if (currentZone.get() != null && currentZone.get().getSchoolRefIds() != null && currentZone.get().getSchoolRefIds().size() > 0) {
+    if (currentZone.get() != null && currentZone.get().getSchoolRefIds() != null
+        && currentZone.get().getSchoolRefIds().size() > 0) {
       result = currentZone.get().getSchoolRefIds();
     } else {
-//      result.add(zoneId);
+      // result.add(zoneId);
     }
     return result;
   }

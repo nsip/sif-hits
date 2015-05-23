@@ -14,7 +14,7 @@ import javax.persistence.Transient;
 @Table(name = "TimeTable_Day")
 public class TimeTableDay implements Serializable {
   private static final long serialVersionUID = -6305870667354354202L;
-  
+
   @EmbeddedId
   private TimeTableDayId timeTableDayId;
   private String dayTitle;
@@ -70,11 +70,11 @@ public class TimeTableDay implements Serializable {
   public void setDayTitle(String dayTitle) {
     this.dayTitle = dayTitle;
   }
-  
+
   public Set<TimeTablePeriod> getPeriods() {
     return periods;
   }
-  
+
   public void setPeriods(Set<TimeTablePeriod> periods) {
     this.periods = periods;
   }

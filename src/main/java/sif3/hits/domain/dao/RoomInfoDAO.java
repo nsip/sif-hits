@@ -15,7 +15,7 @@ public interface RoomInfoDAO extends JpaRepository<RoomInfo, String>, ZoneFilter
   @Query("select r from RoomInfo r where r.schoolInfoRefId in :schoolRefIds")
   @Override
   public Page<RoomInfo> findAllWithFilter(@Param("schoolRefIds") List<String> schoolRefIds, Pageable pageable);
-  
+
   @Query("select r from RoomInfo r where r.refId = :refId and r.schoolInfoRefId in :schoolRefIds")
   @Override
   public RoomInfo findOneWithFilter(@Param("refId") String refId, @Param("schoolRefIds") List<String> schoolRefIds);

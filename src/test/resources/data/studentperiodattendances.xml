@@ -1,44 +1,49 @@
-<StudentPeriodAttendances xmlns="http://www.sifassociation.org/au/datamodel/1.3">
-	<StudentPeriodAttendance RefId="14BB2FE70A994858BEDF635B24CFF18C" xmlns="http://www.sifassociation.org/au/datamodel/1.3">
-	  <StudentPersonalRefId>236C3EE4-C43F-11E3-A7FB-E1F4DBD909AB</StudentPersonalRefId>
-	  <SchoolInfoRefId>6DAFB630-C439-11E3-9AA0-81F4DBD909AB</SchoolInfoRefId>
-	  <Date>2014-11-24</Date>
-	  <SessionInfoRefId>44966A710876465A82A2BF08B3DD1115</SessionInfoRefId>
-	  <TimetablePeriod>0</TimetablePeriod>
-	  <TimeIn>09:30:00</TimeIn>
-	  <TimeOut>10:30:00</TimeOut>
-	  <AttendanceCode>
-	    <Code>100</Code>
-	  </AttendanceCode>
-	  <AttendanceStatus>NA</AttendanceStatus>
-	  <SchoolYear>2015</SchoolYear>
-	  <AuditInfo>
-	    <CreationUser Type="School Admin">
-	       <UserId>userId</UserId>
-	    </CreationUser>
-	    <CreationDateTime>2015-03-02T09:20:22+08:00</CreationDateTime>
-	  </AuditInfo>
-	  <AttendanceComment>A Comment</AttendanceComment>
+<StudentPeriodAttendances
+	xmlns="http://www.sifassociation.org/au/datamodel/1.3">
+	<StudentPeriodAttendance RefId="14BB2FE70A994858BEDF635B24CFF18C">
+		<StudentPersonalRefId>F7DD788E3CEF40EB9CB4AF90A2FA3147
+		</StudentPersonalRefId>
+		<SchoolInfoRefId>6DAFB630-C439-11E3-9AA0-81F4DBD909AB
+		</SchoolInfoRefId>
+		<Date>2014-11-11</Date>
+		<SessionInfoRefId>07686CCEC91645E58741B42AADBC4BDB</SessionInfoRefId>
+		<TimetablePeriod>P6</TimetablePeriod>
+		<TimeIn>09:00:00</TimeIn>
+		<TimeOut>15:30:00</TimeOut>
+		<AttendanceCode>
+			<Code>802</Code>
+		</AttendanceCode>
+		<AttendanceStatus>01</AttendanceStatus>
+		<SchoolYear>2014</SchoolYear>
+		<AuditInfo>
+			<CreationUser Type="Teacher">
+				<UserId>ez204ff0</UserId>
+			</CreationUser>
+			<CreationDateTime>2015-04-22T15:17:54.227+08:00</CreationDateTime>
+		</AuditInfo>
+		<AttendanceComment>The Comments</AttendanceComment>
 	</StudentPeriodAttendance>
 	<StudentPeriodAttendance RefId="30F645FF9AD44A21912087CE2EFCCCD6">
-	  <StudentPersonalRefId>236C3EE4-C43F-11E3-A7FB-E1F4DBD909AB</StudentPersonalRefId>
-	  <SchoolInfoRefId>6DAFB630-C439-11E3-9AA0-81F4DBD909AB</SchoolInfoRefId>
-	  <Date>2014-11-24</Date>
-	  <SessionInfoRefId>44966A710876465A82A2BF08B3DD1115</SessionInfoRefId>
-	  <TimetablePeriod>0</TimetablePeriod>
-	  <TimeIn>09:30:00</TimeIn>
-	  <TimeOut>10:30:00</TimeOut>
-	  <AttendanceCode>
-	    <Code>100</Code>
-	  </AttendanceCode>
-	  <AttendanceStatus>NA</AttendanceStatus>
-	  <SchoolYear>2015</SchoolYear>
-	  <AuditInfo>
-	    <CreationUser Type="School Admin">
-	       <UserId>userId</UserId>
-	    </CreationUser>
-	    <CreationDateTime>2015-03-02T09:20:22+08:00</CreationDateTime>
-	  </AuditInfo>
-	  <AttendanceComment>A Comment</AttendanceComment>
+		<StudentPersonalRefId>F7DD788E3CEF40EB9CB4AF90A2FA3147
+		</StudentPersonalRefId>
+		<SchoolInfoRefId>6DAFB630-C439-11E3-9AA0-81F4DBD909AB
+		</SchoolInfoRefId>
+		<Date>2014-11-11</Date>
+		<SessionInfoRefId>07686CCEC91645E58741B42AADBC4BDB</SessionInfoRefId>
+		<TimetablePeriod>P6</TimetablePeriod>
+		<TimeIn>09:00:00</TimeIn>
+		<TimeOut>15:30:00</TimeOut>
+		<AttendanceCode>
+			<Code>802</Code>
+		</AttendanceCode>
+		<AttendanceStatus>01</AttendanceStatus>
+		<SchoolYear>2014</SchoolYear>
+		<AuditInfo>
+			<CreationUser Type="Teacher">
+				<UserId>ez204ff0</UserId>
+			</CreationUser>
+			<CreationDateTime>2015-04-22T15:17:54.227+08:00</CreationDateTime>
+		</AuditInfo>
+		<AttendanceComment>The Comments</AttendanceComment>
 	</StudentPeriodAttendance>
 </StudentPeriodAttendances>

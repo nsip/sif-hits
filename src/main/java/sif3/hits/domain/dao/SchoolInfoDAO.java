@@ -19,5 +19,5 @@ public interface SchoolInfoDAO extends JpaRepository<SchoolInfo, String>, ZoneFi
   @Query("select s from SchoolInfo s where s.refId = :refId and s.refId in :schoolRefIds")
   @Override
   public SchoolInfo findOneWithFilter(@Param("refId") String refId, @Param("schoolRefIds") List<String> schoolRefIds);
-  
+
 }

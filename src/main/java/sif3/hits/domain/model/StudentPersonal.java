@@ -1,11 +1,15 @@
 package sif3.hits.domain.model;
 
+import java.util.Set;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 @Entity
-public class StudentPersonal extends HitsEntity implements StudentPerson, ZoneFilterable {
+public class StudentPersonal extends HitsEntity implements StudentPerson {
   private static final long serialVersionUID = 3449687758651953543L;
 
   private String refId;
@@ -13,6 +17,8 @@ public class StudentPersonal extends HitsEntity implements StudentPerson, ZoneFi
   private String familyName;
   private String givenName;
   private String middleName;
+  private String fullName;
+  private String preferredFamilyName;
   private String preferredGivenName;
   private String stateProvinceId;
   private String sex;
@@ -30,8 +36,9 @@ public class StudentPersonal extends HitsEntity implements StudentPerson, ZoneFi
   private String mostRecentParent2NonSchoolEducation;
   private String mostRecentParent1EmploymentType;
   private String mostRecentParent2EmploymentType;
-  private String schoolInfoRefId;
   private String yearLevel;
+  private String religion;
+  private Set<StudentPersonalOtherId> otherIds;
 
   @Id
   public String getRefId() {
@@ -72,6 +79,22 @@ public class StudentPersonal extends HitsEntity implements StudentPerson, ZoneFi
 
   public void setMiddleName(String middleName) {
     this.middleName = middleName;
+  }
+
+  public String getFullName() {
+    return fullName;
+  }
+
+  public void setFullName(String fullName) {
+    this.fullName = fullName;
+  }
+
+  public String getPreferredFamilyName() {
+    return preferredFamilyName;
+  }
+
+  public void setPreferredFamilyName(String preferredFamilyName) {
+    this.preferredFamilyName = preferredFamilyName;
   }
 
   public String getPreferredGivenName() {
@@ -220,15 +243,6 @@ public class StudentPersonal extends HitsEntity implements StudentPerson, ZoneFi
     this.mostRecentParent2EmploymentType = mostRecentParent2EmploymentType;
   }
 
-  @Column(name = "SchoolInfo_RefId")
-  public String getSchoolInfoRefId() {
-    return schoolInfoRefId;
-  }
-
-  public void setSchoolInfoRefId(String schoolInfoRefId) {
-    this.schoolInfoRefId = schoolInfoRefId;
-  }
-
   public String getYearLevel() {
     return yearLevel;
   }
@@ -236,4 +250,22 @@ public class StudentPersonal extends HitsEntity implements StudentPerson, ZoneFi
   public void setYearLevel(String yearLevel) {
     this.yearLevel = yearLevel;
   }
+
+  public String getReligion() {
+    return religion;
+  }
+
+  public void setReligion(String religion) {
+    this.religion = religion;
+  }
+  
+  @OneToMany(fetch = FetchType.EAGER, mappedBy = "studentPersonalOtherIdId.studentPersonal")
+  public Set<StudentPersonalOtherId> getOtherIds() {
+    return otherIds;
+  }
+
+  public void setOtherIds(Set<StudentPersonalOtherId> otherIds) {
+    this.otherIds = otherIds;
+  }
+
 }

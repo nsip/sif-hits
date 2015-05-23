@@ -9,7 +9,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Service;
 
 import sif.dd.au30.model.CalendarDateCollectionType;
-import sif3.common.exception.PersistenceException;
 import sif3.hits.domain.converter.CalendarDateConverter;
 import sif3.hits.domain.converter.HitsConverter;
 import sif3.hits.domain.dao.CalendarDateDAO;
@@ -25,10 +24,9 @@ public class CalendarDateService extends
 
   @Autowired
   private CalendarDateDAO calendarDateDAO;
-  
+
   @Autowired
   private CalendarDateOtherCodeDAO calendarDateOtherCodeDAO;
-
 
   @Override
   public JpaRepository<CalendarDate, String> getDAO() {
@@ -65,7 +63,7 @@ public class CalendarDateService extends
     }
     return result;
   }
-  
+
   @Override
   protected void delete(CalendarDate hitsObject, RequestDTO<sif.dd.au30.model.CalendarDate> dto) {
     deleteOtherCodes(hitsObject);
@@ -78,7 +76,7 @@ public class CalendarDateService extends
 
   @Override
   protected CalendarDate save(CalendarDate hitsObject, RequestDTO<sif.dd.au30.model.CalendarDate> dto, String zoneId,
-      boolean create) throws PersistenceException {
+      boolean create) {
     CalendarDate result = null;
     if (!create) {
       deleteOtherCodes(hitsObject);
@@ -89,6 +87,7 @@ public class CalendarDateService extends
       hitsObject.getCalendarDateTypeOtherCodes().clear();
       result = super.save(hitsObject, dto, zoneId, create);
       for (CalendarDateTypeOtherCode otherCode : otherCodes) {
+        otherCode.setCalendarDate(hitsObject);
         calendarDateOtherCodeDAO.save(otherCode);
       }
       result.setCalendarDateTypeOtherCodes(otherCodes);

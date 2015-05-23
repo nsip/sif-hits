@@ -38,12 +38,12 @@ public abstract class AUDataModelProvider extends BaseProvider {
     }
     return result;
   }
-  
+
   protected String getContextId(SIFContext context) {
     String result = null;
     if (context != null) {
       result = context.getId();
-    } 
+    }
     return result;
   }
 }

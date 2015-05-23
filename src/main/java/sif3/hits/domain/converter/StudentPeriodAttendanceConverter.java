@@ -25,11 +25,13 @@ public class StudentPeriodAttendanceConverter extends
       target.setStudentPersonalRefId(source.getStudentPersonalRefId());
       target.setSchoolInfoRefId(source.getSchoolInfoRefId());
       target.setDate(getDateValue(source.getCalendarDate()));
-      target.setSessionInfoRefId(objectFactory.createStudentPeriodAttendanceTypeSessionInfoRefId(source.getSessionInfoRefId()));
-      target.setTimetablePeriod(objectFactory.createStudentPeriodAttendanceTypeTimetablePeriod(source.getTimetablePeriod()));
+      target.setSessionInfoRefId(objectFactory.createStudentPeriodAttendanceTypeSessionInfoRefId(source
+          .getSessionInfoRefId()));
+      target.setTimetablePeriod(objectFactory.createStudentPeriodAttendanceTypeTimetablePeriod(source
+          .getTimetablePeriod()));
       target.setTimeIn(objectFactory.createStudentPeriodAttendanceTypeTimeIn(getTimeValue(source.getTimeIn())));
       target.setTimeOut(objectFactory.createStudentPeriodAttendanceTypeTimeOut(getTimeValue(source.getTimeOut())));
-      
+
       if (source.getAttendanceCode() != null) {
         AttendanceCodeType attendanceCode = objectFactory.createAttendanceCodeType();
         attendanceCode.setCode(source.getAttendanceCode());
@@ -37,12 +39,14 @@ public class StudentPeriodAttendanceConverter extends
       }
 
       target.setAttendanceStatus(source.getAttendanceStatus());
-      target.setSchoolYear(objectFactory.createStudentPeriodAttendanceTypeSchoolYear(getYearValue(source.getSchoolYear())));
-      
-      if (source.getCreationUserType() != null || source.getAuditInfoCreationDateTime() != null || source.getAuditInfoCreationUserUserId() != null) {
+      target.setSchoolYear(objectFactory.createStudentPeriodAttendanceTypeSchoolYear(getYearValue(source
+          .getSchoolYear())));
+
+      if (source.getCreationUserType() != null || source.getAuditInfoCreationDateTime() != null
+          || source.getAuditInfoCreationUserUserId() != null) {
         AuditInfo auditInfo = new AuditInfo();
         auditInfo.setCreationDateTime(getCalendarValue(source.getAuditInfoCreationDateTime()));
-        
+
         CreationUser creationUser = new CreationUser();
         creationUser.setType(source.getCreationUserType());
         creationUser.setUserId(source.getAuditInfoCreationUserUserId());
@@ -51,10 +55,11 @@ public class StudentPeriodAttendanceConverter extends
         }
         target.setAuditInfo(objectFactory.createStudentPeriodAttendanceTypeAuditInfo(auditInfo));
       }
-      target.setAttendanceComment(objectFactory.createStudentPeriodAttendanceTypeAttendanceComment(source.getAttendanceComment()));
+      target.setAttendanceComment(objectFactory.createStudentPeriodAttendanceTypeAttendanceComment(source
+          .getAttendanceComment()));
     }
   }
-  
+
   @Override
   public void toHitsModel(StudentPeriodAttendanceType source, StudentPeriodAttendance target) {
     if (source != null && target != null) {
@@ -66,17 +71,17 @@ public class StudentPeriodAttendanceConverter extends
       target.setTimetablePeriod(getJAXBValue(source.getTimetablePeriod()));
       target.setTimeIn(getTimeValue(getJAXBValue(source.getTimeIn())));
       target.setTimeOut(getTimeValue(getJAXBValue(source.getTimeOut())));
-      
+
       if (source.getAttendanceCode() != null) {
         target.setAttendanceCode(source.getAttendanceCode().getCode());
       }
       target.setAttendanceStatus(source.getAttendanceStatus());
       target.setSchoolYear(getYearValue(getJAXBValue(source.getSchoolYear())));
-      
+
       AuditInfo auditInfo = getJAXBValue(source.getAuditInfo());
       if (auditInfo != null) {
         target.setAuditInfoCreationDateTime(getCalendarValue(auditInfo.getCreationDateTime()));
-        
+
         CreationUser creationUser = auditInfo.getCreationUser();
         if (creationUser != null) {
           target.setCreationUserType(creationUser.getType());
@@ -86,6 +91,5 @@ public class StudentPeriodAttendanceConverter extends
       target.setAttendanceComment(getJAXBValue(source.getAttendanceComment()));
     }
   }
-
 
 }

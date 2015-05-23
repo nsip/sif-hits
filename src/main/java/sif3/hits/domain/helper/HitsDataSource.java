@@ -15,7 +15,7 @@ import org.springframework.jdbc.datasource.lookup.DataSourceLookup;
 import org.springframework.jdbc.datasource.lookup.JndiDataSourceLookup;
 
 public class HitsDataSource extends AbstractDataSource implements InitializingBean {
-  
+
   protected static final Logger L = LoggerFactory.getLogger(HitsDataSource.class);
 
   private String defaultDataSource;
@@ -23,7 +23,7 @@ public class HitsDataSource extends AbstractDataSource implements InitializingBe
   private DataSourceLookup dataSourceLookup;
   private Map<String, DataSource> resolvedDataSources;
   private DataSource resolvedDefaultDataSource;
-  
+
   public void setDefaultTargetDataSource(String defaultDataSource) {
     this.defaultDataSource = defaultDataSource;
   }

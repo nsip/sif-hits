@@ -15,7 +15,8 @@ import sif3.hits.domain.dao.ZoneFilterableRepository;
 import sif3.hits.domain.model.StudentSchoolEnrollment;
 
 @Service
-public class StudentSchoolEnrollmentService extends BaseService<StudentSchoolEnrollmentType, StudentSchoolEnrollmentCollectionType, StudentSchoolEnrollment> {
+public class StudentSchoolEnrollmentService extends
+    BaseService<StudentSchoolEnrollmentType, StudentSchoolEnrollmentCollectionType, StudentSchoolEnrollment> {
 
   @Autowired
   private StudentSchoolEnrollmentDAO studentSchoolEnrollmentDAO;

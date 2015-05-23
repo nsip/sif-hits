@@ -26,12 +26,13 @@ public class StudentAttendanceSummaryProvider
     super(StudentAttendanceSummaryType.class, "StudentAttendanceSummary", StudentAttendanceSummaryCollectionType.class,
         "StudentAttendanceSummarys", StudentAttendanceSummaryService.class);
   }
-  
+
   @Override
   protected void setRefId(StudentAttendanceSummaryType sifObject, Class<StudentAttendanceSummaryType> sifClass,
       String refId) throws PersistenceException {
     ObjectFactory objectFactory = new ObjectFactory();
-    sifObject.setStudentAttendanceSummaryRefId(objectFactory.createStudentAttendanceSummaryTypeStudentAttendanceSummaryRefId(refId));
+    sifObject.setStudentAttendanceSummaryRefId(objectFactory
+        .createStudentAttendanceSummaryTypeStudentAttendanceSummaryRefId(refId));
   }
 
   @Override

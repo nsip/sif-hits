@@ -11,7 +11,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import sif.dd.au30.model.TimeTableCollectionType;
 import sif.dd.au30.model.TimeTableType;
-import sif3.common.exception.PersistenceException;
 import sif3.hits.domain.converter.HitsConverter;
 import sif3.hits.domain.converter.TimeTableConverter;
 import sif3.hits.domain.dao.SchoolInfoDAO;
@@ -30,13 +29,13 @@ public class TimeTableService extends BaseService<TimeTableType, TimeTableCollec
 
   @Autowired
   private TimeTableDAO timeTableDAO;
-  
+
   @Autowired
   private TimeTableDayDAO timeTableDayDAO;
-  
+
   @Autowired
   private TimeTablePeriodDAO timeTablePeriodDAO;
-  
+
   @Autowired
   private SchoolInfoDAO schoolInfoDAO;
 
@@ -83,9 +82,8 @@ public class TimeTableService extends BaseService<TimeTableType, TimeTableCollec
 
   @Override
   @Transactional(value = "transactionManager")
-  protected TimeTable save(TimeTable hitsObject, RequestDTO<TimeTableType> dto, String zoneId, boolean create)
-      throws PersistenceException {
-    
+  protected TimeTable save(TimeTable hitsObject, RequestDTO<TimeTableType> dto, String zoneId, boolean create) {
+
     TimeTable result = null;
     SchoolInfo schoolInfo = schoolInfoDAO.findOne(hitsObject.getSchoolInfoRefId());
     hitsObject.setSchoolInfo(schoolInfo);
@@ -112,19 +110,17 @@ public class TimeTableService extends BaseService<TimeTableType, TimeTableCollec
       }
       result.setTimeTableDays(days);
     } else {
-      result = super.save(hitsObject, dto, zoneId, create); 
+      result = super.save(hitsObject, dto, zoneId, create);
     }
     return result;
   }
-  
-  
-    
+
   private void deleteTimeTablePeriods(TimeTable hitsObject) {
     timeTablePeriodDAO.deleteAllWithTimeTable(hitsObject);
   }
 
   private void deleteTimeTableDays(TimeTable hitsObject) {
-    timeTableDayDAO.deleteAllWithTimeTable(hitsObject);    
+    timeTableDayDAO.deleteAllWithTimeTable(hitsObject);
   }
 
   @Override

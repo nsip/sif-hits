@@ -28,10 +28,10 @@ public class TimeTablePeriodConverter
       target.setPeriodTitle(source.getPeriodTitle());
       target
           .setStartTime(objectFactory
-              .createTimeTableTypeTimeTableDayListTimeTableDayTimeTablePeriodListTimeTablePeriodStartTime(getDateValue(source
+              .createTimeTableTypeTimeTableDayListTimeTableDayTimeTablePeriodListTimeTablePeriodStartTime(getTimeValue(source
                   .getStartTime())));
       target.setEndTime(objectFactory
-          .createTimeTableTypeTimeTableDayListTimeTableDayTimeTablePeriodListTimeTablePeriodEndTime(getDateValue(source
+          .createTimeTableTypeTimeTableDayListTimeTableDayTimeTablePeriodListTimeTablePeriodEndTime(getTimeValue(source
               .getEndTime())));
     }
   }

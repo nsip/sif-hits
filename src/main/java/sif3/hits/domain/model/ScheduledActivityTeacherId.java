@@ -14,7 +14,7 @@ public class ScheduledActivityTeacherId implements Serializable {
   @ManyToOne(optional = false)
   @JoinColumn(name = "ScheduledActivity_RefId", referencedColumnName = "RefId")
   private ScheduledActivity scheduledActivity;
-  
+
   @Column(name = "StaffPersonal_RefId")
   private String staffPersonalRefId;
 

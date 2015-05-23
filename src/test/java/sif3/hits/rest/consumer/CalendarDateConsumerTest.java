@@ -1,5 +1,6 @@
 package sif3.hits.rest.consumer;
 
+import java.math.BigDecimal;
 import java.util.Arrays;
 import java.util.List;
 
@@ -8,21 +9,84 @@ import org.junit.Before;
 import org.junit.Test;
 import org.springframework.http.HttpStatus;
 
-import sif.dd.au30.model.CalendarDateCollectionType;
 import sif.dd.au30.model.CalendarDate;
+import sif.dd.au30.model.CalendarDate.CalendarDateType;
+import sif.dd.au30.model.CalendarDate.StudentAttendance;
+import sif.dd.au30.model.CalendarDateCollectionType;
+import sif.dd.au30.model.ObjectFactory;
+import sif.dd.au30.model.OtherCodeListType;
+import sif.dd.au30.model.OtherCodeListType.OtherCode;
 import sif3.common.ws.BulkOperationResponse;
 import sif3.common.ws.CreateOperationStatus;
 import sif3.common.ws.OperationStatus;
 import sif3.common.ws.Response;
 import sif3.infra.rest.consumer.ConsumerLoader;
 
-public class CalendarDateConsumerTest {
+public class CalendarDateConsumerTest extends BaseTest {
   private ConsumerTest<CalendarDate, CalendarDateCollectionType> calendarDateTester = null;
   
+  private static final String REF_ID = "4756760B07484471BA78CE0F62E70EBF";
   private final String REF_ID_1 = "D283DB7B17164B82AE9051155B5DEF0D";
   private final String REF_ID_2 = "40DF4CCFA69B4B479DAF0ACD722E1942";
   private final String[] REF_IDS = { REF_ID_1, REF_ID_2 };
   
+  @Test
+  public void initialiseData() throws Exception {
+    ObjectFactory objectFactory = new ObjectFactory();
+
+    CalendarDate calendarDate = new CalendarDate();
+    calendarDate.setDate(getDate("2014-10-11"));
+    calendarDate.setCalendarDateRefId(objectFactory.createCalendarDateCalendarDateRefId(REF_ID));
+    calendarDate.setCalendarSummaryRefId(CalendarSummaryConsumerTest.REF_ID);
+    calendarDate.setSchoolInfoRefId(SchoolInfoConsumerTest.REF_ID);
+    calendarDate.setSchoolYear(getDate("2014"));
+    
+    CalendarDateType calendarDateType = new CalendarDateType();
+    calendarDateType.setCode("INST");
+    
+    OtherCodeListType otherCodeList = new OtherCodeListType();
+    OtherCode otherCode = new OtherCode();
+    otherCode.setCodeset("Local");
+    otherCode.setValue("Normal");
+    otherCodeList.getOtherCode().add(otherCode);
+    otherCode = new OtherCode();
+    otherCode.setCodeset("Local");
+    otherCode.setValue("Students");
+    otherCodeList.getOtherCode().add(otherCode);
+    calendarDateType.setOtherCodeList(objectFactory.createCalendarDateCalendarDateTypeOtherCodeList(otherCodeList));
+    calendarDate.setCalendarDateType(calendarDateType);
+    
+    calendarDate.setCalendarDateNumber(objectFactory.createCalendarDateCalendarDateNumber(44L));
+    StudentAttendance studentAttendance = new StudentAttendance();
+    studentAttendance.setAttendanceValue(new BigDecimal("234"));
+    studentAttendance.setCountsTowardAttendance("Yes");
+    calendarDate.setStudentAttendance(objectFactory.createCalendarDateStudentAttendance(studentAttendance));
+    
+    calendarDateTester.doCreateOne(calendarDate);
+    String xmlExpectedTo = calendarDateTester.getXML(calendarDate);
+
+    calendarDate.setCalendarDateRefId(objectFactory.createCalendarDateCalendarDateRefId("2D647FF72091445BB4C02EE5527277ED"));
+    calendarDateTester.doCreateOne(calendarDate);
+
+    calendarDate.setCalendarDateRefId(objectFactory.createCalendarDateCalendarDateRefId("16E97F11747E42B68A4FA68B5EDE6F1D"));
+    calendarDateTester.doCreateOne(calendarDate);
+
+    calendarDate.setCalendarDateRefId(objectFactory.createCalendarDateCalendarDateRefId("ABF46D83AED04FB898F539FBF022E17F"));
+    calendarDateTester.doCreateOne(calendarDate);
+    calendarDate.getCalendarDateType().setOtherCodeList(null);
+    calendarDateTester.doUpdateOne(calendarDate, calendarDate.getCalendarDateRefId().getValue());
+    
+    calendarDate.setCalendarDateRefId(objectFactory.createCalendarDateCalendarDateRefId("0553C842DF314A8096A1FA1B3608B52A"));
+    calendarDateTester.doCreateOne(calendarDate);
+
+    CalendarDate getResult = calendarDateTester.doGetOne(REF_ID);
+    String xmlExpectedFrom = calendarDateTester.getXML(getResult);
+    boolean semiEquals = semiEquals(xmlExpectedFrom, xmlExpectedTo);
+    if (!semiEquals) {
+      Assert.assertEquals("XML Differs", xmlExpectedFrom, xmlExpectedTo);
+    }
+  }
+
   @Before
   public void setup() {
     ConsumerLoader.initialise("TestConsumer");
@@ -33,7 +97,6 @@ public class CalendarDateConsumerTest {
   
   @Test
   public void testGetSingle() {
-    final String REF_ID = "4756760B07484471BA78CE0F62E70EBF";
     List<Response> responses = calendarDateTester.testGetSingle(REF_ID);
     Assert.assertNotNull(responses);
     Assert.assertEquals(1, responses.size());

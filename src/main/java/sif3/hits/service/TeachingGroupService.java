@@ -11,7 +11,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import sif.dd.au30.model.TeachingGroupCollectionType;
 import sif.dd.au30.model.TeachingGroupType;
-import sif3.common.exception.PersistenceException;
 import sif3.hits.domain.converter.HitsConverter;
 import sif3.hits.domain.converter.TeachingGroupConverter;
 import sif3.hits.domain.dao.RoomInfoDAO;
@@ -19,12 +18,14 @@ import sif3.hits.domain.dao.SchoolInfoDAO;
 import sif3.hits.domain.dao.StaffPersonalDAO;
 import sif3.hits.domain.dao.StudentPersonalDAO;
 import sif3.hits.domain.dao.TeachingGroupDAO;
+import sif3.hits.domain.dao.TeachingGroupTeacherDAO;
 import sif3.hits.domain.dao.TimeTableCellDAO;
 import sif3.hits.domain.dao.ZoneFilterableRepository;
 import sif3.hits.domain.model.SchoolInfo;
 import sif3.hits.domain.model.StaffPersonal;
 import sif3.hits.domain.model.StudentPersonal;
 import sif3.hits.domain.model.TeachingGroup;
+import sif3.hits.domain.model.TeachingGroupTeacher;
 import sif3.hits.domain.model.TimeTableCell;
 import sif3.hits.rest.dto.RequestDTO;
 
@@ -42,6 +43,9 @@ public class TeachingGroupService extends BaseService<TeachingGroupType, Teachin
 
   @Autowired
   private TeachingGroupDAO teachingGroupDAO;
+  
+  @Autowired
+  private TeachingGroupTeacherDAO teachingGroupTeacherDAO;
 
   @Autowired
   private TimeTableCellDAO timeTableCellDAO;
@@ -89,24 +93,18 @@ public class TeachingGroupService extends BaseService<TeachingGroupType, Teachin
     }
     return result;
   }
+  
+  private void deleteTeachingGroupTeachers(TeachingGroup hitsObject) {
+    teachingGroupTeacherDAO.deleteAllWithTeachingGroup(hitsObject);
+  }
 
   @Override
   @Transactional(value = "transactionManager")
   protected TeachingGroup save(TeachingGroup hitsObject, RequestDTO<TeachingGroupType> dto, String zoneId,
-      boolean create) throws PersistenceException {
-
-    // Populate list of Teachers
-    Set<StaffPersonal> teachingGroupTeachers = new HashSet<StaffPersonal>();
-    if (hitsObject.getStaffPersonals() != null) {
-      for (StaffPersonal staffPersonal : hitsObject.getStaffPersonals()) {
-        StaffPersonal teachingGroupTeacher = getTeachingGroupTeacher(staffPersonal, zoneId);
-        if (teachingGroupTeacher != null) {
-          teachingGroupTeachers.add(teachingGroupTeacher);
-        }
-      }
-    }
-    hitsObject.setStaffPersonals(teachingGroupTeachers);
-
+      boolean create) {
+    
+    TeachingGroup result = null;
+    
     // Populate list of Students
     Set<StudentPersonal> teachingGroupStudents = new HashSet<StudentPersonal>();
     if (hitsObject.getStudentPersonals() != null) {
@@ -133,8 +131,28 @@ public class TeachingGroupService extends BaseService<TeachingGroupType, Teachin
       }
     }
     hitsObject.setTimeTablePeriods(timeTablePeriods);
-
-    return super.save(hitsObject, dto, zoneId, create);
+    
+    if (!create) {
+      deleteTeachingGroupTeachers(hitsObject);
+    }
+    if (hitsObject.getTeachingGroupTeachers() != null && !hitsObject.getTeachingGroupTeachers().isEmpty()) {
+      Set<TeachingGroupTeacher> teachers = new HashSet<TeachingGroupTeacher>();
+      teachers.addAll(hitsObject.getTeachingGroupTeachers());
+      hitsObject.getTeachingGroupTeachers().clear();
+      result = super.save(hitsObject, dto, zoneId, create);
+      for (TeachingGroupTeacher teacher : teachers) {
+        StaffPersonal staffPersonal = getTeachingGroupTeacher(teacher.getStaffPersonal(), zoneId);
+        if (staffPersonal != null) {
+          teacher.setTeachingGroup(hitsObject);
+          teacher.setStaffPersonal(staffPersonal);
+          teachingGroupTeacherDAO.save(teacher);
+          result.getTeachingGroupTeachers().add(teacher);
+        }
+      }
+    } else {
+      result = super.save(hitsObject, dto, zoneId, create);
+    }
+    return result;
   }
 
   private StaffPersonal getTeachingGroupTeacher(StaffPersonal staffPersonal, String zoneId) {
@@ -167,13 +185,5 @@ public class TeachingGroupService extends BaseService<TeachingGroupType, Teachin
       result = timeTableCellDAO.findOneWithFilter(timeTableCell.getRefId(), getSchoolRefIds(zoneId));
     }
     return result;
-  }
-
-  @Override
-  protected void delete(TeachingGroup hitsObject, RequestDTO<TeachingGroupType> dto) {
-    // Before deleting we need to make sure that all referential integrity jazz
-    // is looked after...
-    // May not need to do anything here.
-    super.delete(hitsObject, dto);
   }
 }

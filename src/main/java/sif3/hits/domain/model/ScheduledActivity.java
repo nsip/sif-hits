@@ -13,7 +13,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 
 @Entity
-public class ScheduledActivity extends HitsEntity implements ZoneFilterable {
+public class ScheduledActivity extends HitsEntity {
   private static final long serialVersionUID = -1681160900137304643L;
 
   private String refId;
@@ -189,7 +189,7 @@ public class ScheduledActivity extends HitsEntity implements ZoneFilterable {
   }
 
   @ElementCollection
-  @CollectionTable(name = "ScheduledActivity_Room", joinColumns = { @JoinColumn(name="ScheduledActivity_RefId") } )
+  @CollectionTable(name = "ScheduledActivity_Room", joinColumns = { @JoinColumn(name = "ScheduledActivity_RefId") })
   @Column(name = "RoomInfo_RefId")
   public Set<String> getRoomInfoRefIds() {
     return roomInfoRefIds;
@@ -200,7 +200,7 @@ public class ScheduledActivity extends HitsEntity implements ZoneFilterable {
   }
 
   @ElementCollection
-  @CollectionTable(name = "ScheduledActivity_Student", joinColumns = { @JoinColumn(name="ScheduledActivity_RefId") } )
+  @CollectionTable(name = "ScheduledActivity_Student", joinColumns = { @JoinColumn(name = "ScheduledActivity_RefId") })
   @Column(name = "StudentPersonal_RefId")
   public Set<String> getStudentPersonalRefIds() {
     return studentPersonalRefIds;
@@ -211,7 +211,7 @@ public class ScheduledActivity extends HitsEntity implements ZoneFilterable {
   }
 
   @ElementCollection
-  @CollectionTable(name = "ScheduledActivity_TeachingGroup", joinColumns = { @JoinColumn(name="ScheduledActivity_RefId") } )
+  @CollectionTable(name = "ScheduledActivity_TeachingGroup", joinColumns = { @JoinColumn(name = "ScheduledActivity_RefId") })
   @Column(name = "TeachingGroup_RefId")
   public Set<String> getTeachingGroupRefIds() {
     return teachingGroupRefIds;
@@ -221,7 +221,7 @@ public class ScheduledActivity extends HitsEntity implements ZoneFilterable {
     this.teachingGroupRefIds = teachingGroupRefIds;
   }
 
-  @OneToMany(fetch = FetchType.EAGER, mappedBy = "scheduledActivityTeacherId.scheduledActivity",  cascade = CascadeType.ALL)
+  @OneToMany(fetch = FetchType.EAGER, mappedBy = "scheduledActivityTeacherId.scheduledActivity", cascade = CascadeType.ALL)
   public Set<ScheduledActivityTeacher> getTeachers() {
     return teachers;
   }

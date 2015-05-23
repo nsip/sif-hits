@@ -5,7 +5,7 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 
 @Entity
-public class StaffAssignment extends HitsEntity implements ZoneFilterable {
+public class StaffAssignment extends HitsEntity {
   private static final long serialVersionUID = 8218116792025921548L;
 
   private String refId;
@@ -18,7 +18,6 @@ public class StaffAssignment extends HitsEntity implements ZoneFilterable {
   private String jobEndDate;
   private String jobFunction;
   private String staffActivityCode;
-  
 
   @Id
   public String getRefId() {
@@ -70,27 +69,27 @@ public class StaffAssignment extends HitsEntity implements ZoneFilterable {
   public void setPrimaryAssignment(String primaryAssignment) {
     this.primaryAssignment = primaryAssignment;
   }
-  
+
   public String getJobStartDate() {
     return jobStartDate;
   }
-  
+
   public void setJobStartDate(String jobStartDate) {
     this.jobStartDate = jobStartDate;
   }
-  
+
   public String getJobEndDate() {
     return jobEndDate;
   }
-  
+
   public void setJobEndDate(String jobEndDate) {
     this.jobEndDate = jobEndDate;
   }
-  
+
   public String getJobFunction() {
     return jobFunction;
   }
-  
+
   public void setJobFunction(String jobFunction) {
     this.jobFunction = jobFunction;
   }
@@ -99,7 +98,7 @@ public class StaffAssignment extends HitsEntity implements ZoneFilterable {
   public String getStaffActivityCode() {
     return staffActivityCode;
   }
-  
+
   public void setStaffActivityCode(String staffActivityCode) {
     this.staffActivityCode = staffActivityCode;
   }

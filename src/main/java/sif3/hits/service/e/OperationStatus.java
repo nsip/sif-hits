@@ -14,7 +14,8 @@ public enum OperationStatus {
   DELETE_OK(true, HttpStatus.OK.value(), null),
   DELETE_ERR_NO_OBJECT(false, HttpStatus.NOT_FOUND.value(), "Object with that reference id not found."),
   DELETE_ERR_OTHER(false, HttpStatus.INTERNAL_SERVER_ERROR.value(), "An unknown error occurred while deleting object."),
-  SERVICE_PATH_NOT_FOUND(false, HttpStatus.NOT_FOUND.value(), "Service path not implemented.");
+  SERVICE_PATH_NOT_FOUND(false, HttpStatus.NOT_FOUND.value(), "Service path not implemented."),
+  UNKNOWN_ERROR(false, HttpStatus.INTERNAL_SERVER_ERROR.value(), "An unknown error has occurred. See server logs for detailed information.");
 
   OperationStatus(boolean ok, int httpStatus, String message) {
     this.ok = ok;

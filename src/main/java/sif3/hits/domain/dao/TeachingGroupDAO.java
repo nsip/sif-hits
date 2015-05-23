@@ -15,7 +15,7 @@ public interface TeachingGroupDAO extends JpaRepository<TeachingGroup, String>, 
   @Query("select t from TeachingGroup t where t.schoolInfo.refId in :schoolRefIds")
   @Override
   public Page<TeachingGroup> findAllWithFilter(@Param("schoolRefIds") List<String> schoolRefIds, Pageable pageable);
-  
+
   @Query("select t from TeachingGroup t where t.refId = :refId and t.schoolInfo.refId in :schoolRefIds")
   @Override
   public TeachingGroup findOneWithFilter(@Param("refId") String refId, @Param("schoolRefIds") List<String> schoolRefIds);

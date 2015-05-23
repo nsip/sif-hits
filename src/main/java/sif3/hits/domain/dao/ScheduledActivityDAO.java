@@ -10,7 +10,8 @@ import org.springframework.data.repository.query.Param;
 
 import sif3.hits.domain.model.ScheduledActivity;
 
-public interface ScheduledActivityDAO extends JpaRepository<ScheduledActivity, String>, ZoneFilterableRepository<ScheduledActivity> {
+public interface ScheduledActivityDAO extends JpaRepository<ScheduledActivity, String>,
+    ZoneFilterableRepository<ScheduledActivity> {
 
   @Query("select s from ScheduledActivity s where s.schoolInfoRefId in :schoolRefIds")
   @Override
@@ -18,5 +19,6 @@ public interface ScheduledActivityDAO extends JpaRepository<ScheduledActivity, S
 
   @Query("select s from ScheduledActivity s where s.refId = :refId and s.schoolInfoRefId in :schoolRefIds")
   @Override
-  public ScheduledActivity findOneWithFilter(@Param("refId") String refId, @Param("schoolRefIds") List<String> schoolRefIds);
+  public ScheduledActivity findOneWithFilter(@Param("refId") String refId,
+      @Param("schoolRefIds") List<String> schoolRefIds);
 }

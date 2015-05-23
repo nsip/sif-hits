@@ -20,8 +20,9 @@ import sif3.hits.domain.helper.HitsDataSourceLookup;
 @Configuration
 @EnableJpaRepositories(basePackages = { "sif3.hits.domain.shared.dao" }, entityManagerFactoryRef = "sharedEntityManagerFactory", transactionManagerRef = "sharedTransactionManager")
 public class SharedDatabaseConfiguration {
-//  private static final Logger L = LoggerFactory.getLogger(DynamicDatabaseConfiguration.class);
-  
+  // private static final Logger L =
+  // LoggerFactory.getLogger(DynamicDatabaseConfiguration.class);
+
   @Resource(name = "databaseProperties")
   private Properties databaseProperties;
 
@@ -31,7 +32,8 @@ public class SharedDatabaseConfiguration {
     factoryBean.setPersistenceUnitName("sif3.hits.shared");
     factoryBean.setDataSource(this.sharedDataSource());
     factoryBean.setPackagesToScan(new String[] { "sif3.hits.domain.shared.model" });
-    factoryBean.setJpaVendorAdapter(new HibernateJpaVendorAdapter() {});
+    factoryBean.setJpaVendorAdapter(new HibernateJpaVendorAdapter() {
+    });
     factoryBean.setJpaProperties(this.databaseProperties);
     factoryBean.setJpaDialect(new HibernateJpaDialect());
     return factoryBean;

@@ -16,8 +16,9 @@ public interface CalendarSummaryDAO extends JpaRepository<CalendarSummary, Strin
   @Query("select distinct s from CalendarSummary s where s.schoolInfoRefId in :schoolRefIds")
   @Override
   public Page<CalendarSummary> findAllWithFilter(@Param("schoolRefIds") List<String> schoolRefIds, Pageable pageable);
-  
+
   @Override
   @Query("select distinct s from CalendarSummary s where s.schoolInfoRefId in :schoolRefIds and s.refId = :refId")
-  public CalendarSummary findOneWithFilter(@Param("refId") String refId, @Param("schoolRefIds") List<String> schoolRefIds);
+  public CalendarSummary findOneWithFilter(@Param("refId") String refId,
+      @Param("schoolRefIds") List<String> schoolRefIds);
 }

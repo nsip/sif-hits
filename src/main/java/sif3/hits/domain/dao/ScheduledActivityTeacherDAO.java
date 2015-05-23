@@ -9,7 +9,8 @@ import sif3.hits.domain.model.ScheduledActivity;
 import sif3.hits.domain.model.ScheduledActivityTeacher;
 import sif3.hits.domain.model.ScheduledActivityTeacherId;
 
-public interface ScheduledActivityTeacherDAO extends JpaRepository<ScheduledActivityTeacher, ScheduledActivityTeacherId> {
+public interface ScheduledActivityTeacherDAO extends
+    JpaRepository<ScheduledActivityTeacher, ScheduledActivityTeacherId> {
   @Query("delete from ScheduledActivityTeacher s where s.scheduledActivityTeacherId.scheduledActivity = :scheduledActivity")
   @Modifying
   public void deleteAllWithScheduledActivity(@Param("scheduledActivity") ScheduledActivity scheduledActivity);

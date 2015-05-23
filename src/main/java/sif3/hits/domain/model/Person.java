@@ -14,9 +14,17 @@ public interface Person {
 
   public void setMiddleName(String middleName);
 
+  public String getPreferredFamilyName();
+
+  public void setPreferredFamilyName(String preferredFamilyName);
+
   public String getPreferredGivenName();
 
   public void setPreferredGivenName(String preferredGivenName);
+
+  public String getFullName();
+
+  public void setFullName(String fullName);
 
   public String getSex();
 
@@ -29,5 +37,9 @@ public interface Person {
   public String getPhoneNumber();
 
   public void setPhoneNumber(String phoneNumber);
+
+  public String getBirthDate();
+
+  public void setBirthDate(String birthDate);
 
 }

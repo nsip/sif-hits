@@ -2,18 +2,19 @@ package sif3.hits.domain.model;
 
 import java.util.Set;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
 @Entity
-public class TimeTableSubject extends HitsEntity implements ZoneFilterable {
+public class TimeTableSubject extends HitsEntity {
   private static final long serialVersionUID = 2582961677925949934L;
 
   private String refId;
-  private String schoolInfoRefId;
+  private SchoolInfo schoolInfo;
   private String subjectLocalId;
   private String academicYear;
   private String faculty;
@@ -21,6 +22,7 @@ public class TimeTableSubject extends HitsEntity implements ZoneFilterable {
   private String subjectLongName;
   private String subjectType;
   private String proposedMinClassSize;
+  private String proposedMaxClassSize;
   private String semester;
   private String schoolYear;
   private Set<TimeTableSubjectOtherCode> otherCodes;
@@ -34,13 +36,14 @@ public class TimeTableSubject extends HitsEntity implements ZoneFilterable {
     this.refId = refId;
   }
 
-  @Column(name="SchoolInfo_RefId")
-  public String getSchoolInfoRefId() {
-    return schoolInfoRefId;
+  @ManyToOne
+  @JoinColumn(name = "SchoolInfo_RefId", referencedColumnName = "RefId")
+  public SchoolInfo getSchoolInfo() {
+    return schoolInfo;
   }
 
-  public void setSchoolInfoRefId(String schoolInfoRefId) {
-    this.schoolInfoRefId = schoolInfoRefId;
+  public void setSchoolInfo(SchoolInfo schoolInfo) {
+    this.schoolInfo = schoolInfo;
   }
 
   public String getSubjectLocalId() {
@@ -106,6 +109,14 @@ public class TimeTableSubject extends HitsEntity implements ZoneFilterable {
 
   public void setProposedMinClassSize(String proposedMinClassSize) {
     this.proposedMinClassSize = proposedMinClassSize;
+  }
+
+  public String getProposedMaxClassSize() {
+    return proposedMaxClassSize;
+  }
+
+  public void setProposedMaxClassSize(String proposedMaxClassSize) {
+    this.proposedMaxClassSize = proposedMaxClassSize;
   }
 
   public String getSemester() {

@@ -22,8 +22,7 @@ public class TimeTableProvider extends
    *          values of provider property file.
    */
   public TimeTableProvider() {
-    super(TimeTableType.class, "TimeTable", TimeTableCollectionType.class, "TimeTables",
-        TimeTableService.class);
+    super(TimeTableType.class, "TimeTable", TimeTableCollectionType.class, "TimeTables", TimeTableService.class);
   }
 
   @Override

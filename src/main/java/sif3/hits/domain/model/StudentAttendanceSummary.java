@@ -5,7 +5,7 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 
 @Entity
-public class StudentAttendanceSummary extends HitsEntity implements ZoneFilterable {
+public class StudentAttendanceSummary extends HitsEntity {
   private static final long serialVersionUID = 3200576651380455536L;
   private String refId = null;
   private String studentPersonalRefId = null;

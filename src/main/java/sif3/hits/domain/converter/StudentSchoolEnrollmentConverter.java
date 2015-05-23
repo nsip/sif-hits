@@ -3,9 +3,9 @@ package sif3.hits.domain.converter;
 import org.springframework.stereotype.Component;
 
 import sif.dd.au30.model.AUCodeSetsEnrollmentTimeFrameType;
-import sif3.hits.domain.converter.factory.ObjectFactory;
 import sif.dd.au30.model.StudentSchoolEnrollmentType;
 import sif.dd.au30.model.YearLevelType;
+import sif3.hits.domain.converter.factory.ObjectFactory;
 import sif3.hits.domain.model.StudentSchoolEnrollment;
 
 @Component
@@ -36,6 +36,7 @@ public class StudentSchoolEnrollmentConverter extends
 
       target.setFTE(objectFactory.createStudentSchoolEnrollmentTypeFTE(getBigDecimalValue(source.getFte())));
       target.setEntryDate(getDateValue(source.getEntryDate()));
+      target.setExitDate(objectFactory.createStudentSchoolEnrollmentTypeExitDate(getDateValue(source.getExitDate())));
     }
   }
 
@@ -55,5 +56,6 @@ public class StudentSchoolEnrollmentConverter extends
 
     target.setFte(getBigDecimalValue(getJAXBValue(source.getFTE())));
     target.setEntryDate(getDateValue(source.getEntryDate()));
+    target.setExitDate(getDateValue(getJAXBValue(source.getExitDate())));
   }
 }

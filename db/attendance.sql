@@ -1,14 +1,14 @@
-ALTER TABLE `X`.`CalendarSummary` 
+ALTER TABLE `CalendarSummary` 
 ADD COLUMN `FirstInstructionDate` VARCHAR(200) NULL AFTER `EndDate`,
 ADD COLUMN `LastInstructionDate` VARCHAR(200) NULL AFTER `FirstInstructionDate`,
 ADD COLUMN `InstructionalMinutes` VARCHAR(200) NULL AFTER `LastInstructionDate`,
 ADD COLUMN `MinutesPerDay` VARCHAR(200) NULL AFTER `InstructionalMinutes`;
 
-CREATE TABLE `X`.`CalendarSummary_YearLevel` (
+CREATE TABLE `CalendarSummary_YearLevel` (
   `CalendarySummary_RefId` VARCHAR(200) NULL,
   `YearLevel` VARCHAR(200) NULL);
 
-CREATE TABLE `X`.`SessionInfo` (
+CREATE TABLE `SessionInfo` (
     `RefId` VARCHAR(200) NULL,
     `SchoolInfo_RefId` VARCHAR(200) NULL,
     `TimeTableCell_RefId` VARCHAR(200) NULL,
@@ -28,7 +28,7 @@ CREATE TABLE `X`.`SessionInfo` (
     UNIQUE KEY `RefId` (`RefId`)
 );
 
-CREATE TABLE `X`.`StudentPeriodAttendance` (
+CREATE TABLE `StudentPeriodAttendance` (
     `RefId` VARCHAR(200) NULL,
     `StudentPersonal_RefId` VARCHAR(200) NULL,
     `SchoolInfo_RefId` VARCHAR(200) NULL,

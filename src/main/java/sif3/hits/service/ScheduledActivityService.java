@@ -10,7 +10,6 @@ import org.springframework.stereotype.Service;
 
 import sif.dd.au30.model.ScheduledActivityCollectionType;
 import sif.dd.au30.model.ScheduledActivityType;
-import sif3.common.exception.PersistenceException;
 import sif3.hits.domain.converter.HitsConverter;
 import sif3.hits.domain.converter.ScheduledActivityConverter;
 import sif3.hits.domain.dao.ScheduledActivityDAO;
@@ -21,11 +20,12 @@ import sif3.hits.domain.model.ScheduledActivityTeacher;
 import sif3.hits.rest.dto.RequestDTO;
 
 @Service
-public class ScheduledActivityService extends BaseService<ScheduledActivityType, ScheduledActivityCollectionType, ScheduledActivity> {
+public class ScheduledActivityService extends
+    BaseService<ScheduledActivityType, ScheduledActivityCollectionType, ScheduledActivity> {
 
   @Autowired
   private ScheduledActivityDAO scheduledActivityDAO;
-  
+
   @Autowired
   private ScheduledActivityTeacherDAO scheduledActivityTeacherDAO;
 
@@ -46,10 +46,10 @@ public class ScheduledActivityService extends BaseService<ScheduledActivityType,
   public HitsConverter<ScheduledActivityType, ScheduledActivity> getConverter() {
     return scheduledActivityConverter;
   }
-  
+
   @Override
   protected ScheduledActivity save(ScheduledActivity hitsObject, RequestDTO<ScheduledActivityType> dto, String zoneId,
-      boolean create) throws PersistenceException {
+      boolean create) {
 
     ScheduledActivity result = null;
     if (!create) {

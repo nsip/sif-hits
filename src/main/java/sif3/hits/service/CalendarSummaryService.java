@@ -10,7 +10,6 @@ import org.springframework.stereotype.Service;
 
 import sif.dd.au30.model.CalendarSummaryCollectionType;
 import sif.dd.au30.model.CalendarSummaryType;
-import sif3.common.exception.PersistenceException;
 import sif3.hits.domain.converter.CalendarSummaryConverter;
 import sif3.hits.domain.converter.HitsConverter;
 import sif3.hits.domain.dao.CalendarSummaryDAO;
@@ -78,7 +77,7 @@ public class CalendarSummaryService extends
 
   @Override
   protected CalendarSummary save(CalendarSummary hitsObject, RequestDTO<sif.dd.au30.model.CalendarSummaryType> dto,
-      String zoneId, boolean create) throws PersistenceException {
+      String zoneId, boolean create) {
     CalendarSummary result = null;
     if (!create) {
       deleteYearLevels(hitsObject);
@@ -89,6 +88,7 @@ public class CalendarSummaryService extends
       hitsObject.getCalendarSummaryYearLevels().clear();
       result = super.save(hitsObject, dto, zoneId, create);
       for (CalendarSummaryYearLevel yearLevel : yearLevels) {
+        yearLevel.setCalendarSummary(hitsObject);
         calendarSummaryYearLevelDAO.save(yearLevel);
       }
       result.setCalendarSummaryYearLevels(yearLevels);

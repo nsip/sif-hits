@@ -1,11 +1,14 @@
 package sif3.hits.domain.model;
 
-import javax.persistence.Column;
+import java.util.Set;
+
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 @Entity
-public class StaffPersonal extends HitsEntity implements StaffPerson, ZoneFilterable {
+public class StaffPersonal extends HitsEntity implements StaffPerson {
   private static final long serialVersionUID = -1366329722095506132L;
 
   private String refId;
@@ -13,14 +16,17 @@ public class StaffPersonal extends HitsEntity implements StaffPerson, ZoneFilter
   private String familyName;
   private String givenName;
   private String middleName;
+  private String preferredFamilyName;
   private String preferredGivenName;
+  private String fullName;
   private String stateProvinceId;
   private String sex;
   private String employmentStatus;
   private String email;
   private String phoneNumber;
   private String salutation;
-  private String schoolInfoRefId;
+  private String birthDate;
+  private Set<StaffPersonalOtherId> otherIds;
 
   @Id
   public String getRefId() {
@@ -63,12 +69,28 @@ public class StaffPersonal extends HitsEntity implements StaffPerson, ZoneFilter
     this.middleName = middleName;
   }
 
+  public String getPreferredFamilyName() {
+    return preferredFamilyName;
+  }
+
+  public void setPreferredFamilyName(String preferredFamilyName) {
+    this.preferredFamilyName = preferredFamilyName;
+  }
+
   public String getPreferredGivenName() {
     return preferredGivenName;
   }
 
   public void setPreferredGivenName(String preferredGivenName) {
     this.preferredGivenName = preferredGivenName;
+  }
+  
+  public String getFullName() {
+    return fullName;
+  }
+  
+  public void setFullName(String fullName) {
+    this.fullName = fullName;
   }
 
   public String getStateProvinceId() {
@@ -119,12 +141,21 @@ public class StaffPersonal extends HitsEntity implements StaffPerson, ZoneFilter
     this.salutation = salutation;
   }
 
-  @Column(name = "SchoolInfo_RefId")
-  public String getSchoolInfoRefId() {
-    return schoolInfoRefId;
+  public String getBirthDate() {
+    return birthDate;
   }
 
-  public void setSchoolInfoRefId(String schoolInfoRefId) {
-    this.schoolInfoRefId = schoolInfoRefId;
+  public void setBirthDate(String birthDate) {
+    this.birthDate = birthDate;
   }
+  
+  @OneToMany(fetch = FetchType.EAGER, mappedBy = "staffPersonalOtherIdId.staffPersonal")
+  public Set<StaffPersonalOtherId> getOtherIds() {
+    return otherIds;
+  }
+
+  public void setOtherIds(Set<StaffPersonalOtherId> otherIds) {
+    this.otherIds = otherIds;
+  }
+
 }

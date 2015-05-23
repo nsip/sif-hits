@@ -21,7 +21,10 @@ public class NameOfRecordConverter extends HitsConverter<NameOfRecordType, Perso
       target.setFamilyName(objectFactory.createBaseNameTypeFamilyName(source.getFamilyName()));
       target.setGivenName(objectFactory.createBaseNameTypeGivenName(source.getGivenName()));
       target.setMiddleName(objectFactory.createBaseNameTypeMiddleName(source.getMiddleName()));
+      target
+          .setPreferredFamilyName(objectFactory.createBaseNameTypePreferredFamilyName(source.getPreferredFamilyName()));
       target.setPreferredGivenName(objectFactory.createBaseNameTypePreferredGivenName(source.getPreferredGivenName()));
+      target.setFullName(objectFactory.createBaseNameTypeFullName(source.getFullName()));
       if (source instanceof StaffPerson) {
         StaffPerson staffSource = (StaffPerson) source;
         target.setTitle(objectFactory.createBaseNameTypeTitle(staffSource.getSalutation()));
@@ -36,6 +39,8 @@ public class NameOfRecordConverter extends HitsConverter<NameOfRecordType, Perso
       target.setGivenName(getJAXBValue(source.getGivenName()));
       target.setMiddleName(getJAXBValue(source.getMiddleName()));
       target.setPreferredGivenName(getJAXBValue(source.getPreferredGivenName()));
+      target.setPreferredFamilyName(getJAXBValue(source.getPreferredFamilyName()));
+      target.setFullName(getJAXBValue(source.getFullName()));
       if (target instanceof StaffPerson) {
         StaffPerson staffTarget = (StaffPerson) target;
         staffTarget.setSalutation(getJAXBValue(source.getTitle()));

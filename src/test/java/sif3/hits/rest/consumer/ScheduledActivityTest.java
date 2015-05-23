@@ -1,5 +1,6 @@
 package sif3.hits.rest.consumer;
 
+import java.math.BigDecimal;
 import java.util.Arrays;
 import java.util.List;
 
@@ -8,20 +9,119 @@ import org.junit.Before;
 import org.junit.Test;
 import org.springframework.http.HttpStatus;
 
+import sif.dd.au30.model.AUCodeSetsScheduledActivityTypeType;
+import sif.dd.au30.model.AUCodeSetsTeacherCoverCreditType;
+import sif.dd.au30.model.AUCodeSetsTeacherCoverSupervisionType;
+import sif.dd.au30.model.ObjectFactory;
+import sif.dd.au30.model.RoomInfoType;
 import sif.dd.au30.model.ScheduledActivityCollectionType;
 import sif.dd.au30.model.ScheduledActivityType;
+import sif.dd.au30.model.ScheduledActivityType.Override;
+import sif.dd.au30.model.ScheduledActivityType.RoomList;
+import sif.dd.au30.model.ScheduledActivityType.StudentList;
+import sif.dd.au30.model.ScheduledActivityType.TeacherList;
+import sif.dd.au30.model.ScheduledActivityType.TeachingGroupList;
+import sif.dd.au30.model.ScheduledActivityType.TeacherList.TeacherCover;
+import sif.dd.au30.model.YearLevelType;
+import sif.dd.au30.model.YearLevelsType;
 import sif3.common.ws.BulkOperationResponse;
 import sif3.common.ws.CreateOperationStatus;
 import sif3.common.ws.OperationStatus;
 import sif3.common.ws.Response;
+import sif3.hits.rest.consumer.StudentPersonalConsumerTest.StudentPersonalRefIds;
 import sif3.infra.rest.consumer.ConsumerLoader;
 
-public class ScheduledActivityTest {
+public class ScheduledActivityTest extends BaseTest {
   private ConsumerTest<ScheduledActivityType, ScheduledActivityCollectionType> scheduledActivityTester = null;
   
+  public static final String REF_ID = "AF7D1111419B4FF5A3E8D49BCB8456E5";
   private final String REF_ID_1 = "596BD11814CB485A84D3593FC5703958";
   private final String REF_ID_2 = "DF54713ADB1C4428A418D8A5964D893A";
   private final String[] REF_IDS = { REF_ID_1, REF_ID_2 };
+  
+  @Test
+  public void initialiseData() throws Exception {
+    ObjectFactory objectFactory = new ObjectFactory();
+
+    ScheduledActivityType scheduledActivity = new ScheduledActivityType();
+    scheduledActivity.setRefId(REF_ID);
+    scheduledActivity.setSchoolInfoRefId(SchoolInfoConsumerTest.REF_ID);
+    scheduledActivity.setTimeTableCellRefId(objectFactory.createScheduledActivityTypeTimeTableCellRefId(TimeTableCellConsumerTest.REF_ID));
+    scheduledActivity.setTimeTableSubjectRefId(objectFactory.createScheduledActivityTypeTimeTableSubjectRefId(TimeTableSubjectConsumerTest.REF_ID));
+    scheduledActivity.setTimeTableRefId(objectFactory.createScheduledActivityTypeTimeTableRefId(TimeTableConsumerTest.REF_ID));
+    scheduledActivity.setDayId(objectFactory.createScheduledActivityTypeDayId(TimeTableCellConsumerTest.DAY_ID));
+    scheduledActivity.setPeriodId(objectFactory.createScheduledActivityTypePeriodId(TimeTableCellConsumerTest.PERIOD_ID));
+    scheduledActivity.setActivityDate(getDate("2014-09-01"));
+    scheduledActivity.setStartTime(getDate("09:30:00"));
+    scheduledActivity.setFinishTime(getDate("13:30:00"));
+    scheduledActivity.setCellType(objectFactory.createScheduledActivityTypeCellType("Teaching"));
+    scheduledActivity.setLocation(objectFactory.createScheduledActivityTypeLocation("Location"));
+    scheduledActivity.setActivityType(objectFactory.createScheduledActivityTypeActivityType(AUCodeSetsScheduledActivityTypeType.EXAM));
+    scheduledActivity.setActivityName(objectFactory.createScheduledActivityTypeActivityName("The Exam"));
+    scheduledActivity.setActivityComment(objectFactory.createScheduledActivityTypeActivityComment("The Comment"));
+    
+    YearLevelsType yearLevelsType = new YearLevelsType();
+    YearLevelType yearLevel = new YearLevelType();
+    yearLevel.setCode("9");
+    yearLevelsType.getYearLevel().add(yearLevel);
+    scheduledActivity.setYearLevels(objectFactory.createScheduledActivityTypeYearLevels(yearLevelsType));
+    
+    Override override = new Override();
+    override.setValue("Y");
+    override.setDateOfOverride(getDate("2014-09-02"));
+    scheduledActivity.setOverride(objectFactory.createScheduledActivityTypeOverride(override));
+    
+    RoomList roomList = new RoomList();
+    roomList.getRoomInfoRefId().add(RoomInfoConsumerTest.REF_ID);
+    scheduledActivity.setRoomList(objectFactory.createScheduledActivityTypeRoomList(roomList));
+    
+    TeacherList teacherList = new TeacherList();
+    TeacherCover teacherCover = new TeacherCover();
+    teacherCover.setStaffPersonalRefId(StaffPersonalConsumerTest.StaffPersonalRefIds.REF_ID_1);
+    teacherCover.setStaffLocalId(objectFactory.createScheduledActivityTypeTeacherListTeacherCoverStaffLocalId(StaffPersonalConsumerTest.StaffPersonalRefIds.LOCAL_ID));
+    teacherCover.setStartTime(objectFactory.createScheduledActivityTypeTeacherListTeacherCoverStartTime(getDate("09:30:00")));
+    teacherCover.setFinishTime(objectFactory.createScheduledActivityTypeTeacherListTeacherCoverFinishTime(getDate("13:30:00")));
+    teacherCover.setCredit(objectFactory.createScheduledActivityTypeTeacherListTeacherCoverCredit(AUCodeSetsTeacherCoverCreditType.EXTRA));
+    teacherCover.setSupervision(objectFactory.createScheduledActivityTypeTeacherListTeacherCoverSupervision(AUCodeSetsTeacherCoverSupervisionType.NORMAL));
+    teacherCover.setWeighting(objectFactory.createScheduledActivityTypeTeacherListTeacherCoverWeighting(new BigDecimal("1.0")));
+    teacherList.getTeacherCover().add(teacherCover);
+    scheduledActivity.setTeacherList(objectFactory.createScheduledActivityTypeTeacherList(teacherList));
+    
+    StudentList studentList = new StudentList();
+    studentList.getStudentPersonalRefId().add(StudentPersonalRefIds.REF_ID_1);
+    studentList.getStudentPersonalRefId().add(StudentPersonalRefIds.REF_ID_2);
+    studentList.getStudentPersonalRefId().add(StudentPersonalRefIds.REF_ID_3);
+    studentList.getStudentPersonalRefId().add(StudentPersonalRefIds.REF_ID_4);
+    studentList.getStudentPersonalRefId().add(StudentPersonalRefIds.REF_ID_5);
+    scheduledActivity.setStudentList(objectFactory.createScheduledActivityTypeStudentList(studentList));
+    
+    TeachingGroupList teachingGroupList = new TeachingGroupList();
+    teachingGroupList.getTeachingGroupRefId().add(TeachingGroupConsumerTest.REF_ID);
+    scheduledActivity.setTeachingGroupList(objectFactory.createScheduledActivityTypeTeachingGroupList(teachingGroupList));
+    
+    scheduledActivityTester.doCreateOne(scheduledActivity);
+    String xmlExpectedTo = scheduledActivityTester.getXML(scheduledActivity);
+
+    scheduledActivity.setRefId("9C884119D4EB462493C4F3BBAC8C7C72");
+    scheduledActivityTester.doCreateOne(scheduledActivity);
+
+    scheduledActivity.setRefId("48C1B75CFC5E4155A2F4B1CD57C29BB5");
+    scheduledActivityTester.doCreateOne(scheduledActivity);
+
+    scheduledActivity.setRefId("44DB97105F2643C2B3DB0E4168E8D0DB");
+    scheduledActivityTester.doCreateOne(scheduledActivity);
+
+    scheduledActivity.setRefId("78748F1F474A461DA7D44E1F1D7A4B90");
+    scheduledActivityTester.doCreateOne(scheduledActivity);
+
+    ScheduledActivityType getResult = scheduledActivityTester.doGetOne(REF_ID);
+    String xmlExpectedFrom = scheduledActivityTester.getXML(getResult);
+    boolean semiEquals = semiEquals(xmlExpectedFrom, xmlExpectedTo);
+    if (!semiEquals) {
+      Assert.assertEquals("XML Differs", xmlExpectedFrom, xmlExpectedTo);
+    }
+  }
+
   
   @Before
   public void setup() {
@@ -33,7 +133,6 @@ public class ScheduledActivityTest {
   
   @Test
   public void testGetSingle() {
-    final String REF_ID = "AF7D1111419B4FF5A3E8D49BCB8456E5";
     List<Response> responses = scheduledActivityTester.testGetSingle(REF_ID);
     Assert.assertNotNull(responses);
     Assert.assertEquals(1, responses.size());

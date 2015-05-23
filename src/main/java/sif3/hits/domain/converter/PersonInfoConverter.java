@@ -1,16 +1,18 @@
 package sif3.hits.domain.converter;
 
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import sif.dd.au30.model.DemographicsType;
+import sif.dd.au30.model.DemographicsType.Religion;
 import sif.dd.au30.model.EmailListType;
 import sif.dd.au30.model.EmailListType.Email;
 import sif.dd.au30.model.NameOfRecordType;
-import sif3.hits.domain.converter.factory.ObjectFactory;
 import sif.dd.au30.model.PersonInfoType;
 import sif.dd.au30.model.PhoneNumberListType;
 import sif.dd.au30.model.PhoneNumberListType.PhoneNumber;
+import sif3.hits.domain.converter.factory.ObjectFactory;
 import sif3.hits.domain.model.Person;
 import sif3.hits.domain.model.StudentPerson;
 
@@ -37,7 +39,7 @@ public class PersonInfoConverter extends HitsConverter<PersonInfoType, Person> {
 
       EmailListType emailList = new EmailListType();
       Email email = new Email();
-      email.setType("01"); // AUCodeSetsEmailTypeType.PRIMARY
+      email.setType("06"); // AUCodeSetsEmailTypeType.WORK
       email.setValue(source.getEmail());
       emailList.getEmail().add(email);
       target.setEmailList(objectFactory.createEmailList(emailList));
@@ -50,14 +52,19 @@ public class PersonInfoConverter extends HitsConverter<PersonInfoType, Person> {
 
       DemographicsType demographics = new DemographicsType();
       demographics.setSex(objectFactory.createDemographicsTypeSex(source.getSex()));
+      demographics.setBirthDate(objectFactory.createDemographicsTypeBirthDate(getDateValue(source.getBirthDate())));
+
       if (source instanceof StudentPerson) {
         StudentPerson studentSource = (StudentPerson) source;
-        demographics.setBirthDate(objectFactory.createDemographicsTypeBirthDate(getDateValue(studentSource
-            .getBirthDate())));
         demographics.setIndigenousStatus(objectFactory.createDemographicsTypeIndigenousStatus(studentSource
             .getIndigenousStatus()));
         demographics.setCountryOfBirth(objectFactory.createDemographicsTypeCountryOfBirth(studentSource
             .getCountryOfBirth()));
+        if (StringUtils.isNotBlank(studentSource.getReligion())) {
+          Religion religion = objectFactory.createDemographicsTypeReligion();
+          religion.setCode(studentSource.getReligion());
+          demographics.setReligion(objectFactory.createDemographicsTypeReligion(religion));
+        }
       }
       target.setDemographics(objectFactory.createDemographics(demographics));
     }
@@ -84,14 +91,18 @@ public class PersonInfoConverter extends HitsConverter<PersonInfoType, Person> {
       DemographicsType demographics = getJAXBValue(source.getDemographics());
       if (demographics != null) {
         target.setSex(getJAXBValue(demographics.getSex()));
+        target.setBirthDate(getDateValue(getJAXBValue(demographics.getBirthDate())));
         if (target instanceof StudentPerson) {
           StudentPerson studentTarget = (StudentPerson) target;
-          studentTarget.setBirthDate(getDateValue(getJAXBValue(demographics.getBirthDate())));
           studentTarget.setIndigenousStatus(getJAXBValue(demographics.getIndigenousStatus()));
           studentTarget.setCountryOfBirth(getJAXBValue(demographics.getCountryOfBirth()));
+
+          Religion religion = getJAXBValue(demographics.getReligion());
+          if (religion != null && StringUtils.isNotBlank(religion.getCode())) {
+            studentTarget.setReligion(religion.getCode());
+          }
         }
       }
     }
   }
-
 }

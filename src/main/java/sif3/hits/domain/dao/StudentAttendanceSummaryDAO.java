@@ -10,13 +10,16 @@ import org.springframework.data.repository.query.Param;
 
 import sif3.hits.domain.model.StudentAttendanceSummary;
 
-public interface StudentAttendanceSummaryDAO extends JpaRepository<StudentAttendanceSummary, String>, ZoneFilterableRepository<StudentAttendanceSummary> {
+public interface StudentAttendanceSummaryDAO extends JpaRepository<StudentAttendanceSummary, String>,
+    ZoneFilterableRepository<StudentAttendanceSummary> {
 
   @Query("select distinct a from StudentAttendanceSummary a where a.schoolInfoRefId in :schoolRefIds")
   @Override
-  public Page<StudentAttendanceSummary> findAllWithFilter(@Param("schoolRefIds") List<String> schoolRefIds, Pageable pageable);
+  public Page<StudentAttendanceSummary> findAllWithFilter(@Param("schoolRefIds") List<String> schoolRefIds,
+      Pageable pageable);
 
   @Override
   @Query("select distinct a from StudentAttendanceSummary a where a.schoolInfoRefId in :schoolRefIds and a.refId = :refId")
-  public StudentAttendanceSummary findOneWithFilter(@Param("refId") String refId, @Param("schoolRefIds") List<String> schoolRefIds);
+  public StudentAttendanceSummary findOneWithFilter(@Param("refId") String refId,
+      @Param("schoolRefIds") List<String> schoolRefIds);
 }

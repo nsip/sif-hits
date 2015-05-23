@@ -15,7 +15,7 @@ public interface SessionInfoDAO extends JpaRepository<SessionInfo, String>, Zone
   @Query("select s from SessionInfo s where s.schoolInfoRefId in :schoolRefIds")
   @Override
   public Page<SessionInfo> findAllWithFilter(@Param("schoolRefIds") List<String> schoolRefIds, Pageable pageable);
-  
+
   @Query("select s from SessionInfo s where s.refId = :refId and s.schoolInfoRefId in :schoolRefIds")
   @Override
   public SessionInfo findOneWithFilter(@Param("refId") String refId, @Param("schoolRefIds") List<String> schoolRefIds);

@@ -1,5 +1,6 @@
 package sif3.hits.rest.consumer;
 
+import java.math.BigDecimal;
 import java.util.Arrays;
 import java.util.List;
 
@@ -8,20 +9,84 @@ import org.junit.Before;
 import org.junit.Test;
 import org.springframework.http.HttpStatus;
 
+import sif.dd.au30.model.ObjectFactory;
+import sif.dd.au30.model.OtherCodeListType;
+import sif.dd.au30.model.OtherCodeListType.OtherCode;
 import sif.dd.au30.model.TimeTableSubjectCollectionType;
 import sif.dd.au30.model.TimeTableSubjectType;
+import sif.dd.au30.model.YearLevelType;
 import sif3.common.ws.BulkOperationResponse;
 import sif3.common.ws.CreateOperationStatus;
 import sif3.common.ws.OperationStatus;
 import sif3.common.ws.Response;
 import sif3.infra.rest.consumer.ConsumerLoader;
 
-public class TimeTableSubjectConsumerTest {
+public class TimeTableSubjectConsumerTest extends BaseTest {
   private ConsumerTest<TimeTableSubjectType, TimeTableSubjectCollectionType> timeTableSubjectTester = null;
   
+  public static final String REF_ID = "47B8518BA4304848BD01DD5D2EA2C617";
+  public static final String LOCAL_ID = "Subject 1";
   private final String REF_ID_1 = "4609142F63E443F4A384CB81D309438F";
   private final String REF_ID_2 = "6BB0C404C02949BD9956D6BE93B7B124";
   private final String[] REF_IDS = { REF_ID_1, REF_ID_2 };
+  
+  @Test
+  public void initialiseData() throws Exception {
+    ObjectFactory objectFactory = new ObjectFactory();
+
+    TimeTableSubjectType timeTableSubject = new TimeTableSubjectType();
+    timeTableSubject.setRefId(REF_ID);
+    timeTableSubject.setSchoolInfoRefId(objectFactory.createTimeTableSubjectTypeSchoolInfoRefId(SchoolInfoConsumerTest.REF_ID));
+    timeTableSubject.setSchoolLocalId(objectFactory.createTimeTableSubjectTypeSchoolLocalId(SchoolInfoConsumerTest.LOCAL_ID));
+    timeTableSubject.setSubjectLocalId(LOCAL_ID);
+    YearLevelType yearLevel = new YearLevelType();
+    yearLevel.setCode("4");
+    timeTableSubject.setAcademicYear(objectFactory.createTimeTableSubjectTypeAcademicYear(yearLevel));
+    timeTableSubject.setFaculty(objectFactory.createTimeTableSubjectTypeFaculty("Science"));
+    timeTableSubject.setSubjectShortName(objectFactory.createTimeTableSubjectTypeSubjectShortName("Computing"));
+    timeTableSubject.setSubjectLongName("Introduction to Computing");
+    timeTableSubject.setSubjectType(objectFactory.createTimeTableSubjectTypeSubjectType("Elective"));
+    timeTableSubject.setProposedMinClassSize(objectFactory.createTimeTableSubjectTypeProposedMinClassSize(new BigDecimal("12")));
+    timeTableSubject.setProposedMaxClassSize(objectFactory.createTimeTableSubjectTypeProposedMaxClassSize(new BigDecimal("25")));
+    timeTableSubject.setSemester(objectFactory.createTimeTableSubjectTypeSemester(2L));
+    timeTableSubject.setSchoolYear(objectFactory.createTimeTableSubjectTypeSchoolYear(getDate("2014")));
+    
+    
+    OtherCodeListType otherCodeList = new OtherCodeListType();
+    OtherCode otherCode = new OtherCode();
+    otherCode.setCodeset("Local");
+    otherCode.setValue("ITC");
+    otherCodeList.getOtherCode().add(otherCode);
+    otherCode = new OtherCode();
+    otherCode.setCodeset("Local");
+    otherCode.setValue("Computing");
+    otherCodeList.getOtherCode().add(otherCode);
+    timeTableSubject.setOtherCodeList(objectFactory.createTimeTableSubjectTypeOtherCodeList(otherCodeList));
+    
+    timeTableSubjectTester.doCreateOne(timeTableSubject);
+    String xmlExpectedTo = timeTableSubjectTester.getXML(timeTableSubject);
+    
+    timeTableSubject.setRefId("C390D8B10F1F4F23AEC1880401248512");
+    timeTableSubjectTester.doCreateOne(timeTableSubject);
+    
+    timeTableSubject.setRefId("DB9DCFA40ECB4BB286E0A62070907B32");
+    timeTableSubjectTester.doCreateOne(timeTableSubject);
+
+    timeTableSubject.setRefId("D4FCA448C17349A989E897B4C0344A81");
+    timeTableSubjectTester.doCreateOne(timeTableSubject);
+    timeTableSubject.setOtherCodeList(null);
+    timeTableSubjectTester.doUpdateOne(timeTableSubject, timeTableSubject.getRefId());
+
+    timeTableSubject.setRefId("C3401C3B994F4D10B3D06423556B6F39");
+    timeTableSubjectTester.doCreateOne(timeTableSubject);
+
+    TimeTableSubjectType getResult = timeTableSubjectTester.doGetOne(REF_ID);
+    String xmlExpectedFrom = timeTableSubjectTester.getXML(getResult);
+    boolean semiEquals = semiEquals(xmlExpectedFrom, xmlExpectedTo);
+    if (!semiEquals) {
+      Assert.assertEquals("XML Differs", xmlExpectedFrom, xmlExpectedTo);
+    }
+  }
   
   @Before
   public void setup() {
@@ -33,7 +98,6 @@ public class TimeTableSubjectConsumerTest {
   
   @Test
   public void testGetSingle() {
-    final String REF_ID = "6A13825FDA8143BFA65F74955043A2BF";
     List<Response> responses = timeTableSubjectTester.testGetSingle(REF_ID);
     Assert.assertNotNull(responses);
     Assert.assertEquals(1, responses.size());

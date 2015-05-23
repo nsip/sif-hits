@@ -5,10 +5,11 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 
 @Entity
-public class RoomInfo extends HitsEntity implements ZoneFilterable {
+public class RoomInfo extends HitsEntity {
   private static final long serialVersionUID = 2358081905724634269L;
 
   private String refId;
+  private String localId;
   private String schoolInfoRefId;
   private String roomNumber;
   private String description;
@@ -23,6 +24,14 @@ public class RoomInfo extends HitsEntity implements ZoneFilterable {
 
   public void setRefId(String refId) {
     this.refId = refId;
+  }
+
+  public String getLocalId() {
+    return localId;
+  }
+
+  public void setLocalId(String localId) {
+    this.localId = localId;
   }
 
   @Column(name = "SchoolInfo_RefId")
@@ -57,19 +66,19 @@ public class RoomInfo extends HitsEntity implements ZoneFilterable {
   public void setCapacity(String capacity) {
     this.capacity = capacity;
   }
-  
+
   public String getRoomSize() {
     return roomSize;
   }
-  
+
   public void setRoomSize(String roomSize) {
     this.roomSize = roomSize;
   }
-  
+
   public String getRoomType() {
     return roomType;
   }
-  
+
   public void setRoomType(String roomType) {
     this.roomType = roomType;
   }

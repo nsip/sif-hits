@@ -5,7 +5,7 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 
 @Entity
-public class StudentSchoolEnrollment extends HitsEntity implements ZoneFilterable {
+public class StudentSchoolEnrollment extends HitsEntity {
 
   private static final long serialVersionUID = 8616854135795820792L;
 
@@ -18,6 +18,7 @@ public class StudentSchoolEnrollment extends HitsEntity implements ZoneFilterabl
   private String yearLevel;
   private String fte;
   private String entryDate;
+  private String exitDate;
 
   @Id
   public String getRefId() {
@@ -36,12 +37,12 @@ public class StudentSchoolEnrollment extends HitsEntity implements ZoneFilterabl
   public void setSchoolInfoRefId(String schoolInfoRefId) {
     this.schoolInfoRefId = schoolInfoRefId;
   }
-  
+
   @Column(name = "StudentPersonal_RefId")
   public String getStudentPersonalRefId() {
     return studentPersonalRefId;
   }
-  
+
   public void setStudentPersonalRefId(String studentPersonalRefId) {
     this.studentPersonalRefId = studentPersonalRefId;
   }
@@ -92,5 +93,13 @@ public class StudentSchoolEnrollment extends HitsEntity implements ZoneFilterabl
 
   public void setEntryDate(String entryDate) {
     this.entryDate = entryDate;
+  }
+
+  public String getExitDate() {
+    return exitDate;
+  }
+
+  public void setExitDate(String exitDate) {
+    this.exitDate = exitDate;
   }
 }

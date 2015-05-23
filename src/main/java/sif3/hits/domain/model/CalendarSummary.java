@@ -9,7 +9,7 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
 @Entity
-public class CalendarSummary extends HitsEntity implements ZoneFilterable {
+public class CalendarSummary extends HitsEntity {
   private static final long serialVersionUID = -5955654294617490213L;
 
   private String refId;
@@ -115,7 +115,7 @@ public class CalendarSummary extends HitsEntity implements ZoneFilterable {
   public void setMinutesPerDay(String minutesPerDay) {
     this.minutesPerDay = minutesPerDay;
   }
-  
+
   @OneToMany(fetch = FetchType.EAGER, mappedBy = "calendarSummaryYearLevelId.calendarSummary")
   public Set<CalendarSummaryYearLevel> getCalendarSummaryYearLevels() {
     return calendarSummaryYearLevels;

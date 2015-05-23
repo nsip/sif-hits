@@ -12,7 +12,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.Transient;
 
 @Entity
-public class TimeTable implements Serializable, ZoneFilterable {
+public class TimeTable implements Serializable {
 
   private static final long serialVersionUID = -9048887544127232601L;
 
@@ -23,6 +23,9 @@ public class TimeTable implements Serializable, ZoneFilterable {
   private String title;
   private String daysPerCycle;
   private String periodsPerCycle;
+  private String timeTableCreationDate;
+  private String startDate;
+  private String endDate;
   private Set<TimeTableDay> timeTableDays;
 
   @Id
@@ -83,17 +86,40 @@ public class TimeTable implements Serializable, ZoneFilterable {
   public void setPeriodsPerCycle(String periodsPerCycle) {
     this.periodsPerCycle = periodsPerCycle;
   }
-  
+
+  public String getTimeTableCreationDate() {
+    return timeTableCreationDate;
+  }
+
+  public void setTimeTableCreationDate(String timeTableCreationDate) {
+    this.timeTableCreationDate = timeTableCreationDate;
+  }
+
+  public String getStartDate() {
+    return startDate;
+  }
+
+  public void setStartDate(String startDate) {
+    this.startDate = startDate;
+  }
+
+  public String getEndDate() {
+    return endDate;
+  }
+
+  public void setEndDate(String endDate) {
+    this.endDate = endDate;
+  }
+
   @OneToMany(fetch = FetchType.EAGER, mappedBy = "timeTableDayId.timeTable")
   public Set<TimeTableDay> getTimeTableDays() {
     return timeTableDays;
   }
-  
+
   public void setTimeTableDays(Set<TimeTableDay> timeTableDays) {
     this.timeTableDays = timeTableDays;
   }
 
-  @Override
   @Transient
   public String getSchoolInfoRefId() {
     String result = null;

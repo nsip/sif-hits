@@ -21,7 +21,7 @@ public class HitsSpringContext implements ApplicationContextAware {
   public static <S> S getBean(Class<S> clazz) {
     return applicationContextInstance.getBean(clazz);
   }
-  
+
   public static <S> S getBean(String name, Class<S> clazz) {
     return applicationContextInstance.getBean(name, clazz);
   }

@@ -10,14 +10,16 @@ import org.springframework.data.repository.query.Param;
 
 import sif3.hits.domain.model.TimeTableSubject;
 
-public interface TimeTableSubjectDAO extends JpaRepository<TimeTableSubject, String>, ZoneFilterableRepository<TimeTableSubject> {
+public interface TimeTableSubjectDAO extends JpaRepository<TimeTableSubject, String>,
+    ZoneFilterableRepository<TimeTableSubject> {
 
-  @Query("select t from TimeTableSubject t where t.schoolInfoRefId in :schoolRefIds")
+  @Query("select t from TimeTableSubject t where t.schoolInfo.refId in :schoolRefIds")
   @Override
   public Page<TimeTableSubject> findAllWithFilter(@Param("schoolRefIds") List<String> schoolRefIds, Pageable pageable);
-  
-  @Query("select t from TimeTableSubject t where t.refId = :refId and t.schoolInfoRefId in :schoolRefIds")
+
+  @Query("select t from TimeTableSubject t where t.refId = :refId and t.schoolInfo.refId in :schoolRefIds")
   @Override
-  public TimeTableSubject findOneWithFilter(@Param("refId") String refId, @Param("schoolRefIds") List<String> schoolRefIds);
-  
+  public TimeTableSubject findOneWithFilter(@Param("refId") String refId,
+      @Param("schoolRefIds") List<String> schoolRefIds);
+
 }

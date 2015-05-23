@@ -8,8 +8,9 @@ import org.springframework.dao.annotation.PersistenceExceptionTranslationPostPro
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 @Configuration
-@Import(value = { DatabaseConfiguration.class, DynamicDatabaseConfiguration.class, SharedDatabaseConfiguration.class})
-@ComponentScan(basePackages = { "sif3.hits.service", "sif3.hits.audit", "sif3.hits.domain.converter", "sif3.hits.domain.dao", "sif3.hits.domain.shared.dao" })
+@Import(value = { DatabaseConfiguration.class, DynamicDatabaseConfiguration.class, SharedDatabaseConfiguration.class })
+@ComponentScan(basePackages = { "sif3.hits.service", "sif3.hits.audit", "sif3.hits.domain.converter",
+    "sif3.hits.domain.dao", "sif3.hits.domain.shared.dao" })
 @EnableTransactionManagement
 public class HitsSpringConfiguration {
 
@@ -17,5 +18,5 @@ public class HitsSpringConfiguration {
   public PersistenceExceptionTranslationPostProcessor exceptionTranslation() {
     return new PersistenceExceptionTranslationPostProcessor();
   }
-  
+
 }

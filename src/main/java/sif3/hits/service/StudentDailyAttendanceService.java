@@ -60,30 +60,33 @@ public class StudentDailyAttendanceService extends
     }
     return result;
   }
-  
+
   @Override
   protected Page<StudentDailyAttendance> findByServicePath(List<KeyValuePair> filters, List<String> schoolRefIds,
       PageRequest pageRequest) throws UnsupportedQueryException {
-    
+
     String studentPersonalRefId = null;
     String schoolInfoRefId = null;
-    
+
     if (filters != null) {
       for (KeyValuePair filter : filters) {
         if (filter != null && "StudentPersonals".equals(filter.getKey()) && studentPersonalRefId == null) {
           studentPersonalRefId = filter.getValue();
         } else if (filter != null && "SchoolInfos".equals(filter.getKey()) && schoolInfoRefId == null) {
           schoolInfoRefId = filter.getValue();
-        } else if (filter != null && ("StudentPersonals".equals(filter.getKey()) || "SchoolInfos".equals(filter.getKey()))) {
+        } else if (filter != null
+            && ("StudentPersonals".equals(filter.getKey()) || "SchoolInfos".equals(filter.getKey()))) {
           throw new UnsupportedQueryException("Invalid service path query - each key can appear only once.");
-        } 
+        }
       }
     }
 
     if (studentPersonalRefId != null && schoolInfoRefId != null) {
-      return studentDailyAttendanceDAO.findAllWithSchoolInfoAndStudentPersonalAndFilter(studentPersonalRefId, schoolInfoRefId, schoolRefIds, pageRequest);      
+      return studentDailyAttendanceDAO.findAllWithSchoolInfoAndStudentPersonalAndFilter(studentPersonalRefId,
+          schoolInfoRefId, schoolRefIds, pageRequest);
     } else if (studentPersonalRefId != null) {
-      return studentDailyAttendanceDAO.findAllWithStudentPersonalAndFilter(studentPersonalRefId, schoolRefIds, pageRequest);
+      return studentDailyAttendanceDAO.findAllWithStudentPersonalAndFilter(studentPersonalRefId, schoolRefIds,
+          pageRequest);
     } else if (schoolInfoRefId != null) {
       return studentDailyAttendanceDAO.findAllWithSchoolInfoAndFilter(schoolInfoRefId, schoolRefIds, pageRequest);
     } else {

@@ -2,8 +2,10 @@ package sif3.hits.domain.converter;
 
 import org.springframework.stereotype.Component;
 
-import sif3.hits.domain.converter.factory.ObjectFactory;
+import sif.dd.au30.model.AUCodeSetsTeacherCoverCreditType;
+import sif.dd.au30.model.AUCodeSetsTeacherCoverSupervisionType;
 import sif.dd.au30.model.ScheduledActivityType.TeacherList.TeacherCover;
+import sif3.hits.domain.converter.factory.ObjectFactory;
 import sif3.hits.domain.model.ScheduledActivityTeacher;
 
 @Component
@@ -24,9 +26,10 @@ public class ScheduledActivityTeacherConverter extends HitsConverter<TeacherCove
           .getStartTime())));
       target.setFinishTime(objectFactory
           .createScheduledActivityTypeTeacherListTeacherCoverFinishTime(getTimeValue(source.getFinishTime())));
-      target.setCredit(objectFactory.createScheduledActivityTypeTeacherListTeacherCoverCredit(source.getCredit()));
-      target.setSupervision(objectFactory.createScheduledActivityTypeTeacherListTeacherCoverSupervision(source
-          .getSupervision()));
+      target.setCredit(objectFactory.createScheduledActivityTypeTeacherListTeacherCoverCredit(getEnumValue(
+          source.getCredit(), AUCodeSetsTeacherCoverCreditType.class)));
+      target.setSupervision(objectFactory.createScheduledActivityTypeTeacherListTeacherCoverSupervision(getEnumValue(
+          source.getSupervision(), AUCodeSetsTeacherCoverSupervisionType.class)));
       target.setWeighting(objectFactory
           .createScheduledActivityTypeTeacherListTeacherCoverWeighting(getBigDecimalValue(source.getWeighting())));
     }
@@ -39,8 +42,8 @@ public class ScheduledActivityTeacherConverter extends HitsConverter<TeacherCove
       target.setTeacherLocalId(getJAXBValue(source.getStaffLocalId()));
       target.setStartTime(getTimeValue(getJAXBValue(source.getStartTime())));
       target.setFinishTime(getTimeValue(getJAXBValue(source.getFinishTime())));
-      target.setCredit(getJAXBValue(source.getCredit()));
-      target.setSupervision(getJAXBValue(source.getSupervision()));
+      target.setCredit(getJAXBEnumValue(source.getCredit()));
+      target.setSupervision(getJAXBEnumValue(source.getSupervision()));
       target.setWeighting(getBigDecimalValue(getJAXBValue(source.getWeighting())));
     }
   }

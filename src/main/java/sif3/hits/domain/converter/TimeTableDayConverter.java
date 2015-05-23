@@ -25,9 +25,12 @@ public class TimeTableDayConverter extends
     if (source != null && target != null) {
       target.setDayId(source.getDayId());
       target.setDayTitle(source.getDayTitle());
-      TimeTablePeriodList timeTablePeriodList = new TimeTablePeriodList();
-      timeTablePeriodList.getTimeTablePeriod().addAll(timeTablePeriodConverter.toSifModelList(source.getPeriods()));
-      target.setTimeTablePeriodList(timeTablePeriodList);
+      
+      if (source.getPeriods() != null && !source.getPeriods().isEmpty()) {
+        TimeTablePeriodList timeTablePeriodList = new TimeTablePeriodList();
+        timeTablePeriodList.getTimeTablePeriod().addAll(timeTablePeriodConverter.toSifModelList(source.getPeriods()));
+        target.setTimeTablePeriodList(timeTablePeriodList);
+      }
     }
   }
 

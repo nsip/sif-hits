@@ -19,5 +19,5 @@ public interface TimeTableDAO extends JpaRepository<TimeTable, String>, ZoneFilt
   @Query("select t from TimeTable t where t.refId = :refId and t.schoolInfo.refId in :schoolRefIds")
   @Override
   public TimeTable findOneWithFilter(@Param("refId") String refId, @Param("schoolRefIds") List<String> schoolRefIds);
-  
+
 }

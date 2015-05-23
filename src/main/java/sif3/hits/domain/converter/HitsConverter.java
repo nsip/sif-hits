@@ -1,13 +1,16 @@
 package sif3.hits.domain.converter;
 
 import java.lang.reflect.InvocationHandler;
+import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.lang.reflect.Proxy;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Collection;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.xml.bind.JAXBElement;
 import javax.xml.datatype.DatatypeFactory;
@@ -22,19 +25,23 @@ import sif3.hits.domain.converter.factory.ObjectFactory;
 
 public abstract class HitsConverter<S, H> {
 
-  private Logger logger = LoggerFactory.getLogger(HitsConverter.class);
+  private static final Logger logger = LoggerFactory.getLogger(HitsConverter.class);
+  
   private Class<S> sifClass;
   private Class<H> hitsClass;
+  private static final Map<Class<?>, Method> enumValueMethods = new HashMap<Class<?>, Method>();
+  private static final Map<Class<?>, Method> enumLookupMethods = new HashMap<Class<?>, Method>();
   private static final ObjectFactory objectFactory = new HitsObjectFactory();
   private static final InvocationHandler nullValueInvocationHandler = new InvocationHandler() {
     @Override
     public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
-      // if this method has one parameter and the parameter value is null return null otherwise
+      // if this method has one parameter and the parameter value is null return
+      // null otherwise
       // invoke the method on the objectFactory
       if (args != null && args.length == 1 && args[0] == null) {
         return null;
       } else {
-        return method.invoke(objectFactory, args); 
+        return method.invoke(objectFactory, args);
       }
     }
   };
@@ -114,7 +121,8 @@ public abstract class HitsConverter<S, H> {
   /* Getter + Setter Helpers */
   /***************************/
   protected ObjectFactory getObjectFactory() {
-    return (ObjectFactory) Proxy.newProxyInstance(this.getClass().getClassLoader(),new Class[] { ObjectFactory.class }, nullValueInvocationHandler);
+    return (ObjectFactory) Proxy.newProxyInstance(this.getClass().getClassLoader(),
+        new Class[] { ObjectFactory.class }, nullValueInvocationHandler);
   }
 
   protected <V> V getJAXBValue(JAXBElement<V> element) {
@@ -157,9 +165,9 @@ public abstract class HitsConverter<S, H> {
     }
     return result;
   }
-  
+
   private static final FastDateFormat calendarFormat = FastDateFormat.getInstance("yyyyMMddHHmmssSSS");
-  
+
   protected Calendar getCalendarValue(String value) {
     Calendar result = null;
     try {
@@ -281,16 +289,29 @@ public abstract class HitsConverter<S, H> {
     return result;
   }
 
+  @SuppressWarnings("unchecked")
   protected <E extends Enum<E>> E getEnumValue(String value, Class<E> clazz) {
     E result = null;
-    try {
-      if (value != null) {
+    if (value != null) {
+      try {
         result = E.valueOf(clazz, value);
+      } catch (Exception ex) {
+        Exception finalException = ex;
+        try {
+          Method method = getFromValueMethod(clazz);
+          if (method != null) {
+            result = (E) method.invoke(null, value);
+          }
+        } catch (Exception innerException) {
+          finalException = innerException;
+        } finally {
+          if (result == null) {
+            logger.error(
+                "Unable to convert value [" + value + "] to enum [" + (clazz == null ? "unknown" : clazz.getSimpleName())
+                    + "].", finalException);
+          }
+        }
       }
-    } catch (Exception ex) {
-      logger.error(
-          "Unable to convert value [" + value + "] to enum [" + (clazz == null ? "unknown" : clazz.getSimpleName())
-              + "].", ex);
     }
     return result;
   }
@@ -298,7 +319,46 @@ public abstract class HitsConverter<S, H> {
   protected <E extends Enum<E>> String getEnumValue(E enumValue) {
     String result = null;
     if (enumValue != null) {
-      result = enumValue.name();
+      Method valueMethod = getValueMethod(enumValue.getClass());
+      if (valueMethod != null) {
+        try {
+          result = (String) valueMethod.invoke(enumValue);
+        } catch (Exception ex) {
+          logger.warn("Unable to convert value [" + enumValue + "] to value - using name.");
+        } 
+      }
+      if (result == null) {
+        result = enumValue.name();
+      }
+    }
+    return result;
+  }
+
+  private Method getValueMethod(Class<?> clazz) {
+    Method result = enumValueMethods.get(clazz);
+    if (result == null && !enumValueMethods.containsKey(clazz)){
+      try {
+        result = clazz.getMethod("value");
+      } catch (Exception ignore) {
+      } finally {
+        enumValueMethods.put(clazz, result);
+      }
+    }
+    return result;
+  }
+
+  private static Method getFromValueMethod(Class<?> clazz) {
+    Method result = enumLookupMethods.get(clazz);
+    if (result == null && !enumLookupMethods.containsKey(clazz)) {
+      try {
+        result = clazz.getMethod("fromValue", String.class);
+      } catch (NoSuchMethodException ex) {
+        logger.warn("Unable to find fromValue for enum [" + (clazz == null ? "unknown" : clazz.getSimpleName()) + "].",
+            ex);
+      } finally {
+        // will store null if we had an exception so we don't look again.
+        enumLookupMethods.put(clazz, result);
+      }
     }
     return result;
   }

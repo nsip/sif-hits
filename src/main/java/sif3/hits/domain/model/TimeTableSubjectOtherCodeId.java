@@ -16,7 +16,7 @@ public class TimeTableSubjectOtherCodeId implements Serializable {
   private TimeTableSubject timeTableSubject;
 
   private String otherCode;
-  
+
   @Column(name = "OtherCode_CodeSet")
   private String codeSet;
 
@@ -35,11 +35,11 @@ public class TimeTableSubjectOtherCodeId implements Serializable {
   public void setOtherCode(String otherCode) {
     this.otherCode = otherCode;
   }
-  
+
   public String getCodeSet() {
     return codeSet;
   }
-  
+
   public void setCodeSet(String codeSet) {
     this.codeSet = codeSet;
   }

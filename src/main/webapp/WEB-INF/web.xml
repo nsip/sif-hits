@@ -17,26 +17,6 @@
 		<url-pattern>/hits/*</url-pattern>
 	</servlet-mapping>
  
-  <filter>
-   <filter-name>AuditFilter</filter-name>
-   <filter-class>sif3.infra.rest.audit.AuditFilter</filter-class>
-   <init-param>
-     <param-name>env.audit.class</param-name>
-     <param-value>sif3.hits.rest.audit.DatabaseAuditor</param-value>
-   </init-param>
-  </filter>
-  <filter-mapping>
-    <filter-name>AuditFilter</filter-name>
-    <url-pattern>/*</url-pattern>
-  </filter-mapping>
-
-  <!--  This can be dynamically loaded inside the SIF Framework -->
-  <!--  Dynamic reg = servletCtxEvent.getServletContext().addFilter("auditFilter", new BaseAuditFilter());
-        reg.setInitParameter(BaseAuditFilter.AUDITOR_CLASS, "sif3.infra.rest.audit.LogAuditor");
-        reg.addMappingForUrlPatterns(EnumSet.of(DispatcherType.REQUEST), true, "/*");
-  -->
-
-
 	<!-- *********************************************************************************************** -->
 	<!-- Context listener: Used to initialise (start-up) and free (shut-down) 
 		resources of this servlet. -->
