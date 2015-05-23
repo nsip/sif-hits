@@ -1,5 +1,6 @@
 package sif3.hits.rest.audit;
 
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -49,7 +50,7 @@ public class DatabaseAuditor implements Auditor {
         xmlAudit.setQueryParameters(requestData.getQueryParameters());
         xmlAudit.setRequestMediaType(requestData.getMediaType());
         xmlAudit.setRequestHeaders(gson.toJson(requestData.getHeaders()));
-        xmlAudit.setRequest(requestData.getPayload());
+        xmlAudit.setRequest(StringUtils.replace(requestData.getPayload(),"\uFFFD", ""));
       }
       if (auditRecord.getResponseData() != null) {
         ResponseData responseData = auditRecord.getResponseData();
@@ -57,7 +58,7 @@ public class DatabaseAuditor implements Auditor {
         xmlAudit.setHttpStatus(responseData.getHttpStatus());
         xmlAudit.setResponseMediaType(responseData.getMediaType());
         xmlAudit.setResponseHeaders(gson.toJson(responseData.getHeaders()));
-        xmlAudit.setResponse(responseData.getPayload());
+        xmlAudit.setResponse(StringUtils.replace(responseData.getPayload(),"\uFFFD", ""));
       }
       if (auditRecord.getSifData() != null) {
         SIFData sifData = auditRecord.getSifData();

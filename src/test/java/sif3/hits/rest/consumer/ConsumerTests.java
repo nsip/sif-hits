@@ -14,15 +14,17 @@ import org.junit.runners.Suite.SuiteClasses;
   StaffAssignmentConsumerTest.class,
   CalendarSummaryConsumerTest.class,
   CalendarDateConsumerTest.class,
-  StudentDailyAttendanceTest.class,
-  StudentAttendanceSummaryTest.class,
+  StudentDailyAttendanceConsumerTest.class,
+  StudentAttendanceSummaryConsumerTest.class,
   TimeTableConsumerTest.class,
   TimeTableSubjectConsumerTest.class,
   TeachingGroupConsumerTest.class,
   TimeTableCellConsumerTest.class,
-  ScheduledActivityTest.class,
+  ScheduledActivityConsumerTest.class,
   SessionInfoConsumerTest.class,
-  StudentPeriodAttendanceTest.class
+  StudentPeriodAttendanceConsumerTest.class,
+  StudentAttendanceTimeListConsumerTest.class
+  
 })
 public class ConsumerTests {
 /*
@@ -31,6 +33,9 @@ public class ConsumerTests {
  * Subsequent executions should see 0 failures.
  * 
  * <pre>
+delete from StudentAttendanceTimeList_AttendanceTime_OtherCode;
+delete from StudentAttendanceTimeList_AttendanceTime;
+delete from StudentAttendanceTimeList;
 delete from StudentPeriodAttendance;
 delete from SessionInfo;
 delete from ScheduledActivity_Room;

@@ -1,0 +1,84 @@
+<StudentAttendanceTimeLists xmlns="http://www.sifassociation.org/au/datamodel/1.3">
+	<StudentAttendanceTimeList RefId="2205C3E4089C4CFB98A5FB0121FA12E1">
+	    <StudentPersonalRefId>F7DD788E3CEF40EB9CB4AF90A2FA3147</StudentPersonalRefId>
+	    <SchoolInfoRefId>6DAFB630-C439-11E3-9AA0-81F4DBD909AB</SchoolInfoRefId>
+	    <Date>2014-11-12</Date>
+	    <SchoolYear>2014</SchoolYear>
+	    <AttendanceTimes>
+	        <AttendanceTime>
+	            <AttendanceCode>
+	                <Code>200</Code>
+	                <OtherCodeList>
+	                    <OtherCode Codeset="Text">C</OtherCode>
+	                    <OtherCode Codeset="Local">S</OtherCode>
+	                </OtherCodeList>
+	            </AttendanceCode>
+	            <AttendanceStatus>01</AttendanceStatus>
+	            <StartTime>11:00:00</StartTime>
+	            <EndTime>13:00:00</EndTime>
+	            <AbsenceValue>0.2</AbsenceValue>
+	            <AttendanceNote>Orthodontist Appt, returned to school.</AttendanceNote>
+	        </AttendanceTime>
+	        <AttendanceTime>
+	            <AttendanceCode>
+	                <Code>100</Code>
+	            </AttendanceCode>
+	            <AttendanceStatus>01</AttendanceStatus>
+	            <StartTime>09:00:00</StartTime>
+	            <EndTime>11:00:00</EndTime>
+	        </AttendanceTime>
+	        <AttendanceTime>
+	            <AttendanceCode>
+	                <Code>100</Code>
+	                <OtherCodeList>
+	                    <OtherCode Codeset="Text">C</OtherCode>
+	                </OtherCodeList>
+	            </AttendanceCode>
+	            <AttendanceStatus>01</AttendanceStatus>
+	            <StartTime>13:00:00</StartTime>
+	            <EndTime>15:30:00</EndTime>
+	        </AttendanceTime>
+	    </AttendanceTimes>
+	</StudentAttendanceTimeList>
+	<StudentAttendanceTimeList RefId="3EC79D15B5E840A8BE56587AE099015B">
+	    <StudentPersonalRefId>F7DD788E3CEF40EB9CB4AF90A2FA3147</StudentPersonalRefId>
+	    <SchoolInfoRefId>6DAFB630-C439-11E3-9AA0-81F4DBD909AB</SchoolInfoRefId>
+	    <Date>2014-11-12</Date>
+	    <SchoolYear>2014</SchoolYear>
+	    <AttendanceTimes>
+	        <AttendanceTime>
+	            <AttendanceCode>
+	                <Code>200</Code>
+	                <OtherCodeList>
+	                    <OtherCode Codeset="Text">C</OtherCode>
+	                    <OtherCode Codeset="Local">S</OtherCode>
+	                </OtherCodeList>
+	            </AttendanceCode>
+	            <AttendanceStatus>01</AttendanceStatus>
+	            <StartTime>11:00:00</StartTime>
+	            <EndTime>13:00:00</EndTime>
+	            <AbsenceValue>0.2</AbsenceValue>
+	            <AttendanceNote>Orthodontist Appt, returned to school.</AttendanceNote>
+	        </AttendanceTime>
+	        <AttendanceTime>
+	            <AttendanceCode>
+	                <Code>100</Code>
+	            </AttendanceCode>
+	            <AttendanceStatus>01</AttendanceStatus>
+	            <StartTime>09:00:00</StartTime>
+	            <EndTime>11:00:00</EndTime>
+	        </AttendanceTime>
+	        <AttendanceTime>
+	            <AttendanceCode>
+	                <Code>100</Code>
+	                <OtherCodeList>
+	                    <OtherCode Codeset="Text">C</OtherCode>
+	                </OtherCodeList>
+	            </AttendanceCode>
+	            <AttendanceStatus>01</AttendanceStatus>
+	            <StartTime>13:00:00</StartTime>
+	            <EndTime>15:30:00</EndTime>
+	        </AttendanceTime>
+	    </AttendanceTimes>
+	</StudentAttendanceTimeList>
+</StudentAttendanceTimeLists>

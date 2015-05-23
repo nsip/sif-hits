@@ -21,7 +21,7 @@ import sif3.common.ws.Response;
 import sif3.hits.rest.consumer.StudentPersonalConsumerTest.StudentPersonalRefIds;
 import sif3.infra.rest.consumer.ConsumerLoader;
 
-public class StudentDailyAttendanceTest extends BaseTest {
+public class StudentDailyAttendanceConsumerTest extends BaseTest {
   private ConsumerTest<StudentDailyAttendanceType, StudentDailyAttendanceCollectionType> studentDailyAttendanceTester = null;
 
   public static final String REF_ID = "EA816A8591D3412CA85E7E4A20C97189";

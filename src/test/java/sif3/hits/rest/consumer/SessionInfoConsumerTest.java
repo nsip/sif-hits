@@ -10,7 +10,6 @@ import org.springframework.http.HttpStatus;
 
 import sif.dd.au30.model.AUCodeSetsYesOrNoCategoryType;
 import sif.dd.au30.model.ObjectFactory;
-import sif.dd.au30.model.ScheduledActivityType;
 import sif.dd.au30.model.SessionInfoCollectionType;
 import sif.dd.au30.model.SessionInfoType;
 import sif3.common.ws.BulkOperationResponse;

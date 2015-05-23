@@ -13,15 +13,14 @@ import sif.dd.au30.model.AUCodeSetsScheduledActivityTypeType;
 import sif.dd.au30.model.AUCodeSetsTeacherCoverCreditType;
 import sif.dd.au30.model.AUCodeSetsTeacherCoverSupervisionType;
 import sif.dd.au30.model.ObjectFactory;
-import sif.dd.au30.model.RoomInfoType;
 import sif.dd.au30.model.ScheduledActivityCollectionType;
 import sif.dd.au30.model.ScheduledActivityType;
 import sif.dd.au30.model.ScheduledActivityType.Override;
 import sif.dd.au30.model.ScheduledActivityType.RoomList;
 import sif.dd.au30.model.ScheduledActivityType.StudentList;
 import sif.dd.au30.model.ScheduledActivityType.TeacherList;
-import sif.dd.au30.model.ScheduledActivityType.TeachingGroupList;
 import sif.dd.au30.model.ScheduledActivityType.TeacherList.TeacherCover;
+import sif.dd.au30.model.ScheduledActivityType.TeachingGroupList;
 import sif.dd.au30.model.YearLevelType;
 import sif.dd.au30.model.YearLevelsType;
 import sif3.common.ws.BulkOperationResponse;
@@ -31,7 +30,7 @@ import sif3.common.ws.Response;
 import sif3.hits.rest.consumer.StudentPersonalConsumerTest.StudentPersonalRefIds;
 import sif3.infra.rest.consumer.ConsumerLoader;
 
-public class ScheduledActivityTest extends BaseTest {
+public class ScheduledActivityConsumerTest extends BaseTest {
   private ConsumerTest<ScheduledActivityType, ScheduledActivityCollectionType> scheduledActivityTester = null;
   
   public static final String REF_ID = "AF7D1111419B4FF5A3E8D49BCB8456E5";

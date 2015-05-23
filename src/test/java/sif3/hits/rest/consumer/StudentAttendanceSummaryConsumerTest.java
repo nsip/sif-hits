@@ -19,7 +19,7 @@ import sif3.common.ws.Response;
 import sif3.hits.rest.consumer.StudentPersonalConsumerTest.StudentPersonalRefIds;
 import sif3.infra.rest.consumer.ConsumerLoader;
 
-public class StudentAttendanceSummaryTest extends BaseTest {
+public class StudentAttendanceSummaryConsumerTest extends BaseTest {
   private ConsumerTest<StudentAttendanceSummaryType, StudentAttendanceSummaryCollectionType> studentAttendanceSummaryTest = null;
   
   public static final String REF_ID = "9A6F7AC869494F338407ED6FDBD08564";

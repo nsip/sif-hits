@@ -11,7 +11,6 @@ import org.springframework.http.HttpStatus;
 
 import sif.dd.au30.model.AttendanceCodeType;
 import sif.dd.au30.model.ObjectFactory;
-import sif.dd.au30.model.SessionInfoType;
 import sif.dd.au30.model.StudentPeriodAttendanceCollectionType;
 import sif.dd.au30.model.StudentPeriodAttendanceType;
 import sif.dd.au30.model.StudentPeriodAttendanceType.AuditInfo;
@@ -23,7 +22,7 @@ import sif3.common.ws.Response;
 import sif3.hits.rest.consumer.StudentPersonalConsumerTest.StudentPersonalRefIds;
 import sif3.infra.rest.consumer.ConsumerLoader;
 
-public class StudentPeriodAttendanceTest extends BaseTest {
+public class StudentPeriodAttendanceConsumerTest extends BaseTest {
   private ConsumerTest<StudentPeriodAttendanceType, StudentPeriodAttendanceCollectionType> studentPeriodAttendanceTester = null;
 
   public static final String REF_ID = "33CA9A7C131F40588F04E96ABDDF29CD";
