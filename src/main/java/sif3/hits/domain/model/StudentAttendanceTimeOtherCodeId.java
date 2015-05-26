@@ -5,7 +5,6 @@ import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
 import javax.persistence.JoinColumn;
-import javax.persistence.JoinColumns;
 import javax.persistence.ManyToOne;
 
 @Embeddable
@@ -17,10 +16,7 @@ public class StudentAttendanceTimeOtherCodeId implements Serializable {
   private String codeSet;
 
   @ManyToOne(optional = false)
-  @JoinColumns({
-      @JoinColumn(name = "StudentAttendanceTimeList_RefId", referencedColumnName = "StudentAttendanceTimeList_RefId"),
-      @JoinColumn(name = "code", referencedColumnName = "startTime")
-  })
+  @JoinColumn(name = "StudentAttendanceTimeList_AttendanceTime_id", referencedColumnName = "id")
   public StudentAttendanceTime getStudentAttendanceTime() {
     return studentAttendanceTime;
   }

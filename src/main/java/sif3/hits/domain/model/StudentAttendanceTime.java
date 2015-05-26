@@ -2,68 +2,58 @@ package sif3.hits.domain.model;
 
 import java.util.Set;
 
-import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import javax.persistence.Transient;
 
 @Entity
 @Table(name = "StudentAttendanceTimeList_AttendanceTime")
 public class StudentAttendanceTime {
-  
-  private StudentAttendanceTimeId studentAttendanceTimeId;
+
+  private Long id;
+  private StudentAttendanceTimeList studentAttendanceTimeList;
+  private String startTime;
 
   private String code;
   private String attendanceStatus;
   private String endTime;
   private String absenceValue;
   private String attendanceNote;
-  
+
   private Set<StudentAttendanceTimeOtherCode> otherCodes;
 
-  @EmbeddedId
-  public StudentAttendanceTimeId getStudentAttendanceTimeId() {
-    return studentAttendanceTimeId;
+  @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  public Long getId() {
+    return id;
   }
 
-  public void setStudentAttendanceTimeId(StudentAttendanceTimeId studentAttendanceTimeId) {
-    this.studentAttendanceTimeId = studentAttendanceTimeId;
+  public void setId(Long id) {
+    this.id = id;
   }
 
-  @Transient
+  @ManyToOne(optional = false)
+  @JoinColumn(name = "StudentAttendanceTimeList_RefId", referencedColumnName = "RefId")
   public StudentAttendanceTimeList getStudentAttendanceTimeList() {
-    StudentAttendanceTimeList result = null;
-    if (studentAttendanceTimeId != null) {
-      result = studentAttendanceTimeId.getStudentAttendanceTimeList();
-    }
-    return result;
+    return studentAttendanceTimeList;
   }
 
-  @Transient
   public void setStudentAttendanceTimeList(StudentAttendanceTimeList studentAttendanceTimeList) {
-    if (studentAttendanceTimeId == null) {
-      studentAttendanceTimeId = new StudentAttendanceTimeId();
-    }
-    this.studentAttendanceTimeId.setStudentAttendanceTimeList(studentAttendanceTimeList);
+    this.studentAttendanceTimeList = studentAttendanceTimeList;
   }
 
-  @Transient
   public String getStartTime() {
-    String result = null;
-    if (studentAttendanceTimeId != null) {
-      result = studentAttendanceTimeId.getStartTime();
-    }
-    return result;
+    return startTime;
   }
 
-  @Transient
   public void setStartTime(String startTime) {
-    if (studentAttendanceTimeId == null) {
-      studentAttendanceTimeId = new StudentAttendanceTimeId();
-    }
-    this.studentAttendanceTimeId.setStartTime(startTime);
+    this.startTime = startTime;
   }
 
   public String getCode() {
@@ -105,12 +95,12 @@ public class StudentAttendanceTime {
   public void setAttendanceNote(String attendanceNote) {
     this.attendanceNote = attendanceNote;
   }
-  
+
   @OneToMany(fetch = FetchType.LAZY, mappedBy = "studentAttendanceTimeOtherCodeId.studentAttendanceTime")
   public Set<StudentAttendanceTimeOtherCode> getOtherCodes() {
     return otherCodes;
   }
-  
+
   public void setOtherCodes(Set<StudentAttendanceTimeOtherCode> otherCodes) {
     this.otherCodes = otherCodes;
   }

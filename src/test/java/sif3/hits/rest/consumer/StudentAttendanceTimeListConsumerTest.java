@@ -13,7 +13,6 @@ import org.springframework.http.HttpStatus;
 import sif.dd.au30.model.AttendanceCodeType;
 import sif.dd.au30.model.ObjectFactory;
 import sif.dd.au30.model.OtherCodeListType;
-import sif.dd.au30.model.TimeTableSubjectType;
 import sif.dd.au30.model.OtherCodeListType.OtherCode;
 import sif.dd.au30.model.StudentAttendanceTimeListCollectionType;
 import sif.dd.au30.model.StudentAttendanceTimeListType;

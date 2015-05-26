@@ -62,7 +62,7 @@ public class StudentAttendanceTimeList extends HitsEntity {
     this.schoolYear = schoolYear;
   }
 
-  @OneToMany(fetch = FetchType.LAZY, mappedBy = "studentAttendanceTimeId.studentAttendanceTimeList")
+  @OneToMany(fetch = FetchType.LAZY, mappedBy = "studentAttendanceTimeList")
   public Set<StudentAttendanceTime> getAttendanceTimes() {
     return attendanceTimes;
   }
