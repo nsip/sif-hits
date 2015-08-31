@@ -6,10 +6,12 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
+import javax.persistence.Transient;
 
 @Entity
-public class StudentPersonal extends HitsEntity implements StudentPerson {
+public class StudentPersonal extends HitsEntity implements StudentPerson, AddressPerson {
   private static final long serialVersionUID = 3449687758651953543L;
 
   private String refId;
@@ -39,6 +41,7 @@ public class StudentPersonal extends HitsEntity implements StudentPerson {
   private String yearLevel;
   private String religion;
   private Set<StudentPersonalOtherId> otherIds;
+  private Set<Address> addresses;
 
   @Id
   public String getRefId() {
@@ -267,5 +270,23 @@ public class StudentPersonal extends HitsEntity implements StudentPerson {
   public void setOtherIds(Set<StudentPersonalOtherId> otherIds) {
     this.otherIds = otherIds;
   }
+  
+  @OneToMany(fetch = FetchType.EAGER)
+  @JoinColumn(name = "Person_RefId")
+  public Set<Address> getAddresses() {
+    return addresses;
+  }
+  
+  public void setAddresses(Set<Address> addresses) {
+    this.addresses = addresses;
+  }
 
+  @Transient
+  public String getTitle() {
+    return null;
+  }
+
+  public void setTitle(String title) {
+    
+  }
 }

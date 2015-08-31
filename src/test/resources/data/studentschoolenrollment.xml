@@ -1,4 +1,4 @@
-<StudentSchoolEnrollment RefId="ECCDBCBF96814791A8253CDBF8CD138F" xmlns="http://www.sifassociation.org/au/datamodel/1.3">
+<StudentSchoolEnrollment RefId="ECCDBCBF96814791A8253CDBF8CD138F" xmlns="http://www.sifassociation.org/au/datamodel/1.4">
     <StudentPersonalRefId>F7DD788E3CEF40EB9CB4AF90A2FA3147</StudentPersonalRefId>
     <SchoolInfoRefId>6DAFB630-C439-11E3-9AA0-81F4DBD909AB</SchoolInfoRefId>
     <MembershipType>01</MembershipType>

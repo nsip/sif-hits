@@ -38,8 +38,8 @@ public class StudentAttendanceTimeListConsumerTest extends BaseTest {
     ObjectFactory objectFactory = new ObjectFactory();
     AttendanceTime attendanceTime = new AttendanceTime();
     if (StringUtils.isNotBlank(absence)) {
-      attendanceTime.setAbsenceValue(objectFactory
-          .createStudentAttendanceTimeListTypeAttendanceTimesAttendanceTimeAbsenceValue(new BigDecimal(absence)));
+      attendanceTime.setDurationValue( objectFactory
+          .createStudentAttendanceTimeListTypeAttendanceTimesAttendanceTimeDurationValue(new BigDecimal(absence)));
     }
     if (StringUtils.isNotBlank(note)) {
       attendanceTime.setAttendanceNote(objectFactory

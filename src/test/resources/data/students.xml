@@ -1,4 +1,4 @@
-<StudentPersonals xmlns="http://www.sifassociation.org/au/datamodel/1.3">
+<StudentPersonals xmlns="http://www.sifassociation.org/au/datamodel/1.4">
 	<StudentPersonal RefId="6BB0C404C02949BD9956D6BE93B7B128">
 		<LocalId>123456</LocalId>
 		<PersonInfo>

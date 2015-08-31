@@ -1,6 +1,5 @@
 package sif3.hits.domain.converter;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import sif.dd.au30.model.StudentAttendanceSummaryType;
@@ -10,9 +9,6 @@ import sif3.hits.domain.model.StudentAttendanceSummary;
 @Component
 public class StudentAttendanceSummaryConverter extends
     HitsConverter<StudentAttendanceSummaryType, StudentAttendanceSummary> {
-
-  @Autowired
-  private CalendarDateTypeOtherCodeConverter calendarDateTypeOtherCodeConverter;
 
   public StudentAttendanceSummaryConverter() {
     super(StudentAttendanceSummaryType.class, StudentAttendanceSummary.class);

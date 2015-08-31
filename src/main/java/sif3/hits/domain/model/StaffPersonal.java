@@ -6,6 +6,7 @@ import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.Transient;
 
 @Entity
 public class StaffPersonal extends HitsEntity implements StaffPerson {
@@ -156,6 +157,15 @@ public class StaffPersonal extends HitsEntity implements StaffPerson {
 
   public void setOtherIds(Set<StaffPersonalOtherId> otherIds) {
     this.otherIds = otherIds;
+  }
+
+  @Transient
+  public String getTitle() {
+    return null;
+  }
+
+  public void setTitle(String title) {
+    
   }
 
 }

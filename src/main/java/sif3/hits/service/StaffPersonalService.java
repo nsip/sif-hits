@@ -5,11 +5,14 @@ import java.util.List;
 import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Service;
 
 import sif.dd.au30.model.StaffCollectionType;
 import sif.dd.au30.model.StaffPersonalType;
+import sif3.common.exception.UnsupportedQueryException;
 import sif3.hits.domain.converter.HitsConverter;
 import sif3.hits.domain.converter.StaffPersonalConverter;
 import sif3.hits.domain.dao.StaffPersonalDAO;
@@ -17,6 +20,7 @@ import sif3.hits.domain.dao.StaffPersonalOtherIdDAO;
 import sif3.hits.domain.dao.ZoneFilterableRepository;
 import sif3.hits.domain.model.StaffPersonal;
 import sif3.hits.domain.model.StaffPersonalOtherId;
+import sif3.hits.rest.dto.KeyValuePair;
 import sif3.hits.rest.dto.RequestDTO;
 
 @Service
@@ -95,5 +99,28 @@ public class StaffPersonalService extends BaseService<StaffPersonalType, StaffCo
       result = super.save(hitsObject, dto, zoneId, create);
     }
     return result;
+  }
+  
+  @Override
+  protected Page<StaffPersonal> findByServicePath(List<KeyValuePair> filters, List<String> schoolRefIds,
+      PageRequest pageRequest) throws UnsupportedQueryException {
+
+    String teachingGroupRefId = null;
+
+    if (filters != null) {
+      for (KeyValuePair filter : filters) {
+        if (filter != null && "TeachingGroups".equals(filter.getKey()) && teachingGroupRefId == null) {
+          teachingGroupRefId = filter.getValue();
+        } else if (filter != null && ("TeachingGroups".equals(filter.getKey()))) {
+          throw new UnsupportedQueryException("Invalid service path query - each key can appear only once.");
+        }
+      }
+    }
+
+    if (teachingGroupRefId != null) {
+      return staffPersonalDAO.findAllWithTeachingGroupAndFilter(teachingGroupRefId, schoolRefIds, pageRequest);
+    } else {
+      return super.findByServicePath(filters, schoolRefIds, pageRequest);
+    }
   }
 }

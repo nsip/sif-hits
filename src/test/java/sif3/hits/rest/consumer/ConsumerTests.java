@@ -23,8 +23,11 @@ import org.junit.runners.Suite.SuiteClasses;
   ScheduledActivityConsumerTest.class,
   SessionInfoConsumerTest.class,
   StudentPeriodAttendanceConsumerTest.class,
-  StudentAttendanceTimeListConsumerTest.class
-  
+  StudentAttendanceTimeListConsumerTest.class,
+  StudentContactPersonalConsumerTest.class,
+  StudentContactRelationshipConsumerTest.class,
+  GradingAssignmentConsumerTest.class,
+  GradingAssignmentScoreConsumerTest.class
 })
 public class ConsumerTests {
 /*
@@ -33,6 +36,7 @@ public class ConsumerTests {
  * Subsequent executions should see 0 failures.
  * 
  * <pre>
+delete from Address;
 delete from StudentAttendanceTimeList_AttendanceTime_OtherCode;
 delete from StudentAttendanceTimeList_AttendanceTime;
 delete from StudentAttendanceTimeList;
@@ -58,6 +62,8 @@ delete from CalendarDateType_OtherCodeList;
 delete from CalendarDate;
 delete from CalendarSummary_YearLevel;
 delete from CalendarSummary;
+delete from StudentContactRelationship;
+delete from StudentContactPersonal;
 delete from StudentSchoolEnrollment;
 delete from StudentPersonal_OtherId;
 delete from StudentPersonal;

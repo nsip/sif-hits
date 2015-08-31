@@ -12,7 +12,6 @@ import sif.dd.au30.model.StudentAttendanceTimeListCollectionType;
 import sif.dd.au30.model.StudentAttendanceTimeListType;
 import sif3.hits.domain.converter.HitsConverter;
 import sif3.hits.domain.converter.StudentAttendanceTimeListConverter;
-import sif3.hits.domain.dao.SchoolInfoDAO;
 import sif3.hits.domain.dao.StudentAttendanceTimeDAO;
 import sif3.hits.domain.dao.StudentAttendanceTimeListDAO;
 import sif3.hits.domain.dao.StudentAttendanceTimeOtherCodeDAO;
@@ -34,9 +33,6 @@ public class StudentAttendanceTimeListService extends
 
   @Autowired
   private StudentAttendanceTimeOtherCodeDAO studentAttendanceTimeOtherCodeDAO;
-
-  @Autowired
-  private SchoolInfoDAO schoolInfoDAO;
 
   @Override
   public JpaRepository<StudentAttendanceTimeList, String> getDAO() {

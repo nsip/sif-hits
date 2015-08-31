@@ -1,0 +1,40 @@
+<StudentContactRelationships xmlns="http://www.sifassociation.org/au/datamodel/1.4">
+<StudentContactRelationship StudentPersonalRefId="F7DD788E3CEF40EB9CB4AF90A2FA3147" StudentContactPersonalRefId="281BC15585984873933E7A9EF336B98D">
+    <StudentContactRelationshipRefId>5EEDE4C3F4684EE3B64B8FE37E2B82B7</StudentContactRelationshipRefId>
+    <Relationship>
+        <Code>01</Code>
+    </Relationship>
+    <ContactFlags>
+        <ParentLegalGuardian>Y</ParentLegalGuardian>
+        <PickupRights>Y</PickupRights>
+        <LivesWith>Y</LivesWith>
+        <AccessToRecords>Y</AccessToRecords>
+        <EmergencyContact>Y</EmergencyContact>
+        <HasCustody>Y</HasCustody>
+        <DisciplinaryContact>Y</DisciplinaryContact>
+        <PrimaryCareProvider>Y</PrimaryCareProvider>
+        <FeesBilling>Y</FeesBilling>
+        <FamilyMail>Y</FamilyMail>
+        <InterventionOrder>N</InterventionOrder>
+    </ContactFlags>
+</StudentContactRelationship>
+<StudentContactRelationship StudentPersonalRefId="F7DD788E3CEF40EB9CB4AF90A2FA3147" StudentContactPersonalRefId="281BC15585984873933E7A9EF336B98D">
+    <StudentContactRelationshipRefId>559EA81B62C74E51ADE274D42E1084B1</StudentContactRelationshipRefId>
+    <Relationship>
+        <Code>01</Code>
+    </Relationship>
+    <ContactFlags>
+        <ParentLegalGuardian>Y</ParentLegalGuardian>
+        <PickupRights>Y</PickupRights>
+        <LivesWith>Y</LivesWith>
+        <AccessToRecords>Y</AccessToRecords>
+        <EmergencyContact>Y</EmergencyContact>
+        <HasCustody>Y</HasCustody>
+        <DisciplinaryContact>Y</DisciplinaryContact>
+        <PrimaryCareProvider>Y</PrimaryCareProvider>
+        <FeesBilling>Y</FeesBilling>
+        <FamilyMail>Y</FamilyMail>
+        <InterventionOrder>N</InterventionOrder>
+    </ContactFlags>
+</StudentContactRelationship>
+</StudentContactRelationships>

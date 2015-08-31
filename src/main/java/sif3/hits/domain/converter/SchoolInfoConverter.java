@@ -48,18 +48,18 @@ public class SchoolInfoConverter extends HitsConverter<SchoolInfoType, SchoolInf
       target.setSchoolType(objFactory.createSchoolInfoTypeSchoolType(schoolType));
 
       // Address - may subtype this if needed elsewhere
-      AddressListType addressList = new AddressListType();
-      Address address = new Address();
+      AddressListType addressList = objFactory.createAddressListType();
+      Address address = objFactory.createAddressListTypeAddress();
       address.setStateProvince(objFactory.createAddressTypeStateProvince(source.getAddressStateProvince()));
       address.setCity(source.getAddressCity());
       address.setPostalCode(source.getAddressPostalCode());
 
-      Street street = new Street();
+      Street street = objFactory.createAddressTypeStreet();
       street.setStreetNumber(objFactory.createAddressTypeStreetStreetNumber(source.getAddressStreetNumber()));
       street.setStreetName(objFactory.createAddressTypeStreetStreetName(source.getAddressStreetName()));
       address.setStreet(street);
 
-      GridLocationType gridLocation = new GridLocationType();
+      GridLocationType gridLocation = objFactory.createGridLocationType();
       gridLocation.setLatitude(getBigDecimalValue(source.getAddressLatitude()));
       gridLocation.setLongitude(getBigDecimalValue(source.getAddressLongitude()));
       address.setGridLocation(objFactory.createAddressTypeGridLocation(gridLocation));
@@ -77,7 +77,7 @@ public class SchoolInfoConverter extends HitsConverter<SchoolInfoType, SchoolInf
       XMLGregorianCalendar entityClose = getDateValue(source.getEntityClose());
       target.setEntityClose(objFactory.createSchoolInfoTypeEntityClose(entityClose));
 
-      Campus campus = new Campus();
+      Campus campus = objFactory.createSchoolInfoTypeCampus();
       campus.setSchoolCampusId(source.getCampusId());
       AUCodeSetsYesOrNoCategoryType adminStatus = getEnumValue(source.getCampusAdminStatus(),
           AUCodeSetsYesOrNoCategoryType.class);
@@ -86,7 +86,6 @@ public class SchoolInfoConverter extends HitsConverter<SchoolInfoType, SchoolInf
       campus.setCampusType(objFactory.createSchoolInfoTypeCampusCampusType(campusType));
       campus.setParentSchoolId(objFactory.createSchoolInfoTypeCampusParentSchoolId(source.getCampusParentSchoolId()));
       target.setCampus(objFactory.createSchoolInfoTypeCampus(campus));
-
     }
   }
 

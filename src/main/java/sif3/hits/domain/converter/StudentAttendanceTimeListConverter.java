@@ -40,8 +40,8 @@ public class StudentAttendanceTimeListConverter extends
           AttendanceTime attendanceTime = objectFactory
               .createStudentAttendanceTimeListTypeAttendanceTimesAttendanceTime();
           attendanceTime
-              .setAbsenceValue(objectFactory
-                  .createStudentAttendanceTimeListTypeAttendanceTimesAttendanceTimeAbsenceValue(getBigDecimalValue(studentAttendanceTime
+              .setDurationValue(objectFactory
+                  .createStudentAttendanceTimeListTypeAttendanceTimesAttendanceTimeDurationValue(getBigDecimalValue(studentAttendanceTime
                       .getAbsenceValue())));
           attendanceTime.setAttendanceNote(objectFactory
               .createStudentAttendanceTimeListTypeAttendanceTimesAttendanceTimeAttendanceNote(studentAttendanceTime
@@ -88,7 +88,7 @@ public class StudentAttendanceTimeListConverter extends
         for (AttendanceTime attendanceTime : source.getAttendanceTimes().getAttendanceTime()) {
           StudentAttendanceTime studentAttendanceTime = new StudentAttendanceTime();
           studentAttendanceTime.setStudentAttendanceTimeList(target);
-          studentAttendanceTime.setAbsenceValue(getBigDecimalValue(getJAXBValue(attendanceTime.getAbsenceValue())));
+          studentAttendanceTime.setAbsenceValue(getBigDecimalValue(getJAXBValue(attendanceTime.getDurationValue())));
           studentAttendanceTime.setAttendanceNote(getJAXBValue(attendanceTime.getAttendanceNote()));
           studentAttendanceTime.setAttendanceStatus(attendanceTime.getAttendanceStatus());
           studentAttendanceTime.setStartTime(getTimeValue(attendanceTime.getStartTime()));

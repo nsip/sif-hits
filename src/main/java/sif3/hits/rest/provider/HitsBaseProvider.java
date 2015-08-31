@@ -15,6 +15,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import sif3.common.conversion.ModelObjectInfo;
+import sif3.common.exception.DataTooLargeException;
 import sif3.common.exception.PersistenceException;
 import sif3.common.exception.UnsupportedQueryException;
 import sif3.common.interfaces.QueryProvider;
@@ -128,8 +129,8 @@ public abstract class HitsBaseProvider<S, SC, H, HS extends BaseService<S, SC, H
         if (data != null && data.getClass() != null) {
           receivedType = data.getClass().getSimpleName();
         }
-        throw new IllegalArgumentException("Expected Object Type = " + SIF_CLASS.getSimpleName()
-            + ". Received Object Type = " + receivedType);
+        throw new IllegalArgumentException(
+            "Expected Object Type = " + SIF_CLASS.getSimpleName() + ". Received Object Type = " + receivedType);
       }
 
     } catch (IllegalArgumentException ex) {
@@ -169,8 +170,8 @@ public abstract class HitsBaseProvider<S, SC, H, HS extends BaseService<S, SC, H
    * java.lang.String, sif3.common.model.SIFZone, sif3.common.model.SIFContext)
    */
   @Override
-  public boolean updateSingle(Object data, String resourceID, SIFZone zone, SIFContext context, RequestMetadata metadata)
-      throws IllegalArgumentException, PersistenceException {
+  public boolean updateSingle(Object data, String resourceID, SIFZone zone, SIFContext context,
+      RequestMetadata metadata) throws IllegalArgumentException, PersistenceException {
     try {
       setDatabaseContext(zone, context);
 
@@ -195,8 +196,8 @@ public abstract class HitsBaseProvider<S, SC, H, HS extends BaseService<S, SC, H
         if (data != null && data.getClass() != null) {
           receivedType = data.getClass().getSimpleName();
         }
-        throw new IllegalArgumentException("Expected Object Type = " + SIF_CLASS.getSimpleName()
-            + ". Received Object Type = " + receivedType);
+        throw new IllegalArgumentException(
+            "Expected Object Type = " + SIF_CLASS.getSimpleName() + ". Received Object Type = " + receivedType);
       }
     } catch (IllegalArgumentException ex) {
       throw ex;
@@ -300,6 +301,27 @@ public abstract class HitsBaseProvider<S, SC, H, HS extends BaseService<S, SC, H
       L.error("Unknown Error:", ex);
       throw new PersistenceException(UNKNOWN_ERROR.getMessage());
     }
+  }
+
+  @Override
+  public Object retrieveByQBE(Object example, SIFZone zone, SIFContext context, PagingInfo pagingInfo,
+      RequestMetadata metadata) throws PersistenceException, UnsupportedQueryException, DataTooLargeException {
+    try {
+      setDatabaseContext(zone, context);
+
+      L.debug("Find many " + COLLECTION_NAME + " ... ");
+      if (example == null) {
+        throw new UnsupportedQueryException("Query by example object is null");
+      } else if (!SIF_CLASS.isAssignableFrom(example.getClass())) {
+        throw new UnsupportedQueryException("Query by example object is of incorrect type : " + example.getClass().toString());
+      } else {
+        return getService().findByExample(SIF_CLASS.cast(example), pagingInfo, getZoneId(zone));
+      }
+    } catch (Exception ex) {
+      L.error("Unknown Error:", ex);
+      throw new PersistenceException(UNKNOWN_ERROR.getMessage());
+    }
+
   }
 
   /*
@@ -483,8 +505,8 @@ public abstract class HitsBaseProvider<S, SC, H, HS extends BaseService<S, SC, H
         message += " - " + response.getDetailMessage();
       }
       status = new CreateOperationStatus(response.getRequestDTO().getRefId(), response.getRequestDTO().getAdvisoryId(),
-          response.getOperationStatus().getHttpStatus(), new ErrorDetails(
-              response.getOperationStatus().getHttpStatus(), message));
+          response.getOperationStatus().getHttpStatus(),
+          new ErrorDetails(response.getOperationStatus().getHttpStatus(), message));
     }
     return status;
   }

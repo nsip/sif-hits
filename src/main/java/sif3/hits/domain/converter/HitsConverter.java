@@ -1,10 +1,10 @@
 package sif3.hits.domain.converter;
 
 import java.lang.reflect.InvocationHandler;
-import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.lang.reflect.Proxy;
 import java.math.BigDecimal;
+import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Collection;
@@ -26,7 +26,7 @@ import sif3.hits.domain.converter.factory.ObjectFactory;
 public abstract class HitsConverter<S, H> {
 
   private static final Logger logger = LoggerFactory.getLogger(HitsConverter.class);
-  
+
   private Class<S> sifClass;
   private Class<H> hitsClass;
   private static final Map<Class<?>, Method> enumValueMethods = new HashMap<Class<?>, Method>();
@@ -121,8 +121,8 @@ public abstract class HitsConverter<S, H> {
   /* Getter + Setter Helpers */
   /***************************/
   protected ObjectFactory getObjectFactory() {
-    return (ObjectFactory) Proxy.newProxyInstance(this.getClass().getClassLoader(),
-        new Class[] { ObjectFactory.class }, nullValueInvocationHandler);
+    return (ObjectFactory) Proxy.newProxyInstance(this.getClass().getClassLoader(), new Class[] { ObjectFactory.class },
+        nullValueInvocationHandler);
   }
 
   protected <V> V getJAXBValue(JAXBElement<V> element) {
@@ -265,6 +265,30 @@ public abstract class HitsConverter<S, H> {
     return result;
   }
 
+  protected BigInteger getBigIntegerValue(String value) {
+    BigInteger result = null;
+    if (value != null) {
+      try {
+        result = new BigInteger(value);
+      } catch (Exception ex) {
+        logger.error("Unable to convert value [" + value + "] to BigInteger.", ex);
+      }
+    }
+    return result;
+  }
+
+  protected String getBigIntegerValue(BigInteger value) {
+    String result = null;
+    if (value != null) {
+      try {
+        result = value.toString();
+      } catch (Exception ex) {
+        logger.error("Unable to convert BigInteger value [" + value + "] to string.", ex);
+      }
+    }
+    return result;
+  }
+
   protected Long getLongValue(String value) {
     Long result = null;
     if (value != null) {
@@ -306,9 +330,8 @@ public abstract class HitsConverter<S, H> {
           finalException = innerException;
         } finally {
           if (result == null) {
-            logger.error(
-                "Unable to convert value [" + value + "] to enum [" + (clazz == null ? "unknown" : clazz.getSimpleName())
-                    + "].", finalException);
+            logger.error("Unable to convert value [" + value + "] to enum ["
+                + (clazz == null ? "unknown" : clazz.getSimpleName()) + "].", finalException);
           }
         }
       }
@@ -325,7 +348,7 @@ public abstract class HitsConverter<S, H> {
           result = (String) valueMethod.invoke(enumValue);
         } catch (Exception ex) {
           logger.warn("Unable to convert value [" + enumValue + "] to value - using name.");
-        } 
+        }
       }
       if (result == null) {
         result = enumValue.name();
@@ -336,7 +359,7 @@ public abstract class HitsConverter<S, H> {
 
   private Method getValueMethod(Class<?> clazz) {
     Method result = enumValueMethods.get(clazz);
-    if (result == null && !enumValueMethods.containsKey(clazz)){
+    if (result == null && !enumValueMethods.containsKey(clazz)) {
       try {
         result = clazz.getMethod("value");
       } catch (Exception ignore) {

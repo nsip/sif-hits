@@ -1,0 +1,24 @@
+<GradingAssignmentScores xmlns="http://www.sifassociation.org/au/datamodel/1.4">
+	<GradingAssignmentScore RefId="7D80387537D14BA8BF6B11A6819DB870">
+	    <StudentPersonalRefId>17998AA63A074763A2C51FABBD966039</StudentPersonalRefId>
+	    <StudentPersonalLocalId>s0004432</StudentPersonalLocalId>
+	    <TeachingGroupRefId>597AD3FE47E74B2CB919A93C564D19D0</TeachingGroupRefId>
+	    <SchoolInfoRefId>6DAFB630-C439-11E3-9AA0-81F4DBD909AB</SchoolInfoRefId>
+	    <GradingAssignmentRefId>C70B9B36C4184C948F1BFA1488B44607</GradingAssignmentRefId>
+	    <ScorePoints>24</ScorePoints>
+	    <ScorePercent>0.96</ScorePercent>
+	    <ScoreLetter>A+</ScoreLetter>
+	    <ScoreDescription>Aced It!</ScoreDescription>
+	</GradingAssignmentScore>
+	<GradingAssignmentScore RefId="09F942B6E080487B8BA623D892420A0E">
+	    <StudentPersonalRefId>17998AA63A074763A2C51FABBD966039</StudentPersonalRefId>
+	    <StudentPersonalLocalId>s0004432</StudentPersonalLocalId>
+	    <TeachingGroupRefId>597AD3FE47E74B2CB919A93C564D19D0</TeachingGroupRefId>
+	    <SchoolInfoRefId>6DAFB630-C439-11E3-9AA0-81F4DBD909AB</SchoolInfoRefId>
+	    <GradingAssignmentRefId>C70B9B36C4184C948F1BFA1488B44607</GradingAssignmentRefId>
+	    <ScorePoints>24</ScorePoints>
+	    <ScorePercent>0.96</ScorePercent>
+	    <ScoreLetter>A+</ScoreLetter>
+	    <ScoreDescription>Aced It!</ScoreDescription>
+	</GradingAssignmentScore>
+</GradingAssignmentScores>

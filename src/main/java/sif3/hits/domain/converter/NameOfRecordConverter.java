@@ -18,6 +18,7 @@ public class NameOfRecordConverter extends HitsConverter<NameOfRecordType, Perso
   public void toSifModel(Person source, NameOfRecordType target) {
     if (source != null && target != null) {
       ObjectFactory objectFactory = getObjectFactory();
+      target.setTitle(objectFactory.createBaseNameTypeTitle(source.getTitle()));
       target.setFamilyName(objectFactory.createBaseNameTypeFamilyName(source.getFamilyName()));
       target.setGivenName(objectFactory.createBaseNameTypeGivenName(source.getGivenName()));
       target.setMiddleName(objectFactory.createBaseNameTypeMiddleName(source.getMiddleName()));
@@ -35,6 +36,7 @@ public class NameOfRecordConverter extends HitsConverter<NameOfRecordType, Perso
   @Override
   public void toHitsModel(NameOfRecordType source, Person target) {
     if (source != null && target != null) {
+      target.setTitle(getJAXBValue(source.getTitle()));
       target.setFamilyName(getJAXBValue(source.getFamilyName()));
       target.setGivenName(getJAXBValue(source.getGivenName()));
       target.setMiddleName(getJAXBValue(source.getMiddleName()));

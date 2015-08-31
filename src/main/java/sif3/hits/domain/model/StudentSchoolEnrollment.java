@@ -19,6 +19,8 @@ public class StudentSchoolEnrollment extends HitsEntity {
   private String fte;
   private String entryDate;
   private String exitDate;
+  private String recordClosureReason;
+  private String promotionStatus;
 
   @Id
   public String getRefId() {
@@ -101,5 +103,21 @@ public class StudentSchoolEnrollment extends HitsEntity {
 
   public void setExitDate(String exitDate) {
     this.exitDate = exitDate;
+  }
+
+  public String getPromotionStatus() {
+    return promotionStatus;
+  }
+
+  public void setPromotionStatus(String promotionStatus) {
+    this.promotionStatus = promotionStatus;
+  }
+
+  public String getRecordClosureReason() {
+    return recordClosureReason;
+  }
+
+  public void setRecordClosureReason(String recordClosureReason) {
+    this.recordClosureReason = recordClosureReason;
   }
 }

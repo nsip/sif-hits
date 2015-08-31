@@ -42,4 +42,8 @@ public interface Person {
 
   public void setBirthDate(String birthDate);
 
+  public String getTitle();
+  
+  public void setTitle(String title);
+
 }

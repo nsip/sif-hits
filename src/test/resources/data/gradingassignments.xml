@@ -1,0 +1,26 @@
+<GradingAssignments  xmlns="http://www.sifassociation.org/au/datamodel/1.4">
+	<GradingAssignment RefId="EC238A11BF0B461C86479E5B6408D7D9">
+	    <TeachingGroupRefId>597AD3FE47E74B2CB919A93C564D19D0</TeachingGroupRefId>
+	    <SchoolInfoRefId>6DAFB630-C439-11E3-9AA0-81F4DBD909AB</SchoolInfoRefId>
+	    <GradingCategory>GC</GradingCategory>
+	    <Description>Description</Description>
+	    <PointsPossible>80</PointsPossible>
+	    <CreateDate>2015-07-01</CreateDate>
+	    <DueDate>2015-10-01</DueDate>
+	    <Weight>75</Weight>
+	    <MaxAttemptsAllowed>1</MaxAttemptsAllowed>
+	    <DetailedDescriptionURL>http://www.google.com</DetailedDescriptionURL>
+	</GradingAssignment>
+	<GradingAssignment RefId="F1C51CA1AD844B03B385BA958CDEDEBD">
+	    <TeachingGroupRefId>597AD3FE47E74B2CB919A93C564D19D0</TeachingGroupRefId>
+	    <SchoolInfoRefId>6DAFB630-C439-11E3-9AA0-81F4DBD909AB</SchoolInfoRefId>
+	    <GradingCategory>GC</GradingCategory>
+	    <Description>Description</Description>
+	    <PointsPossible>80</PointsPossible>
+	    <CreateDate>2015-07-01</CreateDate>
+	    <DueDate>2015-10-01</DueDate>
+	    <Weight>75</Weight>
+	    <MaxAttemptsAllowed>1</MaxAttemptsAllowed>
+	    <DetailedDescriptionURL>http://www.google.com</DetailedDescriptionURL>
+	</GradingAssignment>
+</GradingAssignments>

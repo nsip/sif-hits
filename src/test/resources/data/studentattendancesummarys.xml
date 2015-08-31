@@ -1,4 +1,4 @@
-<StudentAttendanceSummarys  xmlns="http://www.sifassociation.org/au/datamodel/1.3">
+<StudentAttendanceSummarys  xmlns="http://www.sifassociation.org/au/datamodel/1.4">
   <StudentAttendanceSummary StudentPersonalRefId="B3270C8A7A1E436093368733728BAB44" SchoolInfoRefId="6DAFB630-C439-11E3-9AA0-81F4DBD909AB" SchoolYear="2014" StartDate="2014-11-17" EndDate="2014-11-22">
     <StudentAttendanceSummaryRefId>3DE3AEFB96B54D029F44BA579CDBC7B5</StudentAttendanceSummaryRefId>
     <StartDay>1</StartDay>

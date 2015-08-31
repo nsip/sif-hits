@@ -1,4 +1,4 @@
-<TeachingGroup RefId="1BE77E87467F4F9D8800BE64CB678E0E" xmlns="http://www.sifassociation.org/au/datamodel/1.3">
+<TeachingGroup RefId="1BE77E87467F4F9D8800BE64CB678E0E" xmlns="http://www.sifassociation.org/au/datamodel/1.4">
 	<SchoolYear>2014</SchoolYear>
 	<LocalId>Room 22</LocalId>
 	<ShortName>VIS</ShortName>

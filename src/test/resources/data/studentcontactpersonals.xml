@@ -1,0 +1,108 @@
+<StudentContactPersonals  xmlns="http://www.sifassociation.org/au/datamodel/1.4">
+<StudentContactPersonal RefId="884FAFD92FEB4770827DA5121BD85E41">
+    <LocalId>LocalId</LocalId>
+    <PersonInfo>
+        <Name>
+            <Title>Mr</Title>
+            <FamilyName>Tester</FamilyName>
+            <GivenName>Fred</GivenName>
+            <MiddleName>Middle</MiddleName>
+            <PreferredFamilyName>PTester</PreferredFamilyName>
+            <PreferredGivenName>PFred</PreferredGivenName>
+            <FullName>Fred Tester</FullName>
+        </Name>
+        <Demographics/>
+        <AddressList>
+            <Address Type="0123" Role="012B">
+                <Street>
+                    <Line1>123 Address Line One</Line1>
+                    <Line2>Address Line Two</Line2>
+                </Street>
+                <City>Perth</City>
+                <StateProvince>WA</StateProvince>
+                <PostalCode>6000</PostalCode>
+                <GridLocation>
+                    <Latitude>-31.952693</Latitude>
+                    <Longitude>115.871971</Longitude>
+                </GridLocation>
+            </Address>
+            <Address Type="0123" Role="012B">
+                <Street>
+                    <Line1>234 Address Line One</Line1>
+                </Street>
+                <City>Perth</City>
+                <StateProvince>WA</StateProvince>
+                <PostalCode>6000</PostalCode>
+                <GridLocation>
+                    <Latitude>-31.952693</Latitude>
+                    <Longitude>115.871971</Longitude>
+                </GridLocation>
+            </Address>
+        </AddressList>
+        <PhoneNumberList>
+            <PhoneNumber>
+                <Number>+61400000000</Number>
+            </PhoneNumber>
+        </PhoneNumberList>
+        <EmailList>
+            <Email Type="06">the.email@not.a.real.domain</Email>
+        </EmailList>
+    </PersonInfo>
+    <EmploymentType>1</EmploymentType>
+    <SchoolEducationalLevel>4</SchoolEducationalLevel>
+    <NonSchoolEducation>7</NonSchoolEducation>
+</StudentContactPersonal>
+<StudentContactPersonal RefId="73EEE22596364C17BE1B67DE6CC73237">
+    <LocalId>LocalId</LocalId>
+    <PersonInfo>
+        <Name>
+            <Title>Mr</Title>
+            <FamilyName>Tester</FamilyName>
+            <GivenName>Fred</GivenName>
+            <MiddleName>Middle</MiddleName>
+            <PreferredFamilyName>PTester</PreferredFamilyName>
+            <PreferredGivenName>PFred</PreferredGivenName>
+            <FullName>Fred Tester</FullName>
+        </Name>
+        <Demographics/>
+        <AddressList>
+            <Address Type="0123" Role="012B">
+                <Street>
+                    <Line1>123 Address Line One</Line1>
+                    <Line2>Address Line Two</Line2>
+                </Street>
+                <City>Perth</City>
+                <StateProvince>WA</StateProvince>
+                <PostalCode>6000</PostalCode>
+                <GridLocation>
+                    <Latitude>-31.952693</Latitude>
+                    <Longitude>115.871971</Longitude>
+                </GridLocation>
+            </Address>
+            <Address Type="0123" Role="012B">
+                <Street>
+                    <Line1>234 Address Line One</Line1>
+                </Street>
+                <City>Perth</City>
+                <StateProvince>WA</StateProvince>
+                <PostalCode>6000</PostalCode>
+                <GridLocation>
+                    <Latitude>-31.952693</Latitude>
+                    <Longitude>115.871971</Longitude>
+                </GridLocation>
+            </Address>
+        </AddressList>
+        <PhoneNumberList>
+            <PhoneNumber>
+                <Number>+61400000000</Number>
+            </PhoneNumber>
+        </PhoneNumberList>
+        <EmailList>
+            <Email Type="06">the.email@not.a.real.domain</Email>
+        </EmailList>
+    </PersonInfo>
+    <EmploymentType>1</EmploymentType>
+    <SchoolEducationalLevel>4</SchoolEducationalLevel>
+    <NonSchoolEducation>7</NonSchoolEducation>
+</StudentContactPersonal>
+</StudentContactPersonals>

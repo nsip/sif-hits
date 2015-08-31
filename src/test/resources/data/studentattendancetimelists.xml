@@ -1,4 +1,4 @@
-<StudentAttendanceTimeLists xmlns="http://www.sifassociation.org/au/datamodel/1.3">
+<StudentAttendanceTimeLists xmlns="http://www.sifassociation.org/au/datamodel/1.4">
 	<StudentAttendanceTimeList RefId="2205C3E4089C4CFB98A5FB0121FA12E1">
 	    <StudentPersonalRefId>F7DD788E3CEF40EB9CB4AF90A2FA3147</StudentPersonalRefId>
 	    <SchoolInfoRefId>6DAFB630-C439-11E3-9AA0-81F4DBD909AB</SchoolInfoRefId>

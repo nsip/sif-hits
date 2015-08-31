@@ -41,7 +41,7 @@ public class SchoolInfoConsumerTest extends BaseTest {
   @Test
   public void initialiseData() throws Exception {
     ObjectFactory objectFactory = new ObjectFactory();
-    SchoolInfoType schoolInfo = new SchoolInfoType();
+    SchoolInfoType schoolInfo = objectFactory.createSchoolInfoType();
     schoolInfo.setRefId(REF_ID);
     schoolInfo.setLocalId(objectFactory.createSchoolInfoTypeLocalId(LOCAL_ID));
     schoolInfo.setSchoolName(SCHOOL_NAME);
@@ -60,18 +60,18 @@ public class SchoolInfoConsumerTest extends BaseTest {
     schoolInfo.setIndependentSchool(objectFactory.createSchoolInfoTypeIndependentSchool(AUCodeSetsYesOrNoCategoryType.N));
     schoolInfo.setSchoolType(objectFactory.createSchoolInfoTypeSchoolType(AUCodeSetsSchoolLevelType.SEC));
     
-    AddressListType addressList = new AddressListType();
-    Address address = new Address();
+    AddressListType addressList = objectFactory.createAddressListType();
+    Address address = objectFactory.createAddressListTypeAddress();
     address.setStateProvince(objectFactory.createAddressTypeStateProvince("WA"));
     address.setCity("Bens Town");
     address.setPostalCode("6001");
     
-    Street street = new Street();
+    Street street = objectFactory.createAddressTypeStreet();
     street.setStreetNumber(objectFactory.createAddressTypeStreetStreetNumber("1"));
     street.setStreetName(objectFactory.createAddressTypeStreetStreetName("School Street"));
     address.setStreet(street);
     
-    GridLocationType gridLocation = new GridLocationType();
+    GridLocationType gridLocation = objectFactory.createGridLocationType();
     gridLocation.setLongitude(new BigDecimal("117.8918605"));
     gridLocation.setLatitude(new BigDecimal("-35.0197027"));
     address.setGridLocation(objectFactory.createAddressTypeGridLocation(gridLocation));
@@ -87,7 +87,9 @@ public class SchoolInfoConsumerTest extends BaseTest {
     SchoolInfoType getResult = schoolInfoTester.doGetOne(REF_ID);
     
     String xmlExpectedTo = schoolInfoTester.getXML(schoolInfo);
+    System.out.println("To:\n" + xmlExpectedTo);
     String xmlExpectedFrom = schoolInfoTester.getXML(getResult);
+    System.out.println("From:\n" + xmlExpectedFrom);
     boolean semiEquals = semiEquals(xmlExpectedFrom, xmlExpectedTo);
     if (!semiEquals) {
       Assert.assertEquals("XML Differs", xmlExpectedFrom, xmlExpectedTo);  

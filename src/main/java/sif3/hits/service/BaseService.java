@@ -11,7 +11,6 @@ import static sif3.hits.service.e.OperationStatus.UPDATE_OK;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.hibernate.cfg.NotYetImplementedException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,6 +19,7 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.transaction.annotation.Transactional;
 
+import au.com.systemic.framework.utils.StringUtils;
 import sif3.common.exception.PersistenceException;
 import sif3.common.exception.UnsupportedQueryException;
 import sif3.common.model.PagingInfo;
@@ -30,7 +30,6 @@ import sif3.hits.domain.shared.model.Zone;
 import sif3.hits.rest.dto.KeyValuePair;
 import sif3.hits.rest.dto.RequestDTO;
 import sif3.hits.rest.dto.ResponseDTO;
-import au.com.systemic.framework.utils.StringUtils;
 
 @Transactional(value = "transactionManager", rollbackForClassName = { "PersistenceException",
     "UnsupportedQueryException" })
@@ -125,11 +124,39 @@ public abstract class BaseService<S, SC, H> {
    * @param schoolRefIds
    * @param pageRequest
    * @return
-   * @throws NotYetImplementedException
+   * @throws UnsupportedQueryException
    */
   protected Page<H> findByServicePath(List<KeyValuePair> filters, List<String> schoolRefIds, PageRequest pageRequest)
       throws UnsupportedQueryException {
     throw new UnsupportedQueryException("Service path filter not supported for this service path.");
+  }
+
+  public SC findByExample(S example, PagingInfo pagingInfo, String zoneId) throws UnsupportedQueryException {
+    SC result = getCollection(new ArrayList<S>());
+    if (pagingInfo != null) {
+      PageRequest pageRequest = new PageRequest(pagingInfo.getCurrentPageNo(), pagingInfo.getPageSize());
+      Page<H> results = findByExample(example, getSchoolRefIds(zoneId), pageRequest);
+      if (results != null) {
+        List<S> sifResultObjects = getConverter().toSifModelList(results.getContent());
+        result = getCollection(sifResultObjects);
+      }
+    }
+    return result;
+  }
+
+  /**
+   * Find with example object. Override this in service layer to provide service
+   * query by example.
+   * 
+   * @param example
+   * @param schoolRefIds
+   * @param pageRequest
+   * @return
+   * @throws UnsupportedQueryException
+   */
+  protected Page<H> findByExample(S example, List<String> schoolRefIds, PageRequest pageRequest)
+      throws UnsupportedQueryException {
+    throw new UnsupportedQueryException("Query by example not supported for this object.");
   }
 
   // Update

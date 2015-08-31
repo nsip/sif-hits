@@ -5,18 +5,24 @@ import java.util.List;
 import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Service;
 
 import sif.dd.au30.model.StudentCollectionType;
 import sif.dd.au30.model.StudentPersonalType;
+import sif3.common.exception.UnsupportedQueryException;
 import sif3.hits.domain.converter.HitsConverter;
 import sif3.hits.domain.converter.StudentPersonalConverter;
+import sif3.hits.domain.dao.AddressDAO;
 import sif3.hits.domain.dao.StudentPersonalDAO;
 import sif3.hits.domain.dao.StudentPersonalOtherIdDAO;
 import sif3.hits.domain.dao.ZoneFilterableRepository;
+import sif3.hits.domain.model.Address;
 import sif3.hits.domain.model.StudentPersonal;
 import sif3.hits.domain.model.StudentPersonalOtherId;
+import sif3.hits.rest.dto.KeyValuePair;
 import sif3.hits.rest.dto.RequestDTO;
 
 @Service
@@ -28,6 +34,9 @@ public class StudentPersonalService extends BaseService<StudentPersonalType, Stu
   @Autowired
   private StudentPersonalOtherIdDAO studentPersonalOtherIdDAO;
 
+  @Autowired
+  private AddressDAO addressDAO;
+  
   @Override
   public JpaRepository<StudentPersonal, String> getDAO() {
     return studentPersonalDAO;
@@ -72,6 +81,7 @@ public class StudentPersonalService extends BaseService<StudentPersonalType, Stu
 
   private void deleteOtherIds(StudentPersonal hitsObject) {
     studentPersonalOtherIdDAO.deleteAllWithStudentPersonal(hitsObject);
+    addressDAO.deleteAllWithPersonRefId(hitsObject.getRefId());
   }
 
   @Override
@@ -81,19 +91,55 @@ public class StudentPersonalService extends BaseService<StudentPersonalType, Stu
     if (!create) {
       deleteOtherIds(hitsObject);
     }
-    if (hitsObject.getOtherIds() != null && hitsObject.getOtherIds().size() > 0) {
+    if ((hitsObject.getOtherIds() != null && hitsObject.getOtherIds().size() > 0) || (hitsObject.getAddresses() != null && hitsObject.getAddresses().size() > 0)) {
+      Set<Address> addresses = new HashSet<Address>();
       Set<StudentPersonalOtherId> otherIds = new HashSet<StudentPersonalOtherId>();
-      otherIds.addAll(hitsObject.getOtherIds());
-      hitsObject.getOtherIds().clear();
+      
+      if (hitsObject.getOtherIds() != null) {
+        otherIds.addAll(hitsObject.getOtherIds());
+        hitsObject.getOtherIds().clear();
+      }
+      if (hitsObject.getAddresses() != null) {
+        addresses.addAll(hitsObject.getAddresses());
+        hitsObject.getAddresses().clear();
+      }
       result = super.save(hitsObject, dto, zoneId, create);
       for (StudentPersonalOtherId otherId : otherIds) {
         otherId.setStudentPersonal(hitsObject);
         studentPersonalOtherIdDAO.save(otherId);
       }
+      for (Address address : addresses) {
+        address.setPersonRefId(hitsObject.getRefId());
+        addressDAO.save(address);
+      }
+      result.setAddresses(addresses);
       result.setOtherIds(otherIds);
     } else {
       result = super.save(hitsObject, dto, zoneId, create);
     }
     return result;
+  }
+  
+  @Override
+  protected Page<StudentPersonal> findByServicePath(List<KeyValuePair> filters, List<String> schoolRefIds,
+      PageRequest pageRequest) throws UnsupportedQueryException {
+
+    String teachingGroupRefId = null;
+
+    if (filters != null) {
+      for (KeyValuePair filter : filters) {
+        if (filter != null && "TeachingGroups".equals(filter.getKey()) && teachingGroupRefId == null) {
+          teachingGroupRefId = filter.getValue();
+        } else if (filter != null && ("TeachingGroups".equals(filter.getKey()))) {
+          throw new UnsupportedQueryException("Invalid service path query - each key can appear only once.");
+        }
+      }
+    }
+
+    if (teachingGroupRefId != null) {
+      return studentPersonalDAO.findAllWithTeachingGroupAndFilter(teachingGroupRefId, schoolRefIds, pageRequest);
+    } else {
+      return super.findByServicePath(filters, schoolRefIds, pageRequest);
+    }
   }
 }

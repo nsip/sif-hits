@@ -10,8 +10,8 @@ import org.springframework.data.repository.query.Param;
 
 import sif3.hits.domain.model.StudentPersonal;
 
-public interface StudentPersonalDAO extends JpaRepository<StudentPersonal, String>,
-    ZoneFilterableRepository<StudentPersonal> {
+public interface StudentPersonalDAO
+    extends JpaRepository<StudentPersonal, String>, ZoneFilterableRepository<StudentPersonal> {
 
   @Query("select distinct s from StudentPersonal s, StudentSchoolEnrollment e where e.schoolInfoRefId in :schoolRefIds and s.refId = e.studentPersonalRefId")
   @Override
@@ -21,4 +21,8 @@ public interface StudentPersonalDAO extends JpaRepository<StudentPersonal, Strin
   @Query("select distinct s from StudentPersonal s, StudentSchoolEnrollment e where e.schoolInfoRefId in :schoolRefIds and s.refId = e.studentPersonalRefId and s.refId = :refId")
   public StudentPersonal findOneWithFilter(@Param("refId") String refId,
       @Param("schoolRefIds") List<String> schoolRefIds);
+
+  @Query("select distinct s from TeachingGroup t join t.studentPersonals s where t.refId = :teachingGroupRefId and t.schoolInfo.refId in :schoolRefIds")
+  public Page<StudentPersonal> findAllWithTeachingGroupAndFilter(@Param("teachingGroupRefId") String teachingGroupRefId,
+      @Param("schoolRefIds") List<String> schoolRefIds, Pageable pageable);
 }

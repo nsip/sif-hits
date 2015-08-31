@@ -1,9 +1,12 @@
 package sif3.hits.domain.converter;
 
+import java.util.HashSet;
+
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import sif.dd.au30.model.AddressListType;
 import sif.dd.au30.model.DemographicsType;
 import sif.dd.au30.model.DemographicsType.Religion;
 import sif.dd.au30.model.EmailListType;
@@ -13,6 +16,8 @@ import sif.dd.au30.model.PersonInfoType;
 import sif.dd.au30.model.PhoneNumberListType;
 import sif.dd.au30.model.PhoneNumberListType.PhoneNumber;
 import sif3.hits.domain.converter.factory.ObjectFactory;
+import sif3.hits.domain.model.Address;
+import sif3.hits.domain.model.AddressPerson;
 import sif3.hits.domain.model.Person;
 import sif3.hits.domain.model.StudentPerson;
 
@@ -25,6 +30,9 @@ public class PersonInfoConverter extends HitsConverter<PersonInfoType, Person> {
 
   @Autowired
   private NameOfRecordConverter nameOfRecordConverter;
+  
+  @Autowired
+  private AddressConverter addressConverter;
 
   @Override
   public void toSifModel(Person source, PersonInfoType target) {
@@ -66,6 +74,13 @@ public class PersonInfoConverter extends HitsConverter<PersonInfoType, Person> {
           demographics.setReligion(objectFactory.createDemographicsTypeReligion(religion));
         }
       }
+      if (source instanceof AddressPerson) {
+        AddressPerson addressSource = (AddressPerson) source;
+        AddressListType addressList = objectFactory.createAddressListType();
+        addressList.getAddress().addAll(addressConverter.toSifModelList(addressSource.getAddresses()));
+        target.setAddressList(objectFactory.createPersonInfoTypeAddressList(addressList));
+      }
+      
       target.setDemographics(objectFactory.createDemographics(demographics));
     }
   }
@@ -86,6 +101,14 @@ public class PersonInfoConverter extends HitsConverter<PersonInfoType, Person> {
       if (phoneNumberList != null && phoneNumberList.getPhoneNumber().size() > 0) {
         PhoneNumber phoneNumber = phoneNumberList.getPhoneNumber().get(0);
         target.setPhoneNumber(phoneNumber.getNumber());
+      }
+      
+      if (target instanceof AddressPerson) {
+        AddressListType addressList = getJAXBValue(source.getAddressList());
+        if (addressList != null && addressList.getAddress() != null && !addressList.getAddress().isEmpty()) {
+          AddressPerson addressTarget = (AddressPerson) target;
+          addressTarget.setAddresses(new HashSet<Address>(addressConverter.toHitsModelList(addressList.getAddress())));
+        }
       }
 
       DemographicsType demographics = getJAXBValue(source.getDemographics());

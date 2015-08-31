@@ -13,7 +13,6 @@ import sif.dd.au30.model.TeachingGroupCollectionType;
 import sif.dd.au30.model.TeachingGroupType;
 import sif3.hits.domain.converter.HitsConverter;
 import sif3.hits.domain.converter.TeachingGroupConverter;
-import sif3.hits.domain.dao.RoomInfoDAO;
 import sif3.hits.domain.dao.SchoolInfoDAO;
 import sif3.hits.domain.dao.StaffPersonalDAO;
 import sif3.hits.domain.dao.StudentPersonalDAO;
@@ -49,9 +48,6 @@ public class TeachingGroupService extends BaseService<TeachingGroupType, Teachin
 
   @Autowired
   private TimeTableCellDAO timeTableCellDAO;
-
-  @Autowired
-  private RoomInfoDAO roomInfoDAO;
 
   @Override
   public JpaRepository<TeachingGroup, String> getDAO() {

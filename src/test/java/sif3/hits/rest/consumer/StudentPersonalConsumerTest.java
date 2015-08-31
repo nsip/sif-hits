@@ -1,16 +1,22 @@
 package sif3.hits.rest.consumer;
 
+import java.math.BigDecimal;
 import java.util.Arrays;
 import java.util.List;
 
+import org.apache.commons.lang3.StringUtils;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.springframework.http.HttpStatus;
 
+import sif.dd.au30.model.AddressListType.Address;
+import sif.dd.au30.model.AddressType.Street;
+import sif.dd.au30.model.AddressListType;
 import sif.dd.au30.model.DemographicsType;
 import sif.dd.au30.model.DemographicsType.Religion;
 import sif.dd.au30.model.EmailListType;
+import sif.dd.au30.model.GridLocationType;
 import sif.dd.au30.model.EmailListType.Email;
 import sif.dd.au30.model.NameOfRecordType;
 import sif.dd.au30.model.ObjectFactory;
@@ -50,6 +56,28 @@ public class StudentPersonalConsumerTest extends BaseTest {
       nameOfRecordType.setMiddleName(objectFactory.createBaseNameTypeMiddleName("Middle"));
       nameOfRecordType.setFullName(objectFactory.createBaseNameTypeFullName("Mr Full Name Gavin Tester"));
       return nameOfRecordType;
+    }
+    
+    public static Address getAddress(ObjectFactory objectFactory, String addressLineOne, String addressLineTwo) {
+      Address address = new Address();
+      address.setCity("Perth");
+      address.setStateProvince(objectFactory.createAddressTypeStateProvince("WA"));
+      address.setType("0123");
+      address.setRole("012B");
+      address.setPostalCode("6000");
+      
+      Street street = objectFactory.createAddressTypeStreet();
+      street.setLine1(addressLineOne);
+      if (StringUtils.isNotBlank(addressLineTwo)) {
+        street.setLine2(objectFactory.createAddressTypeStreetLine2(addressLineTwo));
+      }
+      address.setStreet(street);
+      
+      GridLocationType gridLocation = objectFactory.createGridLocationType();
+      gridLocation.setLatitude(new BigDecimal("-31.952693"));
+      gridLocation.setLongitude(new BigDecimal("115.871971"));
+      address.setGridLocation(objectFactory.createAddressTypeGridLocation(gridLocation));
+      return address;
     }
   }
 
@@ -111,9 +139,12 @@ public class StudentPersonalConsumerTest extends BaseTest {
     email.setValue("the.email@not.a.real.domain");
     emailList.getEmail().add(email);
     personInfo.setEmailList(objectFactory.createEmailList(emailList));
-
+    
+    AddressListType addresses = objectFactory.createAddressListType();
+    addresses.getAddress().add(StudentPersonalRefIds.getAddress(objectFactory, "123 Address Line One", "Address Line Two"));
+    addresses.getAddress().add(StudentPersonalRefIds.getAddress(objectFactory, "234 Address Line One", null));
+    personInfo.setAddressList(objectFactory.createPersonInfoTypeAddressList(addresses));
     studentPersonalType.setPersonInfo(personInfo);
-
     studentPersonalType.setStateProvinceId(objectFactory.createStudentPersonalTypeStateProvinceId("WA"));
 
     OtherIdList otherIdList = new OtherIdList();
@@ -142,6 +173,8 @@ public class StudentPersonalConsumerTest extends BaseTest {
 
     StudentPersonalType getResult = studentTester.doGetOne(StudentPersonalRefIds.REF_ID_1);
     String xmlExpectedFrom = studentTester.getXML(getResult);
+    Assert.assertNotNull("XML Expected From isNull", xmlExpectedFrom);
+    Assert.assertNotNull("XML Expected To isNull", xmlExpectedTo);
     boolean semiEquals = semiEquals(xmlExpectedFrom, xmlExpectedTo);
     if (!semiEquals) {
       Assert.assertEquals("XML Differs", xmlExpectedFrom, xmlExpectedTo);
