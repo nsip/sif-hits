@@ -9,8 +9,6 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.Transient;
 
-import org.apache.commons.lang3.StringUtils;
-
 @Entity
 public class StudentContactPersonal extends HitsEntity implements Person, AddressPerson {
   private static final long serialVersionUID = -535293295147810685L;

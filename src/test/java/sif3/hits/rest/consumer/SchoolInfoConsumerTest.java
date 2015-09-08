@@ -30,7 +30,7 @@ import sif3.infra.rest.consumer.ConsumerLoader;
 public class SchoolInfoConsumerTest extends BaseTest {
   private ConsumerTest<SchoolInfoType, SchoolCollectionType> schoolInfoTester = null;
   
-  public final static String REF_ID = "6DAFB630-C439-11E3-9AA0-81F4DBD909AB";
+  public final static String REF_ID = "6dafb630-c439-41e3-9aa0-81f4dbd909ab";
   public static final String LOCAL_ID = "4001";
   public static final String SCHOOL_NAME = "Bens Test State High School";
   

@@ -1,13 +1,13 @@
 <CalendarSummarys xmlns="http://www.sifassociation.org/au/datamodel/1.4">
-	<CalendarSummary RefId="F9B62C7FFEFD44BEBC0F42389AB226D4">
-		<SchoolInfoRefId>6DAFB630-C439-11E3-9AA0-81F4DBD909AB
+	<CalendarSummary RefId="f9b62c7f-fefd-44be-bc0f-42389ab226d4">
+		<SchoolInfoRefId>6dafb630-c439-41e3-9aa0-81f4dbd909ab
 		</SchoolInfoRefId>
 		<SchoolYear>2014</SchoolYear>
 		<LocalId>20146DAF</LocalId>
 		<DaysInSession>5</DaysInSession>
 	</CalendarSummary>
-	<CalendarSummary RefId="F0A8EEA4D0024EF69164EF430E3E77F0">
-		<SchoolInfoRefId>6DAFB630-C439-11E3-9AA0-81F4DBD909AB
+	<CalendarSummary RefId="f0a8eea4-d002-4ef6-9164-ef430e3e77f0">
+		<SchoolInfoRefId>6dafb630-c439-41e3-9aa0-81f4dbd909ab
 		</SchoolInfoRefId>
 		<SchoolYear>2014</SchoolYear>
 		<LocalId>20146DAF</LocalId>

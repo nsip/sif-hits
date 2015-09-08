@@ -27,7 +27,16 @@ import org.junit.runners.Suite.SuiteClasses;
   StudentContactPersonalConsumerTest.class,
   StudentContactRelationshipConsumerTest.class,
   GradingAssignmentConsumerTest.class,
-  GradingAssignmentScoreConsumerTest.class
+  GradingAssignmentScoreConsumerTest.class,
+  LocationInfoConsumerTest.class,
+  FinancialClassificationConsumerTest.class,
+  FinancialAccountConsumerTest.class,
+  VendorInfoConsumerTest.class,
+  DebtorConsumerTest.class,
+  JournalConsumerTest.class,
+  PurchaseOrderConsumerTest.class,
+  InvoiceConsumerTest.class,
+  PaymentReceiptConsumerTest.class
 })
 public class ConsumerTests {
 /*

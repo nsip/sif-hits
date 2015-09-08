@@ -23,7 +23,7 @@ import sif3.infra.rest.consumer.ConsumerLoader;
 public class StaffAssignmentConsumerTest extends BaseTest {
   private ConsumerTest<StaffAssignmentType, StaffAssignmentCollectionType> staffAssignmentTester = null;
 
-  private final String REF_ID = "7BD6EC92AF9B4F9FBCFE78424ADB570E";
+  private final String REF_ID = "7bd6ec92-af9b-4f9f-bcfe-78424adb570e";
   private final String REF_ID_1 = "1eeb7b74-c8ef-4812-aff1-cb4dc8071d7a";
   private final String REF_ID_2 = "1df85509-a5b4-4d2f-9013-8dbc9e14defc";
   private final String[] REF_IDS = { REF_ID_1, REF_ID_2 };
@@ -51,19 +51,19 @@ public class StaffAssignmentConsumerTest extends BaseTest {
     String xmlExpectedTo = staffAssignmentTester.getXML(staffAssignment);
     
 
-    staffAssignment.setRefId("C60FE125AD634B28B227EFC08D936891");
+    staffAssignment.setRefId("c60fe125-ad63-4b28-b227-efc08d936891");
     staffAssignment.setStaffPersonalRefId(StaffPersonalRefIds.REF_ID_2);
     staffAssignmentTester.doCreateOne(staffAssignment);
     
-    staffAssignment.setRefId("9EE3F538C0E34BC5A7EEC64A957221DB");
+    staffAssignment.setRefId("9ee3f538-c0e3-4bc5-a7ee-c64a957221db");
     staffAssignment.setStaffPersonalRefId(StaffPersonalRefIds.REF_ID_3);
     staffAssignmentTester.doCreateOne(staffAssignment);
     
-    staffAssignment.setRefId("909F0EA1E4CB48FBB3B8A5DAE0260CD2");
+    staffAssignment.setRefId("909f0ea1-e4cb-48fb-b3b8-a5dae0260cd2");
     staffAssignment.setStaffPersonalRefId(StaffPersonalRefIds.REF_ID_4);
     staffAssignmentTester.doCreateOne(staffAssignment);
     
-    staffAssignment.setRefId("903CA5E7EEFE45E092AC7EB0EE2E14A3");
+    staffAssignment.setRefId("903ca5e7-eefe-45e0-92ac-7eb0ee2e14a3");
     staffAssignment.setStaffPersonalRefId(StaffPersonalRefIds.REF_ID_5);
     staffAssignmentTester.doCreateOne(staffAssignment);
 

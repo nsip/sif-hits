@@ -1,6 +1,6 @@
 <TimeTables xmlns="http://www.sifassociation.org/au/datamodel/1.4">
-	<TimeTable RefId="68681573638E4AA7ABDC4FE19788F772">
-	    <SchoolInfoRefId>6DAFB630-C439-11E3-9AA0-81F4DBD909AB</SchoolInfoRefId>
+	<TimeTable RefId="68681573-638e-4aa7-abdc-4fe19788f772">
+	    <SchoolInfoRefId>6dafb630-c439-41e3-9aa0-81f4dbd909ab</SchoolInfoRefId>
 	    <SchoolYear>0004</SchoolYear>
 	    <LocalId>63 Carmen Court, MITCHELL, QLD, 4465</LocalId>
 	    <Title>Timetable798f3c9a-508d-4651-93b6-8f9069c8d326</Title>
@@ -24,8 +24,8 @@
 	        </TimeTableDay>
 	    </TimeTableDayList>
 	</TimeTable>
-  <TimeTable RefId="369D4B5D95E54751BE8884DD439C4C21">
-      <SchoolInfoRefId>6DAFB630-C439-11E3-9AA0-81F4DBD909AB</SchoolInfoRefId>
+  <TimeTable RefId="369d4b5d-95e5-4751-be88-84dd439c4c21">
+      <SchoolInfoRefId>6dafb630-c439-41e3-9aa0-81f4dbd909ab</SchoolInfoRefId>
       <SchoolYear>0004</SchoolYear>
       <LocalId>63 Carmen Court, MITCHELL, QLD, 4465</LocalId>
       <Title>Timetable798f3c9a-508d-4651-93b6-8f9069c8d326</Title>

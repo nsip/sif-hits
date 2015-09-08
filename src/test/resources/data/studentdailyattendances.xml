@@ -1,7 +1,7 @@
 <StudentDailyAttendances xmlns="http://www.sifassociation.org/au/datamodel/1.4">
-	<StudentDailyAttendance RefId="96C40BB240B549FA8549E744698828C4">
-   <StudentPersonalRefId>17998AA63A074763A2C51FABBD966039</StudentPersonalRefId>
-   <SchoolInfoRefId>6DAFB630-C439-11E3-9AA0-81F4DBD909AB</SchoolInfoRefId>
+	<StudentDailyAttendance RefId="96c40bb2-40b5-49fa-8549-e744698828c4">
+   <StudentPersonalRefId>17998aa6-3a07-4763-a2c5-1fabbd966039</StudentPersonalRefId>
+   <SchoolInfoRefId>6dafb630-c439-41e3-9aa0-81f4dbd909ab</SchoolInfoRefId>
    <Date>2014-11-24</Date>
    <SchoolYear>2014</SchoolYear>
    <DayValue>Full</DayValue>
@@ -17,9 +17,9 @@
    <AbsenceValue>0.0</AbsenceValue>
    <AttendanceNote>Was at School</AttendanceNote>
 	</StudentDailyAttendance>
-	<StudentDailyAttendance RefId="3F8280E485264CD88708BF4032BD740A">
-   <StudentPersonalRefId>B3270C8A7A1E436093368733728BAB44</StudentPersonalRefId>
-   <SchoolInfoRefId>6DAFB630-C439-11E3-9AA0-81F4DBD909AB</SchoolInfoRefId>
+	<StudentDailyAttendance RefId="3f8280e4-8526-4cd8-8708-bf4032bd740a">
+   <StudentPersonalRefId>b3270c8a-7a1e-4360-9336-8733728bab44</StudentPersonalRefId>
+   <SchoolInfoRefId>6dafb630-c439-41e3-9aa0-81f4dbd909ab</SchoolInfoRefId>
    <Date>2014-11-24</Date>
    <SchoolYear>2014</SchoolYear>
    <DayValue>Full</DayValue>

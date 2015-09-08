@@ -28,9 +28,9 @@ import sif3.infra.rest.consumer.ConsumerLoader;
 public class StudentAttendanceTimeListConsumerTest extends BaseTest {
   private ConsumerTest<StudentAttendanceTimeListType, StudentAttendanceTimeListCollectionType> studentAttendanceTimeListTester = null;
 
-  public static final String REF_ID = "A761755C380747D3B7B4BFDD147685F4";
-  private final String REF_ID_1 = "2205C3E4089C4CFB98A5FB0121FA12E1";
-  private final String REF_ID_2 = "3EC79D15B5E840A8BE56587AE099015B";
+  public static final String REF_ID = "a761755c-3807-47d3-b7b4-bfdd147685f4";
+  private final String REF_ID_1 = "2205c3e4-089c-4cfb-98a5-fb0121fa12e1";
+  private final String REF_ID_2 = "3ec79d15-b5e8-40a8-be56-587ae099015b";
   private final String[] REF_IDS = { REF_ID_1, REF_ID_2 };
 
   private AttendanceTime getAttendanceTime(String startTime, String endTime, String status, String absence,
@@ -86,19 +86,19 @@ public class StudentAttendanceTimeListConsumerTest extends BaseTest {
     studentAttendanceTimeListTester.doCreateOne(studentAttendanceTimeList);
     String xmlExpectedTo = studentAttendanceTimeListTester.getXML(studentAttendanceTimeList);
 
-    studentAttendanceTimeList.setRefId("DA9C1EE245244C378BF1ED638FEDDDC2");
+    studentAttendanceTimeList.setRefId("da9c1ee2-4524-4c37-8bf1-ed638fedddc2");
     studentAttendanceTimeList.setStudentPersonalRefId(StudentPersonalRefIds.REF_ID_2);
     studentAttendanceTimeListTester.doCreateOne(studentAttendanceTimeList);
 
-    studentAttendanceTimeList.setRefId("E74E140DDA2A461DBB35ABA58DE630DA");
+    studentAttendanceTimeList.setRefId("e74e140d-da2a-461d-bb35-aba58de630da");
     studentAttendanceTimeList.setStudentPersonalRefId(StudentPersonalRefIds.REF_ID_3);
     studentAttendanceTimeListTester.doCreateOne(studentAttendanceTimeList);
 
-    studentAttendanceTimeList.setRefId("38B861A598A1484387F4806147E6A26B");
+    studentAttendanceTimeList.setRefId("38b861a5-98a1-4843-87f4-806147e6a26b");
     studentAttendanceTimeList.setStudentPersonalRefId(StudentPersonalRefIds.REF_ID_4);
     studentAttendanceTimeListTester.doCreateOne(studentAttendanceTimeList);
 
-    studentAttendanceTimeList.setRefId("6F3E12C90D604A2C8FED4F1ACE185F4F");
+    studentAttendanceTimeList.setRefId("6f3e12c9-0d60-4a2c-8fed-4f1ace185f4f");
     studentAttendanceTimeList.setStudentPersonalRefId(StudentPersonalRefIds.REF_ID_5);
     studentAttendanceTimeListTester.doCreateOne(studentAttendanceTimeList);
 

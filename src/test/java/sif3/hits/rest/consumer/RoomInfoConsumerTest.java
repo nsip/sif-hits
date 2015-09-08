@@ -21,10 +21,10 @@ import sif3.infra.rest.consumer.ConsumerLoader;
 public class RoomInfoConsumerTest extends BaseTest {
   private ConsumerTest<RoomInfoType, RoomInfoCollectionType> roomInfoTester = null;
   
-  public static final String REF_ID = "C5CBD0BC100548A3868699D6E7A68095";
+  public static final String REF_ID = "c5cbd0bc-1005-48a3-8686-99d6e7a68095";
   public static final String ROOM_NUMBER = "Room 6";
-  private final String REF_ID_1 = "DCAFC510C27F45F7B8F518BA612571A8";
-  private final String REF_ID_2 = "68B15630CF6E4D0FBCC7FF1E3E3AC87F";
+  private final String REF_ID_1 = "dcafc510-c27f-45f7-b8f5-18ba612571a8";
+  private final String REF_ID_2 = "68b15630-cf6e-4d0f-bcc7-ff1e3e3ac87f";
   private final String[] REF_IDS = { REF_ID_1, REF_ID_2 };
 
   @Test
@@ -43,16 +43,16 @@ public class RoomInfoConsumerTest extends BaseTest {
     roomInfoTester.doCreateOne(roomInfo);
     String xmlExpectedTo = roomInfoTester.getXML(roomInfo);
 
-    roomInfo.setRefId("3CDB9D5C0EB1459999D45DBB507B6AE1");
+    roomInfo.setRefId("3cdb9d5c-0eb1-4599-99d4-5dbb507b6ae1");
     roomInfoTester.doCreateOne(roomInfo);
 
-    roomInfo.setRefId("75DE482EE8BF4E4AB25F24D04BD486D4");
+    roomInfo.setRefId("75de482e-e8bf-4e4a-b25f-24d04bd486d4");
     roomInfoTester.doCreateOne(roomInfo);
 
-    roomInfo.setRefId("1455A267B6204501A123697C0D5718EE");
+    roomInfo.setRefId("1455a267-b620-4501-a123-697c0d5718ee");
     roomInfoTester.doCreateOne(roomInfo);
 
-    roomInfo.setRefId("12C679AFADCA451CB2C32EA4B0E10E99");
+    roomInfo.setRefId("12c679af-adca-451c-b2c3-2ea4b0e10e99");
     roomInfoTester.doCreateOne(roomInfo);
 
     RoomInfoType getResult = roomInfoTester.doGetOne(REF_ID);

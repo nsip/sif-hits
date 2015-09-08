@@ -26,15 +26,15 @@ public class StudentContactRelationshipConsumerTest extends BaseTest {
   private ConsumerTest<StudentContactRelationshipType, StudentContactRelationshipCollectionType> studentTester = null;
 
   public static class StudentContactRelationshipRefIds {
-    public static String REF_ID_1 = "94AA4E71B1434DFBB8FFA605538DA4A4";
-    public static String REF_ID_2 = "5E7B95C3EA9546B0B2E5E70096CF02BA";
-    public static String REF_ID_3 = "70E7FD0BF3D24A0EB2A9CEAA59526CBA";
-    public static String REF_ID_4 = "292C3F3A2A0A4607B02E02EAD900E7A1";
-    public static String REF_ID_5 = "AFC1F6E77EDF4F988CB4BADD646CF92D";
+    public static String REF_ID_1 = "94aa4e71-b143-4dfb-b8ff-a605538da4a4";
+    public static String REF_ID_2 = "5e7b95c3-ea95-46b0-b2e5-e70096cf02ba";
+    public static String REF_ID_3 = "70e7fd0b-f3d2-4a0e-b2a9-ceaa59526cba";
+    public static String REF_ID_4 = "292c3f3a-2a0a-4607-b02e-02ead900e7a1";
+    public static String REF_ID_5 = "afc1f6e7-7edf-4f98-8cb4-badd646cf92d";
   }
   
-  private final String REF_ID_1 = "5EEDE4C3F4684EE3B64B8FE37E2B82B7";
-  private final String REF_ID_2 = "559EA81B62C74E51ADE274D42E1084B1";
+  private final String REF_ID_1 = "5eede4c3-f468-4ee3-b64b-8fe37e2b82b7";
+  private final String REF_ID_2 = "559ea81b-62c7-4e51-ade2-74d42e1084b1";
   private final String[] REF_IDS = { REF_ID_1, REF_ID_2 };
 
   @Test

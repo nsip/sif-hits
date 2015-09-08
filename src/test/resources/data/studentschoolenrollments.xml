@@ -1,7 +1,7 @@
 <StudentSchoolEnrollments  xmlns="http://www.sifassociation.org/au/datamodel/1.4">
-	<StudentSchoolEnrollment RefId="ECCDBCBF96814791A8253CDBF8CD138F">
-	    <StudentPersonalRefId>F7DD788E3CEF40EB9CB4AF90A2FA3147</StudentPersonalRefId>
-	    <SchoolInfoRefId>6DAFB630-C439-11E3-9AA0-81F4DBD909AB</SchoolInfoRefId>
+	<StudentSchoolEnrollment RefId="eccdbcbf-9681-4791-a825-3cdbf8cd138f">
+	    <StudentPersonalRefId>f7dd788e-3cef-40eb-9cb4-af90a2fa3147</StudentPersonalRefId>
+	    <SchoolInfoRefId>6dafb630-c439-41e3-9aa0-81f4dbd909ab</SchoolInfoRefId>
 	    <MembershipType>01</MembershipType>
 	    <TimeFrame>C</TimeFrame>
 	    <SchoolYear>2014</SchoolYear>
@@ -11,9 +11,9 @@
 	    </YearLevel>
 	    <FTE>1.0</FTE>
 	</StudentSchoolEnrollment>
-	<StudentSchoolEnrollment RefId="DCCEC3172371465E854AE1AF585DA93A">
-	    <StudentPersonalRefId>F7DD788E3CEF40EB9CB4AF90A2FA3147</StudentPersonalRefId>
-	    <SchoolInfoRefId>6DAFB630-C439-11E3-9AA0-81F4DBD909AB</SchoolInfoRefId>
+	<StudentSchoolEnrollment RefId="dccec317-2371-465e-854a-e1af585da93a">
+	    <StudentPersonalRefId>f7dd788e-3cef-40eb-9cb4-af90a2fa3147</StudentPersonalRefId>
+	    <SchoolInfoRefId>6dafb630-c439-41e3-9aa0-81f4dbd909ab</SchoolInfoRefId>
 	    <MembershipType>01</MembershipType>
 	    <TimeFrame>C</TimeFrame>
 	    <SchoolYear>2014</SchoolYear>

@@ -10,14 +10,15 @@ import org.junit.Before;
 import org.junit.Test;
 import org.springframework.http.HttpStatus;
 
-import sif.dd.au30.model.AddressListType.Address;
-import sif.dd.au30.model.AddressType.Street;
 import sif.dd.au30.model.AddressListType;
+import sif.dd.au30.model.AddressListType.Address;
+import sif.dd.au30.model.AddressType;
+import sif.dd.au30.model.AddressType.Street;
 import sif.dd.au30.model.DemographicsType;
 import sif.dd.au30.model.DemographicsType.Religion;
 import sif.dd.au30.model.EmailListType;
-import sif.dd.au30.model.GridLocationType;
 import sif.dd.au30.model.EmailListType.Email;
+import sif.dd.au30.model.GridLocationType;
 import sif.dd.au30.model.NameOfRecordType;
 import sif.dd.au30.model.ObjectFactory;
 import sif.dd.au30.model.PersonInfoType;
@@ -39,16 +40,17 @@ public class StudentPersonalConsumerTest extends BaseTest {
   private ConsumerTest<StudentPersonalType, StudentCollectionType> studentTester = null;
 
   public static class StudentPersonalRefIds {
-    public static String REF_ID_1 = "F7DD788E3CEF40EB9CB4AF90A2FA3147";
-    public static String REF_ID_2 = "125DB96144754820B9A38CE90E37C006";
-    public static String REF_ID_3 = "B3270C8A7A1E436093368733728BAB44";
-    public static String REF_ID_4 = "17998AA63A074763A2C51FABBD966039";
-    public static String REF_ID_5 = "1F631F1D88324775B1995EB9650E8EBB";
+    public static String REF_ID_1 = "f7dd788e-3cef-40eb-9cb4-af90a2fa3147";
+    public static String REF_ID_2 = "125db961-4475-4820-b9a3-8ce90e37c006";
+    public static String REF_ID_3 = "b3270c8a-7a1e-4360-9336-8733728bab44";
+    public static String REF_ID_4 = "17998aa6-3a07-4763-a2c5-1fabbd966039";
+    public static String REF_ID_5 = "1f631f1d-8832-4775-b199-5eb9650e8ebb";
     
     public static String LOCAL_ID = "s0004432";
     
     public static NameOfRecordType getNameOfRecord(ObjectFactory objectFactory) {
       NameOfRecordType nameOfRecordType = new NameOfRecordType();
+      nameOfRecordType.setType("LGL");
       nameOfRecordType.setFamilyName(objectFactory.createBaseNameTypeFamilyName("Tester"));
       nameOfRecordType.setPreferredFamilyName(objectFactory.createBaseNameTypePreferredFamilyName("PTester"));
       nameOfRecordType.setGivenName(objectFactory.createBaseNameTypeGivenName("Gavin"));
@@ -60,6 +62,17 @@ public class StudentPersonalConsumerTest extends BaseTest {
     
     public static Address getAddress(ObjectFactory objectFactory, String addressLineOne, String addressLineTwo) {
       Address address = new Address();
+      getAddress(objectFactory, address, addressLineOne, addressLineTwo);
+      return address;
+    }
+    
+    public static AddressType getAddressType(ObjectFactory objectFactory, String addressLineOne, String addressLineTwo) {
+      AddressType address = new AddressType();
+      getAddress(objectFactory, address, addressLineOne, addressLineTwo);
+      return address;
+    }
+    
+    public static void getAddress(ObjectFactory objectFactory, AddressType address, String addressLineOne, String addressLineTwo) {
       address.setCity("Perth");
       address.setStateProvince(objectFactory.createAddressTypeStateProvince("WA"));
       address.setType("0123");
@@ -77,12 +90,11 @@ public class StudentPersonalConsumerTest extends BaseTest {
       gridLocation.setLatitude(new BigDecimal("-31.952693"));
       gridLocation.setLongitude(new BigDecimal("115.871971"));
       address.setGridLocation(objectFactory.createAddressTypeGridLocation(gridLocation));
-      return address;
     }
   }
 
-  private final String REF_ID_1 = "6BB0C404C02949BD9956D6BE93B7B128";
-  private final String REF_ID_2 = "6BB0C404C02949BD9956D6BE93B7B124";
+  private final String REF_ID_1 = "6bb0c404-c029-49bd-9956-d6be93b7b128";
+  private final String REF_ID_2 = "6bb0c404-c029-49bd-9956-d6be93b7b124";
   private final String[] REF_IDS = { REF_ID_1, REF_ID_2 };
 
   @Test
@@ -129,6 +141,7 @@ public class StudentPersonalConsumerTest extends BaseTest {
 
     PhoneNumberListType phoneNumberList = new PhoneNumberListType();
     PhoneNumber phoneNumber = new PhoneNumber();
+    phoneNumber.setType("0096");
     phoneNumber.setNumber("+61400000000");
     phoneNumberList.getPhoneNumber().add(phoneNumber);
     personInfo.setPhoneNumberList(objectFactory.createPhoneNumberList(phoneNumberList));

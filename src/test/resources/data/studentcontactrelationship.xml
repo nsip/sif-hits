@@ -1,5 +1,5 @@
-<StudentContactRelationship StudentPersonalRefId="F7DD788E3CEF40EB9CB4AF90A2FA3147" StudentContactPersonalRefId="281BC15585984873933E7A9EF336B98D" xmlns="http://www.sifassociation.org/au/datamodel/1.4">
-    <StudentContactRelationshipRefId>5EEDE4C3F4684EE3B64B8FE37E2B82B7</StudentContactRelationshipRefId>
+<StudentContactRelationship StudentPersonalRefId="f7dd788e-3cef-40eb-9cb4-af90a2fa3147" StudentContactPersonalRefId="281bc155-8598-4873-933e-7a9ef336b98d" xmlns="http://www.sifassociation.org/au/datamodel/1.4">
+    <StudentContactRelationshipRefId>5eede4c3-f468-4ee3-b64b-8fe37e2b82b7</StudentContactRelationshipRefId>
     <Relationship>
         <Code>01</Code>
     </Relationship>

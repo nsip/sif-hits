@@ -25,10 +25,16 @@ public abstract class BaseTest {
     for (int i = 0; same && i < fromElements.size(); i++) {
       String element = fromElements.get(i);
       same = Collections.frequency(fromElements, element) == Collections.frequency(toElements, element);
+      if (!same) {
+        System.out.println("Error:" + element);
+      }
     }
     for (int i = 0; same && i < toElements.size(); i++) {
       String element = toElements.get(i);
       same = Collections.frequency(fromElements, element) == Collections.frequency(toElements, element);
+      if (!same) {
+        System.out.println("Error:" + element);
+      }
     }
     return same;
   }

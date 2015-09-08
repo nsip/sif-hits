@@ -1,0 +1,90 @@
+<PurchaseOrders xmlns="http://www.sifassociation.org/au/datamodel/1.4">
+<PurchaseOrder RefId="812217e0-9ad7-4517-b3c0-612a5d97cb39">
+    <FormNumber>3</FormNumber>
+    <VendorInfoRefId>df9543ee-a145-4e19-b87b-816852aa24bf</VendorInfoRefId>
+    <ChargedLocationInfoRefId>5a34535f-9521-43ca-8038-de8250acb3ab</ChargedLocationInfoRefId>
+    <EmployeePersonalRefId>7d83555d-24e9-4d4f-bb3e-21d7ad86b8d3</EmployeePersonalRefId>
+    <PurchasingItems>
+        <PurchasingItem>
+            <ItemNumber>123156</ItemNumber>
+            <ItemDescription>Description</ItemDescription>
+            <Quantity>3</Quantity>
+            <UnitCost Currency="AUD">20.00</UnitCost>
+            <QuantityDelivered>3</QuantityDelivered>
+            <ExpenseAccounts>
+                <ExpenseAccount>
+                    <AccountCode>Code</AccountCode>
+                    <Amount Currency="AUD">60.00</Amount>
+                    <FinancialAccountRefId>d7230685-a578-4eb5-a5e4-c19b096a3d0c</FinancialAccountRefId>
+                    <AccountingPeriod>201504</AccountingPeriod>
+                </ExpenseAccount>
+            </ExpenseAccounts>
+        </PurchasingItem>
+        <PurchasingItem>
+            <ItemNumber>123456</ItemNumber>
+            <ItemDescription>Description</ItemDescription>
+            <Quantity>2</Quantity>
+            <UnitCost Currency="AUD">10.00</UnitCost>
+            <QuantityDelivered>2</QuantityDelivered>
+            <ExpenseAccounts>
+                <ExpenseAccount>
+                    <AccountCode>Code</AccountCode>
+                    <Amount Currency="AUD">20.00</Amount>
+                    <FinancialAccountRefId>d7230685-a578-4eb5-a5e4-c19b096a3d0c</FinancialAccountRefId>
+                    <AccountingPeriod>201504</AccountingPeriod>
+                </ExpenseAccount>
+            </ExpenseAccounts>
+        </PurchasingItem>
+    </PurchasingItems>
+    <CreationDate>2015-02-23</CreationDate>
+    <TaxRate>0.1</TaxRate>
+    <TaxAmount Currency="AUD">8.00</TaxAmount>
+    <AmountDelivered>2</AmountDelivered>
+    <UpdateDate>2015-09-01</UpdateDate>
+    <FullyDelivered>Y</FullyDelivered>
+</PurchaseOrder>
+<PurchaseOrder RefId="72abf49f-05de-43e8-ac47-ed78245235eb">
+    <FormNumber>3</FormNumber>
+    <VendorInfoRefId>df9543ee-a145-4e19-b87b-816852aa24bf</VendorInfoRefId>
+    <ChargedLocationInfoRefId>5a34535f-9521-43ca-8038-de8250acb3ab</ChargedLocationInfoRefId>
+    <EmployeePersonalRefId>7d83555d-24e9-4d4f-bb3e-21d7ad86b8d3</EmployeePersonalRefId>
+    <PurchasingItems>
+        <PurchasingItem>
+            <ItemNumber>123156</ItemNumber>
+            <ItemDescription>Description</ItemDescription>
+            <Quantity>3</Quantity>
+            <UnitCost Currency="AUD">20.00</UnitCost>
+            <QuantityDelivered>3</QuantityDelivered>
+            <ExpenseAccounts>
+                <ExpenseAccount>
+                    <AccountCode>Code</AccountCode>
+                    <Amount Currency="AUD">60.00</Amount>
+                    <FinancialAccountRefId>d7230685-a578-4eb5-a5e4-c19b096a3d0c</FinancialAccountRefId>
+                    <AccountingPeriod>201504</AccountingPeriod>
+                </ExpenseAccount>
+            </ExpenseAccounts>
+        </PurchasingItem>
+        <PurchasingItem>
+            <ItemNumber>123456</ItemNumber>
+            <ItemDescription>Description</ItemDescription>
+            <Quantity>2</Quantity>
+            <UnitCost Currency="AUD">10.00</UnitCost>
+            <QuantityDelivered>2</QuantityDelivered>
+            <ExpenseAccounts>
+                <ExpenseAccount>
+                    <AccountCode>Code</AccountCode>
+                    <Amount Currency="AUD">20.00</Amount>
+                    <FinancialAccountRefId>d7230685-a578-4eb5-a5e4-c19b096a3d0c</FinancialAccountRefId>
+                    <AccountingPeriod>201504</AccountingPeriod>
+                </ExpenseAccount>
+            </ExpenseAccounts>
+        </PurchasingItem>
+    </PurchasingItems>
+    <CreationDate>2015-02-23</CreationDate>
+    <TaxRate>0.1</TaxRate>
+    <TaxAmount Currency="AUD">8.00</TaxAmount>
+    <AmountDelivered>2</AmountDelivered>
+    <UpdateDate>2015-09-01</UpdateDate>
+    <FullyDelivered>Y</FullyDelivered>
+</PurchaseOrder>
+</PurchaseOrders>

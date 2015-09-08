@@ -24,9 +24,9 @@ import sif3.infra.rest.consumer.ConsumerLoader;
 public class StudentDailyAttendanceConsumerTest extends BaseTest {
   private ConsumerTest<StudentDailyAttendanceType, StudentDailyAttendanceCollectionType> studentDailyAttendanceTester = null;
 
-  public static final String REF_ID = "EA816A8591D3412CA85E7E4A20C97189";
-  private final String REF_ID_1 = "96C40BB240B549FA8549E744698828C4";
-  private final String REF_ID_2 = "3F8280E485264CD88708BF4032BD740A";
+  public static final String REF_ID = "ea816a85-91d3-412c-a85e-7e4a20c97189";
+  private final String REF_ID_1 = "96c40bb2-40b5-49fa-8549-e744698828c4";
+  private final String REF_ID_2 = "3f8280e4-8526-4cd8-8708-bf4032bd740a";
   private final String[] REF_IDS = { REF_ID_1, REF_ID_2 };
 
   @Test
@@ -51,19 +51,19 @@ public class StudentDailyAttendanceConsumerTest extends BaseTest {
     studentDailyAttendanceTester.doCreateOne(studentDailyAttendance);
     String xmlExpectedTo= studentDailyAttendanceTester.getXML(studentDailyAttendance);
     
-    studentDailyAttendance.setRefId("2B3728FA0C624B04A936C9194791F79A");
+    studentDailyAttendance.setRefId("2b3728fa-0c62-4b04-a936-c9194791f79a");
     studentDailyAttendance.setStudentPersonalRefId(StudentPersonalRefIds.REF_ID_2);
     studentDailyAttendanceTester.doCreateOne(studentDailyAttendance);
 
-    studentDailyAttendance.setRefId("F807F15E956848CEAAAF4B08CBAE3FF4");
+    studentDailyAttendance.setRefId("f807f15e-9568-48ce-aaaf-4b08cbae3ff4");
     studentDailyAttendance.setStudentPersonalRefId(StudentPersonalRefIds.REF_ID_3);
     studentDailyAttendanceTester.doCreateOne(studentDailyAttendance);
 
-    studentDailyAttendance.setRefId("9C33763109F34BF6A564CE0068138DB2");
+    studentDailyAttendance.setRefId("9c337631-09f3-4bf6-a564-ce0068138db2");
     studentDailyAttendance.setStudentPersonalRefId(StudentPersonalRefIds.REF_ID_4);
     studentDailyAttendanceTester.doCreateOne(studentDailyAttendance);
 
-    studentDailyAttendance.setRefId("6C6109D83B7F4FC8AA8F0C69359C3C8D");
+    studentDailyAttendance.setRefId("6c6109d8-3b7f-4fc8-aa8f-0c69359c3c8d");
     studentDailyAttendance.setStudentPersonalRefId(StudentPersonalRefIds.REF_ID_5);
     studentDailyAttendanceTester.doCreateOne(studentDailyAttendance);
     

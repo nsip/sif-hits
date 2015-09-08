@@ -28,10 +28,10 @@ import sif3.infra.rest.consumer.ConsumerLoader;
 public class TeachingGroupConsumerTest extends BaseTest {
   private ConsumerTest<TeachingGroupType, TeachingGroupCollectionType> teachingGroupTester = null;
 
-  public static final String REF_ID = "597AD3FE47E74B2CB919A93C564D19D0";
+  public static final String REF_ID = "597ad3fe-47e7-4b2c-b919-a93c564d19d0";
   public static final String LOCAL_ID = "Local Id";
-  private final String REF_ID_1 = "1BE77E87467F4F9D8800BE64CB678E0E";
-  private final String REF_ID_2 = "04446653933E44B58FA7963BD8D64587";
+  private final String REF_ID_1 = "1be77e87-467f-4f9d-8800-be64cb678e0e";
+  private final String REF_ID_2 = "04446653-933e-44b5-8fa7-963bd8d64587";
   private final String[] REF_IDS = { REF_ID_1, REF_ID_2 };
 
   @Test
@@ -112,25 +112,25 @@ public class TeachingGroupConsumerTest extends BaseTest {
     teachingGroupTester.doCreateOne(teachingGroup);
     String xmlExpectedTo = teachingGroupTester.getXML(teachingGroup);
 
-    teachingGroup.setRefId("6CD60385006E426892EFF69FFC8C5C9F");
+    teachingGroup.setRefId("6cd60385-006e-4268-92ef-f69ffc8c5c9f");
     teacher
         .setStaffPersonalRefId(objectFactory
             .createTeachingGroupTypeTeacherListTeachingGroupTeacherStaffPersonalRefId(StaffPersonalConsumerTest.StaffPersonalRefIds.REF_ID_2));
     teachingGroupTester.doCreateOne(teachingGroup);
 
-    teachingGroup.setRefId("EF3A3FABBA194974B1D0EC2CEB9D9FF6");
+    teachingGroup.setRefId("ef3a3fab-ba19-4974-b1d0-ec2ceb9d9ff6");
     teacher
         .setStaffPersonalRefId(objectFactory
             .createTeachingGroupTypeTeacherListTeachingGroupTeacherStaffPersonalRefId(StaffPersonalConsumerTest.StaffPersonalRefIds.REF_ID_3));
     teachingGroupTester.doCreateOne(teachingGroup);
 
-    teachingGroup.setRefId("AF76418FFCAF45D3B0CF416ABAC3A810");
+    teachingGroup.setRefId("af76418f-fcaf-45d3-b0cf-416abac3a810");
     teacher
         .setStaffPersonalRefId(objectFactory
             .createTeachingGroupTypeTeacherListTeachingGroupTeacherStaffPersonalRefId(StaffPersonalConsumerTest.StaffPersonalRefIds.REF_ID_4));
     teachingGroupTester.doCreateOne(teachingGroup);
 
-    teachingGroup.setRefId("E22FAF89F4A64BA6BA3B95474F259232");
+    teachingGroup.setRefId("e22faf89-f4a6-4ba6-ba3b-95474f259232");
     teacher
         .setStaffPersonalRefId(objectFactory
             .createTeachingGroupTypeTeacherListTeachingGroupTeacherStaffPersonalRefId(StaffPersonalConsumerTest.StaffPersonalRefIds.REF_ID_5));

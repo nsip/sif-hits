@@ -1,8 +1,8 @@
-<TeachingGroup RefId="1BE77E87467F4F9D8800BE64CB678E0E" xmlns="http://www.sifassociation.org/au/datamodel/1.4">
+<TeachingGroup RefId="1be77e87-467f-4f9d-8800-be64cb678e0e" xmlns="http://www.sifassociation.org/au/datamodel/1.4">
 	<SchoolYear>2014</SchoolYear>
 	<LocalId>Room 22</LocalId>
 	<ShortName>VIS</ShortName>
 	<LongName>Visual Design</LongName>
-	<SchoolInfoRefId>6DAFB630-C439-11E3-9AA0-81F4DBD909AB</SchoolInfoRefId>
+	<SchoolInfoRefId>6dafb630-c439-41e3-9aa0-81f4dbd909ab</SchoolInfoRefId>
 	<SchoolLocalId>27</SchoolLocalId>
 </TeachingGroup>

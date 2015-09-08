@@ -30,15 +30,15 @@ public class StudentContactPersonalConsumerTest extends BaseTest {
   private ConsumerTest<StudentContactPersonalType, StudentContactCollectionType> studentTester = null;
 
   public static class StudentContactPersonalRefIds {
-    public static String REF_ID_1 = "281BC15585984873933E7A9EF336B98D";
-    public static String REF_ID_2 = "F53C639F87E04B178285E625C210AF74";
-    public static String REF_ID_3 = "1CD40A276A634210B3A4BDF6BE4D7DE4";
-    public static String REF_ID_4 = "92483A4BA25A4E55A0CB998ADF0B1161";
-    public static String REF_ID_5 = "C0E550AD3EB24A8C8CA6F5AB0FD547B2";
+    public static String REF_ID_1 = "281bc155-8598-4873-933e-7a9ef336b98d";
+    public static String REF_ID_2 = "f53c639f-87e0-4b17-8285-e625c210af74";
+    public static String REF_ID_3 = "1cd40a27-6a63-4210-b3a4-bdf6be4d7de4";
+    public static String REF_ID_4 = "92483a4b-a25a-4e55-a0cb-998adf0b1161";
+    public static String REF_ID_5 = "c0e550ad-3eb2-4a8c-8ca6-f5ab0fd547b2";
   }
 
-  private final String REF_ID_1 = "884FAFD92FEB4770827DA5121BD85E41";
-  private final String REF_ID_2 = "73EEE22596364C17BE1B67DE6CC73237";
+  private final String REF_ID_1 = "884fafd9-2feb-4770-827d-a5121bd85e41";
+  private final String REF_ID_2 = "73eee225-9636-4c17-be1b-67de6cc73237";
   private final String[] REF_IDS = { REF_ID_1, REF_ID_2 };
 
   @Test
@@ -56,6 +56,7 @@ public class StudentContactPersonalConsumerTest extends BaseTest {
     PersonInfoType personInfo = new PersonInfoType();
 
     NameOfRecordType nameOfRecord = new NameOfRecordType();
+    nameOfRecord.setType("LGL");
     nameOfRecord.setTitle(objectFactory.createBaseNameTypeTitle("Mr"));
     nameOfRecord.setFamilyName(objectFactory.createBaseNameTypeFamilyName("Tester"));
     nameOfRecord.setPreferredFamilyName(objectFactory.createBaseNameTypePreferredFamilyName("PTester"));
@@ -70,6 +71,7 @@ public class StudentContactPersonalConsumerTest extends BaseTest {
     
     PhoneNumberListType phoneNumberList = new PhoneNumberListType();
     PhoneNumber phoneNumber = new PhoneNumber();
+    phoneNumber.setType("0096");
     phoneNumber.setNumber("+61400000000");
     phoneNumberList.getPhoneNumber().add(phoneNumber);
     personInfo.setPhoneNumberList(objectFactory.createPhoneNumberList(phoneNumberList));

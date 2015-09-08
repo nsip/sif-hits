@@ -1,5 +1,5 @@
 <StudentPersonals xmlns="http://www.sifassociation.org/au/datamodel/1.4">
-	<StudentPersonal RefId="6BB0C404C02949BD9956D6BE93B7B128">
+	<StudentPersonal RefId="6bb0c404-c029-49bd-9956-d6be93b7b128">
 		<LocalId>123456</LocalId>
 		<PersonInfo>
 			<Name>
@@ -15,7 +15,7 @@
 			</YearLevel>
 		</MostRecent>
 	</StudentPersonal>
-	 <StudentPersonal RefId="6BB0C404C02949BD9956D6BE93B7B124">
+	 <StudentPersonal RefId="6bb0c404-c029-49bd-9956-d6be93b7b124">
     <LocalId>123457</LocalId>
     <PersonInfo>
       <Name>

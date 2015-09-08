@@ -1,6 +1,6 @@
-<StudentDailyAttendance RefId="96C40BB240B549FA8549E744698828C4" xmlns="http://www.sifassociation.org/au/datamodel/1.4">
-   <StudentPersonalRefId>1F631F1D88324775B1995EB9650E8EBB</StudentPersonalRefId>
-   <SchoolInfoRefId>6DAFB630-C439-11E3-9AA0-81F4DBD909AB</SchoolInfoRefId>
+<StudentDailyAttendance RefId="96c40bb2-40b5-49fa-8549-e744698828c4" xmlns="http://www.sifassociation.org/au/datamodel/1.4">
+   <StudentPersonalRefId>1f631f1d-8832-4775-b199-5eb9650e8ebb</StudentPersonalRefId>
+   <SchoolInfoRefId>6dafb630-c439-41e3-9aa0-81f4dbd909ab</SchoolInfoRefId>
    <Date>2014-11-24</Date>
    <SchoolYear>2014</SchoolYear>
    <DayValue>Full</DayValue>

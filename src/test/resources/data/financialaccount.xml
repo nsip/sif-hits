@@ -1,0 +1,10 @@
+<FinancialAccount RefId="d747f069-e911-4bf3-b899-109b053915c3" xmlns="http://www.sifassociation.org/au/datamodel/1.4">
+    <SubAccountRefId>c03b27f4-b0f8-4e46-93fb-4f0dc3b930e9</SubAccountRefId>
+    <ChargedLocationInfoRefId>5a34535f-9521-43ca-8038-de8250acb3ab</ChargedLocationInfoRefId>
+    <AccountNumber>43242244L</AccountNumber>
+    <Name>Account Name</Name>
+    <Description>Account Description</Description>
+    <FinancialClassificationRefId>2e21897b-0aa6-4c34-9465-b98807044d2b</FinancialClassificationRefId>
+    <CreationDate>2015-06-21</CreationDate>
+    <CreationTime>11:32:00</CreationTime>
+</FinancialAccount>

@@ -24,9 +24,9 @@ import sif3.infra.rest.consumer.ConsumerLoader;
 public class StudentSchoolEnrollmentConsumerTest extends BaseTest {
   private ConsumerTest<StudentSchoolEnrollmentType, StudentSchoolEnrollmentCollectionType> studentSchoolEnrollmentTester = null;
 
-  private final String REF_ID = "C59FCFB8A1F74C978F72822E59CDA292";
-  private final String REF_ID_1 = "ECCDBCBF96814791A8253CDBF8CD138F";
-  private final String REF_ID_2 = "DCCEC3172371465E854AE1AF585DA93A";
+  private final String REF_ID = "c59fcfb8-a1f7-4c97-8f72-822e59cda292";
+  private final String REF_ID_1 = "eccdbcbf-9681-4791-a825-3cdbf8cd138f";
+  private final String REF_ID_2 = "dccec317-2371-465e-854a-e1af585da93a";
   private final String[] REF_IDS = { REF_ID_1, REF_ID_2 };
 
   @Test
@@ -51,19 +51,19 @@ public class StudentSchoolEnrollmentConsumerTest extends BaseTest {
     String xmlExpectedTo = studentSchoolEnrollmentTester.getXML(studentEnrollment);
     studentSchoolEnrollmentTester.doCreateOne(studentEnrollment);
 
-    studentEnrollment.setRefId("609D6B1373BC44A7B25173D910B28B6A");
+    studentEnrollment.setRefId("609d6b13-73bc-44a7-b251-73d910b28b6a");
     studentEnrollment.setStudentPersonalRefId(StudentPersonalRefIds.REF_ID_2);
     studentSchoolEnrollmentTester.doCreateOne(studentEnrollment);
 
-    studentEnrollment.setRefId("5D2EEECB71ED459BA2384B8297844693");
+    studentEnrollment.setRefId("5d2eeecb-71ed-459b-a238-4b8297844693");
     studentEnrollment.setStudentPersonalRefId(StudentPersonalRefIds.REF_ID_3);
     studentSchoolEnrollmentTester.doCreateOne(studentEnrollment);
 
-    studentEnrollment.setRefId("C45EBE7EE3D343BB90F66C3275A87DBC");
+    studentEnrollment.setRefId("c45ebe7e-e3d3-43bb-90f6-6c3275a87dbc");
     studentEnrollment.setStudentPersonalRefId(StudentPersonalRefIds.REF_ID_4);
     studentSchoolEnrollmentTester.doCreateOne(studentEnrollment);
 
-    studentEnrollment.setRefId("D81A5263CA1446EB96C3A47D37152B39");
+    studentEnrollment.setRefId("d81a5263-ca14-46eb-96c3-a47d37152b39");
     studentEnrollment.setStudentPersonalRefId(StudentPersonalRefIds.REF_ID_5);
     studentSchoolEnrollmentTester.doCreateOne(studentEnrollment);
 

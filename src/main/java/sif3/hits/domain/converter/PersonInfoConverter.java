@@ -20,9 +20,10 @@ import sif3.hits.domain.model.Address;
 import sif3.hits.domain.model.AddressPerson;
 import sif3.hits.domain.model.Person;
 import sif3.hits.domain.model.StudentPerson;
+import sif3.hits.utils.UsesConstants;
 
 @Component
-public class PersonInfoConverter extends HitsConverter<PersonInfoType, Person> {
+public class PersonInfoConverter extends HitsConverter<PersonInfoType, Person> implements UsesConstants {
 
   public PersonInfoConverter() {
     super(PersonInfoType.class, null);
@@ -30,7 +31,7 @@ public class PersonInfoConverter extends HitsConverter<PersonInfoType, Person> {
 
   @Autowired
   private NameOfRecordConverter nameOfRecordConverter;
-  
+
   @Autowired
   private AddressConverter addressConverter;
 
@@ -47,16 +48,19 @@ public class PersonInfoConverter extends HitsConverter<PersonInfoType, Person> {
 
       EmailListType emailList = new EmailListType();
       Email email = new Email();
-      email.setType("06"); // AUCodeSetsEmailTypeType.WORK
+      email.setType(DEFAULT_EMAIL_TYPE);
       email.setValue(source.getEmail());
       emailList.getEmail().add(email);
       target.setEmailList(objectFactory.createEmailList(emailList));
 
-      PhoneNumberListType phoneNumberList = new PhoneNumberListType();
-      PhoneNumber phoneNumber = new PhoneNumber();
-      phoneNumber.setNumber(source.getPhoneNumber());
-      phoneNumberList.getPhoneNumber().add(phoneNumber);
-      target.setPhoneNumberList(objectFactory.createPhoneNumberList(phoneNumberList));
+      if (StringUtils.isNotBlank(source.getPhoneNumber())) {
+        PhoneNumberListType phoneNumberList = new PhoneNumberListType();
+        PhoneNumber phoneNumber = new PhoneNumber();
+        phoneNumber.setNumber(source.getPhoneNumber());
+        phoneNumber.setType(DEFAULT_PHONE_TYPE);
+        phoneNumberList.getPhoneNumber().add(phoneNumber);
+        target.setPhoneNumberList(objectFactory.createPhoneNumberList(phoneNumberList));
+      }
 
       DemographicsType demographics = new DemographicsType();
       demographics.setSex(objectFactory.createDemographicsTypeSex(source.getSex()));
@@ -64,23 +68,29 @@ public class PersonInfoConverter extends HitsConverter<PersonInfoType, Person> {
 
       if (source instanceof StudentPerson) {
         StudentPerson studentSource = (StudentPerson) source;
-        demographics.setIndigenousStatus(objectFactory.createDemographicsTypeIndigenousStatus(studentSource
-            .getIndigenousStatus()));
-        demographics.setCountryOfBirth(objectFactory.createDemographicsTypeCountryOfBirth(studentSource
-            .getCountryOfBirth()));
-        if (StringUtils.isNotBlank(studentSource.getReligion())) {
-          Religion religion = objectFactory.createDemographicsTypeReligion();
-          religion.setCode(studentSource.getReligion());
-          demographics.setReligion(objectFactory.createDemographicsTypeReligion(religion));
+        if (StringUtils.isNotBlank(studentSource.getIndigenousStatus())
+            || StringUtils.isNotBlank(studentSource.getCountryOfBirth())
+            || StringUtils.isNotBlank(studentSource.getReligion())) {
+          demographics.setIndigenousStatus(
+              objectFactory.createDemographicsTypeIndigenousStatus(studentSource.getIndigenousStatus()));
+          demographics
+              .setCountryOfBirth(objectFactory.createDemographicsTypeCountryOfBirth(studentSource.getCountryOfBirth()));
+          if (StringUtils.isNotBlank(studentSource.getReligion())) {
+            Religion religion = objectFactory.createDemographicsTypeReligion();
+            religion.setCode(studentSource.getReligion());
+            demographics.setReligion(objectFactory.createDemographicsTypeReligion(religion));
+          }
         }
       }
       if (source instanceof AddressPerson) {
         AddressPerson addressSource = (AddressPerson) source;
-        AddressListType addressList = objectFactory.createAddressListType();
-        addressList.getAddress().addAll(addressConverter.toSifModelList(addressSource.getAddresses()));
-        target.setAddressList(objectFactory.createPersonInfoTypeAddressList(addressList));
+        if (addressSource.getAddresses() != null && !addressSource.getAddresses().isEmpty()) {
+          AddressListType addressList = objectFactory.createAddressListType();
+          addressList.getAddress().addAll(addressConverter.toSifModelList(addressSource.getAddresses(), AddressListType.Address.class));
+          target.setAddressList(objectFactory.createPersonInfoTypeAddressList(addressList));
+        }
       }
-      
+
       target.setDemographics(objectFactory.createDemographics(demographics));
     }
   }
@@ -102,7 +112,7 @@ public class PersonInfoConverter extends HitsConverter<PersonInfoType, Person> {
         PhoneNumber phoneNumber = phoneNumberList.getPhoneNumber().get(0);
         target.setPhoneNumber(phoneNumber.getNumber());
       }
-      
+
       if (target instanceof AddressPerson) {
         AddressListType addressList = getJAXBValue(source.getAddressList());
         if (addressList != null && addressList.getAddress() != null && !addressList.getAddress().isEmpty()) {

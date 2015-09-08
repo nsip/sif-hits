@@ -24,10 +24,10 @@ import sif3.infra.rest.consumer.ConsumerLoader;
 public class TimeTableSubjectConsumerTest extends BaseTest {
   private ConsumerTest<TimeTableSubjectType, TimeTableSubjectCollectionType> timeTableSubjectTester = null;
   
-  public static final String REF_ID = "47B8518BA4304848BD01DD5D2EA2C617";
+  public static final String REF_ID = "47b8518b-a430-4848-bd01-dd5d2ea2c617";
   public static final String LOCAL_ID = "Subject 1";
-  private final String REF_ID_1 = "4609142F63E443F4A384CB81D309438F";
-  private final String REF_ID_2 = "6BB0C404C02949BD9956D6BE93B7B124";
+  private final String REF_ID_1 = "4609142f-63e4-43f4-a384-cb81d309438f";
+  private final String REF_ID_2 = "6bb0c404-c029-49bd-9956-d6be93b7b124";
   private final String[] REF_IDS = { REF_ID_1, REF_ID_2 };
   
   @Test
@@ -66,18 +66,18 @@ public class TimeTableSubjectConsumerTest extends BaseTest {
     timeTableSubjectTester.doCreateOne(timeTableSubject);
     String xmlExpectedTo = timeTableSubjectTester.getXML(timeTableSubject);
     
-    timeTableSubject.setRefId("C390D8B10F1F4F23AEC1880401248512");
+    timeTableSubject.setRefId("c390d8b1-0f1f-4f23-aec1-880401248512");
     timeTableSubjectTester.doCreateOne(timeTableSubject);
     
-    timeTableSubject.setRefId("DB9DCFA40ECB4BB286E0A62070907B32");
+    timeTableSubject.setRefId("db9dcfa4-0ecb-4bb2-86e0-a62070907b32");
     timeTableSubjectTester.doCreateOne(timeTableSubject);
 
-    timeTableSubject.setRefId("D4FCA448C17349A989E897B4C0344A81");
+    timeTableSubject.setRefId("d4fca448-c173-49a9-89e8-97b4c0344a81");
     timeTableSubjectTester.doCreateOne(timeTableSubject);
     timeTableSubject.setOtherCodeList(null);
     timeTableSubjectTester.doUpdateOne(timeTableSubject, timeTableSubject.getRefId());
 
-    timeTableSubject.setRefId("C3401C3B994F4D10B3D06423556B6F39");
+    timeTableSubject.setRefId("c3401c3b-994f-4d10-b3d0-6423556b6f39");
     timeTableSubjectTester.doCreateOne(timeTableSubject);
 
     TimeTableSubjectType getResult = timeTableSubjectTester.doGetOne(REF_ID);

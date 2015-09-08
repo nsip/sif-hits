@@ -1,5 +1,5 @@
-<StudentAttendanceSummary StudentPersonalRefId="1F631F1D88324775B1995EB9650E8EBB" SchoolInfoRefId="6DAFB630-C439-11E3-9AA0-81F4DBD909AB" SchoolYear="2014" StartDate="2014-11-17" EndDate="2014-11-22" xmlns="http://www.sifassociation.org/au/datamodel/1.4">
-    <StudentAttendanceSummaryRefId>3DE3AEFB96B54D029F44BA579CDBC7B5</StudentAttendanceSummaryRefId>
+<StudentAttendanceSummary StudentPersonalRefId="1f631f1d-8832-4775-b199-5eb9650e8ebb" SchoolInfoRefId="6dafb630-c439-41e3-9aa0-81f4dbd909ab" SchoolYear="2014" StartDate="2014-11-17" EndDate="2014-11-22" xmlns="http://www.sifassociation.org/au/datamodel/1.4">
+    <StudentAttendanceSummaryRefId>3de3aefb-96b5-4d02-9f44-ba579cdbc7b5</StudentAttendanceSummaryRefId>
     <StartDay>1</StartDay>
     <EndDay>2</EndDay>
     <FTE>1</FTE>

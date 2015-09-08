@@ -25,15 +25,15 @@ public class GradingAssignmentConsumerTest extends BaseTest {
   private ConsumerTest<GradingAssignmentType, GradingAssignmentCollectionType> gradingTester = null;
 
   public static class GradingAssignmentRefIds {
-    public static String REF_ID_1 = "C70B9B36C4184C948F1BFA1488B44607";
-    public static String REF_ID_2 = "74460BDE48FE4A99B54A31BBA5D947D0";
-    public static String REF_ID_3 = "FEC29CD5CD4D49BCAB6DE86907BC99FF";
-    public static String REF_ID_4 = "63BC98B2763C47FF9651AFEDC89C981D";
-    public static String REF_ID_5 = "CFCB9882A38244D5A393CB76FE740ACB";
+    public static String REF_ID_1 = "c70b9b36-c418-4c94-8f1b-fa1488b44607";
+    public static String REF_ID_2 = "74460bde-48fe-4a99-b54a-31bba5d947d0";
+    public static String REF_ID_3 = "fec29cd5-cd4d-49bc-ab6d-e86907bc99ff";
+    public static String REF_ID_4 = "63bc98b2-763c-47ff-9651-afedc89c981d";
+    public static String REF_ID_5 = "cfcb9882-a382-44d5-a393-cb76fe740acb";
   }
   
-  private final String REF_ID_1 = "EC238A11BF0B461C86479E5B6408D7D9";
-  private final String REF_ID_2 = "F1C51CA1AD844B03B385BA958CDEDEBD";
+  private final String REF_ID_1 = "ec238a11-bf0b-461c-8647-9e5b6408d7d9";
+  private final String REF_ID_2 = "f1c51ca1-ad84-4b03-b385-ba958cdedebd";
   private final String[] REF_IDS = { REF_ID_1, REF_ID_2 };
 
   @Test

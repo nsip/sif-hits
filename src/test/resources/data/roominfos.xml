@@ -1,14 +1,14 @@
 <RoomInfos xmlns="http://www.sifassociation.org/au/datamodel/1.4">
-    <RoomInfo RefId="DCAFC510C27F45F7B8F518BA612571A8">
-        <SchoolInfoRefId>6DAFB630-C439-11E3-9AA0-81F4DBD909AB</SchoolInfoRefId>
+    <RoomInfo RefId="dcafc510-c27f-45f7-b8f5-18ba612571a8">
+        <SchoolInfoRefId>6dafb630-c439-41e3-9aa0-81f4dbd909ab</SchoolInfoRefId>
         <RoomNumber>604.741833843259</RoomNumber>
         <Description>Just another room</Description>
         <Size>5</Size>
         <Capacity>11</Capacity>
         <RoomType>Art</RoomType>
     </RoomInfo>
-    <RoomInfo RefId="68B15630CF6E4D0FBCC7FF1E3E3AC87F">
-        <SchoolInfoRefId>6DAFB630-C439-11E3-9AA0-81F4DBD909AB</SchoolInfoRefId>
+    <RoomInfo RefId="68b15630-cf6e-4d0f-bcc7-ff1e3e3ac87f">
+        <SchoolInfoRefId>6dafb630-c439-41e3-9aa0-81f4dbd909ab</SchoolInfoRefId>
         <RoomNumber>714.250594474861</RoomNumber>
         <Description>Just another room</Description>
         <Size>5</Size>

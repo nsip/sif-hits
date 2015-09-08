@@ -24,10 +24,10 @@ import sif3.infra.rest.consumer.ConsumerLoader;
 public class TimeTableConsumerTest extends BaseTest {
   private ConsumerTest<TimeTableType, TimeTableCollectionType> timeTableTester = null;
   
-  public final static String REF_ID = "4B4A6B5D4F0A4F8488BA15610CAF092F";
+  public final static String REF_ID = "4b4a6b5d-4f0a-4f84-88ba-15610caf092f";
   public final static String LOCAL_ID = "Term 4 2014";
-  private final String REF_ID_1 = "68681573638E4AA7ABDC4FE19788F772";
-  private final String REF_ID_2 = "369D4B5D95E54751BE8884DD439C4C21";
+  private final String REF_ID_1 = "68681573-638e-4aa7-abdc-4fe19788f772";
+  private final String REF_ID_2 = "369d4b5d-95e5-4751-be88-84dd439c4c21";
   private final String[] REF_IDS = { REF_ID_1, REF_ID_2 };
   
   @Test
@@ -84,18 +84,18 @@ public class TimeTableConsumerTest extends BaseTest {
     timeTableTester.doCreateOne(timeTable);
     String xmlExpectedTo = timeTableTester.getXML(timeTable);
     
-    timeTable.setRefId("52D3F540B61941A4961C27AB156C89DD");
+    timeTable.setRefId("52d3f540-b619-41a4-961c-27ab156c89dd");
     timeTableTester.doCreateOne(timeTable);
     
-    timeTable.setRefId("09900C4F1AC64581A65E10D978D98BB3");
+    timeTable.setRefId("09900c4f-1ac6-4581-a65e-10d978d98bb3");
     timeTableTester.doCreateOne(timeTable);
 
-    timeTable.setRefId("4654DC21E63247F0A604E7ED7368F335");
+    timeTable.setRefId("4654dc21-e632-47f0-a604-e7ed7368f335");
     timeTableTester.doCreateOne(timeTable);
     timeTable.setTimeTableDayList(null);
     timeTableTester.doUpdateOne(timeTable, timeTable.getRefId());
 
-    timeTable.setRefId("626E3E08CAB94DDD80FA26FBF325B8C9");
+    timeTable.setRefId("626e3e08-cab9-4ddd-80fa-26fbf325b8c9");
     timeTableTester.doCreateOne(timeTable);
 
     TimeTableType getResult = timeTableTester.doGetOne(REF_ID);

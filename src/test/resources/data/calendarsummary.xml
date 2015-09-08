@@ -1,5 +1,5 @@
-<CalendarSummary RefId="F9B62C7FFEFD44BEBC0F42389AB226D4" xmlns="http://www.sifassociation.org/au/datamodel/1.4">
-    <SchoolInfoRefId>6DAFB630-C439-11E3-9AA0-81F4DBD909AB</SchoolInfoRefId>
+<CalendarSummary RefId="f9b62c7f-fefd-44be-bc0f-42389ab226d4" xmlns="http://www.sifassociation.org/au/datamodel/1.4">
+    <SchoolInfoRefId>6dafb630-c439-41e3-9aa0-81f4dbd909ab</SchoolInfoRefId>
     <SchoolYear>2014</SchoolYear>
     <LocalId>20146DAF</LocalId>
     <Description>My Calendar Summary Test</Description>

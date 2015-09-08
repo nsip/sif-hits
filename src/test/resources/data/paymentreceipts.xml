@@ -1,0 +1,46 @@
+<PaymentReceipts xmlns="http://www.sifassociation.org/au/datamodel/1.4">
+<PaymentReceipt RefId="65e49126-a787-4d6d-ad5d-21353c3c8bf0">
+    <TransactionType>Creditor payment</TransactionType>
+    <InvoiceRefId>22a05683-186c-40d5-b7ac-f1b707227310</InvoiceRefId>
+    <VendorInfoRefId>df9543ee-a145-4e19-b87b-816852aa24bf</VendorInfoRefId>
+    <DebtorRefId>fd559b14-42c1-4ff2-87c4-efe373005e83</DebtorRefId>
+    <PurchaseOrderRefId>d80e5793-afed-4731-9219-3a317822ac59</PurchaseOrderRefId>
+    <ChargedLocationInfoRefId>5a34535f-9521-43ca-8038-de8250acb3ab</ChargedLocationInfoRefId>
+    <TransactionDate>2015-06-23</TransactionDate>
+    <ReceivedAmount Type="Debit" Currency="AUD">25.00</ReceivedAmount>
+    <ReceivedTransactionId>201546</ReceivedTransactionId>
+    <FinancialAccountRefIdList>
+        <FinancialAccountRefId>d7230685-a578-4eb5-a5e4-c19b096a3d0c</FinancialAccountRefId>
+        <FinancialAccountRefId>c03b27f4-b0f8-4e46-93fb-4f0dc3b930e9</FinancialAccountRefId>
+    </FinancialAccountRefIdList>
+    <TransactionDescription>Some description</TransactionDescription>
+    <TaxRate>0.10</TaxRate>
+    <TaxAmount Currency="AUD">2.50</TaxAmount>
+    <TransactionMethod>Cash</TransactionMethod>
+    <ChequeNumber>23593032</ChequeNumber>
+    <TransactionNote>Transaction note goes here</TransactionNote>
+    <AccountingPeriod>2015Q3</AccountingPeriod>
+</PaymentReceipt>
+<PaymentReceipt RefId="3aefa7e2-d8cc-443f-bd41-41d73f394093">
+    <TransactionType>Creditor payment</TransactionType>
+    <InvoiceRefId>22a05683-186c-40d5-b7ac-f1b707227310</InvoiceRefId>
+    <VendorInfoRefId>df9543ee-a145-4e19-b87b-816852aa24bf</VendorInfoRefId>
+    <DebtorRefId>fd559b14-42c1-4ff2-87c4-efe373005e83</DebtorRefId>
+    <PurchaseOrderRefId>d80e5793-afed-4731-9219-3a317822ac59</PurchaseOrderRefId>
+    <ChargedLocationInfoRefId>5a34535f-9521-43ca-8038-de8250acb3ab</ChargedLocationInfoRefId>
+    <TransactionDate>2015-06-23</TransactionDate>
+    <ReceivedAmount Type="Debit" Currency="AUD">25.00</ReceivedAmount>
+    <ReceivedTransactionId>201546</ReceivedTransactionId>
+    <FinancialAccountRefIdList>
+        <FinancialAccountRefId>d7230685-a578-4eb5-a5e4-c19b096a3d0c</FinancialAccountRefId>
+        <FinancialAccountRefId>c03b27f4-b0f8-4e46-93fb-4f0dc3b930e9</FinancialAccountRefId>
+    </FinancialAccountRefIdList>
+    <TransactionDescription>Some description</TransactionDescription>
+    <TaxRate>0.10</TaxRate>
+    <TaxAmount Currency="AUD">2.50</TaxAmount>
+    <TransactionMethod>Cash</TransactionMethod>
+    <ChequeNumber>23593032</ChequeNumber>
+    <TransactionNote>Transaction note goes here</TransactionNote>
+    <AccountingPeriod>2015Q3</AccountingPeriod>
+</PaymentReceipt>
+</PaymentReceipts>

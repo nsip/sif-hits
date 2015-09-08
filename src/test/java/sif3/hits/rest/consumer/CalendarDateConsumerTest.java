@@ -25,9 +25,9 @@ import sif3.infra.rest.consumer.ConsumerLoader;
 public class CalendarDateConsumerTest extends BaseTest {
   private ConsumerTest<CalendarDate, CalendarDateCollectionType> calendarDateTester = null;
   
-  private static final String REF_ID = "4756760B07484471BA78CE0F62E70EBF";
-  private final String REF_ID_1 = "D283DB7B17164B82AE9051155B5DEF0D";
-  private final String REF_ID_2 = "40DF4CCFA69B4B479DAF0ACD722E1942";
+  private static final String REF_ID = "4756760b-0748-4471-ba78-ce0f62e70ebf";
+  private final String REF_ID_1 = "d283db7b-1716-4b82-ae90-51155b5def0d";
+  private final String REF_ID_2 = "40df4ccf-a69b-4b47-9daf-0acd722e1942";
   private final String[] REF_IDS = { REF_ID_1, REF_ID_2 };
   
   @Test
@@ -65,18 +65,18 @@ public class CalendarDateConsumerTest extends BaseTest {
     calendarDateTester.doCreateOne(calendarDate);
     String xmlExpectedTo = calendarDateTester.getXML(calendarDate);
 
-    calendarDate.setCalendarDateRefId(objectFactory.createCalendarDateCalendarDateRefId("2D647FF72091445BB4C02EE5527277ED"));
+    calendarDate.setCalendarDateRefId(objectFactory.createCalendarDateCalendarDateRefId("2d647ff7-2091-445b-b4c0-2ee5527277ed"));
     calendarDateTester.doCreateOne(calendarDate);
 
-    calendarDate.setCalendarDateRefId(objectFactory.createCalendarDateCalendarDateRefId("16E97F11747E42B68A4FA68B5EDE6F1D"));
+    calendarDate.setCalendarDateRefId(objectFactory.createCalendarDateCalendarDateRefId("16e97f11-747e-42b6-8a4f-a68b5ede6f1d"));
     calendarDateTester.doCreateOne(calendarDate);
 
-    calendarDate.setCalendarDateRefId(objectFactory.createCalendarDateCalendarDateRefId("ABF46D83AED04FB898F539FBF022E17F"));
+    calendarDate.setCalendarDateRefId(objectFactory.createCalendarDateCalendarDateRefId("abf46d83-aed0-4fb8-98f5-39fbf022e17f"));
     calendarDateTester.doCreateOne(calendarDate);
     calendarDate.getCalendarDateType().setOtherCodeList(null);
     calendarDateTester.doUpdateOne(calendarDate, calendarDate.getCalendarDateRefId().getValue());
     
-    calendarDate.setCalendarDateRefId(objectFactory.createCalendarDateCalendarDateRefId("0553C842DF314A8096A1FA1B3608B52A"));
+    calendarDate.setCalendarDateRefId(objectFactory.createCalendarDateCalendarDateRefId("0553c842-df31-4a80-96a1-fa1b3608b52a"));
     calendarDateTester.doCreateOne(calendarDate);
 
     CalendarDate getResult = calendarDateTester.doGetOne(REF_ID);

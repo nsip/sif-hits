@@ -88,11 +88,34 @@ public abstract class HitsConverter<S, H> {
     return result;
   }
 
-  public List<S> toSifModelList(Collection<H> source) {
+  public <X> List<S> toSifModelList(Collection<X> source) {
     List<S> result = new ArrayList<S>();
     if (source != null) {
+      for (X item : source) {
+        H value = getHitsValue(item);
+        if (value != null) {
+          result.add(toSifModel(value));
+        }
+      }
+    }
+    return result;
+  }
+
+  public <X extends S> List<X> toSifModelList(Collection<H> source, Class<X> clazz) {
+    List<X> result = new ArrayList<X>();
+    if (source != null) {
       for (H item : source) {
-        result.add(toSifModel(item));
+        H value = getHitsValue(item);
+        if (value != null) {
+          X target = null;
+          try {
+            target = clazz.newInstance();
+          } catch (Exception ex) {
+            logger.error("Unable to create new instance of sif model.", ex);
+          }
+          toSifModel(value, target);
+          result.add(target);
+        }
       }
     }
     return result;
@@ -107,12 +130,31 @@ public abstract class HitsConverter<S, H> {
     return result;
   }
 
-  public List<H> toHitsModelList(Collection<S> source) {
+  public <X> List<H> toHitsModelList(Collection<X> source) {
     List<H> result = new ArrayList<H>();
     if (source != null) {
-      for (S item : source) {
-        result.add(toHitsModel(item));
+      for (X item : source) {
+        S value = getSifValue(item);
+        if (value != null) {
+          result.add(toHitsModel(value));
+        }
       }
+    }
+    return result;
+  }
+
+  private <X> S getSifValue(X value) {
+    S result = null;
+    if (value != null && sifClass != null && sifClass.isAssignableFrom(value.getClass())) {
+      result = sifClass.cast(value);
+    }
+    return result;
+  }
+
+  private <X> H getHitsValue(X value) {
+    H result = null;
+    if (value != null && hitsClass != null && hitsClass.isAssignableFrom(value.getClass())) {
+      result = hitsClass.cast(value);
     }
     return result;
   }
@@ -166,7 +208,7 @@ public abstract class HitsConverter<S, H> {
     return result;
   }
 
-  private static final FastDateFormat calendarFormat = FastDateFormat.getInstance("yyyyMMddHHmmssSSS");
+  private static final FastDateFormat calendarFormat = FastDateFormat.getInstance("yyyyMMddHHmmssSSSZZ");
 
   protected Calendar getCalendarValue(String value) {
     Calendar result = null;

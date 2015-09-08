@@ -20,13 +20,13 @@ import sif3.infra.rest.consumer.ConsumerLoader;
 public class TimeTableCellConsumerTest extends BaseTest {
   private ConsumerTest<TimeTableCellType, TimeTableCellCollectionType> timeTableCellTester = null;
   
-  public static final String REF_ID = "301C949D376945FC9C827119C1F9DF03";
+  public static final String REF_ID = "301c949d-3769-45fc-9c82-7119c1f9df03";
   public static final String CELL_TYPE = "Teaching";
   public static final String DAY_ID = "1";
   public static final String PERIOD_ID = "1";
   
-  private final String REF_ID_1 = "2D108D351AB946CDB2E9480AAA3F58B8";
-  private final String REF_ID_2 = "02721649360240E9BE341427424B87B2";
+  private final String REF_ID_1 = "2d108d35-1ab9-46cd-b2e9-480aaa3f58b8";
+  private final String REF_ID_2 = "02721649-3602-40e9-be34-1427424b87b2";
   private final String[] REF_IDS = { REF_ID_1, REF_ID_2 };
 
   @Test
@@ -53,20 +53,20 @@ public class TimeTableCellConsumerTest extends BaseTest {
     timeTableCellTester.doCreateOne(timeTableCell);
     String xmlExpectedTo = timeTableCellTester.getXML(timeTableCell);
     
-    timeTableCell.setRefId("400D6EF07BCF4513A45A3DD9003ADBBF");
-    timeTableCell.setTeachingGroupRefId("6CD60385006E426892EFF69FFC8C5C9F");
+    timeTableCell.setRefId("400d6ef0-7bcf-4513-a45a-3dd9003adbbf");
+    timeTableCell.setTeachingGroupRefId("6cd60385-006e-4268-92ef-f69ffc8c5c9f");
     timeTableCell.setDayId("2");
     timeTableCellTester.doCreateOne(timeTableCell);
     
-    timeTableCell.setRefId("1039BDD33D084F988904C20856605C0B");
+    timeTableCell.setRefId("1039bdd3-3d08-4f98-8904-c20856605c0b");
     timeTableCell.setDayId("3");
     timeTableCellTester.doCreateOne(timeTableCell);
     
-    timeTableCell.setRefId("3BFC9BEDAAB147A5BD5780ECB3789CAC");
+    timeTableCell.setRefId("3bfc9bed-aab1-47a5-bd57-80ecb3789cac");
     timeTableCell.setDayId("4");
     timeTableCellTester.doCreateOne(timeTableCell);
     
-    timeTableCell.setRefId("5ABE4FA8572C40F197A6D363A62508F1");
+    timeTableCell.setRefId("5abe4fa8-572c-40f1-97a6-d363a62508f1");
     timeTableCell.setDayId("5");
     timeTableCellTester.doCreateOne(timeTableCell);
     

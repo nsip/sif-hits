@@ -1,0 +1,46 @@
+<Invoices xmlns="http://www.sifassociation.org/au/datamodel/1.4">
+  <Invoice RefId="0e3ead1c-3e79-42a7-bfc7-bb5e4d5efb77">
+    <InvoicedEntity SIF_RefObject="Debtor">BA497254965FDA48965ABCE4589EA421</InvoicedEntity>
+    <BillingDate>2015-07-01</BillingDate>
+    <TransactionDescription>Textbooks</TransactionDescription>
+    <BilledAmount Type="Debit" Currency="AUD">320.00</BilledAmount>
+    <Ledger>Sundry</Ledger>
+    <ChargedLocationInfoRefId>5a34535f-9521-43ca-8038-de8250acb3ab</ChargedLocationInfoRefId>
+    <TaxRate>0.10</TaxRate>
+    <TaxType>GST</TaxType>
+    <TaxAmount Currency="AUD">29.09</TaxAmount>
+    <CreatedBy>Created By</CreatedBy>
+    <ApprovedBy>Approved By</ApprovedBy>
+    <ItemDetail>4 Textbooks</ItemDetail>
+    <DueDate>2015-10-22</DueDate>
+    <FinancialAccountRefIdList>
+      <FinancialAccountRefId>d7230685-a578-4eb5-a5e4-c19b096a3d0c</FinancialAccountRefId>
+      <FinancialAccountRefId>c03b27f4-b0f8-4e46-93fb-4f0dc3b930e9</FinancialAccountRefId>
+    </FinancialAccountRefIdList>
+    <AccountingPeriod>2015Q3</AccountingPeriod>
+    <RelatedPurchaseOrderRefId>d80e5793-afed-4731-9219-3a317822ac59</RelatedPurchaseOrderRefId>
+    <Voluntary>N</Voluntary>
+  </Invoice>
+  <Invoice RefId="914675bc-3521-4647-b770-58018dacb4b3">
+    <InvoicedEntity SIF_RefObject="Debtor">BA497254965FDA48965ABCE4589EA421</InvoicedEntity>
+    <BillingDate>2015-07-01</BillingDate>
+    <TransactionDescription>Textbooks</TransactionDescription>
+    <BilledAmount Type="Debit" Currency="AUD">320.00</BilledAmount>
+    <Ledger>Sundry</Ledger>
+    <ChargedLocationInfoRefId>5a34535f-9521-43ca-8038-de8250acb3ab</ChargedLocationInfoRefId>
+    <TaxRate>0.10</TaxRate>
+    <TaxType>GST</TaxType>
+    <TaxAmount Currency="AUD">29.09</TaxAmount>
+    <CreatedBy>Created By</CreatedBy>
+    <ApprovedBy>Approved By</ApprovedBy>
+    <ItemDetail>4 Textbooks</ItemDetail>
+    <DueDate>2015-10-22</DueDate>
+    <FinancialAccountRefIdList>
+      <FinancialAccountRefId>d7230685-a578-4eb5-a5e4-c19b096a3d0c</FinancialAccountRefId>
+      <FinancialAccountRefId>c03b27f4-b0f8-4e46-93fb-4f0dc3b930e9</FinancialAccountRefId>
+    </FinancialAccountRefIdList>
+    <AccountingPeriod>2015Q3</AccountingPeriod>
+    <RelatedPurchaseOrderRefId>d80e5793-afed-4731-9219-3a317822ac59</RelatedPurchaseOrderRefId>
+    <Voluntary>N</Voluntary>
+  </Invoice>
+</Invoices>

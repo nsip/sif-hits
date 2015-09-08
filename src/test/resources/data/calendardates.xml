@@ -1,9 +1,9 @@
 <CalendarDates xmlns="http://www.sifassociation.org/au/datamodel/1.4">
-	<CalendarDate CalendarSummaryRefId="FCCC615A828841488934424AE2DA69CA"
+	<CalendarDate CalendarSummaryRefId="fccc615a-8288-4148-8934-424ae2da69ca"
 		Date="2014-11-06">
-		<CalendarDateRefId>D283DB7B17164B82AE9051155B5DEF0D
+		<CalendarDateRefId>d283db7b-1716-4b82-ae90-51155b5def0d
 		</CalendarDateRefId>
-		<SchoolInfoRefId>6DAFB630-C439-11E3-9AA0-81F4DBD909AB
+		<SchoolInfoRefId>6dafb630-c439-41e3-9aa0-81f4dbd909ab
 		</SchoolInfoRefId>
 		<SchoolYear>2014</SchoolYear>
 		<CalendarDateType>
@@ -20,11 +20,11 @@
 			<AttendanceValue>1.0</AttendanceValue>
 		</StudentAttendance>
 	</CalendarDate>
-	<CalendarDate CalendarSummaryRefId="FCCC615A828841488934424AE2DA69CA"
+	<CalendarDate CalendarSummaryRefId="fccc615a-8288-4148-8934-424ae2da69ca"
 		Date="2014-11-07">
-		<CalendarDateRefId>40DF4CCFA69B4B479DAF0ACD722E1942
+		<CalendarDateRefId>40df4ccf-a69b-4b47-9daf-0acd722e1942
 		</CalendarDateRefId>
-		<SchoolInfoRefId>6DAFB630-C439-11E3-9AA0-81F4DBD909AB
+		<SchoolInfoRefId>6dafb630-c439-41e3-9aa0-81f4dbd909ab
 		</SchoolInfoRefId>
 		<SchoolYear>2014</SchoolYear>
 		<CalendarDateType>

@@ -9,6 +9,6 @@ public class RefIdGenerator {
   }
 
   public static String getRefId() {
-    return UUIDGenerator.getSIF2GUIDUpperCase();
+    return UUIDGenerator.getUUID();
   }
 }

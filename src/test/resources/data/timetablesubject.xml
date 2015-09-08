@@ -1,4 +1,4 @@
-<TimeTableSubject RefId="4609142F63E443F4A384CB81D309438F" xmlns="http://www.sifassociation.org/au/datamodel/1.4">
+<TimeTableSubject RefId="4609142f-63e4-43f4-a384-cb81d309438f" xmlns="http://www.sifassociation.org/au/datamodel/1.4">
     <SubjectLocalId>ENG 472</SubjectLocalId>
     <AcademicYear>
         <Code>2</Code>
@@ -8,7 +8,7 @@
     <SubjectLongName>English</SubjectLongName>
     <SubjectType>Core</SubjectType>
     <ProposedMinClassSize>25</ProposedMinClassSize>
-    <SchoolInfoRefId>6DAFB630-C439-11E3-9AA0-81F4DBD909AB</SchoolInfoRefId>
+    <SchoolInfoRefId>6dafb630-c439-41e3-9aa0-81f4dbd909ab</SchoolInfoRefId>
     <Semester>2</Semester>
     <SchoolYear>2014</SchoolYear>
     <OtherCodeList>

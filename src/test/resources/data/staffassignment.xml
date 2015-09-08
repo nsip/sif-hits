@@ -1,7 +1,7 @@
 <StaffAssignment RefId="1eeb7b74-c8ef-4812-aff1-cb4dc8071d7a"	xmlns="http://www.sifassociation.org/au/datamodel/1.4">
-	<SchoolInfoRefId>6DAFB630-C439-11E3-9AA0-81F4DBD909AB</SchoolInfoRefId>
+	<SchoolInfoRefId>6dafb630-c439-41e3-9aa0-81f4dbd909ab</SchoolInfoRefId>
 	<SchoolYear>2014</SchoolYear>
-	<StaffPersonalRefId>7D83555D24E94D4FBB3E21D7AD86B8D3</StaffPersonalRefId>
+	<StaffPersonalRefId>7d83555d-24e9-4d4f-bb3e-21d7ad86b8d3</StaffPersonalRefId>
 	<Description>Teacher</Description>
 	<PrimaryAssignment>Y</PrimaryAssignment>
 </StaffAssignment>

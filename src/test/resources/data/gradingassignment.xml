@@ -1,6 +1,6 @@
-<GradingAssignment RefId="EC238A11BF0B461C86479E5B6408D7D9" xmlns="http://www.sifassociation.org/au/datamodel/1.4">
-    <TeachingGroupRefId>597AD3FE47E74B2CB919A93C564D19D0</TeachingGroupRefId>
-    <SchoolInfoRefId>6DAFB630-C439-11E3-9AA0-81F4DBD909AB</SchoolInfoRefId>
+<GradingAssignment RefId="ec238a11-bf0b-461c-8647-9e5b6408d7d9" xmlns="http://www.sifassociation.org/au/datamodel/1.4">
+    <TeachingGroupRefId>597ad3fe-47e7-4b2c-b919-a93c564d19d0</TeachingGroupRefId>
+    <SchoolInfoRefId>6dafb630-c439-41e3-9aa0-81f4dbd909ab</SchoolInfoRefId>
     <GradingCategory>GC</GradingCategory>
     <Description>Description</Description>
     <PointsPossible>80</PointsPossible>

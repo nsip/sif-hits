@@ -58,7 +58,14 @@ public abstract class HitsBaseProvider<S, SC, H, HS extends BaseService<S, SC, H
     this.SIF_COLLECTION_CLASS = sifCollectionClass;
     this.COLLECTION_NAME = collectionName;
     this.HITS_SERVICE_CLASS = hitsServiceClass;
-    initialise(sifCollectionClass, singleName);
+    initialise(sifCollectionClass, getCollectionMethod());
+  }
+  
+  /*
+   * Can override this if needed.
+   */
+  public String getCollectionMethod() {
+    return this.SINGLE_NAME;
   }
 
   private HS getService() {

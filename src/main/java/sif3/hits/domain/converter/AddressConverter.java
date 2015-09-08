@@ -2,21 +2,21 @@ package sif3.hits.domain.converter;
 
 import org.springframework.stereotype.Component;
 
-import sif.dd.au30.model.AddressListType;
+import sif.dd.au30.model.AddressType;
 import sif.dd.au30.model.AddressType.Street;
 import sif.dd.au30.model.GridLocationType;
 import sif3.hits.domain.converter.factory.ObjectFactory;
 import sif3.hits.domain.model.Address;
 
 @Component
-public class AddressConverter extends HitsConverter<AddressListType.Address, Address> {
+public class AddressConverter extends HitsConverter<AddressType, Address> {
 
   public AddressConverter() {
-    super(AddressListType.Address.class, Address.class);
+    super(AddressType.class, Address.class);
   }
 
   @Override
-  public void toSifModel(Address source, AddressListType.Address target) {
+  public void toSifModel(Address source, AddressType target) {
     if (source != null && target != null) {
       ObjectFactory objectFactory = getObjectFactory();
       
@@ -41,7 +41,7 @@ public class AddressConverter extends HitsConverter<AddressListType.Address, Add
   }
 
   @Override
-  public void toHitsModel(AddressListType.Address source, Address target) {
+  public void toHitsModel(AddressType source, Address target) {
     if (source != null && target != null) {
       
       target.setCity(source.getCity());
@@ -63,5 +63,4 @@ public class AddressConverter extends HitsConverter<AddressListType.Address, Add
       }
     }
   }
-
 }

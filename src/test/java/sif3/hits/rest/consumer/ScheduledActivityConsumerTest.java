@@ -33,9 +33,9 @@ import sif3.infra.rest.consumer.ConsumerLoader;
 public class ScheduledActivityConsumerTest extends BaseTest {
   private ConsumerTest<ScheduledActivityType, ScheduledActivityCollectionType> scheduledActivityTester = null;
   
-  public static final String REF_ID = "AF7D1111419B4FF5A3E8D49BCB8456E5";
-  private final String REF_ID_1 = "596BD11814CB485A84D3593FC5703958";
-  private final String REF_ID_2 = "DF54713ADB1C4428A418D8A5964D893A";
+  public static final String REF_ID = "af7d1111-419b-4ff5-a3e8-d49bcb8456e5";
+  private final String REF_ID_1 = "596bd118-14cb-485a-84d3-593fc5703958";
+  private final String REF_ID_2 = "df54713a-db1c-4428-a418-d8a5964d893a";
   private final String[] REF_IDS = { REF_ID_1, REF_ID_2 };
   
   @Test
@@ -101,16 +101,16 @@ public class ScheduledActivityConsumerTest extends BaseTest {
     scheduledActivityTester.doCreateOne(scheduledActivity);
     String xmlExpectedTo = scheduledActivityTester.getXML(scheduledActivity);
 
-    scheduledActivity.setRefId("9C884119D4EB462493C4F3BBAC8C7C72");
+    scheduledActivity.setRefId("9c884119-d4eb-4624-93c4-f3bbac8c7c72");
     scheduledActivityTester.doCreateOne(scheduledActivity);
 
-    scheduledActivity.setRefId("48C1B75CFC5E4155A2F4B1CD57C29BB5");
+    scheduledActivity.setRefId("48c1b75c-fc5e-4155-a2f4-b1cd57c29bb5");
     scheduledActivityTester.doCreateOne(scheduledActivity);
 
-    scheduledActivity.setRefId("44DB97105F2643C2B3DB0E4168E8D0DB");
+    scheduledActivity.setRefId("44db9710-5f26-43c2-b3db-0e4168e8d0db");
     scheduledActivityTester.doCreateOne(scheduledActivity);
 
-    scheduledActivity.setRefId("78748F1F474A461DA7D44E1F1D7A4B90");
+    scheduledActivity.setRefId("78748f1f-474a-461d-a7d4-4e1f1d7a4b90");
     scheduledActivityTester.doCreateOne(scheduledActivity);
 
     ScheduledActivityType getResult = scheduledActivityTester.doGetOne(REF_ID);

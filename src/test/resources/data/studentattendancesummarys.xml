@@ -1,6 +1,6 @@
 <StudentAttendanceSummarys  xmlns="http://www.sifassociation.org/au/datamodel/1.4">
-  <StudentAttendanceSummary StudentPersonalRefId="B3270C8A7A1E436093368733728BAB44" SchoolInfoRefId="6DAFB630-C439-11E3-9AA0-81F4DBD909AB" SchoolYear="2014" StartDate="2014-11-17" EndDate="2014-11-22">
-    <StudentAttendanceSummaryRefId>3DE3AEFB96B54D029F44BA579CDBC7B5</StudentAttendanceSummaryRefId>
+  <StudentAttendanceSummary StudentPersonalRefId="b3270c8a-7a1e-4360-9336-8733728bab44" SchoolInfoRefId="6dafb630-c439-41e3-9aa0-81f4dbd909ab" SchoolYear="2014" StartDate="2014-11-17" EndDate="2014-11-22">
+    <StudentAttendanceSummaryRefId>3de3aefb-96b5-4d02-9f44-ba579cdbc7b5</StudentAttendanceSummaryRefId>
     <StartDay>1</StartDay>
     <EndDay>2</EndDay>
     <FTE>1</FTE>
@@ -10,8 +10,8 @@
     <DaysTardy>0</DaysTardy>
     <DaysInMembership>5</DaysInMembership>
   </StudentAttendanceSummary>
-  <StudentAttendanceSummary StudentPersonalRefId="17998AA63A074763A2C51FABBD966039" SchoolInfoRefId="6DAFB630-C439-11E3-9AA0-81F4DBD909AB" SchoolYear="2014" StartDate="2014-11-17" EndDate="2014-11-22">
-    <StudentAttendanceSummaryRefId>1382A1E55AE44622B3B0D23EA52B1117</StudentAttendanceSummaryRefId>
+  <StudentAttendanceSummary StudentPersonalRefId="17998aa6-3a07-4763-a2c5-1fabbd966039" SchoolInfoRefId="6dafb630-c439-41e3-9aa0-81f4dbd909ab" SchoolYear="2014" StartDate="2014-11-17" EndDate="2014-11-22">
+    <StudentAttendanceSummaryRefId>1382a1e5-5ae4-4622-b3b0-d23ea52b1117</StudentAttendanceSummaryRefId>
     <StartDay>1</StartDay>
     <EndDay>2</EndDay>
     <FTE>1</FTE>

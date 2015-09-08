@@ -1,7 +1,7 @@
 <StudentAttendanceTimeLists xmlns="http://www.sifassociation.org/au/datamodel/1.4">
-	<StudentAttendanceTimeList RefId="2205C3E4089C4CFB98A5FB0121FA12E1">
-	    <StudentPersonalRefId>F7DD788E3CEF40EB9CB4AF90A2FA3147</StudentPersonalRefId>
-	    <SchoolInfoRefId>6DAFB630-C439-11E3-9AA0-81F4DBD909AB</SchoolInfoRefId>
+	<StudentAttendanceTimeList RefId="2205c3e4-089c-4cfb-98a5-fb0121fa12e1">
+	    <StudentPersonalRefId>f7dd788e-3cef-40eb-9cb4-af90a2fa3147</StudentPersonalRefId>
+	    <SchoolInfoRefId>6dafb630-c439-41e3-9aa0-81f4dbd909ab</SchoolInfoRefId>
 	    <Date>2014-11-12</Date>
 	    <SchoolYear>2014</SchoolYear>
 	    <AttendanceTimes>
@@ -40,9 +40,9 @@
 	        </AttendanceTime>
 	    </AttendanceTimes>
 	</StudentAttendanceTimeList>
-	<StudentAttendanceTimeList RefId="3EC79D15B5E840A8BE56587AE099015B">
-	    <StudentPersonalRefId>F7DD788E3CEF40EB9CB4AF90A2FA3147</StudentPersonalRefId>
-	    <SchoolInfoRefId>6DAFB630-C439-11E3-9AA0-81F4DBD909AB</SchoolInfoRefId>
+	<StudentAttendanceTimeList RefId="3ec79d15-b5e8-40a8-be56-587ae099015b">
+	    <StudentPersonalRefId>f7dd788e-3cef-40eb-9cb4-af90a2fa3147</StudentPersonalRefId>
+	    <SchoolInfoRefId>6dafb630-c439-41e3-9aa0-81f4dbd909ab</SchoolInfoRefId>
 	    <Date>2014-11-12</Date>
 	    <SchoolYear>2014</SchoolYear>
 	    <AttendanceTimes>

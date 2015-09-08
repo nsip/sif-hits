@@ -21,7 +21,7 @@ import sif3.hits.rest.dto.RequestDTO;
 public class GradingAssignmentScoreService extends BaseService<GradingAssignmentScoreType, GradingAssignmentScoreCollectionType, GradingAssignmentScore> {
 
   @Autowired
-  private GradingAssignmentScoreDAO gradingAssignmentDAO;
+  private GradingAssignmentScoreDAO gradingAssignmentScoreDAO;
   
   @Autowired
   private GradingAssignmentScoreConverter gradingAssignmentConverter;
@@ -34,12 +34,12 @@ public class GradingAssignmentScoreService extends BaseService<GradingAssignment
   
   @Override
   public JpaRepository<GradingAssignmentScore, String> getDAO() {
-    return gradingAssignmentDAO;
+    return gradingAssignmentScoreDAO;
   }
 
   @Override
   public ZoneFilterableRepository<GradingAssignmentScore> getZoneFilterableDAO() {
-    return gradingAssignmentDAO;
+    return gradingAssignmentScoreDAO;
   }
 
   @Override
@@ -60,7 +60,7 @@ public class GradingAssignmentScoreService extends BaseService<GradingAssignment
   protected GradingAssignmentScore getFiltered(String refId, List<String> schoolRefIds) {
     GradingAssignmentScore result = null;
     if (schoolRefIds != null && !schoolRefIds.isEmpty()) {
-      result = gradingAssignmentDAO.findOneWithFilter(refId, schoolRefIds);
+      result = gradingAssignmentScoreDAO.findOneWithFilter(refId, schoolRefIds);
     }
     return result;
   }

@@ -31,16 +31,17 @@ public class StaffPersonalConsumerTest extends BaseTest {
   private ConsumerTest<StaffPersonalType, StaffCollectionType> staffTester = null;
   
   public static class StaffPersonalRefIds {
-    public static String REF_ID_1 = "7D83555D24E94D4FBB3E21D7AD86B8D3";
-    public static String REF_ID_2 = "40453960800E47D1AE1E8DEE599EAAF8";
-    public static String REF_ID_3 = "4414F636F3CA4EB6889888810A7E3018";
-    public static String REF_ID_4 = "46077B1371F64C109ED0275F16952F05";
-    public static String REF_ID_5 = "9E62AE55ABA141A18F3ED09635B203F5";
+    public static String REF_ID_1 = "7d83555d-24e9-4d4f-bb3e-21d7ad86b8d3";
+    public static String REF_ID_2 = "40453960-800e-47d1-ae1e-8dee599eaaf8";
+    public static String REF_ID_3 = "4414f636-f3ca-4eb6-8898-88810a7e3018";
+    public static String REF_ID_4 = "46077b13-71f6-4c10-9ed0-275f16952f05";
+    public static String REF_ID_5 = "9e62ae55-aba1-41a1-8f3e-d09635b203f5";
     
     public static String LOCAL_ID = "ez7b7b7";
     
     public static NameOfRecordType getNameOfRecord(ObjectFactory objectFactory) {
       NameOfRecordType nameOfRecordType = new NameOfRecordType();
+      nameOfRecordType.setType("LGL");
       nameOfRecordType.setFamilyName(objectFactory.createBaseNameTypeFamilyName("Tester"));
       nameOfRecordType.setPreferredFamilyName(objectFactory.createBaseNameTypePreferredFamilyName("PTester"));
       nameOfRecordType.setGivenName(objectFactory.createBaseNameTypeGivenName("Gavin"));
@@ -74,6 +75,7 @@ public class StaffPersonalConsumerTest extends BaseTest {
     
     PhoneNumberListType phoneNumberList = new PhoneNumberListType();
     PhoneNumber phoneNumber = new PhoneNumber();
+    phoneNumber.setType("0096");
     phoneNumber.setNumber("+61400000000");
     phoneNumberList.getPhoneNumber().add(phoneNumber);
     personInfo.setPhoneNumberList(objectFactory.createPhoneNumberList(phoneNumberList));

@@ -22,9 +22,9 @@ import sif3.infra.rest.consumer.ConsumerLoader;
 public class CalendarSummaryConsumerTest extends BaseTest {
   private ConsumerTest<CalendarSummaryType, CalendarSummaryCollectionType> calendarSummaryTester = null;
   
-  public static final String REF_ID = "FCCC615A828841488934424AE2DA69CA";
-  private final String REF_ID_1 = "F9B62C7FFEFD44BEBC0F42389AB226D4";
-  private final String REF_ID_2 = "F0A8EEA4D0024EF69164EF430E3E77F0";
+  public static final String REF_ID = "fccc615a-8288-4148-8934-424ae2da69ca";
+  private final String REF_ID_1 = "f9b62c7f-fefd-44be-bc0f-42389ab226d4";
+  private final String REF_ID_2 = "f0a8eea4-d002-4ef6-9164-ef430e3e77f0";
   private final String[] REF_IDS = { REF_ID_1, REF_ID_2 };
 
   @Test
@@ -56,19 +56,19 @@ public class CalendarSummaryConsumerTest extends BaseTest {
     calendarSummaryTester.doCreateOne(calendarSummary);
     String xmlExpectedTo = calendarSummaryTester.getXML(calendarSummary);
     
-    calendarSummary.setRefId("0CE39BE7F574445AA2103303AE5E3642");
+    calendarSummary.setRefId("0ce39be7-f574-445a-a210-3303ae5e3642");
     calendarSummaryTester.doCreateOne(calendarSummary);
 
-    calendarSummary.setRefId("5A0BC81D3E964B4894C58E25A0562998");
+    calendarSummary.setRefId("5a0bc81d-3e96-4b48-94c5-8e25a0562998");
     calendarSummaryTester.doCreateOne(calendarSummary);
 
-    calendarSummary.setRefId("7E947C78E69D4D0F8CADC46E4AF91B9B");
+    calendarSummary.setRefId("7e947c78-e69d-4d0f-8cad-c46e4af91b9b");
     calendarSummaryTester.doCreateOne(calendarSummary);
 
     calendarSummary.setYearLevels(null);
     calendarSummaryTester.doUpdateOne(calendarSummary, calendarSummary.getRefId());
 
-    calendarSummary.setRefId("24DD6830126A4A8FAA4EC7045E68F8F0");
+    calendarSummary.setRefId("24dd6830-126a-4a8f-aa4e-c7045e68f8f0");
     calendarSummaryTester.doCreateOne(calendarSummary);
 
     CalendarSummaryType getResult = calendarSummaryTester.doGetOne(REF_ID);

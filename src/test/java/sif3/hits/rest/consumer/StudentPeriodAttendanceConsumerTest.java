@@ -25,9 +25,9 @@ import sif3.infra.rest.consumer.ConsumerLoader;
 public class StudentPeriodAttendanceConsumerTest extends BaseTest {
   private ConsumerTest<StudentPeriodAttendanceType, StudentPeriodAttendanceCollectionType> studentPeriodAttendanceTester = null;
 
-  public static final String REF_ID = "33CA9A7C131F40588F04E96ABDDF29CD";
-  private final String REF_ID_1 = "14BB2FE70A994858BEDF635B24CFF18C";
-  private final String REF_ID_2 = "30F645FF9AD44A21912087CE2EFCCCD6";
+  public static final String REF_ID = "33ca9a7c-131f-4058-8f04-e96abddf29cd";
+  private final String REF_ID_1 = "14bb2fe7-0a99-4858-bedf-635b24cff18c";
+  private final String REF_ID_2 = "30f645ff-9ad4-4a21-9120-87ce2efcccd6";
   private final String[] REF_IDS = { REF_ID_1, REF_ID_2 };
 
   @Test
@@ -64,19 +64,19 @@ public class StudentPeriodAttendanceConsumerTest extends BaseTest {
     studentPeriodAttendanceTester.doCreateOne(studentPeriodAttendance);
     String xmlExpectedTo = studentPeriodAttendanceTester.getXML(studentPeriodAttendance);
 
-    studentPeriodAttendance.setRefId("3636BD1E082147859C7163B9ADD400AD");
+    studentPeriodAttendance.setRefId("3636bd1e-0821-4785-9c71-63b9add400ad");
     studentPeriodAttendance.setStudentPersonalRefId(StudentPersonalRefIds.REF_ID_2);
     studentPeriodAttendanceTester.doCreateOne(studentPeriodAttendance);
 
-    studentPeriodAttendance.setRefId("EBB0C804D4B745E4BDB0D5B06157AED9");
+    studentPeriodAttendance.setRefId("ebb0c804-d4b7-45e4-bdb0-d5b06157aed9");
     studentPeriodAttendance.setStudentPersonalRefId(StudentPersonalRefIds.REF_ID_3);
     studentPeriodAttendanceTester.doCreateOne(studentPeriodAttendance);
 
-    studentPeriodAttendance.setRefId("34A1CDCD86EB4928BCAF41AB90C0DAFC");
+    studentPeriodAttendance.setRefId("34a1cdcd-86eb-4928-bcaf-41ab90c0dafc");
     studentPeriodAttendance.setStudentPersonalRefId(StudentPersonalRefIds.REF_ID_4);
     studentPeriodAttendanceTester.doCreateOne(studentPeriodAttendance);
 
-    studentPeriodAttendance.setRefId("6E24C6DC371A4C7D9A0BCD160C1FD267");
+    studentPeriodAttendance.setRefId("6e24c6dc-371a-4c7d-9a0b-cd160c1fd267");
     studentPeriodAttendance.setStudentPersonalRefId(StudentPersonalRefIds.REF_ID_5);
     studentPeriodAttendanceTester.doCreateOne(studentPeriodAttendance);
 

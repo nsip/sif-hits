@@ -22,9 +22,9 @@ import sif3.infra.rest.consumer.ConsumerLoader;
 public class StudentAttendanceSummaryConsumerTest extends BaseTest {
   private ConsumerTest<StudentAttendanceSummaryType, StudentAttendanceSummaryCollectionType> studentAttendanceSummaryTest = null;
   
-  public static final String REF_ID = "9A6F7AC869494F338407ED6FDBD08564";
-  private final String REF_ID_1 = "3DE3AEFB96B54D029F44BA579CDBC7B5";
-  private final String REF_ID_2 = "1382A1E55AE44622B3B0D23EA52B1117";
+  public static final String REF_ID = "9a6f7ac8-6949-4f33-8407-ed6fdbd08564";
+  private final String REF_ID_1 = "3de3aefb-96b5-4d02-9f44-ba579cdbc7b5";
+  private final String REF_ID_2 = "1382a1e5-5ae4-4622-b3b0-d23ea52b1117";
   private final String[] REF_IDS = { REF_ID_1, REF_ID_2 };
   
   @Test
@@ -48,19 +48,19 @@ public class StudentAttendanceSummaryConsumerTest extends BaseTest {
     studentAttendanceSummaryTest.doCreateOne(studentAttendanceSummary);
     String xmlExpectedTo = studentAttendanceSummaryTest.getXML(studentAttendanceSummary);
     
-    studentAttendanceSummary.setStudentAttendanceSummaryRefId(objectFactory.createStudentAttendanceSummaryTypeStudentAttendanceSummaryRefId("61D0EE014C3C471092FEBCBFD4764912"));
+    studentAttendanceSummary.setStudentAttendanceSummaryRefId(objectFactory.createStudentAttendanceSummaryTypeStudentAttendanceSummaryRefId("61d0ee01-4c3c-4710-92fe-bcbfd4764912"));
     studentAttendanceSummary.setStudentPersonalRefId(StudentPersonalRefIds.REF_ID_2);
     studentAttendanceSummaryTest.doCreateOne(studentAttendanceSummary);
 
-    studentAttendanceSummary.setStudentAttendanceSummaryRefId(objectFactory.createStudentAttendanceSummaryTypeStudentAttendanceSummaryRefId("4BECA256C88047FE98875DF45FD71E41"));
+    studentAttendanceSummary.setStudentAttendanceSummaryRefId(objectFactory.createStudentAttendanceSummaryTypeStudentAttendanceSummaryRefId("4beca256-c880-47fe-9887-5df45fd71e41"));
     studentAttendanceSummary.setStudentPersonalRefId(StudentPersonalRefIds.REF_ID_3);
     studentAttendanceSummaryTest.doCreateOne(studentAttendanceSummary);
 
-    studentAttendanceSummary.setStudentAttendanceSummaryRefId(objectFactory.createStudentAttendanceSummaryTypeStudentAttendanceSummaryRefId("9651425CB9E9427B89B655D64A07D375"));
+    studentAttendanceSummary.setStudentAttendanceSummaryRefId(objectFactory.createStudentAttendanceSummaryTypeStudentAttendanceSummaryRefId("9651425c-b9e9-427b-89b6-55d64a07d375"));
     studentAttendanceSummary.setStudentPersonalRefId(StudentPersonalRefIds.REF_ID_4);
     studentAttendanceSummaryTest.doCreateOne(studentAttendanceSummary);
 
-    studentAttendanceSummary.setStudentAttendanceSummaryRefId(objectFactory.createStudentAttendanceSummaryTypeStudentAttendanceSummaryRefId("D708A61B2FAD4A84A298D5ED23F88747"));
+    studentAttendanceSummary.setStudentAttendanceSummaryRefId(objectFactory.createStudentAttendanceSummaryTypeStudentAttendanceSummaryRefId("d708a61b-2fad-4a84-a298-d5ed23f88747"));
     studentAttendanceSummary.setStudentPersonalRefId(StudentPersonalRefIds.REF_ID_5);
     studentAttendanceSummaryTest.doCreateOne(studentAttendanceSummary);
     

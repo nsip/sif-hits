@@ -21,9 +21,9 @@ import sif3.infra.rest.consumer.ConsumerLoader;
 public class SessionInfoConsumerTest extends BaseTest {
   private ConsumerTest<SessionInfoType, SessionInfoCollectionType> sessionInfoTester = null;
   
-  public static final String REF_ID = "07686CCEC91645E58741B42AADBC4BDB";
-  private final String REF_ID_1 = "5F18D34A4B9B49599AF55C991378DE99";
-  private final String REF_ID_2 = "D66F4094F23044F68B3376EEB11E2DFF";
+  public static final String REF_ID = "07686cce-c916-45e5-8741-b42aadbc4bdb";
+  private final String REF_ID_1 = "5f18d34a-4b9b-4959-9af5-5c991378de99";
+  private final String REF_ID_2 = "d66f4094-f230-44f6-8b33-76eeb11e2dff";
   private final String[] REF_IDS = { REF_ID_1, REF_ID_2 };
   
   @Test
@@ -49,16 +49,16 @@ public class SessionInfoConsumerTest extends BaseTest {
     sessionInfoTester.doCreateOne(sessionInfo);
     String xmlExpectedTo = sessionInfoTester.getXML(sessionInfo);
     
-    sessionInfo.setRefId("A544E2408DBA475A886505EDE06AA89B");
+    sessionInfo.setRefId("a544e240-8dba-475a-8865-05ede06aa89b");
     sessionInfoTester.doCreateOne(sessionInfo);
     
-    sessionInfo.setRefId("B62C8E48F2944CB4B81D50994EDBF4AE");
+    sessionInfo.setRefId("b62c8e48-f294-4cb4-b81d-50994edbf4ae");
     sessionInfoTester.doCreateOne(sessionInfo);
 
-    sessionInfo.setRefId("8C9EB910863E4B4EB2F2A383C8B8180C");
+    sessionInfo.setRefId("8c9eb910-863e-4b4e-b2f2-a383c8b8180c");
     sessionInfoTester.doCreateOne(sessionInfo);
 
-    sessionInfo.setRefId("2343B754BBAE472FA92E5E876CBE60B0");
+    sessionInfo.setRefId("2343b754-bbae-472f-a92e-5e876cbe60b0");
     sessionInfoTester.doCreateOne(sessionInfo);
 
     SessionInfoType getResult = sessionInfoTester.doGetOne(REF_ID);

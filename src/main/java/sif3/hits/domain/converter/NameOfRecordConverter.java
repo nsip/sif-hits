@@ -6,9 +6,10 @@ import sif.dd.au30.model.NameOfRecordType;
 import sif3.hits.domain.converter.factory.ObjectFactory;
 import sif3.hits.domain.model.Person;
 import sif3.hits.domain.model.StaffPerson;
+import sif3.hits.utils.UsesConstants;
 
 @Component
-public class NameOfRecordConverter extends HitsConverter<NameOfRecordType, Person> {
+public class NameOfRecordConverter extends HitsConverter<NameOfRecordType, Person> implements UsesConstants {
 
   public NameOfRecordConverter() {
     super(NameOfRecordType.class, null);
@@ -18,6 +19,7 @@ public class NameOfRecordConverter extends HitsConverter<NameOfRecordType, Perso
   public void toSifModel(Person source, NameOfRecordType target) {
     if (source != null && target != null) {
       ObjectFactory objectFactory = getObjectFactory();
+      target.setType(DEFAULT_NAME_TYPE);
       target.setTitle(objectFactory.createBaseNameTypeTitle(source.getTitle()));
       target.setFamilyName(objectFactory.createBaseNameTypeFamilyName(source.getFamilyName()));
       target.setGivenName(objectFactory.createBaseNameTypeGivenName(source.getGivenName()));
