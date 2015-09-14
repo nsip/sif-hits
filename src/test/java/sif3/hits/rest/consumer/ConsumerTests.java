@@ -40,11 +40,30 @@ import org.junit.runners.Suite.SuiteClasses;
 })
 public class ConsumerTests {
 /*
- * On an empty database you will see 35 failures on first run.
+ * On an empty database you will see failures on first run.
  * This first run will create all necessary data.
  * Subsequent executions should see 0 failures.
  * 
  * <pre>
+delete from hits_sif3_infra.SIF3_SESSION;
+
+delete from Journal;
+delete from Invoice_FinancialAccount;
+delete from PaymentReceipt_FinancialAccount;
+delete from PurchaseOrder_PurchasingItem_ExpenseAccount;
+delete from PurchaseOrder_PurchasingItems;
+update FinancialAccount set SubAccount_RefId = null;
+delete from FinancialAccount;
+update LocationInfo set Parent_LocationInfo_RefId = null;
+delete from FinancialClass;
+delete from PaymentReceipt;
+delete from Invoice;
+delete from PurchaseOrder;
+delete from LocationInfo;
+delete from VendorInfo;
+delete from Debtor;
+delete from GradingAssignmentScore;
+delete from GradingAssignment;
 delete from Address;
 delete from StudentAttendanceTimeList_AttendanceTime_OtherCode;
 delete from StudentAttendanceTimeList_AttendanceTime;

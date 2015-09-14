@@ -5,12 +5,15 @@ import java.lang.reflect.Method;
 import java.lang.reflect.Proxy;
 import java.math.BigDecimal;
 import java.math.BigInteger;
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Collection;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.TimeZone;
 
 import javax.xml.bind.JAXBElement;
 import javax.xml.datatype.DatatypeFactory;
@@ -210,6 +213,17 @@ public abstract class HitsConverter<S, H> {
 
   private static final FastDateFormat calendarFormat = FastDateFormat.getInstance("yyyyMMddHHmmssSSSZZ");
 
+  public static void main(String[] args) throws ParseException {
+    String x = "20150908224138344+10:00";
+    Date d = calendarFormat.parse(x);
+    System.out.println(d.getTimezoneOffset());
+    TimeZone timeZone = TimeZone.getTimeZone(TimeZone.getAvailableIDs(d.getTimezoneOffset()*60000)[0]);
+    Calendar temp = Calendar.getInstance(timeZone);
+    temp.setTime(d);
+    System.out.println(calendarFormat.format(temp));
+    
+  }
+  
   protected Calendar getCalendarValue(String value) {
     Calendar result = null;
     try {
