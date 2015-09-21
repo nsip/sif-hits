@@ -118,7 +118,7 @@ public class PurchaseOrder extends HitsEntity {
     this.fullyDelivered = fullyDelivered;
   }
   
-  @OneToMany(mappedBy = "purchaseOrder", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+  @OneToMany(mappedBy = "purchaseOrder", fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
   public Set<PurchasingItem> getPurchasingItems() {
     return purchasingItems;
   }

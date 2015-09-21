@@ -23,6 +23,9 @@ import sif.dd.au30.model.ScheduledActivityType.TeacherList.TeacherCover;
 import sif.dd.au30.model.ScheduledActivityType.TeachingGroupList;
 import sif.dd.au30.model.YearLevelType;
 import sif.dd.au30.model.YearLevelsType;
+import sif3.common.exception.MarshalException;
+import sif3.common.exception.UnmarshalException;
+import sif3.common.exception.UnsupportedMediaTypeExcpetion;
 import sif3.common.ws.BulkOperationResponse;
 import sif3.common.ws.CreateOperationStatus;
 import sif3.common.ws.OperationStatus;
@@ -34,6 +37,7 @@ public class ScheduledActivityConsumerTest extends BaseTest {
   private ConsumerTest<ScheduledActivityType, ScheduledActivityCollectionType> scheduledActivityTester = null;
   
   public static final String REF_ID = "af7d1111-419b-4ff5-a3e8-d49bcb8456e5";
+  public static final String REF_ID_5 = "78748f1f-474a-461d-a7d4-4e1f1d7a4b90";
   private final String REF_ID_1 = "596bd118-14cb-485a-84d3-593fc5703958";
   private final String REF_ID_2 = "df54713a-db1c-4428-a418-d8a5964d893a";
   private final String[] REF_IDS = { REF_ID_1, REF_ID_2 };
@@ -110,13 +114,15 @@ public class ScheduledActivityConsumerTest extends BaseTest {
     scheduledActivity.setRefId("44db9710-5f26-43c2-b3db-0e4168e8d0db");
     scheduledActivityTester.doCreateOne(scheduledActivity);
 
-    scheduledActivity.setRefId("78748f1f-474a-461d-a7d4-4e1f1d7a4b90");
+    scheduledActivity.setRefId(REF_ID_5);
     scheduledActivityTester.doCreateOne(scheduledActivity);
 
     ScheduledActivityType getResult = scheduledActivityTester.doGetOne(REF_ID);
     String xmlExpectedFrom = scheduledActivityTester.getXML(getResult);
     boolean semiEquals = semiEquals(xmlExpectedFrom, xmlExpectedTo);
     if (!semiEquals) {
+      System.out.println("From:\n" + xmlExpectedFrom);
+      System.out.println("\nTo:\n" + xmlExpectedTo);
       Assert.assertEquals("XML Differs", xmlExpectedFrom, xmlExpectedTo);
     }
   }
@@ -129,6 +135,128 @@ public class ScheduledActivityConsumerTest extends BaseTest {
         ScheduledActivityType.class, "ScheduledActivity", ScheduledActivityCollectionType.class, "ScheduledActivitys");
     scheduledActivityTester.testDeleteMany(REF_IDS);
   }
+  
+  @Test
+  public void testUpdateSingle() throws Exception {
+    List<Response> responses = scheduledActivityTester.testGetSingle(REF_ID);
+    Assert.assertNotNull(responses);
+    Assert.assertEquals(1, responses.size());
+    Response response = responses.get(0);
+    Assert.assertNotNull(response.getDataObject());
+    ScheduledActivityType scheduledActivity = (ScheduledActivityType) response.getDataObject();
+    Assert.assertEquals(REF_ID, scheduledActivity.getRefId());
+
+    String xmlExpectedFrom = scheduledActivityTester.getXML(scheduledActivity);
+
+    List<Response> updateResponses = scheduledActivityTester.doUpdateOne(scheduledActivity, REF_ID);
+    Assert.assertNotNull(updateResponses);
+    Assert.assertEquals(1, updateResponses.size());
+    Assert.assertEquals(updateResponses.get(0).getStatus(), HttpStatus.NO_CONTENT.value());
+
+    List<Response> getResponses = scheduledActivityTester.testGetSingle(REF_ID);
+    Assert.assertNotNull(getResponses);
+    Assert.assertEquals(1, getResponses.size());
+    Response getResponse = getResponses.get(0);
+    Assert.assertNotNull(getResponse.getDataObject());
+    ScheduledActivityType comparisonTo = (ScheduledActivityType) getResponse.getDataObject();
+    Assert.assertEquals(REF_ID, comparisonTo.getRefId());
+    String xmlExpectedTo = scheduledActivityTester.getXML(comparisonTo);
+
+    boolean semiEquals = semiEquals(xmlExpectedFrom, xmlExpectedTo);
+    if (!semiEquals) {
+      System.out.println("From:\n" + xmlExpectedFrom);
+      System.out.println("\nTo:\n" + xmlExpectedTo);
+      Assert.assertEquals("XML Differs", xmlExpectedFrom, xmlExpectedTo);
+    }
+  }
+  
+  @Test
+  public void testUpdateEmptyTeachers() throws UnmarshalException, UnsupportedMediaTypeExcpetion, MarshalException {
+    String contents = scheduledActivityTester.getFileContents("scheduledactivity.xml");
+    ScheduledActivityType scheduledActivity = scheduledActivityTester.fromXML(contents);
+    scheduledActivity.getTeacherList().getValue().getTeacherCover().clear();
+    String xmlExpectedFrom = scheduledActivityTester.getXML(scheduledActivity);
+    
+    List<Response> createResponses = scheduledActivityTester.doCreateOne(scheduledActivity);
+    Assert.assertNotNull(createResponses);
+    Assert.assertEquals(1, createResponses.size());
+    Response createResponse = createResponses.get(0);
+    Assert.assertNotNull(createResponse.getDataObject());
+    ScheduledActivityType createdScheduledActivity = (ScheduledActivityType) createResponse.getDataObject();
+    Assert.assertEquals(REF_ID_1, createdScheduledActivity.getRefId());
+    
+    String xmlExpectedCreate = scheduledActivityTester.getXML(createdScheduledActivity);
+    
+    List<Response> updateResponses = scheduledActivityTester.doUpdateOne(scheduledActivity, REF_ID_1);
+    Assert.assertNotNull(updateResponses);
+    Assert.assertEquals(1, updateResponses.size());
+    Assert.assertEquals(updateResponses.get(0).getStatus(), HttpStatus.NO_CONTENT.value());
+    
+    List<Response> getResponses = scheduledActivityTester.testGetSingle(REF_ID_1);
+    Assert.assertNotNull(getResponses);
+    Assert.assertEquals(1, getResponses.size());
+    Response getResponse = getResponses.get(0);
+    Assert.assertNotNull(getResponse.getDataObject());
+    ScheduledActivityType comparisonTo = (ScheduledActivityType) getResponse.getDataObject();
+    Assert.assertEquals(REF_ID_1, comparisonTo.getRefId());
+    String xmlExpectedTo = scheduledActivityTester.getXML(comparisonTo);
+
+    boolean semiEquals = semiEquals(xmlExpectedFrom, xmlExpectedTo);
+    boolean semiEqualsTwo = semiEquals(xmlExpectedFrom, xmlExpectedCreate);
+    if (!semiEquals || !semiEqualsTwo) {
+      System.out.println("From:\n" + xmlExpectedFrom);
+      System.out.println("\nCreate:\n" + xmlExpectedCreate);
+      System.out.println("\nTo:\n" + xmlExpectedTo);
+      Assert.assertEquals("XML Differs", xmlExpectedFrom, xmlExpectedTo);
+    }
+  }
+  
+  @Test
+  public void testUpdateFullTeachers() throws UnmarshalException, UnsupportedMediaTypeExcpetion, MarshalException {
+    String contents = scheduledActivityTester.getFileContents("scheduledactivity.xml");
+    ScheduledActivityType scheduledActivity = scheduledActivityTester.fromXML(contents);
+    String xmlExpectedFrom = scheduledActivityTester.getXML(scheduledActivity);
+    
+    List<Response> createResponses = scheduledActivityTester.doCreateOne(scheduledActivity);
+    Assert.assertNotNull(createResponses);
+    Assert.assertEquals(1, createResponses.size());
+    Response createResponse = createResponses.get(0);
+    Assert.assertNotNull(createResponse.getDataObject());
+    ScheduledActivityType createdScheduledActivity = (ScheduledActivityType) createResponse.getDataObject();
+    Assert.assertEquals(REF_ID_1, createdScheduledActivity.getRefId());
+    String xmlExpectedCreate = scheduledActivityTester.getXML(createdScheduledActivity);
+    
+    scheduledActivity.getTeacherList().getValue().getTeacherCover().clear();
+    String xmlExpectedUpdate = scheduledActivityTester.getXML(scheduledActivity);
+    
+    List<Response> updateResponses = scheduledActivityTester.doUpdateOne(scheduledActivity, REF_ID_1);
+    Assert.assertNotNull(updateResponses);
+    Assert.assertEquals(1, updateResponses.size());
+    Assert.assertEquals(updateResponses.get(0).getStatus(), HttpStatus.NO_CONTENT.value());
+    
+    List<Response> getResponses = scheduledActivityTester.testGetSingle(REF_ID_1);
+    Assert.assertNotNull(getResponses);
+    Assert.assertEquals(1, getResponses.size());
+    Response getResponse = getResponses.get(0);
+    Assert.assertNotNull(getResponse.getDataObject());
+    ScheduledActivityType comparisonTo = (ScheduledActivityType) getResponse.getDataObject();
+    Assert.assertEquals(REF_ID_1, comparisonTo.getRefId());
+    String xmlExpectedTo = scheduledActivityTester.getXML(comparisonTo);
+
+    boolean semiEquals = semiEquals(xmlExpectedUpdate, xmlExpectedTo);
+    boolean semiEqualsTwo = semiEquals(xmlExpectedFrom, xmlExpectedCreate);
+    if (!semiEqualsTwo) {
+      System.out.println("From:\n" + xmlExpectedFrom);
+      System.out.println("\nCreate:\n" + xmlExpectedCreate);
+      Assert.assertEquals("XML Differs", xmlExpectedFrom, xmlExpectedCreate);
+    }
+    if (!semiEquals) {
+      System.out.println("Update:\n" + xmlExpectedUpdate);
+      System.out.println("\nTo:\n" + xmlExpectedTo);
+      Assert.assertEquals("XML Differs", xmlExpectedUpdate, xmlExpectedTo);
+    }
+  }
+
   
   @Test
   public void testGetSingle() {

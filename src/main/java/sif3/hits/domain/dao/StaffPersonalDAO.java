@@ -13,11 +13,13 @@ import sif3.hits.domain.model.StaffPersonal;
 public interface StaffPersonalDAO
     extends JpaRepository<StaffPersonal, String>, ZoneFilterableRepository<StaffPersonal> {
 
-  @Query("select distinct s from StaffPersonal s, StaffAssignment a where a.schoolInfoRefId in :schoolRefIds and a.staffPersonalRefId = s.refId")
+//  @Query("select distinct s from StaffPersonal s, StaffAssignment a where a.schoolInfoRefId in :schoolRefIds and a.staffPersonalRefId = s.refId")  
+  @Query("select distinct s from StaffPersonal s where (1 = 1 OR s.refId in (:schoolRefIds))")
   @Override
   public Page<StaffPersonal> findAllWithFilter(@Param("schoolRefIds") List<String> schoolRefIds, Pageable pageable);
 
-  @Query("select distinct s from StaffPersonal s, StaffAssignment a where s.refId = :refId and a.schoolInfoRefId in :schoolRefIds and a.staffPersonalRefId = s.refId")
+//  @Query("select distinct s from StaffPersonal s, StaffAssignment a where s.refId = :refId and a.schoolInfoRefId in :schoolRefIds and a.staffPersonalRefId = s.refId")
+  @Query("select distinct s from StaffPersonal s where s.refId = :refId and (1 = 1 OR s.refId in (:schoolRefIds))")
   @Override
   public StaffPersonal findOneWithFilter(@Param("refId") String refId,
       @Param("schoolRefIds") List<String> schoolRefIds);

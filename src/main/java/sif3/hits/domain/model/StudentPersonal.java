@@ -2,6 +2,7 @@ package sif3.hits.domain.model;
 
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -262,7 +263,7 @@ public class StudentPersonal extends HitsEntity implements StudentPerson, Addres
     this.religion = religion;
   }
   
-  @OneToMany(fetch = FetchType.EAGER, mappedBy = "studentPersonalOtherIdId.studentPersonal")
+  @OneToMany(fetch = FetchType.LAZY, mappedBy = "studentPersonalOtherIdId.studentPersonal", cascade = CascadeType.ALL, orphanRemoval = true)
   public Set<StudentPersonalOtherId> getOtherIds() {
     return otherIds;
   }
@@ -271,7 +272,7 @@ public class StudentPersonal extends HitsEntity implements StudentPerson, Addres
     this.otherIds = otherIds;
   }
   
-  @OneToMany(fetch = FetchType.EAGER)
+  @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
   @JoinColumn(name = "Person_RefId")
   public Set<Address> getAddresses() {
     return addresses;

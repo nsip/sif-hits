@@ -84,7 +84,7 @@ public class PurchasingItem extends HitsEntity {
     this.quantityDelivered = quantityDelivered;
   }
 
-  @OneToOne(mappedBy = "purchasingItem", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+  @OneToOne(mappedBy = "purchasingItem", fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
   public ExpenseAccount getExpenseAccount() {
     return expenseAccount;
   }

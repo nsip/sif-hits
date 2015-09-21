@@ -92,6 +92,7 @@ public class VendorInfoConverter extends HitsConverter<VendorInfoType, VendorInf
       ContactInfoType contactInfo = getJAXBValue(source.getContactInfo());
       if (contactInfo != null) {
         target.setAddress(addressConverter.toHitsModel(getJAXBValue(contactInfo.getAddress())));
+        target.getAddress().setPersonRefId(source.getRefId());
 
         EmailListType emailList = getJAXBValue(contactInfo.getEmailList());
         if (emailList != null && emailList.getEmail() != null && !emailList.getEmail().isEmpty()) {

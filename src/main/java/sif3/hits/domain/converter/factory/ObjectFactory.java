@@ -1479,8 +1479,6 @@ public interface ObjectFactory {
 
   JAXBElement<OtherNamesType> createOtherNames(OtherNamesType value);
 
-  JAXBElement<SchoolCollectionType> createSchools(SchoolCollectionType value);
-
   JAXBElement<StudentAttendanceTimeListType> createStudentAttendanceTimeList(StudentAttendanceTimeListType value);
 
   JAXBElement<EmailType> createEmail(EmailType value);
@@ -4345,5 +4343,7 @@ public interface ObjectFactory {
   JAXBElement<String> createAssessmentFormTypeAssessmentType(String value);
 
   JAXBElement<String> createLifeCycleTypeModificationHistoryModifiedDescription(String value);
+  
+  
 
 }

@@ -94,6 +94,40 @@ public class LocationInfoConsumerTest extends BaseTest implements UsesConstants 
         "ChargedLocationInfos");
     locationTester.testDeleteMany(REF_IDS);
   }
+  
+  @Test
+  public void testUpdateSingle() throws Exception {
+    List<Response> responses = locationTester.testGetSingle(LocationInfoRefIds.REF_ID_1);
+    Assert.assertNotNull(responses);
+    Assert.assertEquals(1, responses.size());
+    Response response = responses.get(0);
+    Assert.assertNotNull(response.getDataObject());
+    ChargedLocationInfoType locationInfo = (ChargedLocationInfoType) response.getDataObject();
+    Assert.assertEquals(LocationInfoRefIds.REF_ID_1, locationInfo.getRefId());
+    
+    String xmlExpectedFrom = locationTester.getXML(locationInfo);
+    
+    List<Response> updateResponses = locationTester.doUpdateOne(locationInfo, LocationInfoRefIds.REF_ID_1);
+    Assert.assertNotNull(updateResponses);
+    Assert.assertEquals(1, updateResponses.size());
+    Assert.assertEquals(updateResponses.get(0).getStatus(), HttpStatus.NO_CONTENT.value());
+    
+    List<Response> getResponses = locationTester.testGetSingle(LocationInfoRefIds.REF_ID_1);
+    Assert.assertNotNull(getResponses);
+    Assert.assertEquals(1, getResponses.size());
+    Response getResponse = getResponses.get(0);
+    Assert.assertNotNull(getResponse.getDataObject());
+    ChargedLocationInfoType comparisonTo = (ChargedLocationInfoType) getResponse.getDataObject();
+    Assert.assertEquals(LocationInfoRefIds.REF_ID_1, comparisonTo.getRefId());
+    String xmlExpectedTo = locationTester.getXML(comparisonTo);
+    
+    boolean semiEquals = semiEquals(xmlExpectedFrom, xmlExpectedTo);
+    if (!semiEquals) {
+      System.out.println("From:\n" + xmlExpectedFrom);
+      System.out.println("\nTo:\n" + xmlExpectedTo);
+      Assert.assertEquals("XML Differs", xmlExpectedFrom, xmlExpectedTo);
+    }
+  }
 
   @Test
   public void testGetSingle() {
@@ -102,8 +136,8 @@ public class LocationInfoConsumerTest extends BaseTest implements UsesConstants 
     Assert.assertEquals(1, responses.size());
     Response response = responses.get(0);
     Assert.assertNotNull(response.getDataObject());
-    ChargedLocationInfoType studentPersonal = (ChargedLocationInfoType) response.getDataObject();
-    Assert.assertEquals(LocationInfoRefIds.REF_ID_1, studentPersonal.getRefId());
+    ChargedLocationInfoType locationInfo = (ChargedLocationInfoType) response.getDataObject();
+    Assert.assertEquals(LocationInfoRefIds.REF_ID_1, locationInfo.getRefId());
   }
 
   @Test
@@ -125,8 +159,8 @@ public class LocationInfoConsumerTest extends BaseTest implements UsesConstants 
     Assert.assertEquals(1, createResponses.size());
     Response createResponse = createResponses.get(0);
     Assert.assertNotNull(createResponse.getDataObject());
-    ChargedLocationInfoType studentPersonal = (ChargedLocationInfoType) createResponse.getDataObject();
-    Assert.assertEquals(REF_ID_1, studentPersonal.getRefId());
+    ChargedLocationInfoType locationInfo = (ChargedLocationInfoType) createResponse.getDataObject();
+    Assert.assertEquals(REF_ID_1, locationInfo.getRefId());
 
     List<Response> deleteResponses = locationTester.testDeleteOne(REF_ID_1);
     Assert.assertNotNull(deleteResponses);

@@ -221,7 +221,7 @@ public class ScheduledActivity extends HitsEntity {
     this.teachingGroupRefIds = teachingGroupRefIds;
   }
 
-  @OneToMany(fetch = FetchType.EAGER, mappedBy = "scheduledActivityTeacherId.scheduledActivity", cascade = CascadeType.ALL)
+  @OneToMany(fetch = FetchType.LAZY, mappedBy = "scheduledActivityTeacherId.scheduledActivity", cascade = CascadeType.ALL, orphanRemoval = true)
   public Set<ScheduledActivityTeacher> getTeachers() {
     return teachers;
   }

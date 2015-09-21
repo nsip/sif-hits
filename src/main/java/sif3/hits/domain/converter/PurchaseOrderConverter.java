@@ -83,6 +83,9 @@ public class PurchaseOrderConverter extends HitsConverter<PurchaseOrderType, Pur
       PurchasingItems purchasingItems = source.getPurchasingItems();
       if (purchasingItems != null && purchasingItems.getPurchasingItem() != null&& !purchasingItems.getPurchasingItem().isEmpty()) {
         target.getPurchasingItems().addAll(purchasingItemsConverter.toHitsModelList(purchasingItems.getPurchasingItem()));
+        for (PurchasingItem purchasingItem : target.getPurchasingItems()) {
+          purchasingItem.setPurchaseOrder(target);
+        }
       }
 
       MonetaryAmountType monetaryAmountType = getJAXBValue(source.getTaxAmount());

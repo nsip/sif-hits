@@ -133,8 +133,16 @@ public class ScheduledActivityConverter extends HitsConverter<ScheduledActivityT
       TeacherList teacherList = getJAXBValue(source.getTeacherList());
       if (teacherList != null && teacherList.getTeacherCover() != null) {
         teachers.addAll(scheduledActivityTeacherConverter.toHitsModelList(teacherList.getTeacherCover()));
+        for (ScheduledActivityTeacher teacher : teachers) {
+          teacher.setScheduledActivity(target);
+        }
       }
-      target.setTeachers(teachers);
+      if (target.getTeachers() == null) {
+        target.setTeachers(new HashSet<ScheduledActivityTeacher>());
+      } else {
+        target.getTeachers().clear();
+      }
+      target.getTeachers().addAll(teachers);
 
       YearLevelsType yearLevelsType = getJAXBValue(source.getYearLevels());
       if (yearLevelsType != null) {

@@ -142,6 +142,40 @@ public class PurchaseOrderConsumerTest extends BaseTest implements UsesConstants
         "PurchaseOrder", PurchaseOrderCollectionType.class, "PurchaseOrders");
     purchaseOrderTester.testDeleteMany(REF_IDS);
   }
+  
+  @Test
+  public void testUpdateSingle() throws Exception {
+    List<Response> responses = purchaseOrderTester.testGetSingle(PurchaseOrderRefIds.REF_ID_1);
+    Assert.assertNotNull(responses);
+    Assert.assertEquals(1, responses.size());
+    Response response = responses.get(0);
+    Assert.assertNotNull(response.getDataObject());
+    PurchaseOrderType purchaseOrder = (PurchaseOrderType) response.getDataObject();
+    Assert.assertEquals(PurchaseOrderRefIds.REF_ID_1, purchaseOrder.getRefId());
+    
+    String xmlExpectedFrom = purchaseOrderTester.getXML(purchaseOrder);
+    
+    List<Response> updateResponses = purchaseOrderTester.doUpdateOne(purchaseOrder, PurchaseOrderRefIds.REF_ID_1);
+    Assert.assertNotNull(updateResponses);
+    Assert.assertEquals(1, updateResponses.size());
+    Assert.assertEquals(updateResponses.get(0).getStatus(), HttpStatus.NO_CONTENT.value());
+    
+    List<Response> getResponses = purchaseOrderTester.testGetSingle(PurchaseOrderRefIds.REF_ID_1);
+    Assert.assertNotNull(getResponses);
+    Assert.assertEquals(1, getResponses.size());
+    Response getResponse = getResponses.get(0);
+    Assert.assertNotNull(getResponse.getDataObject());
+    PurchaseOrderType comparisonTo = (PurchaseOrderType) getResponse.getDataObject();
+    Assert.assertEquals(PurchaseOrderRefIds.REF_ID_1, comparisonTo.getRefId());
+    String xmlExpectedTo = purchaseOrderTester.getXML(comparisonTo);
+    
+    boolean semiEquals = semiEquals(xmlExpectedFrom, xmlExpectedTo);
+    if (!semiEquals) {
+      System.out.println("From:\n" + xmlExpectedFrom);
+      System.out.println("\nTo:\n" + xmlExpectedTo);
+      Assert.assertEquals("XML Differs", xmlExpectedFrom, xmlExpectedTo);
+    }
+  }
 
   @Test
   public void testGetSingle() {

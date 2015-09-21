@@ -116,7 +116,7 @@ public class CalendarSummary extends HitsEntity {
     this.minutesPerDay = minutesPerDay;
   }
 
-  @OneToMany(fetch = FetchType.EAGER, mappedBy = "calendarSummaryYearLevelId.calendarSummary")
+  @OneToMany(fetch = FetchType.LAZY, mappedBy = "calendarSummaryYearLevelId.calendarSummary")
   public Set<CalendarSummaryYearLevel> getCalendarSummaryYearLevels() {
     return calendarSummaryYearLevels;
   }

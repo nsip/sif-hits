@@ -83,6 +83,41 @@ public class StaffAssignmentConsumerTest extends BaseTest {
         StaffAssignmentType.class, "StaffAssignment", StaffAssignmentCollectionType.class, "StaffAssignments");
     staffAssignmentTester.testDeleteMany(REF_IDS);
   }
+  
+  @Test
+  public void testUpdateSingle() throws Exception {
+    List<Response> responses = staffAssignmentTester.testGetSingle(REF_ID);
+    Assert.assertNotNull(responses);
+    Assert.assertEquals(1, responses.size());
+    Response response = responses.get(0);
+    Assert.assertNotNull(response.getDataObject());
+    StaffAssignmentType staffAssignment = (StaffAssignmentType) response.getDataObject();
+    Assert.assertEquals(REF_ID, staffAssignment.getRefId());
+
+    String xmlExpectedFrom = staffAssignmentTester.getXML(staffAssignment);
+
+    List<Response> updateResponses = staffAssignmentTester.doUpdateOne(staffAssignment, REF_ID);
+    Assert.assertNotNull(updateResponses);
+    Assert.assertEquals(1, updateResponses.size());
+    Assert.assertEquals(updateResponses.get(0).getStatus(), HttpStatus.NO_CONTENT.value());
+
+    List<Response> getResponses = staffAssignmentTester.testGetSingle(REF_ID);
+    Assert.assertNotNull(getResponses);
+    Assert.assertEquals(1, getResponses.size());
+    Response getResponse = getResponses.get(0);
+    Assert.assertNotNull(getResponse.getDataObject());
+    StaffAssignmentType comparisonTo = (StaffAssignmentType) getResponse.getDataObject();
+    Assert.assertEquals(REF_ID, comparisonTo.getRefId());
+    String xmlExpectedTo = staffAssignmentTester.getXML(comparisonTo);
+
+    boolean semiEquals = semiEquals(xmlExpectedFrom, xmlExpectedTo);
+    if (!semiEquals) {
+      System.out.println("From:\n" + xmlExpectedFrom);
+      System.out.println("\nTo:\n" + xmlExpectedTo);
+      Assert.assertEquals("XML Differs", xmlExpectedFrom, xmlExpectedTo);
+    }
+  }
+  
 
   @Test
   public void testGetSingle() {
@@ -91,8 +126,8 @@ public class StaffAssignmentConsumerTest extends BaseTest {
     Assert.assertEquals(1, responses.size());
     Response response = responses.get(0);
     Assert.assertNotNull(response.getDataObject());
-    StaffAssignmentType staffAssignmentPersonal = (StaffAssignmentType) response.getDataObject();
-    Assert.assertEquals(REF_ID, staffAssignmentPersonal.getRefId());
+    StaffAssignmentType staffAssignment = (StaffAssignmentType) response.getDataObject();
+    Assert.assertEquals(REF_ID, staffAssignment.getRefId());
   }
 
   @Test
@@ -114,8 +149,8 @@ public class StaffAssignmentConsumerTest extends BaseTest {
     Assert.assertEquals(1, createResponses.size());
     Response createResponse = createResponses.get(0);
     Assert.assertNotNull(createResponse.getDataObject());
-    StaffAssignmentType staffAssignmentPersonal = (StaffAssignmentType) createResponse.getDataObject();
-    Assert.assertEquals(REF_ID_1, staffAssignmentPersonal.getRefId());
+    StaffAssignmentType staffAssignment = (StaffAssignmentType) createResponse.getDataObject();
+    Assert.assertEquals(REF_ID_1, staffAssignment.getRefId());
 
     List<Response> deleteResponses = staffAssignmentTester.testDeleteOne(REF_ID_1);
     Assert.assertNotNull(deleteResponses);

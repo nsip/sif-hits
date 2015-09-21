@@ -15,6 +15,9 @@ import sif.dd.au30.model.TimeTableType.TimeTableDayList;
 import sif.dd.au30.model.TimeTableType.TimeTableDayList.TimeTableDay;
 import sif.dd.au30.model.TimeTableType.TimeTableDayList.TimeTableDay.TimeTablePeriodList;
 import sif.dd.au30.model.TimeTableType.TimeTableDayList.TimeTableDay.TimeTablePeriodList.TimeTablePeriod;
+import sif3.common.exception.MarshalException;
+import sif3.common.exception.UnmarshalException;
+import sif3.common.exception.UnsupportedMediaTypeExcpetion;
 import sif3.common.ws.BulkOperationResponse;
 import sif3.common.ws.CreateOperationStatus;
 import sif3.common.ws.OperationStatus;
@@ -112,6 +115,127 @@ public class TimeTableConsumerTest extends BaseTest {
     timeTableTester = new ConsumerTest<TimeTableType, TimeTableCollectionType>(
         TimeTableType.class, "TimeTable", TimeTableCollectionType.class, "TimeTables");
     timeTableTester.testDeleteMany(REF_IDS);
+  }
+  
+  @Test
+  public void testUpdateSingle() throws Exception {
+    List<Response> responses = timeTableTester.testGetSingle(REF_ID);
+    Assert.assertNotNull(responses);
+    Assert.assertEquals(1, responses.size());
+    Response response = responses.get(0);
+    Assert.assertNotNull(response.getDataObject());
+    TimeTableType timeTable = (TimeTableType) response.getDataObject();
+    Assert.assertEquals(REF_ID, timeTable.getRefId());
+
+    String xmlExpectedFrom = timeTableTester.getXML(timeTable);
+
+    List<Response> updateResponses = timeTableTester.doUpdateOne(timeTable, REF_ID);
+    Assert.assertNotNull(updateResponses);
+    Assert.assertEquals(1, updateResponses.size());
+    Assert.assertEquals(updateResponses.get(0).getStatus(), HttpStatus.NO_CONTENT.value());
+
+    List<Response> getResponses = timeTableTester.testGetSingle(REF_ID);
+    Assert.assertNotNull(getResponses);
+    Assert.assertEquals(1, getResponses.size());
+    Response getResponse = getResponses.get(0);
+    Assert.assertNotNull(getResponse.getDataObject());
+    TimeTableType comparisonTo = (TimeTableType) getResponse.getDataObject();
+    Assert.assertEquals(REF_ID, comparisonTo.getRefId());
+    String xmlExpectedTo = timeTableTester.getXML(comparisonTo);
+
+    boolean semiEquals = semiEquals(xmlExpectedFrom, xmlExpectedTo);
+    if (!semiEquals) {
+      System.out.println("From:\n" + xmlExpectedFrom);
+      System.out.println("\nTo:\n" + xmlExpectedTo);
+      Assert.assertEquals("XML Differs", xmlExpectedFrom, xmlExpectedTo);
+    }
+  }
+  
+  @Test
+  public void testUpdateEmptyDays() throws UnmarshalException, UnsupportedMediaTypeExcpetion, MarshalException {
+    String contents = timeTableTester.getFileContents("timetable.xml");
+    TimeTableType timeTable = timeTableTester.fromXML(contents);
+    timeTable.getTimeTableDayList().getTimeTableDay().clear();
+    String xmlExpectedFrom = timeTableTester.getXML(timeTable);
+    
+    List<Response> createResponses = timeTableTester.doCreateOne(timeTable);
+    Assert.assertNotNull(createResponses);
+    Assert.assertEquals(1, createResponses.size());
+    Response createResponse = createResponses.get(0);
+    Assert.assertNotNull(createResponse.getDataObject());
+    TimeTableType createdTimeTable = (TimeTableType) createResponse.getDataObject();
+    Assert.assertEquals(REF_ID_1, createdTimeTable.getRefId());
+    
+    String xmlExpectedCreate = timeTableTester.getXML(createdTimeTable);
+    
+    List<Response> updateResponses = timeTableTester.doUpdateOne(timeTable, REF_ID_1);
+    Assert.assertNotNull(updateResponses);
+    Assert.assertEquals(1, updateResponses.size());
+    Assert.assertEquals(updateResponses.get(0).getStatus(), HttpStatus.NO_CONTENT.value());
+    
+    List<Response> getResponses = timeTableTester.testGetSingle(REF_ID_1);
+    Assert.assertNotNull(getResponses);
+    Assert.assertEquals(1, getResponses.size());
+    Response getResponse = getResponses.get(0);
+    Assert.assertNotNull(getResponse.getDataObject());
+    TimeTableType comparisonTo = (TimeTableType) getResponse.getDataObject();
+    Assert.assertEquals(REF_ID_1, comparisonTo.getRefId());
+    String xmlExpectedTo = timeTableTester.getXML(comparisonTo);
+
+    boolean semiEquals = semiEquals(xmlExpectedFrom, xmlExpectedTo);
+    boolean semiEqualsTwo = semiEquals(xmlExpectedFrom, xmlExpectedCreate);
+    if (!semiEquals || !semiEqualsTwo) {
+      System.out.println("From:\n" + xmlExpectedFrom);
+      System.out.println("\nCreate:\n" + xmlExpectedCreate);
+      System.out.println("\nTo:\n" + xmlExpectedTo);
+      Assert.assertEquals("XML Differs", xmlExpectedFrom, xmlExpectedTo);
+    }
+  }
+  
+  @Test
+  public void testUpdateFullDays() throws UnmarshalException, UnsupportedMediaTypeExcpetion, MarshalException {
+    String contents = timeTableTester.getFileContents("timetable.xml");
+    TimeTableType timeTable = timeTableTester.fromXML(contents);
+    String xmlExpectedFrom = timeTableTester.getXML(timeTable);
+    
+    List<Response> createResponses = timeTableTester.doCreateOne(timeTable);
+    Assert.assertNotNull(createResponses);
+    Assert.assertEquals(1, createResponses.size());
+    Response createResponse = createResponses.get(0);
+    Assert.assertNotNull(createResponse.getDataObject());
+    TimeTableType createdTimeTable = (TimeTableType) createResponse.getDataObject();
+    Assert.assertEquals(REF_ID_1, createdTimeTable.getRefId());
+    String xmlExpectedCreate = timeTableTester.getXML(createdTimeTable);
+    
+    timeTable.getTimeTableDayList().getTimeTableDay().clear();
+    String xmlExpectedUpdate = timeTableTester.getXML(timeTable);
+    
+    List<Response> updateResponses = timeTableTester.doUpdateOne(timeTable, REF_ID_1);
+    Assert.assertNotNull(updateResponses);
+    Assert.assertEquals(1, updateResponses.size());
+    Assert.assertEquals(updateResponses.get(0).getStatus(), HttpStatus.NO_CONTENT.value());
+    
+    List<Response> getResponses = timeTableTester.testGetSingle(REF_ID_1);
+    Assert.assertNotNull(getResponses);
+    Assert.assertEquals(1, getResponses.size());
+    Response getResponse = getResponses.get(0);
+    Assert.assertNotNull(getResponse.getDataObject());
+    TimeTableType comparisonTo = (TimeTableType) getResponse.getDataObject();
+    Assert.assertEquals(REF_ID_1, comparisonTo.getRefId());
+    String xmlExpectedTo = timeTableTester.getXML(comparisonTo);
+
+    boolean semiEquals = semiEquals(xmlExpectedUpdate, xmlExpectedTo);
+    boolean semiEqualsTwo = semiEquals(xmlExpectedFrom, xmlExpectedCreate);
+    if (!semiEqualsTwo) {
+      System.out.println("From:\n" + xmlExpectedFrom);
+      System.out.println("\nCreate:\n" + xmlExpectedCreate);
+      Assert.assertEquals("XML Differs", xmlExpectedFrom, xmlExpectedCreate);
+    }
+    if (!semiEquals) {
+      System.out.println("Update:\n" + xmlExpectedUpdate);
+      System.out.println("\nTo:\n" + xmlExpectedTo);
+      Assert.assertEquals("XML Differs", xmlExpectedUpdate, xmlExpectedTo);
+    }
   }
   
   @Test

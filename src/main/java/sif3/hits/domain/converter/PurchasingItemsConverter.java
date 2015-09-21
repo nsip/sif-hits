@@ -56,6 +56,9 @@ public class PurchasingItemsConverter extends HitsConverter<sif.dd.au30.model.Pu
         expenseAccount = getJAXBValue(expenseAccounts.getExpenseAccount());
       }
       target.setExpenseAccount(expenseAccountConverter.toHitsModel(expenseAccount));
+      if (target.getExpenseAccount() != null) {
+        target.getExpenseAccount().setPurchasingItem(target);
+      }
       target.setItemDescription(source.getItemDescription());
       target.setItemNumber(getJAXBValue(source.getItemNumber()));
       target.setQuantity(getJAXBValue(source.getQuantity()));

@@ -31,7 +31,7 @@ import sif3.hits.rest.dto.KeyValuePair;
 import sif3.hits.rest.dto.RequestDTO;
 import sif3.hits.rest.dto.ResponseDTO;
 
-@Transactional(value = "transactionManager", rollbackForClassName = { "PersistenceException",
+@Transactional(value = "transactionManager", rollbackForClassName = { "RuntimeException", "PersistenceException",
     "UnsupportedQueryException" })
 public abstract class BaseService<S, SC, H> {
 

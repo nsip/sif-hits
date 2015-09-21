@@ -20,7 +20,7 @@ import sif3.infra.rest.consumer.ConsumerLoader;
 
 public class RoomInfoConsumerTest extends BaseTest {
   private ConsumerTest<RoomInfoType, RoomInfoCollectionType> roomInfoTester = null;
-  
+
   public static final String REF_ID = "c5cbd0bc-1005-48a3-8686-99d6e7a68095";
   public static final String ROOM_NUMBER = "Room 6";
   private final String REF_ID_1 = "dcafc510-c27f-45f7-b8f5-18ba612571a8";
@@ -69,6 +69,40 @@ public class RoomInfoConsumerTest extends BaseTest {
     roomInfoTester = new ConsumerTest<RoomInfoType, RoomInfoCollectionType>(RoomInfoType.class, "RoomInfo",
         RoomInfoCollectionType.class, "RoomInfos");
     roomInfoTester.testDeleteMany(REF_IDS);
+  }
+
+  @Test
+  public void testUpdateSingle() throws Exception {
+    List<Response> responses = roomInfoTester.testGetSingle(REF_ID);
+    Assert.assertNotNull(responses);
+    Assert.assertEquals(1, responses.size());
+    Response response = responses.get(0);
+    Assert.assertNotNull(response.getDataObject());
+    RoomInfoType roomInfo = (RoomInfoType) response.getDataObject();
+    Assert.assertEquals(REF_ID, roomInfo.getRefId());
+
+    String xmlExpectedFrom = roomInfoTester.getXML(roomInfo);
+
+    List<Response> updateResponses = roomInfoTester.doUpdateOne(roomInfo, REF_ID);
+    Assert.assertNotNull(updateResponses);
+    Assert.assertEquals(1, updateResponses.size());
+    Assert.assertEquals(updateResponses.get(0).getStatus(), HttpStatus.NO_CONTENT.value());
+
+    List<Response> getResponses = roomInfoTester.testGetSingle(REF_ID);
+    Assert.assertNotNull(getResponses);
+    Assert.assertEquals(1, getResponses.size());
+    Response getResponse = getResponses.get(0);
+    Assert.assertNotNull(getResponse.getDataObject());
+    RoomInfoType comparisonTo = (RoomInfoType) getResponse.getDataObject();
+    Assert.assertEquals(REF_ID, comparisonTo.getRefId());
+    String xmlExpectedTo = roomInfoTester.getXML(comparisonTo);
+
+    boolean semiEquals = semiEquals(xmlExpectedFrom, xmlExpectedTo);
+    if (!semiEquals) {
+      System.out.println("From:\n" + xmlExpectedFrom);
+      System.out.println("\nTo:\n" + xmlExpectedTo);
+      Assert.assertEquals("XML Differs", xmlExpectedFrom, xmlExpectedTo);
+    }
   }
 
   @Test

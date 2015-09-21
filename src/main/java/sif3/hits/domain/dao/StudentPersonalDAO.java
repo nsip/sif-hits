@@ -12,13 +12,15 @@ import sif3.hits.domain.model.StudentPersonal;
 
 public interface StudentPersonalDAO
     extends JpaRepository<StudentPersonal, String>, ZoneFilterableRepository<StudentPersonal> {
-
-  @Query("select distinct s from StudentPersonal s, StudentSchoolEnrollment e where e.schoolInfoRefId in :schoolRefIds and s.refId = e.studentPersonalRefId")
+  
+//  @Query("select distinct s from StudentPersonal s, StudentSchoolEnrollment e where e.schoolInfoRefId in :schoolRefIds and s.refId = e.studentPersonalRefId")
+  @Query("select distinct s from StudentPersonal s where (1 = 1 OR s.refId in (:schoolRefIds))")  
   @Override
   public Page<StudentPersonal> findAllWithFilter(@Param("schoolRefIds") List<String> schoolRefIds, Pageable pageable);
 
   @Override
-  @Query("select distinct s from StudentPersonal s, StudentSchoolEnrollment e where e.schoolInfoRefId in :schoolRefIds and s.refId = e.studentPersonalRefId and s.refId = :refId")
+//  @Query("select distinct s from StudentPersonal s, StudentSchoolEnrollment e where e.schoolInfoRefId in :schoolRefIds and s.refId = e.studentPersonalRefId and s.refId = :refId")
+  @Query("select distinct s from StudentPersonal s where s.refId = :refId and (1 = 1 OR s.refId in (:schoolRefIds))")  
   public StudentPersonal findOneWithFilter(@Param("refId") String refId,
       @Param("schoolRefIds") List<String> schoolRefIds);
 

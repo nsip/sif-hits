@@ -72,6 +72,40 @@ public class FinancialClassificationConsumerTest extends BaseTest {
         "FinancialClassifications");
     financialTester.testDeleteMany(REF_IDS);
   }
+  
+  @Test
+  public void testUpdateSingle() throws Exception {
+    List<Response> responses = financialTester.testGetSingle(FinancialClassificationRefIds.REF_ID_1);
+    Assert.assertNotNull(responses);
+    Assert.assertEquals(1, responses.size());
+    Response response = responses.get(0);
+    Assert.assertNotNull(response.getDataObject());
+    FinancialClassificationType financialClassification = (FinancialClassificationType) response.getDataObject();
+    Assert.assertEquals(FinancialClassificationRefIds.REF_ID_1, financialClassification.getRefId());
+    
+    String xmlExpectedFrom = financialTester.getXML(financialClassification);
+    
+    List<Response> updateResponses = financialTester.doUpdateOne(financialClassification, FinancialClassificationRefIds.REF_ID_1);
+    Assert.assertNotNull(updateResponses);
+    Assert.assertEquals(1, updateResponses.size());
+    Assert.assertEquals(updateResponses.get(0).getStatus(), HttpStatus.NO_CONTENT.value());
+    
+    List<Response> getResponses = financialTester.testGetSingle(FinancialClassificationRefIds.REF_ID_1);
+    Assert.assertNotNull(getResponses);
+    Assert.assertEquals(1, getResponses.size());
+    Response getResponse = getResponses.get(0);
+    Assert.assertNotNull(getResponse.getDataObject());
+    FinancialClassificationType comparisonTo = (FinancialClassificationType) getResponse.getDataObject();
+    Assert.assertEquals(FinancialClassificationRefIds.REF_ID_1, comparisonTo.getRefId());
+    String xmlExpectedTo = financialTester.getXML(comparisonTo);
+    
+    boolean semiEquals = semiEquals(xmlExpectedFrom, xmlExpectedTo);
+    if (!semiEquals) {
+      System.out.println("From:\n" + xmlExpectedFrom);
+      System.out.println("\nTo:\n" + xmlExpectedTo);
+      Assert.assertEquals("XML Differs", xmlExpectedFrom, xmlExpectedTo);
+    }
+  }
 
   @Test
   public void testGetSingle() {
@@ -80,8 +114,8 @@ public class FinancialClassificationConsumerTest extends BaseTest {
     Assert.assertEquals(1, responses.size());
     Response response = responses.get(0);
     Assert.assertNotNull(response.getDataObject());
-    FinancialClassificationType studentPersonal = (FinancialClassificationType) response.getDataObject();
-    Assert.assertEquals(FinancialClassificationRefIds.REF_ID_1, studentPersonal.getRefId());
+    FinancialClassificationType financialClassification = (FinancialClassificationType) response.getDataObject();
+    Assert.assertEquals(FinancialClassificationRefIds.REF_ID_1, financialClassification.getRefId());
   }
 
   @Test
@@ -103,8 +137,8 @@ public class FinancialClassificationConsumerTest extends BaseTest {
     Assert.assertEquals(1, createResponses.size());
     Response createResponse = createResponses.get(0);
     Assert.assertNotNull(createResponse.getDataObject());
-    FinancialClassificationType studentPersonal = (FinancialClassificationType) createResponse.getDataObject();
-    Assert.assertEquals(REF_ID_1, studentPersonal.getRefId());
+    FinancialClassificationType financialClassification = (FinancialClassificationType) createResponse.getDataObject();
+    Assert.assertEquals(REF_ID_1, financialClassification.getRefId());
 
     List<Response> deleteResponses = financialTester.testDeleteOne(REF_ID_1);
     Assert.assertNotNull(deleteResponses);

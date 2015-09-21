@@ -94,7 +94,7 @@ public class TimeTableSubject extends HitsEntity {
     this.subjectType = subjectType;
   }
 
-  @OneToMany(fetch = FetchType.EAGER, mappedBy = "timeTableSubjectOtherCodeId.timeTableSubject")
+  @OneToMany(fetch = FetchType.LAZY, mappedBy = "timeTableSubjectOtherCodeId.timeTableSubject")
   public Set<TimeTableSubjectOtherCode> getOtherCodes() {
     return otherCodes;
   }

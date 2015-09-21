@@ -3,6 +3,7 @@ package sif3.hits.domain.model;
 import java.io.Serializable;
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -18,7 +19,8 @@ public class TimeTableDay implements Serializable {
   @EmbeddedId
   private TimeTableDayId timeTableDayId;
   private String dayTitle;
-  @OneToMany(fetch = FetchType.EAGER, mappedBy = "timeTablePeriodId.timeTableDay")
+
+  @OneToMany(fetch = FetchType.LAZY, mappedBy = "timeTablePeriodId.timeTableDay", cascade = CascadeType.ALL, orphanRemoval = true)
   private Set<TimeTablePeriod> periods;
 
   public TimeTableDayId getTimeTableDayId() {

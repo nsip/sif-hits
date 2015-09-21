@@ -1,6 +1,8 @@
 package sif3.hits.domain.model;
 
 public interface Person {
+  
+  public String getRefId();
 
   public String getFamilyName();
 

@@ -96,13 +96,46 @@ public class SchoolInfoConsumerTest extends BaseTest {
     }
   }
   
-  
   @Before
   public void setup() {
     ConsumerLoader.initialise("TestConsumer");
     schoolInfoTester = new ConsumerTest<SchoolInfoType, SchoolCollectionType>(
         SchoolInfoType.class, "SchoolInfo", SchoolCollectionType.class, "SchoolInfos");
     schoolInfoTester.testDeleteMany(REF_IDS);
+  }
+  
+  @Test
+  public void testUpdateSingle() throws Exception {
+    List<Response> responses = schoolInfoTester.testGetSingle(REF_ID);
+    Assert.assertNotNull(responses);
+    Assert.assertEquals(1, responses.size());
+    Response response = responses.get(0);
+    Assert.assertNotNull(response.getDataObject());
+    SchoolInfoType schoolInfoPersonal = (SchoolInfoType) response.getDataObject();
+    Assert.assertEquals(REF_ID, schoolInfoPersonal.getRefId());
+
+    String xmlExpectedFrom = schoolInfoTester.getXML(schoolInfoPersonal);
+
+    List<Response> updateResponses = schoolInfoTester.doUpdateOne(schoolInfoPersonal, REF_ID);
+    Assert.assertNotNull(updateResponses);
+    Assert.assertEquals(1, updateResponses.size());
+    Assert.assertEquals(updateResponses.get(0).getStatus(), HttpStatus.NO_CONTENT.value());
+
+    List<Response> getResponses = schoolInfoTester.testGetSingle(REF_ID);
+    Assert.assertNotNull(getResponses);
+    Assert.assertEquals(1, getResponses.size());
+    Response getResponse = getResponses.get(0);
+    Assert.assertNotNull(getResponse.getDataObject());
+    SchoolInfoType comparisonTo = (SchoolInfoType) getResponse.getDataObject();
+    Assert.assertEquals(REF_ID, comparisonTo.getRefId());
+    String xmlExpectedTo = schoolInfoTester.getXML(comparisonTo);
+
+    boolean semiEquals = semiEquals(xmlExpectedFrom, xmlExpectedTo);
+    if (!semiEquals) {
+      System.out.println("From:\n" + xmlExpectedFrom);
+      System.out.println("\nTo:\n" + xmlExpectedTo);
+      Assert.assertEquals("XML Differs", xmlExpectedFrom, xmlExpectedTo);
+    }
   }
   
   @Test

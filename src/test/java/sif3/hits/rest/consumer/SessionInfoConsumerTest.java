@@ -78,14 +78,48 @@ public class SessionInfoConsumerTest extends BaseTest {
   }
   
   @Test
+  public void testUpdateSingle() throws Exception {
+    List<Response> responses = sessionInfoTester.testGetSingle(REF_ID);
+    Assert.assertNotNull(responses);
+    Assert.assertEquals(1, responses.size());
+    Response response = responses.get(0);
+    Assert.assertNotNull(response.getDataObject());
+    SessionInfoType sessionInfo = (SessionInfoType) response.getDataObject();
+    Assert.assertEquals(REF_ID, sessionInfo.getRefId());
+
+    String xmlExpectedFrom = sessionInfoTester.getXML(sessionInfo);
+
+    List<Response> updateResponses = sessionInfoTester.doUpdateOne(sessionInfo, REF_ID);
+    Assert.assertNotNull(updateResponses);
+    Assert.assertEquals(1, updateResponses.size());
+    Assert.assertEquals(updateResponses.get(0).getStatus(), HttpStatus.NO_CONTENT.value());
+
+    List<Response> getResponses = sessionInfoTester.testGetSingle(REF_ID);
+    Assert.assertNotNull(getResponses);
+    Assert.assertEquals(1, getResponses.size());
+    Response getResponse = getResponses.get(0);
+    Assert.assertNotNull(getResponse.getDataObject());
+    SessionInfoType comparisonTo = (SessionInfoType) getResponse.getDataObject();
+    Assert.assertEquals(REF_ID, comparisonTo.getRefId());
+    String xmlExpectedTo = sessionInfoTester.getXML(comparisonTo);
+
+    boolean semiEquals = semiEquals(xmlExpectedFrom, xmlExpectedTo);
+    if (!semiEquals) {
+      System.out.println("From:\n" + xmlExpectedFrom);
+      System.out.println("\nTo:\n" + xmlExpectedTo);
+      Assert.assertEquals("XML Differs", xmlExpectedFrom, xmlExpectedTo);
+    }
+  }
+  
+  @Test
   public void testGetSingle() {
     List<Response> responses = sessionInfoTester.testGetSingle(REF_ID);
     Assert.assertNotNull(responses);
     Assert.assertEquals(1, responses.size());
     Response response = responses.get(0);
     Assert.assertNotNull(response.getDataObject());
-    SessionInfoType sessionInfoPersonal = (SessionInfoType) response.getDataObject();
-    Assert.assertEquals(REF_ID, sessionInfoPersonal.getRefId());
+    SessionInfoType sessionInfo = (SessionInfoType) response.getDataObject();
+    Assert.assertEquals(REF_ID, sessionInfo.getRefId());
   }
   
   @Test
@@ -107,8 +141,8 @@ public class SessionInfoConsumerTest extends BaseTest {
     Assert.assertEquals(1, createResponses.size());
     Response createResponse = createResponses.get(0);
     Assert.assertNotNull(createResponse.getDataObject());
-    SessionInfoType sessionInfoPersonal = (SessionInfoType) createResponse.getDataObject();
-    Assert.assertEquals(REF_ID_1, sessionInfoPersonal.getRefId());
+    SessionInfoType sessionInfo = (SessionInfoType) createResponse.getDataObject();
+    Assert.assertEquals(REF_ID_1, sessionInfo.getRefId());
     
     List<Response> deleteResponses = sessionInfoTester.testDeleteOne(REF_ID_1);
     Assert.assertNotNull(deleteResponses);

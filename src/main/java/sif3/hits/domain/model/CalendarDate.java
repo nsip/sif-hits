@@ -102,7 +102,7 @@ public class CalendarDate extends HitsEntity {
     this.studentAttendanceAttendanceValue = studentAttendanceAttendanceValue;
   }
 
-  @OneToMany(fetch = FetchType.EAGER, mappedBy = "calendarDateTypeOtherCodeId.calendarDate")
+  @OneToMany(fetch = FetchType.LAZY, mappedBy = "calendarDateTypeOtherCodeId.calendarDate")
   public Set<CalendarDateTypeOtherCode> getCalendarDateTypeOtherCodes() {
     return calendarDateTypeOtherCodes;
   }

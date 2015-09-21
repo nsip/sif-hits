@@ -39,10 +39,17 @@ public class TimeTableDayConverter extends
     if (source != null && target != null) {
       target.setDayId(source.getDayId());
       target.setDayTitle(source.getDayTitle());
-      target.setPeriods(new HashSet<TimeTablePeriod>());
+      if (target.getPeriods() == null) {
+        target.setPeriods(new HashSet<TimeTablePeriod>());
+      } else {
+        target.getPeriods().clear();
+      }
       if (source.getTimeTablePeriodList() != null) {
         target.getPeriods().addAll(
             timeTablePeriodConverter.toHitsModelList(source.getTimeTablePeriodList().getTimeTablePeriod()));
+        for (TimeTablePeriod timeTablePeriod : target.getPeriods()) {
+          timeTablePeriod.setTimeTableDay(target);
+        }
       }
     }
   }

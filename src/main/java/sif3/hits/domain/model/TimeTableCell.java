@@ -49,7 +49,7 @@ public class TimeTableCell extends HitsEntity {
     this.timeTableSubject = timeTableSubject;
   }
 
-  @ManyToOne(fetch = FetchType.EAGER)
+  @ManyToOne(fetch = FetchType.LAZY)
   @JoinColumn(name = "TeachingGroup_RefId", referencedColumnName = "RefId")
   public TeachingGroup getTeachingGroup() {
     return teachingGroup;
@@ -59,7 +59,7 @@ public class TimeTableCell extends HitsEntity {
     this.teachingGroup = teachingGroup;
   }
 
-  @ManyToOne(fetch = FetchType.EAGER)
+  @ManyToOne(fetch = FetchType.LAZY)
   @JoinColumn(name = "RoomInfo_RefId", referencedColumnName = "RefId")
   public RoomInfo getRoomInfo() {
     return roomInfo;
@@ -93,7 +93,7 @@ public class TimeTableCell extends HitsEntity {
     this.dayId = dayId;
   }
 
-  @ManyToOne(fetch = FetchType.EAGER)
+  @ManyToOne(fetch = FetchType.LAZY)
   @JoinColumn(name = "StaffPersonal_RefId", referencedColumnName = "RefId")
   public StaffPersonal getStaffPersonal() {
     return staffPersonal;

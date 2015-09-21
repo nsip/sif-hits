@@ -10,4 +10,5 @@ package sif3.hits.domain.converter.factory;
  */
 public class HitsObjectFactory extends sif.dd.au30.model.ObjectFactory implements ObjectFactory {
 
+
 }

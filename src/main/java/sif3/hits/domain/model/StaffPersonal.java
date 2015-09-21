@@ -150,7 +150,7 @@ public class StaffPersonal extends HitsEntity implements StaffPerson {
     this.birthDate = birthDate;
   }
   
-  @OneToMany(fetch = FetchType.EAGER, mappedBy = "staffPersonalOtherIdId.staffPersonal")
+  @OneToMany(fetch = FetchType.LAZY, mappedBy = "staffPersonalOtherIdId.staffPersonal")
   public Set<StaffPersonalOtherId> getOtherIds() {
     return otherIds;
   }

@@ -6,6 +6,8 @@ import org.slf4j.LoggerFactory;
 import sif.dd.au30.model.StudentContactRelationshipCollectionType;
 import sif.dd.au30.model.StudentContactRelationshipType;
 import sif3.common.exception.PersistenceException;
+import sif3.hits.config.HitsSpringContext;
+import sif3.hits.domain.converter.StudentContactRelationshipConverter;
 import sif3.hits.domain.model.StudentContactRelationship;
 import sif3.hits.service.StudentContactRelationshipService;
 
@@ -13,6 +15,8 @@ public class StudentContactRelationshipProvider extends
     HitsBaseProvider<StudentContactRelationshipType, StudentContactRelationshipCollectionType, StudentContactRelationship, StudentContactRelationshipService> {
 
   protected static final Logger L = LoggerFactory.getLogger(StudentContactRelationshipProvider.class);
+  
+  private StudentContactRelationshipConverter converter;
 
   /**
    * @param providerID
@@ -33,6 +37,12 @@ public class StudentContactRelationshipProvider extends
       result = sifObject.getStudentContactRelationshipRefId().getValue();
     }
     return result;
-
+  }
+  
+  @Override
+  protected void setRefId(StudentContactRelationshipType sifObject, Class<StudentContactRelationshipType> sifClass,
+      String refId) throws PersistenceException {
+    this.converter = HitsSpringContext.getBean(StudentContactRelationshipConverter.class);    
+    this.converter.setRefId(sifObject, refId);
   }
 }

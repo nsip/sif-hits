@@ -77,7 +77,7 @@ public class TeachingGroup extends HitsEntity {
     this.kla = kla;
   }
 
-  @ManyToOne(fetch = FetchType.EAGER)
+  @ManyToOne(fetch = FetchType.LAZY)
   @JoinColumn(name = "SchoolInfo_RefId", referencedColumnName = "RefId")
   public SchoolInfo getSchoolInfo() {
     return schoolInfo;
@@ -97,7 +97,7 @@ public class TeachingGroup extends HitsEntity {
     this.studentPersonals = studentPersonals;
   }
 
-  @OneToMany(fetch = FetchType.EAGER, mappedBy = "teachingGroupTeacherId.teachingGroup")
+  @OneToMany(fetch = FetchType.LAZY, mappedBy = "teachingGroupTeacherId.teachingGroup")
   public Set<TeachingGroupTeacher> getTeachingGroupTeachers() {
     return teachingGroupTeachers;
   }
@@ -106,7 +106,7 @@ public class TeachingGroup extends HitsEntity {
     this.teachingGroupTeachers = teachingGroupTeachers;
   }
 
-  @OneToMany(mappedBy = "teachingGroup", fetch = FetchType.EAGER)
+  @OneToMany(mappedBy = "teachingGroup", fetch = FetchType.LAZY)
   public Set<TimeTableCell> getTimeTablePeriods() {
     return timeTablePeriods;
   }

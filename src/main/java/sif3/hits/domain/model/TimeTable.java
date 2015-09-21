@@ -3,6 +3,7 @@ package sif3.hits.domain.model;
 import java.io.Serializable;
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.Id;
@@ -111,7 +112,7 @@ public class TimeTable implements Serializable {
     this.endDate = endDate;
   }
 
-  @OneToMany(fetch = FetchType.EAGER, mappedBy = "timeTableDayId.timeTable")
+  @OneToMany(fetch = FetchType.LAZY, mappedBy = "timeTableDayId.timeTable", cascade = CascadeType.ALL, orphanRemoval = true)
   public Set<TimeTableDay> getTimeTableDays() {
     return timeTableDays;
   }

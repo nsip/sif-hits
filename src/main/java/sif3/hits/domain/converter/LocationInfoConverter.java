@@ -86,6 +86,9 @@ public class LocationInfoConverter extends HitsConverter<ChargedLocationInfoType
       }
       if (addressList != null && addressList.getAddress() != null && !addressList.getAddress().isEmpty()) {
         target.getAddresses().addAll(addressConverter.toHitsModelList(addressList.getAddress()));
+        for (Address address : target.getAddresses()) {
+          address.setPersonRefId(target.getRefId());
+        }
       }
     }
   }

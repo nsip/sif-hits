@@ -1,7 +1,6 @@
 package sif3.hits.domain.converter;
 
 import java.util.HashSet;
-import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -38,10 +37,11 @@ public class TimeTableConverter extends HitsConverter<TimeTableType, TimeTable> 
       target.setTimeTableCreationDate(objectFactory.createTimeTableTypeTimeTableCreationDate(getDateValue(source.getTimeTableCreationDate())));
       target.setStartDate(objectFactory.createTimeTableTypeStartDate(getDateValue(source.getStartDate())));
       target.setEndDate(objectFactory.createTimeTableTypeEndDate(getDateValue(source.getEndDate())));
-      
-      target.setTimeTableDayList(new TimeTableDayList());
-      target.getTimeTableDayList().getTimeTableDay()
+      target.setTimeTableDayList(new TimeTableDayList());      
+      if (source.getTimeTableDays() != null && !source.getTimeTableDays().isEmpty()) {
+        target.getTimeTableDayList().getTimeTableDay()
           .addAll(timeTableDayConverter.toSifModelList(source.getTimeTableDays()));
+      }
       timeTableSchoolInfoConverter.toSifModel(source.getSchoolInfo(), target);
     }
   }
@@ -59,10 +59,18 @@ public class TimeTableConverter extends HitsConverter<TimeTableType, TimeTable> 
       target.setTimeTableCreationDate(getDateValue(getJAXBValue(source.getTimeTableCreationDate())));
       target.setStartDate(getDateValue(getJAXBValue(source.getStartDate())));
       target.setEndDate(getDateValue(getJAXBValue(source.getEndDate())));
+      
+      if (target.getTimeTableDays() == null) {
+        target.setTimeTableDays(new HashSet<TimeTableDay>());
+      } else {
+        target.getTimeTableDays().clear();
+      }
 
       if (source.getTimeTableDayList() != null) {
-        List<TimeTableDay> days = timeTableDayConverter.toHitsModelList(source.getTimeTableDayList().getTimeTableDay());
-        target.setTimeTableDays(new HashSet<TimeTableDay>(days));
+        target.getTimeTableDays().addAll(timeTableDayConverter.toHitsModelList(source.getTimeTableDayList().getTimeTableDay()));
+        for (TimeTableDay timeTableDay : target.getTimeTableDays()) {
+          timeTableDay.setTimeTable(target);
+        }
       }
     }
   }

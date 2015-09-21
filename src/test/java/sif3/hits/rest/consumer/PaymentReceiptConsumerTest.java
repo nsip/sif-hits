@@ -114,6 +114,40 @@ public class PaymentReceiptConsumerTest extends BaseTest implements UsesConstant
         "PaymentReceipt", PaymentReceiptCollectionType.class, "PaymentReceipts");
     paymentReceiptTester.testDeleteMany(REF_IDS);
   }
+  
+  @Test
+  public void testUpdateSingle() throws Exception {
+    List<Response> responses = paymentReceiptTester.testGetSingle(PaymentReceiptRefIds.REF_ID_1);
+    Assert.assertNotNull(responses);
+    Assert.assertEquals(1, responses.size());
+    Response response = responses.get(0);
+    Assert.assertNotNull(response.getDataObject());
+    PaymentReceiptType paymentReceipt = (PaymentReceiptType) response.getDataObject();
+    Assert.assertEquals(PaymentReceiptRefIds.REF_ID_1, paymentReceipt.getRefId());
+    
+    String xmlExpectedFrom = paymentReceiptTester.getXML(paymentReceipt);
+    
+    List<Response> updateResponses = paymentReceiptTester.doUpdateOne(paymentReceipt, PaymentReceiptRefIds.REF_ID_1);
+    Assert.assertNotNull(updateResponses);
+    Assert.assertEquals(1, updateResponses.size());
+    Assert.assertEquals(updateResponses.get(0).getStatus(), HttpStatus.NO_CONTENT.value());
+    
+    List<Response> getResponses = paymentReceiptTester.testGetSingle(PaymentReceiptRefIds.REF_ID_1);
+    Assert.assertNotNull(getResponses);
+    Assert.assertEquals(1, getResponses.size());
+    Response getResponse = getResponses.get(0);
+    Assert.assertNotNull(getResponse.getDataObject());
+    PaymentReceiptType comparisonTo = (PaymentReceiptType) getResponse.getDataObject();
+    Assert.assertEquals(PaymentReceiptRefIds.REF_ID_1, comparisonTo.getRefId());
+    String xmlExpectedTo = paymentReceiptTester.getXML(comparisonTo);
+    
+    boolean semiEquals = semiEquals(xmlExpectedFrom, xmlExpectedTo);
+    if (!semiEquals) {
+      System.out.println("From:\n" + xmlExpectedFrom);
+      System.out.println("\nTo:\n" + xmlExpectedTo);
+      Assert.assertEquals("XML Differs", xmlExpectedFrom, xmlExpectedTo);
+    }
+  }
 
   @Test
   public void testGetSingle() {

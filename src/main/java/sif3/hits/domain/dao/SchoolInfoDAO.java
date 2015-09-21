@@ -12,11 +12,11 @@ import sif3.hits.domain.model.SchoolInfo;
 
 public interface SchoolInfoDAO extends JpaRepository<SchoolInfo, String>, ZoneFilterableRepository<SchoolInfo> {
 
-  @Query("select s from SchoolInfo s where s.refId in :schoolRefIds")
+  @Query("select s from SchoolInfo s where (1 = 1 OR s.refId in (:schoolRefIds))")
   @Override
   public Page<SchoolInfo> findAllWithFilter(@Param("schoolRefIds") List<String> schoolRefIds, Pageable pageable);
 
-  @Query("select s from SchoolInfo s where s.refId = :refId and s.refId in :schoolRefIds")
+  @Query("select s from SchoolInfo s where s.refId = :refId and (1 = 1 OR s.refId in (:schoolRefIds))")
   @Override
   public SchoolInfo findOneWithFilter(@Param("refId") String refId, @Param("schoolRefIds") List<String> schoolRefIds);
 

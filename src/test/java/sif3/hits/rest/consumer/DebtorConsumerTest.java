@@ -84,6 +84,39 @@ public class DebtorConsumerTest extends BaseTest implements UsesConstants {
         DebtorCollectionType.class, "Debtors");
     debtorTester.testDeleteMany(REF_IDS);
   }
+  
+  @Test
+  public void testUpdateSingle() throws Exception {
+    List<Response> responses = debtorTester.testGetSingle(DebtorRefIds.REF_ID_1);
+    Assert.assertNotNull(responses);
+    Assert.assertEquals(1, responses.size());
+    Response response = responses.get(0);
+    Assert.assertNotNull(response.getDataObject());
+    DebtorType debtor = (DebtorType) response.getDataObject();
+    Assert.assertEquals(DebtorRefIds.REF_ID_1, debtor.getRefId());
+    String xmlExpectedFrom = debtorTester.getXML(debtor);
+    
+    List<Response> updateResponses = debtorTester.doUpdateOne(debtor, DebtorRefIds.REF_ID_1);
+    Assert.assertNotNull(updateResponses);
+    Assert.assertEquals(1, updateResponses.size());
+    Assert.assertEquals(updateResponses.get(0).getStatus(), HttpStatus.NO_CONTENT.value());
+    
+    List<Response> getResponses = debtorTester.testGetSingle(DebtorRefIds.REF_ID_1);
+    Assert.assertNotNull(getResponses);
+    Assert.assertEquals(1, getResponses.size());
+    Response getResponse = getResponses.get(0);
+    Assert.assertNotNull(getResponse.getDataObject());
+    DebtorType debtorTo = (DebtorType) getResponse.getDataObject();
+    Assert.assertEquals(DebtorRefIds.REF_ID_1, debtorTo.getRefId());
+    String xmlExpectedTo = debtorTester.getXML(debtorTo);
+    
+    boolean semiEquals = semiEquals(xmlExpectedFrom, xmlExpectedTo);
+    if (!semiEquals) {
+      System.out.println("From:\n" + xmlExpectedFrom);
+      System.out.println("\nTo:\n" + xmlExpectedTo);
+      Assert.assertEquals("XML Differs", xmlExpectedFrom, xmlExpectedTo);
+    }
+  }
 
   @Test
   public void testGetSingle() {

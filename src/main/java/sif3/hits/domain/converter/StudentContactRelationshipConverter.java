@@ -16,6 +16,12 @@ public class StudentContactRelationshipConverter
   public StudentContactRelationshipConverter() {
     super(StudentContactRelationshipType.class, StudentContactRelationship.class);
   }
+  
+  public void setRefId(StudentContactRelationshipType target, String refId) {
+    ObjectFactory objectFactory = getObjectFactory();
+    target.setStudentContactRelationshipRefId(
+        objectFactory.createStudentContactRelationshipTypeStudentContactRelationshipRefId(refId));
+  }
 
   @Override
   public void toSifModel(StudentContactRelationship source, StudentContactRelationshipType target) {

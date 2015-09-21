@@ -97,6 +97,41 @@ public class TimeTableSubjectConsumerTest extends BaseTest {
   }
   
   @Test
+  public void testUpdateSingle() throws Exception {
+    List<Response> responses = timeTableSubjectTester.testGetSingle(REF_ID);
+    Assert.assertNotNull(responses);
+    Assert.assertEquals(1, responses.size());
+    Response response = responses.get(0);
+    Assert.assertNotNull(response.getDataObject());
+    TimeTableSubjectType timeTableSubject = (TimeTableSubjectType) response.getDataObject();
+    Assert.assertEquals(REF_ID, timeTableSubject.getRefId());
+
+    String xmlExpectedFrom = timeTableSubjectTester.getXML(timeTableSubject);
+
+    List<Response> updateResponses = timeTableSubjectTester.doUpdateOne(timeTableSubject, REF_ID);
+    Assert.assertNotNull(updateResponses);
+    Assert.assertEquals(1, updateResponses.size());
+    Assert.assertEquals(updateResponses.get(0).getStatus(), HttpStatus.NO_CONTENT.value());
+
+    List<Response> getResponses = timeTableSubjectTester.testGetSingle(REF_ID);
+    Assert.assertNotNull(getResponses);
+    Assert.assertEquals(1, getResponses.size());
+    Response getResponse = getResponses.get(0);
+    Assert.assertNotNull(getResponse.getDataObject());
+    TimeTableSubjectType comparisonTo = (TimeTableSubjectType) getResponse.getDataObject();
+    Assert.assertEquals(REF_ID, comparisonTo.getRefId());
+    String xmlExpectedTo = timeTableSubjectTester.getXML(comparisonTo);
+
+    boolean semiEquals = semiEquals(xmlExpectedFrom, xmlExpectedTo);
+    if (!semiEquals) {
+      System.out.println("From:\n" + xmlExpectedFrom);
+      System.out.println("\nTo:\n" + xmlExpectedTo);
+      Assert.assertEquals("XML Differs", xmlExpectedFrom, xmlExpectedTo);
+    }
+  }
+  
+  
+  @Test
   public void testGetSingle() {
     List<Response> responses = timeTableSubjectTester.testGetSingle(REF_ID);
     Assert.assertNotNull(responses);

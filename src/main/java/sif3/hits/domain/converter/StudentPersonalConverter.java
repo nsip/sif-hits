@@ -2,7 +2,6 @@ package sif3.hits.domain.converter;
 
 import java.util.ArrayList;
 import java.util.HashSet;
-import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -106,17 +105,22 @@ public class StudentPersonalConverter extends HitsConverter<StudentPersonalType,
         }
       }
       
-      Set<StudentPersonalOtherId> otherIds = new HashSet<StudentPersonalOtherId>();
+      if (target.getOtherIds() == null) {
+        target.setOtherIds(new HashSet<StudentPersonalOtherId>());
+      } else {
+        target.getOtherIds().clear();
+      }
       OtherIdList otherIdList = getJAXBValue(source.getOtherIdList());
       if (otherIdList != null && otherIdList.getOtherId() != null) {
         for (OtherId otherId : otherIdList.getOtherId()) {
           StudentPersonalOtherId studentPersonalOtherId = new StudentPersonalOtherId();
           studentPersonalOtherId.setOtherId(otherId.getValue());
           studentPersonalOtherId.setOtherIdType(otherId.getType());
-          otherIds.add(studentPersonalOtherId);
+          studentPersonalOtherId.setStudentPersonal(target);
+          target.getOtherIds().add(studentPersonalOtherId);
         }
       }
-      target.setOtherIds(otherIds);
+      
     }
   }
 }

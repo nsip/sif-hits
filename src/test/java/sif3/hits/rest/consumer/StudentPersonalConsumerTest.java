@@ -201,6 +201,40 @@ public class StudentPersonalConsumerTest extends BaseTest {
         "StudentPersonal", StudentCollectionType.class, "StudentPersonals");
     studentTester.testDeleteMany(REF_IDS);
   }
+  
+  @Test
+  public void testUpdateSingle() throws Exception {
+    List<Response> responses = studentTester.testGetSingle(StudentPersonalRefIds.REF_ID_1);
+    Assert.assertNotNull(responses);
+    Assert.assertEquals(1, responses.size());
+    Response response = responses.get(0);
+    Assert.assertNotNull(response.getDataObject());
+    StudentPersonalType studentPersonal = (StudentPersonalType) response.getDataObject();
+    Assert.assertEquals(StudentPersonalRefIds.REF_ID_1, studentPersonal.getRefId());
+
+    String xmlExpectedFrom = studentTester.getXML(studentPersonal);
+
+    List<Response> updateResponses = studentTester.doUpdateOne(studentPersonal, StudentPersonalRefIds.REF_ID_1);
+    Assert.assertNotNull(updateResponses);
+    Assert.assertEquals(1, updateResponses.size());
+    Assert.assertEquals(updateResponses.get(0).getStatus(), HttpStatus.NO_CONTENT.value());
+
+    List<Response> getResponses = studentTester.testGetSingle(StudentPersonalRefIds.REF_ID_1);
+    Assert.assertNotNull(getResponses);
+    Assert.assertEquals(1, getResponses.size());
+    Response getResponse = getResponses.get(0);
+    Assert.assertNotNull(getResponse.getDataObject());
+    StudentPersonalType comparisonTo = (StudentPersonalType) getResponse.getDataObject();
+    Assert.assertEquals(StudentPersonalRefIds.REF_ID_1, comparisonTo.getRefId());
+    String xmlExpectedTo = studentTester.getXML(comparisonTo);
+
+    boolean semiEquals = semiEquals(xmlExpectedFrom, xmlExpectedTo);
+    if (!semiEquals) {
+      System.out.println("From:\n" + xmlExpectedFrom);
+      System.out.println("\nTo:\n" + xmlExpectedTo);
+      Assert.assertEquals("XML Differs", xmlExpectedFrom, xmlExpectedTo);
+    }
+  }
 
   @Test
   public void testGetSingle() {
@@ -241,6 +275,48 @@ public class StudentPersonalConsumerTest extends BaseTest {
     Response deleteResponse = deleteResponses.get(0);
     Assert.assertNull(deleteResponse.getDataObject());
     Assert.assertEquals(HttpStatus.NO_CONTENT.value(), deleteResponse.getStatus());
+  }
+  
+  @Test
+  public void testCreateUpdateDelete() {
+    List<Response> createResponses = studentTester.testCreateOne("student.xml");
+    Assert.assertNotNull(createResponses);
+    Assert.assertEquals(1, createResponses.size());
+    Response createResponse = createResponses.get(0);
+    Assert.assertNotNull(createResponse.getDataObject());
+    StudentPersonalType studentPersonal = (StudentPersonalType) createResponse.getDataObject();
+    Assert.assertEquals(REF_ID_1, studentPersonal.getRefId());
+    Assert.assertEquals(2, studentPersonal.getOtherIdList().getValue().getOtherId().size());
+    Assert.assertEquals(2, studentPersonal.getPersonInfo().getAddressList().getValue().getAddress().size());
+    
+    studentPersonal.getPersonInfo().getAddressList().getValue().getAddress().remove(1);
+    studentPersonal.getOtherIdList().getValue().getOtherId().remove(1);
+    
+    List<Response> updateResponses = studentTester.doUpdateOne(studentPersonal, REF_ID_1);
+    Assert.assertNotNull(updateResponses);
+    Assert.assertEquals(1, updateResponses.size());
+    Response updateResponse = updateResponses.get(0);
+    Assert.assertNull(updateResponse.getDataObject());
+    Assert.assertEquals(HttpStatus.NO_CONTENT.value(), updateResponse.getStatus());
+    
+//    StudentSchoolEnrollmentType enrollmentType = new StudentSchoolEnrollmentType();
+//    enrollmentType.setRefId(REF_ID_2);
+//    enrollmentType.setStudentPersonalRefId(REF_ID_1);
+//    enrollmentType.setSchoolInfoRefId(SchoolInfoConsumerTest.REF_ID);
+//    studentSchoolEnrollmentTester.doCreateOne(enrollmentType);
+      
+    List<Response> responses = studentTester.testGetSingle(REF_ID_1);
+    Assert.assertNotNull(responses);
+    Assert.assertEquals(1, responses.size());
+    Response response = responses.get(0);
+    Assert.assertNotNull(response.getDataObject());
+    StudentPersonalType updatedStudentPersonal = (StudentPersonalType) response.getDataObject();
+    Assert.assertEquals(REF_ID_1, updatedStudentPersonal.getRefId());
+    Assert.assertEquals(1, updatedStudentPersonal.getOtherIdList().getValue().getOtherId().size());
+    Assert.assertEquals(1, updatedStudentPersonal.getPersonInfo().getAddressList().getValue().getAddress().size());
+    
+//    studentSchoolEnrollmentTester.testDeleteOne(REF_ID_2);
+    studentTester.testDeleteOne(REF_ID_1);
   }
 
   @Test

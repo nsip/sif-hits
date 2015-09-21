@@ -1,17 +1,76 @@
 <StudentPersonal RefId="6bb0c404-c029-49bd-9956-d6be93b7b128"
   xmlns="http://www.sifassociation.org/au/datamodel/1.4">
-  <LocalId>123456</LocalId>
-  <PersonInfo>
-    <Name>
-      <FamilyName>Smith</FamilyName>
-      <GivenName>Fred</GivenName>
-    </Name>
-  </PersonInfo>
-  <MostRecent>
-    <SchoolLocalId>S1234567</SchoolLocalId>
-    <HomeroomLocalId>hr12345</HomeroomLocalId>
-    <YearLevel>
-      <Code>1</Code>
-    </YearLevel>
-  </MostRecent>
+    <LocalId>s0004432</LocalId>
+    <StateProvinceId>WA</StateProvinceId>
+    <OtherIdList>
+        <OtherId Type="0004">identifier</OtherId>
+        <OtherId Type="0003">otherid</OtherId>
+    </OtherIdList>
+    <PersonInfo>
+        <Name Type="LGL">
+            <FamilyName>Tester</FamilyName>
+            <GivenName>Gavin</GivenName>
+            <MiddleName>Middle</MiddleName>
+            <PreferredFamilyName>PTester</PreferredFamilyName>
+            <PreferredGivenName>PGavin</PreferredGivenName>
+            <FullName>Mr Full Name Gavin Tester</FullName>
+        </Name>
+        <Demographics>
+            <IndigenousStatus>9</IndigenousStatus>
+            <Sex>1</Sex>
+            <BirthDate>1984-12-20</BirthDate>
+            <CountryOfBirth>AUS</CountryOfBirth>
+            <Religion>
+                <Code>0001</Code>
+            </Religion>
+        </Demographics>
+        <AddressList>
+            <Address Type="0123" Role="012B">
+                <Street>
+                    <Line1>123 Address Line One</Line1>
+                    <Line2>Address Line Two</Line2>
+                </Street>
+                <City>Perth</City>
+                <StateProvince>WA</StateProvince>
+                <PostalCode>6000</PostalCode>
+                <GridLocation>
+                    <Latitude>-31.952693</Latitude>
+                    <Longitude>115.871971</Longitude>
+                </GridLocation>
+            </Address>
+            <Address Type="0123" Role="012B">
+                <Street>
+                    <Line1>234 Address Line One</Line1>
+                </Street>
+                <City>Perth</City>
+                <StateProvince>WA</StateProvince>
+                <PostalCode>6000</PostalCode>
+                <GridLocation>
+                    <Latitude>-31.952693</Latitude>
+                    <Longitude>115.871971</Longitude>
+                </GridLocation>
+            </Address>
+        </AddressList>
+        <PhoneNumberList>
+            <PhoneNumber Type="0096">
+                <Number>+61400000000</Number>
+            </PhoneNumber>
+        </PhoneNumberList>
+        <EmailList>
+            <Email Type="06">the.email@not.a.real.domain</Email>
+        </EmailList>
+    </PersonInfo>
+    <MostRecent>
+        <YearLevel>
+            <Code>4</Code>
+        </YearLevel>
+        <Parent1Language>English</Parent1Language>
+        <Parent2Language>French</Parent2Language>
+        <Parent1EmploymentType>Self Employed</Parent1EmploymentType>
+        <Parent2EmploymentType>Full Time</Parent2EmploymentType>
+        <Parent1SchoolEducationLevel>High School</Parent1SchoolEducationLevel>
+        <Parent2SchoolEducationLevel>High School</Parent2SchoolEducationLevel>
+        <Parent1NonSchoolEducation>Tafe</Parent1NonSchoolEducation>
+        <Parent2NonSchoolEducation>College</Parent2NonSchoolEducation>
+    </MostRecent>
 </StudentPersonal>

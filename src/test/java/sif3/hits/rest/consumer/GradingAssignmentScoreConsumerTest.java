@@ -85,6 +85,40 @@ public class GradingAssignmentScoreConsumerTest extends BaseTest {
         "GradingAssignmentScores");
     gradingTester.testDeleteMany(REF_IDS);
   }
+  
+  @Test
+  public void testUpdateSingle() throws Exception {
+    List<Response> responses = gradingTester.testGetSingle(GradingAssignmentScoreRefIds.REF_ID_1);
+    Assert.assertNotNull(responses);
+    Assert.assertEquals(1, responses.size());
+    Response response = responses.get(0);
+    Assert.assertNotNull(response.getDataObject());
+    GradingAssignmentScoreType gradingAssignmentScore = (GradingAssignmentScoreType) response.getDataObject();
+    Assert.assertEquals(GradingAssignmentScoreRefIds.REF_ID_1, gradingAssignmentScore.getRefId());
+    
+    String xmlExpectedFrom = gradingTester.getXML(gradingAssignmentScore);
+    
+    List<Response> updateResponses = gradingTester.doUpdateOne(gradingAssignmentScore, GradingAssignmentScoreRefIds.REF_ID_1);
+    Assert.assertNotNull(updateResponses);
+    Assert.assertEquals(1, updateResponses.size());
+    Assert.assertEquals(updateResponses.get(0).getStatus(), HttpStatus.NO_CONTENT.value());
+    
+    List<Response> getResponses = gradingTester.testGetSingle(GradingAssignmentScoreRefIds.REF_ID_1);
+    Assert.assertNotNull(getResponses);
+    Assert.assertEquals(1, getResponses.size());
+    Response getResponse = getResponses.get(0);
+    Assert.assertNotNull(getResponse.getDataObject());
+    GradingAssignmentScoreType comparisonTo = (GradingAssignmentScoreType) getResponse.getDataObject();
+    Assert.assertEquals(GradingAssignmentScoreRefIds.REF_ID_1, comparisonTo.getRefId());
+    String xmlExpectedTo = gradingTester.getXML(comparisonTo);
+    
+    boolean semiEquals = semiEquals(xmlExpectedFrom, xmlExpectedTo);
+    if (!semiEquals) {
+      System.out.println("From:\n" + xmlExpectedFrom);
+      System.out.println("\nTo:\n" + xmlExpectedTo);
+      Assert.assertEquals("XML Differs", xmlExpectedFrom, xmlExpectedTo);
+    }
+  }
 
   @Test
   public void testGetSingle() {

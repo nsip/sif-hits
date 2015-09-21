@@ -117,7 +117,15 @@ public class PersonInfoConverter extends HitsConverter<PersonInfoType, Person> i
         AddressListType addressList = getJAXBValue(source.getAddressList());
         if (addressList != null && addressList.getAddress() != null && !addressList.getAddress().isEmpty()) {
           AddressPerson addressTarget = (AddressPerson) target;
-          addressTarget.setAddresses(new HashSet<Address>(addressConverter.toHitsModelList(addressList.getAddress())));
+          if (addressTarget.getAddresses() != null) {
+            addressTarget.getAddresses().clear();
+          } else {
+            addressTarget.setAddresses(new HashSet<Address>());
+          }
+          addressTarget.getAddresses().addAll(addressConverter.toHitsModelList(addressList.getAddress()));
+          for (Address address : addressTarget.getAddresses()) {
+            address.setPersonRefId(target.getRefId());
+          }
         }
       }
 

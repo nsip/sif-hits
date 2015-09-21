@@ -87,6 +87,39 @@ public class CalendarSummaryConsumerTest extends BaseTest {
         CalendarSummaryType.class, "CalendarSummary", CalendarSummaryCollectionType.class, "CalendarSummarys");
     calendarSummaryTester.testDeleteMany(REF_IDS);
   }
+  
+  @Test
+  public void testUpdateSingle() throws Exception {
+    List<Response> responses = calendarSummaryTester.testGetSingle(REF_ID);
+    Assert.assertNotNull(responses);
+    Assert.assertEquals(1, responses.size());
+    Response response = responses.get(0);
+    Assert.assertNotNull(response.getDataObject());
+    CalendarSummaryType calendarSummary = (CalendarSummaryType) response.getDataObject();
+    Assert.assertEquals(REF_ID, calendarSummary.getRefId());
+    String xmlExpectedFrom = calendarSummaryTester.getXML(calendarSummary);
+    
+    List<Response> updateResponses = calendarSummaryTester.doUpdateOne(calendarSummary, REF_ID);
+    Assert.assertNotNull(updateResponses);
+    Assert.assertEquals(1, updateResponses.size());
+    Assert.assertEquals(updateResponses.get(0).getStatus(), HttpStatus.NO_CONTENT.value());
+    
+    List<Response> getResponses = calendarSummaryTester.testGetSingle(REF_ID);
+    Assert.assertNotNull(getResponses);
+    Assert.assertEquals(1, getResponses.size());
+    Response getResponse = getResponses.get(0);
+    Assert.assertNotNull(getResponse.getDataObject());
+    CalendarSummaryType calendarSummaryTo = (CalendarSummaryType) getResponse.getDataObject();
+    Assert.assertEquals(REF_ID, calendarSummaryTo.getRefId());
+    String xmlExpectedTo = calendarSummaryTester.getXML(calendarSummaryTo);
+    
+    boolean semiEquals = semiEquals(xmlExpectedFrom, xmlExpectedTo);
+    if (!semiEquals) {
+      System.out.println("From:\n" + xmlExpectedFrom);
+      System.out.println("\nTo:\n" + xmlExpectedTo);
+      Assert.assertEquals("XML Differs", xmlExpectedFrom, xmlExpectedTo);
+    }
+  }
 
   @Test
   public void testGetSingle() {

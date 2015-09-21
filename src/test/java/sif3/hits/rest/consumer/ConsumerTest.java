@@ -11,6 +11,7 @@ import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.Resource;
 
 import sif3.common.exception.MarshalException;
+import sif3.common.exception.UnmarshalException;
 import sif3.common.exception.UnsupportedMediaTypeExcpetion;
 import sif3.common.header.HeaderValues.RequestType;
 import sif3.common.model.PagingInfo;
@@ -126,6 +127,18 @@ public class ConsumerTest<S, M> {
     }
     return result;
   }
+  
+  protected S fromXML(String xml) throws UnmarshalException, UnsupportedMediaTypeExcpetion {
+    S result = null;
+    if (xml != null) {
+      Object sifObject = testConsumer.getUnmarshaller().unmarshalFromXML(xml, SINGLE_CLASS);
+      if (SINGLE_CLASS.isAssignableFrom(sifObject.getClass())) {
+        result = SINGLE_CLASS.cast(sifObject);
+      }
+    }
+    return result;
+  }
+
 
   protected List<Response> testUpdateOne(String filename, String refId) {
     List<Response> result = null;
@@ -195,7 +208,7 @@ public class ConsumerTest<S, M> {
     return result;
   }
 
-  private String getFileContents(String filename) {
+  protected String getFileContents(String filename) {
     String result = "";
     try {
       Resource resource = new ClassPathResource(FILE_PATH + "/" + filename);
