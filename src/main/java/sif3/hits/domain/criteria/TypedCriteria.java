@@ -7,6 +7,7 @@ import javax.persistence.EntityManager;
 
 import org.hibernate.Criteria;
 import org.hibernate.Session;
+import org.hibernate.criterion.Order;
 import org.springframework.data.domain.Pageable;
 
 public class TypedCriteria<T> {
@@ -23,10 +24,18 @@ public class TypedCriteria<T> {
   public Criteria getCriteria() {
     return this.criteria;
   }
+  
+  public String getOrderAttribute() {
+    return "refId";
+  }
 
   public List<T> getPage(Pageable pageable) {
     List<T> typedResult = new ArrayList<T>();
-    List<?> result = this.criteria.setFetchSize(pageable.getPageSize()).setFirstResult(pageable.getOffset()).list();
+    this.criteria.setMaxResults(pageable.getPageSize());
+    this.criteria.setFirstResult(pageable.getOffset());
+    this.criteria.addOrder(Order.asc(getOrderAttribute()));
+    List<?> result = this.criteria.list();
+        
     for (Object object : result) {
       if (returnType.isAssignableFrom(object.getClass())) {
         typedResult.add(returnType.cast(object));

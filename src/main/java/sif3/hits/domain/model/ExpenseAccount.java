@@ -2,14 +2,11 @@ package sif3.hits.domain.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.MapsId;
 import javax.persistence.OneToOne;
-import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
-
-import org.hibernate.annotations.GenericGenerator;
-import org.hibernate.annotations.Parameter;
 
 @Entity
 @Table(name = "PurchaseOrder_PurchasingItem_ExpenseAccount")
@@ -24,8 +21,6 @@ public class ExpenseAccount extends HitsEntity {
   private String accountingPeriod;
 
   @Id
-  @GeneratedValue(generator = "SharedPrimaryKeyGenerator")
-  @GenericGenerator(name = "SharedPrimaryKeyGenerator", strategy = "foreign", parameters = @Parameter(name = "property", value = "purchasingItem") )
   @Column(name = "purchasingItemId", unique = true, nullable = false)
   public Integer getPurchasingItemId() {
     return purchasingItemId;
@@ -35,8 +30,9 @@ public class ExpenseAccount extends HitsEntity {
     this.purchasingItemId = purchasingItemId;
   }
 
-  @OneToOne
-  @PrimaryKeyJoinColumn
+  @MapsId 
+  @OneToOne(mappedBy = "expenseAccount")
+  @JoinColumn(name = "purchasingItemId")   
   public PurchasingItem getPurchasingItem() {
     return purchasingItem;
   }

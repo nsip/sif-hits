@@ -22,12 +22,14 @@ public class ScheduledActivityFilterDAOImpl extends BaseFilterableRepository<Sch
   protected void addServicePathCriteria(Criteria criteria, String key, String value) {
     if ("StudentPersonals".equals(key)) {
       DetachedCriteria scheduledActivityQuery = DetachedCriteria.forClass(ScheduledActivity.class);
-      scheduledActivityQuery.add(Restrictions.eq("studentPersonalRefIds." + CollectionPropertyNames.COLLECTION_ELEMENTS, value));
+      scheduledActivityQuery.createAlias("studentPersonalRefIds", "student");
+      scheduledActivityQuery.add(Restrictions.eq("student." + CollectionPropertyNames.COLLECTION_ELEMENTS, value));
       scheduledActivityQuery.setProjection(Projections.property("refId"));
       criteria.add(Subqueries.propertyIn("refId", scheduledActivityQuery));
     } else if ("TeachingGroups".equals(key)) {
       DetachedCriteria scheduledActivityQuery = DetachedCriteria.forClass(ScheduledActivity.class);
-      scheduledActivityQuery.add(Restrictions.eq("teachingGroupRefIds." + CollectionPropertyNames.COLLECTION_ELEMENTS, value));
+      scheduledActivityQuery.createAlias("teachingGroupRefIds", "teacher");
+      scheduledActivityQuery.add(Restrictions.eq("teacher." + CollectionPropertyNames.COLLECTION_ELEMENTS, value));
       scheduledActivityQuery.setProjection(Projections.property("refId"));
       criteria.add(Subqueries.propertyIn("refId", scheduledActivityQuery));
     } else if ("StaffPersonals".equals(key)) {

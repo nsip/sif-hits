@@ -13,13 +13,13 @@
 		<!-- Dependency Versions -->
 		<java.version>1.7</java.version>
 
-		<sif3.framework.version>v0.8-HITS</sif3.framework.version>
+		<sif3.framework.version>v0.8.1-HITS</sif3.framework.version>
 		<sif3.datamodel.version>3.4</sif3.datamodel.version>
 
 		<log4j.version>1.2.14</log4j.version>
 		<slf4j.version>1.7.6</slf4j.version>
 		<jersey.version>1.17.1</jersey.version>
-		<hibernate.version>3.6.7.Final</hibernate.version>
+		<hibernate.version>4.3.10.Final</hibernate.version>
 		<jaxb.version>2.2.5</jaxb.version>
 		<spring.version>4.0.3.RELEASE</spring.version>
 		<spring.data.version>1.5.1.RELEASE</spring.data.version>
@@ -144,12 +144,6 @@
 			<groupId>org.codehaus.jettison</groupId>
 			<artifactId>jettison</artifactId>
 			<version>1.3.6</version>
-		</dependency>
-
-		<dependency>
-			<groupId>javassist</groupId>
-			<artifactId>javassist</artifactId>
-			<version>3.12.0.GA</version>
 		</dependency>
 
 		<!-- spring -->

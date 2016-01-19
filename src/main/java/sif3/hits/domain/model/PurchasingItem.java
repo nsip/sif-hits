@@ -8,6 +8,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
+import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 
 @Entity
@@ -84,7 +85,8 @@ public class PurchasingItem extends HitsEntity {
     this.quantityDelivered = quantityDelivered;
   }
 
-  @OneToOne(mappedBy = "purchasingItem", fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
+  @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
+  @PrimaryKeyJoinColumn
   public ExpenseAccount getExpenseAccount() {
     return expenseAccount;
   }
