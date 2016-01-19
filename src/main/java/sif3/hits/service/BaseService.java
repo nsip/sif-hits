@@ -11,6 +11,7 @@ import static sif3.hits.service.e.OperationStatus.UPDATE_OK;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,42 +20,34 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.transaction.annotation.Transactional;
 
-import au.com.systemic.framework.utils.StringUtils;
 import sif3.common.exception.PersistenceException;
 import sif3.common.exception.UnsupportedQueryException;
 import sif3.common.model.PagingInfo;
 import sif3.hits.domain.converter.HitsConverter;
-import sif3.hits.domain.dao.ZoneFilterableRepository;
+import sif3.hits.domain.dao.filter.FilterableRepository;
 import sif3.hits.domain.helper.HitsDatabaseContext;
 import sif3.hits.domain.shared.model.Zone;
 import sif3.hits.rest.dto.KeyValuePair;
 import sif3.hits.rest.dto.RequestDTO;
 import sif3.hits.rest.dto.ResponseDTO;
 
-@Transactional(value = "transactionManager", rollbackForClassName = { "RuntimeException", "PersistenceException",
-    "UnsupportedQueryException" })
+@Transactional(value = "transactionManager", rollbackForClassName = { "RuntimeException", "PersistenceException", "UnsupportedQueryException" })
 public abstract class BaseService<S, SC, H> {
 
   private static final Logger L = LoggerFactory.getLogger(BaseService.class);
 
-  public abstract JpaRepository<H, String> getDAO();
+  private final ThreadLocal<Zone> currentZone = new ThreadLocal<Zone>();
+  
+  protected abstract SC getCollection(List<S> items);
 
-  public abstract ZoneFilterableRepository<H> getZoneFilterableDAO();
+  protected abstract HitsConverter<S, H> getConverter();
 
-  public abstract HitsConverter<S, H> getConverter();
+  protected abstract JpaRepository<H, String> getDAO();
+  
+  protected abstract FilterableRepository<H> getFilterableDAO();
 
   @Autowired
   private ZoneService zoneService;
-
-  private final ThreadLocal<Zone> currentZone = new ThreadLocal<Zone>();
-
-  public void setDatabaseContext(String zoneId, String contextId) {
-    HitsDatabaseContext.clearDatabase();
-    Zone zone = zoneService.getZone(zoneId, contextId);
-    currentZone.set(zone);
-    L.info("Setting current database : " + zone.getDatabaseUrl());
-    HitsDatabaseContext.setDatabase(zone.getDatabaseUrl());
-  }
 
   // Create
   public ResponseDTO<S> createSingle(RequestDTO<S> dto, String zoneId) {
@@ -75,107 +68,17 @@ public abstract class BaseService<S, SC, H> {
     return result;
   }
 
-  // Read
-  public S get(String refId, String zoneId) {
-    S result = null;
-
-    if (!StringUtils.isEmpty(refId)) {
-      H hitsObject = getFiltered(refId, zoneId);
-      result = getConverter().toSifModel(hitsObject);
-    }
-    return result;
-  }
-
-  // Read All
-  public SC findAll(PagingInfo pagingInfo, String zoneId) {
-    SC result = getCollection(new ArrayList<S>());
-    if (pagingInfo != null) {
-      PageRequest pageRequest = new PageRequest(pagingInfo.getCurrentPageNo(), pagingInfo.getPageSize());
-      Page<H> results = findAll(getSchoolRefIds(zoneId), pageRequest);
-      if (results != null) {
-        List<S> sifResultObjects = getConverter().toSifModelList(results.getContent());
-        result = getCollection(sifResultObjects);
-      }
-    }
-    return result;
-  }
-
-  // Read All
-  public SC findByServicePath(List<KeyValuePair> filters, PagingInfo pagingInfo, String zoneId)
-      throws UnsupportedQueryException {
-    SC result = getCollection(new ArrayList<S>());
-    if (pagingInfo != null) {
-      PageRequest pageRequest = new PageRequest(pagingInfo.getCurrentPageNo(), pagingInfo.getPageSize());
-      Page<H> results = findByServicePath(filters, getSchoolRefIds(zoneId), pageRequest);
-      if (results != null) {
-        List<S> sifResultObjects = getConverter().toSifModelList(results.getContent());
-        result = getCollection(sifResultObjects);
-      }
-    }
-    return result;
+  private void delete(H hitsObject, RequestDTO<S> dto) {
+    deleteChildObjects(hitsObject);
+    getDAO().delete(hitsObject);
   }
 
   /**
-   * Find with Service path Override this in service layer to provide service
-   * path filtering.
-   * 
-   * @param parentName
-   * @param parentKey
-   * @param schoolRefIds
-   * @param pageRequest
-   * @return
-   * @throws UnsupportedQueryException
+   * Override this in services that need child objects managed
+   * @param hitsObject
    */
-  protected Page<H> findByServicePath(List<KeyValuePair> filters, List<String> schoolRefIds, PageRequest pageRequest)
-      throws UnsupportedQueryException {
-    throw new UnsupportedQueryException("Service path filter not supported for this service path.");
-  }
-
-  public SC findByExample(S example, PagingInfo pagingInfo, String zoneId) throws UnsupportedQueryException {
-    SC result = getCollection(new ArrayList<S>());
-    if (pagingInfo != null) {
-      PageRequest pageRequest = new PageRequest(pagingInfo.getCurrentPageNo(), pagingInfo.getPageSize());
-      Page<H> results = findByExample(example, getSchoolRefIds(zoneId), pageRequest);
-      if (results != null) {
-        List<S> sifResultObjects = getConverter().toSifModelList(results.getContent());
-        result = getCollection(sifResultObjects);
-      }
-    }
-    return result;
-  }
-
-  /**
-   * Find with example object. Override this in service layer to provide service
-   * query by example.
-   * 
-   * @param example
-   * @param schoolRefIds
-   * @param pageRequest
-   * @return
-   * @throws UnsupportedQueryException
-   */
-  protected Page<H> findByExample(S example, List<String> schoolRefIds, PageRequest pageRequest)
-      throws UnsupportedQueryException {
-    throw new UnsupportedQueryException("Query by example not supported for this object.");
-  }
-
-  // Update
-  public ResponseDTO<S> updateSingle(RequestDTO<S> dto, String zoneId) {
-    ResponseDTO<S> result = null;
-    if (!StringUtils.isEmpty(dto.getRefId())) {
-      H hitsObject = getDAO().findOne(dto.getRefId());
-      if (hitsObject != null) {
-        getConverter().toHitsModel(dto.getSifObject(), hitsObject);
-        H savedHitsObject = save(hitsObject, dto, zoneId, false);
-        S resultObject = getConverter().toSifModel(savedHitsObject);
-        result = new ResponseDTO<S>(dto, resultObject, UPDATE_OK);
-      } else {
-        result = new ResponseDTO<S>(dto, null, UPDATE_ERR_NO_OBJECT);
-      }
-    } else {
-      result = new ResponseDTO<S>(dto, null, UPDATE_ERR_NO_OBJECT);
-    }
-    return result;
+  protected void deleteChildObjects(H hitsObject) {
+    // do nothing
   }
 
   // Delete
@@ -195,10 +98,106 @@ public abstract class BaseService<S, SC, H> {
     return result;
   }
 
-  private Page<H> findAll(List<String> schoolRefIds, PageRequest pageRequest) {
+  /**
+   * Read All
+   * @param zoneId
+   * @param pagingInfo
+   * @return
+   */
+  public SC findAll(String zoneId, PagingInfo pagingInfo) {
+    SC result = getCollection(new ArrayList<S>());
+    if (pagingInfo != null) {
+      PageRequest pageRequest = new PageRequest(pagingInfo.getCurrentPageNo(), pagingInfo.getPageSize());
+      Page<H> results = findAll(zoneId, pageRequest);
+      if (results != null) {
+        List<S> sifResultObjects = getConverter().toSifModelList(results.getContent());
+        result = getCollection(sifResultObjects);
+      }
+    }
+    return result;
+  }
+
+  private Page<H> findAll(String zoneId, PageRequest pageRequest) {
     Page<H> result = null;
-    if (schoolRefIds != null && !schoolRefIds.isEmpty()) {
-      result = getZoneFilterableDAO().findAllWithFilter(schoolRefIds, pageRequest);
+    if (StringUtils.isNotBlank(zoneId)) {
+      result = getFilterableDAO().findAllWithZone(zoneId, pageRequest);
+    }
+    return result;
+  }
+  
+  /**
+   * Query by Example
+   * @param example
+   * @param zoneId
+   * @param pagingInfo
+   * @return
+   * @throws UnsupportedQueryException
+   */
+  public SC findByExample(S example, String zoneId, PagingInfo pagingInfo) throws UnsupportedQueryException {
+    SC result = getCollection(new ArrayList<S>());
+    if (pagingInfo != null) {
+      PageRequest pageRequest = new PageRequest(pagingInfo.getCurrentPageNo(), pagingInfo.getPageSize());
+      Page<H> results = findByExample(example, zoneId, pageRequest);
+      if (results != null) {
+        List<S> sifResultObjects = getConverter().toSifModelList(results.getContent());
+        result = getCollection(sifResultObjects);
+      }
+    }
+    return result;
+  }
+
+  protected Page<H> findByExample(S example, String zoneId, PageRequest pageRequest) throws UnsupportedQueryException {
+    FilterableRepository<H> filterableRepository = getFilterableDAO();
+    if (filterableRepository != null) {
+      H exampleModel = getConverter().toHitsModel(example);
+      if (StringUtils.isNotBlank(zoneId)) {
+        return filterableRepository.findAllWithExample(exampleModel, zoneId, pageRequest);
+      }
+    }
+    throw new UnsupportedQueryException("Query by example not supported for this object.");
+  }
+
+  /**
+   * Service Path Query
+   * @param filters
+   * @param pagingInfo
+   * @param zoneId
+   * @return
+   * @throws UnsupportedQueryException
+   */
+  public SC findByServicePath(List<KeyValuePair> filters, PagingInfo pagingInfo, String zoneId) throws UnsupportedQueryException {
+    SC result = getCollection(new ArrayList<S>());
+    if (pagingInfo != null) {
+      PageRequest pageRequest = new PageRequest(pagingInfo.getCurrentPageNo(), pagingInfo.getPageSize());
+      if (StringUtils.isNotBlank(zoneId)) {
+        Page<H> results = findByServicePath(filters, zoneId, pageRequest);
+        if (results != null) {
+          List<S> sifResultObjects = getConverter().toSifModelList(results.getContent());
+          result = getCollection(sifResultObjects);
+        }
+      } 
+    }
+    return result;
+  }
+
+  protected Page<H> findByServicePath(List<KeyValuePair> filters, String zoneId, PageRequest pageRequest) throws UnsupportedQueryException {
+    FilterableRepository<H> filterableRepository = getFilterableDAO();
+    if (filterableRepository != null) {
+      if (StringUtils.isNotBlank(zoneId)) {
+        return filterableRepository.findAllWithServicePaths(filters, zoneId, pageRequest);
+      }
+    }
+    throw new UnsupportedQueryException("Service path filter not supported for this service path.");
+  }
+
+  // Read
+  public S get(String refId, String zoneId) {
+    L.error(refId + " : " + zoneId);
+    S result = null;
+
+    if (!StringUtils.isEmpty(refId)) {
+      H hitsObject = getFilterableDAO().findOneWithZone(refId, zoneId);
+      result = getConverter().toSifModel(hitsObject);
     }
     return result;
   }
@@ -211,36 +210,71 @@ public abstract class BaseService<S, SC, H> {
    * @param zoneId
    * @throws PersistenceException
    */
-  protected H save(H hitsObject, RequestDTO<S> dto, String zoneId, boolean create) {
-    return getDAO().save(hitsObject);
+  public final H save(H hitsObject, RequestDTO<S> dto, String zoneId, boolean create) {
+    H result = preSave(hitsObject, dto, zoneId, create);
+    if (!create) {
+      deleteChildObjects(hitsObject);
+    }
+    if (hasChildObjects(hitsObject)) {
+      result = saveWithChildObjects(hitsObject, dto, zoneId, create);
+    } else {
+      result = getDAO().save(hitsObject);
+    }
+    return result;
+  }
+  
+  /**
+   * Override this to implement pre-save actions.
+   * @param hitsObject
+   */
+  protected H preSave(H hitsObject, RequestDTO<S> dto, String zoneId, boolean create) {
+    return null;
   }
 
   /**
-   * Override this in services that need child objects managed.
-   * 
+   * Override this for objects that need child objects managed
+   * @param hitsObject
+   * @return
+   */
+  protected boolean hasChildObjects(H hitsObject) {
+    return false;
+  }
+  
+  /**
+   * Override this for objects that need child objects managed
    * @param hitsObject
    * @param dto
+   * @param zoneId
+   * @param create
+   * @return
    */
-  protected void delete(H hitsObject, RequestDTO<S> dto) {
-    getDAO().delete(hitsObject);
+  protected H saveWithChildObjects(H hitsObject, RequestDTO<S> dto, String zoneId, boolean create) {
+    return getDAO().save(hitsObject);
   }
 
-  protected abstract SC getCollection(List<S> items);
-
-  protected abstract H getFiltered(String refId, List<String> schoolRefIds);
-
-  protected H getFiltered(String refId, String zoneId) {
-    List<String> schoolRefIds = getSchoolRefIds(zoneId);
-    return getFiltered(refId, schoolRefIds);
+  public void setDatabaseContext(String zoneId, String contextId) {
+    HitsDatabaseContext.clearDatabase();
+    Zone zone = zoneService.getZone(zoneId, contextId);
+    currentZone.set(zone);
+    L.info("Setting current database : " + zone.getDatabaseUrl());
+    HitsDatabaseContext.setDatabase(zone.getDatabaseUrl());
   }
 
-  protected List<String> getSchoolRefIds(String zoneId) {
-    List<String> result = new ArrayList<String>();
-    if (currentZone.get() != null && currentZone.get().getSchoolRefIds() != null
-        && currentZone.get().getSchoolRefIds().size() > 0) {
-      result = currentZone.get().getSchoolRefIds();
+  // Update
+  public ResponseDTO<S> updateSingle(RequestDTO<S> dto, String zoneId) {
+    ResponseDTO<S> result = null;
+    if (!StringUtils.isEmpty(dto.getRefId())) {
+      H hitsObject = getDAO().findOne(dto.getRefId());
+      if (hitsObject != null) {
+        getConverter().toHitsModel(dto.getSifObject(), hitsObject);
+        H savedHitsObject = save(hitsObject, dto, zoneId, false);
+        S resultObject = getConverter().toSifModel(savedHitsObject);
+        result = new ResponseDTO<S>(dto, resultObject, UPDATE_OK);
+      } else {
+        result = new ResponseDTO<S>(dto, null, UPDATE_ERR_NO_OBJECT);
+      }
     } else {
-      // result.add(zoneId);
+      result = new ResponseDTO<S>(dto, null, UPDATE_ERR_NO_OBJECT);
     }
     return result;
   }

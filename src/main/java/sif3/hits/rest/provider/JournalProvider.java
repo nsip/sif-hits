@@ -8,8 +8,7 @@ import sif.dd.au30.model.JournalType;
 import sif3.hits.domain.model.Journal;
 import sif3.hits.service.JournalService;
 
-public class JournalProvider extends
-    HitsBaseProvider<JournalType, JournalCollectionType, Journal, JournalService> {
+public class JournalProvider extends HitsBaseProvider<JournalType, JournalCollectionType, Journal, JournalService> {
 
   protected static final Logger L = LoggerFactory.getLogger(JournalProvider.class);
 
@@ -20,7 +19,6 @@ public class JournalProvider extends
    *          values of provider property file.
    */
   public JournalProvider() {
-    super(JournalType.class, "Journal", JournalCollectionType.class, "Journals",
-        JournalService.class);
+    super(JournalType.class, "Journal", JournalCollectionType.class, "Journals", JournalService.class);
   }
 }

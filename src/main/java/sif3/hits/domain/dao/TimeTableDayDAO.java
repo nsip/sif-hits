@@ -7,8 +7,9 @@ import org.springframework.data.repository.query.Param;
 
 import sif3.hits.domain.model.TimeTable;
 import sif3.hits.domain.model.TimeTableDay;
+import sif3.hits.domain.model.TimeTableDayId;
 
-public interface TimeTableDayDAO extends JpaRepository<TimeTableDay, String> {
+public interface TimeTableDayDAO extends JpaRepository<TimeTableDay, TimeTableDayId> {
   @Query("delete from TimeTableDay t where t.timeTableDayId.timeTable = :timeTable")
   @Modifying
   public void deleteAllWithTimeTable(@Param("timeTable") TimeTable timeTable);

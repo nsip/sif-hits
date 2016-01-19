@@ -11,33 +11,21 @@ import sif.dd.au30.model.StudentContactRelationshipType;
 import sif3.hits.domain.converter.HitsConverter;
 import sif3.hits.domain.converter.StudentContactRelationshipConverter;
 import sif3.hits.domain.dao.StudentContactRelationshipDAO;
-import sif3.hits.domain.dao.ZoneFilterableRepository;
+import sif3.hits.domain.dao.filter.FilterableRepository;
+import sif3.hits.domain.dao.filter.StudentContactRelationshipFilterDAO;
 import sif3.hits.domain.model.StudentContactRelationship;
-import sif3.hits.rest.dto.RequestDTO;
 
 @Service
 public class StudentContactRelationshipService extends BaseService<StudentContactRelationshipType, StudentContactRelationshipCollectionType, StudentContactRelationship> {
 
   @Autowired
-  private StudentContactRelationshipDAO studentContactRelationshipDAO;
-  
-  @Autowired
   private StudentContactRelationshipConverter studentContactRelationshipConverter;
 
-  @Override
-  public JpaRepository<StudentContactRelationship, String> getDAO() {
-    return studentContactRelationshipDAO;
-  }
+  @Autowired
+  private StudentContactRelationshipDAO studentContactRelationshipDAO;
 
-  @Override
-  public ZoneFilterableRepository<StudentContactRelationship> getZoneFilterableDAO() {
-    return studentContactRelationshipDAO;
-  }
-
-  @Override
-  public HitsConverter<StudentContactRelationshipType, StudentContactRelationship> getConverter() {
-    return studentContactRelationshipConverter;
-  }
+  @Autowired
+  private StudentContactRelationshipFilterDAO studentContactRelationshipFilterDAO;
 
   @Override
   protected StudentContactRelationshipCollectionType getCollection(List<StudentContactRelationshipType> items) {
@@ -49,21 +37,17 @@ public class StudentContactRelationshipService extends BaseService<StudentContac
   }
 
   @Override
-  protected StudentContactRelationship getFiltered(String refId, List<String> schoolRefIds) {
-    StudentContactRelationship result = null;
-    if (schoolRefIds != null && !schoolRefIds.isEmpty()) {
-      result = studentContactRelationshipDAO.findOneWithFilter(refId, schoolRefIds);
-    }
-    return result;
+  public HitsConverter<StudentContactRelationshipType, StudentContactRelationship> getConverter() {
+    return studentContactRelationshipConverter;
   }
 
   @Override
-  protected void delete(StudentContactRelationship hitsObject, RequestDTO<StudentContactRelationshipType> dto) {
-    deleteOtherIds(hitsObject);
-    super.delete(hitsObject, dto);
+  public JpaRepository<StudentContactRelationship, String> getDAO() {
+    return studentContactRelationshipDAO;
   }
 
-  private void deleteOtherIds(StudentContactRelationship hitsObject) {
-    
+  @Override
+  protected FilterableRepository<StudentContactRelationship> getFilterableDAO() {
+    return studentContactRelationshipFilterDAO;
   }
 }

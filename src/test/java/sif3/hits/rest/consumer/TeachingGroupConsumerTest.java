@@ -17,6 +17,9 @@ import sif.dd.au30.model.TeachingGroupType.TeacherList;
 import sif.dd.au30.model.TeachingGroupType.TeacherList.TeachingGroupTeacher;
 import sif.dd.au30.model.TeachingGroupType.TeachingGroupPeriodList;
 import sif.dd.au30.model.TeachingGroupType.TeachingGroupPeriodList.TeachingGroupPeriod;
+import sif3.common.model.QueryCriteria;
+import sif3.common.model.QueryOperator;
+import sif3.common.model.QueryPredicate;
 import sif3.common.ws.BulkOperationResponse;
 import sif3.common.ws.CreateOperationStatus;
 import sif3.common.ws.OperationStatus;
@@ -151,6 +154,91 @@ public class TeachingGroupConsumerTest extends BaseTest {
     teachingGroupTester = new ConsumerTest<TeachingGroupType, TeachingGroupCollectionType>(TeachingGroupType.class,
         "TeachingGroup", TeachingGroupCollectionType.class, "TeachingGroups");
     teachingGroupTester.testDeleteMany(REF_IDS);
+  }
+  
+  @Test
+  public void testQBE() {
+    ObjectFactory objectFactory = new ObjectFactory();
+    TeachingGroupType teachingGroup = new TeachingGroupType();
+    teachingGroup.setSchoolInfoRefId(objectFactory.createTeachingGroupTypeSchoolInfoRefId(SchoolInfoConsumerTest.REF_ID));
+    List<Response> responses = teachingGroupTester.testQBE(teachingGroup, 10000, 0);
+    Assert.assertNotNull(responses);
+    Assert.assertEquals(1, responses.size());
+    Response response = responses.get(0);
+    TeachingGroupCollectionType teachingGroupCollectionType = (TeachingGroupCollectionType) response.getDataObject();
+    Assert.assertNotNull(teachingGroupCollectionType.getTeachingGroup());
+    Assert.assertFalse(teachingGroupCollectionType.getTeachingGroup().isEmpty());
+    boolean found = false;
+    for (TeachingGroupType teachingGroupType : teachingGroupCollectionType.getTeachingGroup()) {
+      found = found || REF_ID.equals(teachingGroupType.getRefId());
+      Assert.assertNotNull(teachingGroupType.getSchoolInfoRefId());
+      Assert.assertEquals(SchoolInfoConsumerTest.REF_ID, teachingGroupType.getSchoolInfoRefId().getValue());
+    }
+    Assert.assertTrue(found);
+  }
+  
+  @Test
+  public void testServicePathStudentPersonal() {
+    QueryCriteria queryCriteria = new QueryCriteria();
+    queryCriteria.addPredicate(new QueryPredicate("StudentPersonals", QueryOperator.EQUAL, StudentPersonalRefIds.REF_ID_1));
+
+    List<Response> responses = teachingGroupTester.testServicePath(queryCriteria, 10000, 0);
+    
+    Assert.assertNotNull(responses);
+    Assert.assertEquals(1, responses.size());
+    Response response = responses.get(0);
+    TeachingGroupCollectionType teachingGroupCollectionType = (TeachingGroupCollectionType) response.getDataObject();
+    Assert.assertNotNull(teachingGroupCollectionType.getTeachingGroup());
+    Assert.assertFalse(teachingGroupCollectionType.getTeachingGroup().isEmpty());
+    boolean found = false;
+    for (TeachingGroupType teachingGroupType : teachingGroupCollectionType.getTeachingGroup()) {
+      found = found || REF_ID.equals(teachingGroupType.getRefId());
+      Assert.assertNotNull(teachingGroupType.getSchoolInfoRefId());
+      Assert.assertNotNull(teachingGroupType.getStudentList());
+      Assert.assertNotNull(teachingGroupType.getStudentList().getValue());
+      Assert.assertNotNull(teachingGroupType.getStudentList().getValue().getTeachingGroupStudent());
+      Assert.assertFalse(teachingGroupType.getStudentList().getValue().getTeachingGroupStudent().isEmpty());
+      boolean studentFound = false;
+      for (TeachingGroupStudent teachingGroupStudent : teachingGroupType.getStudentList().getValue().getTeachingGroupStudent()) {
+        if (teachingGroupStudent.getStudentPersonalRefId() != null) {
+          studentFound = studentFound || StudentPersonalRefIds.REF_ID_1.equals(teachingGroupStudent.getStudentPersonalRefId().getValue());
+        }
+      }
+      Assert.assertTrue(studentFound);
+    }
+    Assert.assertTrue(found);
+  }
+  
+  @Test
+  public void testServicePathStaffPersonal() {
+    QueryCriteria queryCriteria = new QueryCriteria();
+    queryCriteria.addPredicate(new QueryPredicate("StaffPersonals", QueryOperator.EQUAL, StaffPersonalConsumerTest.StaffPersonalRefIds.REF_ID_1));
+
+    List<Response> responses = teachingGroupTester.testServicePath(queryCriteria, 10000, 0);
+    
+    Assert.assertNotNull(responses);
+    Assert.assertEquals(1, responses.size());
+    Response response = responses.get(0);
+    TeachingGroupCollectionType teachingGroupCollectionType = (TeachingGroupCollectionType) response.getDataObject();
+    Assert.assertNotNull(teachingGroupCollectionType.getTeachingGroup());
+    Assert.assertFalse(teachingGroupCollectionType.getTeachingGroup().isEmpty());
+    boolean found = false;
+    for (TeachingGroupType teachingGroupType : teachingGroupCollectionType.getTeachingGroup()) {
+      found = found || REF_ID.equals(teachingGroupType.getRefId());
+      Assert.assertNotNull(teachingGroupType.getSchoolInfoRefId());
+      Assert.assertNotNull(teachingGroupType.getTeacherList());
+      Assert.assertNotNull(teachingGroupType.getTeacherList().getValue());
+      Assert.assertNotNull(teachingGroupType.getTeacherList().getValue().getTeachingGroupTeacher());
+      Assert.assertFalse(teachingGroupType.getTeacherList().getValue().getTeachingGroupTeacher().isEmpty());
+      boolean staffFound = false;
+      for (TeachingGroupTeacher teachingGroupTeacher : teachingGroupType.getTeacherList().getValue().getTeachingGroupTeacher()) {
+        if (teachingGroupTeacher.getStaffPersonalRefId() != null) {
+          staffFound = staffFound || StaffPersonalConsumerTest.StaffPersonalRefIds.REF_ID_1.equals(teachingGroupTeacher.getStaffPersonalRefId().getValue());
+        }
+      }
+      Assert.assertTrue(staffFound);
+    }
+    Assert.assertTrue(found);
   }
   
   @Test

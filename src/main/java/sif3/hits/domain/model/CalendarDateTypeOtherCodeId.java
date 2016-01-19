@@ -31,4 +31,29 @@ public class CalendarDateTypeOtherCodeId implements Serializable {
   public void setOtherCode(String otherCode) {
     this.otherCode = otherCode;
   }
+
+  @Override
+  public int hashCode() {
+    final int prime = 31;
+    int result = 1;
+    result = prime * result + ((calendarDate == null) ? 0 : calendarDate.hashCode());
+    result = prime * result + ((otherCode == null) ? 0 : otherCode.hashCode());
+    return result;
+  }
+
+  @Override
+  public boolean equals(Object obj) {
+    if (this == obj) return true;
+    if (obj == null) return false;
+    if (getClass() != obj.getClass()) return false;
+    CalendarDateTypeOtherCodeId other = (CalendarDateTypeOtherCodeId) obj;
+    if (calendarDate == null) {
+      if (other.calendarDate != null) return false;
+    } else if (!calendarDate.equals(other.calendarDate)) return false;
+    if (otherCode == null) {
+      if (other.otherCode != null) return false;
+    } else if (!otherCode.equals(other.otherCode)) return false;
+    return true;
+  }
+
 }

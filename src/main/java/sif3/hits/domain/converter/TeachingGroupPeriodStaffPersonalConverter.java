@@ -3,7 +3,7 @@ package sif3.hits.domain.converter;
 import org.springframework.stereotype.Component;
 
 import sif.dd.au30.model.TeachingGroupType.TeachingGroupPeriodList.TeachingGroupPeriod;
-import sif3.hits.domain.converter.factory.ObjectFactory;
+import sif3.hits.domain.converter.factory.IObjectFactory;
 import sif3.hits.domain.model.StaffPersonal;
 
 @Component
@@ -16,9 +16,8 @@ public class TeachingGroupPeriodStaffPersonalConverter extends HitsConverter<Tea
   @Override
   public void toSifModel(StaffPersonal source, TeachingGroupPeriod target) {
     if (source != null && target != null) {
-      ObjectFactory objectFactory = getObjectFactory();
-      target.setStaffLocalId(objectFactory
-          .createTeachingGroupTypeTeachingGroupPeriodListTeachingGroupPeriodStaffLocalId(source.getLocalId()));
+      IObjectFactory objectFactory = getObjectFactory();
+      target.setStaffLocalId(objectFactory.createTeachingGroupTypeTeachingGroupPeriodListTeachingGroupPeriodStaffLocalId(source.getLocalId()));
     }
   }
 

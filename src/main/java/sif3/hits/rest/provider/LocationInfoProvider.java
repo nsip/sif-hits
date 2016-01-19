@@ -8,8 +8,7 @@ import sif.dd.au30.model.ChargedLocationInfoType;
 import sif3.hits.domain.model.LocationInfo;
 import sif3.hits.service.LocationInfoService;
 
-public class LocationInfoProvider extends
-    HitsBaseProvider<ChargedLocationInfoType, ChargedLocationInfoCollectionType, LocationInfo, LocationInfoService> {
+public class LocationInfoProvider extends HitsBaseProvider<ChargedLocationInfoType, ChargedLocationInfoCollectionType, LocationInfo, LocationInfoService> {
 
   protected static final Logger L = LoggerFactory.getLogger(LocationInfoProvider.class);
 
@@ -20,10 +19,9 @@ public class LocationInfoProvider extends
    *          values of provider property file.
    */
   public LocationInfoProvider() {
-    super(ChargedLocationInfoType.class, "ChargedLocationInfo", ChargedLocationInfoCollectionType.class, "ChargedLocationInfos",
-        LocationInfoService.class);
+    super(ChargedLocationInfoType.class, "ChargedLocationInfo", ChargedLocationInfoCollectionType.class, "ChargedLocationInfos", LocationInfoService.class);
   }
-  
+
   @Override
   public String getCollectionMethod() {
     return "ChargedLocationInfo";

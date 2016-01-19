@@ -18,6 +18,9 @@ import sif.dd.au30.model.TimeTableType.TimeTableDayList.TimeTableDay.TimeTablePe
 import sif3.common.exception.MarshalException;
 import sif3.common.exception.UnmarshalException;
 import sif3.common.exception.UnsupportedMediaTypeExcpetion;
+import sif3.common.model.QueryCriteria;
+import sif3.common.model.QueryOperator;
+import sif3.common.model.QueryPredicate;
 import sif3.common.ws.BulkOperationResponse;
 import sif3.common.ws.CreateOperationStatus;
 import sif3.common.ws.OperationStatus;
@@ -115,6 +118,27 @@ public class TimeTableConsumerTest extends BaseTest {
     timeTableTester = new ConsumerTest<TimeTableType, TimeTableCollectionType>(
         TimeTableType.class, "TimeTable", TimeTableCollectionType.class, "TimeTables");
     timeTableTester.testDeleteMany(REF_IDS);
+  }
+  
+  @Test
+  public void testServicePathSchoolInfo() {
+    QueryCriteria queryCriteria = new QueryCriteria();
+    queryCriteria.addPredicate(new QueryPredicate("SchoolInfos", QueryOperator.EQUAL, SchoolInfoConsumerTest.REF_ID));
+
+    List<Response> responses = timeTableTester.testServicePath(queryCriteria, 10000, 0);
+    Assert.assertNotNull(responses);
+    Assert.assertEquals(1, responses.size());
+    Response response = responses.get(0);
+    TimeTableCollectionType timeTableCollectionType = (TimeTableCollectionType) response.getDataObject();
+    Assert.assertNotNull(timeTableCollectionType.getTimeTable());
+    Assert.assertFalse(timeTableCollectionType.getTimeTable().isEmpty());
+    boolean found = false;
+    for (TimeTableType timeTableType : timeTableCollectionType.getTimeTable()) {
+      found = found || REF_ID.equals(timeTableType.getRefId());
+      Assert.assertNotNull(timeTableType.getSchoolInfoRefId());
+      Assert.assertEquals(SchoolInfoConsumerTest.REF_ID, timeTableType.getSchoolInfoRefId().getValue());
+    }
+    Assert.assertTrue(found);
   }
   
   @Test

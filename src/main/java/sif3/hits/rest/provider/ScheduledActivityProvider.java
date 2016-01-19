@@ -8,9 +8,7 @@ import sif.dd.au30.model.ScheduledActivityType;
 import sif3.hits.domain.model.ScheduledActivity;
 import sif3.hits.service.ScheduledActivityService;
 
-public class ScheduledActivityProvider
-    extends
-    HitsBaseProvider<ScheduledActivityType, ScheduledActivityCollectionType, ScheduledActivity, ScheduledActivityService> {
+public class ScheduledActivityProvider extends HitsBaseProvider<ScheduledActivityType, ScheduledActivityCollectionType, ScheduledActivity, ScheduledActivityService> {
 
   protected static final Logger L = LoggerFactory.getLogger(ScheduledActivityProvider.class);
 
@@ -21,7 +19,6 @@ public class ScheduledActivityProvider
    *          values of provider property file.
    */
   public ScheduledActivityProvider() {
-    super(ScheduledActivityType.class, "ScheduledActivity", ScheduledActivityCollectionType.class,
-        "ScheduledActivitys", ScheduledActivityService.class);
+    super(ScheduledActivityType.class, "ScheduledActivity", ScheduledActivityCollectionType.class, "ScheduledActivitys", ScheduledActivityService.class);
   }
 }

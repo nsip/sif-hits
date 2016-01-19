@@ -6,41 +6,30 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Service;
 
-import sif.dd.au30.model.SchoolCollectionType;
+import sif.dd.au30.model.SchoolInfoCollectionType;
 import sif.dd.au30.model.SchoolInfoType;
 import sif3.hits.domain.converter.HitsConverter;
 import sif3.hits.domain.converter.SchoolInfoConverter;
 import sif3.hits.domain.dao.SchoolInfoDAO;
-import sif3.hits.domain.dao.ZoneFilterableRepository;
+import sif3.hits.domain.dao.filter.FilterableRepository;
+import sif3.hits.domain.dao.filter.SchoolInfoFilterDAO;
 import sif3.hits.domain.model.SchoolInfo;
 
 @Service
-public class SchoolInfoService extends BaseService<SchoolInfoType, SchoolCollectionType, SchoolInfo> {
-
-  @Autowired
-  private SchoolInfoDAO schoolInfoDAO;
-
-  @Override
-  public JpaRepository<SchoolInfo, String> getDAO() {
-    return schoolInfoDAO;
-  }
-
-  @Override
-  public ZoneFilterableRepository<SchoolInfo> getZoneFilterableDAO() {
-    return schoolInfoDAO;
-  }
+public class SchoolInfoService extends BaseService<SchoolInfoType, SchoolInfoCollectionType, SchoolInfo> {
 
   @Autowired
   private SchoolInfoConverter schoolInfoConverter;
 
-  @Override
-  public HitsConverter<SchoolInfoType, SchoolInfo> getConverter() {
-    return schoolInfoConverter;
-  }
+  @Autowired
+  private SchoolInfoDAO schoolInfoDAO;
+
+  @Autowired
+  private SchoolInfoFilterDAO schoolInfoFilterDAO;
 
   @Override
-  protected SchoolCollectionType getCollection(List<SchoolInfoType> items) {
-    SchoolCollectionType result = new SchoolCollectionType();
+  protected SchoolInfoCollectionType getCollection(List<SchoolInfoType> items) {
+    SchoolInfoCollectionType result = new SchoolInfoCollectionType();
     if (items != null) {
       result.getSchoolInfo().addAll(items);
     }
@@ -48,11 +37,17 @@ public class SchoolInfoService extends BaseService<SchoolInfoType, SchoolCollect
   }
 
   @Override
-  protected SchoolInfo getFiltered(String refId, List<String> refIds) {
-    SchoolInfo result = null;
-    if (refIds.contains(refId)) {
-      result = schoolInfoDAO.findOne(refId);
-    }
-    return result;
+  protected HitsConverter<SchoolInfoType, SchoolInfo> getConverter() {
+    return schoolInfoConverter;
+  }
+
+  @Override
+  protected JpaRepository<SchoolInfo, String> getDAO() {
+    return schoolInfoDAO;
+  }
+
+  @Override
+  protected FilterableRepository<SchoolInfo> getFilterableDAO() {
+    return schoolInfoFilterDAO;
   }
 }

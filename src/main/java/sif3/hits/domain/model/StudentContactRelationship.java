@@ -157,11 +157,8 @@ public class StudentContactRelationship extends HitsEntity {
 
   @Transient
   public boolean hasContactFlags() {
-    return StringUtils.isNotBlank(parentLegalGuardian) || StringUtils.isNotBlank(pickupRights)
-        || StringUtils.isNotBlank(livesWith) || StringUtils.isNotBlank(accessToRecords)
-        || StringUtils.isNotBlank(emergencyContact) || StringUtils.isNotBlank(hasCustody)
-        || StringUtils.isNotBlank(disciplinaryContact) || StringUtils.isNotBlank(primaryCareProvider)
-        || StringUtils.isNotBlank(feesBilling) || StringUtils.isNotBlank(familyMail)
+    return StringUtils.isNotBlank(parentLegalGuardian) || StringUtils.isNotBlank(pickupRights) || StringUtils.isNotBlank(livesWith) || StringUtils.isNotBlank(accessToRecords) || StringUtils.isNotBlank(emergencyContact)
+        || StringUtils.isNotBlank(hasCustody) || StringUtils.isNotBlank(disciplinaryContact) || StringUtils.isNotBlank(primaryCareProvider) || StringUtils.isNotBlank(feesBilling) || StringUtils.isNotBlank(familyMail)
         || StringUtils.isNotBlank(interventionOrder);
   }
 

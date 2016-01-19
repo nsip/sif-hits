@@ -3,13 +3,13 @@ package sif3.hits.domain.converter;
 import org.springframework.stereotype.Component;
 
 import sif.dd.au30.model.NameOfRecordType;
-import sif3.hits.domain.converter.factory.ObjectFactory;
+import sif3.hits.domain.converter.factory.IObjectFactory;
 import sif3.hits.domain.model.Person;
 import sif3.hits.domain.model.StaffPerson;
 import sif3.hits.utils.UsesConstants;
 
 @Component
-public class NameOfRecordConverter extends HitsConverter<NameOfRecordType, Person> implements UsesConstants {
+public class NameOfRecordConverter extends HitsConverter<NameOfRecordType, Person>implements UsesConstants {
 
   public NameOfRecordConverter() {
     super(NameOfRecordType.class, null);
@@ -18,14 +18,13 @@ public class NameOfRecordConverter extends HitsConverter<NameOfRecordType, Perso
   @Override
   public void toSifModel(Person source, NameOfRecordType target) {
     if (source != null && target != null) {
-      ObjectFactory objectFactory = getObjectFactory();
+      IObjectFactory objectFactory = getObjectFactory();
       target.setType(DEFAULT_NAME_TYPE);
       target.setTitle(objectFactory.createBaseNameTypeTitle(source.getTitle()));
       target.setFamilyName(objectFactory.createBaseNameTypeFamilyName(source.getFamilyName()));
       target.setGivenName(objectFactory.createBaseNameTypeGivenName(source.getGivenName()));
       target.setMiddleName(objectFactory.createBaseNameTypeMiddleName(source.getMiddleName()));
-      target
-          .setPreferredFamilyName(objectFactory.createBaseNameTypePreferredFamilyName(source.getPreferredFamilyName()));
+      target.setPreferredFamilyName(objectFactory.createBaseNameTypePreferredFamilyName(source.getPreferredFamilyName()));
       target.setPreferredGivenName(objectFactory.createBaseNameTypePreferredGivenName(source.getPreferredGivenName()));
       target.setFullName(objectFactory.createBaseNameTypeFullName(source.getFullName()));
       if (source instanceof StaffPerson) {

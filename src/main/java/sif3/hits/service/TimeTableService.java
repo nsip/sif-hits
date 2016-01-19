@@ -8,12 +8,12 @@ import org.springframework.stereotype.Service;
 
 import sif.dd.au30.model.TimeTableCollectionType;
 import sif.dd.au30.model.TimeTableType;
-import sif3.common.exception.PersistenceException;
 import sif3.hits.domain.converter.HitsConverter;
 import sif3.hits.domain.converter.TimeTableConverter;
-import sif3.hits.domain.dao.SchoolInfoDAO;
 import sif3.hits.domain.dao.TimeTableDAO;
-import sif3.hits.domain.dao.ZoneFilterableRepository;
+import sif3.hits.domain.dao.filter.FilterableRepository;
+import sif3.hits.domain.dao.filter.SchoolInfoFilterDAO;
+import sif3.hits.domain.dao.filter.TimeTableFilterDAO;
 import sif3.hits.domain.model.SchoolInfo;
 import sif3.hits.domain.model.TimeTable;
 import sif3.hits.rest.dto.RequestDTO;
@@ -22,28 +22,16 @@ import sif3.hits.rest.dto.RequestDTO;
 public class TimeTableService extends BaseService<TimeTableType, TimeTableCollectionType, TimeTable> {
 
   @Autowired
+  private TimeTableConverter timeTableConverter;
+
+  @Autowired
   private TimeTableDAO timeTableDAO;
 
   @Autowired
-  private SchoolInfoDAO schoolInfoDAO;
-
-  @Override
-  public JpaRepository<TimeTable, String> getDAO() {
-    return timeTableDAO;
-  }
-
-  @Override
-  public ZoneFilterableRepository<TimeTable> getZoneFilterableDAO() {
-    return timeTableDAO;
-  }
-
+  private TimeTableFilterDAO timeTableFilterDAO;
+  
   @Autowired
-  private TimeTableConverter timeTableConverter;
-
-  @Override
-  public HitsConverter<TimeTableType, TimeTable> getConverter() {
-    return timeTableConverter;
-  }
+  private SchoolInfoFilterDAO schoolInfoFilterDAO;
 
   @Override
   protected TimeTableCollectionType getCollection(List<TimeTableType> items) {
@@ -55,17 +43,36 @@ public class TimeTableService extends BaseService<TimeTableType, TimeTableCollec
   }
 
   @Override
-  protected TimeTable save(TimeTable hitsObject, RequestDTO<TimeTableType> dto, String zoneId, boolean create) {
-    SchoolInfo schoolInfo = schoolInfoDAO.findOne(hitsObject.getSchoolInfoRefId());
-    if (schoolInfo == null) {
-      throw new RuntimeException();
-    }
-    hitsObject.setSchoolInfo(schoolInfo);
-    return super.save(hitsObject, dto, zoneId, create);
+  protected HitsConverter<TimeTableType, TimeTable> getConverter() {
+    return timeTableConverter;
   }
 
   @Override
-  protected TimeTable getFiltered(String refId, List<String> schoolRefIds) {
-    return timeTableDAO.findOneWithFilter(refId, schoolRefIds);
+  protected JpaRepository<TimeTable, String> getDAO() {
+    return timeTableDAO;
+  }
+  
+  @Override
+  protected FilterableRepository<TimeTable> getFilterableDAO() {
+    return timeTableFilterDAO;
+  }
+  
+  @Override
+  protected void deleteChildObjects(TimeTable hitsObject) {
+  }
+  
+  @Override
+  protected boolean hasChildObjects(TimeTable hitsObject) {
+    return true;
+  }
+  
+  @Override
+  protected TimeTable saveWithChildObjects(TimeTable hitsObject, RequestDTO<TimeTableType> dto, String zoneId, boolean create) {
+    SchoolInfo schoolInfo = schoolInfoFilterDAO.findOneWithZone(hitsObject.getSchoolInfoRefId(), zoneId);
+    if (schoolInfo == null) {
+      throw new RuntimeException("SchoolInfo not found.");
+    }
+    hitsObject.setSchoolInfo(schoolInfo);
+    return super.saveWithChildObjects(hitsObject, dto, zoneId, create);
   }
 }

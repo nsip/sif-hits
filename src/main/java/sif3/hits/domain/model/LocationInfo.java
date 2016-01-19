@@ -108,13 +108,13 @@ public class LocationInfo extends HitsEntity {
   public void setPhoneNumber(String phoneNumber) {
     this.phoneNumber = phoneNumber;
   }
-  
+
   @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
   @JoinColumn(name = "Person_RefId")
   public Set<Address> getAddresses() {
     return addresses;
   }
-  
+
   public void setAddresses(Set<Address> addresses) {
     this.addresses = addresses;
   }

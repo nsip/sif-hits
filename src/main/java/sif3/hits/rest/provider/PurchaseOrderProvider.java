@@ -8,8 +8,7 @@ import sif.dd.au30.model.PurchaseOrderType;
 import sif3.hits.domain.model.PurchaseOrder;
 import sif3.hits.service.PurchaseOrderService;
 
-public class PurchaseOrderProvider extends
-    HitsBaseProvider<PurchaseOrderType, PurchaseOrderCollectionType, PurchaseOrder, PurchaseOrderService> {
+public class PurchaseOrderProvider extends HitsBaseProvider<PurchaseOrderType, PurchaseOrderCollectionType, PurchaseOrder, PurchaseOrderService> {
 
   protected static final Logger L = LoggerFactory.getLogger(PurchaseOrderProvider.class);
 
@@ -20,7 +19,6 @@ public class PurchaseOrderProvider extends
    *          values of provider property file.
    */
   public PurchaseOrderProvider() {
-    super(PurchaseOrderType.class, "PurchaseOrder", PurchaseOrderCollectionType.class, "PurchaseOrders",
-        PurchaseOrderService.class);
+    super(PurchaseOrderType.class, "PurchaseOrder", PurchaseOrderCollectionType.class, "PurchaseOrders", PurchaseOrderService.class);
   }
 }

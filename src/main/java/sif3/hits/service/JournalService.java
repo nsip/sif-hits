@@ -11,33 +11,21 @@ import sif.dd.au30.model.JournalType;
 import sif3.hits.domain.converter.HitsConverter;
 import sif3.hits.domain.converter.JournalConverter;
 import sif3.hits.domain.dao.JournalDAO;
-import sif3.hits.domain.dao.ZoneFilterableRepository;
+import sif3.hits.domain.dao.filter.FilterableRepository;
+import sif3.hits.domain.dao.filter.JournalFilterDAO;
 import sif3.hits.domain.model.Journal;
 
 @Service
-public class JournalService
-    extends BaseService<JournalType, JournalCollectionType, Journal> {
+public class JournalService extends BaseService<JournalType, JournalCollectionType, Journal> {
+
+  @Autowired
+  private JournalConverter journalConverter;
 
   @Autowired
   private JournalDAO journalDAO;
 
-  @Override
-  public JpaRepository<Journal, String> getDAO() {
-    return journalDAO;
-  }
-
-  @Override
-  public ZoneFilterableRepository<Journal> getZoneFilterableDAO() {
-    return journalDAO;
-  }
-
   @Autowired
-  private JournalConverter locationInfoConverter;
-
-  @Override
-  public HitsConverter<JournalType, Journal> getConverter() {
-    return locationInfoConverter;
-  }
+  private JournalFilterDAO journalFilterDAO;
 
   @Override
   protected JournalCollectionType getCollection(List<JournalType> items) {
@@ -49,11 +37,18 @@ public class JournalService
   }
 
   @Override
-  protected Journal getFiltered(String refId, java.util.List<String> schoolRefIds) {
-    Journal result = null;
-    if (schoolRefIds != null && !schoolRefIds.isEmpty()) {
-      result = journalDAO.findOneWithFilter(refId, schoolRefIds);
-    }
-    return result;
+  protected HitsConverter<JournalType, Journal> getConverter() {
+    return journalConverter;
   }
+
+  @Override
+  protected JpaRepository<Journal, String> getDAO() {
+    return journalDAO;
+  }
+
+  @Override
+  protected FilterableRepository<Journal> getFilterableDAO() {
+    return journalFilterDAO;
+  }
+
 }

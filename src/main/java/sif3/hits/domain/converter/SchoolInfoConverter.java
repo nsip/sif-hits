@@ -11,12 +11,12 @@ import sif.dd.au30.model.AUCodeSetsSchoolLevelType;
 import sif.dd.au30.model.AUCodeSetsSchoolSectorCodeType;
 import sif.dd.au30.model.AUCodeSetsYesOrNoCategoryType;
 import sif.dd.au30.model.AddressListType;
-import sif.dd.au30.model.AddressListType.Address;
+import sif.dd.au30.model.AddressType;
 import sif.dd.au30.model.AddressType.Street;
 import sif.dd.au30.model.GridLocationType;
 import sif.dd.au30.model.SchoolInfoType;
 import sif.dd.au30.model.SchoolInfoType.Campus;
-import sif3.hits.domain.converter.factory.ObjectFactory;
+import sif3.hits.domain.converter.factory.IObjectFactory;
 import sif3.hits.domain.model.SchoolInfo;
 
 @Component
@@ -29,27 +29,24 @@ public class SchoolInfoConverter extends HitsConverter<SchoolInfoType, SchoolInf
   @Override
   public void toSifModel(SchoolInfo source, SchoolInfoType target) {
     if (source != null && target != null) {
-      ObjectFactory objFactory = getObjectFactory();
+      IObjectFactory objFactory = getObjectFactory();
       target.setRefId(source.getRefId());
       target.setLocalId(objFactory.createSchoolInfoTypeLocalId(source.getLocalId()));
       target.setSchoolName(source.getSchoolName());
       target.setStateProvinceId(objFactory.createSchoolInfoTypeStateProvinceId(source.getStateProvinceId()));
       target.setCommonwealthId(objFactory.createSchoolInfoTypeCommonwealthId(source.getCommonwealthId()));
-      AUCodeSetsSchoolSectorCodeType schoolSector = getEnumValue(source.getSchoolSector(),
-          AUCodeSetsSchoolSectorCodeType.class);
+      AUCodeSetsSchoolSectorCodeType schoolSector = getEnumValue(source.getSchoolSector(), AUCodeSetsSchoolSectorCodeType.class);
       target.setSchoolSector(schoolSector);
-      AUCodeSetsOperationalStatusType operationalStatus = getEnumValue(source.getOperationalStatus(),
-          AUCodeSetsOperationalStatusType.class);
+      AUCodeSetsOperationalStatusType operationalStatus = getEnumValue(source.getOperationalStatus(), AUCodeSetsOperationalStatusType.class);
       target.setOperationalStatus(objFactory.createSchoolInfoTypeOperationalStatus(operationalStatus));
-      AUCodeSetsYesOrNoCategoryType independentSchool = getEnumValue(source.getIndependentSchool(),
-          AUCodeSetsYesOrNoCategoryType.class);
+      AUCodeSetsYesOrNoCategoryType independentSchool = getEnumValue(source.getIndependentSchool(), AUCodeSetsYesOrNoCategoryType.class);
       target.setIndependentSchool(objFactory.createSchoolInfoTypeIndependentSchool(independentSchool));
       AUCodeSetsSchoolLevelType schoolType = getEnumValue(source.getSchoolType(), AUCodeSetsSchoolLevelType.class);
       target.setSchoolType(objFactory.createSchoolInfoTypeSchoolType(schoolType));
 
       // Address - may subtype this if needed elsewhere
       AddressListType addressList = objFactory.createAddressListType();
-      Address address = objFactory.createAddressListTypeAddress();
+      AddressType address = objFactory.createAddressType();
       address.setStateProvince(objFactory.createAddressTypeStateProvince(source.getAddressStateProvince()));
       address.setCity(source.getAddressCity());
       address.setPostalCode(source.getAddressPostalCode());
@@ -67,8 +64,7 @@ public class SchoolInfoConverter extends HitsConverter<SchoolInfoType, SchoolInf
       addressList.getAddress().add(address);
       target.setAddressList(objFactory.createSchoolInfoTypeAddressList(addressList));
 
-      target.setSchoolGeographicLocation(objFactory.createSchoolInfoTypeSchoolGeographicLocation(source
-          .getAddressGeographicLocation()));
+      target.setSchoolGeographicLocation(objFactory.createSchoolInfoTypeSchoolGeographicLocation(source.getAddressGeographicLocation()));
 
       BigDecimal aria = getBigDecimalValue(source.getAddressARIA());
       target.setARIA(objFactory.createSchoolInfoTypeARIA(aria));
@@ -79,8 +75,7 @@ public class SchoolInfoConverter extends HitsConverter<SchoolInfoType, SchoolInf
 
       Campus campus = objFactory.createSchoolInfoTypeCampus();
       campus.setSchoolCampusId(source.getCampusId());
-      AUCodeSetsYesOrNoCategoryType adminStatus = getEnumValue(source.getCampusAdminStatus(),
-          AUCodeSetsYesOrNoCategoryType.class);
+      AUCodeSetsYesOrNoCategoryType adminStatus = getEnumValue(source.getCampusAdminStatus(), AUCodeSetsYesOrNoCategoryType.class);
       campus.setAdminStatus(adminStatus);
       AUCodeSetsSchoolLevelType campusType = getEnumValue(source.getCampusType(), AUCodeSetsSchoolLevelType.class);
       campus.setCampusType(objFactory.createSchoolInfoTypeCampusCampusType(campusType));
@@ -105,7 +100,7 @@ public class SchoolInfoConverter extends HitsConverter<SchoolInfoType, SchoolInf
       // Address - may subtype this if needed elsewhere
       AddressListType addressList = getJAXBValue(source.getAddressList());
       if (addressList != null && addressList.getAddress() != null && addressList.getAddress().size() > 0) {
-        Address address = addressList.getAddress().get(0);
+        AddressType address = addressList.getAddress().get(0);
         target.setAddressStateProvince(getJAXBValue(address.getStateProvince()));
         target.setAddressCity(address.getCity());
         target.setAddressPostalCode(address.getPostalCode());

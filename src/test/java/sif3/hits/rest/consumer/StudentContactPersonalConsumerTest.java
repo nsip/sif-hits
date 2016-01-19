@@ -11,12 +11,12 @@ import org.springframework.http.HttpStatus;
 import sif.dd.au30.model.AddressListType;
 import sif.dd.au30.model.DemographicsType;
 import sif.dd.au30.model.EmailListType;
-import sif.dd.au30.model.EmailListType.Email;
+import sif.dd.au30.model.EmailType;
 import sif.dd.au30.model.NameOfRecordType;
 import sif.dd.au30.model.ObjectFactory;
 import sif.dd.au30.model.PersonInfoType;
 import sif.dd.au30.model.PhoneNumberListType;
-import sif.dd.au30.model.PhoneNumberListType.PhoneNumber;
+import sif.dd.au30.model.PhoneNumberType;
 import sif.dd.au30.model.StudentContactCollectionType;
 import sif.dd.au30.model.StudentContactPersonalType;
 import sif3.common.ws.BulkOperationResponse;
@@ -70,14 +70,14 @@ public class StudentContactPersonalConsumerTest extends BaseTest {
     personInfo.setDemographics(objectFactory.createPersonInfoTypeDemographics(demographics));
     
     PhoneNumberListType phoneNumberList = new PhoneNumberListType();
-    PhoneNumber phoneNumber = new PhoneNumber();
+    PhoneNumberType phoneNumber = new PhoneNumberType();
     phoneNumber.setType("0096");
     phoneNumber.setNumber("+61400000000");
     phoneNumberList.getPhoneNumber().add(phoneNumber);
     personInfo.setPhoneNumberList(objectFactory.createPhoneNumberList(phoneNumberList));
 
     EmailListType emailList = new EmailListType();
-    Email email = new Email();
+    EmailType email = new EmailType();
     email.setType("06"); // AUCodeSetsEmailTypeType.WORK
     email.setValue("the.email@not.a.real.domain");
     emailList.getEmail().add(email);

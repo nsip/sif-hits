@@ -33,7 +33,7 @@ public class GradingAssignmentScore extends HitsEntity {
   public StudentPersonal getStudentPersonal() {
     return studentPersonal;
   }
-  
+
   public void setStudentPersonal(StudentPersonal studentPersonal) {
     this.studentPersonal = studentPersonal;
   }

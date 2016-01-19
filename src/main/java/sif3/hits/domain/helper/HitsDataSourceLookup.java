@@ -12,7 +12,6 @@ import org.springframework.stereotype.Component;
 
 import com.mchange.v2.c3p0.ComboPooledDataSource;
 
-@Component
 public class HitsDataSourceLookup implements DataSourceLookup {
 
   private boolean shared = false;

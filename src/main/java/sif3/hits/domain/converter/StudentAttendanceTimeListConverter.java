@@ -11,14 +11,13 @@ import sif.dd.au30.model.OtherCodeListType.OtherCode;
 import sif.dd.au30.model.StudentAttendanceTimeListType;
 import sif.dd.au30.model.StudentAttendanceTimeListType.AttendanceTimes;
 import sif.dd.au30.model.StudentAttendanceTimeListType.AttendanceTimes.AttendanceTime;
-import sif3.hits.domain.converter.factory.ObjectFactory;
+import sif3.hits.domain.converter.factory.IObjectFactory;
 import sif3.hits.domain.model.StudentAttendanceTime;
 import sif3.hits.domain.model.StudentAttendanceTimeList;
 import sif3.hits.domain.model.StudentAttendanceTimeOtherCode;
 
 @Component
-public class StudentAttendanceTimeListConverter extends
-    HitsConverter<StudentAttendanceTimeListType, StudentAttendanceTimeList> {
+public class StudentAttendanceTimeListConverter extends HitsConverter<StudentAttendanceTimeListType, StudentAttendanceTimeList> {
 
   public StudentAttendanceTimeListConverter() {
     super(StudentAttendanceTimeListType.class, StudentAttendanceTimeList.class);
@@ -27,7 +26,7 @@ public class StudentAttendanceTimeListConverter extends
   @Override
   public void toSifModel(StudentAttendanceTimeList source, StudentAttendanceTimeListType target) {
     if (source != null && target != null) {
-      ObjectFactory objectFactory = getObjectFactory();
+      IObjectFactory objectFactory = getObjectFactory();
       target.setRefId(source.getRefId());
       target.setDate(getDateValue(source.getAttendanceTimeListDate()));
       target.setSchoolInfoRefId(source.getSchoolInfoRefId());
@@ -37,15 +36,9 @@ public class StudentAttendanceTimeListConverter extends
       if (source.getAttendanceTimes() != null && !source.getAttendanceTimes().isEmpty()) {
         AttendanceTimes attendanceTimes = objectFactory.createStudentAttendanceTimeListTypeAttendanceTimes();
         for (StudentAttendanceTime studentAttendanceTime : source.getAttendanceTimes()) {
-          AttendanceTime attendanceTime = objectFactory
-              .createStudentAttendanceTimeListTypeAttendanceTimesAttendanceTime();
-          attendanceTime
-              .setDurationValue(objectFactory
-                  .createStudentAttendanceTimeListTypeAttendanceTimesAttendanceTimeDurationValue(getBigDecimalValue(studentAttendanceTime
-                      .getAbsenceValue())));
-          attendanceTime.setAttendanceNote(objectFactory
-              .createStudentAttendanceTimeListTypeAttendanceTimesAttendanceTimeAttendanceNote(studentAttendanceTime
-                  .getAttendanceNote()));
+          AttendanceTime attendanceTime = objectFactory.createStudentAttendanceTimeListTypeAttendanceTimesAttendanceTime();
+          attendanceTime.setDurationValue(objectFactory.createStudentAttendanceTimeListTypeAttendanceTimesAttendanceTimeDurationValue(getBigDecimalValue(studentAttendanceTime.getAbsenceValue())));
+          attendanceTime.setAttendanceNote(objectFactory.createStudentAttendanceTimeListTypeAttendanceTimesAttendanceTimeAttendanceNote(studentAttendanceTime.getAttendanceNote()));
           attendanceTime.setAttendanceStatus(studentAttendanceTime.getAttendanceStatus());
           attendanceTime.setEndTime(getTimeValue(studentAttendanceTime.getEndTime()));
           attendanceTime.setStartTime(getTimeValue(studentAttendanceTime.getStartTime()));
@@ -95,12 +88,12 @@ public class StudentAttendanceTimeListConverter extends
           studentAttendanceTime.setEndTime(getTimeValue(attendanceTime.getEndTime()));
           if (attendanceTime.getAttendanceCode() != null) {
             AttendanceCodeType attendanceCode = attendanceTime.getAttendanceCode();
-            
+
             studentAttendanceTime.setCode(attendanceCode.getCode());
-            
+
             Set<StudentAttendanceTimeOtherCode> otherCodes = new HashSet<StudentAttendanceTimeOtherCode>();
             studentAttendanceTime.setOtherCodes(otherCodes);
-            
+
             if (attendanceCode.getOtherCodeList() != null) {
               OtherCodeListType otherCodeList = getJAXBValue(attendanceCode.getOtherCodeList());
               if (otherCodeList != null) {

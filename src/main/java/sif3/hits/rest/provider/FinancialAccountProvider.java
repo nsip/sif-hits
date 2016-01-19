@@ -8,8 +8,7 @@ import sif.dd.au30.model.FinancialAccountType;
 import sif3.hits.domain.model.FinancialAccount;
 import sif3.hits.service.FinancialAccountService;
 
-public class FinancialAccountProvider extends
-    HitsBaseProvider<FinancialAccountType, FinancialAccountCollectionType, FinancialAccount, FinancialAccountService> {
+public class FinancialAccountProvider extends HitsBaseProvider<FinancialAccountType, FinancialAccountCollectionType, FinancialAccount, FinancialAccountService> {
 
   protected static final Logger L = LoggerFactory.getLogger(FinancialAccountProvider.class);
 
@@ -20,7 +19,6 @@ public class FinancialAccountProvider extends
    *          values of provider property file.
    */
   public FinancialAccountProvider() {
-    super(FinancialAccountType.class, "FinancialAccount", FinancialAccountCollectionType.class, "FinancialAccounts",
-        FinancialAccountService.class);
+    super(FinancialAccountType.class, "FinancialAccount", FinancialAccountCollectionType.class, "FinancialAccounts", FinancialAccountService.class);
   }
 }

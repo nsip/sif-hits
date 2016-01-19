@@ -11,33 +11,21 @@ import sif.dd.au30.model.StudentSchoolEnrollmentType;
 import sif3.hits.domain.converter.HitsConverter;
 import sif3.hits.domain.converter.StudentSchoolEnrollmentConverter;
 import sif3.hits.domain.dao.StudentSchoolEnrollmentDAO;
-import sif3.hits.domain.dao.ZoneFilterableRepository;
+import sif3.hits.domain.dao.filter.FilterableRepository;
+import sif3.hits.domain.dao.filter.StudentSchoolEnrollmentFilterDAO;
 import sif3.hits.domain.model.StudentSchoolEnrollment;
 
 @Service
-public class StudentSchoolEnrollmentService extends
-    BaseService<StudentSchoolEnrollmentType, StudentSchoolEnrollmentCollectionType, StudentSchoolEnrollment> {
+public class StudentSchoolEnrollmentService extends BaseService<StudentSchoolEnrollmentType, StudentSchoolEnrollmentCollectionType, StudentSchoolEnrollment> {
+
+  @Autowired
+  private StudentSchoolEnrollmentConverter studentSchoolEnrollmentConverter;
 
   @Autowired
   private StudentSchoolEnrollmentDAO studentSchoolEnrollmentDAO;
 
   @Autowired
-  private StudentSchoolEnrollmentConverter studentSchoolEnrollmentConverter;
-
-  @Override
-  public JpaRepository<StudentSchoolEnrollment, String> getDAO() {
-    return studentSchoolEnrollmentDAO;
-  }
-
-  @Override
-  public ZoneFilterableRepository<StudentSchoolEnrollment> getZoneFilterableDAO() {
-    return studentSchoolEnrollmentDAO;
-  }
-
-  @Override
-  public HitsConverter<StudentSchoolEnrollmentType, StudentSchoolEnrollment> getConverter() {
-    return studentSchoolEnrollmentConverter;
-  }
+  private StudentSchoolEnrollmentFilterDAO studentSchoolEnrollmentFilterDAO;
 
   @Override
   protected StudentSchoolEnrollmentCollectionType getCollection(List<StudentSchoolEnrollmentType> items) {
@@ -49,11 +37,17 @@ public class StudentSchoolEnrollmentService extends
   }
 
   @Override
-  protected StudentSchoolEnrollment getFiltered(String refId, List<String> schoolRefIds) {
-    StudentSchoolEnrollment result = null;
-    if (schoolRefIds != null && !schoolRefIds.isEmpty()) {
-      result = studentSchoolEnrollmentDAO.findOneWithFilter(refId, schoolRefIds);
-    }
-    return result;
+  protected HitsConverter<StudentSchoolEnrollmentType, StudentSchoolEnrollment> getConverter() {
+    return studentSchoolEnrollmentConverter;
+  }
+
+  @Override
+  protected JpaRepository<StudentSchoolEnrollment, String> getDAO() {
+    return studentSchoolEnrollmentDAO;
+  }
+
+  @Override
+  protected FilterableRepository<StudentSchoolEnrollment> getFilterableDAO() {
+    return studentSchoolEnrollmentFilterDAO;
   }
 }

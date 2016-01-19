@@ -1,4 +1,4 @@
-<Invoices xmlns="http://www.sifassociation.org/au/datamodel/1.4">
+<Invoices xmlns="http://www.sifassociation.org/au/datamodel/3.4">
   <Invoice RefId="0e3ead1c-3e79-42a7-bfc7-bb5e4d5efb77">
     <InvoicedEntity SIF_RefObject="Debtor">BA497254965FDA48965ABCE4589EA421</InvoicedEntity>
     <BillingDate>2015-07-01</BillingDate>

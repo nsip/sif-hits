@@ -85,6 +85,26 @@ public class StaffAssignmentConsumerTest extends BaseTest {
   }
   
   @Test
+  public void testQBE() {
+    StaffAssignmentType staffAssignment = new StaffAssignmentType();
+    staffAssignment.setStaffPersonalRefId(StaffPersonalConsumerTest.StaffPersonalRefIds.REF_ID_1);
+    List<Response> responses = staffAssignmentTester.testQBE(staffAssignment, 10000, 0);
+    Assert.assertNotNull(responses);
+    Assert.assertEquals(1, responses.size());
+    Response response = responses.get(0);
+    StaffAssignmentCollectionType staffAssignmentCollectionType = (StaffAssignmentCollectionType) response.getDataObject();
+    Assert.assertNotNull(staffAssignmentCollectionType.getStaffAssignment());
+    Assert.assertFalse(staffAssignmentCollectionType.getStaffAssignment().isEmpty());
+    boolean found = false;
+    for (StaffAssignmentType staffAssignmentType : staffAssignmentCollectionType.getStaffAssignment()) {
+      found = found || REF_ID.equals(staffAssignmentType.getRefId());
+      Assert.assertEquals(StaffPersonalConsumerTest.StaffPersonalRefIds.REF_ID_1, staffAssignmentType.getStaffPersonalRefId());
+    }
+    Assert.assertTrue(found);
+  }
+
+  
+  @Test
   public void testUpdateSingle() throws Exception {
     List<Response> responses = staffAssignmentTester.testGetSingle(REF_ID);
     Assert.assertNotNull(responses);

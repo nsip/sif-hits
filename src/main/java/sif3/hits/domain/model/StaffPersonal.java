@@ -2,6 +2,7 @@ package sif3.hits.domain.model;
 
 import java.util.Set;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.Id;
@@ -27,6 +28,9 @@ public class StaffPersonal extends HitsEntity implements StaffPerson {
   private String phoneNumber;
   private String salutation;
   private String birthDate;
+  private String mostRecentSchoolAcaraId;
+  private String mostRecentSchoolLocalId;
+  private String mostRecentLocalCampusId;
   private Set<StaffPersonalOtherId> otherIds;
 
   @Id
@@ -85,11 +89,11 @@ public class StaffPersonal extends HitsEntity implements StaffPerson {
   public void setPreferredGivenName(String preferredGivenName) {
     this.preferredGivenName = preferredGivenName;
   }
-  
+
   public String getFullName() {
     return fullName;
   }
-  
+
   public void setFullName(String fullName) {
     this.fullName = fullName;
   }
@@ -149,7 +153,34 @@ public class StaffPersonal extends HitsEntity implements StaffPerson {
   public void setBirthDate(String birthDate) {
     this.birthDate = birthDate;
   }
-  
+
+  @Column(name = "MostRecent_SchoolACARAId")
+  public String getMostRecentSchoolAcaraId() {
+    return mostRecentSchoolAcaraId;
+  }
+
+  public void setMostRecentSchoolAcaraId(String mostRecentSchoolAcaraId) {
+    this.mostRecentSchoolAcaraId = mostRecentSchoolAcaraId;
+  }
+
+  @Column(name = "MostRecent_SchoolLocalId")
+  public String getMostRecentSchoolLocalId() {
+    return mostRecentSchoolLocalId;
+  }
+
+  public void setMostRecentSchoolLocalId(String mostRecentSchoolLocalId) {
+    this.mostRecentSchoolLocalId = mostRecentSchoolLocalId;
+  }
+
+  @Column(name = "MostRecent_LocalCampusId")
+  public String getMostRecentLocalCampusId() {
+    return mostRecentLocalCampusId;
+  }
+
+  public void setMostRecentLocalCampusId(String mostRecentLocalCampusId) {
+    this.mostRecentLocalCampusId = mostRecentLocalCampusId;
+  }
+
   @OneToMany(fetch = FetchType.LAZY, mappedBy = "staffPersonalOtherIdId.staffPersonal")
   public Set<StaffPersonalOtherId> getOtherIds() {
     return otherIds;
@@ -165,7 +196,7 @@ public class StaffPersonal extends HitsEntity implements StaffPerson {
   }
 
   public void setTitle(String title) {
-    
+
   }
 
 }

@@ -18,7 +18,6 @@ import sif3.common.ws.CreateOperationStatus;
 import sif3.common.ws.OperationStatus;
 import sif3.common.ws.Response;
 import sif3.hits.rest.consumer.FinancialAccountConsumerTest.FinancialAccountRefIds;
-import sif3.hits.rest.consumer.FinancialClassificationConsumerTest.FinancialClassificationRefIds;
 import sif3.hits.rest.consumer.InvoiceConsumerTest.InvoiceRefIds;
 import sif3.hits.utils.UsesConstants;
 import sif3.infra.rest.consumer.ConsumerLoader;
@@ -55,8 +54,6 @@ public class JournalConsumerTest extends BaseTest implements UsesConstants {
     journalType.setCreatedDate(objectFactory.createJournalTypeCreatedDate(getDate("2015-04-20")));
     journalType.setCreditFinancialAccountRefId(FinancialAccountRefIds.REF_ID_1);
     journalType.setDebitFinancialAccountRefId(FinancialAccountRefIds.REF_ID_2);
-    journalType.setFinancialClassificationRefId(
-        objectFactory.createJournalTypeFinancialClassificationRefId(FinancialClassificationRefIds.REF_ID_1));
     journalType.setGSTCodeOriginal(objectFactory.createJournalTypeGSTCodeOriginal("G6"));
     journalType.setGSTCodeReplacement(objectFactory.createJournalTypeGSTCodeReplacement("G6"));
     journalType.setNote(objectFactory.createJournalTypeNote("Journal Note"));

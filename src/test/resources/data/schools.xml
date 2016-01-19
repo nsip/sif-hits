@@ -1,4 +1,4 @@
-<SchoolInfos xmlns="http://www.sifassociation.org/au/datamodel/1.4">
+<SchoolInfos xmlns="http://www.sifassociation.org/au/datamodel/3.4">
     <SchoolInfo RefId="830c3bcb-0bfc-4adc-96b2-f08318ff8627">
         <LocalId>27</LocalId>
         <SchoolName>Simon Indiana Federal Primary School</SchoolName>

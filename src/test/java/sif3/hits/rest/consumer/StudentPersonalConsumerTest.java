@@ -11,25 +11,26 @@ import org.junit.Test;
 import org.springframework.http.HttpStatus;
 
 import sif.dd.au30.model.AddressListType;
-import sif.dd.au30.model.AddressListType.Address;
 import sif.dd.au30.model.AddressType;
 import sif.dd.au30.model.AddressType.Street;
 import sif.dd.au30.model.DemographicsType;
 import sif.dd.au30.model.DemographicsType.Religion;
 import sif.dd.au30.model.EmailListType;
-import sif.dd.au30.model.EmailListType.Email;
+import sif.dd.au30.model.EmailType;
 import sif.dd.au30.model.GridLocationType;
 import sif.dd.au30.model.NameOfRecordType;
 import sif.dd.au30.model.ObjectFactory;
 import sif.dd.au30.model.PersonInfoType;
 import sif.dd.au30.model.PhoneNumberListType;
-import sif.dd.au30.model.PhoneNumberListType.PhoneNumber;
-import sif.dd.au30.model.StudentCollectionType;
+import sif.dd.au30.model.PhoneNumberType;
+import sif.dd.au30.model.StudentPersonalCollectionType;
 import sif.dd.au30.model.StudentPersonalType;
 import sif.dd.au30.model.StudentPersonalType.MostRecent;
 import sif.dd.au30.model.StudentPersonalType.OtherIdList;
 import sif.dd.au30.model.StudentPersonalType.OtherIdList.OtherId;
 import sif.dd.au30.model.YearLevelType;
+import sif3.common.exception.MarshalException;
+import sif3.common.exception.UnsupportedMediaTypeExcpetion;
 import sif3.common.ws.BulkOperationResponse;
 import sif3.common.ws.CreateOperationStatus;
 import sif3.common.ws.OperationStatus;
@@ -37,7 +38,7 @@ import sif3.common.ws.Response;
 import sif3.infra.rest.consumer.ConsumerLoader;
 
 public class StudentPersonalConsumerTest extends BaseTest {
-  private ConsumerTest<StudentPersonalType, StudentCollectionType> studentTester = null;
+  private ConsumerTest<StudentPersonalType, StudentPersonalCollectionType> studentTester = null;
 
   public static class StudentPersonalRefIds {
     public static String REF_ID_1 = "f7dd788e-3cef-40eb-9cb4-af90a2fa3147";
@@ -60,8 +61,8 @@ public class StudentPersonalConsumerTest extends BaseTest {
       return nameOfRecordType;
     }
     
-    public static Address getAddress(ObjectFactory objectFactory, String addressLineOne, String addressLineTwo) {
-      Address address = new Address();
+    public static AddressType getAddress(ObjectFactory objectFactory, String addressLineOne, String addressLineTwo) {
+      AddressType address = new AddressType();
       getAddress(objectFactory, address, addressLineOne, addressLineTwo);
       return address;
     }
@@ -140,14 +141,14 @@ public class StudentPersonalConsumerTest extends BaseTest {
     personInfo.setDemographics(objectFactory.createPersonInfoTypeDemographics(demographics));
 
     PhoneNumberListType phoneNumberList = new PhoneNumberListType();
-    PhoneNumber phoneNumber = new PhoneNumber();
+    PhoneNumberType phoneNumber = new PhoneNumberType();
     phoneNumber.setType("0096");
     phoneNumber.setNumber("+61400000000");
     phoneNumberList.getPhoneNumber().add(phoneNumber);
     personInfo.setPhoneNumberList(objectFactory.createPhoneNumberList(phoneNumberList));
 
     EmailListType emailList = new EmailListType();
-    Email email = new Email();
+    EmailType email = new EmailType();
     email.setType("06"); // AUCodeSetsEmailTypeType.WORK
     email.setValue("the.email@not.a.real.domain");
     emailList.getEmail().add(email);
@@ -197,8 +198,8 @@ public class StudentPersonalConsumerTest extends BaseTest {
   @Before
   public void setup() {
     ConsumerLoader.initialise("TestConsumer");
-    studentTester = new ConsumerTest<StudentPersonalType, StudentCollectionType>(StudentPersonalType.class,
-        "StudentPersonal", StudentCollectionType.class, "StudentPersonals");
+    studentTester = new ConsumerTest<StudentPersonalType, StudentPersonalCollectionType>(StudentPersonalType.class,
+        "StudentPersonal", StudentPersonalCollectionType.class, "StudentPersonals");
     studentTester.testDeleteMany(REF_IDS);
   }
   
@@ -254,7 +255,7 @@ public class StudentPersonalConsumerTest extends BaseTest {
     Assert.assertEquals(1, responses.size());
     Response response = responses.get(0);
     Assert.assertNotNull(response.getDataObject());
-    StudentCollectionType studentCollection = (StudentCollectionType) response.getDataObject();
+    StudentPersonalCollectionType studentCollection = (StudentPersonalCollectionType) response.getDataObject();
     Assert.assertNotNull(studentCollection.getStudentPersonal());
     Assert.assertEquals(5, studentCollection.getStudentPersonal().size());
   }
@@ -285,6 +286,12 @@ public class StudentPersonalConsumerTest extends BaseTest {
     Response createResponse = createResponses.get(0);
     Assert.assertNotNull(createResponse.getDataObject());
     StudentPersonalType studentPersonal = (StudentPersonalType) createResponse.getDataObject();
+    try {
+      System.out.println(studentTester.getXML(studentPersonal));
+    } catch (MarshalException | UnsupportedMediaTypeExcpetion e) {
+      // TODO Auto-generated catch block
+      e.printStackTrace();
+    }
     Assert.assertEquals(REF_ID_1, studentPersonal.getRefId());
     Assert.assertEquals(2, studentPersonal.getOtherIdList().getValue().getOtherId().size());
     Assert.assertEquals(2, studentPersonal.getPersonInfo().getAddressList().getValue().getAddress().size());
@@ -316,7 +323,7 @@ public class StudentPersonalConsumerTest extends BaseTest {
     Assert.assertEquals(1, updatedStudentPersonal.getPersonInfo().getAddressList().getValue().getAddress().size());
     
 //    studentSchoolEnrollmentTester.testDeleteOne(REF_ID_2);
-    studentTester.testDeleteOne(REF_ID_1);
+//    studentTester.testDeleteOne(REF_ID_1);
   }
 
   @Test

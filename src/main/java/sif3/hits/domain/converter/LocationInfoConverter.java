@@ -7,16 +7,17 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import sif.dd.au30.model.AddressListType;
+import sif.dd.au30.model.AddressType;
 import sif.dd.au30.model.ChargedLocationInfoType;
 import sif.dd.au30.model.PhoneNumberListType;
-import sif.dd.au30.model.PhoneNumberListType.PhoneNumber;
-import sif3.hits.domain.converter.factory.ObjectFactory;
+import sif.dd.au30.model.PhoneNumberType;
+import sif3.hits.domain.converter.factory.IObjectFactory;
 import sif3.hits.domain.model.Address;
 import sif3.hits.domain.model.LocationInfo;
 import sif3.hits.utils.UsesConstants;
 
 @Component
-public class LocationInfoConverter extends HitsConverter<ChargedLocationInfoType, LocationInfo> implements UsesConstants {
+public class LocationInfoConverter extends HitsConverter<ChargedLocationInfoType, LocationInfo>implements UsesConstants {
 
   @Autowired
   private AddressConverter addressConverter;
@@ -28,7 +29,7 @@ public class LocationInfoConverter extends HitsConverter<ChargedLocationInfoType
   @Override
   public void toSifModel(LocationInfo source, ChargedLocationInfoType target) {
     if (source != null && target != null) {
-      ObjectFactory objectFactory = getObjectFactory();
+      IObjectFactory objectFactory = getObjectFactory();
 
       target.setRefId(source.getRefId());
       target.setDescription(objectFactory.createChargedLocationInfoTypeDescription(source.getDescription()));
@@ -36,23 +37,23 @@ public class LocationInfoConverter extends HitsConverter<ChargedLocationInfoType
       target.setLocationType(source.getLocationType());
       target.setName(source.getName());
       target.setParentChargedLocationInfoRefId(objectFactory.createChargedLocationInfoTypeParentChargedLocationInfoRefId(source.getParentLocationInfoRefId()));
-      
+
       if (StringUtils.isNotBlank(source.getPhoneNumber())) {
         PhoneNumberListType phoneNumberList = objectFactory.createPhoneNumberListType();
-        PhoneNumber phoneNumber = objectFactory.createPhoneNumberListTypePhoneNumber();
+        PhoneNumberType phoneNumber = objectFactory.createPhoneNumberType();
         phoneNumber.setNumber(source.getPhoneNumber());
         phoneNumber.setType(DEFAULT_PHONE_TYPE);
         phoneNumberList.getPhoneNumber().add(phoneNumber);
         target.setPhoneNumberList(objectFactory.createChargedLocationInfoTypePhoneNumberList(phoneNumberList));
       }
-      
+
       target.setSchoolInfoRefId(objectFactory.createChargedLocationInfoTypeSchoolInfoRefId(source.getSchoolInfoRefId()));
       target.setSiteCategory(source.getSiteCategory());
       target.setStateProvinceId(objectFactory.createChargedLocationInfoTypeStateProvinceId(source.getStateProvinceId()));
 
       if (source.getAddresses() != null && !source.getAddresses().isEmpty()) {
         AddressListType addressList = objectFactory.createAddressListType();
-        addressList.getAddress().addAll(addressConverter.toSifModelList(source.getAddresses(), AddressListType.Address.class));
+        addressList.getAddress().addAll(addressConverter.toSifModelList(source.getAddresses(), AddressType.class));
         target.setAddressList(objectFactory.createDebtorTypeAddressList(addressList));
       }
     }
@@ -73,11 +74,11 @@ public class LocationInfoConverter extends HitsConverter<ChargedLocationInfoType
       if (phoneNumberList != null && phoneNumberList.getPhoneNumber() != null && !phoneNumberList.getPhoneNumber().isEmpty()) {
         target.setPhoneNumber(phoneNumberList.getPhoneNumber().get(0).getNumber());
       }
-      
+
       target.setSchoolInfoRefId(getJAXBValue(source.getSchoolInfoRefId()));
       target.setSiteCategory(source.getSiteCategory());
       target.setStateProvinceId(getJAXBValue(source.getStateProvinceId()));
-      
+
       AddressListType addressList = getJAXBValue(source.getAddressList());
       if (target.getAddresses() == null) {
         target.setAddresses(new HashSet<Address>());

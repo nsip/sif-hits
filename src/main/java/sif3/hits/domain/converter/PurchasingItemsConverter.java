@@ -7,16 +7,16 @@ import org.springframework.stereotype.Component;
 import sif.dd.au30.model.MonetaryAmountType;
 import sif.dd.au30.model.PurchaseOrderType.PurchasingItems.PurchasingItem.ExpenseAccounts;
 import sif.dd.au30.model.PurchaseOrderType.PurchasingItems.PurchasingItem.ExpenseAccounts.ExpenseAccount;
-import sif3.hits.domain.converter.factory.ObjectFactory;
+import sif3.hits.domain.converter.factory.IObjectFactory;
 import sif3.hits.domain.model.PurchasingItem;
 import sif3.hits.utils.UsesConstants;
 
 @Component
-public class PurchasingItemsConverter extends HitsConverter<sif.dd.au30.model.PurchaseOrderType.PurchasingItems.PurchasingItem, PurchasingItem> implements UsesConstants{
+public class PurchasingItemsConverter extends HitsConverter<sif.dd.au30.model.PurchaseOrderType.PurchasingItems.PurchasingItem, PurchasingItem>implements UsesConstants {
 
   @Autowired
   private ExpenseAccountConverter expenseAccountConverter;
-  
+
   public PurchasingItemsConverter() {
     super(sif.dd.au30.model.PurchaseOrderType.PurchasingItems.PurchasingItem.class, PurchasingItem.class);
   }
@@ -24,15 +24,15 @@ public class PurchasingItemsConverter extends HitsConverter<sif.dd.au30.model.Pu
   @Override
   public void toSifModel(PurchasingItem source, sif.dd.au30.model.PurchaseOrderType.PurchasingItems.PurchasingItem target) {
     if (source != null && target != null) {
-      ObjectFactory objectFactory = getObjectFactory();
-    
+      IObjectFactory objectFactory = getObjectFactory();
+
       if (source.getExpenseAccount() != null) {
         ExpenseAccounts expenseAccounts = new ExpenseAccounts();
         ExpenseAccount expenseAccount = expenseAccountConverter.toSifModel(source.getExpenseAccount());
         expenseAccounts.setExpenseAccount(objectFactory.createPurchaseOrderTypePurchasingItemsPurchasingItemExpenseAccountsExpenseAccount(expenseAccount));
         target.setExpenseAccounts(objectFactory.createPurchaseOrderTypePurchasingItemsPurchasingItemExpenseAccounts(expenseAccounts));
       }
-      
+
       target.setItemDescription(source.getItemDescription());
       target.setItemNumber(objectFactory.createPurchaseOrderTypePurchasingItemsPurchasingItemItemNumber(source.getItemNumber()));
       target.setQuantity(objectFactory.createPurchaseOrderTypePurchasingItemsPurchasingItemQuantity(source.getQuantity()));

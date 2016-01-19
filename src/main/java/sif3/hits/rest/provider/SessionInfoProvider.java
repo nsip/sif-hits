@@ -8,8 +8,7 @@ import sif.dd.au30.model.SessionInfoType;
 import sif3.hits.domain.model.SessionInfo;
 import sif3.hits.service.SessionInfoService;
 
-public class SessionInfoProvider extends
-    HitsBaseProvider<SessionInfoType, SessionInfoCollectionType, SessionInfo, SessionInfoService> {
+public class SessionInfoProvider extends HitsBaseProvider<SessionInfoType, SessionInfoCollectionType, SessionInfo, SessionInfoService> {
 
   protected static final Logger L = LoggerFactory.getLogger(SessionInfoProvider.class);
 
@@ -20,7 +19,6 @@ public class SessionInfoProvider extends
    *          values of provider property file.
    */
   public SessionInfoProvider() {
-    super(SessionInfoType.class, "SessionInfo", SessionInfoCollectionType.class, "SessionInfos",
-        SessionInfoService.class);
+    super(SessionInfoType.class, "SessionInfo", SessionInfoCollectionType.class, "SessionInfos", SessionInfoService.class);
   }
 }

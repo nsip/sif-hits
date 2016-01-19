@@ -5,6 +5,8 @@ import java.util.Properties;
 import javax.annotation.Resource;
 import javax.sql.DataSource;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
@@ -25,20 +27,7 @@ public class DynamicDatabaseConfiguration {
 
   @Resource(name = "databaseProperties")
   private Properties databaseProperties;
-
-  @Bean()
-  public LocalContainerEntityManagerFactoryBean dynamicEntityManagerFactory() {
-    LocalContainerEntityManagerFactoryBean factoryBean = new LocalContainerEntityManagerFactoryBean();
-    factoryBean.setPersistenceUnitName("sif3.hits.dynamic");
-    factoryBean.setDataSource(this.dynamicDataSource());
-    factoryBean.setPackagesToScan(new String[] { "sif3.hits.domain.model" });
-    factoryBean.setJpaVendorAdapter(new HibernateJpaVendorAdapter() {
-    });
-    factoryBean.setJpaProperties(this.databaseProperties);
-    factoryBean.setJpaDialect(new HibernateJpaDialect());
-    return factoryBean;
-  }
-
+  
   @Bean
   public DataSource dynamicDataSource() {
     HitsDataSource hitsDataSource = new HitsDataSource();
@@ -49,9 +38,23 @@ public class DynamicDatabaseConfiguration {
   }
 
   @Bean
-  public PlatformTransactionManager transactionManager() {
+  @Autowired
+  public LocalContainerEntityManagerFactoryBean dynamicEntityManagerFactory(@Qualifier("dynamicDataSource") DataSource dynamicDataSource) {
+    LocalContainerEntityManagerFactoryBean factoryBean = new LocalContainerEntityManagerFactoryBean();
+    factoryBean.setPersistenceUnitName("sif3.hits.dynamic");
+    factoryBean.setDataSource(dynamicDataSource);
+    factoryBean.setPackagesToScan(new String[] { "sif3.hits.domain.model" });
+    factoryBean.setJpaVendorAdapter(new HibernateJpaVendorAdapter() {});
+    factoryBean.setJpaProperties(this.databaseProperties);
+    factoryBean.setJpaDialect(new HibernateJpaDialect());
+    return factoryBean;
+  }
+
+  @Bean
+  @Autowired
+  public PlatformTransactionManager transactionManager(@Qualifier("dynamicEntityManagerFactory") LocalContainerEntityManagerFactoryBean dynamicEntityManagerFactory) {
     JpaTransactionManager transactionManager = new JpaTransactionManager();
-    transactionManager.setEntityManagerFactory(this.dynamicEntityManagerFactory().getObject());
+    transactionManager.setEntityManagerFactory(dynamicEntityManagerFactory.getObject());
     return transactionManager;
   }
 }

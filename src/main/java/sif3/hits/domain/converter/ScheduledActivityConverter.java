@@ -16,7 +16,7 @@ import sif.dd.au30.model.ScheduledActivityType.TeacherList.TeacherCover;
 import sif.dd.au30.model.ScheduledActivityType.TeachingGroupList;
 import sif.dd.au30.model.YearLevelType;
 import sif.dd.au30.model.YearLevelsType;
-import sif3.hits.domain.converter.factory.ObjectFactory;
+import sif3.hits.domain.converter.factory.IObjectFactory;
 import sif3.hits.domain.model.ScheduledActivity;
 import sif3.hits.domain.model.ScheduledActivityTeacher;
 
@@ -33,14 +33,12 @@ public class ScheduledActivityConverter extends HitsConverter<ScheduledActivityT
   @Override
   public void toSifModel(ScheduledActivity source, ScheduledActivityType target) {
     if (source != null && target != null) {
-      ObjectFactory objectFactory = getObjectFactory();
+      IObjectFactory objectFactory = getObjectFactory();
       target.setRefId(source.getRefId());
       target.setSchoolInfoRefId(source.getSchoolInfoRefId());
-      target.setTimeTableCellRefId(objectFactory.createScheduledActivityTypeTimeTableCellRefId(source
-          .getTimeTableCellRefId()));
+      target.setTimeTableCellRefId(objectFactory.createScheduledActivityTypeTimeTableCellRefId(source.getTimeTableCellRefId()));
       target.setTimeTableRefId(objectFactory.createScheduledActivityTypeTimeTableRefId(source.getTimeTableRefId()));
-      target.setTimeTableSubjectRefId(objectFactory.createScheduledActivityTypeTimeTableSubjectRefId(source
-          .getTimeTableSubjectRefId()));
+      target.setTimeTableSubjectRefId(objectFactory.createScheduledActivityTypeTimeTableSubjectRefId(source.getTimeTableSubjectRefId()));
       target.setDayId(objectFactory.createScheduledActivityTypeDayId(source.getDayId()));
       target.setPeriodId(objectFactory.createScheduledActivityTypePeriodId(source.getPeriodId()));
       target.setActivityDate(getDateValue(source.getDate()));
@@ -48,8 +46,7 @@ public class ScheduledActivityConverter extends HitsConverter<ScheduledActivityT
       target.setFinishTime(getTimeValue(source.getFinishTime()));
       target.setCellType(objectFactory.createScheduledActivityTypeCellType(source.getCellType()));
       target.setLocation(objectFactory.createScheduledActivityTypeLocation(source.getLocation()));
-      target.setActivityType(objectFactory.createScheduledActivityTypeActivityType(getEnumValue(source.getType(),
-          AUCodeSetsScheduledActivityTypeType.class)));
+      target.setActivityType(objectFactory.createScheduledActivityTypeActivityType(getEnumValue(source.getType(), AUCodeSetsScheduledActivityTypeType.class)));
       target.setActivityName(objectFactory.createScheduledActivityTypeActivityName(source.getName()));
       target.setActivityComment(objectFactory.createScheduledActivityTypeActivityComment(source.getComment()));
 

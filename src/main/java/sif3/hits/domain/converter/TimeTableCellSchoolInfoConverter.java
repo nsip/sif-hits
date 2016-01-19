@@ -3,7 +3,7 @@ package sif3.hits.domain.converter;
 import org.springframework.stereotype.Component;
 
 import sif.dd.au30.model.TimeTableCellType;
-import sif3.hits.domain.converter.factory.ObjectFactory;
+import sif3.hits.domain.converter.factory.IObjectFactory;
 import sif3.hits.domain.model.SchoolInfo;
 
 @Component
@@ -16,7 +16,7 @@ public class TimeTableCellSchoolInfoConverter extends HitsConverter<TimeTableCel
   @Override
   public void toSifModel(SchoolInfo source, TimeTableCellType target) {
     if (source != null && target != null) {
-      ObjectFactory objectFactory = getObjectFactory();
+      IObjectFactory objectFactory = getObjectFactory();
       target.setSchoolInfoRefId(objectFactory.createTimeTableCellTypeSchoolInfoRefId(source.getRefId()));
       target.setSchoolLocalId(objectFactory.createTimeTableCellTypeSchoolLocalId(source.getLocalId()));
     }
@@ -26,6 +26,7 @@ public class TimeTableCellSchoolInfoConverter extends HitsConverter<TimeTableCel
   public void toHitsModel(TimeTableCellType source, SchoolInfo target) {
     if (source != null && target != null) {
       target.setRefId(getJAXBValue(source.getSchoolInfoRefId()));
+      target.setLocalId(getJAXBValue(source.getSchoolLocalId()));
     }
   }
 }

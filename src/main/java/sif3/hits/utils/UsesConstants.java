@@ -11,5 +11,5 @@ public interface UsesConstants {
   public static final String DEFAULT_EMAIL_TYPE = "06";
   public static final AUCodeSetsNameUsageTypeType DEFAULT_NAME_TYPE_ENUM = AUCodeSetsNameUsageTypeType.LGL;
   public static final String DEFAULT_NAME_TYPE = DEFAULT_NAME_TYPE_ENUM.name();
-  
+
 }

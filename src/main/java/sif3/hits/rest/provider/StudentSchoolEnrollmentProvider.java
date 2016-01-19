@@ -8,9 +8,7 @@ import sif.dd.au30.model.StudentSchoolEnrollmentType;
 import sif3.hits.domain.model.StudentSchoolEnrollment;
 import sif3.hits.service.StudentSchoolEnrollmentService;
 
-public class StudentSchoolEnrollmentProvider
-    extends
-    HitsBaseProvider<StudentSchoolEnrollmentType, StudentSchoolEnrollmentCollectionType, StudentSchoolEnrollment, StudentSchoolEnrollmentService> {
+public class StudentSchoolEnrollmentProvider extends HitsBaseProvider<StudentSchoolEnrollmentType, StudentSchoolEnrollmentCollectionType, StudentSchoolEnrollment, StudentSchoolEnrollmentService> {
 
   protected static final Logger L = LoggerFactory.getLogger(StudentSchoolEnrollmentProvider.class);
 
@@ -21,7 +19,6 @@ public class StudentSchoolEnrollmentProvider
    *          values of provider property file.
    */
   public StudentSchoolEnrollmentProvider() {
-    super(StudentSchoolEnrollmentType.class, "StudentSchoolEnrollment", StudentSchoolEnrollmentCollectionType.class,
-        "StudentSchoolEnrollments", StudentSchoolEnrollmentService.class);
+    super(StudentSchoolEnrollmentType.class, "StudentSchoolEnrollment", StudentSchoolEnrollmentCollectionType.class, "StudentSchoolEnrollments", StudentSchoolEnrollmentService.class);
   }
 }

@@ -4,7 +4,7 @@ import org.springframework.stereotype.Component;
 
 import sif.dd.au30.model.AUCodeSetsYesOrNoCategoryType;
 import sif.dd.au30.model.SessionInfoType;
-import sif3.hits.domain.converter.factory.ObjectFactory;
+import sif3.hits.domain.converter.factory.IObjectFactory;
 import sif3.hits.domain.model.SessionInfo;
 
 @Component
@@ -17,7 +17,7 @@ public class SessionInfoConverter extends HitsConverter<SessionInfoType, Session
   @Override
   public void toSifModel(SessionInfo source, SessionInfoType target) {
     if (source != null && target != null) {
-      ObjectFactory objectFactory = getObjectFactory();
+      IObjectFactory objectFactory = getObjectFactory();
       target.setRefId(source.getRefId());
       target.setSchoolInfoRefId(source.getSchoolInfoRefId());
       target.setTimeTableCellRefId(source.getTimeTableCellRefId());
@@ -26,16 +26,14 @@ public class SessionInfoConverter extends HitsConverter<SessionInfoType, Session
       target.setTimeTableSubjectLocalId(source.getTimeTableSubjectLocalId());
       target.setTeachingGroupLocalId(source.getTeachingGroupLocalId());
       target.setSchoolLocalId(objectFactory.createSessionInfoTypeSchoolLocalId(source.getSchoolLocalId()));
-      target.setStaffPersonalLocalId(objectFactory.createSessionInfoTypeStaffPersonalLocalId(source
-          .getStaffPersonalLocalId()));
+      target.setStaffPersonalLocalId(objectFactory.createSessionInfoTypeStaffPersonalLocalId(source.getStaffPersonalLocalId()));
       target.setRoomNumber(objectFactory.createSessionInfoTypeRoomNumber(source.getRoomNumber()));
       target.setDayId(source.getDayId());
       target.setPeriodId(source.getPeriodId());
       target.setSessionDate(getDateValue(source.getSessionDate()));
       target.setStartTime(objectFactory.createSessionInfoTypeStartTime(getTimeValue(source.getStartTime())));
       target.setFinishTime(objectFactory.createSessionInfoTypeFinishTime(getTimeValue(source.getFinishTime())));
-      target.setRollMarked(objectFactory.createSessionInfoTypeRollMarked(getEnumValue(source.getRollMarked(),
-          AUCodeSetsYesOrNoCategoryType.class)));
+      target.setRollMarked(objectFactory.createSessionInfoTypeRollMarked(getEnumValue(source.getRollMarked(), AUCodeSetsYesOrNoCategoryType.class)));
     }
   }
 

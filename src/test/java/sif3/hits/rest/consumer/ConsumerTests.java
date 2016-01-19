@@ -29,14 +29,14 @@ import org.junit.runners.Suite.SuiteClasses;
   GradingAssignmentConsumerTest.class,
   GradingAssignmentScoreConsumerTest.class,
   LocationInfoConsumerTest.class,
-  FinancialClassificationConsumerTest.class,
   FinancialAccountConsumerTest.class,
   VendorInfoConsumerTest.class,
   DebtorConsumerTest.class,
   JournalConsumerTest.class,
   PurchaseOrderConsumerTest.class,
   InvoiceConsumerTest.class,
-  PaymentReceiptConsumerTest.class
+  PaymentReceiptConsumerTest.class,
+  PersonPictureConsumerTest.class
 })
 public class ConsumerTests {
 /*

@@ -11,32 +11,21 @@ import sif.dd.au30.model.DebtorType;
 import sif3.hits.domain.converter.DebtorConverter;
 import sif3.hits.domain.converter.HitsConverter;
 import sif3.hits.domain.dao.DebtorDAO;
-import sif3.hits.domain.dao.ZoneFilterableRepository;
+import sif3.hits.domain.dao.filter.DebtorFilterDAO;
+import sif3.hits.domain.dao.filter.FilterableRepository;
 import sif3.hits.domain.model.Debtor;
 
 @Service
 public class DebtorService extends BaseService<DebtorType, DebtorCollectionType, Debtor> {
 
   @Autowired
+  private DebtorConverter debtorConverter;
+  
+  @Autowired
   private DebtorDAO debtorDAO;
 
-  @Override
-  public JpaRepository<Debtor, String> getDAO() {
-    return debtorDAO;
-  }
-
-  @Override
-  public ZoneFilterableRepository<Debtor> getZoneFilterableDAO() {
-    return debtorDAO;
-  }
-
   @Autowired
-  private DebtorConverter locationInfoConverter;
-
-  @Override
-  public HitsConverter<DebtorType, Debtor> getConverter() {
-    return locationInfoConverter;
-  }
+  private DebtorFilterDAO debtorFilterDAO;
 
   @Override
   protected DebtorCollectionType getCollection(List<DebtorType> items) {
@@ -48,11 +37,17 @@ public class DebtorService extends BaseService<DebtorType, DebtorCollectionType,
   }
 
   @Override
-  protected Debtor getFiltered(String refId, java.util.List<String> schoolRefIds) {
-    Debtor result = null;
-    if (schoolRefIds != null && !schoolRefIds.isEmpty()) {
-      result = debtorDAO.findOneWithFilter(refId, schoolRefIds);
-    }
-    return result;
+  protected HitsConverter<DebtorType, Debtor> getConverter() {
+    return debtorConverter;
+  }
+
+  @Override
+  protected JpaRepository<Debtor, String> getDAO() {
+    return debtorDAO;
+  }
+
+  @Override
+  protected FilterableRepository<Debtor> getFilterableDAO() {
+    return debtorFilterDAO;
   }
 }

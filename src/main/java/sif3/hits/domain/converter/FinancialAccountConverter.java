@@ -3,12 +3,12 @@ package sif3.hits.domain.converter;
 import org.springframework.stereotype.Component;
 
 import sif.dd.au30.model.FinancialAccountType;
-import sif3.hits.domain.converter.factory.ObjectFactory;
+import sif3.hits.domain.converter.factory.IObjectFactory;
 import sif3.hits.domain.model.FinancialAccount;
 
 @Component
-public class FinancialAccountConverter extends HitsConverter<FinancialAccountType, FinancialAccount>{
-  
+public class FinancialAccountConverter extends HitsConverter<FinancialAccountType, FinancialAccount> {
+
   public FinancialAccountConverter() {
     super(FinancialAccountType.class, FinancialAccount.class);
   }
@@ -16,15 +16,14 @@ public class FinancialAccountConverter extends HitsConverter<FinancialAccountTyp
   @Override
   public void toSifModel(FinancialAccount source, FinancialAccountType target) {
     if (source != null && target != null) {
-      ObjectFactory objectFactory = getObjectFactory();
-      
+      IObjectFactory objectFactory = getObjectFactory();
+
       target.setRefId(source.getRefId());
       target.setAccountNumber(source.getAccountNumber());
       target.setChargedLocationInfoRefId(objectFactory.createFinancialAccountTypeChargedLocationInfoRefId(source.getLocationInfoRefId()));
       target.setCreationDate(getDateValue(source.getCreationDate()));
       target.setCreationTime(getTimeValue(source.getCreationTime()));
       target.setDescription(objectFactory.createFinancialAccountTypeDescription(source.getDescription()));
-      target.setFinancialClassificationRefId(source.getFinancialClassRefId());
       target.setName(source.getName());
       target.setSubAccountRefId(objectFactory.createFinancialAccountTypeSubAccountRefId(source.getSubAccountRefId()));
     }
@@ -39,7 +38,6 @@ public class FinancialAccountConverter extends HitsConverter<FinancialAccountTyp
       target.setCreationDate(getDateValue(source.getCreationDate()));
       target.setCreationTime(getTimeValue(source.getCreationTime()));
       target.setDescription(getJAXBValue(source.getDescription()));
-      target.setFinancialClassRefId(source.getFinancialClassificationRefId());
       target.setName(source.getName());
       target.setSubAccountRefId(getJAXBValue(source.getSubAccountRefId()));
     }

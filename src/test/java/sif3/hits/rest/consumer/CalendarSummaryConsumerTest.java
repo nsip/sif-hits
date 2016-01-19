@@ -89,6 +89,25 @@ public class CalendarSummaryConsumerTest extends BaseTest {
   }
   
   @Test
+  public void testQBE() {
+    CalendarSummaryType calendarSummary = new CalendarSummaryType();
+    calendarSummary.setSchoolInfoRefId(SchoolInfoConsumerTest.REF_ID);
+    List<Response> responses = calendarSummaryTester.testQBE(calendarSummary, 10000, 0);
+    Assert.assertNotNull(responses);
+    Assert.assertEquals(1, responses.size());
+    Response response = responses.get(0);
+    CalendarSummaryCollectionType calendarSummaryCollectionType = (CalendarSummaryCollectionType) response.getDataObject();
+    Assert.assertNotNull(calendarSummaryCollectionType.getCalendarSummary());
+    Assert.assertFalse(calendarSummaryCollectionType.getCalendarSummary().isEmpty());
+    boolean found = false;
+    for (CalendarSummaryType calendarSummaryType : calendarSummaryCollectionType.getCalendarSummary()) {
+      found = found || REF_ID.equals(calendarSummaryType.getRefId());
+      Assert.assertEquals(SchoolInfoConsumerTest.REF_ID, calendarSummaryType.getSchoolInfoRefId());
+    }
+    Assert.assertTrue(found);
+  }
+  
+  @Test
   public void testUpdateSingle() throws Exception {
     List<Response> responses = calendarSummaryTester.testGetSingle(REF_ID);
     Assert.assertNotNull(responses);

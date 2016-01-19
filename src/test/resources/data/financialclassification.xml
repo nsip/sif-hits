@@ -1,5 +1,0 @@
-<FinancialClassification RefId="d1a99c4e-afa1-4aa3-8e6b-d93870f9c1b3" xmlns="http://www.sifassociation.org/au/datamodel/1.4">
-    <Name>The Name</Name>
-    <Description>Financial Classification Description</Description>
-    <ClassificationType>Asset</ClassificationType>
-</FinancialClassification>

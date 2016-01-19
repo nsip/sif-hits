@@ -26,6 +26,9 @@ import sif.dd.au30.model.YearLevelsType;
 import sif3.common.exception.MarshalException;
 import sif3.common.exception.UnmarshalException;
 import sif3.common.exception.UnsupportedMediaTypeExcpetion;
+import sif3.common.model.QueryCriteria;
+import sif3.common.model.QueryOperator;
+import sif3.common.model.QueryPredicate;
 import sif3.common.ws.BulkOperationResponse;
 import sif3.common.ws.CreateOperationStatus;
 import sif3.common.ws.OperationStatus;
@@ -126,7 +129,105 @@ public class ScheduledActivityConsumerTest extends BaseTest {
       Assert.assertEquals("XML Differs", xmlExpectedFrom, xmlExpectedTo);
     }
   }
+  
+  @Test
+  public void testQBE() {
+    ScheduledActivityType scheduledActivity = new ScheduledActivityType();
+    scheduledActivity.setSchoolInfoRefId(SchoolInfoConsumerTest.REF_ID);
+    List<Response> responses = scheduledActivityTester.testQBE(scheduledActivity, 10000, 0);
+    Assert.assertNotNull(responses);
+    Assert.assertEquals(1, responses.size());
+    Response response = responses.get(0);
+    ScheduledActivityCollectionType scheduledActivityCollectionType = (ScheduledActivityCollectionType) response.getDataObject();
+    Assert.assertNotNull(scheduledActivityCollectionType.getScheduledActivity());
+    Assert.assertFalse(scheduledActivityCollectionType.getScheduledActivity().isEmpty());
+    boolean found = false;
+    for (ScheduledActivityType scheduledActivityType : scheduledActivityCollectionType.getScheduledActivity()) {
+      found = found || REF_ID.equals(scheduledActivityType.getRefId());
+      Assert.assertEquals(SchoolInfoConsumerTest.REF_ID, scheduledActivityType.getSchoolInfoRefId());
+    }
+    Assert.assertTrue(found);
+  }
 
+  @Test
+  public void testServicePathStaffPersonal() {
+    QueryCriteria queryCriteria = new QueryCriteria();
+    queryCriteria.addPredicate(new QueryPredicate("StaffPersonals", QueryOperator.EQUAL, StaffPersonalConsumerTest.StaffPersonalRefIds.REF_ID_1));
+
+    List<Response> responses = scheduledActivityTester.testServicePath(queryCriteria, 10000, 0);
+    
+    Assert.assertNotNull(responses);
+    Assert.assertEquals(1, responses.size());
+    Response response = responses.get(0);
+    ScheduledActivityCollectionType scheduledActivityCollectionType = (ScheduledActivityCollectionType) response.getDataObject();
+    Assert.assertNotNull(scheduledActivityCollectionType);
+    Assert.assertNotNull(scheduledActivityCollectionType.getScheduledActivity());
+    Assert.assertFalse(scheduledActivityCollectionType.getScheduledActivity().isEmpty());
+    boolean found = false;
+    for (ScheduledActivityType scheduledActivityType : scheduledActivityCollectionType.getScheduledActivity()) {
+      found = found || REF_ID.equals(scheduledActivityType.getRefId());
+      Assert.assertNotNull(scheduledActivityType.getTeacherList());
+      Assert.assertNotNull(scheduledActivityType.getTeacherList().getValue());
+      Assert.assertNotNull(scheduledActivityType.getTeacherList().getValue().getTeacherCover());
+      Assert.assertFalse(scheduledActivityType.getTeacherList().getValue().getTeacherCover().isEmpty());
+      boolean staffFound = false;
+      for (TeacherCover teacherCover : scheduledActivityType.getTeacherList().getValue().getTeacherCover()) {
+        staffFound = staffFound || StaffPersonalConsumerTest.StaffPersonalRefIds.REF_ID_1.equals(teacherCover.getStaffPersonalRefId());
+      }
+      Assert.assertTrue(staffFound);
+    }
+    Assert.assertTrue(found);
+  }
+  
+  @Test
+  public void testServicePathStudentPersonal() {
+    QueryCriteria queryCriteria = new QueryCriteria();
+    queryCriteria.addPredicate(new QueryPredicate("StudentPersonals", QueryOperator.EQUAL, StudentPersonalRefIds.REF_ID_1));
+
+    List<Response> responses = scheduledActivityTester.testServicePath(queryCriteria, 10000, 0);
+    
+    Assert.assertNotNull(responses);
+    Assert.assertEquals(1, responses.size());
+    Response response = responses.get(0);
+    ScheduledActivityCollectionType scheduledActivityCollectionType = (ScheduledActivityCollectionType) response.getDataObject();
+    Assert.assertNotNull(scheduledActivityCollectionType);
+    Assert.assertNotNull(scheduledActivityCollectionType.getScheduledActivity());
+    Assert.assertFalse(scheduledActivityCollectionType.getScheduledActivity().isEmpty());
+    boolean found = false;
+    for (ScheduledActivityType scheduledActivityType : scheduledActivityCollectionType.getScheduledActivity()) {
+      found = found || REF_ID.equals(scheduledActivityType.getRefId());
+      Assert.assertNotNull(scheduledActivityType.getStudentList());
+      Assert.assertNotNull(scheduledActivityType.getStudentList().getValue());
+      Assert.assertNotNull(scheduledActivityType.getStudentList().getValue().getStudentPersonalRefId());
+      Assert.assertTrue(scheduledActivityType.getStudentList().getValue().getStudentPersonalRefId().contains(StudentPersonalRefIds.REF_ID_1));
+    }
+    Assert.assertTrue(found);
+  }
+  
+  @Test
+  public void testServicePathTeachingGroup() {
+    QueryCriteria queryCriteria = new QueryCriteria();
+    queryCriteria.addPredicate(new QueryPredicate("TeachingGroups", QueryOperator.EQUAL, TeachingGroupConsumerTest.REF_ID));
+
+    List<Response> responses = scheduledActivityTester.testServicePath(queryCriteria, 10000, 0);
+    
+    Assert.assertNotNull(responses);
+    Assert.assertEquals(1, responses.size());
+    Response response = responses.get(0);
+    ScheduledActivityCollectionType scheduledActivityCollectionType = (ScheduledActivityCollectionType) response.getDataObject();
+    Assert.assertNotNull(scheduledActivityCollectionType);
+    Assert.assertNotNull(scheduledActivityCollectionType.getScheduledActivity());
+    Assert.assertFalse(scheduledActivityCollectionType.getScheduledActivity().isEmpty());
+    boolean found = false;
+    for (ScheduledActivityType scheduledActivityType : scheduledActivityCollectionType.getScheduledActivity()) {
+      found = found || REF_ID.equals(scheduledActivityType.getRefId());
+      Assert.assertNotNull(scheduledActivityType.getTeachingGroupList());
+      Assert.assertNotNull(scheduledActivityType.getTeachingGroupList().getValue());
+      Assert.assertNotNull(scheduledActivityType.getTeachingGroupList().getValue().getTeachingGroupRefId());
+      Assert.assertTrue(scheduledActivityType.getTeachingGroupList().getValue().getTeachingGroupRefId().contains(TeachingGroupConsumerTest.REF_ID));
+    }
+    Assert.assertTrue(found);
+  }
   
   @Before
   public void setup() {

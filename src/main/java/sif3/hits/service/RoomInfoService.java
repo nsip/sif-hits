@@ -11,32 +11,21 @@ import sif.dd.au30.model.RoomInfoType;
 import sif3.hits.domain.converter.HitsConverter;
 import sif3.hits.domain.converter.RoomInfoConverter;
 import sif3.hits.domain.dao.RoomInfoDAO;
-import sif3.hits.domain.dao.ZoneFilterableRepository;
+import sif3.hits.domain.dao.filter.FilterableRepository;
+import sif3.hits.domain.dao.filter.RoomInfoFilterDAO;
 import sif3.hits.domain.model.RoomInfo;
 
 @Service
 public class RoomInfoService extends BaseService<RoomInfoType, RoomInfoCollectionType, RoomInfo> {
 
   @Autowired
+  private RoomInfoConverter roomInfoConverter;
+  
+  @Autowired
   private RoomInfoDAO roomInfoDAO;
 
-  @Override
-  public JpaRepository<RoomInfo, String> getDAO() {
-    return roomInfoDAO;
-  }
-
-  @Override
-  public ZoneFilterableRepository<RoomInfo> getZoneFilterableDAO() {
-    return roomInfoDAO;
-  }
-
   @Autowired
-  private RoomInfoConverter studentPersonalConverter;
-
-  @Override
-  public HitsConverter<RoomInfoType, RoomInfo> getConverter() {
-    return studentPersonalConverter;
-  }
+  private RoomInfoFilterDAO roomInfoFilterDAO;
 
   @Override
   protected RoomInfoCollectionType getCollection(List<RoomInfoType> items) {
@@ -48,11 +37,18 @@ public class RoomInfoService extends BaseService<RoomInfoType, RoomInfoCollectio
   }
 
   @Override
-  protected RoomInfo getFiltered(String refId, java.util.List<String> schoolRefIds) {
-    RoomInfo result = null;
-    if (schoolRefIds != null && !schoolRefIds.isEmpty()) {
-      result = roomInfoDAO.findOneWithFilter(refId, schoolRefIds);
-    }
-    return result;
+  protected HitsConverter<RoomInfoType, RoomInfo> getConverter() {
+    return roomInfoConverter;
   }
+
+  @Override
+  protected JpaRepository<RoomInfo, String> getDAO() {
+    return roomInfoDAO;
+  }
+  
+  @Override
+  protected FilterableRepository<RoomInfo> getFilterableDAO() {
+    return roomInfoFilterDAO;
+  }
+
 }

@@ -8,8 +8,7 @@ import sif.dd.au30.model.GradingAssignmentScoreType;
 import sif3.hits.domain.model.GradingAssignmentScore;
 import sif3.hits.service.GradingAssignmentScoreService;
 
-public class GradingAssignmentScoreProvider extends
-    HitsBaseProvider<GradingAssignmentScoreType, GradingAssignmentScoreCollectionType, GradingAssignmentScore, GradingAssignmentScoreService> {
+public class GradingAssignmentScoreProvider extends HitsBaseProvider<GradingAssignmentScoreType, GradingAssignmentScoreCollectionType, GradingAssignmentScore, GradingAssignmentScoreService> {
 
   protected static final Logger L = LoggerFactory.getLogger(GradingAssignmentScoreProvider.class);
 
@@ -20,7 +19,6 @@ public class GradingAssignmentScoreProvider extends
    *          values of provider property file.
    */
   public GradingAssignmentScoreProvider() {
-    super(GradingAssignmentScoreType.class, "GradingAssignmentScore", GradingAssignmentScoreCollectionType.class, "GradingAssignmentScores",
-        GradingAssignmentScoreService.class);
+    super(GradingAssignmentScoreType.class, "GradingAssignmentScore", GradingAssignmentScoreCollectionType.class, "GradingAssignmentScores", GradingAssignmentScoreService.class);
   }
 }

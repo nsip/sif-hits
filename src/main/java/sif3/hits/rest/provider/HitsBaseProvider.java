@@ -14,6 +14,7 @@ import java.util.Map;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import au.com.systemic.framework.utils.StringUtils;
 import sif3.common.conversion.ModelObjectInfo;
 import sif3.common.exception.DataTooLargeException;
 import sif3.common.exception.PersistenceException;
@@ -34,10 +35,8 @@ import sif3.hits.rest.dto.RequestDTO;
 import sif3.hits.rest.dto.ResponseDTO;
 import sif3.hits.service.BaseService;
 import sif3.hits.utils.RefIdGenerator;
-import au.com.systemic.framework.utils.StringUtils;
 
-public abstract class HitsBaseProvider<S, SC, H, HS extends BaseService<S, SC, H>> extends AUDataModelProvider
-    implements QueryProvider {
+public abstract class HitsBaseProvider<S, SC, H, HS extends BaseService<S, SC, H>> extends AUDataModelProvider implements QueryProvider {
 
   private final Class<S> SIF_CLASS;
   private final Class<SC> SIF_COLLECTION_CLASS;
@@ -50,8 +49,7 @@ public abstract class HitsBaseProvider<S, SC, H, HS extends BaseService<S, SC, H
 
   private HS service = null;
 
-  public HitsBaseProvider(Class<S> sifClass, String singleName, Class<SC> sifCollectionClass, String collectionName,
-      Class<HS> hitsServiceClass) {
+  public HitsBaseProvider(Class<S> sifClass, String singleName, Class<SC> sifCollectionClass, String collectionName, Class<HS> hitsServiceClass) {
     super();
     this.SIF_CLASS = sifClass;
     this.SINGLE_NAME = singleName;
@@ -60,7 +58,7 @@ public abstract class HitsBaseProvider<S, SC, H, HS extends BaseService<S, SC, H
     this.HITS_SERVICE_CLASS = hitsServiceClass;
     initialise(sifCollectionClass, getCollectionMethod());
   }
-  
+
   /*
    * Can override this if needed.
    */
@@ -82,8 +80,7 @@ public abstract class HitsBaseProvider<S, SC, H, HS extends BaseService<S, SC, H
    * sif3.common.model.SIFZone, sif3.common.model.SIFContext)
    */
   @Override
-  public Object retrievByPrimaryKey(String resourceID, SIFZone zone, SIFContext context, RequestMetadata metadata)
-      throws IllegalArgumentException, PersistenceException {
+  public Object retrievByPrimaryKey(String resourceID, SIFZone zone, SIFContext context, RequestMetadata metadata) throws IllegalArgumentException, PersistenceException {
 
     try {
       setDatabaseContext(zone, context);
@@ -114,8 +111,7 @@ public abstract class HitsBaseProvider<S, SC, H, HS extends BaseService<S, SC, H
    * sif3.common.model.SIFZone, sif3.common.model.SIFContext)
    */
   @Override
-  public Object createSingle(Object data, boolean useAdvisory, SIFZone zone, SIFContext context,
-      RequestMetadata metadata) throws IllegalArgumentException, PersistenceException {
+  public Object createSingle(Object data, boolean useAdvisory, SIFZone zone, SIFContext context, RequestMetadata metadata) throws IllegalArgumentException, PersistenceException {
 
     try {
       setDatabaseContext(zone, context);
@@ -136,8 +132,7 @@ public abstract class HitsBaseProvider<S, SC, H, HS extends BaseService<S, SC, H
         if (data != null && data.getClass() != null) {
           receivedType = data.getClass().getSimpleName();
         }
-        throw new IllegalArgumentException(
-            "Expected Object Type = " + SIF_CLASS.getSimpleName() + ". Received Object Type = " + receivedType);
+        throw new IllegalArgumentException("Expected Object Type = " + SIF_CLASS.getSimpleName() + ". Received Object Type = " + receivedType);
       }
 
     } catch (IllegalArgumentException ex) {
@@ -177,8 +172,7 @@ public abstract class HitsBaseProvider<S, SC, H, HS extends BaseService<S, SC, H
    * java.lang.String, sif3.common.model.SIFZone, sif3.common.model.SIFContext)
    */
   @Override
-  public boolean updateSingle(Object data, String resourceID, SIFZone zone, SIFContext context,
-      RequestMetadata metadata) throws IllegalArgumentException, PersistenceException {
+  public boolean updateSingle(Object data, String resourceID, SIFZone zone, SIFContext context, RequestMetadata metadata) throws IllegalArgumentException, PersistenceException {
     try {
       setDatabaseContext(zone, context);
 
@@ -203,8 +197,7 @@ public abstract class HitsBaseProvider<S, SC, H, HS extends BaseService<S, SC, H
         if (data != null && data.getClass() != null) {
           receivedType = data.getClass().getSimpleName();
         }
-        throw new IllegalArgumentException(
-            "Expected Object Type = " + SIF_CLASS.getSimpleName() + ". Received Object Type = " + receivedType);
+        throw new IllegalArgumentException("Expected Object Type = " + SIF_CLASS.getSimpleName() + ". Received Object Type = " + receivedType);
       }
     } catch (IllegalArgumentException ex) {
       throw ex;
@@ -232,8 +225,7 @@ public abstract class HitsBaseProvider<S, SC, H, HS extends BaseService<S, SC, H
    * sif3.common.model.SIFZone, sif3.common.model.SIFContext)
    */
   @Override
-  public boolean deleteSingle(String resourceID, SIFZone zone, SIFContext context, RequestMetadata metadata)
-      throws IllegalArgumentException, PersistenceException {
+  public boolean deleteSingle(String resourceID, SIFZone zone, SIFContext context, RequestMetadata metadata) throws IllegalArgumentException, PersistenceException {
     try {
       setDatabaseContext(zone, context);
 
@@ -276,13 +268,12 @@ public abstract class HitsBaseProvider<S, SC, H, HS extends BaseService<S, SC, H
    * sif3.common.model.SIFContext, sif3.common.model.PagingInfo)
    */
   @Override
-  public Object retrieve(SIFZone zone, SIFContext context, PagingInfo pagingInfo, RequestMetadata metadata)
-      throws PersistenceException, UnsupportedQueryException {
+  public Object retrieve(SIFZone zone, SIFContext context, PagingInfo pagingInfo, RequestMetadata metadata) throws PersistenceException, UnsupportedQueryException {
     try {
       setDatabaseContext(zone, context);
 
       L.debug("Find many " + COLLECTION_NAME + "...");
-      return getService().findAll(pagingInfo, getZoneId(zone));
+      return getService().findAll(getZoneId(zone), pagingInfo);
     } catch (Exception ex) {
       L.error("Unknown Error:", ex);
       throw new PersistenceException(UNKNOWN_ERROR.getMessage());
@@ -290,8 +281,7 @@ public abstract class HitsBaseProvider<S, SC, H, HS extends BaseService<S, SC, H
   }
 
   @Override
-  public Object retrieveByServicePath(QueryCriteria criteria, SIFZone zone, SIFContext context, PagingInfo pagingInfo,
-      RequestMetadata metadata) throws UnsupportedQueryException, PersistenceException {
+  public Object retrieveByServicePath(QueryCriteria criteria, SIFZone zone, SIFContext context, PagingInfo pagingInfo, RequestMetadata metadata) throws UnsupportedQueryException, PersistenceException {
 
     try {
       setDatabaseContext(zone, context);
@@ -311,8 +301,7 @@ public abstract class HitsBaseProvider<S, SC, H, HS extends BaseService<S, SC, H
   }
 
   @Override
-  public Object retrieveByQBE(Object example, SIFZone zone, SIFContext context, PagingInfo pagingInfo,
-      RequestMetadata metadata) throws PersistenceException, UnsupportedQueryException, DataTooLargeException {
+  public Object retrieveByQBE(Object example, SIFZone zone, SIFContext context, PagingInfo pagingInfo, RequestMetadata metadata) throws PersistenceException, UnsupportedQueryException, DataTooLargeException {
     try {
       setDatabaseContext(zone, context);
 
@@ -322,7 +311,12 @@ public abstract class HitsBaseProvider<S, SC, H, HS extends BaseService<S, SC, H
       } else if (!SIF_CLASS.isAssignableFrom(example.getClass())) {
         throw new UnsupportedQueryException("Query by example object is of incorrect type : " + example.getClass().toString());
       } else {
-        return getService().findByExample(SIF_CLASS.cast(example), pagingInfo, getZoneId(zone));
+        S sifExample = SIF_CLASS.cast(example);
+        String refId = getRefId(sifExample, SIF_CLASS);
+        if (refId != null) {
+          // may need to do something special here.
+        }
+        return getService().findByExample(SIF_CLASS.cast(example), getZoneId(zone), pagingInfo);
       }
     } catch (Exception ex) {
       L.error("Unknown Error:", ex);
@@ -338,8 +332,7 @@ public abstract class HitsBaseProvider<S, SC, H, HS extends BaseService<S, SC, H
    * sif3.common.model.SIFZone, sif3.common.model.SIFContext)
    */
   @Override
-  public List<CreateOperationStatus> createMany(Object data, boolean useAdvisory, SIFZone zone, SIFContext context,
-      RequestMetadata metadata) throws IllegalArgumentException, PersistenceException {
+  public List<CreateOperationStatus> createMany(Object data, boolean useAdvisory, SIFZone zone, SIFContext context, RequestMetadata metadata) throws IllegalArgumentException, PersistenceException {
 
     try {
       setDatabaseContext(zone, context);
@@ -356,8 +349,7 @@ public abstract class HitsBaseProvider<S, SC, H, HS extends BaseService<S, SC, H
         if (data != null && data.getClass() != null) {
           receivedType = data.getClass().getSimpleName();
         }
-        throw new IllegalArgumentException("Expected Object Type = " + SIF_COLLECTION_CLASS.getSimpleName()
-            + ". Received Object Type = " + receivedType);
+        throw new IllegalArgumentException("Expected Object Type = " + SIF_COLLECTION_CLASS.getSimpleName() + ". Received Object Type = " + receivedType);
       }
     } catch (IllegalArgumentException ex) {
       throw ex;
@@ -376,12 +368,11 @@ public abstract class HitsBaseProvider<S, SC, H, HS extends BaseService<S, SC, H
    * sif3.common.model.SIFZone, sif3.common.model.SIFContext)
    */
   @Override
-  public List<OperationStatus> updateMany(Object data, SIFZone zone, SIFContext context, RequestMetadata metadata)
-      throws IllegalArgumentException, PersistenceException {
+  public List<OperationStatus> updateMany(Object data, SIFZone zone, SIFContext context, RequestMetadata metadata) throws IllegalArgumentException, PersistenceException {
     try {
       setDatabaseContext(zone, context);
 
-      // Must be of type SchoolCollectionType
+      // Must be of type SchoolInfoCollectionType
       if (data != null && SIF_COLLECTION_CLASS.isAssignableFrom(data.getClass())) {
         L.debug("Update many " + COLLECTION_NAME + "...");
         SC sifCollection = SIF_COLLECTION_CLASS.cast(data);
@@ -393,8 +384,7 @@ public abstract class HitsBaseProvider<S, SC, H, HS extends BaseService<S, SC, H
         if (data != null && data.getClass() != null) {
           receivedType = data.getClass().getSimpleName();
         }
-        throw new IllegalArgumentException("Expected Object Type = " + SIF_COLLECTION_CLASS.getSimpleName()
-            + ". Received Object Type = " + receivedType);
+        throw new IllegalArgumentException("Expected Object Type = " + SIF_COLLECTION_CLASS.getSimpleName() + ". Received Object Type = " + receivedType);
       }
     } catch (IllegalArgumentException ex) {
       throw ex;
@@ -424,8 +414,7 @@ public abstract class HitsBaseProvider<S, SC, H, HS extends BaseService<S, SC, H
    * sif3.common.model.SIFZone, sif3.common.model.SIFContext)
    */
   @Override
-  public List<OperationStatus> deleteMany(List<String> resourceIDs, SIFZone zone, SIFContext context,
-      RequestMetadata metadata) throws IllegalArgumentException, PersistenceException {
+  public List<OperationStatus> deleteMany(List<String> resourceIDs, SIFZone zone, SIFContext context, RequestMetadata metadata) throws IllegalArgumentException, PersistenceException {
     try {
       setDatabaseContext(zone, context);
 
@@ -504,15 +493,13 @@ public abstract class HitsBaseProvider<S, SC, H, HS extends BaseService<S, SC, H
   private CreateOperationStatus getCreateOperationStatus(ResponseDTO<S> response) {
     CreateOperationStatus status = null;
     if (response.getOperationStatus().isOk()) {
-      status = new CreateOperationStatus(response.getRequestDTO().getRefId(), response.getRequestDTO().getAdvisoryId(),
-          response.getOperationStatus().getHttpStatus());
+      status = new CreateOperationStatus(response.getRequestDTO().getRefId(), response.getRequestDTO().getAdvisoryId(), response.getOperationStatus().getHttpStatus());
     } else {
       String message = SINGLE_NAME + " - " + response.getOperationStatus().getMessage();
       if (response.getDetailMessage() != null) {
         message += " - " + response.getDetailMessage();
       }
-      status = new CreateOperationStatus(response.getRequestDTO().getRefId(), response.getRequestDTO().getAdvisoryId(),
-          response.getOperationStatus().getHttpStatus(),
+      status = new CreateOperationStatus(response.getRequestDTO().getRefId(), response.getRequestDTO().getAdvisoryId(), response.getOperationStatus().getHttpStatus(),
           new ErrorDetails(response.getOperationStatus().getHttpStatus(), message));
     }
     return status;
@@ -537,14 +524,12 @@ public abstract class HitsBaseProvider<S, SC, H, HS extends BaseService<S, SC, H
       if (response.getDetailMessage() != null) {
         message += " - " + response.getDetailMessage();
       }
-      status = new OperationStatus(response.getRequestDTO().getRefId(), response.getOperationStatus().getHttpStatus(),
-          new ErrorDetails(response.getOperationStatus().getHttpStatus(), message));
+      status = new OperationStatus(response.getRequestDTO().getRefId(), response.getOperationStatus().getHttpStatus(), new ErrorDetails(response.getOperationStatus().getHttpStatus(), message));
     }
     return status;
   }
 
-  protected RequestDTO<S> getRequestDTO(S sifObject, String resourceId, Boolean useAdvisory, Class<S> sifClass)
-      throws PersistenceException {
+  protected RequestDTO<S> getRequestDTO(S sifObject, String resourceId, Boolean useAdvisory, Class<S> sifClass) throws PersistenceException {
     String advisoryId = resourceId;
     String refId = resourceId;
     if (sifObject != null) {

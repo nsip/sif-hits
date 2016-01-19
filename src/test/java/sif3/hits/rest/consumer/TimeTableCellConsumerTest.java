@@ -11,6 +11,9 @@ import org.springframework.http.HttpStatus;
 import sif.dd.au30.model.ObjectFactory;
 import sif.dd.au30.model.TimeTableCellCollectionType;
 import sif.dd.au30.model.TimeTableCellType;
+import sif3.common.model.QueryCriteria;
+import sif3.common.model.QueryOperator;
+import sif3.common.model.QueryPredicate;
 import sif3.common.ws.BulkOperationResponse;
 import sif3.common.ws.CreateOperationStatus;
 import sif3.common.ws.OperationStatus;
@@ -84,6 +87,46 @@ public class TimeTableCellConsumerTest extends BaseTest {
     timeTableCellTester = new ConsumerTest<TimeTableCellType, TimeTableCellCollectionType>(TimeTableCellType.class,
         "TimeTableCell", TimeTableCellCollectionType.class, "TimeTableCells");
     timeTableCellTester.testDeleteMany(REF_IDS);
+  }
+  
+  @Test
+  public void testQBE() {
+    TimeTableCellType timeTableCell = new TimeTableCellType();
+    timeTableCell.setTimeTableRefId(TimeTableConsumerTest.REF_ID);
+    List<Response> responses = timeTableCellTester.testQBE(timeTableCell, 10000, 0);
+    Assert.assertNotNull(responses);
+    Assert.assertEquals(1, responses.size());
+    Response response = responses.get(0);
+    TimeTableCellCollectionType timeTableCellCollectionType = (TimeTableCellCollectionType) response.getDataObject();
+    Assert.assertNotNull(timeTableCellCollectionType.getTimeTableCell());
+    Assert.assertFalse(timeTableCellCollectionType.getTimeTableCell().isEmpty());
+    boolean found = false;
+    for (TimeTableCellType timeTableCellType : timeTableCellCollectionType.getTimeTableCell()) {
+      found = found || REF_ID.equals(timeTableCellType.getRefId());
+      Assert.assertEquals(TimeTableConsumerTest.REF_ID, timeTableCellType.getTimeTableRefId());
+    }
+    Assert.assertTrue(found);
+  }
+  
+  @Test
+  public void testServicePathSchoolInfo() {
+    QueryCriteria queryCriteria = new QueryCriteria();
+    queryCriteria.addPredicate(new QueryPredicate("SchoolInfos", QueryOperator.EQUAL, SchoolInfoConsumerTest.REF_ID));
+
+    List<Response> responses = timeTableCellTester.testServicePath(queryCriteria, 10000, 0);
+    Assert.assertNotNull(responses);
+    Assert.assertEquals(1, responses.size());
+    Response response = responses.get(0);
+    TimeTableCellCollectionType timeTableCellCollectionType = (TimeTableCellCollectionType) response.getDataObject();
+    Assert.assertNotNull(timeTableCellCollectionType.getTimeTableCell());
+    Assert.assertFalse(timeTableCellCollectionType.getTimeTableCell().isEmpty());
+    boolean found = false;
+    for (TimeTableCellType timeTableCellType : timeTableCellCollectionType.getTimeTableCell()) {
+      found = found || REF_ID.equals(timeTableCellType.getRefId());
+      Assert.assertNotNull(timeTableCellType.getSchoolInfoRefId());
+      Assert.assertEquals(SchoolInfoConsumerTest.REF_ID, timeTableCellType.getSchoolInfoRefId().getValue());
+    }
+    Assert.assertTrue(found);
   }
   
   @Test

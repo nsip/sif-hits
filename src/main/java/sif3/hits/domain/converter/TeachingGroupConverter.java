@@ -14,7 +14,7 @@ import sif.dd.au30.model.TeachingGroupType.TeacherList;
 import sif.dd.au30.model.TeachingGroupType.TeacherList.TeachingGroupTeacher;
 import sif.dd.au30.model.TeachingGroupType.TeachingGroupPeriodList;
 import sif.dd.au30.model.TeachingGroupType.TeachingGroupPeriodList.TeachingGroupPeriod;
-import sif3.hits.domain.converter.factory.ObjectFactory;
+import sif3.hits.domain.converter.factory.IObjectFactory;
 import sif3.hits.domain.model.StudentPersonal;
 import sif3.hits.domain.model.TeachingGroup;
 import sif3.hits.domain.model.TimeTableCell;
@@ -41,7 +41,7 @@ public class TeachingGroupConverter extends HitsConverter<TeachingGroupType, Tea
   @Override
   public void toSifModel(TeachingGroup source, TeachingGroupType target) {
     if (source != null && target != null) {
-      ObjectFactory objectFactory = getObjectFactory();
+      IObjectFactory objectFactory = getObjectFactory();
       target.setRefId(source.getRefId());
       target.setLocalId(source.getLocalId());
       target.setShortName(source.getShortName());
@@ -52,21 +52,18 @@ public class TeachingGroupConverter extends HitsConverter<TeachingGroupType, Tea
       studentList.getTeachingGroupStudent().addAll(students);
       target.setStudentList(objectFactory.createTeachingGroupTypeStudentList(studentList));
 
-      List<TeachingGroupTeacher> teachers = teachingGroupTeacherConverter.toSifModelList(source
-          .getTeachingGroupTeachers());
+      List<TeachingGroupTeacher> teachers = teachingGroupTeacherConverter.toSifModelList(source.getTeachingGroupTeachers());
       if (teachers != null && !teachers.isEmpty()) {
         TeacherList teacherList = new TeacherList();
         teacherList.getTeachingGroupTeacher().addAll(teachers);
         target.setTeacherList(objectFactory.createTeachingGroupTypeTeacherList(teacherList));
       }
 
-      List<TeachingGroupPeriod> teachingGroupPeriods = teachingGroupPeriodTimeTableCellConverter.toSifModelList(source
-          .getTimeTablePeriods());
+      List<TeachingGroupPeriod> teachingGroupPeriods = teachingGroupPeriodTimeTableCellConverter.toSifModelList(source.getTimeTablePeriods());
       if (teachingGroupPeriods != null && !teachingGroupPeriods.isEmpty()) {
         TeachingGroupPeriodList teachingGroupPeriodList = new TeachingGroupPeriodList();
         teachingGroupPeriodList.getTeachingGroupPeriod().addAll(teachingGroupPeriods);
-        target.setTeachingGroupPeriodList(objectFactory
-            .createTeachingGroupTypeTeachingGroupPeriodList(teachingGroupPeriodList));
+        target.setTeachingGroupPeriodList(objectFactory.createTeachingGroupTypeTeachingGroupPeriodList(teachingGroupPeriodList));
       }
 
       teachingGroupSchoolInfoConverter.toSifModel(source.getSchoolInfo(), target);
@@ -87,8 +84,7 @@ public class TeachingGroupConverter extends HitsConverter<TeachingGroupType, Tea
 
       target.setTeachingGroupTeachers(new HashSet<sif3.hits.domain.model.TeachingGroupTeacher>());
       if (source.getTeacherList() != null && source.getTeacherList().getValue() != null) {
-        Collection<sif3.hits.domain.model.TeachingGroupTeacher> teachers = teachingGroupTeacherConverter.toHitsModelList(source
-            .getTeacherList().getValue().getTeachingGroupTeacher());
+        Collection<sif3.hits.domain.model.TeachingGroupTeacher> teachers = teachingGroupTeacherConverter.toHitsModelList(source.getTeacherList().getValue().getTeachingGroupTeacher());
         if (teachers != null) {
           target.setTeachingGroupTeachers(new HashSet<sif3.hits.domain.model.TeachingGroupTeacher>(teachers));
         }
@@ -96,8 +92,7 @@ public class TeachingGroupConverter extends HitsConverter<TeachingGroupType, Tea
 
       target.setStudentPersonals(new HashSet<StudentPersonal>());
       if (source.getStudentList() != null && source.getStudentList().getValue() != null) {
-        Collection<StudentPersonal> studentPersonals = teachingGroupStudentConverter.toHitsModelList(source
-            .getStudentList().getValue().getTeachingGroupStudent());
+        Collection<StudentPersonal> studentPersonals = teachingGroupStudentConverter.toHitsModelList(source.getStudentList().getValue().getTeachingGroupStudent());
         if (studentPersonals != null) {
           target.setStudentPersonals(new HashSet<StudentPersonal>(studentPersonals));
         }
@@ -105,8 +100,7 @@ public class TeachingGroupConverter extends HitsConverter<TeachingGroupType, Tea
 
       target.setTimeTablePeriods(new HashSet<TimeTableCell>());
       if (source.getTeachingGroupPeriodList() != null && source.getTeachingGroupPeriodList().getValue() != null) {
-        Collection<TimeTableCell> timeTablePeriods = teachingGroupPeriodTimeTableCellConverter.toHitsModelList(source
-            .getTeachingGroupPeriodList().getValue().getTeachingGroupPeriod());
+        Collection<TimeTableCell> timeTablePeriods = teachingGroupPeriodTimeTableCellConverter.toHitsModelList(source.getTeachingGroupPeriodList().getValue().getTeachingGroupPeriod());
         if (timeTablePeriods != null) {
           target.setTimeTablePeriods(new HashSet<TimeTableCell>(timeTablePeriods));
         }

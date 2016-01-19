@@ -5,15 +5,12 @@ import java.lang.reflect.Method;
 import java.lang.reflect.Proxy;
 import java.math.BigDecimal;
 import java.math.BigInteger;
-import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Collection;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.TimeZone;
 
 import javax.xml.bind.JAXBElement;
 import javax.xml.datatype.DatatypeFactory;
@@ -24,7 +21,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import sif3.hits.domain.converter.factory.HitsObjectFactory;
-import sif3.hits.domain.converter.factory.ObjectFactory;
+import sif3.hits.domain.converter.factory.IObjectFactory;
 
 public abstract class HitsConverter<S, H> {
 
@@ -34,7 +31,7 @@ public abstract class HitsConverter<S, H> {
   private Class<H> hitsClass;
   private static final Map<Class<?>, Method> enumValueMethods = new HashMap<Class<?>, Method>();
   private static final Map<Class<?>, Method> enumLookupMethods = new HashMap<Class<?>, Method>();
-  private static final ObjectFactory objectFactory = new HitsObjectFactory();
+  private static final IObjectFactory objectFactory = new HitsObjectFactory();
   private static final InvocationHandler nullValueInvocationHandler = new InvocationHandler() {
     @Override
     public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
@@ -165,9 +162,8 @@ public abstract class HitsConverter<S, H> {
   /***************************/
   /* Getter + Setter Helpers */
   /***************************/
-  protected ObjectFactory getObjectFactory() {
-    return (ObjectFactory) Proxy.newProxyInstance(this.getClass().getClassLoader(), new Class[] { ObjectFactory.class },
-        nullValueInvocationHandler);
+  protected IObjectFactory getObjectFactory() {
+    return (IObjectFactory) Proxy.newProxyInstance(this.getClass().getClassLoader(), new Class[] { IObjectFactory.class }, nullValueInvocationHandler);
   }
 
   protected <V> V getJAXBValue(JAXBElement<V> element) {
@@ -213,17 +209,6 @@ public abstract class HitsConverter<S, H> {
 
   private static final FastDateFormat calendarFormat = FastDateFormat.getInstance("yyyyMMddHHmmssSSSZZ");
 
-  public static void main(String[] args) throws ParseException {
-    String x = "20150908224138344+10:00";
-    Date d = calendarFormat.parse(x);
-    System.out.println(d.getTimezoneOffset());
-    TimeZone timeZone = TimeZone.getTimeZone(TimeZone.getAvailableIDs(d.getTimezoneOffset()*60000)[0]);
-    Calendar temp = Calendar.getInstance(timeZone);
-    temp.setTime(d);
-    System.out.println(calendarFormat.format(temp));
-    
-  }
-  
   protected Calendar getCalendarValue(String value) {
     Calendar result = null;
     try {
@@ -386,8 +371,7 @@ public abstract class HitsConverter<S, H> {
           finalException = innerException;
         } finally {
           if (result == null) {
-            logger.error("Unable to convert value [" + value + "] to enum ["
-                + (clazz == null ? "unknown" : clazz.getSimpleName()) + "].", finalException);
+            logger.error("Unable to convert value [" + value + "] to enum [" + (clazz == null ? "unknown" : clazz.getSimpleName()) + "].", finalException);
           }
         }
       }
@@ -432,8 +416,7 @@ public abstract class HitsConverter<S, H> {
       try {
         result = clazz.getMethod("fromValue", String.class);
       } catch (NoSuchMethodException ex) {
-        logger.warn("Unable to find fromValue for enum [" + (clazz == null ? "unknown" : clazz.getSimpleName()) + "].",
-            ex);
+        logger.warn("Unable to find fromValue for enum [" + (clazz == null ? "unknown" : clazz.getSimpleName()) + "].", ex);
       } finally {
         // will store null if we had an exception so we don't look again.
         enumLookupMethods.put(clazz, result);

@@ -8,7 +8,6 @@ package sif3.hits.domain.converter.factory;
  * 
  * @see sif3.hits.domain.converter.HitsConverter#nullValueInvocationHandler
  */
-public class HitsObjectFactory extends sif.dd.au30.model.ObjectFactory implements ObjectFactory {
-
+public class HitsObjectFactory extends sif.dd.au30.model.ObjectFactory implements IObjectFactory {
 
 }

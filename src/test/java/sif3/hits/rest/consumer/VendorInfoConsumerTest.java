@@ -11,11 +11,11 @@ import org.springframework.http.HttpStatus;
 import sif.dd.au30.model.AUCodeSetsYesOrNoCategoryType;
 import sif.dd.au30.model.ContactInfoType;
 import sif.dd.au30.model.EmailListType;
-import sif.dd.au30.model.EmailListType.Email;
+import sif.dd.au30.model.EmailType;
 import sif.dd.au30.model.NameType;
 import sif.dd.au30.model.ObjectFactory;
 import sif.dd.au30.model.PhoneNumberListType;
-import sif.dd.au30.model.PhoneNumberListType.PhoneNumber;
+import sif.dd.au30.model.PhoneNumberType;
 import sif.dd.au30.model.VendorInfoCollectionType;
 import sif.dd.au30.model.VendorInfoType;
 import sif3.common.ws.BulkOperationResponse;
@@ -55,7 +55,7 @@ public class VendorInfoConsumerTest extends BaseTest implements UsesConstants {
     ContactInfoType contactInfoType = new ContactInfoType();
     contactInfoType.setAddress(objectFactory.createContactInfoTypeAddress(StudentPersonalRefIds.getAddressType(objectFactory, "43 Some Street", null)));
     EmailListType emailListType = new EmailListType();
-    Email email = new Email();
+    EmailType email = new EmailType();
     email.setValue("email@not.a.real.domain");
     email.setType(DEFAULT_EMAIL_TYPE);
     emailListType.getEmail().add(email);
@@ -69,7 +69,7 @@ public class VendorInfoConsumerTest extends BaseTest implements UsesConstants {
     contactInfoType.setName(name);
 
     PhoneNumberListType phoneNumberList = new PhoneNumberListType();
-    PhoneNumber phoneNumber = new PhoneNumber();
+    PhoneNumberType phoneNumber = new PhoneNumberType();
     phoneNumber.setType(DEFAULT_PHONE_TYPE);
     phoneNumber.setNumber("08 9455 3382");
     phoneNumberList.getPhoneNumber().add(phoneNumber);

@@ -15,42 +15,30 @@ import sif3.hits.domain.converter.StudentAttendanceTimeListConverter;
 import sif3.hits.domain.dao.StudentAttendanceTimeDAO;
 import sif3.hits.domain.dao.StudentAttendanceTimeListDAO;
 import sif3.hits.domain.dao.StudentAttendanceTimeOtherCodeDAO;
-import sif3.hits.domain.dao.ZoneFilterableRepository;
+import sif3.hits.domain.dao.filter.FilterableRepository;
+import sif3.hits.domain.dao.filter.StudentAttendanceTimeListFilterDAO;
 import sif3.hits.domain.model.StudentAttendanceTime;
 import sif3.hits.domain.model.StudentAttendanceTimeList;
 import sif3.hits.domain.model.StudentAttendanceTimeOtherCode;
 import sif3.hits.rest.dto.RequestDTO;
 
 @Service
-public class StudentAttendanceTimeListService extends
-    BaseService<StudentAttendanceTimeListType, StudentAttendanceTimeListCollectionType, StudentAttendanceTimeList> {
+public class StudentAttendanceTimeListService extends BaseService<StudentAttendanceTimeListType, StudentAttendanceTimeListCollectionType, StudentAttendanceTimeList> {
+
+  @Autowired
+  private StudentAttendanceTimeListConverter studentAttendanceTimeListConverter;
 
   @Autowired
   private StudentAttendanceTimeListDAO studentAttendanceTimeListDAO;
 
   @Autowired
-  private StudentAttendanceTimeDAO studentAttendanceTimeDAO;
+  private StudentAttendanceTimeListFilterDAO studentAttendanceTimeListFilterDAO;
 
   @Autowired
   private StudentAttendanceTimeOtherCodeDAO studentAttendanceTimeOtherCodeDAO;
 
-  @Override
-  public JpaRepository<StudentAttendanceTimeList, String> getDAO() {
-    return studentAttendanceTimeListDAO;
-  }
-
-  @Override
-  public ZoneFilterableRepository<StudentAttendanceTimeList> getZoneFilterableDAO() {
-    return studentAttendanceTimeListDAO;
-  }
-
   @Autowired
-  private StudentAttendanceTimeListConverter studentAttendanceTimeListConverter;
-
-  @Override
-  public HitsConverter<StudentAttendanceTimeListType, StudentAttendanceTimeList> getConverter() {
-    return studentAttendanceTimeListConverter;
-  }
+  private StudentAttendanceTimeDAO studentAttendanceTimeDAO;
 
   @Override
   protected StudentAttendanceTimeListCollectionType getCollection(List<StudentAttendanceTimeListType> items) {
@@ -62,59 +50,57 @@ public class StudentAttendanceTimeListService extends
   }
 
   @Override
-  protected StudentAttendanceTimeList getFiltered(String refId, java.util.List<String> schoolRefIds) {
-    StudentAttendanceTimeList result = null;
-    if (schoolRefIds != null && !schoolRefIds.isEmpty()) {
-      result = getZoneFilterableDAO().findOneWithFilter(refId, schoolRefIds);
-    }
-    return result;
+  protected HitsConverter<StudentAttendanceTimeListType, StudentAttendanceTimeList> getConverter() {
+    return studentAttendanceTimeListConverter;
   }
 
   @Override
-  protected void delete(StudentAttendanceTimeList hitsObject, RequestDTO<StudentAttendanceTimeListType> dto) {
-    deleteOtherCodes(hitsObject);
-    super.delete(hitsObject, dto);
+  protected JpaRepository<StudentAttendanceTimeList, String> getDAO() {
+    return studentAttendanceTimeListDAO;
   }
 
-  private void deleteOtherCodes(StudentAttendanceTimeList hitsObject) {
+  @Override
+  protected FilterableRepository<StudentAttendanceTimeList> getFilterableDAO() {
+    return studentAttendanceTimeListFilterDAO;
+  }
+
+  @Override
+  protected void deleteChildObjects(StudentAttendanceTimeList hitsObject) {
     studentAttendanceTimeOtherCodeDAO.deleteAllWithStudentAttendanceTimeList(hitsObject);
     studentAttendanceTimeDAO.deleteAllWithStudentAttendanceTimeList(hitsObject);
   }
 
   @Override
-  protected StudentAttendanceTimeList save(StudentAttendanceTimeList hitsObject,
-      RequestDTO<StudentAttendanceTimeListType> dto, String zoneId, boolean create) {
-    StudentAttendanceTimeList result = null;
-    if (!create) {
-      deleteOtherCodes(hitsObject);
-    }
-    if (hitsObject.getAttendanceTimes() != null && !hitsObject.getAttendanceTimes().isEmpty()) {
-      Set<StudentAttendanceTime> attendanceTimes = new HashSet<StudentAttendanceTime>();
-      attendanceTimes.addAll(hitsObject.getAttendanceTimes());
-      hitsObject.getAttendanceTimes().clear();
-      result = super.save(hitsObject, dto, zoneId, create);
+  protected boolean hasChildObjects(StudentAttendanceTimeList hitsObject) {
+    return hitsObject != null && hitsObject.getAttendanceTimes() != null && !hitsObject.getAttendanceTimes().isEmpty();
+  }
 
-      for (StudentAttendanceTime attendanceTime : attendanceTimes) {
-        if (attendanceTime.getOtherCodes() != null && !attendanceTime.getOtherCodes().isEmpty()) {
-          Set<StudentAttendanceTimeOtherCode> otherCodes = new HashSet<StudentAttendanceTimeOtherCode>();
-          otherCodes.addAll(attendanceTime.getOtherCodes());
-          attendanceTime.getOtherCodes().clear();
-          attendanceTime.setStudentAttendanceTimeList(hitsObject);
-          studentAttendanceTimeDAO.save(attendanceTime);
-          
-          for (StudentAttendanceTimeOtherCode otherCode : otherCodes) {
-            otherCode.setStudentAttendanceTime(attendanceTime);
-            studentAttendanceTimeOtherCodeDAO.save(otherCode);
-          }
-          attendanceTime.setOtherCodes(otherCodes);
-        } else {
-          studentAttendanceTimeDAO.save(attendanceTime);
+  @Override
+  protected StudentAttendanceTimeList saveWithChildObjects(StudentAttendanceTimeList hitsObject, RequestDTO<StudentAttendanceTimeListType> dto, String zoneId, boolean create) {
+    StudentAttendanceTimeList result = null;
+    Set<StudentAttendanceTime> attendanceTimes = new HashSet<StudentAttendanceTime>();
+    attendanceTimes.addAll(hitsObject.getAttendanceTimes());
+    hitsObject.getAttendanceTimes().clear();
+    result = super.saveWithChildObjects(hitsObject, dto, zoneId, create);
+
+    for (StudentAttendanceTime attendanceTime : attendanceTimes) {
+      if (attendanceTime.getOtherCodes() != null && !attendanceTime.getOtherCodes().isEmpty()) {
+        Set<StudentAttendanceTimeOtherCode> otherCodes = new HashSet<StudentAttendanceTimeOtherCode>();
+        otherCodes.addAll(attendanceTime.getOtherCodes());
+        attendanceTime.getOtherCodes().clear();
+        attendanceTime.setStudentAttendanceTimeList(hitsObject);
+        studentAttendanceTimeDAO.save(attendanceTime);
+
+        for (StudentAttendanceTimeOtherCode otherCode : otherCodes) {
+          otherCode.setStudentAttendanceTime(attendanceTime);
+          studentAttendanceTimeOtherCodeDAO.save(otherCode);
         }
+        attendanceTime.setOtherCodes(otherCodes);
+      } else {
+        studentAttendanceTimeDAO.save(attendanceTime);
       }
-      result.setAttendanceTimes(attendanceTimes);
-    } else {
-      result = super.save(hitsObject, dto, zoneId, create);
     }
+    result.setAttendanceTimes(attendanceTimes);
     return result;
   }
 }

@@ -13,8 +13,10 @@ import org.springframework.core.io.Resource;
 import sif3.common.exception.MarshalException;
 import sif3.common.exception.UnmarshalException;
 import sif3.common.exception.UnsupportedMediaTypeExcpetion;
+import sif3.common.header.HeaderValues.QueryIntention;
 import sif3.common.header.HeaderValues.RequestType;
 import sif3.common.model.PagingInfo;
+import sif3.common.model.QueryCriteria;
 import sif3.common.model.SIFContext;
 import sif3.common.model.SIFZone;
 import sif3.common.model.ZoneContextInfo;
@@ -65,6 +67,34 @@ public class ConsumerTest<S, M> {
       ex.printStackTrace();
     }
     System.out.println("Finished 'Get All " + getMultiName() + "' in all connected environments...");
+    return result;
+  }
+  
+  protected List<Response> testQBE(S example, int recordsPerPage, int page) {
+    List<Response> result = null;
+    System.out.println("Start 'Retrieve by QBE " + getMultiName() + "' in all connected environments...");
+    try {
+      result = testConsumer.retrieveByQBE(example, new PagingInfo(recordsPerPage, page), getZoneContextList(), REQUEST_TYPE, QueryIntention.ONE_OFF, null);
+      System.out.println("Responses from attempt to 'Retrieve by QBE " + getMultiName() + "':");
+      printResponses(result);
+    } catch (Exception ex) {
+      ex.printStackTrace();
+    }
+    System.out.println("Finished 'Retrieve by QBE  " + getMultiName() + "' in all connected environments...");
+    return result;
+  }
+  
+  protected List<Response> testServicePath(QueryCriteria queryCriteria, int recordsPerPage, int page) {
+    List<Response> result = null;
+    System.out.println("Start 'Retrieve by ServicePath " + getMultiName() + "' in all connected environments...");
+    try {
+      result = testConsumer.retrieveByServicePath(queryCriteria, new PagingInfo(recordsPerPage, page), getZoneContextList(), REQUEST_TYPE);
+      System.out.println("Responses from attempt to 'Retrieve by ServicePath  " + getMultiName() + "':");
+      printResponses(result);
+    } catch (Exception ex) {
+      ex.printStackTrace();
+    }
+    System.out.println("Finished 'Retrieve by ServicePath  " + getMultiName() + "' in all connected environments...");
     return result;
   }
 
@@ -294,4 +324,7 @@ public class ConsumerTest<S, M> {
     }
     return result;
   }
+
+  
+  
 }

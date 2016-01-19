@@ -117,12 +117,12 @@ public class PurchaseOrder extends HitsEntity {
   public void setFullyDelivered(String fullyDelivered) {
     this.fullyDelivered = fullyDelivered;
   }
-  
+
   @OneToMany(mappedBy = "purchaseOrder", fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
   public Set<PurchasingItem> getPurchasingItems() {
     return purchasingItems;
   }
-  
+
   public void setPurchasingItems(Set<PurchasingItem> purchasingItems) {
     this.purchasingItems = purchasingItems;
   }

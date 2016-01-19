@@ -8,8 +8,7 @@ import sif.dd.au30.model.DebtorType;
 import sif3.hits.domain.model.Debtor;
 import sif3.hits.service.DebtorService;
 
-public class DebtorProvider extends
-    HitsBaseProvider<DebtorType, DebtorCollectionType, Debtor, DebtorService> {
+public class DebtorProvider extends HitsBaseProvider<DebtorType, DebtorCollectionType, Debtor, DebtorService> {
 
   protected static final Logger L = LoggerFactory.getLogger(DebtorProvider.class);
 
@@ -20,7 +19,6 @@ public class DebtorProvider extends
    *          values of provider property file.
    */
   public DebtorProvider() {
-    super(DebtorType.class, "Debtor", DebtorCollectionType.class, "Debtors",
-        DebtorService.class);
+    super(DebtorType.class, "Debtor", DebtorCollectionType.class, "Debtors", DebtorService.class);
   }
 }

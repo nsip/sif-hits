@@ -10,8 +10,7 @@ import sif.dd.au30.model.TimeTableCellType;
 import sif3.hits.domain.model.TimeTableCell;
 import sif3.hits.service.TimeTableCellService;
 
-public class TimeTableCellProvider extends
-    HitsBaseProvider<TimeTableCellType, TimeTableCellCollectionType, TimeTableCell, TimeTableCellService> {
+public class TimeTableCellProvider extends HitsBaseProvider<TimeTableCellType, TimeTableCellCollectionType, TimeTableCell, TimeTableCellService> {
 
   protected static final Logger L = LoggerFactory.getLogger(TimeTableCellProvider.class);
 
@@ -22,8 +21,7 @@ public class TimeTableCellProvider extends
    *          values of provider property file.
    */
   public TimeTableCellProvider() {
-    super(TimeTableCellType.class, "TimeTableCell", TimeTableCellCollectionType.class, "TimeTableCells",
-        TimeTableCellService.class);
+    super(TimeTableCellType.class, "TimeTableCell", TimeTableCellCollectionType.class, "TimeTableCells", TimeTableCellService.class);
   }
 
   @Override

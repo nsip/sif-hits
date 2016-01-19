@@ -6,12 +6,11 @@ import sif.dd.au30.model.AttendanceCodeType;
 import sif.dd.au30.model.StudentPeriodAttendanceType;
 import sif.dd.au30.model.StudentPeriodAttendanceType.AuditInfo;
 import sif.dd.au30.model.StudentPeriodAttendanceType.AuditInfo.CreationUser;
-import sif3.hits.domain.converter.factory.ObjectFactory;
+import sif3.hits.domain.converter.factory.IObjectFactory;
 import sif3.hits.domain.model.StudentPeriodAttendance;
 
 @Component
-public class StudentPeriodAttendanceConverter extends
-    HitsConverter<StudentPeriodAttendanceType, StudentPeriodAttendance> {
+public class StudentPeriodAttendanceConverter extends HitsConverter<StudentPeriodAttendanceType, StudentPeriodAttendance> {
 
   public StudentPeriodAttendanceConverter() {
     super(StudentPeriodAttendanceType.class, StudentPeriodAttendance.class);
@@ -20,15 +19,13 @@ public class StudentPeriodAttendanceConverter extends
   @Override
   public void toSifModel(StudentPeriodAttendance source, StudentPeriodAttendanceType target) {
     if (source != null && target != null) {
-      ObjectFactory objectFactory = getObjectFactory();
+      IObjectFactory objectFactory = getObjectFactory();
       target.setRefId(source.getRefId());
       target.setStudentPersonalRefId(source.getStudentPersonalRefId());
       target.setSchoolInfoRefId(source.getSchoolInfoRefId());
       target.setDate(getDateValue(source.getCalendarDate()));
-      target.setSessionInfoRefId(objectFactory.createStudentPeriodAttendanceTypeSessionInfoRefId(source
-          .getSessionInfoRefId()));
-      target.setTimetablePeriod(objectFactory.createStudentPeriodAttendanceTypeTimetablePeriod(source
-          .getTimetablePeriod()));
+      target.setSessionInfoRefId(objectFactory.createStudentPeriodAttendanceTypeSessionInfoRefId(source.getSessionInfoRefId()));
+      target.setTimetablePeriod(objectFactory.createStudentPeriodAttendanceTypeTimetablePeriod(source.getTimetablePeriod()));
       target.setTimeIn(objectFactory.createStudentPeriodAttendanceTypeTimeIn(getTimeValue(source.getTimeIn())));
       target.setTimeOut(objectFactory.createStudentPeriodAttendanceTypeTimeOut(getTimeValue(source.getTimeOut())));
 
@@ -39,11 +36,9 @@ public class StudentPeriodAttendanceConverter extends
       }
 
       target.setAttendanceStatus(source.getAttendanceStatus());
-      target.setSchoolYear(objectFactory.createStudentPeriodAttendanceTypeSchoolYear(getYearValue(source
-          .getSchoolYear())));
+      target.setSchoolYear(objectFactory.createStudentPeriodAttendanceTypeSchoolYear(getYearValue(source.getSchoolYear())));
 
-      if (source.getCreationUserType() != null || source.getAuditInfoCreationDateTime() != null
-          || source.getAuditInfoCreationUserUserId() != null) {
+      if (source.getCreationUserType() != null || source.getAuditInfoCreationDateTime() != null || source.getAuditInfoCreationUserUserId() != null) {
         AuditInfo auditInfo = new AuditInfo();
         auditInfo.setCreationDateTime(getCalendarValue(source.getAuditInfoCreationDateTime()));
 
@@ -55,8 +50,7 @@ public class StudentPeriodAttendanceConverter extends
         }
         target.setAuditInfo(objectFactory.createStudentPeriodAttendanceTypeAuditInfo(auditInfo));
       }
-      target.setAttendanceComment(objectFactory.createStudentPeriodAttendanceTypeAttendanceComment(source
-          .getAttendanceComment()));
+      target.setAttendanceComment(objectFactory.createStudentPeriodAttendanceTypeAttendanceComment(source.getAttendanceComment()));
     }
   }
 

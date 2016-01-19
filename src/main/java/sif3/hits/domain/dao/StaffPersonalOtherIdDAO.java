@@ -9,8 +9,7 @@ import sif3.hits.domain.model.StaffPersonal;
 import sif3.hits.domain.model.StaffPersonalOtherId;
 import sif3.hits.domain.model.StaffPersonalOtherIdId;
 
-public interface StaffPersonalOtherIdDAO extends
-    JpaRepository<StaffPersonalOtherId, StaffPersonalOtherIdId> {
+public interface StaffPersonalOtherIdDAO extends JpaRepository<StaffPersonalOtherId, StaffPersonalOtherIdId> {
   @Query("delete from StaffPersonalOtherId s where s.staffPersonalOtherIdId.staffPersonal = :staffPersonal")
   @Modifying
   public void deleteAllWithStaffPersonal(@Param("staffPersonal") StaffPersonal staffPersonal);

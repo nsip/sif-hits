@@ -11,8 +11,9 @@ import sif.dd.au30.model.GradingAssignmentType;
 import sif3.hits.domain.converter.GradingAssignmentConverter;
 import sif3.hits.domain.converter.HitsConverter;
 import sif3.hits.domain.dao.GradingAssignmentDAO;
-import sif3.hits.domain.dao.TeachingGroupDAO;
-import sif3.hits.domain.dao.ZoneFilterableRepository;
+import sif3.hits.domain.dao.filter.FilterableRepository;
+import sif3.hits.domain.dao.filter.GradingAssignmentFilterDAO;
+import sif3.hits.domain.dao.filter.TeachingGroupFilterDAO;
 import sif3.hits.domain.model.GradingAssignment;
 import sif3.hits.rest.dto.RequestDTO;
 
@@ -20,28 +21,16 @@ import sif3.hits.rest.dto.RequestDTO;
 public class GradingAssignmentService extends BaseService<GradingAssignmentType, GradingAssignmentCollectionType, GradingAssignment> {
 
   @Autowired
-  private GradingAssignmentDAO gradingAssignmentDAO;
-  
-  @Autowired
   private GradingAssignmentConverter gradingAssignmentConverter;
-  
+
   @Autowired
-  private TeachingGroupDAO teachingGroupDAO;
+  private GradingAssignmentDAO gradingAssignmentDAO;
 
-  @Override
-  public JpaRepository<GradingAssignment, String> getDAO() {
-    return gradingAssignmentDAO;
-  }
+  @Autowired
+  private GradingAssignmentFilterDAO gradingAssignmentFilterDAO;
 
-  @Override
-  public ZoneFilterableRepository<GradingAssignment> getZoneFilterableDAO() {
-    return gradingAssignmentDAO;
-  }
-
-  @Override
-  public HitsConverter<GradingAssignmentType, GradingAssignment> getConverter() {
-    return gradingAssignmentConverter;
-  }
+  @Autowired
+  private TeachingGroupFilterDAO teachingGroupFilterDAO;
 
   @Override
   protected GradingAssignmentCollectionType getCollection(List<GradingAssignmentType> items) {
@@ -53,32 +42,30 @@ public class GradingAssignmentService extends BaseService<GradingAssignmentType,
   }
 
   @Override
-  protected GradingAssignment getFiltered(String refId, List<String> schoolRefIds) {
-    GradingAssignment result = null;
-    if (schoolRefIds != null && !schoolRefIds.isEmpty()) {
-      result = gradingAssignmentDAO.findOneWithFilter(refId, schoolRefIds);
-    }
-    return result;
+  protected HitsConverter<GradingAssignmentType, GradingAssignment> getConverter() {
+    return gradingAssignmentConverter;
   }
 
   @Override
-  protected void delete(GradingAssignment hitsObject, RequestDTO<GradingAssignmentType> dto) {
-    deleteOtherIds(hitsObject);
-    super.delete(hitsObject, dto);
+  protected JpaRepository<GradingAssignment, String> getDAO() {
+    return gradingAssignmentDAO;
   }
 
-  private void deleteOtherIds(GradingAssignment hitsObject) {
-    
+  @Override
+  protected FilterableRepository<GradingAssignment> getFilterableDAO() {
+    return gradingAssignmentFilterDAO;
   }
   
   @Override
-  protected GradingAssignment save(GradingAssignment hitsObject, RequestDTO<GradingAssignmentType> dto, String zoneId,
-      boolean create) {
-    
-    if (hitsObject.getTeachingGroup() != null && hitsObject.getTeachingGroup().getRefId() != null) {
-      hitsObject.setTeachingGroup(teachingGroupDAO.findOneWithFilter(hitsObject.getTeachingGroup().getRefId(), getSchoolRefIds(zoneId)));
+  protected boolean hasChildObjects(GradingAssignment hitsObject) {
+    return true;
+  }
+  
+  @Override
+  protected GradingAssignment saveWithChildObjects(GradingAssignment hitsObject, RequestDTO<GradingAssignmentType> dto, String zoneId, boolean create) {
+    if (hitsObject != null && hitsObject.getTeachingGroup() != null && hitsObject.getTeachingGroup().getRefId() != null) {
+      hitsObject.setTeachingGroup(teachingGroupFilterDAO.findOneWithZone(hitsObject.getTeachingGroup().getRefId(),zoneId));
     }
-    
-    return super.save(hitsObject, dto, zoneId, create);
+    return super.saveWithChildObjects(hitsObject, dto, zoneId, create);
   }
 }

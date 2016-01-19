@@ -15,7 +15,6 @@ import sif3.common.ws.BulkOperationResponse;
 import sif3.common.ws.CreateOperationStatus;
 import sif3.common.ws.OperationStatus;
 import sif3.common.ws.Response;
-import sif3.hits.rest.consumer.FinancialClassificationConsumerTest.FinancialClassificationRefIds;
 import sif3.hits.rest.consumer.LocationInfoConsumerTest.LocationInfoRefIds;
 import sif3.infra.rest.consumer.ConsumerLoader;
 
@@ -45,7 +44,6 @@ public class FinancialAccountConsumerTest extends BaseTest {
     financialAccount.setCreationDate(getDate("2015-06-21"));
     financialAccount.setCreationTime(getDate("11:32:00"));
     financialAccount.setDescription(objectFactory.createFinancialAccountTypeDescription("Account Description"));
-    financialAccount.setFinancialClassificationRefId(FinancialClassificationRefIds.REF_ID_1);
     financialAccount.setName("Account Name");
     financialTester.doCreateOne(financialAccount);
 

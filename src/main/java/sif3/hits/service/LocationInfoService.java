@@ -11,33 +11,21 @@ import sif.dd.au30.model.ChargedLocationInfoType;
 import sif3.hits.domain.converter.HitsConverter;
 import sif3.hits.domain.converter.LocationInfoConverter;
 import sif3.hits.domain.dao.LocationInfoDAO;
-import sif3.hits.domain.dao.ZoneFilterableRepository;
+import sif3.hits.domain.dao.filter.FilterableRepository;
+import sif3.hits.domain.dao.filter.LocationInfoFilterDAO;
 import sif3.hits.domain.model.LocationInfo;
 
 @Service
-public class LocationInfoService
-    extends BaseService<ChargedLocationInfoType, ChargedLocationInfoCollectionType, LocationInfo> {
-
-  @Autowired
-  private LocationInfoDAO locationInfoDAO;
-
-  @Override
-  public JpaRepository<LocationInfo, String> getDAO() {
-    return locationInfoDAO;
-  }
-
-  @Override
-  public ZoneFilterableRepository<LocationInfo> getZoneFilterableDAO() {
-    return locationInfoDAO;
-  }
+public class LocationInfoService extends BaseService<ChargedLocationInfoType, ChargedLocationInfoCollectionType, LocationInfo> {
 
   @Autowired
   private LocationInfoConverter locationInfoConverter;
 
-  @Override
-  public HitsConverter<ChargedLocationInfoType, LocationInfo> getConverter() {
-    return locationInfoConverter;
-  }
+  @Autowired
+  private LocationInfoDAO locationInfoDAO;
+
+  @Autowired
+  private LocationInfoFilterDAO locationInfoFilterDAO;
 
   @Override
   protected ChargedLocationInfoCollectionType getCollection(List<ChargedLocationInfoType> items) {
@@ -49,11 +37,18 @@ public class LocationInfoService
   }
 
   @Override
-  protected LocationInfo getFiltered(String refId, java.util.List<String> schoolRefIds) {
-    LocationInfo result = null;
-    if (schoolRefIds != null && !schoolRefIds.isEmpty()) {
-      result = locationInfoDAO.findOneWithFilter(refId, schoolRefIds);
-    }
-    return result;
+  protected HitsConverter<ChargedLocationInfoType, LocationInfo> getConverter() {
+    return locationInfoConverter;
   }
+
+  @Override
+  protected JpaRepository<LocationInfo, String> getDAO() {
+    return locationInfoDAO;
+  }
+
+  @Override
+  protected FilterableRepository<LocationInfo> getFilterableDAO() {
+    return locationInfoFilterDAO;
+  }
+
 }

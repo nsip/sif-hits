@@ -4,7 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import sif.dd.au30.model.TeachingGroupType.TeachingGroupPeriodList.TeachingGroupPeriod;
-import sif3.hits.domain.converter.factory.ObjectFactory;
+import sif3.hits.domain.converter.factory.IObjectFactory;
 import sif3.hits.domain.model.TimeTableCell;
 
 @Component
@@ -23,16 +23,13 @@ public class TeachingGroupPeriodTimeTableCellConverter extends HitsConverter<Tea
   @Override
   public void toSifModel(TimeTableCell source, TeachingGroupPeriod target) {
     if (source != null && target != null) {
-      ObjectFactory objectFactory = getObjectFactory();
-      target.setCellType(objectFactory.createTeachingGroupTypeTeachingGroupPeriodListTeachingGroupPeriodCellType(source
-          .getCellType()));
+      IObjectFactory objectFactory = getObjectFactory();
+      target.setCellType(objectFactory.createTeachingGroupTypeTeachingGroupPeriodListTeachingGroupPeriodCellType(source.getCellType()));
       target.setDayId(source.getDayId());
-      target.setPeriodId(objectFactory.createTeachingGroupTypeTeachingGroupPeriodListTeachingGroupPeriodPeriodId(source
-          .getPeriodId()));
+      target.setPeriodId(objectFactory.createTeachingGroupTypeTeachingGroupPeriodListTeachingGroupPeriodPeriodId(source.getPeriodId()));
       teachingGroupPeriodRoomInfoConverter.toSifModel(source.getRoomInfo(), target);
       teachingGroupPeriodStaffPersonalConverter.toSifModel(source.getStaffPersonal(), target);
-      target.setTimeTableCellRefId(objectFactory
-          .createTeachingGroupTypeTeachingGroupPeriodListTeachingGroupPeriodTimeTableCellRefId(source.getRefId()));
+      target.setTimeTableCellRefId(objectFactory.createTeachingGroupTypeTeachingGroupPeriodListTeachingGroupPeriodTimeTableCellRefId(source.getRefId()));
     }
   }
 

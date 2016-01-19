@@ -15,6 +15,9 @@ import sif.dd.au30.model.OtherCodeListType.OtherCode;
 import sif.dd.au30.model.TimeTableSubjectCollectionType;
 import sif.dd.au30.model.TimeTableSubjectType;
 import sif.dd.au30.model.YearLevelType;
+import sif3.common.model.QueryCriteria;
+import sif3.common.model.QueryOperator;
+import sif3.common.model.QueryPredicate;
 import sif3.common.ws.BulkOperationResponse;
 import sif3.common.ws.CreateOperationStatus;
 import sif3.common.ws.OperationStatus;
@@ -94,6 +97,27 @@ public class TimeTableSubjectConsumerTest extends BaseTest {
     timeTableSubjectTester = new ConsumerTest<TimeTableSubjectType, TimeTableSubjectCollectionType>(
         TimeTableSubjectType.class, "TimeTableSubject", TimeTableSubjectCollectionType.class, "TimeTableSubjects");
     timeTableSubjectTester.testDeleteMany(REF_IDS);
+  }
+  
+  @Test
+  public void testServicePathSchoolInfo() {
+    QueryCriteria queryCriteria = new QueryCriteria();
+    queryCriteria.addPredicate(new QueryPredicate("SchoolInfos", QueryOperator.EQUAL, SchoolInfoConsumerTest.REF_ID));
+
+    List<Response> responses = timeTableSubjectTester.testServicePath(queryCriteria, 10000, 0);
+    Assert.assertNotNull(responses);
+    Assert.assertEquals(1, responses.size());
+    Response response = responses.get(0);
+    TimeTableSubjectCollectionType timeTableSubjectCollectionType = (TimeTableSubjectCollectionType) response.getDataObject();
+    Assert.assertNotNull(timeTableSubjectCollectionType.getTimeTableSubject());
+    Assert.assertFalse(timeTableSubjectCollectionType.getTimeTableSubject().isEmpty());
+    boolean found = false;
+    for (TimeTableSubjectType timeTableSubjectType : timeTableSubjectCollectionType.getTimeTableSubject()) {
+      found = found || REF_ID.equals(timeTableSubjectType.getRefId());
+      Assert.assertNotNull(timeTableSubjectType.getSchoolInfoRefId());
+      Assert.assertEquals(SchoolInfoConsumerTest.REF_ID, timeTableSubjectType.getSchoolInfoRefId().getValue());
+    }
+    Assert.assertTrue(found);
   }
   
   @Test

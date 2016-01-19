@@ -8,8 +8,7 @@ import sif.dd.au30.model.PaymentReceiptType;
 import sif3.hits.domain.model.PaymentReceipt;
 import sif3.hits.service.PaymentReceiptService;
 
-public class PaymentReceiptProvider extends
-    HitsBaseProvider<PaymentReceiptType, PaymentReceiptCollectionType, PaymentReceipt, PaymentReceiptService> {
+public class PaymentReceiptProvider extends HitsBaseProvider<PaymentReceiptType, PaymentReceiptCollectionType, PaymentReceipt, PaymentReceiptService> {
 
   protected static final Logger L = LoggerFactory.getLogger(PaymentReceiptProvider.class);
 
@@ -20,7 +19,6 @@ public class PaymentReceiptProvider extends
    *          values of provider property file.
    */
   public PaymentReceiptProvider() {
-    super(PaymentReceiptType.class, "PaymentReceipt", PaymentReceiptCollectionType.class, "PaymentReceipts",
-        PaymentReceiptService.class);
+    super(PaymentReceiptType.class, "PaymentReceipt", PaymentReceiptCollectionType.class, "PaymentReceipts", PaymentReceiptService.class);
   }
 }

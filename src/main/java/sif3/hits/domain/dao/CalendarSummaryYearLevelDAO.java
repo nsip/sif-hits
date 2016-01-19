@@ -9,8 +9,7 @@ import sif3.hits.domain.model.CalendarSummary;
 import sif3.hits.domain.model.CalendarSummaryYearLevel;
 import sif3.hits.domain.model.CalendarSummaryYearLevelId;
 
-public interface CalendarSummaryYearLevelDAO extends
-    JpaRepository<CalendarSummaryYearLevel, CalendarSummaryYearLevelId> {
+public interface CalendarSummaryYearLevelDAO extends JpaRepository<CalendarSummaryYearLevel, CalendarSummaryYearLevelId> {
   @Query("delete from CalendarSummaryYearLevel c where c.calendarSummaryYearLevelId.calendarSummary = :calendarSummary")
   @Modifying
   public void deleteAllWithCalendarSummary(@Param("calendarSummary") CalendarSummary calendarSummary);

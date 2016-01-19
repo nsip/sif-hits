@@ -87,7 +87,6 @@ public class PurchaseOrderConsumerTest extends BaseTest implements UsesConstants
     PurchaseOrderType purchaseOrderType = new PurchaseOrderType();
     purchaseOrderType.setRefId(PurchaseOrderRefIds.REF_ID_1);
 
-    purchaseOrderType.setAmountDelivered(objectFactory.createPurchaseOrderTypeAmountDelivered("2"));
     purchaseOrderType.setChargedLocationInfoRefId(
         objectFactory.createPurchaseOrderTypeChargedLocationInfoRefId(LocationInfoRefIds.REF_ID_1));
     purchaseOrderType.setCreationDate(objectFactory.createPurchaseOrderTypeCreationDate(getDate("2015-02-23")));

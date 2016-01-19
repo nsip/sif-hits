@@ -10,7 +10,7 @@ import sif.dd.au30.model.CalendarDate.CalendarDateType;
 import sif.dd.au30.model.CalendarDate.StudentAttendance;
 import sif.dd.au30.model.OtherCodeListType;
 import sif.dd.au30.model.OtherCodeListType.OtherCode;
-import sif3.hits.domain.converter.factory.ObjectFactory;
+import sif3.hits.domain.converter.factory.IObjectFactory;
 import sif3.hits.domain.model.CalendarDate;
 import sif3.hits.domain.model.CalendarDateTypeOtherCode;
 
@@ -27,11 +27,11 @@ public class CalendarDateConverter extends HitsConverter<sif.dd.au30.model.Calen
   @Override
   public void toSifModel(CalendarDate source, sif.dd.au30.model.CalendarDate target) {
     if (source != null && target != null) {
-      ObjectFactory objectFactory = getObjectFactory();
+      IObjectFactory objectFactory = getObjectFactory();
 
       target.setCalendarSummaryRefId(source.getCalendarSummaryRefId());
       target.setDate(getDateValue(source.getCalendarDate()));
-      target.setCalendarDateRefId(objectFactory.createCalendarDateCalendarDateRefId(source.getRefId()));
+      target.setCalendarDateRefId(source.getRefId());
       target.setSchoolInfoRefId(source.getSchoolInfoRefId());
       target.setSchoolYear(getYearValue(source.getSchoolYear()));
 
@@ -39,16 +39,13 @@ public class CalendarDateConverter extends HitsConverter<sif.dd.au30.model.Calen
       calendarDateType.setCode(source.getTypeCode());
 
       OtherCodeListType otherCodeListType = objectFactory.createOtherCodeListType();
-      List<OtherCode> otherCodes = calendarDateTypeOtherCodeConverter.toSifModelList(source
-          .getCalendarDateTypeOtherCodes());
+      List<OtherCode> otherCodes = calendarDateTypeOtherCodeConverter.toSifModelList(source.getCalendarDateTypeOtherCodes());
       otherCodeListType.getOtherCode().addAll(otherCodes);
-      calendarDateType.setOtherCodeList(objectFactory
-          .createCalendarDateCalendarDateTypeOtherCodeList(otherCodeListType));
+      calendarDateType.setOtherCodeList(objectFactory.createCalendarDateCalendarDateTypeOtherCodeList(otherCodeListType));
 
       target.setCalendarDateType(calendarDateType);
-      target
-          .setCalendarDateNumber(objectFactory.createCalendarDateCalendarDateNumber(getLongValue(source.getNumber())));
-      
+      target.setCalendarDateNumber(objectFactory.createCalendarDateCalendarDateNumber(getLongValue(source.getNumber())));
+
       StudentAttendance studentAttendance = null;
       if (source.getStudentAttendanceAttendanceValue() != null && source.getStudentAttendanceCountsTowardsAttendance() != null) {
         studentAttendance = new StudentAttendance();
@@ -64,7 +61,7 @@ public class CalendarDateConverter extends HitsConverter<sif.dd.au30.model.Calen
     if (source != null && target != null) {
       target.setCalendarSummaryRefId(source.getCalendarSummaryRefId());
       target.setCalendarDate(getDateValue(source.getDate()));
-      target.setRefId(getJAXBValue(source.getCalendarDateRefId()));
+      target.setRefId(source.getCalendarDateRefId());
       target.setSchoolInfoRefId(source.getSchoolInfoRefId());
       target.setSchoolYear(getYearValue(source.getSchoolYear()));
 
@@ -74,8 +71,7 @@ public class CalendarDateConverter extends HitsConverter<sif.dd.au30.model.Calen
 
         OtherCodeListType otherCodeList = getJAXBValue(calendarDateType.getOtherCodeList());
         if (otherCodeList != null) {
-          List<CalendarDateTypeOtherCode> otherCodes = calendarDateTypeOtherCodeConverter.toHitsModelList(otherCodeList
-              .getOtherCode());
+          List<CalendarDateTypeOtherCode> otherCodes = calendarDateTypeOtherCodeConverter.toHitsModelList(otherCodeList.getOtherCode());
           target.setCalendarDateTypeOtherCodes(new HashSet<CalendarDateTypeOtherCode>(otherCodes));
         }
       }

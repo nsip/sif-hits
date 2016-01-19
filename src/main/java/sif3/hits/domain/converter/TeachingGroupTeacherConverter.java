@@ -5,7 +5,7 @@ import org.springframework.stereotype.Component;
 
 import sif.dd.au30.model.NameOfRecordType;
 import sif.dd.au30.model.TeachingGroupType.TeacherList.TeachingGroupTeacher;
-import sif3.hits.domain.converter.factory.ObjectFactory;
+import sif3.hits.domain.converter.factory.IObjectFactory;
 import sif3.hits.domain.model.StaffPersonal;
 
 @Component
@@ -21,10 +21,9 @@ public class TeachingGroupTeacherConverter extends HitsConverter<TeachingGroupTe
   @Override
   public void toSifModel(sif3.hits.domain.model.TeachingGroupTeacher source, TeachingGroupTeacher target) {
     if (source != null && target != null) {
-      ObjectFactory objectFactory = getObjectFactory();
+      IObjectFactory objectFactory = getObjectFactory();
       if (source.getStaffPersonal() != null) {
-        target.setStaffPersonalRefId(objectFactory
-            .createTeachingGroupTypeTeacherListTeachingGroupTeacherStaffPersonalRefId(source.getStaffPersonal().getRefId()));
+        target.setStaffPersonalRefId(objectFactory.createTeachingGroupTypeTeacherListTeachingGroupTeacherStaffPersonalRefId(source.getStaffPersonal().getRefId()));
         target.setStaffLocalId(source.getStaffPersonal().getLocalId());
         NameOfRecordType name = target.getName();
         if (name == null) {

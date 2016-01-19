@@ -5,7 +5,7 @@ import org.springframework.stereotype.Component;
 import sif.dd.au30.model.AUCodeSetsDayValueCodeType;
 import sif.dd.au30.model.AttendanceCodeType;
 import sif.dd.au30.model.StudentDailyAttendanceType;
-import sif3.hits.domain.converter.factory.ObjectFactory;
+import sif3.hits.domain.converter.factory.IObjectFactory;
 import sif3.hits.domain.model.StudentDailyAttendance;
 
 @Component
@@ -18,15 +18,14 @@ public class StudentDailyAttendanceConverter extends HitsConverter<StudentDailyA
   @Override
   public void toSifModel(StudentDailyAttendance source, StudentDailyAttendanceType target) {
     if (source != null && target != null) {
-      ObjectFactory objectFactory = getObjectFactory();
+      IObjectFactory objectFactory = getObjectFactory();
 
       target.setRefId(source.getRefId());
       target.setStudentPersonalRefId(source.getStudentPersonalRefId());
       target.setSchoolInfoRefId(source.getSchoolInfoRefId());
       target.setDate(getDateValue(source.getCalendarDate()));
       target.setSchoolYear(getYearValue(source.getSchoolYear()));
-      target.setDayValue(objectFactory.createStudentDailyAttendanceTypeDayValue(getEnumValue(source.getDayValue(),
-          AUCodeSetsDayValueCodeType.class)));
+      target.setDayValue(objectFactory.createStudentDailyAttendanceTypeDayValue(getEnumValue(source.getDayValue(), AUCodeSetsDayValueCodeType.class)));
 
       if (source.getAttendanceCode() != null) {
         AttendanceCodeType attendanceCodeType = objectFactory.createAttendanceCodeType();
@@ -37,10 +36,8 @@ public class StudentDailyAttendanceConverter extends HitsConverter<StudentDailyA
       target.setAttendanceStatus(source.getAttendanceStatus());
       target.setTimeIn(objectFactory.createStudentDailyAttendanceTypeTimeIn(getTimeValue(source.getTimeIn())));
       target.setTimeOut(objectFactory.createStudentDailyAttendanceTypeTimeOut(getTimeValue(source.getTimeOut())));
-      target.setAbsenceValue(objectFactory.createStudentDailyAttendanceTypeAbsenceValue(getBigDecimalValue(source
-          .getAbsenceValue())));
-      target
-          .setAttendanceNote(objectFactory.createStudentDailyAttendanceTypeAttendanceNote(source.getAttendanceNote()));
+      target.setAbsenceValue(objectFactory.createStudentDailyAttendanceTypeAbsenceValue(getBigDecimalValue(source.getAbsenceValue())));
+      target.setAttendanceNote(objectFactory.createStudentDailyAttendanceTypeAttendanceNote(source.getAttendanceNote()));
     }
   }
 

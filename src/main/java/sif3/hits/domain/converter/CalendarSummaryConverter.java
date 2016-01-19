@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component;
 import sif.dd.au30.model.CalendarSummaryType;
 import sif.dd.au30.model.YearLevelType;
 import sif.dd.au30.model.YearLevelsType;
-import sif3.hits.domain.converter.factory.ObjectFactory;
+import sif3.hits.domain.converter.factory.IObjectFactory;
 import sif3.hits.domain.model.CalendarSummary;
 import sif3.hits.domain.model.CalendarSummaryYearLevel;
 
@@ -26,7 +26,7 @@ public class CalendarSummaryConverter extends HitsConverter<CalendarSummaryType,
   @Override
   public void toSifModel(CalendarSummary source, CalendarSummaryType target) {
     if (source != null && target != null) {
-      ObjectFactory objectFactory = getObjectFactory();
+      IObjectFactory objectFactory = getObjectFactory();
       target.setRefId(source.getRefId());
       target.setSchoolInfoRefId(source.getSchoolInfoRefId());
       target.setSchoolYear(getYearValue(source.getSchoolYear()));
@@ -34,18 +34,13 @@ public class CalendarSummaryConverter extends HitsConverter<CalendarSummaryType,
       target.setDaysInSession(getLongValue(source.getDaysInSession()));
       target.setStartDate(objectFactory.createCalendarSummaryTypeStartDate(getDateValue(source.getStartDate())));
       target.setEndDate(objectFactory.createCalendarSummaryTypeEndDate(getDateValue(source.getEndDate())));
-      target.setFirstInstructionDate(objectFactory.createCalendarSummaryTypeFirstInstructionDate(getDateValue(source
-          .getFirstInstructionDate())));
-      target.setLastInstructionDate(objectFactory.createCalendarSummaryTypeLastInstructionDate(getDateValue(source
-          .getLastInstructionDate())));
-      target.setInstructionalMinutes(objectFactory.createCalendarSummaryTypeInstructionalMinutes(getLongValue(source
-          .getInstructionalMinutes())));
-      target.setMinutesPerDay(objectFactory.createCalendarSummaryTypeMinutesPerDay(getLongValue(source
-          .getMinutesPerDay())));
+      target.setFirstInstructionDate(objectFactory.createCalendarSummaryTypeFirstInstructionDate(getDateValue(source.getFirstInstructionDate())));
+      target.setLastInstructionDate(objectFactory.createCalendarSummaryTypeLastInstructionDate(getDateValue(source.getLastInstructionDate())));
+      target.setInstructionalMinutes(objectFactory.createCalendarSummaryTypeInstructionalMinutes(getLongValue(source.getInstructionalMinutes())));
+      target.setMinutesPerDay(objectFactory.createCalendarSummaryTypeMinutesPerDay(getLongValue(source.getMinutesPerDay())));
 
       YearLevelsType yearLevelsType = objectFactory.createYearLevelsType();
-      List<YearLevelType> yearLevels = calendarSummaryYearLevelConverter.toSifModelList(source
-          .getCalendarSummaryYearLevels());
+      List<YearLevelType> yearLevels = calendarSummaryYearLevelConverter.toSifModelList(source.getCalendarSummaryYearLevels());
       if (yearLevels != null && !yearLevels.isEmpty()) {
         yearLevelsType.getYearLevel().addAll(yearLevels);
         target.setYearLevels(objectFactory.createCalendarSummaryTypeYearLevels(yearLevelsType));
@@ -74,8 +69,7 @@ public class CalendarSummaryConverter extends HitsConverter<CalendarSummaryType,
 
       YearLevelsType yearLevelsType = getJAXBValue(source.getYearLevels());
       if (yearLevelsType != null) {
-        List<CalendarSummaryYearLevel> yearLevels = calendarSummaryYearLevelConverter.toHitsModelList(yearLevelsType
-            .getYearLevel());
+        List<CalendarSummaryYearLevel> yearLevels = calendarSummaryYearLevelConverter.toHitsModelList(yearLevelsType.getYearLevel());
         target.setCalendarSummaryYearLevels(new HashSet<CalendarSummaryYearLevel>(yearLevels));
       }
     }

@@ -8,8 +8,7 @@ import sif.dd.au30.model.InvoiceType;
 import sif3.hits.domain.model.Invoice;
 import sif3.hits.service.InvoiceService;
 
-public class InvoiceProvider extends
-    HitsBaseProvider<InvoiceType, InvoiceCollectionType, Invoice, InvoiceService> {
+public class InvoiceProvider extends HitsBaseProvider<InvoiceType, InvoiceCollectionType, Invoice, InvoiceService> {
 
   protected static final Logger L = LoggerFactory.getLogger(InvoiceProvider.class);
 
@@ -20,7 +19,6 @@ public class InvoiceProvider extends
    *          values of provider property file.
    */
   public InvoiceProvider() {
-    super(InvoiceType.class, "Invoice", InvoiceCollectionType.class, "Invoices",
-        InvoiceService.class);
+    super(InvoiceType.class, "Invoice", InvoiceCollectionType.class, "Invoices", InvoiceService.class);
   }
 }

@@ -11,33 +11,21 @@ import sif.dd.au30.model.StudentPeriodAttendanceType;
 import sif3.hits.domain.converter.HitsConverter;
 import sif3.hits.domain.converter.StudentPeriodAttendanceConverter;
 import sif3.hits.domain.dao.StudentPeriodAttendanceDAO;
-import sif3.hits.domain.dao.ZoneFilterableRepository;
+import sif3.hits.domain.dao.filter.FilterableRepository;
+import sif3.hits.domain.dao.filter.StudentPeriodAttendanceFilterDAO;
 import sif3.hits.domain.model.StudentPeriodAttendance;
 
 @Service
-public class StudentPeriodAttendanceService extends
-    BaseService<StudentPeriodAttendanceType, StudentPeriodAttendanceCollectionType, StudentPeriodAttendance> {
-
-  @Autowired
-  private StudentPeriodAttendanceDAO studentPeriodAttendanceDAO;
-
-  @Override
-  public JpaRepository<StudentPeriodAttendance, String> getDAO() {
-    return studentPeriodAttendanceDAO;
-  }
-
-  @Override
-  public ZoneFilterableRepository<StudentPeriodAttendance> getZoneFilterableDAO() {
-    return studentPeriodAttendanceDAO;
-  }
+public class StudentPeriodAttendanceService extends BaseService<StudentPeriodAttendanceType, StudentPeriodAttendanceCollectionType, StudentPeriodAttendance> {
 
   @Autowired
   private StudentPeriodAttendanceConverter studentPeriodAttendanceConverter;
 
-  @Override
-  public HitsConverter<StudentPeriodAttendanceType, StudentPeriodAttendance> getConverter() {
-    return studentPeriodAttendanceConverter;
-  }
+  @Autowired
+  private StudentPeriodAttendanceDAO studentPeriodAttendanceDAO;
+
+  @Autowired
+  private StudentPeriodAttendanceFilterDAO studentPeriodAttendanceFilterDAO;
 
   @Override
   protected StudentPeriodAttendanceCollectionType getCollection(List<StudentPeriodAttendanceType> items) {
@@ -49,11 +37,18 @@ public class StudentPeriodAttendanceService extends
   }
 
   @Override
-  protected StudentPeriodAttendance getFiltered(String refId, java.util.List<String> schoolRefIds) {
-    StudentPeriodAttendance result = null;
-    if (schoolRefIds != null && !schoolRefIds.isEmpty()) {
-      result = studentPeriodAttendanceDAO.findOneWithFilter(refId, schoolRefIds);
-    }
-    return result;
+  protected HitsConverter<StudentPeriodAttendanceType, StudentPeriodAttendance> getConverter() {
+    return studentPeriodAttendanceConverter;
   }
+
+  @Override
+  protected JpaRepository<StudentPeriodAttendance, String> getDAO() {
+    return studentPeriodAttendanceDAO;
+  }
+
+  @Override
+  protected FilterableRepository<StudentPeriodAttendance> getFilterableDAO() {
+    return studentPeriodAttendanceFilterDAO;
+  }
+
 }

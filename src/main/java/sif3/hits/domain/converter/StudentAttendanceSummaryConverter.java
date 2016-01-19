@@ -3,12 +3,11 @@ package sif3.hits.domain.converter;
 import org.springframework.stereotype.Component;
 
 import sif.dd.au30.model.StudentAttendanceSummaryType;
-import sif3.hits.domain.converter.factory.ObjectFactory;
+import sif3.hits.domain.converter.factory.IObjectFactory;
 import sif3.hits.domain.model.StudentAttendanceSummary;
 
 @Component
-public class StudentAttendanceSummaryConverter extends
-    HitsConverter<StudentAttendanceSummaryType, StudentAttendanceSummary> {
+public class StudentAttendanceSummaryConverter extends HitsConverter<StudentAttendanceSummaryType, StudentAttendanceSummary> {
 
   public StudentAttendanceSummaryConverter() {
     super(StudentAttendanceSummaryType.class, StudentAttendanceSummary.class);
@@ -17,10 +16,9 @@ public class StudentAttendanceSummaryConverter extends
   @Override
   public void toSifModel(StudentAttendanceSummary source, StudentAttendanceSummaryType target) {
     if (source != null && target != null) {
-      ObjectFactory objectFactory = getObjectFactory();
+      IObjectFactory objectFactory = getObjectFactory();
 
-      target.setStudentAttendanceSummaryRefId(objectFactory
-          .createStudentAttendanceSummaryTypeStudentAttendanceSummaryRefId(source.getRefId()));
+      target.setStudentAttendanceSummaryRefId(source.getRefId());
       target.setStudentPersonalRefId(source.getStudentPersonalRefId());
       target.setSchoolInfoRefId(source.getSchoolInfoRefId());
       target.setSchoolYear(getYearValue(source.getSchoolYear()));
@@ -33,8 +31,7 @@ public class StudentAttendanceSummaryConverter extends
       target.setDaysAttended(getBigDecimalValue(source.getDaysAttended()));
       target.setExcusedAbsences(getBigDecimalValue(source.getExcusedAbsences()));
       target.setUnexcusedAbsences(getBigDecimalValue(source.getUnexcusedAbsences()));
-      target.setDaysTardy(objectFactory.createStudentAttendanceSummaryTypeDaysTardy(getBigDecimalValue(source
-          .getDaysTardy())));
+      target.setDaysTardy(objectFactory.createStudentAttendanceSummaryTypeDaysTardy(getBigDecimalValue(source.getDaysTardy())));
       target.setDaysInMembership(getBigDecimalValue(source.getDaysInMembership()));
     }
   }
@@ -42,7 +39,7 @@ public class StudentAttendanceSummaryConverter extends
   @Override
   public void toHitsModel(StudentAttendanceSummaryType source, StudentAttendanceSummary target) {
     if (source != null && target != null) {
-      target.setRefId(getJAXBValue(source.getStudentAttendanceSummaryRefId()));
+      target.setRefId(source.getStudentAttendanceSummaryRefId());
       target.setStudentPersonalRefId(source.getStudentPersonalRefId());
       target.setSchoolInfoRefId(source.getSchoolInfoRefId());
       target.setSchoolYear(getYearValue(source.getSchoolYear()));

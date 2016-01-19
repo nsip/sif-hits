@@ -2,44 +2,31 @@ package sif3.hits.domain.converter;
 
 import org.springframework.stereotype.Component;
 
-import sif3.hits.domain.converter.factory.ObjectFactory;
+import sif3.hits.domain.converter.factory.IObjectFactory;
 import sif3.hits.domain.model.TimeTablePeriod;
 
 @Component
-public class TimeTablePeriodConverter
-    extends
-    HitsConverter<sif.dd.au30.model.TimeTableType.TimeTableDayList.TimeTableDay.TimeTablePeriodList.TimeTablePeriod, TimeTablePeriod> {
+public class TimeTablePeriodConverter extends HitsConverter<sif.dd.au30.model.TimeTableType.TimeTableDayList.TimeTableDay.TimeTablePeriodList.TimeTablePeriod, TimeTablePeriod> {
 
   public TimeTablePeriodConverter() {
-    super(sif.dd.au30.model.TimeTableType.TimeTableDayList.TimeTableDay.TimeTablePeriodList.TimeTablePeriod.class,
-        TimeTablePeriod.class);
+    super(sif.dd.au30.model.TimeTableType.TimeTableDayList.TimeTableDay.TimeTablePeriodList.TimeTablePeriod.class, TimeTablePeriod.class);
   }
 
   @Override
-  public void toSifModel(TimeTablePeriod source,
-      sif.dd.au30.model.TimeTableType.TimeTableDayList.TimeTableDay.TimeTablePeriodList.TimeTablePeriod target) {
+  public void toSifModel(TimeTablePeriod source, sif.dd.au30.model.TimeTableType.TimeTableDayList.TimeTableDay.TimeTablePeriodList.TimeTablePeriod target) {
 
     if (source != null && target != null) {
-      ObjectFactory objectFactory = getObjectFactory();
+      IObjectFactory objectFactory = getObjectFactory();
       target.setPeriodId(source.getPeriodId());
-      target.setBellPeriod(objectFactory
-          .createTimeTableTypeTimeTableDayListTimeTableDayTimeTablePeriodListTimeTablePeriodBellPeriod(source
-              .getBellPeriod()));
+      target.setBellPeriod(objectFactory.createTimeTableTypeTimeTableDayListTimeTableDayTimeTablePeriodListTimeTablePeriodBellPeriod(source.getBellPeriod()));
       target.setPeriodTitle(source.getPeriodTitle());
-      target
-          .setStartTime(objectFactory
-              .createTimeTableTypeTimeTableDayListTimeTableDayTimeTablePeriodListTimeTablePeriodStartTime(getTimeValue(source
-                  .getStartTime())));
-      target.setEndTime(objectFactory
-          .createTimeTableTypeTimeTableDayListTimeTableDayTimeTablePeriodListTimeTablePeriodEndTime(getTimeValue(source
-              .getEndTime())));
+      target.setStartTime(objectFactory.createTimeTableTypeTimeTableDayListTimeTableDayTimeTablePeriodListTimeTablePeriodStartTime(getTimeValue(source.getStartTime())));
+      target.setEndTime(objectFactory.createTimeTableTypeTimeTableDayListTimeTableDayTimeTablePeriodListTimeTablePeriodEndTime(getTimeValue(source.getEndTime())));
     }
   }
 
   @Override
-  public void toHitsModel(
-      sif.dd.au30.model.TimeTableType.TimeTableDayList.TimeTableDay.TimeTablePeriodList.TimeTablePeriod source,
-      TimeTablePeriod target) {
+  public void toHitsModel(sif.dd.au30.model.TimeTableType.TimeTableDayList.TimeTableDay.TimeTablePeriodList.TimeTablePeriod source, TimeTablePeriod target) {
 
     if (source != null && target != null) {
       target.setPeriodId(source.getPeriodId());

@@ -3,7 +3,7 @@ package sif3.hits.domain.converter;
 import org.springframework.stereotype.Component;
 
 import sif.dd.au30.model.TimeTableSubjectType;
-import sif3.hits.domain.converter.factory.ObjectFactory;
+import sif3.hits.domain.converter.factory.IObjectFactory;
 import sif3.hits.domain.model.SchoolInfo;
 
 @Component
@@ -16,7 +16,7 @@ public class TimeTableSubjectSchoolInfoConverter extends HitsConverter<TimeTable
   @Override
   public void toSifModel(SchoolInfo source, TimeTableSubjectType target) {
     if (source != null && target != null) {
-      ObjectFactory objectFactory = getObjectFactory();
+      IObjectFactory objectFactory = getObjectFactory();
       target.setSchoolInfoRefId(objectFactory.createTeachingGroupTypeSchoolInfoRefId(source.getRefId()));
       target.setSchoolLocalId(objectFactory.createTeachingGroupTypeSchoolLocalId(source.getLocalId()));
     }

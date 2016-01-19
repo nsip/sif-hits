@@ -1,4 +1,4 @@
-<ScheduledActivity RefId="596bd118-14cb-485a-84d3-593fc5703958" xmlns="http://www.sifassociation.org/au/datamodel/1.4" >
+<ScheduledActivity RefId="596bd118-14cb-485a-84d3-593fc5703958" xmlns="http://www.sifassociation.org/au/datamodel/3.4">
     <SchoolInfoRefId>6dafb630-c439-41e3-9aa0-81f4dbd909ab</SchoolInfoRefId>
     <TimeTableCellRefId>301c949d-3769-45fc-9c82-7119c1f9df03</TimeTableCellRefId>
     <DayId>1</DayId>

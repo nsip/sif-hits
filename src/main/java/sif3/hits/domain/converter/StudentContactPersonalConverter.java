@@ -5,7 +5,7 @@ import org.springframework.stereotype.Component;
 
 import sif.dd.au30.model.PersonInfoType;
 import sif.dd.au30.model.StudentContactPersonalType;
-import sif3.hits.domain.converter.factory.ObjectFactory;
+import sif3.hits.domain.converter.factory.IObjectFactory;
 import sif3.hits.domain.model.StudentContactPersonal;
 
 @Component
@@ -13,7 +13,7 @@ public class StudentContactPersonalConverter extends HitsConverter<StudentContac
 
   @Autowired
   private PersonInfoConverter personInfoConverter;
-  
+
   public StudentContactPersonalConverter() {
     super(StudentContactPersonalType.class, StudentContactPersonal.class);
   }
@@ -21,13 +21,13 @@ public class StudentContactPersonalConverter extends HitsConverter<StudentContac
   @Override
   public void toSifModel(StudentContactPersonal source, StudentContactPersonalType target) {
     if (source != null && target != null) {
-      ObjectFactory objectFactory = getObjectFactory();
+      IObjectFactory objectFactory = getObjectFactory();
       target.setEmploymentType(objectFactory.createStudentContactPersonalTypeEmploymentType(source.getEmploymentType()));
       target.setLocalId(objectFactory.createStudentContactPersonalTypeLocalId(source.getLocalId()));
       target.setNonSchoolEducation(objectFactory.createStudentContactPersonalTypeNonSchoolEducation(source.getNonSchoolEducation()));
       target.setRefId(source.getRefId());
       target.setSchoolEducationalLevel(objectFactory.createStudentContactPersonalTypeSchoolEducationalLevel(source.getSchoolEducationLevel()));
-      
+
       PersonInfoType personInfoType = personInfoConverter.toSifModel(source);
       target.setPersonInfo(personInfoType);
     }
@@ -41,9 +41,9 @@ public class StudentContactPersonalConverter extends HitsConverter<StudentContac
       target.setNonSchoolEducation(getJAXBValue(source.getNonSchoolEducation()));
       target.setRefId(source.getRefId());
       target.setSchoolEducationLevel(getJAXBValue(source.getSchoolEducationalLevel()));
-      
+
       personInfoConverter.toHitsModel(source.getPersonInfo(), target);
     }
   }
-  
+
 }

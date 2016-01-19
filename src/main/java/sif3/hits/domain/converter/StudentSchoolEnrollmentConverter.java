@@ -3,14 +3,14 @@ package sif3.hits.domain.converter;
 import org.springframework.stereotype.Component;
 
 import sif.dd.au30.model.AUCodeSetsEnrollmentTimeFrameType;
+import sif.dd.au30.model.AUCodeSetsYesOrNoCategoryType;
 import sif.dd.au30.model.StudentSchoolEnrollmentType;
 import sif.dd.au30.model.YearLevelType;
-import sif3.hits.domain.converter.factory.ObjectFactory;
+import sif3.hits.domain.converter.factory.IObjectFactory;
 import sif3.hits.domain.model.StudentSchoolEnrollment;
 
 @Component
-public class StudentSchoolEnrollmentConverter extends
-    HitsConverter<StudentSchoolEnrollmentType, StudentSchoolEnrollment> {
+public class StudentSchoolEnrollmentConverter extends HitsConverter<StudentSchoolEnrollmentType, StudentSchoolEnrollment> {
 
   public StudentSchoolEnrollmentConverter() {
     super(StudentSchoolEnrollmentType.class, StudentSchoolEnrollment.class);
@@ -19,15 +19,14 @@ public class StudentSchoolEnrollmentConverter extends
   @Override
   public void toSifModel(StudentSchoolEnrollment source, StudentSchoolEnrollmentType target) {
     if (source != null && target != null) {
-      ObjectFactory objectFactory = getObjectFactory();
+      IObjectFactory objectFactory = getObjectFactory();
       target.setRefId(source.getRefId());
       target.setSchoolInfoRefId(source.getSchoolInfoRefId());
       target.setStudentPersonalRefId(source.getStudentPersonalRefId());
       target.setMembershipType(source.getMembershipType());
       target.setSchoolYear(getYearValue(source.getSchoolYear()));
 
-      AUCodeSetsEnrollmentTimeFrameType timeFrame = getEnumValue(source.getTimeFrame(),
-          AUCodeSetsEnrollmentTimeFrameType.class);
+      AUCodeSetsEnrollmentTimeFrameType timeFrame = getEnumValue(source.getTimeFrame(), AUCodeSetsEnrollmentTimeFrameType.class);
       target.setTimeFrame(timeFrame);
 
       YearLevelType yearLevel = new YearLevelType();
@@ -37,6 +36,10 @@ public class StudentSchoolEnrollmentConverter extends
       target.setFTE(objectFactory.createStudentSchoolEnrollmentTypeFTE(getBigDecimalValue(source.getFte())));
       target.setEntryDate(getDateValue(source.getEntryDate()));
       target.setExitDate(objectFactory.createStudentSchoolEnrollmentTypeExitDate(getDateValue(source.getExitDate())));
+
+      target.setClassCode(objectFactory.createStudentSchoolEnrollmentTypeClassCode(source.getClassCode()));
+      target.setReportingSchool(objectFactory.createStudentSchoolEnrollmentTypeReportingSchool(getEnumValue(source.getReportingSchool(), AUCodeSetsYesOrNoCategoryType.class)));
+
     }
   }
 
@@ -57,5 +60,8 @@ public class StudentSchoolEnrollmentConverter extends
     target.setFte(getBigDecimalValue(getJAXBValue(source.getFTE())));
     target.setEntryDate(getDateValue(source.getEntryDate()));
     target.setExitDate(getDateValue(getJAXBValue(source.getExitDate())));
+
+    target.setClassCode(getJAXBValue(source.getClassCode()));
+    target.setReportingSchool(getJAXBEnumValue(source.getReportingSchool()));
   }
 }

@@ -1,4 +1,4 @@
-<ChargedLocationInfos xmlns="http://www.sifassociation.org/au/datamodel/1.4">
+<ChargedLocationInfos xmlns="http://www.sifassociation.org/au/datamodel/3.4">
   <ChargedLocationInfo RefId="bc33ad46-3992-4b07-90d7-cadc1992fe02">
     <LocationType>School</LocationType>
     <SiteCategory>Campus</SiteCategory>

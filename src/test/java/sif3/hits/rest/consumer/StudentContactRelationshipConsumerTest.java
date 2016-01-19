@@ -43,7 +43,7 @@ public class StudentContactRelationshipConsumerTest extends BaseTest {
     StudentContactRelationshipType studentContactRelationshipType = new StudentContactRelationshipType();
     
     studentContactRelationshipType.setStudentContactRelationshipRefId(
-        objectFactory.createStudentContactRelationshipTypeStudentContactRelationshipRefId(StudentContactRelationshipRefIds.REF_ID_1));
+        StudentContactRelationshipRefIds.REF_ID_1);
     studentContactRelationshipType.setStudentPersonalRefId(StudentPersonalRefIds.REF_ID_1);
     studentContactRelationshipType.setStudentContactPersonalRefId(StudentContactPersonalRefIds.REF_ID_1);
     
@@ -68,25 +68,25 @@ public class StudentContactRelationshipConsumerTest extends BaseTest {
     String xmlExpectedTo = studentTester.getXML(studentContactRelationshipType);
     
     studentContactRelationshipType.setStudentContactRelationshipRefId(
-        objectFactory.createStudentContactRelationshipTypeStudentContactRelationshipRefId(StudentContactRelationshipRefIds.REF_ID_2));
+        StudentContactRelationshipRefIds.REF_ID_2);
     studentContactRelationshipType.setStudentPersonalRefId(StudentPersonalRefIds.REF_ID_2);
     studentContactRelationshipType.setStudentContactPersonalRefId(StudentContactPersonalRefIds.REF_ID_2);
     studentTester.doCreateOne(studentContactRelationshipType);
 
     studentContactRelationshipType.setStudentContactRelationshipRefId(
-        objectFactory.createStudentContactRelationshipTypeStudentContactRelationshipRefId(StudentContactRelationshipRefIds.REF_ID_3));
+        StudentContactRelationshipRefIds.REF_ID_3);
     studentContactRelationshipType.setStudentPersonalRefId(StudentPersonalRefIds.REF_ID_3);
     studentContactRelationshipType.setStudentContactPersonalRefId(StudentContactPersonalRefIds.REF_ID_3);
     studentTester.doCreateOne(studentContactRelationshipType);
     
     studentContactRelationshipType.setStudentContactRelationshipRefId(
-        objectFactory.createStudentContactRelationshipTypeStudentContactRelationshipRefId(StudentContactRelationshipRefIds.REF_ID_4));
+        StudentContactRelationshipRefIds.REF_ID_4);
     studentContactRelationshipType.setStudentPersonalRefId(StudentPersonalRefIds.REF_ID_4);
     studentContactRelationshipType.setStudentContactPersonalRefId(StudentContactPersonalRefIds.REF_ID_4);    
     studentTester.doCreateOne(studentContactRelationshipType);
     
     studentContactRelationshipType.setStudentContactRelationshipRefId(
-        objectFactory.createStudentContactRelationshipTypeStudentContactRelationshipRefId(StudentContactRelationshipRefIds.REF_ID_5));
+        StudentContactRelationshipRefIds.REF_ID_5);
     studentContactRelationshipType.setStudentPersonalRefId(StudentPersonalRefIds.REF_ID_5);
     studentContactRelationshipType.setStudentContactPersonalRefId(StudentContactPersonalRefIds.REF_ID_5);
     studentTester.doCreateOne(studentContactRelationshipType);
@@ -117,7 +117,7 @@ public class StudentContactRelationshipConsumerTest extends BaseTest {
     Response response = responses.get(0);
     Assert.assertNotNull(response.getDataObject());
     StudentContactRelationshipType studentContactRelationship = (StudentContactRelationshipType) response.getDataObject();
-    Assert.assertEquals(StudentContactRelationshipRefIds.REF_ID_1, studentContactRelationship.getStudentContactRelationshipRefId().getValue());
+    Assert.assertEquals(StudentContactRelationshipRefIds.REF_ID_1, studentContactRelationship.getStudentContactRelationshipRefId());
 
     String xmlExpectedFrom = studentTester.getXML(studentContactRelationship);
 
@@ -132,7 +132,7 @@ public class StudentContactRelationshipConsumerTest extends BaseTest {
     Response getResponse = getResponses.get(0);
     Assert.assertNotNull(getResponse.getDataObject());
     StudentContactRelationshipType comparisonTo = (StudentContactRelationshipType) getResponse.getDataObject();
-    Assert.assertEquals(StudentContactRelationshipRefIds.REF_ID_1, comparisonTo.getStudentContactRelationshipRefId().getValue());
+    Assert.assertEquals(StudentContactRelationshipRefIds.REF_ID_1, comparisonTo.getStudentContactRelationshipRefId());
     String xmlExpectedTo = studentTester.getXML(comparisonTo);
 
     boolean semiEquals = semiEquals(xmlExpectedFrom, xmlExpectedTo);
@@ -151,7 +151,7 @@ public class StudentContactRelationshipConsumerTest extends BaseTest {
     Response response = responses.get(0);
     Assert.assertNotNull(response.getDataObject());
     StudentContactRelationshipType studentContactRelationship = (StudentContactRelationshipType) response.getDataObject();
-    Assert.assertEquals(StudentContactRelationshipRefIds.REF_ID_1, studentContactRelationship.getStudentContactRelationshipRefId().getValue());
+    Assert.assertEquals(StudentContactRelationshipRefIds.REF_ID_1, studentContactRelationship.getStudentContactRelationshipRefId());
   }
 
   @Test
@@ -174,7 +174,7 @@ public class StudentContactRelationshipConsumerTest extends BaseTest {
     Response createResponse = createResponses.get(0);
     Assert.assertNotNull(createResponse.getDataObject());
     StudentContactRelationshipType studentContactRelationship = (StudentContactRelationshipType) createResponse.getDataObject();
-    Assert.assertEquals(REF_ID_1, studentContactRelationship.getStudentContactRelationshipRefId().getValue());
+    Assert.assertEquals(REF_ID_1, studentContactRelationship.getStudentContactRelationshipRefId());
 
     List<Response> deleteResponses = studentTester.testDeleteOne(REF_ID_1);
     Assert.assertNotNull(deleteResponses);

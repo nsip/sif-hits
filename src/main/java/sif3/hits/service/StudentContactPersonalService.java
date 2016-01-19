@@ -11,32 +11,21 @@ import sif.dd.au30.model.StudentContactPersonalType;
 import sif3.hits.domain.converter.HitsConverter;
 import sif3.hits.domain.converter.StudentContactPersonalConverter;
 import sif3.hits.domain.dao.StudentContactPersonalDAO;
-import sif3.hits.domain.dao.ZoneFilterableRepository;
+import sif3.hits.domain.dao.filter.FilterableRepository;
+import sif3.hits.domain.dao.filter.StudentContactPersonalFilterDAO;
 import sif3.hits.domain.model.StudentContactPersonal;
 
 @Service
 public class StudentContactPersonalService extends BaseService<StudentContactPersonalType, StudentContactCollectionType, StudentContactPersonal> {
 
   @Autowired
-  private StudentContactPersonalDAO studentContactPersonalDAO;
-  
-  @Autowired
   private StudentContactPersonalConverter studentContactPersonalConverter;
 
-  @Override
-  public JpaRepository<StudentContactPersonal, String> getDAO() {
-    return studentContactPersonalDAO;
-  }
+  @Autowired
+  private StudentContactPersonalDAO studentContactPersonalDAO;
 
-  @Override
-  public ZoneFilterableRepository<StudentContactPersonal> getZoneFilterableDAO() {
-    return studentContactPersonalDAO;
-  }
-
-  @Override
-  public HitsConverter<StudentContactPersonalType, StudentContactPersonal> getConverter() {
-    return studentContactPersonalConverter;
-  }
+  @Autowired
+  private StudentContactPersonalFilterDAO studentContactPersonalFilterDAO;
 
   @Override
   protected StudentContactCollectionType getCollection(List<StudentContactPersonalType> items) {
@@ -48,11 +37,17 @@ public class StudentContactPersonalService extends BaseService<StudentContactPer
   }
 
   @Override
-  protected StudentContactPersonal getFiltered(String refId, List<String> schoolRefIds) {
-    StudentContactPersonal result = null;
-    if (schoolRefIds != null && !schoolRefIds.isEmpty()) {
-      result = studentContactPersonalDAO.findOneWithFilter(refId, schoolRefIds);
-    }
-    return result;
+  protected HitsConverter<StudentContactPersonalType, StudentContactPersonal> getConverter() {
+    return studentContactPersonalConverter;
+  }
+
+  @Override
+  protected JpaRepository<StudentContactPersonal, String> getDAO() {
+    return studentContactPersonalDAO;
+  }
+  
+  @Override
+  protected FilterableRepository<StudentContactPersonal> getFilterableDAO() {
+    return studentContactPersonalFilterDAO;
   }
 }

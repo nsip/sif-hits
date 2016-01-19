@@ -14,7 +14,6 @@ public class FinancialAccount extends HitsEntity {
   private String accountNumber;
   private String name;
   private String description;
-  private String financialClassRefId;
   private String creationDate;
   private String creationTime;
 
@@ -67,15 +66,6 @@ public class FinancialAccount extends HitsEntity {
 
   public void setDescription(String description) {
     this.description = description;
-  }
-
-  @Column(name = "FinancialClass_RefId")
-  public String getFinancialClassRefId() {
-    return financialClassRefId;
-  }
-
-  public void setFinancialClassRefId(String financialClassRefId) {
-    this.financialClassRefId = financialClassRefId;
   }
 
   public String getCreationDate() {

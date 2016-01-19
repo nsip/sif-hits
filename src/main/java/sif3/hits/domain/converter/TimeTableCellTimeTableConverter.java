@@ -4,7 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import sif.dd.au30.model.TimeTableCellType;
-import sif3.hits.domain.converter.factory.ObjectFactory;
+import sif3.hits.domain.converter.factory.IObjectFactory;
 import sif3.hits.domain.model.TimeTable;
 
 @Component
@@ -20,7 +20,7 @@ public class TimeTableCellTimeTableConverter extends HitsConverter<TimeTableCell
   @Override
   public void toSifModel(TimeTable source, TimeTableCellType target) {
     if (source != null && target != null) {
-      ObjectFactory objectFactory = getObjectFactory();
+      IObjectFactory objectFactory = getObjectFactory();
       target.setTimeTableRefId(source.getRefId());
       target.setTimeTableLocalId(objectFactory.createTimeTableCellTypeTimeTableLocalId(source.getLocalId()));
       timeTableCellSchoolInfoConverter.toSifModel(source.getSchoolInfo(), target);

@@ -11,32 +11,21 @@ import sif.dd.au30.model.PurchaseOrderType;
 import sif3.hits.domain.converter.HitsConverter;
 import sif3.hits.domain.converter.PurchaseOrderConverter;
 import sif3.hits.domain.dao.PurchaseOrderDAO;
-import sif3.hits.domain.dao.ZoneFilterableRepository;
+import sif3.hits.domain.dao.filter.FilterableRepository;
+import sif3.hits.domain.dao.filter.PurchaseOrderFilterDAO;
 import sif3.hits.domain.model.PurchaseOrder;
 
 @Service
 public class PurchaseOrderService extends BaseService<PurchaseOrderType, PurchaseOrderCollectionType, PurchaseOrder> {
 
   @Autowired
-  private PurchaseOrderDAO purchaseOrderDAO;
-
-  @Override
-  public JpaRepository<PurchaseOrder, String> getDAO() {
-    return purchaseOrderDAO;
-  }
-
-  @Override
-  public ZoneFilterableRepository<PurchaseOrder> getZoneFilterableDAO() {
-    return purchaseOrderDAO;
-  }
+  private PurchaseOrderConverter purchaseOrderConverter;
 
   @Autowired
-  private PurchaseOrderConverter locationInfoConverter;
+  private PurchaseOrderDAO purchaseOrderDAO;
 
-  @Override
-  public HitsConverter<PurchaseOrderType, PurchaseOrder> getConverter() {
-    return locationInfoConverter;
-  }
+  @Autowired
+  private PurchaseOrderFilterDAO purchaseOrderFilterDAO;
 
   @Override
   protected PurchaseOrderCollectionType getCollection(List<PurchaseOrderType> items) {
@@ -48,11 +37,18 @@ public class PurchaseOrderService extends BaseService<PurchaseOrderType, Purchas
   }
 
   @Override
-  protected PurchaseOrder getFiltered(String refId, java.util.List<String> schoolRefIds) {
-    PurchaseOrder result = null;
-    if (schoolRefIds != null && !schoolRefIds.isEmpty()) {
-      result = purchaseOrderDAO.findOneWithFilter(refId, schoolRefIds);
-    }
-    return result;
+  protected HitsConverter<PurchaseOrderType, PurchaseOrder> getConverter() {
+    return purchaseOrderConverter;
   }
+
+  @Override
+  protected JpaRepository<PurchaseOrder, String> getDAO() {
+    return purchaseOrderDAO;
+  }
+
+  @Override
+  protected FilterableRepository<PurchaseOrder> getFilterableDAO() {
+    return purchaseOrderFilterDAO;
+  }
+
 }

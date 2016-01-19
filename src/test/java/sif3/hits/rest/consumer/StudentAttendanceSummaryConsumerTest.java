@@ -31,7 +31,7 @@ public class StudentAttendanceSummaryConsumerTest extends BaseTest {
   public void initialiseData() throws Exception {
     ObjectFactory objectFactory = new ObjectFactory();
     StudentAttendanceSummaryType studentAttendanceSummary = new StudentAttendanceSummaryType();
-    studentAttendanceSummary.setStudentAttendanceSummaryRefId(objectFactory.createStudentAttendanceSummaryTypeStudentAttendanceSummaryRefId(REF_ID));
+    studentAttendanceSummary.setStudentAttendanceSummaryRefId(REF_ID);
     studentAttendanceSummary.setSchoolInfoRefId(SchoolInfoConsumerTest.REF_ID);
     studentAttendanceSummary.setStudentPersonalRefId(StudentPersonalRefIds.REF_ID_1);
     studentAttendanceSummary.setSchoolYear(getDate("2014"));
@@ -48,19 +48,19 @@ public class StudentAttendanceSummaryConsumerTest extends BaseTest {
     studentAttendanceSummaryTest.doCreateOne(studentAttendanceSummary);
     String xmlExpectedTo = studentAttendanceSummaryTest.getXML(studentAttendanceSummary);
     
-    studentAttendanceSummary.setStudentAttendanceSummaryRefId(objectFactory.createStudentAttendanceSummaryTypeStudentAttendanceSummaryRefId("61d0ee01-4c3c-4710-92fe-bcbfd4764912"));
+    studentAttendanceSummary.setStudentAttendanceSummaryRefId("61d0ee01-4c3c-4710-92fe-bcbfd4764912");
     studentAttendanceSummary.setStudentPersonalRefId(StudentPersonalRefIds.REF_ID_2);
     studentAttendanceSummaryTest.doCreateOne(studentAttendanceSummary);
 
-    studentAttendanceSummary.setStudentAttendanceSummaryRefId(objectFactory.createStudentAttendanceSummaryTypeStudentAttendanceSummaryRefId("4beca256-c880-47fe-9887-5df45fd71e41"));
+    studentAttendanceSummary.setStudentAttendanceSummaryRefId("4beca256-c880-47fe-9887-5df45fd71e41");
     studentAttendanceSummary.setStudentPersonalRefId(StudentPersonalRefIds.REF_ID_3);
     studentAttendanceSummaryTest.doCreateOne(studentAttendanceSummary);
 
-    studentAttendanceSummary.setStudentAttendanceSummaryRefId(objectFactory.createStudentAttendanceSummaryTypeStudentAttendanceSummaryRefId("9651425c-b9e9-427b-89b6-55d64a07d375"));
+    studentAttendanceSummary.setStudentAttendanceSummaryRefId("9651425c-b9e9-427b-89b6-55d64a07d375");
     studentAttendanceSummary.setStudentPersonalRefId(StudentPersonalRefIds.REF_ID_4);
     studentAttendanceSummaryTest.doCreateOne(studentAttendanceSummary);
 
-    studentAttendanceSummary.setStudentAttendanceSummaryRefId(objectFactory.createStudentAttendanceSummaryTypeStudentAttendanceSummaryRefId("d708a61b-2fad-4a84-a298-d5ed23f88747"));
+    studentAttendanceSummary.setStudentAttendanceSummaryRefId("d708a61b-2fad-4a84-a298-d5ed23f88747");
     studentAttendanceSummary.setStudentPersonalRefId(StudentPersonalRefIds.REF_ID_5);
     studentAttendanceSummaryTest.doCreateOne(studentAttendanceSummary);
     
@@ -90,7 +90,7 @@ public class StudentAttendanceSummaryConsumerTest extends BaseTest {
     Assert.assertNotNull(response.getDataObject());
     StudentAttendanceSummaryType studentDailyAttendance = (StudentAttendanceSummaryType) response.getDataObject();
     Assert.assertNotNull(studentDailyAttendance.getStudentAttendanceSummaryRefId());
-    Assert.assertEquals(REF_ID, studentDailyAttendance.getStudentAttendanceSummaryRefId().getValue());
+    Assert.assertEquals(REF_ID, studentDailyAttendance.getStudentAttendanceSummaryRefId());
 
     String xmlExpectedFrom = studentAttendanceSummaryTest.getXML(studentDailyAttendance);
 
@@ -105,7 +105,7 @@ public class StudentAttendanceSummaryConsumerTest extends BaseTest {
     Response getResponse = getResponses.get(0);
     Assert.assertNotNull(getResponse.getDataObject());
     StudentAttendanceSummaryType comparisonTo = (StudentAttendanceSummaryType) getResponse.getDataObject();
-    Assert.assertEquals(REF_ID, comparisonTo.getStudentAttendanceSummaryRefId().getValue());
+    Assert.assertEquals(REF_ID, comparisonTo.getStudentAttendanceSummaryRefId());
     String xmlExpectedTo = studentAttendanceSummaryTest.getXML(comparisonTo);
 
     boolean semiEquals = semiEquals(xmlExpectedFrom, xmlExpectedTo);
@@ -125,7 +125,7 @@ public class StudentAttendanceSummaryConsumerTest extends BaseTest {
     Assert.assertNotNull(response.getDataObject());
     StudentAttendanceSummaryType studentDailyAttendance = (StudentAttendanceSummaryType) response.getDataObject();
     Assert.assertNotNull(studentDailyAttendance.getStudentAttendanceSummaryRefId());
-    Assert.assertEquals(REF_ID, studentDailyAttendance.getStudentAttendanceSummaryRefId().getValue());
+    Assert.assertEquals(REF_ID, studentDailyAttendance.getStudentAttendanceSummaryRefId());
   }
   
   @Test
@@ -148,7 +148,7 @@ public class StudentAttendanceSummaryConsumerTest extends BaseTest {
     Response createResponse = createResponses.get(0);
     Assert.assertNotNull(createResponse.getDataObject());
     StudentAttendanceSummaryType timeTable = (StudentAttendanceSummaryType) createResponse.getDataObject();
-    Assert.assertEquals(REF_ID_1, timeTable.getStudentAttendanceSummaryRefId().getValue());
+    Assert.assertEquals(REF_ID_1, timeTable.getStudentAttendanceSummaryRefId());
     
     List<Response> deleteResponses = studentAttendanceSummaryTest.testDeleteOne(REF_ID_1);
     Assert.assertNotNull(deleteResponses);

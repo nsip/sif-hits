@@ -10,8 +10,7 @@ import sif.dd.au30.model.TimeTableSubjectType;
 import sif3.hits.domain.model.TimeTableSubject;
 import sif3.hits.service.TimeTableSubjectService;
 
-public class TimeTableSubjectProvider extends
-    HitsBaseProvider<TimeTableSubjectType, TimeTableSubjectCollectionType, TimeTableSubject, TimeTableSubjectService> {
+public class TimeTableSubjectProvider extends HitsBaseProvider<TimeTableSubjectType, TimeTableSubjectCollectionType, TimeTableSubject, TimeTableSubjectService> {
 
   protected static final Logger L = LoggerFactory.getLogger(TimeTableSubjectProvider.class);
 
@@ -22,8 +21,7 @@ public class TimeTableSubjectProvider extends
    *          values of provider property file.
    */
   public TimeTableSubjectProvider() {
-    super(TimeTableSubjectType.class, "TimeTableSubject", TimeTableSubjectCollectionType.class, "TimeTableSubjects",
-        TimeTableSubjectService.class);
+    super(TimeTableSubjectType.class, "TimeTableSubject", TimeTableSubjectCollectionType.class, "TimeTableSubjects", TimeTableSubjectService.class);
   }
 
   @Override

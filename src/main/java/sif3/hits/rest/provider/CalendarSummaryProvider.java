@@ -8,8 +8,7 @@ import sif.dd.au30.model.CalendarSummaryType;
 import sif3.hits.domain.model.CalendarSummary;
 import sif3.hits.service.CalendarSummaryService;
 
-public class CalendarSummaryProvider extends
-    HitsBaseProvider<CalendarSummaryType, CalendarSummaryCollectionType, CalendarSummary, CalendarSummaryService> {
+public class CalendarSummaryProvider extends HitsBaseProvider<CalendarSummaryType, CalendarSummaryCollectionType, CalendarSummary, CalendarSummaryService> {
 
   protected static final Logger L = LoggerFactory.getLogger(CalendarSummaryProvider.class);
 
@@ -20,7 +19,6 @@ public class CalendarSummaryProvider extends
    *          values of provider property file.
    */
   public CalendarSummaryProvider() {
-    super(CalendarSummaryType.class, "CalendarSummary", CalendarSummaryCollectionType.class, "CalendarSummarys",
-        CalendarSummaryService.class);
+    super(CalendarSummaryType.class, "CalendarSummary", CalendarSummaryCollectionType.class, "CalendarSummarys", CalendarSummaryService.class);
   }
 }

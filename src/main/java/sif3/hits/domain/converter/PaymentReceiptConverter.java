@@ -8,8 +8,8 @@ import org.springframework.stereotype.Component;
 import sif.dd.au30.model.MonetaryAmountType;
 import sif.dd.au30.model.PaymentReceiptType;
 import sif.dd.au30.model.PaymentReceiptType.FinancialAccountRefIdList;
-import sif.dd.au30.model.PaymentReceiptType.ReceivedAmount;
-import sif3.hits.domain.converter.factory.ObjectFactory;
+import sif.dd.au30.model.PaymentReceiptType.TransactionAmount;
+import sif3.hits.domain.converter.factory.IObjectFactory;
 import sif3.hits.domain.model.PaymentReceipt;
 import sif3.hits.utils.UsesConstants;
 
@@ -23,12 +23,11 @@ public class PaymentReceiptConverter extends HitsConverter<PaymentReceiptType, P
   @Override
   public void toSifModel(PaymentReceipt source, PaymentReceiptType target) {
     if (source != null && target != null) {
-      ObjectFactory objectFactory = getObjectFactory();
+      IObjectFactory objectFactory = getObjectFactory();
 
       target.setRefId(source.getRefId());
       target.setAccountingPeriod(objectFactory.createPaymentReceiptTypeAccountingPeriod(source.getAccountingPeriod()));
-      target.setChargedLocationInfoRefId(
-          objectFactory.createPaymentReceiptTypeChargedLocationInfoRefId(source.getLocationInfoRefId()));
+      target.setChargedLocationInfoRefId(objectFactory.createPaymentReceiptTypeChargedLocationInfoRefId(source.getLocationInfoRefId()));
       target.setChequeNumber(objectFactory.createPaymentReceiptTypeChequeNumber(source.getChequeNumber()));
       target.setDebtorRefId(objectFactory.createPaymentReceiptTypeDebtorRefId(source.getDebtorRefId()));
 
@@ -39,16 +38,13 @@ public class PaymentReceiptConverter extends HitsConverter<PaymentReceiptType, P
       }
 
       target.setInvoiceRefId(objectFactory.createPaymentReceiptTypeInvoiceRefId(source.getInvoiceRefId()));
-      target.setPurchaseOrderRefId(
-          objectFactory.createPaymentReceiptTypePurchaseOrderRefId(source.getPurchaseOrderRefId()));
 
-      if (StringUtils.isNotBlank(source.getReceivedAmount())
-          || StringUtils.isNotBlank(source.getReceivedAmountType())) {
-        ReceivedAmount receivedAmount = new ReceivedAmount();
+      if (StringUtils.isNotBlank(source.getReceivedAmount()) || StringUtils.isNotBlank(source.getReceivedAmountType())) {
+        TransactionAmount receivedAmount = new TransactionAmount();
         receivedAmount.setCurrency(DEFAULT_CURRENCY_ENUM);
         receivedAmount.setValue(source.getReceivedAmount());
         receivedAmount.setType(source.getReceivedAmountType());
-        target.setReceivedAmount(receivedAmount);
+        target.setTransactionAmount(receivedAmount);
       }
 
       target.setReceivedTransactionId(source.getReceivedTransactionId());
@@ -62,10 +58,8 @@ public class PaymentReceiptConverter extends HitsConverter<PaymentReceiptType, P
 
       target.setTaxRate(objectFactory.createPaymentReceiptTypeTaxRate(getBigDecimalValue(source.getTaxRate())));
       target.setTransactionDate(getDateValue(source.getTransactionDate()));
-      target.setTransactionDescription(
-          objectFactory.createPaymentReceiptTypeTransactionDescription(source.getTransactionDescription()));
-      target
-          .setTransactionMethod(objectFactory.createPaymentReceiptTypeTransactionMethod(source.getTransactionMethod()));
+      target.setTransactionDescription(objectFactory.createPaymentReceiptTypeTransactionDescription(source.getTransactionDescription()));
+      target.setTransactionMethod(objectFactory.createPaymentReceiptTypeTransactionMethod(source.getTransactionMethod()));
       target.setTransactionNote(objectFactory.createPaymentReceiptTypeTransactionNote(source.getTransactionNote()));
       target.setTransactionType(source.getTransactionType());
       target.setVendorInfoRefId(objectFactory.createPaymentReceiptTypeVendorInfoRefId(source.getVendorInfoRefId()));
@@ -88,15 +82,13 @@ public class PaymentReceiptConverter extends HitsConverter<PaymentReceiptType, P
       }
 
       FinancialAccountRefIdList financialAccountRefIdList = getJAXBValue(source.getFinancialAccountRefIdList());
-      if (financialAccountRefIdList != null && financialAccountRefIdList.getFinancialAccountRefId() != null
-          && !financialAccountRefIdList.getFinancialAccountRefId().isEmpty()) {
+      if (financialAccountRefIdList != null && financialAccountRefIdList.getFinancialAccountRefId() != null && !financialAccountRefIdList.getFinancialAccountRefId().isEmpty()) {
         target.getFinancialAccountRefIds().addAll(financialAccountRefIdList.getFinancialAccountRefId());
       }
 
       target.setInvoiceRefId(getJAXBValue(source.getInvoiceRefId()));
-      target.setPurchaseOrderRefId(getJAXBValue(source.getPurchaseOrderRefId()));
 
-      ReceivedAmount receivedAmount = source.getReceivedAmount();
+      TransactionAmount receivedAmount = source.getTransactionAmount();
       if (receivedAmount != null) {
         target.setReceivedAmount(receivedAmount.getValue());
         target.setReceivedAmountType(receivedAmount.getType());

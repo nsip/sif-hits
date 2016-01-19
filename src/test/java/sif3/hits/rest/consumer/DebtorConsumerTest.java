@@ -1,6 +1,5 @@
 package sif3.hits.rest.consumer;
 
-import java.math.BigDecimal;
 import java.util.Arrays;
 import java.util.List;
 
@@ -51,7 +50,7 @@ public class DebtorConsumerTest extends BaseTest implements UsesConstants {
     
     debtorType.setBillingName(objectFactory.createDebtorTypeBillingName("Billing Name"));
     debtorType.setBillingNote(objectFactory.createDebtorTypeBillingNote("Billing Note"));
-    debtorType.setDiscount(objectFactory.createDebtorTypeDiscount(new BigDecimal("0.05")));
+    debtorType.setDiscount(objectFactory.createDebtorTypeDiscount("0.05"));
 
     AddressListType addressList = objectFactory.createAddressListType();
     addressList.getAddress().add(StudentPersonalRefIds.getAddress(objectFactory, "1 Billed Street", null));

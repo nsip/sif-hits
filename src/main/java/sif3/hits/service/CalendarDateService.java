@@ -13,38 +13,26 @@ import sif3.hits.domain.converter.CalendarDateConverter;
 import sif3.hits.domain.converter.HitsConverter;
 import sif3.hits.domain.dao.CalendarDateDAO;
 import sif3.hits.domain.dao.CalendarDateOtherCodeDAO;
-import sif3.hits.domain.dao.ZoneFilterableRepository;
+import sif3.hits.domain.dao.filter.CalendarDateFilterDAO;
+import sif3.hits.domain.dao.filter.FilterableRepository;
 import sif3.hits.domain.model.CalendarDate;
 import sif3.hits.domain.model.CalendarDateTypeOtherCode;
 import sif3.hits.rest.dto.RequestDTO;
 
 @Service
-public class CalendarDateService extends
-    BaseService<sif.dd.au30.model.CalendarDate, CalendarDateCollectionType, CalendarDate> {
+public class CalendarDateService extends BaseService<sif.dd.au30.model.CalendarDate, CalendarDateCollectionType, CalendarDate> {
+
+  @Autowired
+  private CalendarDateConverter calendarDateConverter;
 
   @Autowired
   private CalendarDateDAO calendarDateDAO;
 
   @Autowired
-  private CalendarDateOtherCodeDAO calendarDateOtherCodeDAO;
-
-  @Override
-  public JpaRepository<CalendarDate, String> getDAO() {
-    return calendarDateDAO;
-  }
-
-  @Override
-  public ZoneFilterableRepository<CalendarDate> getZoneFilterableDAO() {
-    return calendarDateDAO;
-  }
+  private CalendarDateFilterDAO calendarDateFilterDAO;
 
   @Autowired
-  private CalendarDateConverter calendarDateConverter;
-
-  @Override
-  public HitsConverter<sif.dd.au30.model.CalendarDate, CalendarDate> getConverter() {
-    return calendarDateConverter;
-  }
+  private CalendarDateOtherCodeDAO calendarDateOtherCodeDAO;
 
   @Override
   protected CalendarDateCollectionType getCollection(List<sif.dd.au30.model.CalendarDate> items) {
@@ -56,44 +44,42 @@ public class CalendarDateService extends
   }
 
   @Override
-  protected CalendarDate getFiltered(String refId, java.util.List<String> schoolRefIds) {
-    CalendarDate result = null;
-    if (schoolRefIds != null && !schoolRefIds.isEmpty()) {
-      result = calendarDateDAO.findOneWithFilter(refId, schoolRefIds);
-    }
-    return result;
+  protected HitsConverter<sif.dd.au30.model.CalendarDate, CalendarDate> getConverter() {
+    return calendarDateConverter;
   }
 
   @Override
-  protected void delete(CalendarDate hitsObject, RequestDTO<sif.dd.au30.model.CalendarDate> dto) {
-    deleteOtherCodes(hitsObject);
-    super.delete(hitsObject, dto);
+  protected JpaRepository<CalendarDate, String> getDAO() {
+    return calendarDateDAO;
   }
 
-  private void deleteOtherCodes(CalendarDate hitsObject) {
+  @Override
+  protected FilterableRepository<CalendarDate> getFilterableDAO() {
+    return calendarDateFilterDAO;
+  }
+
+  @Override
+  protected void deleteChildObjects(CalendarDate hitsObject) {
     calendarDateOtherCodeDAO.deleteAllWithCalendarDate(hitsObject);
   }
 
   @Override
-  protected CalendarDate save(CalendarDate hitsObject, RequestDTO<sif.dd.au30.model.CalendarDate> dto, String zoneId,
-      boolean create) {
+  protected boolean hasChildObjects(CalendarDate hitsObject) {
+    return hitsObject != null && hitsObject.getCalendarDateTypeOtherCodes() != null && !hitsObject.getCalendarDateTypeOtherCodes().isEmpty();
+  }
+
+  @Override
+  protected CalendarDate saveWithChildObjects(CalendarDate hitsObject, RequestDTO<sif.dd.au30.model.CalendarDate> dto, String zoneId, boolean create) {
     CalendarDate result = null;
-    if (!create) {
-      deleteOtherCodes(hitsObject);
+    Set<CalendarDateTypeOtherCode> otherCodes = new HashSet<CalendarDateTypeOtherCode>();
+    otherCodes.addAll(hitsObject.getCalendarDateTypeOtherCodes());
+    hitsObject.getCalendarDateTypeOtherCodes().clear();
+    result = super.saveWithChildObjects(hitsObject, dto, zoneId, create);
+    for (CalendarDateTypeOtherCode otherCode : otherCodes) {
+      otherCode.setCalendarDate(hitsObject);
+      calendarDateOtherCodeDAO.save(otherCode);
     }
-    if (hitsObject.getCalendarDateTypeOtherCodes() != null && hitsObject.getCalendarDateTypeOtherCodes().size() > 0) {
-      Set<CalendarDateTypeOtherCode> otherCodes = new HashSet<CalendarDateTypeOtherCode>();
-      otherCodes.addAll(hitsObject.getCalendarDateTypeOtherCodes());
-      hitsObject.getCalendarDateTypeOtherCodes().clear();
-      result = super.save(hitsObject, dto, zoneId, create);
-      for (CalendarDateTypeOtherCode otherCode : otherCodes) {
-        otherCode.setCalendarDate(hitsObject);
-        calendarDateOtherCodeDAO.save(otherCode);
-      }
-      result.setCalendarDateTypeOtherCodes(otherCodes);
-    } else {
-      result = super.save(hitsObject, dto, zoneId, create);
-    }
+    result.setCalendarDateTypeOtherCodes(otherCodes);
     return result;
   }
 }

@@ -11,33 +11,21 @@ import sif.dd.au30.model.ScheduledActivityType;
 import sif3.hits.domain.converter.HitsConverter;
 import sif3.hits.domain.converter.ScheduledActivityConverter;
 import sif3.hits.domain.dao.ScheduledActivityDAO;
-import sif3.hits.domain.dao.ZoneFilterableRepository;
+import sif3.hits.domain.dao.filter.FilterableRepository;
+import sif3.hits.domain.dao.filter.ScheduledActivityFilterDAO;
 import sif3.hits.domain.model.ScheduledActivity;
 
 @Service
-public class ScheduledActivityService extends
-    BaseService<ScheduledActivityType, ScheduledActivityCollectionType, ScheduledActivity> {
+public class ScheduledActivityService extends BaseService<ScheduledActivityType, ScheduledActivityCollectionType, ScheduledActivity> {
+
+  @Autowired
+  private ScheduledActivityConverter scheduledActivityConverter;
 
   @Autowired
   private ScheduledActivityDAO scheduledActivityDAO;
 
   @Autowired
-  private ScheduledActivityConverter scheduledActivityConverter;
-
-  @Override
-  public JpaRepository<ScheduledActivity, String> getDAO() {
-    return scheduledActivityDAO;
-  }
-
-  @Override
-  public ZoneFilterableRepository<ScheduledActivity> getZoneFilterableDAO() {
-    return scheduledActivityDAO;
-  }
-
-  @Override
-  public HitsConverter<ScheduledActivityType, ScheduledActivity> getConverter() {
-    return scheduledActivityConverter;
-  }
+  private ScheduledActivityFilterDAO scheduledActivityFilterDAO;
 
   @Override
   protected ScheduledActivityCollectionType getCollection(List<ScheduledActivityType> items) {
@@ -49,11 +37,17 @@ public class ScheduledActivityService extends
   }
 
   @Override
-  protected ScheduledActivity getFiltered(String refId, List<String> schoolRefIds) {
-    ScheduledActivity result = null;
-    if (schoolRefIds != null && !schoolRefIds.isEmpty()) {
-      result = scheduledActivityDAO.findOneWithFilter(refId, schoolRefIds);
-    }
-    return result;
+  protected HitsConverter<ScheduledActivityType, ScheduledActivity> getConverter() {
+    return scheduledActivityConverter;
+  }
+
+  @Override
+  protected JpaRepository<ScheduledActivity, String> getDAO() {
+    return scheduledActivityDAO;
+  }
+
+  @Override
+  protected FilterableRepository<ScheduledActivity> getFilterableDAO() {
+    return scheduledActivityFilterDAO;
   }
 }

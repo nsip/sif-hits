@@ -7,17 +7,17 @@ import org.springframework.stereotype.Component;
 import sif.dd.au30.model.AUCodeSetsYesOrNoCategoryType;
 import sif.dd.au30.model.ContactInfoType;
 import sif.dd.au30.model.EmailListType;
-import sif.dd.au30.model.EmailListType.Email;
+import sif.dd.au30.model.EmailType;
 import sif.dd.au30.model.NameType;
 import sif.dd.au30.model.PhoneNumberListType;
-import sif.dd.au30.model.PhoneNumberListType.PhoneNumber;
+import sif.dd.au30.model.PhoneNumberType;
 import sif.dd.au30.model.VendorInfoType;
-import sif3.hits.domain.converter.factory.ObjectFactory;
+import sif3.hits.domain.converter.factory.IObjectFactory;
 import sif3.hits.domain.model.VendorInfo;
 import sif3.hits.utils.UsesConstants;
 
 @Component
-public class VendorInfoConverter extends HitsConverter<VendorInfoType, VendorInfo> implements UsesConstants {
+public class VendorInfoConverter extends HitsConverter<VendorInfoType, VendorInfo>implements UsesConstants {
 
   @Autowired
   private AddressConverter addressConverter;
@@ -29,7 +29,7 @@ public class VendorInfoConverter extends HitsConverter<VendorInfoType, VendorInf
   @Override
   public void toSifModel(VendorInfo source, VendorInfoType target) {
     if (source != null && target != null) {
-      ObjectFactory objectFactory = getObjectFactory();
+      IObjectFactory objectFactory = getObjectFactory();
 
       target.setRefId(source.getRefId());
       target.setABN(objectFactory.createVendorInfoTypeABN(source.getABN()));
@@ -40,11 +40,10 @@ public class VendorInfoConverter extends HitsConverter<VendorInfoType, VendorInf
 
       if (source.hasContactInfo()) {
         ContactInfoType contactInfoType = new ContactInfoType();
-        contactInfoType
-            .setAddress(objectFactory.createContactInfoTypeAddress(addressConverter.toSifModel(source.getAddress())));
+        contactInfoType.setAddress(objectFactory.createContactInfoTypeAddress(addressConverter.toSifModel(source.getAddress())));
         if (StringUtils.isNotBlank(source.getContactInfoEmail())) {
           EmailListType emailListType = new EmailListType();
-          Email email = new Email();
+          EmailType email = new EmailType();
           email.setValue(source.getContactInfoEmail());
           email.setType(DEFAULT_EMAIL_TYPE);
           emailListType.getEmail().add(email);
@@ -60,22 +59,20 @@ public class VendorInfoConverter extends HitsConverter<VendorInfoType, VendorInf
         }
         if (StringUtils.isNotBlank(source.getContactInfoPhoneNumber())) {
           PhoneNumberListType phoneNumberList = new PhoneNumberListType();
-          PhoneNumber phoneNumber = new PhoneNumber();
+          PhoneNumberType phoneNumber = new PhoneNumberType();
           phoneNumber.setType(DEFAULT_PHONE_TYPE);
           phoneNumber.setNumber(source.getContactInfoPhoneNumber());
           phoneNumberList.getPhoneNumber().add(phoneNumber);
           contactInfoType.setPhoneNumberList(objectFactory.createContactInfoTypePhoneNumberList(phoneNumberList));
         }
-        contactInfoType
-            .setPositionTitle(objectFactory.createContactInfoTypePositionTitle(source.getContactInfoPositionTitle()));
+        contactInfoType.setPositionTitle(objectFactory.createContactInfoTypePositionTitle(source.getContactInfoPositionTitle()));
         contactInfoType.setRole(objectFactory.createContactInfoTypeRole(source.getContactInfoRole()));
         target.setContactInfo(objectFactory.createVendorInfoTypeContactInfo(contactInfoType));
       }
       target.setCustomerId(objectFactory.createVendorInfoTypeCustomerId(source.getCustomerId()));
       target.setName(source.getName());
       target.setPaymentTerms(objectFactory.createVendorInfoTypePaymentTerms(source.getPaymentTerms()));
-      target.setRegisteredForGST(objectFactory.createVendorInfoTypeRegisteredForGST(
-          getEnumValue(source.getRegisteredForGST(), AUCodeSetsYesOrNoCategoryType.class)));
+      target.setRegisteredForGST(objectFactory.createVendorInfoTypeRegisteredForGST(getEnumValue(source.getRegisteredForGST(), AUCodeSetsYesOrNoCategoryType.class)));
     }
   }
 
@@ -107,8 +104,7 @@ public class VendorInfoConverter extends HitsConverter<VendorInfoType, VendorInf
         }
 
         PhoneNumberListType phoneNumberList = getJAXBValue(contactInfo.getPhoneNumberList());
-        if (phoneNumberList != null && phoneNumberList.getPhoneNumber() != null
-            && !phoneNumberList.getPhoneNumber().isEmpty()) {
+        if (phoneNumberList != null && phoneNumberList.getPhoneNumber() != null && !phoneNumberList.getPhoneNumber().isEmpty()) {
           target.setContactInfoPhoneNumber(phoneNumberList.getPhoneNumber().get(0).getNumber());
         }
         target.setContactInfoPositionTitle(getJAXBValue(contactInfo.getPositionTitle()));

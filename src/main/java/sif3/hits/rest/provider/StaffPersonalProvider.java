@@ -8,8 +8,7 @@ import sif.dd.au30.model.StaffPersonalType;
 import sif3.hits.domain.model.StaffPersonal;
 import sif3.hits.service.StaffPersonalService;
 
-public class StaffPersonalProvider extends
-    HitsBaseProvider<StaffPersonalType, StaffCollectionType, StaffPersonal, StaffPersonalService> {
+public class StaffPersonalProvider extends HitsBaseProvider<StaffPersonalType, StaffCollectionType, StaffPersonal, StaffPersonalService> {
 
   protected static final Logger L = LoggerFactory.getLogger(StaffPersonalProvider.class);
 
@@ -20,7 +19,6 @@ public class StaffPersonalProvider extends
    *          values of provider property file.
    */
   public StaffPersonalProvider() {
-    super(StaffPersonalType.class, "StaffPersonal", StaffCollectionType.class, "StaffPersonals",
-        StaffPersonalService.class);
+    super(StaffPersonalType.class, "StaffPersonal", StaffCollectionType.class, "StaffPersonals", StaffPersonalService.class);
   }
 }

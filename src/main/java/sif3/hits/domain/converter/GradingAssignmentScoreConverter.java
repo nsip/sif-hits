@@ -4,7 +4,7 @@ import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Component;
 
 import sif.dd.au30.model.GradingAssignmentScoreType;
-import sif3.hits.domain.converter.factory.ObjectFactory;
+import sif3.hits.domain.converter.factory.IObjectFactory;
 import sif3.hits.domain.model.GradingAssignmentScore;
 import sif3.hits.domain.model.StudentPersonal;
 import sif3.hits.domain.model.TeachingGroup;
@@ -19,13 +19,13 @@ public class GradingAssignmentScoreConverter extends HitsConverter<GradingAssign
   @Override
   public void toSifModel(GradingAssignmentScore source, GradingAssignmentScoreType target) {
     if (source != null && target != null) {
-      ObjectFactory objectFactory = getObjectFactory();
-      
+      IObjectFactory objectFactory = getObjectFactory();
+
       target.setRefId(source.getRefId());
       target.setGradingAssignmentRefId(source.getGradingAssignmentRefId());
       if (source.getTeachingGroup() != null) {
         target.setTeachingGroupRefId(objectFactory.createGradingAssignmentScoreTypeTeachingGroupRefId(source.getTeachingGroup().getRefId()));
-        
+
         if (source.getTeachingGroup().getSchoolInfo() != null) {
           target.setSchoolInfoRefId(objectFactory.createGradingAssignmentScoreTypeSchoolInfoRefId(source.getTeachingGroup().getSchoolInfo().getRefId()));
         }
@@ -34,7 +34,7 @@ public class GradingAssignmentScoreConverter extends HitsConverter<GradingAssign
         target.setStudentPersonalLocalId(source.getStudentPersonal().getLocalId());
         target.setStudentPersonalRefId(objectFactory.createGradingAssignmentScoreTypeStudentPersonalRefId(source.getStudentPersonal().getRefId()));
       }
-      
+
       target.setScorePoints(objectFactory.createGradingAssignmentScoreTypeScorePoints(getLongValue(source.getScorePoints())));
       target.setScorePercent(objectFactory.createGradingAssignmentScoreTypeScorePercent(getBigDecimalValue(source.getScorePercent())));
       target.setScoreLetter(objectFactory.createGradingAssignmentScoreTypeScoreLetter(source.getScoreLetter()));
@@ -59,7 +59,7 @@ public class GradingAssignmentScoreConverter extends HitsConverter<GradingAssign
         studentPersonal.setRefId(studentPersonalRefId);
         target.setStudentPersonal(studentPersonal);
       }
-      
+
       target.setScorePoints(getLongValue(getJAXBValue(source.getScorePoints())));
       target.setScorePercent(getBigDecimalValue(getJAXBValue(source.getScorePercent())));
       target.setScoreLetter(getJAXBValue(source.getScoreLetter()));

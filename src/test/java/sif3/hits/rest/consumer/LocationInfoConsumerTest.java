@@ -13,7 +13,7 @@ import sif.dd.au30.model.ChargedLocationInfoCollectionType;
 import sif.dd.au30.model.ChargedLocationInfoType;
 import sif.dd.au30.model.ObjectFactory;
 import sif.dd.au30.model.PhoneNumberListType;
-import sif.dd.au30.model.PhoneNumberListType.PhoneNumber;
+import sif.dd.au30.model.PhoneNumberType;
 import sif3.common.ws.BulkOperationResponse;
 import sif3.common.ws.CreateOperationStatus;
 import sif3.common.ws.OperationStatus;
@@ -49,7 +49,7 @@ public class LocationInfoConsumerTest extends BaseTest implements UsesConstants 
     locationInfo.setName("Main Campus");
     
     PhoneNumberListType phoneNumberList = objectFactory.createPhoneNumberListType();
-    PhoneNumber phoneNumber = objectFactory.createPhoneNumberListTypePhoneNumber();
+    PhoneNumberType phoneNumber = objectFactory.createPhoneNumberType();
     phoneNumber.setNumber("0894463125");
     phoneNumber.setType(DEFAULT_PHONE_TYPE);
     phoneNumberList.getPhoneNumber().add(phoneNumber);

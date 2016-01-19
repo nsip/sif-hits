@@ -20,7 +20,7 @@ public class Debtor extends HitsEntity {
   private String billingName;
   private String billingNote;
   private String discount;
-  private Set<Address> addresses; 
+  private Set<Address> addresses;
 
   @Id
   public String getRefId() {
@@ -71,13 +71,13 @@ public class Debtor extends HitsEntity {
   public void setDiscount(String discount) {
     this.discount = discount;
   }
-  
+
   @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
   @JoinColumn(name = "Person_RefId")
   public Set<Address> getAddresses() {
     return addresses;
   }
-  
+
   public void setAddresses(Set<Address> addresses) {
     this.addresses = addresses;
   }

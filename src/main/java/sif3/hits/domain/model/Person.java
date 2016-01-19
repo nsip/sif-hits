@@ -1,7 +1,7 @@
 package sif3.hits.domain.model;
 
 public interface Person {
-  
+
   public String getRefId();
 
   public String getFamilyName();
@@ -45,7 +45,7 @@ public interface Person {
   public void setBirthDate(String birthDate);
 
   public String getTitle();
-  
+
   public void setTitle(String title);
 
 }

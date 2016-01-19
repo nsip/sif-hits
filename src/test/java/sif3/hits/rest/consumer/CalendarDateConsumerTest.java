@@ -36,7 +36,7 @@ public class CalendarDateConsumerTest extends BaseTest {
 
     CalendarDate calendarDate = new CalendarDate();
     calendarDate.setDate(getDate("2014-10-11"));
-    calendarDate.setCalendarDateRefId(objectFactory.createCalendarDateCalendarDateRefId(REF_ID));
+    calendarDate.setCalendarDateRefId(REF_ID);
     calendarDate.setCalendarSummaryRefId(CalendarSummaryConsumerTest.REF_ID);
     calendarDate.setSchoolInfoRefId(SchoolInfoConsumerTest.REF_ID);
     calendarDate.setSchoolYear(getDate("2014"));
@@ -65,18 +65,18 @@ public class CalendarDateConsumerTest extends BaseTest {
     calendarDateTester.doCreateOne(calendarDate);
     String xmlExpectedTo = calendarDateTester.getXML(calendarDate);
 
-    calendarDate.setCalendarDateRefId(objectFactory.createCalendarDateCalendarDateRefId("2d647ff7-2091-445b-b4c0-2ee5527277ed"));
+    calendarDate.setCalendarDateRefId("2d647ff7-2091-445b-b4c0-2ee5527277ed");
     calendarDateTester.doCreateOne(calendarDate);
 
-    calendarDate.setCalendarDateRefId(objectFactory.createCalendarDateCalendarDateRefId("16e97f11-747e-42b6-8a4f-a68b5ede6f1d"));
+    calendarDate.setCalendarDateRefId("16e97f11-747e-42b6-8a4f-a68b5ede6f1d");
     calendarDateTester.doCreateOne(calendarDate);
 
-    calendarDate.setCalendarDateRefId(objectFactory.createCalendarDateCalendarDateRefId("abf46d83-aed0-4fb8-98f5-39fbf022e17f"));
+    calendarDate.setCalendarDateRefId("abf46d83-aed0-4fb8-98f5-39fbf022e17f");
     calendarDateTester.doCreateOne(calendarDate);
     calendarDate.getCalendarDateType().setOtherCodeList(null);
-    calendarDateTester.doUpdateOne(calendarDate, calendarDate.getCalendarDateRefId().getValue());
+    calendarDateTester.doUpdateOne(calendarDate, calendarDate.getCalendarDateRefId());
     
-    calendarDate.setCalendarDateRefId(objectFactory.createCalendarDateCalendarDateRefId("0553c842-df31-4a80-96a1-fa1b3608b52a"));
+    calendarDate.setCalendarDateRefId("0553c842-df31-4a80-96a1-fa1b3608b52a");
     calendarDateTester.doCreateOne(calendarDate);
 
     CalendarDate getResult = calendarDateTester.doGetOne(REF_ID);
@@ -103,7 +103,7 @@ public class CalendarDateConsumerTest extends BaseTest {
     Response response = responses.get(0);
     Assert.assertNotNull(response.getDataObject());
     CalendarDate calendarDate = (CalendarDate) response.getDataObject();
-    Assert.assertEquals(REF_ID, calendarDate.getCalendarDateRefId().getValue());
+    Assert.assertEquals(REF_ID, calendarDate.getCalendarDateRefId());
     String xmlExpectedFrom = calendarDateTester.getXML(calendarDate);
     
     List<Response> updateResponses = calendarDateTester.doUpdateOne(calendarDate, REF_ID);
@@ -117,7 +117,7 @@ public class CalendarDateConsumerTest extends BaseTest {
     Response getResponse = getResponses.get(0);
     Assert.assertNotNull(getResponse.getDataObject());
     CalendarDate calendarDateTo = (CalendarDate) getResponse.getDataObject();
-    Assert.assertEquals(REF_ID, calendarDateTo.getCalendarDateRefId().getValue());
+    Assert.assertEquals(REF_ID, calendarDateTo.getCalendarDateRefId());
     String xmlExpectedTo = calendarDateTester.getXML(calendarDateTo);
     
     boolean semiEquals = semiEquals(xmlExpectedFrom, xmlExpectedTo);
@@ -136,7 +136,7 @@ public class CalendarDateConsumerTest extends BaseTest {
     Response response = responses.get(0);
     Assert.assertNotNull(response.getDataObject());
     CalendarDate calendarDate = (CalendarDate) response.getDataObject();
-    Assert.assertEquals(REF_ID, calendarDate.getCalendarDateRefId().getValue());
+    Assert.assertEquals(REF_ID, calendarDate.getCalendarDateRefId());
   }
   
   @Test
@@ -159,7 +159,7 @@ public class CalendarDateConsumerTest extends BaseTest {
     Response createResponse = createResponses.get(0);
     Assert.assertNotNull(createResponse.getDataObject());
     CalendarDate calendarDate = (CalendarDate) createResponse.getDataObject();
-    Assert.assertEquals(REF_ID_1, calendarDate.getCalendarDateRefId().getValue());
+    Assert.assertEquals(REF_ID_1, calendarDate.getCalendarDateRefId());
     
     List<Response> deleteResponses = calendarDateTester.testDeleteOne(REF_ID_1);
     Assert.assertNotNull(deleteResponses);

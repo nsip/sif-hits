@@ -180,13 +180,13 @@ public class VendorInfo extends HitsEntity {
   public void setAccountName(String accountName) {
     this.accountName = accountName;
   }
-  
+
   @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
   @JoinColumn(name = "Person_RefId")
   public Set<Address> getAddresses() {
     return addresses;
   }
-  
+
   public void setAddresses(Set<Address> addresses) {
     this.addresses = addresses;
   }
@@ -214,14 +214,11 @@ public class VendorInfo extends HitsEntity {
 
   @Transient
   public boolean hasContactInfo() {
-    return StringUtils.isNotBlank(contactInfoEmail) || hasNameInfo() || StringUtils.isNotBlank(contactInfoPhoneNumber)
-        || StringUtils.isNotBlank(contactInfoPositionTitle) || StringUtils.isNotBlank(contactInfoRole)
-        || getAddress() != null;
+    return StringUtils.isNotBlank(contactInfoEmail) || hasNameInfo() || StringUtils.isNotBlank(contactInfoPhoneNumber) || StringUtils.isNotBlank(contactInfoPositionTitle) || StringUtils.isNotBlank(contactInfoRole) || getAddress() != null;
   }
 
   public boolean hasNameInfo() {
-    return StringUtils.isNotBlank(contactInfoFamilyName) || StringUtils.isNotBlank(contactInfoGivenName)
-        || StringUtils.isNotBlank(contactInfoMiddleName);
+    return StringUtils.isNotBlank(contactInfoFamilyName) || StringUtils.isNotBlank(contactInfoGivenName) || StringUtils.isNotBlank(contactInfoMiddleName);
 
   }
 }

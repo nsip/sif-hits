@@ -10,8 +10,7 @@ import sif.dd.au30.model.TimeTableType;
 import sif3.hits.domain.model.TimeTable;
 import sif3.hits.service.TimeTableService;
 
-public class TimeTableProvider extends
-    HitsBaseProvider<TimeTableType, TimeTableCollectionType, TimeTable, TimeTableService> {
+public class TimeTableProvider extends HitsBaseProvider<TimeTableType, TimeTableCollectionType, TimeTable, TimeTableService> {
 
   protected static final Logger L = LoggerFactory.getLogger(TimeTableProvider.class);
 

@@ -5,8 +5,8 @@ import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
-import sif3.hits.domain.model.PurchasingItem;
 import sif3.hits.domain.model.PurchaseOrder;
+import sif3.hits.domain.model.PurchasingItem;
 
 public interface PurchasingItemDAO extends JpaRepository<PurchasingItem, Integer> {
 

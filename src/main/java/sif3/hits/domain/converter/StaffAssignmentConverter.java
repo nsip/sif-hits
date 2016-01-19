@@ -5,7 +5,7 @@ import org.springframework.stereotype.Component;
 import sif.dd.au30.model.AUCodeSetsYesOrNoCategoryType;
 import sif.dd.au30.model.StaffAssignmentType;
 import sif.dd.au30.model.StaffAssignmentType.StaffActivity;
-import sif3.hits.domain.converter.factory.ObjectFactory;
+import sif3.hits.domain.converter.factory.IObjectFactory;
 import sif3.hits.domain.model.StaffAssignment;
 
 @Component
@@ -18,19 +18,17 @@ public class StaffAssignmentConverter extends HitsConverter<StaffAssignmentType,
   @Override
   public void toSifModel(StaffAssignment source, StaffAssignmentType target) {
     if (source != null && target != null) {
-      ObjectFactory objectFactory = getObjectFactory();
+      IObjectFactory objectFactory = getObjectFactory();
       target.setRefId(source.getRefId());
       target.setSchoolInfoRefId(source.getSchoolInfoRefId());
       target.setStaffPersonalRefId(source.getStaffPersonalRefId());
       target.setSchoolYear(objectFactory.createStaffAssignmentTypeSchoolYear(getYearValue(source.getSchoolYear())));
       target.setDescription(objectFactory.createStaffAssignmentTypeDescription(source.getDescription()));
 
-      AUCodeSetsYesOrNoCategoryType primaryAssignment = getEnumValue(source.getPrimaryAssignment(),
-          AUCodeSetsYesOrNoCategoryType.class);
+      AUCodeSetsYesOrNoCategoryType primaryAssignment = getEnumValue(source.getPrimaryAssignment(), AUCodeSetsYesOrNoCategoryType.class);
       target.setPrimaryAssignment(primaryAssignment);
 
-      target
-          .setJobStartDate(objectFactory.createStaffAssignmentTypeJobStartDate(getDateValue(source.getJobStartDate())));
+      target.setJobStartDate(objectFactory.createStaffAssignmentTypeJobStartDate(getDateValue(source.getJobStartDate())));
       target.setJobEndDate(objectFactory.createStaffAssignmentTypeJobEndDate(getDateValue(source.getJobEndDate())));
       target.setJobFunction(objectFactory.createStaffAssignmentTypeJobFunction(source.getJobFunction()));
 

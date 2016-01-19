@@ -8,8 +8,7 @@ import sif.dd.au30.model.VendorInfoType;
 import sif3.hits.domain.model.VendorInfo;
 import sif3.hits.service.VendorInfoService;
 
-public class VendorInfoProvider extends
-    HitsBaseProvider<VendorInfoType, VendorInfoCollectionType, VendorInfo, VendorInfoService> {
+public class VendorInfoProvider extends HitsBaseProvider<VendorInfoType, VendorInfoCollectionType, VendorInfo, VendorInfoService> {
 
   protected static final Logger L = LoggerFactory.getLogger(VendorInfoProvider.class);
 
@@ -20,7 +19,6 @@ public class VendorInfoProvider extends
    *          values of provider property file.
    */
   public VendorInfoProvider() {
-    super(VendorInfoType.class, "VendorInfo", VendorInfoCollectionType.class, "VendorInfos",
-        VendorInfoService.class);
+    super(VendorInfoType.class, "VendorInfo", VendorInfoCollectionType.class, "VendorInfos", VendorInfoService.class);
   }
 }

@@ -14,7 +14,7 @@ import sif.dd.au30.model.ObjectFactory;
 import sif.dd.au30.model.PaymentReceiptCollectionType;
 import sif.dd.au30.model.PaymentReceiptType;
 import sif.dd.au30.model.PaymentReceiptType.FinancialAccountRefIdList;
-import sif.dd.au30.model.PaymentReceiptType.ReceivedAmount;
+import sif.dd.au30.model.PaymentReceiptType.TransactionAmount;
 import sif3.common.ws.BulkOperationResponse;
 import sif3.common.ws.CreateOperationStatus;
 import sif3.common.ws.OperationStatus;
@@ -23,7 +23,6 @@ import sif3.hits.rest.consumer.DebtorConsumerTest.DebtorRefIds;
 import sif3.hits.rest.consumer.FinancialAccountConsumerTest.FinancialAccountRefIds;
 import sif3.hits.rest.consumer.InvoiceConsumerTest.InvoiceRefIds;
 import sif3.hits.rest.consumer.LocationInfoConsumerTest.LocationInfoRefIds;
-import sif3.hits.rest.consumer.PurchaseOrderConsumerTest.PurchaseOrderRefIds;
 import sif3.hits.rest.consumer.VendorInfoConsumerTest.VendorInfoRefIds;
 import sif3.hits.utils.UsesConstants;
 import sif3.infra.rest.consumer.ConsumerLoader;
@@ -61,14 +60,12 @@ public class PaymentReceiptConsumerTest extends BaseTest implements UsesConstant
         objectFactory.createPaymentReceiptTypeFinancialAccountRefIdList(financialAccountRefIdList));
 
     paymentReceiptType.setInvoiceRefId(objectFactory.createPaymentReceiptTypeInvoiceRefId(InvoiceRefIds.REF_ID_1));
-    paymentReceiptType
-        .setPurchaseOrderRefId(objectFactory.createPaymentReceiptTypePurchaseOrderRefId(PurchaseOrderRefIds.REF_ID_1));
 
-    ReceivedAmount receivedAmount = new ReceivedAmount();
+    TransactionAmount receivedAmount = new TransactionAmount();
     receivedAmount.setCurrency(DEFAULT_CURRENCY_ENUM);
     receivedAmount.setValue("25.00");
     receivedAmount.setType("Debit");
-    paymentReceiptType.setReceivedAmount(receivedAmount);
+    paymentReceiptType.setTransactionAmount(receivedAmount);
 
     paymentReceiptType.setReceivedTransactionId("201546");
     MonetaryAmountType monetaryAmountType = new MonetaryAmountType();

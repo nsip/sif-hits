@@ -129,6 +129,26 @@ public class StudentSchoolEnrollmentConsumerTest extends BaseTest {
     StudentSchoolEnrollmentType studentSchoolEnrollment = (StudentSchoolEnrollmentType) response.getDataObject();
     Assert.assertEquals(REF_ID, studentSchoolEnrollment.getRefId());
   }
+  
+  @Test
+  public void testQBE() {
+    StudentSchoolEnrollmentType studentEnrollment = new StudentSchoolEnrollmentType();
+    studentEnrollment.setStudentPersonalRefId(StudentPersonalRefIds.REF_ID_1);
+    List<Response> responses = studentSchoolEnrollmentTester.testQBE(studentEnrollment, 10000, 0);
+    Assert.assertNotNull(responses);
+    Assert.assertEquals(1, responses.size());
+    Response response = responses.get(0);
+    StudentSchoolEnrollmentCollectionType studentSchoolEnrollmentCollectionType = (StudentSchoolEnrollmentCollectionType) response
+        .getDataObject();
+    Assert.assertNotNull(studentSchoolEnrollmentCollectionType.getStudentSchoolEnrollment());
+    Assert.assertFalse(studentSchoolEnrollmentCollectionType.getStudentSchoolEnrollment().isEmpty());
+    boolean found = false;
+    for (StudentSchoolEnrollmentType studentSchoolEnrollmentType : studentSchoolEnrollmentCollectionType.getStudentSchoolEnrollment()) {
+      found = found || REF_ID.equals(studentSchoolEnrollmentType.getRefId());
+      Assert.assertEquals(StudentPersonalRefIds.REF_ID_1, studentSchoolEnrollmentType.getStudentPersonalRefId());
+    }
+    Assert.assertTrue(found);
+  }
 
   @Test
   public void testGetMany() {

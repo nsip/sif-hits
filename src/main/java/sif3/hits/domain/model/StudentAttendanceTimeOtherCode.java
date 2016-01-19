@@ -6,7 +6,7 @@ import javax.persistence.Table;
 import javax.persistence.Transient;
 
 @Entity
-@Table(name= "StudentAttendanceTimeList_AttendanceTime_OtherCode")
+@Table(name = "StudentAttendanceTimeList_AttendanceTime_OtherCode")
 public class StudentAttendanceTimeOtherCode {
 
   private StudentAttendanceTimeOtherCodeId studentAttendanceTimeOtherCodeId;

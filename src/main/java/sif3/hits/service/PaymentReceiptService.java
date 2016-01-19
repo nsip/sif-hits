@@ -11,33 +11,21 @@ import sif.dd.au30.model.PaymentReceiptType;
 import sif3.hits.domain.converter.HitsConverter;
 import sif3.hits.domain.converter.PaymentReceiptConverter;
 import sif3.hits.domain.dao.PaymentReceiptDAO;
-import sif3.hits.domain.dao.ZoneFilterableRepository;
+import sif3.hits.domain.dao.filter.FilterableRepository;
+import sif3.hits.domain.dao.filter.PaymentReceiptFilterDAO;
 import sif3.hits.domain.model.PaymentReceipt;
 
 @Service
-public class PaymentReceiptService
-    extends BaseService<PaymentReceiptType, PaymentReceiptCollectionType, PaymentReceipt> {
-
-  @Autowired
-  private PaymentReceiptDAO paymentReceiptDAO;
-
-  @Override
-  public JpaRepository<PaymentReceipt, String> getDAO() {
-    return paymentReceiptDAO;
-  }
-
-  @Override
-  public ZoneFilterableRepository<PaymentReceipt> getZoneFilterableDAO() {
-    return paymentReceiptDAO;
-  }
+public class PaymentReceiptService extends BaseService<PaymentReceiptType, PaymentReceiptCollectionType, PaymentReceipt> {
 
   @Autowired
   private PaymentReceiptConverter locationInfoConverter;
 
-  @Override
-  public HitsConverter<PaymentReceiptType, PaymentReceipt> getConverter() {
-    return locationInfoConverter;
-  }
+  @Autowired
+  private PaymentReceiptDAO paymentReceiptDAO;
+
+  @Autowired
+  private PaymentReceiptFilterDAO paymentReceiptFilterDAO;
 
   @Override
   protected PaymentReceiptCollectionType getCollection(List<PaymentReceiptType> items) {
@@ -49,11 +37,17 @@ public class PaymentReceiptService
   }
 
   @Override
-  protected PaymentReceipt getFiltered(String refId, java.util.List<String> schoolRefIds) {
-    PaymentReceipt result = null;
-    if (schoolRefIds != null && !schoolRefIds.isEmpty()) {
-      result = paymentReceiptDAO.findOneWithFilter(refId, schoolRefIds);
-    }
-    return result;
+  protected HitsConverter<PaymentReceiptType, PaymentReceipt> getConverter() {
+    return locationInfoConverter;
+  }
+
+  @Override
+  protected JpaRepository<PaymentReceipt, String> getDAO() {
+    return paymentReceiptDAO;
+  }
+
+  @Override
+  protected FilterableRepository<PaymentReceipt> getFilterableDAO() {
+    return paymentReceiptFilterDAO;
   }
 }

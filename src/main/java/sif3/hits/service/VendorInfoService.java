@@ -11,32 +11,21 @@ import sif.dd.au30.model.VendorInfoType;
 import sif3.hits.domain.converter.HitsConverter;
 import sif3.hits.domain.converter.VendorInfoConverter;
 import sif3.hits.domain.dao.VendorInfoDAO;
-import sif3.hits.domain.dao.ZoneFilterableRepository;
+import sif3.hits.domain.dao.filter.FilterableRepository;
+import sif3.hits.domain.dao.filter.VendorInfoFilterDAO;
 import sif3.hits.domain.model.VendorInfo;
 
 @Service
 public class VendorInfoService extends BaseService<VendorInfoType, VendorInfoCollectionType, VendorInfo> {
 
   @Autowired
-  private VendorInfoDAO vendorInfoDAO;
-
-  @Override
-  public JpaRepository<VendorInfo, String> getDAO() {
-    return vendorInfoDAO;
-  }
-
-  @Override
-  public ZoneFilterableRepository<VendorInfo> getZoneFilterableDAO() {
-    return vendorInfoDAO;
-  }
-
-  @Autowired
   private VendorInfoConverter locationInfoConverter;
 
-  @Override
-  public HitsConverter<VendorInfoType, VendorInfo> getConverter() {
-    return locationInfoConverter;
-  }
+  @Autowired
+  private VendorInfoDAO vendorInfoDAO;
+
+  @Autowired
+  private VendorInfoFilterDAO vendorInfoFilterDAO;
 
   @Override
   protected VendorInfoCollectionType getCollection(List<VendorInfoType> items) {
@@ -48,11 +37,17 @@ public class VendorInfoService extends BaseService<VendorInfoType, VendorInfoCol
   }
 
   @Override
-  protected VendorInfo getFiltered(String refId, java.util.List<String> schoolRefIds) {
-    VendorInfo result = null;
-    if (schoolRefIds != null && !schoolRefIds.isEmpty()) {
-      result = vendorInfoDAO.findOneWithFilter(refId, schoolRefIds);
-    }
-    return result;
+  protected HitsConverter<VendorInfoType, VendorInfo> getConverter() {
+    return locationInfoConverter;
+  }
+
+  @Override
+  protected JpaRepository<VendorInfo, String> getDAO() {
+    return vendorInfoDAO;
+  }
+
+  @Override
+  protected FilterableRepository<VendorInfo> getFilterableDAO() {
+    return vendorInfoFilterDAO;
   }
 }

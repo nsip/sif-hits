@@ -11,33 +11,21 @@ import sif.dd.au30.model.StudentAttendanceSummaryType;
 import sif3.hits.domain.converter.HitsConverter;
 import sif3.hits.domain.converter.StudentAttendanceSummaryConverter;
 import sif3.hits.domain.dao.StudentAttendanceSummaryDAO;
-import sif3.hits.domain.dao.ZoneFilterableRepository;
+import sif3.hits.domain.dao.filter.FilterableRepository;
+import sif3.hits.domain.dao.filter.StudentAttendanceSummaryFilterDAO;
 import sif3.hits.domain.model.StudentAttendanceSummary;
 
 @Service
-public class StudentAttendanceSummaryService extends
-    BaseService<StudentAttendanceSummaryType, StudentAttendanceSummaryCollectionType, StudentAttendanceSummary> {
-
-  @Autowired
-  private StudentAttendanceSummaryDAO studentAttendanceSummaryDAO;
-
-  @Override
-  public JpaRepository<StudentAttendanceSummary, String> getDAO() {
-    return studentAttendanceSummaryDAO;
-  }
-
-  @Override
-  public ZoneFilterableRepository<StudentAttendanceSummary> getZoneFilterableDAO() {
-    return studentAttendanceSummaryDAO;
-  }
+public class StudentAttendanceSummaryService extends BaseService<StudentAttendanceSummaryType, StudentAttendanceSummaryCollectionType, StudentAttendanceSummary> {
 
   @Autowired
   private StudentAttendanceSummaryConverter studentAttendanceSummaryConverter;
 
-  @Override
-  public HitsConverter<StudentAttendanceSummaryType, StudentAttendanceSummary> getConverter() {
-    return studentAttendanceSummaryConverter;
-  }
+  @Autowired
+  private StudentAttendanceSummaryDAO studentAttendanceSummaryDAO;
+
+  @Autowired
+  private StudentAttendanceSummaryFilterDAO studentAttendanceSummaryFilterDAO;
 
   @Override
   protected StudentAttendanceSummaryCollectionType getCollection(List<StudentAttendanceSummaryType> items) {
@@ -49,11 +37,17 @@ public class StudentAttendanceSummaryService extends
   }
 
   @Override
-  protected StudentAttendanceSummary getFiltered(String refId, java.util.List<String> schoolRefIds) {
-    StudentAttendanceSummary result = null;
-    if (schoolRefIds != null && !schoolRefIds.isEmpty()) {
-      result = studentAttendanceSummaryDAO.findOneWithFilter(refId, schoolRefIds);
-    }
-    return result;
+  protected HitsConverter<StudentAttendanceSummaryType, StudentAttendanceSummary> getConverter() {
+    return studentAttendanceSummaryConverter;
+  }
+
+  @Override
+  protected JpaRepository<StudentAttendanceSummary, String> getDAO() {
+    return studentAttendanceSummaryDAO;
+  }
+
+  @Override
+  protected FilterableRepository<StudentAttendanceSummary> getFilterableDAO() {
+    return studentAttendanceSummaryFilterDAO;
   }
 }

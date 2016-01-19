@@ -6,16 +6,18 @@ import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import sif.dd.au30.model.AUCodeSetsYesOrNoCategoryType;
 import sif.dd.au30.model.AddressListType;
+import sif.dd.au30.model.AddressType;
 import sif.dd.au30.model.DemographicsType;
 import sif.dd.au30.model.DemographicsType.Religion;
 import sif.dd.au30.model.EmailListType;
-import sif.dd.au30.model.EmailListType.Email;
+import sif.dd.au30.model.EmailType;
 import sif.dd.au30.model.NameOfRecordType;
 import sif.dd.au30.model.PersonInfoType;
 import sif.dd.au30.model.PhoneNumberListType;
-import sif.dd.au30.model.PhoneNumberListType.PhoneNumber;
-import sif3.hits.domain.converter.factory.ObjectFactory;
+import sif.dd.au30.model.PhoneNumberType;
+import sif3.hits.domain.converter.factory.IObjectFactory;
 import sif3.hits.domain.model.Address;
 import sif3.hits.domain.model.AddressPerson;
 import sif3.hits.domain.model.Person;
@@ -23,7 +25,7 @@ import sif3.hits.domain.model.StudentPerson;
 import sif3.hits.utils.UsesConstants;
 
 @Component
-public class PersonInfoConverter extends HitsConverter<PersonInfoType, Person> implements UsesConstants {
+public class PersonInfoConverter extends HitsConverter<PersonInfoType, Person>implements UsesConstants {
 
   public PersonInfoConverter() {
     super(PersonInfoType.class, null);
@@ -38,7 +40,7 @@ public class PersonInfoConverter extends HitsConverter<PersonInfoType, Person> i
   @Override
   public void toSifModel(Person source, PersonInfoType target) {
     if (source != null & target != null) {
-      ObjectFactory objectFactory = getObjectFactory();
+      IObjectFactory objectFactory = getObjectFactory();
       NameOfRecordType name = target.getName();
       if (name == null) {
         name = new NameOfRecordType();
@@ -47,7 +49,7 @@ public class PersonInfoConverter extends HitsConverter<PersonInfoType, Person> i
       target.setName(name);
 
       EmailListType emailList = new EmailListType();
-      Email email = new Email();
+      EmailType email = new EmailType();
       email.setType(DEFAULT_EMAIL_TYPE);
       email.setValue(source.getEmail());
       emailList.getEmail().add(email);
@@ -55,7 +57,7 @@ public class PersonInfoConverter extends HitsConverter<PersonInfoType, Person> i
 
       if (StringUtils.isNotBlank(source.getPhoneNumber())) {
         PhoneNumberListType phoneNumberList = new PhoneNumberListType();
-        PhoneNumber phoneNumber = new PhoneNumber();
+        PhoneNumberType phoneNumber = new PhoneNumberType();
         phoneNumber.setNumber(source.getPhoneNumber());
         phoneNumber.setType(DEFAULT_PHONE_TYPE);
         phoneNumberList.getPhoneNumber().add(phoneNumber);
@@ -68,13 +70,11 @@ public class PersonInfoConverter extends HitsConverter<PersonInfoType, Person> i
 
       if (source instanceof StudentPerson) {
         StudentPerson studentSource = (StudentPerson) source;
-        if (StringUtils.isNotBlank(studentSource.getIndigenousStatus())
-            || StringUtils.isNotBlank(studentSource.getCountryOfBirth())
+        if (StringUtils.isNotBlank(studentSource.getIndigenousStatus()) || StringUtils.isNotBlank(studentSource.getLbote()) || StringUtils.isNotBlank(studentSource.getCountryOfBirth())
             || StringUtils.isNotBlank(studentSource.getReligion())) {
-          demographics.setIndigenousStatus(
-              objectFactory.createDemographicsTypeIndigenousStatus(studentSource.getIndigenousStatus()));
-          demographics
-              .setCountryOfBirth(objectFactory.createDemographicsTypeCountryOfBirth(studentSource.getCountryOfBirth()));
+          demographics.setLBOTE(objectFactory.createDemographicsTypeLBOTE(getEnumValue(studentSource.getLbote(), AUCodeSetsYesOrNoCategoryType.class)));
+          demographics.setIndigenousStatus(objectFactory.createDemographicsTypeIndigenousStatus(studentSource.getIndigenousStatus()));
+          demographics.setCountryOfBirth(objectFactory.createDemographicsTypeCountryOfBirth(studentSource.getCountryOfBirth()));
           if (StringUtils.isNotBlank(studentSource.getReligion())) {
             Religion religion = objectFactory.createDemographicsTypeReligion();
             religion.setCode(studentSource.getReligion());
@@ -86,7 +86,7 @@ public class PersonInfoConverter extends HitsConverter<PersonInfoType, Person> i
         AddressPerson addressSource = (AddressPerson) source;
         if (addressSource.getAddresses() != null && !addressSource.getAddresses().isEmpty()) {
           AddressListType addressList = objectFactory.createAddressListType();
-          addressList.getAddress().addAll(addressConverter.toSifModelList(addressSource.getAddresses(), AddressListType.Address.class));
+          addressList.getAddress().addAll(addressConverter.toSifModelList(addressSource.getAddresses(), AddressType.class));
           target.setAddressList(objectFactory.createPersonInfoTypeAddressList(addressList));
         }
       }
@@ -103,13 +103,13 @@ public class PersonInfoConverter extends HitsConverter<PersonInfoType, Person> i
 
       EmailListType emailList = getJAXBValue(source.getEmailList());
       if (emailList != null && emailList.getEmail().size() > 0) {
-        Email email = emailList.getEmail().get(0);
+        EmailType email = emailList.getEmail().get(0);
         target.setEmail(email.getValue());
       }
 
       PhoneNumberListType phoneNumberList = getJAXBValue(source.getPhoneNumberList());
       if (phoneNumberList != null && phoneNumberList.getPhoneNumber().size() > 0) {
-        PhoneNumber phoneNumber = phoneNumberList.getPhoneNumber().get(0);
+        PhoneNumberType phoneNumber = phoneNumberList.getPhoneNumber().get(0);
         target.setPhoneNumber(phoneNumber.getNumber());
       }
 
@@ -137,6 +137,7 @@ public class PersonInfoConverter extends HitsConverter<PersonInfoType, Person> i
           StudentPerson studentTarget = (StudentPerson) target;
           studentTarget.setIndigenousStatus(getJAXBValue(demographics.getIndigenousStatus()));
           studentTarget.setCountryOfBirth(getJAXBValue(demographics.getCountryOfBirth()));
+          studentTarget.setLbote(getJAXBEnumValue(demographics.getLBOTE()));
 
           Religion religion = getJAXBValue(demographics.getReligion());
           if (religion != null && StringUtils.isNotBlank(religion.getCode())) {

@@ -11,33 +11,21 @@ import sif.dd.au30.model.FinancialAccountType;
 import sif3.hits.domain.converter.FinancialAccountConverter;
 import sif3.hits.domain.converter.HitsConverter;
 import sif3.hits.domain.dao.FinancialAccountDAO;
-import sif3.hits.domain.dao.ZoneFilterableRepository;
+import sif3.hits.domain.dao.filter.FilterableRepository;
+import sif3.hits.domain.dao.filter.FinancialAccountFilterDAO;
 import sif3.hits.domain.model.FinancialAccount;
 
 @Service
-public class FinancialAccountService
-    extends BaseService<FinancialAccountType, FinancialAccountCollectionType, FinancialAccount> {
+public class FinancialAccountService extends BaseService<FinancialAccountType, FinancialAccountCollectionType, FinancialAccount> {
+
+  @Autowired
+  private FinancialAccountConverter financialAccountConverter;
 
   @Autowired
   private FinancialAccountDAO financialAccountDAO;
 
-  @Override
-  public JpaRepository<FinancialAccount, String> getDAO() {
-    return financialAccountDAO;
-  }
-
-  @Override
-  public ZoneFilterableRepository<FinancialAccount> getZoneFilterableDAO() {
-    return financialAccountDAO;
-  }
-
   @Autowired
-  private FinancialAccountConverter locationInfoConverter;
-
-  @Override
-  public HitsConverter<FinancialAccountType, FinancialAccount> getConverter() {
-    return locationInfoConverter;
-  }
+  private FinancialAccountFilterDAO financialAccountFilterDAO;
 
   @Override
   protected FinancialAccountCollectionType getCollection(List<FinancialAccountType> items) {
@@ -49,11 +37,18 @@ public class FinancialAccountService
   }
 
   @Override
-  protected FinancialAccount getFiltered(String refId, java.util.List<String> schoolRefIds) {
-    FinancialAccount result = null;
-    if (schoolRefIds != null && !schoolRefIds.isEmpty()) {
-      result = financialAccountDAO.findOneWithFilter(refId, schoolRefIds);
-    }
-    return result;
+  protected HitsConverter<FinancialAccountType, FinancialAccount> getConverter() {
+    return financialAccountConverter;
   }
+
+  @Override
+  protected JpaRepository<FinancialAccount, String> getDAO() {
+    return financialAccountDAO;
+  }
+
+  @Override
+  protected FilterableRepository<FinancialAccount> getFilterableDAO() {
+    return financialAccountFilterDAO;
+  }
+
 }

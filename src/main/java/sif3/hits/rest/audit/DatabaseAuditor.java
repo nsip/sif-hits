@@ -4,6 +4,8 @@ import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.google.gson.Gson;
+
 import sif3.common.interfaces.Auditor;
 import sif3.common.model.audit.AuditRecord;
 import sif3.common.model.audit.RequestData;
@@ -12,8 +14,6 @@ import sif3.common.model.audit.SIFData;
 import sif3.hits.config.HitsSpringContext;
 import sif3.hits.domain.shared.dao.XMLAuditDAO;
 import sif3.hits.domain.shared.model.XMLAudit;
-
-import com.google.gson.Gson;
 
 @Component
 public class DatabaseAuditor implements Auditor {
@@ -50,7 +50,7 @@ public class DatabaseAuditor implements Auditor {
         xmlAudit.setQueryParameters(requestData.getQueryParameters());
         xmlAudit.setRequestMediaType(requestData.getMediaType());
         xmlAudit.setRequestHeaders(gson.toJson(requestData.getHeaders()));
-        xmlAudit.setRequest(StringUtils.replace(requestData.getPayload(),"\uFFFD", ""));
+        xmlAudit.setRequest(StringUtils.replace(requestData.getPayload(), "\uFFFD", ""));
       }
       if (auditRecord.getResponseData() != null) {
         ResponseData responseData = auditRecord.getResponseData();
@@ -58,7 +58,7 @@ public class DatabaseAuditor implements Auditor {
         xmlAudit.setHttpStatus(responseData.getHttpStatus());
         xmlAudit.setResponseMediaType(responseData.getMediaType());
         xmlAudit.setResponseHeaders(gson.toJson(responseData.getHeaders()));
-        xmlAudit.setResponse(StringUtils.replace(responseData.getPayload(),"\uFFFD", ""));
+        xmlAudit.setResponse(StringUtils.replace(responseData.getPayload(), "\uFFFD", ""));
       }
       if (auditRecord.getSifData() != null) {
         SIFData sifData = auditRecord.getSifData();

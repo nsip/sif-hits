@@ -5,6 +5,13 @@ import sif.dd.au30.conversion.DataModelUnmarshalFactory;
 import sif3.common.conversion.MarshalFactory;
 import sif3.common.conversion.ModelObjectInfo;
 import sif3.common.conversion.UnmarshalFactory;
+import sif3.common.model.PagingInfo;
+import sif3.common.model.QueryCriteria;
+import sif3.common.model.delayed.DelayedResponseReceipt;
+import sif3.common.ws.CreateOperationStatus;
+import sif3.common.ws.ErrorDetails;
+import sif3.common.ws.OperationStatus;
+import sif3.common.ws.model.MultiOperationStatusList;
 import sif3.infra.rest.consumer.AbstractConsumer;
 
 public class TestConsumer<S, M> extends AbstractConsumer {
@@ -61,5 +68,35 @@ public class TestConsumer<S, M> extends AbstractConsumer {
   @Override
   public void shutdown() {
     // Nothing to do at this stage
+  }
+
+  @Override
+  public void processDelayedCreateMany(MultiOperationStatusList<CreateOperationStatus> arg0, DelayedResponseReceipt arg1) {
+    
+  }
+
+  @Override
+  public void processDelayedDeleteMany(MultiOperationStatusList<OperationStatus> arg0, DelayedResponseReceipt arg1) {
+    
+  }
+
+  @Override
+  public void processDelayedError(ErrorDetails arg0, DelayedResponseReceipt arg1) {
+    
+  }
+
+  @Override
+  public void processDelayedQuery(Object arg0, PagingInfo arg1, DelayedResponseReceipt arg2) {
+    
+  }
+
+  @Override
+  public void processDelayedServicePath(Object arg0, QueryCriteria arg1, PagingInfo arg2, DelayedResponseReceipt arg3) {
+    
+  }
+
+  @Override
+  public void processDelayedUpdateMany(MultiOperationStatusList<OperationStatus> arg0, DelayedResponseReceipt arg1) {
+    
   }
 }

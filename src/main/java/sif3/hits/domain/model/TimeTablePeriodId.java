@@ -12,8 +12,7 @@ public class TimeTablePeriodId implements Serializable {
   private static final long serialVersionUID = 176713052615789947L;
 
   @ManyToOne(optional = false)
-  @JoinColumns({ @JoinColumn(name = "TimeTable_RefId", referencedColumnName = "TimeTable_RefId"),
-      @JoinColumn(name = "DayId", referencedColumnName = "DayId") })
+  @JoinColumns({ @JoinColumn(name = "TimeTable_RefId", referencedColumnName = "TimeTable_RefId"), @JoinColumn(name = "DayId", referencedColumnName = "DayId") })
   private TimeTableDay timeTableDay;
   private String periodId;
 

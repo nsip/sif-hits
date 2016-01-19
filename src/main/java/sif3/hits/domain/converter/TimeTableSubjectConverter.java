@@ -11,7 +11,7 @@ import sif.dd.au30.model.OtherCodeListType;
 import sif.dd.au30.model.OtherCodeListType.OtherCode;
 import sif.dd.au30.model.TimeTableSubjectType;
 import sif.dd.au30.model.YearLevelType;
-import sif3.hits.domain.converter.factory.ObjectFactory;
+import sif3.hits.domain.converter.factory.IObjectFactory;
 import sif3.hits.domain.model.TimeTableSubject;
 import sif3.hits.domain.model.TimeTableSubjectOtherCode;
 
@@ -20,15 +20,15 @@ public class TimeTableSubjectConverter extends HitsConverter<TimeTableSubjectTyp
 
   @Autowired
   private TimeTableSubjectSchoolInfoConverter timeTableSubjectSchoolInfoConverter;
-  
+
   public TimeTableSubjectConverter() {
     super(TimeTableSubjectType.class, TimeTableSubject.class);
   }
-  
+
   @Override
   public void toSifModel(TimeTableSubject source, TimeTableSubjectType target) {
     if (source != null && target != null) {
-      ObjectFactory objectFactory = getObjectFactory();
+      IObjectFactory objectFactory = getObjectFactory();
       target.setRefId(source.getRefId());
       target.setSubjectLocalId(source.getSubjectLocalId());
       timeTableSubjectSchoolInfoConverter.toSifModel(source.getSchoolInfo(), target);
@@ -38,8 +38,7 @@ public class TimeTableSubjectConverter extends HitsConverter<TimeTableSubjectTyp
       target.setAcademicYear(objectFactory.createTimeTableSubjectTypeAcademicYear(yearLevel));
 
       target.setFaculty(objectFactory.createTimeTableSubjectTypeFaculty(source.getFaculty()));
-      target
-          .setSubjectShortName(objectFactory.createTimeTableSubjectTypeSubjectShortName(source.getSubjectShortName()));
+      target.setSubjectShortName(objectFactory.createTimeTableSubjectTypeSubjectShortName(source.getSubjectShortName()));
       target.setSubjectLongName(source.getSubjectLongName());
       target.setSubjectType(objectFactory.createTimeTableSubjectTypeSubjectType(source.getSubjectType()));
 
@@ -56,13 +55,11 @@ public class TimeTableSubjectConverter extends HitsConverter<TimeTableSubjectTyp
       otherCodeList.getOtherCode().addAll(otherCodes);
       target.setOtherCodeList(objectFactory.createTimeTableSubjectTypeOtherCodeList(otherCodeList));
 
-      target.setProposedMinClassSize(objectFactory
-          .createTimeTableSubjectTypeProposedMinClassSize(getBigDecimalValue(source.getProposedMinClassSize())));
-      target.setProposedMaxClassSize(objectFactory
-          .createTimeTableSubjectTypeProposedMaxClassSize(getBigDecimalValue(source.getProposedMaxClassSize())));
+      target.setProposedMinClassSize(objectFactory.createTimeTableSubjectTypeProposedMinClassSize(getBigDecimalValue(source.getProposedMinClassSize())));
+      target.setProposedMaxClassSize(objectFactory.createTimeTableSubjectTypeProposedMaxClassSize(getBigDecimalValue(source.getProposedMaxClassSize())));
       target.setSemester(objectFactory.createTimeTableSubjectTypeSemester(getLongValue(source.getSemester())));
       target.setSchoolYear(objectFactory.createTimeTableSubjectTypeSchoolYear(getYearValue(source.getSchoolYear())));
-      
+
       if (source.getSchoolInfo() != null) {
         target.setSchoolInfoRefId(objectFactory.createTimeTableCellTypeSchoolInfoRefId(source.getSchoolInfo().getRefId()));
         target.setSchoolLocalId(objectFactory.createTimeTableCellTypeSchoolLocalId(source.getSchoolInfo().getLocalId()));

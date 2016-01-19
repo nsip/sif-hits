@@ -70,6 +70,25 @@ public class RoomInfoConsumerTest extends BaseTest {
         RoomInfoCollectionType.class, "RoomInfos");
     roomInfoTester.testDeleteMany(REF_IDS);
   }
+  
+  @Test
+  public void testQBE() {
+    RoomInfoType roomInfo = new RoomInfoType();
+    roomInfo.setSchoolInfoRefId(SchoolInfoConsumerTest.REF_ID);
+    List<Response> responses = roomInfoTester.testQBE(roomInfo, 10000, 0);
+    Assert.assertNotNull(responses);
+    Assert.assertEquals(1, responses.size());
+    Response response = responses.get(0);
+    RoomInfoCollectionType roomInfoCollectionType = (RoomInfoCollectionType) response.getDataObject();
+    Assert.assertNotNull(roomInfoCollectionType.getRoomInfo());
+    Assert.assertFalse(roomInfoCollectionType.getRoomInfo().isEmpty());
+    boolean found = false;
+    for (RoomInfoType roomInfoType : roomInfoCollectionType.getRoomInfo()) {
+      found = found || REF_ID.equals(roomInfoType.getRefId());
+      Assert.assertEquals(SchoolInfoConsumerTest.REF_ID, roomInfoType.getSchoolInfoRefId());
+    }
+    Assert.assertTrue(found);
+  }
 
   @Test
   public void testUpdateSingle() throws Exception {

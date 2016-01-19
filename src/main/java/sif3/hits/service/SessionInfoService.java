@@ -11,32 +11,21 @@ import sif.dd.au30.model.SessionInfoType;
 import sif3.hits.domain.converter.HitsConverter;
 import sif3.hits.domain.converter.SessionInfoConverter;
 import sif3.hits.domain.dao.SessionInfoDAO;
-import sif3.hits.domain.dao.ZoneFilterableRepository;
+import sif3.hits.domain.dao.filter.FilterableRepository;
+import sif3.hits.domain.dao.filter.SessionInfoFilterDAO;
 import sif3.hits.domain.model.SessionInfo;
 
 @Service
 public class SessionInfoService extends BaseService<SessionInfoType, SessionInfoCollectionType, SessionInfo> {
 
   @Autowired
+  private SessionInfoConverter sessionInfoConverter;
+  
+  @Autowired
   private SessionInfoDAO sessionInfoDAO;
 
-  @Override
-  public JpaRepository<SessionInfo, String> getDAO() {
-    return sessionInfoDAO;
-  }
-
-  @Override
-  public ZoneFilterableRepository<SessionInfo> getZoneFilterableDAO() {
-    return sessionInfoDAO;
-  }
-
   @Autowired
-  private SessionInfoConverter studentPersonalConverter;
-
-  @Override
-  public HitsConverter<SessionInfoType, SessionInfo> getConverter() {
-    return studentPersonalConverter;
-  }
+  private SessionInfoFilterDAO sessionInfoFilterDAO;
 
   @Override
   protected SessionInfoCollectionType getCollection(List<SessionInfoType> items) {
@@ -48,11 +37,17 @@ public class SessionInfoService extends BaseService<SessionInfoType, SessionInfo
   }
 
   @Override
-  protected SessionInfo getFiltered(String refId, java.util.List<String> schoolRefIds) {
-    SessionInfo result = null;
-    if (schoolRefIds != null && !schoolRefIds.isEmpty()) {
-      result = sessionInfoDAO.findOneWithFilter(refId, schoolRefIds);
-    }
-    return result;
+  protected HitsConverter<SessionInfoType, SessionInfo> getConverter() {
+    return sessionInfoConverter;
+  }
+
+  @Override
+  protected JpaRepository<SessionInfo, String> getDAO() {
+    return sessionInfoDAO;
+  }
+
+  @Override
+  protected FilterableRepository<SessionInfo> getFilterableDAO() {
+    return sessionInfoFilterDAO;
   }
 }

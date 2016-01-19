@@ -6,12 +6,12 @@ import org.springframework.stereotype.Component;
 import sif.dd.au30.model.JournalType;
 import sif.dd.au30.model.JournalType.OriginatingTransactionRefId;
 import sif.dd.au30.model.MonetaryAmountType;
-import sif3.hits.domain.converter.factory.ObjectFactory;
+import sif3.hits.domain.converter.factory.IObjectFactory;
 import sif3.hits.domain.model.Journal;
 import sif3.hits.utils.UsesConstants;
 
 @Component
-public class JournalConverter extends HitsConverter<JournalType, Journal> implements UsesConstants{
+public class JournalConverter extends HitsConverter<JournalType, Journal>implements UsesConstants {
 
   public JournalConverter() {
     super(JournalType.class, Journal.class);
@@ -20,7 +20,7 @@ public class JournalConverter extends HitsConverter<JournalType, Journal> implem
   @Override
   public void toSifModel(Journal source, JournalType target) {
     if (source != null && target != null) {
-      ObjectFactory objectFactory = getObjectFactory();
+      IObjectFactory objectFactory = getObjectFactory();
 
       target.setRefId(source.getRefId());
 
@@ -36,19 +36,15 @@ public class JournalConverter extends HitsConverter<JournalType, Journal> implem
       target.setCreatedDate(objectFactory.createJournalTypeCreatedDate(getDateValue(source.getCreatedDate())));
       target.setCreditFinancialAccountRefId(source.getCreditFinancialAccountRefId());
       target.setDebitFinancialAccountRefId(source.getDebitFinancialAccountRefId());
-      target.setFinancialClassificationRefId(
-          objectFactory.createJournalTypeFinancialClassificationRefId(source.getFinancialClassRefId()));
       target.setGSTCodeOriginal(objectFactory.createJournalTypeGSTCodeOriginal(source.getGSTCodeOriginal()));
       target.setGSTCodeReplacement(objectFactory.createJournalTypeGSTCodeReplacement(source.getGSTCodeReplacement()));
       target.setNote(objectFactory.createJournalTypeNote(source.getNote()));
 
-      if (StringUtils.isNotBlank(source.getOriginatingTransactionRefId())
-          || StringUtils.isNotBlank(source.getOriginationTransactionSIFRefObject())) {
+      if (StringUtils.isNotBlank(source.getOriginatingTransactionRefId()) || StringUtils.isNotBlank(source.getOriginationTransactionSIFRefObject())) {
         OriginatingTransactionRefId originatingTransactionRefId = new OriginatingTransactionRefId();
         originatingTransactionRefId.setValue(source.getOriginatingTransactionRefId());
         originatingTransactionRefId.setSIFRefObject(source.getOriginationTransactionSIFRefObject());
-        target.setOriginatingTransactionRefId(
-            objectFactory.createJournalTypeOriginatingTransactionRefId(originatingTransactionRefId));
+        target.setOriginatingTransactionRefId(objectFactory.createJournalTypeOriginatingTransactionRefId(originatingTransactionRefId));
       }
     }
   }
@@ -67,7 +63,6 @@ public class JournalConverter extends HitsConverter<JournalType, Journal> implem
       target.setCreatedDate(getDateValue(getJAXBValue(source.getCreatedDate())));
       target.setCreditFinancialAccountRefId(source.getCreditFinancialAccountRefId());
       target.setDebitFinancialAccountRefId(source.getDebitFinancialAccountRefId());
-      target.setFinancialClassRefId(getJAXBValue(source.getFinancialClassificationRefId()));
       target.setGSTCodeOriginal(getJAXBValue(source.getGSTCodeOriginal()));
       target.setGSTCodeReplacement(getJAXBValue(source.getGSTCodeReplacement()));
       target.setNote(getJAXBValue(source.getNote()));

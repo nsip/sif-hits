@@ -11,34 +11,22 @@ import sif.dd.au30.model.InvoiceType;
 import sif3.hits.domain.converter.HitsConverter;
 import sif3.hits.domain.converter.InvoiceConverter;
 import sif3.hits.domain.dao.InvoiceDAO;
-import sif3.hits.domain.dao.ZoneFilterableRepository;
+import sif3.hits.domain.dao.filter.FilterableRepository;
+import sif3.hits.domain.dao.filter.InvoiceFilterDAO;
 import sif3.hits.domain.model.Invoice;
-import sif3.hits.rest.dto.RequestDTO;
 
 @Service
 public class InvoiceService extends BaseService<InvoiceType, InvoiceCollectionType, Invoice> {
 
   @Autowired
+  private InvoiceConverter invoiceConverter;
+
+  @Autowired
   private InvoiceDAO invoiceDAO;
 
   @Autowired
-  private InvoiceConverter invoiceConverter;
-
-  @Override
-  public JpaRepository<Invoice, String> getDAO() {
-    return invoiceDAO;
-  }
-
-  @Override
-  public ZoneFilterableRepository<Invoice> getZoneFilterableDAO() {
-    return invoiceDAO;
-  }
-
-  @Override
-  public HitsConverter<InvoiceType, Invoice> getConverter() {
-    return invoiceConverter;
-  }
-
+  private InvoiceFilterDAO invoiceFilterDAO;
+  
   @Override
   protected InvoiceCollectionType getCollection(List<InvoiceType> items) {
     InvoiceCollectionType result = new InvoiceCollectionType();
@@ -49,16 +37,17 @@ public class InvoiceService extends BaseService<InvoiceType, InvoiceCollectionTy
   }
 
   @Override
-  protected Invoice getFiltered(String refId, List<String> schoolRefIds) {
-    Invoice result = null;
-    if (schoolRefIds != null && !schoolRefIds.isEmpty()) {
-      result = invoiceDAO.findOneWithFilter(refId, schoolRefIds);
-    }
-    return result;
+  protected HitsConverter<InvoiceType, Invoice> getConverter() {
+    return invoiceConverter;
   }
 
   @Override
-  protected void delete(Invoice hitsObject, RequestDTO<InvoiceType> dto) {
-    super.delete(hitsObject, dto);
+  protected JpaRepository<Invoice, String> getDAO() {
+    return invoiceDAO;
+  }
+  
+  @Override
+  protected FilterableRepository<Invoice> getFilterableDAO() {
+    return invoiceFilterDAO;
   }
 }

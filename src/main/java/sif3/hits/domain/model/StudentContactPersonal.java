@@ -160,13 +160,13 @@ public class StudentContactPersonal extends HitsEntity implements Person, Addres
   public void setEmploymentType(String employmentType) {
     this.employmentType = employmentType;
   }
-  
+
   @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
   @JoinColumn(name = "Person_RefId")
   public Set<Address> getAddresses() {
     return addresses;
   }
-  
+
   public void setAddresses(Set<Address> addresses) {
     this.addresses = addresses;
   }
@@ -178,7 +178,7 @@ public class StudentContactPersonal extends HitsEntity implements Person, Addres
 
   @Override
   public void setFullName(String fullName) {
-    
+
   }
 
   @Transient
@@ -188,6 +188,6 @@ public class StudentContactPersonal extends HitsEntity implements Person, Addres
 
   @Override
   public void setBirthDate(String birthDate) {
-    
+
   }
 }

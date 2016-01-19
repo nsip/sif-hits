@@ -15,6 +15,7 @@ public class CalendarDateTypeOtherCode implements Serializable {
 
   @EmbeddedId
   private CalendarDateTypeOtherCodeId calendarDateTypeOtherCodeId;
+  
   @Column(name = "OtherCode_CodeSet")
   private String codeSet;
 

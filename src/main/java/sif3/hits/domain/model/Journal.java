@@ -21,7 +21,6 @@ public class Journal extends HitsEntity {
   private String approvedDate;
   private String createdBy;
   private String approvedBy;
-  private String financialClassRefId;
 
   @Id
   public String getRefId() {
@@ -130,15 +129,5 @@ public class Journal extends HitsEntity {
 
   public void setApprovedBy(String approvedBy) {
     this.approvedBy = approvedBy;
-  }
-
-
-  @Column(name = "FinancialClass_RefId")
-  public String getFinancialClassRefId() {
-    return financialClassRefId;
-  }
-
-  public void setFinancialClassRefId(String financialClassRefId) {
-    this.financialClassRefId = financialClassRefId;
   }
 }

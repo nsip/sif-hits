@@ -7,19 +7,19 @@ import java.util.Set;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 import sif.dd.au30.model.TeachingGroupCollectionType;
 import sif.dd.au30.model.TeachingGroupType;
 import sif3.hits.domain.converter.HitsConverter;
 import sif3.hits.domain.converter.TeachingGroupConverter;
-import sif3.hits.domain.dao.SchoolInfoDAO;
-import sif3.hits.domain.dao.StaffPersonalDAO;
-import sif3.hits.domain.dao.StudentPersonalDAO;
 import sif3.hits.domain.dao.TeachingGroupDAO;
 import sif3.hits.domain.dao.TeachingGroupTeacherDAO;
-import sif3.hits.domain.dao.TimeTableCellDAO;
-import sif3.hits.domain.dao.ZoneFilterableRepository;
+import sif3.hits.domain.dao.filter.FilterableRepository;
+import sif3.hits.domain.dao.filter.SchoolInfoFilterDAO;
+import sif3.hits.domain.dao.filter.StaffPersonalFilterDAO;
+import sif3.hits.domain.dao.filter.StudentPersonalFilterDAO;
+import sif3.hits.domain.dao.filter.TeachingGroupFilterDAO;
+import sif3.hits.domain.dao.filter.TimeTableCellFilterDAO;
 import sif3.hits.domain.model.SchoolInfo;
 import sif3.hits.domain.model.StaffPersonal;
 import sif3.hits.domain.model.StudentPersonal;
@@ -32,40 +32,28 @@ import sif3.hits.rest.dto.RequestDTO;
 public class TeachingGroupService extends BaseService<TeachingGroupType, TeachingGroupCollectionType, TeachingGroup> {
 
   @Autowired
-  private StaffPersonalDAO staffPersonalDAO;
-
-  @Autowired
-  private StudentPersonalDAO studentPersonalDAO;
-
-  @Autowired
-  private SchoolInfoDAO schoolInfoDAO;
+  private TeachingGroupConverter teachingGroupConverter;
 
   @Autowired
   private TeachingGroupDAO teachingGroupDAO;
-  
+
+  @Autowired
+  private TeachingGroupFilterDAO teachingGroupFilterDAO;
+
+  @Autowired
+  private StudentPersonalFilterDAO studentPersonalFilterDAO;
+
+  @Autowired
+  private SchoolInfoFilterDAO schoolInfoFilterDAO;
+
+  @Autowired
+  private TimeTableCellFilterDAO timeTableCellFilterDAO;
+
+  @Autowired
+  private StaffPersonalFilterDAO staffPersonalFilterDAO;
+
   @Autowired
   private TeachingGroupTeacherDAO teachingGroupTeacherDAO;
-
-  @Autowired
-  private TimeTableCellDAO timeTableCellDAO;
-
-  @Override
-  public JpaRepository<TeachingGroup, String> getDAO() {
-    return teachingGroupDAO;
-  }
-
-  @Override
-  public ZoneFilterableRepository<TeachingGroup> getZoneFilterableDAO() {
-    return teachingGroupDAO;
-  }
-
-  @Autowired
-  private TeachingGroupConverter teachingGroupConverter;
-
-  @Override
-  public HitsConverter<TeachingGroupType, TeachingGroup> getConverter() {
-    return teachingGroupConverter;
-  }
 
   @Override
   protected TeachingGroupCollectionType getCollection(List<TeachingGroupType> items) {
@@ -77,30 +65,27 @@ public class TeachingGroupService extends BaseService<TeachingGroupType, Teachin
   }
 
   @Override
-  protected TeachingGroup getFiltered(String refId, java.util.List<String> schoolRefIds) {
-    TeachingGroup result = null;
-    if (schoolRefIds != null && !schoolRefIds.isEmpty()) {
-      result = teachingGroupDAO.findOne(refId);
-      if (result != null && result.getSchoolInfo() != null) {
-        if (!schoolRefIds.contains(result.getSchoolInfo().getRefId())) {
-          result = null;
-        }
-      }
-    }
-    return result;
+  protected HitsConverter<TeachingGroupType, TeachingGroup> getConverter() {
+    return teachingGroupConverter;
   }
-  
-  private void deleteTeachingGroupTeachers(TeachingGroup hitsObject) {
+
+  @Override
+  protected JpaRepository<TeachingGroup, String> getDAO() {
+    return teachingGroupDAO;
+  }
+
+  @Override
+  protected FilterableRepository<TeachingGroup> getFilterableDAO() {
+    return teachingGroupFilterDAO;
+  }
+
+  @Override
+  protected void deleteChildObjects(TeachingGroup hitsObject) {
     teachingGroupTeacherDAO.deleteAllWithTeachingGroup(hitsObject);
   }
 
   @Override
-  @Transactional(value = "transactionManager")
-  protected TeachingGroup save(TeachingGroup hitsObject, RequestDTO<TeachingGroupType> dto, String zoneId,
-      boolean create) {
-    
-    TeachingGroup result = null;
-    
+  protected TeachingGroup preSave(TeachingGroup hitsObject, RequestDTO<TeachingGroupType> dto, String zoneId, boolean create) {
     // Populate list of Students
     Set<StudentPersonal> teachingGroupStudents = new HashSet<StudentPersonal>();
     if (hitsObject.getStudentPersonals() != null) {
@@ -117,52 +102,23 @@ public class TeachingGroupService extends BaseService<TeachingGroupType, Teachin
     hitsObject.setSchoolInfo(getSchoolInfo(hitsObject.getSchoolInfo(), zoneId));
 
     // Save and/or find TimeTableCells
-    HashSet<TimeTableCell> timeTablePeriods = new HashSet<TimeTableCell>();
+    HashSet<TimeTableCell> timeTableCells = new HashSet<TimeTableCell>();
     if (hitsObject.getTimeTablePeriods() != null) {
-      for (TimeTableCell timeTableCell : hitsObject.getTimeTablePeriods()) {
-        TimeTableCell timeTablePeriod = getTimeTablePeriod(timeTableCell, zoneId);
-        if (timeTablePeriod != null) {
-          timeTablePeriods.add(timeTablePeriod);
+      for (TimeTableCell timeTablePeriod : hitsObject.getTimeTablePeriods()) {
+        TimeTableCell timeTableCell = getTimeTableCell(timeTablePeriod, zoneId);
+        if (timeTableCell != null) {
+          timeTableCells.add(timeTableCell);
         }
       }
     }
-    hitsObject.setTimeTablePeriods(timeTablePeriods);
-    
-    if (!create) {
-      deleteTeachingGroupTeachers(hitsObject);
-    }
-    if (hitsObject.getTeachingGroupTeachers() != null && !hitsObject.getTeachingGroupTeachers().isEmpty()) {
-      Set<TeachingGroupTeacher> teachers = new HashSet<TeachingGroupTeacher>();
-      teachers.addAll(hitsObject.getTeachingGroupTeachers());
-      hitsObject.getTeachingGroupTeachers().clear();
-      result = super.save(hitsObject, dto, zoneId, create);
-      for (TeachingGroupTeacher teacher : teachers) {
-        StaffPersonal staffPersonal = getTeachingGroupTeacher(teacher.getStaffPersonal(), zoneId);
-        if (staffPersonal != null) {
-          teacher.setTeachingGroup(hitsObject);
-          teacher.setStaffPersonal(staffPersonal);
-          teachingGroupTeacherDAO.save(teacher);
-          result.getTeachingGroupTeachers().add(teacher);
-        }
-      }
-    } else {
-      result = super.save(hitsObject, dto, zoneId, create);
-    }
-    return result;
-  }
-
-  private StaffPersonal getTeachingGroupTeacher(StaffPersonal staffPersonal, String zoneId) {
-    StaffPersonal result = null;
-    if (staffPersonal != null) {
-      result = staffPersonalDAO.findOneWithFilter(staffPersonal.getRefId(), getSchoolRefIds(zoneId));
-    }
-    return result;
+    hitsObject.setTimeTablePeriods(timeTableCells);
+    return null;
   }
 
   private StudentPersonal getTeachingGroupStudent(StudentPersonal studentPersonal, String zoneId) {
     StudentPersonal result = null;
     if (studentPersonal != null) {
-      result = studentPersonalDAO.findOneWithFilter(studentPersonal.getRefId(), getSchoolRefIds(zoneId));
+      result = studentPersonalFilterDAO.findOneWithZone(studentPersonal.getRefId(), zoneId);
     }
     return result;
   }
@@ -170,15 +126,47 @@ public class TeachingGroupService extends BaseService<TeachingGroupType, Teachin
   private SchoolInfo getSchoolInfo(SchoolInfo schoolInfo, String zoneId) {
     SchoolInfo result = null;
     if (schoolInfo != null) {
-      result = schoolInfoDAO.findOneWithFilter(schoolInfo.getRefId(), getSchoolRefIds(zoneId));
+      result = schoolInfoFilterDAO.findOneWithZone(schoolInfo.getRefId(), zoneId);
     }
     return result;
   }
 
-  private TimeTableCell getTimeTablePeriod(TimeTableCell timeTableCell, String zoneId) {
+  private TimeTableCell getTimeTableCell(TimeTableCell timeTableCell, String zoneId) {
     TimeTableCell result = null;
     if (timeTableCell != null) {
-      result = timeTableCellDAO.findOneWithFilter(timeTableCell.getRefId(), getSchoolRefIds(zoneId));
+      result = timeTableCellFilterDAO.findOneWithZone(timeTableCell.getRefId(), zoneId);
+    }
+    return result;
+  }
+
+  @Override
+  protected boolean hasChildObjects(TeachingGroup hitsObject) {
+    return hitsObject != null & hitsObject.getTeachingGroupTeachers() != null && !hitsObject.getTeachingGroupTeachers().isEmpty();
+  }
+
+  @Override
+  protected TeachingGroup saveWithChildObjects(TeachingGroup hitsObject, RequestDTO<TeachingGroupType> dto, String zoneId, boolean create) {
+    TeachingGroup result = null;
+    Set<TeachingGroupTeacher> teachers = new HashSet<TeachingGroupTeacher>();
+    teachers.addAll(hitsObject.getTeachingGroupTeachers());
+    hitsObject.getTeachingGroupTeachers().clear();
+    result = super.save(hitsObject, dto, zoneId, create);
+    for (TeachingGroupTeacher teacher : teachers) {
+      StaffPersonal staffPersonal = getTeachingGroupTeacher(teacher.getStaffPersonal(), zoneId);
+      if (staffPersonal != null) {
+        teacher.setTeachingGroup(hitsObject);
+        teacher.setStaffPersonal(staffPersonal);
+        teachingGroupTeacherDAO.save(teacher);
+        result.getTeachingGroupTeachers().add(teacher);
+      }
+    }
+    return result;
+  }
+
+  private StaffPersonal getTeachingGroupTeacher(StaffPersonal staffPersonal, String zoneId) {
+    StaffPersonal result = null;
+    if (staffPersonal != null) {
+      result = staffPersonalFilterDAO.findOneWithZone(staffPersonal.getRefId(), zoneId);
     }
     return result;
   }

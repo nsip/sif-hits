@@ -11,33 +11,21 @@ import sif.dd.au30.model.StaffAssignmentType;
 import sif3.hits.domain.converter.HitsConverter;
 import sif3.hits.domain.converter.StaffAssignmentConverter;
 import sif3.hits.domain.dao.StaffAssignmentDAO;
-import sif3.hits.domain.dao.ZoneFilterableRepository;
+import sif3.hits.domain.dao.filter.FilterableRepository;
+import sif3.hits.domain.dao.filter.StaffAssignmentFilterDAO;
 import sif3.hits.domain.model.StaffAssignment;
 
 @Service
-public class StaffAssignmentService extends
-    BaseService<StaffAssignmentType, StaffAssignmentCollectionType, StaffAssignment> {
+public class StaffAssignmentService extends BaseService<StaffAssignmentType, StaffAssignmentCollectionType, StaffAssignment> {
 
   @Autowired
-  StaffAssignmentDAO staffAssignmentDAO;
+  private StaffAssignmentConverter staffAssignmentConverter;
 
   @Autowired
-  StaffAssignmentConverter staffAssignmentConverter;
+  private StaffAssignmentDAO staffAssignmentDAO;
 
-  @Override
-  public JpaRepository<StaffAssignment, String> getDAO() {
-    return staffAssignmentDAO;
-  }
-
-  @Override
-  public ZoneFilterableRepository<StaffAssignment> getZoneFilterableDAO() {
-    return staffAssignmentDAO;
-  }
-
-  @Override
-  public HitsConverter<StaffAssignmentType, StaffAssignment> getConverter() {
-    return staffAssignmentConverter;
-  }
+  @Autowired
+  private StaffAssignmentFilterDAO staffAssignmentFilterDAO;
 
   @Override
   protected StaffAssignmentCollectionType getCollection(List<StaffAssignmentType> items) {
@@ -49,11 +37,17 @@ public class StaffAssignmentService extends
   }
 
   @Override
-  protected StaffAssignment getFiltered(String refId, List<String> schoolRefIds) {
-    StaffAssignment result = null;
-    if (schoolRefIds != null && !schoolRefIds.isEmpty()) {
-      result = staffAssignmentDAO.findOneWithFilter(refId, schoolRefIds);
-    }
-    return result;
+  protected HitsConverter<StaffAssignmentType, StaffAssignment> getConverter() {
+    return staffAssignmentConverter;
+  }
+
+  @Override
+  protected JpaRepository<StaffAssignment, String> getDAO() {
+    return staffAssignmentDAO;
+  }
+
+  @Override
+  protected FilterableRepository<StaffAssignment> getFilterableDAO() {
+    return staffAssignmentFilterDAO;
   }
 }
