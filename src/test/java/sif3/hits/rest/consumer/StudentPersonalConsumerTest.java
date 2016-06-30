@@ -25,16 +25,24 @@ import sif.dd.au30.model.PhoneNumberListType;
 import sif.dd.au30.model.PhoneNumberType;
 import sif.dd.au30.model.StudentPersonalCollectionType;
 import sif.dd.au30.model.StudentPersonalType;
+import sif.dd.au30.model.TeachingGroupCollectionType;
+import sif.dd.au30.model.TeachingGroupType;
 import sif.dd.au30.model.StudentPersonalType.MostRecent;
 import sif.dd.au30.model.StudentPersonalType.OtherIdList;
 import sif.dd.au30.model.StudentPersonalType.OtherIdList.OtherId;
+import sif.dd.au30.model.TeachingGroupType.StudentList.TeachingGroupStudent;
 import sif.dd.au30.model.YearLevelType;
 import sif3.common.exception.MarshalException;
 import sif3.common.exception.UnsupportedMediaTypeExcpetion;
+import sif3.common.model.QueryCriteria;
+import sif3.common.model.QueryOperator;
+import sif3.common.model.QueryPredicate;
 import sif3.common.ws.BulkOperationResponse;
 import sif3.common.ws.CreateOperationStatus;
 import sif3.common.ws.OperationStatus;
 import sif3.common.ws.Response;
+import sif3.hits.domain.model.StudentPersonal;
+import sif3.hits.rest.consumer.StudentPersonalConsumerTest.StudentPersonalRefIds;
 import sif3.infra.rest.consumer.ConsumerLoader;
 
 public class StudentPersonalConsumerTest extends BaseTest {
@@ -324,6 +332,27 @@ public class StudentPersonalConsumerTest extends BaseTest {
     
 //    studentSchoolEnrollmentTester.testDeleteOne(REF_ID_2);
 //    studentTester.testDeleteOne(REF_ID_1);
+  }
+  
+  @Test
+  public void testServicePathTeachingGroup() {
+    QueryCriteria queryCriteria = new QueryCriteria();
+    queryCriteria.addPredicate(new QueryPredicate("TeachingGroups", QueryOperator.EQUAL, TeachingGroupConsumerTest.REF_ID));
+
+    List<Response> responses = studentTester.testServicePath(queryCriteria, 10000, 0);
+    
+    Assert.assertNotNull(responses);
+    Assert.assertEquals(1, responses.size());
+    Response response = responses.get(0);
+    
+    StudentPersonalCollectionType studentPersonalCollectionType = (StudentPersonalCollectionType) response.getDataObject();
+    Assert.assertNotNull(studentPersonalCollectionType.getStudentPersonal());
+    Assert.assertFalse(studentPersonalCollectionType.getStudentPersonal().isEmpty());
+    boolean found = false;
+    for (StudentPersonalType studentPersonal : studentPersonalCollectionType.getStudentPersonal()) {
+      found = found || StudentPersonalRefIds.REF_ID_1.equals(studentPersonal.getRefId());
+    }
+    Assert.assertTrue(found);
   }
 
   @Test
