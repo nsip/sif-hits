@@ -24,6 +24,7 @@ import sif3.common.model.PagingInfo;
 import sif3.common.model.QueryCriteria;
 import sif3.common.model.QueryPredicate;
 import sif3.common.model.RequestMetadata;
+import sif3.common.model.ResponseParameters;
 import sif3.common.model.SIFContext;
 import sif3.common.model.SIFZone;
 import sif3.common.ws.CreateOperationStatus;
@@ -80,10 +81,10 @@ public abstract class HitsBaseProvider<S, SC, H, HS extends BaseService<S, SC, H
    * sif3.common.model.SIFZone, sif3.common.model.SIFContext)
    */
   @Override
-  public Object retrievByPrimaryKey(String resourceID, SIFZone zone, SIFContext context, RequestMetadata metadata) throws IllegalArgumentException, PersistenceException {
+  public Object retrievByPrimaryKey(String resourceID, SIFZone zone, SIFContext context, RequestMetadata metadata, ResponseParameters customResponseParams) throws IllegalArgumentException, PersistenceException {
 
     try {
-      setDatabaseContext(zone, context);
+      setDatabaseContext(zone, context, metadata);
 
       if (StringUtils.isEmpty(resourceID)) {
         throw new IllegalArgumentException("Resource ID is null or empty. It must be provided to retrieve an entity.");
@@ -100,8 +101,8 @@ public abstract class HitsBaseProvider<S, SC, H, HS extends BaseService<S, SC, H
     }
   }
 
-  private void setDatabaseContext(SIFZone zone, SIFContext context) {
-    getService().setDatabaseContext(getZoneId(zone), getContextId(context));
+  private void setDatabaseContext(SIFZone zone, SIFContext context, RequestMetadata metadata) {
+    getService().setDatabaseContext(metadata.getApplicationKey());
   }
 
   /*
@@ -111,10 +112,10 @@ public abstract class HitsBaseProvider<S, SC, H, HS extends BaseService<S, SC, H
    * sif3.common.model.SIFZone, sif3.common.model.SIFContext)
    */
   @Override
-  public Object createSingle(Object data, boolean useAdvisory, SIFZone zone, SIFContext context, RequestMetadata metadata) throws IllegalArgumentException, PersistenceException {
+  public Object createSingle(Object data, boolean useAdvisory, SIFZone zone, SIFContext context, RequestMetadata metadata, ResponseParameters customResponseParams) throws IllegalArgumentException, PersistenceException {
 
     try {
-      setDatabaseContext(zone, context);
+      setDatabaseContext(zone, context, metadata);
 
       // Must be of type SIF_CLASS
       if (data != null && SIF_CLASS.isAssignableFrom(data.getClass())) {
@@ -172,9 +173,9 @@ public abstract class HitsBaseProvider<S, SC, H, HS extends BaseService<S, SC, H
    * java.lang.String, sif3.common.model.SIFZone, sif3.common.model.SIFContext)
    */
   @Override
-  public boolean updateSingle(Object data, String resourceID, SIFZone zone, SIFContext context, RequestMetadata metadata) throws IllegalArgumentException, PersistenceException {
+  public boolean updateSingle(Object data, String resourceID, SIFZone zone, SIFContext context, RequestMetadata metadata, ResponseParameters customResponseParams) throws IllegalArgumentException, PersistenceException {
     try {
-      setDatabaseContext(zone, context);
+      setDatabaseContext(zone, context, metadata);
 
       if (StringUtils.isEmpty(resourceID)) {
         throw new IllegalArgumentException("Resource ID is null or empty. It must be provided to update an entity.");
@@ -225,9 +226,9 @@ public abstract class HitsBaseProvider<S, SC, H, HS extends BaseService<S, SC, H
    * sif3.common.model.SIFZone, sif3.common.model.SIFContext)
    */
   @Override
-  public boolean deleteSingle(String resourceID, SIFZone zone, SIFContext context, RequestMetadata metadata) throws IllegalArgumentException, PersistenceException {
+  public boolean deleteSingle(String resourceID, SIFZone zone, SIFContext context, RequestMetadata metadata, ResponseParameters customResponseParams) throws IllegalArgumentException, PersistenceException {
     try {
-      setDatabaseContext(zone, context);
+      setDatabaseContext(zone, context, metadata);
 
       if (StringUtils.isEmpty(resourceID)) {
         throw new IllegalArgumentException("Resource ID is null or empty. It must be provided to delete an entity.");
@@ -268,9 +269,9 @@ public abstract class HitsBaseProvider<S, SC, H, HS extends BaseService<S, SC, H
    * sif3.common.model.SIFContext, sif3.common.model.PagingInfo)
    */
   @Override
-  public Object retrieve(SIFZone zone, SIFContext context, PagingInfo pagingInfo, RequestMetadata metadata) throws PersistenceException, UnsupportedQueryException {
+  public Object retrieve(SIFZone zone, SIFContext context, PagingInfo pagingInfo, RequestMetadata metadata, ResponseParameters customResponseParams) throws PersistenceException, UnsupportedQueryException {
     try {
-      setDatabaseContext(zone, context);
+      setDatabaseContext(zone, context, metadata);
 
       L.debug("Find many " + COLLECTION_NAME + "...");
       return getService().findAll(getZoneId(zone), pagingInfo);
@@ -281,10 +282,10 @@ public abstract class HitsBaseProvider<S, SC, H, HS extends BaseService<S, SC, H
   }
 
   @Override
-  public Object retrieveByServicePath(QueryCriteria criteria, SIFZone zone, SIFContext context, PagingInfo pagingInfo, RequestMetadata metadata) throws UnsupportedQueryException, PersistenceException {
+  public Object retrieveByServicePath(QueryCriteria criteria, SIFZone zone, SIFContext context, PagingInfo pagingInfo, RequestMetadata metadata, ResponseParameters customResponseParams) throws UnsupportedQueryException, PersistenceException {
 
     try {
-      setDatabaseContext(zone, context);
+      setDatabaseContext(zone, context, metadata);
 
       L.debug("Find many " + COLLECTION_NAME + " ... ");
 
@@ -301,9 +302,9 @@ public abstract class HitsBaseProvider<S, SC, H, HS extends BaseService<S, SC, H
   }
 
   @Override
-  public Object retrieveByQBE(Object example, SIFZone zone, SIFContext context, PagingInfo pagingInfo, RequestMetadata metadata) throws PersistenceException, UnsupportedQueryException, DataTooLargeException {
+  public Object retrieveByQBE(Object example, SIFZone zone, SIFContext context, PagingInfo pagingInfo, RequestMetadata metadata, ResponseParameters customResponseParams) throws PersistenceException, UnsupportedQueryException, DataTooLargeException {
     try {
-      setDatabaseContext(zone, context);
+      setDatabaseContext(zone, context, metadata);
 
       L.debug("Find many " + COLLECTION_NAME + " ... ");
       if (example == null) {
@@ -332,10 +333,10 @@ public abstract class HitsBaseProvider<S, SC, H, HS extends BaseService<S, SC, H
    * sif3.common.model.SIFZone, sif3.common.model.SIFContext)
    */
   @Override
-  public List<CreateOperationStatus> createMany(Object data, boolean useAdvisory, SIFZone zone, SIFContext context, RequestMetadata metadata) throws IllegalArgumentException, PersistenceException {
+  public List<CreateOperationStatus> createMany(Object data, boolean useAdvisory, SIFZone zone, SIFContext context, RequestMetadata metadata, ResponseParameters customResponseParams) throws IllegalArgumentException, PersistenceException {
 
     try {
-      setDatabaseContext(zone, context);
+      setDatabaseContext(zone, context, metadata);
 
       // Must be of type SIF_COLLECTION_TYPE
       if (data != null && SIF_COLLECTION_CLASS.isAssignableFrom(data.getClass())) {
@@ -368,9 +369,9 @@ public abstract class HitsBaseProvider<S, SC, H, HS extends BaseService<S, SC, H
    * sif3.common.model.SIFZone, sif3.common.model.SIFContext)
    */
   @Override
-  public List<OperationStatus> updateMany(Object data, SIFZone zone, SIFContext context, RequestMetadata metadata) throws IllegalArgumentException, PersistenceException {
+  public List<OperationStatus> updateMany(Object data, SIFZone zone, SIFContext context, RequestMetadata metadata, ResponseParameters customResponseParams) throws IllegalArgumentException, PersistenceException {
     try {
-      setDatabaseContext(zone, context);
+      setDatabaseContext(zone, context, metadata);
 
       // Must be of type SchoolInfoCollectionType
       if (data != null && SIF_COLLECTION_CLASS.isAssignableFrom(data.getClass())) {
@@ -414,9 +415,9 @@ public abstract class HitsBaseProvider<S, SC, H, HS extends BaseService<S, SC, H
    * sif3.common.model.SIFZone, sif3.common.model.SIFContext)
    */
   @Override
-  public List<OperationStatus> deleteMany(List<String> resourceIDs, SIFZone zone, SIFContext context, RequestMetadata metadata) throws IllegalArgumentException, PersistenceException {
+  public List<OperationStatus> deleteMany(List<String> resourceIDs, SIFZone zone, SIFContext context, RequestMetadata metadata, ResponseParameters customResponseParams) throws IllegalArgumentException, PersistenceException {
     try {
-      setDatabaseContext(zone, context);
+      setDatabaseContext(zone, context, metadata);
 
       if (resourceIDs != null) {
         L.debug("Delete many " + COLLECTION_NAME + "...");

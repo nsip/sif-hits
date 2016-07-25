@@ -8,7 +8,6 @@ import static sif3.hits.service.e.OperationStatus.DELETE_OK;
 import static sif3.hits.service.e.OperationStatus.UPDATE_ERR_NO_OBJECT;
 import static sif3.hits.service.e.OperationStatus.UPDATE_OK;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.commons.lang3.StringUtils;
@@ -20,13 +19,14 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.transaction.annotation.Transactional;
 
+import sif3.common.CommonConstants;
 import sif3.common.exception.PersistenceException;
 import sif3.common.exception.UnsupportedQueryException;
 import sif3.common.model.PagingInfo;
 import sif3.hits.domain.converter.HitsConverter;
 import sif3.hits.domain.dao.filter.FilterableRepository;
 import sif3.hits.domain.helper.HitsDatabaseContext;
-import sif3.hits.domain.shared.model.Zone;
+import sif3.hits.domain.shared.model.ApplicationKeyUrl;
 import sif3.hits.rest.dto.KeyValuePair;
 import sif3.hits.rest.dto.RequestDTO;
 import sif3.hits.rest.dto.ResponseDTO;
@@ -36,7 +36,7 @@ public abstract class BaseService<S, SC, H> {
 
   private static final Logger L = LoggerFactory.getLogger(BaseService.class);
 
-  private final ThreadLocal<Zone> currentZone = new ThreadLocal<Zone>();
+  private final ThreadLocal<ApplicationKeyUrl> currentApplicationKeyUrl = new ThreadLocal<ApplicationKeyUrl>();
   
   protected abstract SC getCollection(List<S> items);
 
@@ -45,9 +45,9 @@ public abstract class BaseService<S, SC, H> {
   protected abstract JpaRepository<H, String> getDAO();
   
   protected abstract FilterableRepository<H> getFilterableDAO();
-
+  
   @Autowired
-  private ZoneService zoneService;
+  private ApplicationKeyUrlService applicationKeyUrlService;
 
   // Create
   public ResponseDTO<S> createSingle(RequestDTO<S> dto, String zoneId) {
@@ -105,13 +105,13 @@ public abstract class BaseService<S, SC, H> {
    * @return
    */
   public SC findAll(String zoneId, PagingInfo pagingInfo) {
-    SC result = getCollection(new ArrayList<S>());
+    SC result = null;
     if (pagingInfo != null) {
-      PageRequest pageRequest = new PageRequest(pagingInfo.getCurrentPageNo(), pagingInfo.getPageSize());
+      PageRequest pageRequest = getPageRequest(pagingInfo);
       Page<H> results = findAll(zoneId, pageRequest);
       if (results != null) {
         List<S> sifResultObjects = getConverter().toSifModelList(results.getContent());
-        result = getCollection(sifResultObjects);
+        result = getCollectionResult(sifResultObjects);
       }
     }
     return result;
@@ -134,13 +134,13 @@ public abstract class BaseService<S, SC, H> {
    * @throws UnsupportedQueryException
    */
   public SC findByExample(S example, String zoneId, PagingInfo pagingInfo) throws UnsupportedQueryException {
-    SC result = getCollection(new ArrayList<S>());
+    SC result = null;
     if (pagingInfo != null) {
-      PageRequest pageRequest = new PageRequest(pagingInfo.getCurrentPageNo(), pagingInfo.getPageSize());
+      PageRequest pageRequest = getPageRequest(pagingInfo);
       Page<H> results = findByExample(example, zoneId, pageRequest);
       if (results != null) {
         List<S> sifResultObjects = getConverter().toSifModelList(results.getContent());
-        result = getCollection(sifResultObjects);
+        result = getCollectionResult(sifResultObjects);
       }
     }
     return result;
@@ -166,14 +166,14 @@ public abstract class BaseService<S, SC, H> {
    * @throws UnsupportedQueryException
    */
   public SC findByServicePath(List<KeyValuePair> filters, PagingInfo pagingInfo, String zoneId) throws UnsupportedQueryException {
-    SC result = getCollection(new ArrayList<S>());
+    SC result = null;
     if (pagingInfo != null) {
-      PageRequest pageRequest = new PageRequest(pagingInfo.getCurrentPageNo(), pagingInfo.getPageSize());
+      PageRequest pageRequest = getPageRequest(pagingInfo);
       if (StringUtils.isNotBlank(zoneId)) {
         Page<H> results = findByServicePath(filters, zoneId, pageRequest);
         if (results != null) {
           List<S> sifResultObjects = getConverter().toSifModelList(results.getContent());
-          result = getCollection(sifResultObjects);
+          result = getCollectionResult(sifResultObjects);
         }
       } 
     }
@@ -252,12 +252,12 @@ public abstract class BaseService<S, SC, H> {
     return getDAO().save(hitsObject);
   }
 
-  public void setDatabaseContext(String zoneId, String contextId) {
+  public void setDatabaseContext(String applicationKey) {
     HitsDatabaseContext.clearDatabase();
-    Zone zone = zoneService.getZone(zoneId, contextId);
-    currentZone.set(zone);
-    L.info("Setting current database : " + zone.getDatabaseUrl());
-    HitsDatabaseContext.setDatabase(zone.getDatabaseUrl());
+    ApplicationKeyUrl applicationKeyUrl = applicationKeyUrlService.getApplicationKeyUrl(applicationKey);
+    currentApplicationKeyUrl.set(applicationKeyUrl);
+    L.info("Setting current database : " + applicationKeyUrl.getUrl());
+    HitsDatabaseContext.setDatabase(applicationKeyUrl.getUrl());
   }
 
   // Update
@@ -277,5 +277,17 @@ public abstract class BaseService<S, SC, H> {
       result = new ResponseDTO<S>(dto, null, UPDATE_ERR_NO_OBJECT);
     }
     return result;
+  }
+  
+  private PageRequest getPageRequest(PagingInfo pagingInfo) {
+    return new PageRequest(pagingInfo.getCurrentPageNo() - CommonConstants.FIRST_PAGE, pagingInfo.getPageSize());
+  }
+  
+  private SC getCollectionResult(List<S> items) {
+    if (items == null || items.isEmpty()) {
+      return null;
+    } else {
+      return getCollection(items);
+    }
   }
 }
