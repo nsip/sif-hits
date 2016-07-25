@@ -10,7 +10,7 @@ import javax.persistence.Table;
 public class ApplicationKeyUrl {
   private Long id;
   private String applicationKey;
-  private String url;
+  private String databaseUrl;
 
   @Id
   @GeneratedValue
@@ -30,12 +30,11 @@ public class ApplicationKeyUrl {
     this.applicationKey = applicationKey;
   }
 
-  public String getUrl() {
-    return url;
+  public String getDatabaseUrl() {
+    return databaseUrl;
   }
 
-  public void setUrl(String url) {
-    this.url = url;
+  public void setDatabaseUrl(String databaseUrl) {
+    this.databaseUrl = databaseUrl;
   }
-
 }

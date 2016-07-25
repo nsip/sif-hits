@@ -58,6 +58,7 @@ public class ConsumerTest<S, M> {
 
   protected List<Response> testGetMany(int recordsPerPage, int page) {
     List<Response> result = null;
+    if (page == 0) page = 1;
     System.out.println("Start 'Get All " + getMultiName() + "' in all connected environments...");
     try {
       result = testConsumer.retrieve(new PagingInfo(recordsPerPage, page), getZoneContextList(), REQUEST_TYPE);
@@ -72,6 +73,7 @@ public class ConsumerTest<S, M> {
   
   protected List<Response> testQBE(S example, int recordsPerPage, int page) {
     List<Response> result = null;
+    if (page == 0) page = 1;
     System.out.println("Start 'Retrieve by QBE " + getMultiName() + "' in all connected environments...");
     try {
       result = testConsumer.retrieveByQBE(example, new PagingInfo(recordsPerPage, page), getZoneContextList(), REQUEST_TYPE, QueryIntention.ONE_OFF, null);
@@ -86,6 +88,7 @@ public class ConsumerTest<S, M> {
   
   protected List<Response> testServicePath(QueryCriteria queryCriteria, int recordsPerPage, int page) {
     List<Response> result = null;
+    if (page == 0) page = 1;
     System.out.println("Start 'Retrieve by ServicePath " + getMultiName() + "' in all connected environments...");
     try {
       result = testConsumer.retrieveByServicePath(queryCriteria, new PagingInfo(recordsPerPage, page), getZoneContextList(), REQUEST_TYPE);

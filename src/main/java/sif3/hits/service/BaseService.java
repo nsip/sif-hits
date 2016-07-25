@@ -256,8 +256,8 @@ public abstract class BaseService<S, SC, H> {
     HitsDatabaseContext.clearDatabase();
     ApplicationKeyUrl applicationKeyUrl = applicationKeyUrlService.getApplicationKeyUrl(applicationKey);
     currentApplicationKeyUrl.set(applicationKeyUrl);
-    L.info("Setting current database : " + applicationKeyUrl.getUrl());
-    HitsDatabaseContext.setDatabase(applicationKeyUrl.getUrl());
+    L.info("Setting current database : " + applicationKeyUrl.getDatabaseUrl());
+    HitsDatabaseContext.setDatabase(applicationKeyUrl.getDatabaseUrl());
   }
 
   // Update
