@@ -26,7 +26,7 @@ public class StudentPersonalConverter extends HitsConverter<StudentPersonalType,
 
   @Autowired
   private PersonInfoConverter personInfoConverter;
-
+  
   @Override
   public void toSifModel(StudentPersonal source, StudentPersonalType target) {
     if (source != null && target != null) {

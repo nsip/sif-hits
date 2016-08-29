@@ -30,6 +30,7 @@ import sif.dd.au30.model.StudentPersonalType.OtherIdList;
 import sif.dd.au30.model.StudentPersonalType.OtherIdList.OtherId;
 import sif.dd.au30.model.YearLevelType;
 import sif3.common.exception.MarshalException;
+import sif3.common.exception.UnmarshalException;
 import sif3.common.exception.UnsupportedMediaTypeExcpetion;
 import sif3.common.model.QueryCriteria;
 import sif3.common.model.QueryOperator;
@@ -38,6 +39,8 @@ import sif3.common.ws.BulkOperationResponse;
 import sif3.common.ws.CreateOperationStatus;
 import sif3.common.ws.OperationStatus;
 import sif3.common.ws.Response;
+import sif3.hits.domain.model.StudentPersonal;
+import sif3.hits.service.PersonalStudentIdService;
 import sif3.infra.rest.consumer.ConsumerLoader;
 
 public class StudentPersonalConsumerTest extends BaseTest {
@@ -162,7 +165,7 @@ public class StudentPersonalConsumerTest extends BaseTest {
     addresses.getAddress().add(StudentPersonalRefIds.getAddress(objectFactory, "234 Address Line One", null));
     personInfo.setAddressList(objectFactory.createPersonInfoTypeAddressList(addresses));
     studentPersonalType.setPersonInfo(personInfo);
-    studentPersonalType.setStateProvinceId(objectFactory.createStudentPersonalTypeStateProvinceId("WA"));
+    studentPersonalType.setStateProvinceId(objectFactory.createStudentPersonalTypeStateProvinceId("W123456789"));
 
     OtherIdList otherIdList = new OtherIdList();
     OtherId otherId = new OtherId();
@@ -173,18 +176,28 @@ public class StudentPersonalConsumerTest extends BaseTest {
     otherId.setType("0003");
     otherId.setValue("otherid");
     otherIdList.getOtherId().add(otherId);
+    otherId = new OtherId();
+    otherId.setType(PersonalStudentIdService.PERSONAL_STUDENT_IDENTIFIER_TYPE);
+    otherId.setValue(PersonalStudentIdService.getIdentifier(1));
+    otherIdList.getOtherId().add(otherId);
     studentPersonalType.setOtherIdList(objectFactory.createStudentPersonalTypeOtherIdList(otherIdList));
 
     studentTester.doCreateOne(studentPersonalType);
     String xmlExpectedTo = studentTester.getXML(studentPersonalType);
 
     studentPersonalType.setRefId(StudentPersonalRefIds.REF_ID_2);
+    otherId.setValue(PersonalStudentIdService.getIdentifier(2));
     studentTester.doCreateOne(studentPersonalType);
     studentPersonalType.setRefId(StudentPersonalRefIds.REF_ID_3);
+    otherId.setValue(PersonalStudentIdService.getIdentifier(3));
     studentTester.doCreateOne(studentPersonalType);
+    
     studentPersonalType.setRefId(StudentPersonalRefIds.REF_ID_4);
+    otherId.setValue(PersonalStudentIdService.getIdentifier(4));
     studentTester.doCreateOne(studentPersonalType);
+    
     studentPersonalType.setRefId(StudentPersonalRefIds.REF_ID_5);
+    otherId.setValue(PersonalStudentIdService.getIdentifier(5));
     studentPersonalType.setOtherIdList(null);
     studentTester.doCreateOne(studentPersonalType);
 
@@ -281,6 +294,87 @@ public class StudentPersonalConsumerTest extends BaseTest {
     Assert.assertEquals(HttpStatus.NO_CONTENT.value(), deleteResponse.getStatus());
   }
   
+  @Test 
+  public void testCreatePSIWithNullList() throws UnmarshalException, UnsupportedMediaTypeExcpetion {
+    String xml = studentTester.getFileContents("student.xml");
+    StudentPersonalType studentPersonal = studentTester.fromXML(xml);
+    studentPersonal.setOtherIdList(null);
+    List<Response> createResponses = studentTester.doCreateOne(studentPersonal);
+    Assert.assertNotNull(createResponses);
+    Assert.assertEquals(1, createResponses.size());
+    Response createResponse = createResponses.get(0);
+    Assert.assertNotNull(createResponse.getDataObject());
+    StudentPersonalType studentPersonalResponse = (StudentPersonalType) createResponse.getDataObject();
+    Assert.assertEquals(REF_ID_1, studentPersonalResponse.getRefId());
+    Assert.assertFalse(PersonalStudentIdService.hasIdentifier(studentPersonal));
+    Assert.assertTrue(PersonalStudentIdService.hasIdentifier(studentPersonalResponse));
+    Assert.assertEquals(1, studentPersonalResponse.getOtherIdList().getValue().getOtherId().size());
+    
+    List<Response> deleteResponses = studentTester.testDeleteOne(REF_ID_1);
+    Assert.assertNotNull(deleteResponses);
+    Assert.assertEquals(1, deleteResponses.size());
+    Response deleteResponse = deleteResponses.get(0);
+    Assert.assertNull(deleteResponse.getDataObject());
+    Assert.assertEquals(HttpStatus.NO_CONTENT.value(), deleteResponse.getStatus());
+  }
+  
+  @Test 
+  public void testCreatePSI() throws UnmarshalException, UnsupportedMediaTypeExcpetion {
+    String xml = studentTester.getFileContents("student.xml");
+    StudentPersonalType studentPersonal = studentTester.fromXML(xml);
+    List<Response> createResponses = studentTester.doCreateOne(studentPersonal);
+    Assert.assertNotNull(createResponses);
+    Assert.assertEquals(1, createResponses.size());
+    Response createResponse = createResponses.get(0);
+    Assert.assertNotNull(createResponse.getDataObject());
+    StudentPersonalType studentPersonalResponse = (StudentPersonalType) createResponse.getDataObject();
+    Assert.assertEquals(REF_ID_1, studentPersonalResponse.getRefId());
+    Assert.assertFalse(PersonalStudentIdService.hasIdentifier(studentPersonal));
+    Assert.assertTrue(PersonalStudentIdService.hasIdentifier(studentPersonalResponse));
+    Assert.assertEquals(studentPersonal.getOtherIdList().getValue().getOtherId().size()+1, studentPersonalResponse.getOtherIdList().getValue().getOtherId().size());
+    
+    List<Response> deleteResponses = studentTester.testDeleteOne(REF_ID_1);
+    Assert.assertNotNull(deleteResponses);
+    Assert.assertEquals(1, deleteResponses.size());
+    Response deleteResponse = deleteResponses.get(0);
+    Assert.assertNull(deleteResponse.getDataObject());
+    Assert.assertEquals(HttpStatus.NO_CONTENT.value(), deleteResponse.getStatus());
+  }
+  
+  @Test
+  public void testNoCreatePSI() throws UnmarshalException, UnsupportedMediaTypeExcpetion {
+    String xml = studentTester.getFileContents("student.xml");
+    StudentPersonalType studentPersonal = studentTester.fromXML(xml);
+    OtherId psi = new OtherId();
+    psi.setType(PersonalStudentIdService.PERSONAL_STUDENT_IDENTIFIER_TYPE);
+    psi.setValue(PersonalStudentIdService.getIdentifier(6));
+    studentPersonal.getOtherIdList().getValue().getOtherId().add(psi);
+    List<Response> createResponses = studentTester.doCreateOne(studentPersonal);
+    Assert.assertNotNull(createResponses);
+    Assert.assertEquals(1, createResponses.size());
+    Response createResponse = createResponses.get(0);
+    Assert.assertNotNull(createResponse.getDataObject());
+    StudentPersonalType studentPersonalResponse = (StudentPersonalType) createResponse.getDataObject();
+    Assert.assertEquals(REF_ID_1, studentPersonalResponse.getRefId());
+    Assert.assertTrue(PersonalStudentIdService.hasIdentifier(studentPersonal));
+    Assert.assertTrue(PersonalStudentIdService.hasIdentifier(studentPersonalResponse));
+    for (OtherId otherId : studentPersonalResponse.getOtherIdList().getValue().getOtherId()) {
+      if (PersonalStudentIdService.PERSONAL_STUDENT_IDENTIFIER_TYPE.equals(otherId.getType())) {
+        Assert.assertEquals(psi.getValue(), otherId.getValue());
+      }
+    }
+    Assert.assertEquals(studentPersonal.getOtherIdList().getValue().getOtherId().size(), studentPersonalResponse.getOtherIdList().getValue().getOtherId().size());
+
+    List<Response> deleteResponses = studentTester.testDeleteOne(REF_ID_1);
+    Assert.assertNotNull(deleteResponses);
+    Assert.assertEquals(1, deleteResponses.size());
+    Response deleteResponse = deleteResponses.get(0);
+    Assert.assertNull(deleteResponse.getDataObject());
+    Assert.assertEquals(HttpStatus.NO_CONTENT.value(), deleteResponse.getStatus());
+  }
+  
+  
+  
   @Test
   public void testCreateUpdateDelete() {
     List<Response> createResponses = studentTester.testCreateOne("student.xml");
@@ -296,7 +390,7 @@ public class StudentPersonalConsumerTest extends BaseTest {
       e.printStackTrace();
     }
     Assert.assertEquals(REF_ID_1, studentPersonal.getRefId());
-    Assert.assertEquals(2, studentPersonal.getOtherIdList().getValue().getOtherId().size());
+    Assert.assertEquals(3, studentPersonal.getOtherIdList().getValue().getOtherId().size());
     Assert.assertEquals(2, studentPersonal.getPersonInfo().getAddressList().getValue().getAddress().size());
     
     studentPersonal.getPersonInfo().getAddressList().getValue().getAddress().remove(1);
@@ -322,7 +416,7 @@ public class StudentPersonalConsumerTest extends BaseTest {
     Assert.assertNotNull(response.getDataObject());
     StudentPersonalType updatedStudentPersonal = (StudentPersonalType) response.getDataObject();
     Assert.assertEquals(REF_ID_1, updatedStudentPersonal.getRefId());
-    Assert.assertEquals(1, updatedStudentPersonal.getOtherIdList().getValue().getOtherId().size());
+    Assert.assertEquals(2, updatedStudentPersonal.getOtherIdList().getValue().getOtherId().size());
     Assert.assertEquals(1, updatedStudentPersonal.getPersonInfo().getAddressList().getValue().getAddress().size());
     
 //    studentSchoolEnrollmentTester.testDeleteOne(REF_ID_2);

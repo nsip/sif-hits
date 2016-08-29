@@ -14,6 +14,8 @@ import sif3.hits.domain.dao.StudentPersonalDAO;
 import sif3.hits.domain.dao.filter.FilterableRepository;
 import sif3.hits.domain.dao.filter.StudentPersonalFilterDAO;
 import sif3.hits.domain.model.StudentPersonal;
+import sif3.hits.rest.dto.RequestDTO;
+import sif3.hits.rest.dto.ResponseDTO;
 
 @Service
 public class StudentPersonalService extends BaseService<StudentPersonalType, StudentPersonalCollectionType, StudentPersonal> {
@@ -26,6 +28,15 @@ public class StudentPersonalService extends BaseService<StudentPersonalType, Stu
 
   @Autowired
   private StudentPersonalFilterDAO studentPersonalFilterDAO;
+  
+  @Autowired
+  private PersonalStudentIdService personalStudentIdService;
+  
+  @Override
+  public ResponseDTO<StudentPersonalType> createSingle(RequestDTO<StudentPersonalType> dto, String zoneId) {
+    personalStudentIdService.createId(dto.getSifObject());
+    return super.createSingle(dto, zoneId);
+  }
 
   @Override
   protected StudentPersonalCollectionType getCollection(List<StudentPersonalType> items) {
