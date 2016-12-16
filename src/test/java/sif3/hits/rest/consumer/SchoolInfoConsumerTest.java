@@ -14,13 +14,13 @@ import sif.dd.au30.model.AUCodeSetsSchoolLevelType;
 import sif.dd.au30.model.AUCodeSetsSchoolSectorCodeType;
 import sif.dd.au30.model.AUCodeSetsYesOrNoCategoryType;
 import sif.dd.au30.model.AddressListType;
+import sif.dd.au30.model.AddressStreetType;
 import sif.dd.au30.model.AddressType;
-import sif.dd.au30.model.AddressType.Street;
+import sif.dd.au30.model.CampusContainerType;
 import sif.dd.au30.model.GridLocationType;
 import sif.dd.au30.model.ObjectFactory;
 import sif.dd.au30.model.SchoolInfoCollectionType;
 import sif.dd.au30.model.SchoolInfoType;
-import sif.dd.au30.model.SchoolInfoType.Campus;
 import sif3.common.ws.BulkOperationResponse;
 import sif3.common.ws.CreateOperationStatus;
 import sif3.common.ws.OperationStatus;
@@ -32,6 +32,7 @@ public class SchoolInfoConsumerTest extends BaseTest {
 
   public final static String REF_ID = "6dafb630-c439-41e3-9aa0-81f4dbd909ab";
   public static final String LOCAL_ID = "4001";
+  public static final String ACARA_ID = "48116";
   public static final String SCHOOL_NAME = "Bens Test State High School";
 
   private final String REF_ID_1 = "830c3bcb-0bfc-4adc-96b2-f08318ff8627";
@@ -43,23 +44,22 @@ public class SchoolInfoConsumerTest extends BaseTest {
     ObjectFactory objectFactory = new ObjectFactory();
     SchoolInfoType schoolInfo = objectFactory.createSchoolInfoType();
     schoolInfo.setRefId(REF_ID);
+    schoolInfo.setACARAId(objectFactory.createSchoolInfoTypeACARAId(ACARA_ID));
     schoolInfo.setLocalId(objectFactory.createSchoolInfoTypeLocalId(LOCAL_ID));
     schoolInfo.setSchoolName(SCHOOL_NAME);
     schoolInfo.setStateProvinceId(objectFactory.createSchoolInfoTypeStateProvinceId("WA"));
     schoolInfo.setCommonwealthId(objectFactory.createSchoolInfoTypeCommonwealthId("cid"));
 
-    Campus campus = objectFactory.createSchoolInfoTypeCampus();
+    CampusContainerType campus = objectFactory.createCampusContainerType();
     campus.setAdminStatus(AUCodeSetsYesOrNoCategoryType.N);
     campus.setSchoolCampusId("4001");
-    campus.setCampusType(objectFactory.createSchoolInfoTypeCampusCampusType(AUCodeSetsSchoolLevelType.SEC));
-    campus.setParentSchoolId(objectFactory.createSchoolInfoTypeCampusParentSchoolId("4001"));
+    campus.setCampusType(objectFactory.createCampusContainerTypeCampusType(AUCodeSetsSchoolLevelType.SEC));
+    campus.setParentSchoolId(objectFactory.createCampusContainerTypeParentSchoolId("4001"));
     schoolInfo.setCampus(objectFactory.createSchoolInfoTypeCampus(campus));
 
     schoolInfo.setSchoolSector(AUCodeSetsSchoolSectorCodeType.GOV);
-    schoolInfo
-        .setOperationalStatus(objectFactory.createSchoolInfoTypeOperationalStatus(AUCodeSetsOperationalStatusType.O));
-    schoolInfo
-        .setIndependentSchool(objectFactory.createSchoolInfoTypeIndependentSchool(AUCodeSetsYesOrNoCategoryType.N));
+    schoolInfo.setOperationalStatus(objectFactory.createSchoolInfoTypeOperationalStatus(AUCodeSetsOperationalStatusType.O));
+    schoolInfo.setIndependentSchool(objectFactory.createSchoolInfoTypeIndependentSchool(AUCodeSetsYesOrNoCategoryType.N));
     schoolInfo.setSchoolType(objectFactory.createSchoolInfoTypeSchoolType(AUCodeSetsSchoolLevelType.SEC));
 
     AddressListType addressList = objectFactory.createAddressListType();
@@ -68,9 +68,9 @@ public class SchoolInfoConsumerTest extends BaseTest {
     address.setCity("Bens Town");
     address.setPostalCode("6001");
 
-    Street street = objectFactory.createAddressTypeStreet();
-    street.setStreetNumber(objectFactory.createAddressTypeStreetStreetNumber("1"));
-    street.setStreetName(objectFactory.createAddressTypeStreetStreetName("School Street"));
+    AddressStreetType street = objectFactory.createAddressStreetType();
+    street.setStreetNumber(objectFactory.createAddressStreetTypeStreetNumber("1"));
+    street.setStreetName(objectFactory.createAddressStreetTypeStreetName("School Street"));
     address.setStreet(street);
 
     GridLocationType gridLocation = objectFactory.createGridLocationType();
@@ -101,8 +101,7 @@ public class SchoolInfoConsumerTest extends BaseTest {
   @Before
   public void setup() {
     ConsumerLoader.initialise("TestConsumer");
-    schoolInfoTester = new ConsumerTest<SchoolInfoType, SchoolInfoCollectionType>(SchoolInfoType.class, "SchoolInfo",
-        SchoolInfoCollectionType.class, "SchoolInfos");
+    schoolInfoTester = new ConsumerTest<SchoolInfoType, SchoolInfoCollectionType>(SchoolInfoType.class, "SchoolInfo", SchoolInfoCollectionType.class, "SchoolInfos");
     schoolInfoTester.testDeleteMany(REF_IDS);
   }
 

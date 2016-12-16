@@ -11,23 +11,23 @@ import org.junit.Test;
 import org.springframework.http.HttpStatus;
 
 import sif.dd.au30.model.AddressListType;
+import sif.dd.au30.model.AddressStreetType;
 import sif.dd.au30.model.AddressType;
-import sif.dd.au30.model.AddressType.Street;
 import sif.dd.au30.model.DemographicsType;
-import sif.dd.au30.model.DemographicsType.Religion;
 import sif.dd.au30.model.EmailListType;
 import sif.dd.au30.model.EmailType;
 import sif.dd.au30.model.GridLocationType;
 import sif.dd.au30.model.NameOfRecordType;
 import sif.dd.au30.model.ObjectFactory;
+import sif.dd.au30.model.OtherIdListType;
+import sif.dd.au30.model.OtherIdType;
 import sif.dd.au30.model.PersonInfoType;
 import sif.dd.au30.model.PhoneNumberListType;
 import sif.dd.au30.model.PhoneNumberType;
+import sif.dd.au30.model.ReligionType;
+import sif.dd.au30.model.StudentMostRecentContainerType;
 import sif.dd.au30.model.StudentPersonalCollectionType;
 import sif.dd.au30.model.StudentPersonalType;
-import sif.dd.au30.model.StudentPersonalType.MostRecent;
-import sif.dd.au30.model.StudentPersonalType.OtherIdList;
-import sif.dd.au30.model.StudentPersonalType.OtherIdList.OtherId;
 import sif.dd.au30.model.YearLevelType;
 import sif3.common.exception.MarshalException;
 import sif3.common.exception.UnmarshalException;
@@ -39,7 +39,6 @@ import sif3.common.ws.BulkOperationResponse;
 import sif3.common.ws.CreateOperationStatus;
 import sif3.common.ws.OperationStatus;
 import sif3.common.ws.Response;
-import sif3.hits.domain.model.StudentPersonal;
 import sif3.hits.service.PersonalStudentIdService;
 import sif3.infra.rest.consumer.ConsumerLoader;
 
@@ -52,9 +51,15 @@ public class StudentPersonalConsumerTest extends BaseTest {
     public static String REF_ID_3 = "b3270c8a-7a1e-4360-9336-8733728bab44";
     public static String REF_ID_4 = "17998aa6-3a07-4763-a2c5-1fabbd966039";
     public static String REF_ID_5 = "1f631f1d-8832-4775-b199-5eb9650e8ebb";
-    
+
     public static String LOCAL_ID = "s0004432";
     
+    public static final String PSI_ID_1 = "R100000001E";
+    public static final String PSI_ID_2 = "R100000002D";
+    public static final String PSI_ID_3 = "R100000003S";
+    public static final String PSI_ID_4 = "R100000004R";
+    public static final String PSI_ID_5 = "R100000005G";
+
     public static NameOfRecordType getNameOfRecord(ObjectFactory objectFactory) {
       NameOfRecordType nameOfRecordType = new NameOfRecordType();
       nameOfRecordType.setType("LGL");
@@ -66,33 +71,33 @@ public class StudentPersonalConsumerTest extends BaseTest {
       nameOfRecordType.setFullName(objectFactory.createBaseNameTypeFullName("Mr Full Name Gavin Tester"));
       return nameOfRecordType;
     }
-    
+
     public static AddressType getAddress(ObjectFactory objectFactory, String addressLineOne, String addressLineTwo) {
       AddressType address = new AddressType();
       getAddress(objectFactory, address, addressLineOne, addressLineTwo);
       return address;
     }
-    
+
     public static AddressType getAddressType(ObjectFactory objectFactory, String addressLineOne, String addressLineTwo) {
       AddressType address = new AddressType();
       getAddress(objectFactory, address, addressLineOne, addressLineTwo);
       return address;
     }
-    
+
     public static void getAddress(ObjectFactory objectFactory, AddressType address, String addressLineOne, String addressLineTwo) {
       address.setCity("Perth");
       address.setStateProvince(objectFactory.createAddressTypeStateProvince("WA"));
       address.setType("0123");
       address.setRole("012B");
       address.setPostalCode("6000");
-      
-      Street street = objectFactory.createAddressTypeStreet();
+
+      AddressStreetType street = objectFactory.createAddressStreetType();
       street.setLine1(addressLineOne);
       if (StringUtils.isNotBlank(addressLineTwo)) {
-        street.setLine2(objectFactory.createAddressTypeStreetLine2(addressLineTwo));
+        street.setLine2(objectFactory.createAddressStreetTypeLine2(addressLineTwo));
       }
       address.setStreet(street);
-      
+
       GridLocationType gridLocation = objectFactory.createGridLocationType();
       gridLocation.setLatitude(new BigDecimal("-31.952693"));
       gridLocation.setLongitude(new BigDecimal("115.871971"));
@@ -111,24 +116,18 @@ public class StudentPersonalConsumerTest extends BaseTest {
     studentPersonalType.setRefId(StudentPersonalRefIds.REF_ID_1);
     studentPersonalType.setLocalId(StudentPersonalRefIds.LOCAL_ID);
 
-    MostRecent mostRecent = new MostRecent();
+    StudentMostRecentContainerType mostRecent = new StudentMostRecentContainerType();
     YearLevelType yearLevel = new YearLevelType();
     yearLevel.setCode("4");
-    mostRecent.setYearLevel(objectFactory.createStudentPersonalTypeMostRecentYearLevel(yearLevel));
-    mostRecent.setParent1Language(objectFactory.createStudentPersonalTypeMostRecentParent1Language("English"));
-    mostRecent.setParent2Language(objectFactory.createStudentPersonalTypeMostRecentParent2Language("French"));
-    mostRecent.setParent1SchoolEducationLevel(objectFactory
-        .createStudentPersonalTypeMostRecentParent1SchoolEducationLevel("High School"));
-    mostRecent.setParent2SchoolEducationLevel(objectFactory
-        .createStudentPersonalTypeMostRecentParent2SchoolEducationLevel("High School"));
-    mostRecent.setParent1NonSchoolEducation(objectFactory
-        .createStudentPersonalTypeMostRecentParent1NonSchoolEducation("Tafe"));
-    mostRecent.setParent2NonSchoolEducation(objectFactory
-        .createStudentPersonalTypeMostRecentParent2NonSchoolEducation("College"));
-    mostRecent.setParent1EmploymentType(objectFactory
-        .createStudentPersonalTypeMostRecentParent1EmploymentType("Self Employed"));
-    mostRecent.setParent2EmploymentType(objectFactory
-        .createStudentPersonalTypeMostRecentParent2EmploymentType("Full Time"));
+    mostRecent.setYearLevel(objectFactory.createStudentMostRecentContainerTypeYearLevel(yearLevel));
+    mostRecent.setParent1Language(objectFactory.createStudentMostRecentContainerTypeParent1Language("English"));
+    mostRecent.setParent2Language(objectFactory.createStudentMostRecentContainerTypeParent2Language("French"));
+    mostRecent.setParent1SchoolEducationLevel(objectFactory.createStudentMostRecentContainerTypeParent1SchoolEducationLevel("High School"));
+    mostRecent.setParent2SchoolEducationLevel(objectFactory.createStudentMostRecentContainerTypeParent2SchoolEducationLevel("High School"));
+    mostRecent.setParent1NonSchoolEducation(objectFactory.createStudentMostRecentContainerTypeParent1NonSchoolEducation("Tafe"));
+    mostRecent.setParent2NonSchoolEducation(objectFactory.createStudentMostRecentContainerTypeParent2NonSchoolEducation("College"));
+    mostRecent.setParent1EmploymentType(objectFactory.createStudentMostRecentContainerTypeParent1EmploymentType("Self Employed"));
+    mostRecent.setParent2EmploymentType(objectFactory.createStudentMostRecentContainerTypeParent2EmploymentType("Full Time"));
     studentPersonalType.setMostRecent(objectFactory.createStudentPersonalTypeMostRecent(mostRecent));
 
     PersonInfoType personInfo = new PersonInfoType();
@@ -141,7 +140,7 @@ public class StudentPersonalConsumerTest extends BaseTest {
     demographics.setIndigenousStatus(objectFactory.createDemographicsTypeIndigenousStatus("9"));
     demographics.setCountryOfBirth(objectFactory.createDemographicsTypeCountryOfBirth("AUS"));
 
-    Religion religion = new Religion();
+    ReligionType religion = new ReligionType();
     religion.setCode("0001");
     demographics.setReligion(objectFactory.createDemographicsTypeReligion(religion));
     personInfo.setDemographics(objectFactory.createPersonInfoTypeDemographics(demographics));
@@ -151,15 +150,15 @@ public class StudentPersonalConsumerTest extends BaseTest {
     phoneNumber.setType("0096");
     phoneNumber.setNumber("+61400000000");
     phoneNumberList.getPhoneNumber().add(phoneNumber);
-    personInfo.setPhoneNumberList(objectFactory.createPhoneNumberList(phoneNumberList));
+    personInfo.setPhoneNumberList(objectFactory.createPersonInfoTypePhoneNumberList(phoneNumberList));
 
     EmailListType emailList = new EmailListType();
     EmailType email = new EmailType();
     email.setType("06"); // AUCodeSetsEmailTypeType.WORK
     email.setValue("the.email@not.a.real.domain");
     emailList.getEmail().add(email);
-    personInfo.setEmailList(objectFactory.createEmailList(emailList));
-    
+    personInfo.setEmailList(objectFactory.createPersonInfoTypeEmailList(emailList));
+
     AddressListType addresses = objectFactory.createAddressListType();
     addresses.getAddress().add(StudentPersonalRefIds.getAddress(objectFactory, "123 Address Line One", "Address Line Two"));
     addresses.getAddress().add(StudentPersonalRefIds.getAddress(objectFactory, "234 Address Line One", null));
@@ -167,18 +166,18 @@ public class StudentPersonalConsumerTest extends BaseTest {
     studentPersonalType.setPersonInfo(personInfo);
     studentPersonalType.setStateProvinceId(objectFactory.createStudentPersonalTypeStateProvinceId("W123456789"));
 
-    OtherIdList otherIdList = new OtherIdList();
-    OtherId otherId = new OtherId();
+    OtherIdListType otherIdList = new OtherIdListType();
+    OtherIdType otherId = new OtherIdType();
     otherId.setType("0004");
     otherId.setValue("identifier");
     otherIdList.getOtherId().add(otherId);
-    otherId = new OtherId();
+    otherId = new OtherIdType();
     otherId.setType("0003");
     otherId.setValue("otherid");
     otherIdList.getOtherId().add(otherId);
-    otherId = new OtherId();
+    otherId = new OtherIdType();
     otherId.setType(PersonalStudentIdService.PERSONAL_STUDENT_IDENTIFIER_TYPE);
-    otherId.setValue(PersonalStudentIdService.getIdentifier(1));
+    otherId.setValue(StudentPersonalRefIds.PSI_ID_1);
     otherIdList.getOtherId().add(otherId);
     studentPersonalType.setOtherIdList(objectFactory.createStudentPersonalTypeOtherIdList(otherIdList));
 
@@ -186,19 +185,19 @@ public class StudentPersonalConsumerTest extends BaseTest {
     String xmlExpectedTo = studentTester.getXML(studentPersonalType);
 
     studentPersonalType.setRefId(StudentPersonalRefIds.REF_ID_2);
-    otherId.setValue(PersonalStudentIdService.getIdentifier(2));
+    otherId.setValue(StudentPersonalRefIds.PSI_ID_2);
     studentTester.doCreateOne(studentPersonalType);
+    
     studentPersonalType.setRefId(StudentPersonalRefIds.REF_ID_3);
-    otherId.setValue(PersonalStudentIdService.getIdentifier(3));
+    otherId.setValue(StudentPersonalRefIds.PSI_ID_3);
     studentTester.doCreateOne(studentPersonalType);
-    
+
     studentPersonalType.setRefId(StudentPersonalRefIds.REF_ID_4);
-    otherId.setValue(PersonalStudentIdService.getIdentifier(4));
+    otherId.setValue(StudentPersonalRefIds.PSI_ID_4);
     studentTester.doCreateOne(studentPersonalType);
-    
+
     studentPersonalType.setRefId(StudentPersonalRefIds.REF_ID_5);
-    otherId.setValue(PersonalStudentIdService.getIdentifier(5));
-    studentPersonalType.setOtherIdList(null);
+    otherId.setValue(StudentPersonalRefIds.PSI_ID_5);
     studentTester.doCreateOne(studentPersonalType);
 
     StudentPersonalType getResult = studentTester.doGetOne(StudentPersonalRefIds.REF_ID_1);
@@ -214,11 +213,10 @@ public class StudentPersonalConsumerTest extends BaseTest {
   @Before
   public void setup() {
     ConsumerLoader.initialise("TestConsumer");
-    studentTester = new ConsumerTest<StudentPersonalType, StudentPersonalCollectionType>(StudentPersonalType.class,
-        "StudentPersonal", StudentPersonalCollectionType.class, "StudentPersonals");
+    studentTester = new ConsumerTest<StudentPersonalType, StudentPersonalCollectionType>(StudentPersonalType.class, "StudentPersonal", StudentPersonalCollectionType.class, "StudentPersonals");
     studentTester.testDeleteMany(REF_IDS);
   }
-  
+
   @Test
   public void testUpdateSingle() throws Exception {
     List<Response> responses = studentTester.testGetSingle(StudentPersonalRefIds.REF_ID_1);
@@ -293,8 +291,8 @@ public class StudentPersonalConsumerTest extends BaseTest {
     Assert.assertNull(deleteResponse.getDataObject());
     Assert.assertEquals(HttpStatus.NO_CONTENT.value(), deleteResponse.getStatus());
   }
-  
-  @Test 
+
+  @Test
   public void testCreatePSIWithNullList() throws UnmarshalException, UnsupportedMediaTypeExcpetion {
     String xml = studentTester.getFileContents("student.xml");
     StudentPersonalType studentPersonal = studentTester.fromXML(xml);
@@ -309,7 +307,7 @@ public class StudentPersonalConsumerTest extends BaseTest {
     Assert.assertFalse(PersonalStudentIdService.hasIdentifier(studentPersonal));
     Assert.assertTrue(PersonalStudentIdService.hasIdentifier(studentPersonalResponse));
     Assert.assertEquals(1, studentPersonalResponse.getOtherIdList().getValue().getOtherId().size());
-    
+
     List<Response> deleteResponses = studentTester.testDeleteOne(REF_ID_1);
     Assert.assertNotNull(deleteResponses);
     Assert.assertEquals(1, deleteResponses.size());
@@ -317,8 +315,8 @@ public class StudentPersonalConsumerTest extends BaseTest {
     Assert.assertNull(deleteResponse.getDataObject());
     Assert.assertEquals(HttpStatus.NO_CONTENT.value(), deleteResponse.getStatus());
   }
-  
-  @Test 
+
+  @Test
   public void testCreatePSI() throws UnmarshalException, UnsupportedMediaTypeExcpetion {
     String xml = studentTester.getFileContents("student.xml");
     StudentPersonalType studentPersonal = studentTester.fromXML(xml);
@@ -331,8 +329,8 @@ public class StudentPersonalConsumerTest extends BaseTest {
     Assert.assertEquals(REF_ID_1, studentPersonalResponse.getRefId());
     Assert.assertFalse(PersonalStudentIdService.hasIdentifier(studentPersonal));
     Assert.assertTrue(PersonalStudentIdService.hasIdentifier(studentPersonalResponse));
-    Assert.assertEquals(studentPersonal.getOtherIdList().getValue().getOtherId().size()+1, studentPersonalResponse.getOtherIdList().getValue().getOtherId().size());
-    
+    Assert.assertEquals(studentPersonal.getOtherIdList().getValue().getOtherId().size() + 1, studentPersonalResponse.getOtherIdList().getValue().getOtherId().size());
+
     List<Response> deleteResponses = studentTester.testDeleteOne(REF_ID_1);
     Assert.assertNotNull(deleteResponses);
     Assert.assertEquals(1, deleteResponses.size());
@@ -340,12 +338,12 @@ public class StudentPersonalConsumerTest extends BaseTest {
     Assert.assertNull(deleteResponse.getDataObject());
     Assert.assertEquals(HttpStatus.NO_CONTENT.value(), deleteResponse.getStatus());
   }
-  
+
   @Test
   public void testNoCreatePSI() throws UnmarshalException, UnsupportedMediaTypeExcpetion {
     String xml = studentTester.getFileContents("student.xml");
     StudentPersonalType studentPersonal = studentTester.fromXML(xml);
-    OtherId psi = new OtherId();
+    OtherIdType psi = new OtherIdType();
     psi.setType(PersonalStudentIdService.PERSONAL_STUDENT_IDENTIFIER_TYPE);
     psi.setValue(PersonalStudentIdService.getIdentifier(6));
     studentPersonal.getOtherIdList().getValue().getOtherId().add(psi);
@@ -358,7 +356,7 @@ public class StudentPersonalConsumerTest extends BaseTest {
     Assert.assertEquals(REF_ID_1, studentPersonalResponse.getRefId());
     Assert.assertTrue(PersonalStudentIdService.hasIdentifier(studentPersonal));
     Assert.assertTrue(PersonalStudentIdService.hasIdentifier(studentPersonalResponse));
-    for (OtherId otherId : studentPersonalResponse.getOtherIdList().getValue().getOtherId()) {
+    for (OtherIdType otherId : studentPersonalResponse.getOtherIdList().getValue().getOtherId()) {
       if (PersonalStudentIdService.PERSONAL_STUDENT_IDENTIFIER_TYPE.equals(otherId.getType())) {
         Assert.assertEquals(psi.getValue(), otherId.getValue());
       }
@@ -372,9 +370,7 @@ public class StudentPersonalConsumerTest extends BaseTest {
     Assert.assertNull(deleteResponse.getDataObject());
     Assert.assertEquals(HttpStatus.NO_CONTENT.value(), deleteResponse.getStatus());
   }
-  
-  
-  
+
   @Test
   public void testCreateUpdateDelete() {
     List<Response> createResponses = studentTester.testCreateOne("student.xml");
@@ -392,23 +388,24 @@ public class StudentPersonalConsumerTest extends BaseTest {
     Assert.assertEquals(REF_ID_1, studentPersonal.getRefId());
     Assert.assertEquals(3, studentPersonal.getOtherIdList().getValue().getOtherId().size());
     Assert.assertEquals(2, studentPersonal.getPersonInfo().getAddressList().getValue().getAddress().size());
-    
+
     studentPersonal.getPersonInfo().getAddressList().getValue().getAddress().remove(1);
     studentPersonal.getOtherIdList().getValue().getOtherId().remove(1);
-    
+
     List<Response> updateResponses = studentTester.doUpdateOne(studentPersonal, REF_ID_1);
     Assert.assertNotNull(updateResponses);
     Assert.assertEquals(1, updateResponses.size());
     Response updateResponse = updateResponses.get(0);
     Assert.assertNull(updateResponse.getDataObject());
     Assert.assertEquals(HttpStatus.NO_CONTENT.value(), updateResponse.getStatus());
-    
-//    StudentSchoolEnrollmentType enrollmentType = new StudentSchoolEnrollmentType();
-//    enrollmentType.setRefId(REF_ID_2);
-//    enrollmentType.setStudentPersonalRefId(REF_ID_1);
-//    enrollmentType.setSchoolInfoRefId(SchoolInfoConsumerTest.REF_ID);
-//    studentSchoolEnrollmentTester.doCreateOne(enrollmentType);
-      
+
+    // StudentSchoolEnrollmentType enrollmentType = new
+    // StudentSchoolEnrollmentType();
+    // enrollmentType.setRefId(REF_ID_2);
+    // enrollmentType.setStudentPersonalRefId(REF_ID_1);
+    // enrollmentType.setSchoolInfoRefId(SchoolInfoConsumerTest.REF_ID);
+    // studentSchoolEnrollmentTester.doCreateOne(enrollmentType);
+
     List<Response> responses = studentTester.testGetSingle(REF_ID_1);
     Assert.assertNotNull(responses);
     Assert.assertEquals(1, responses.size());
@@ -418,22 +415,22 @@ public class StudentPersonalConsumerTest extends BaseTest {
     Assert.assertEquals(REF_ID_1, updatedStudentPersonal.getRefId());
     Assert.assertEquals(2, updatedStudentPersonal.getOtherIdList().getValue().getOtherId().size());
     Assert.assertEquals(1, updatedStudentPersonal.getPersonInfo().getAddressList().getValue().getAddress().size());
-    
-//    studentSchoolEnrollmentTester.testDeleteOne(REF_ID_2);
-//    studentTester.testDeleteOne(REF_ID_1);
+
+    // studentSchoolEnrollmentTester.testDeleteOne(REF_ID_2);
+    // studentTester.testDeleteOne(REF_ID_1);
   }
-  
+
   @Test
   public void testServicePathTeachingGroup() {
     QueryCriteria queryCriteria = new QueryCriteria();
     queryCriteria.addPredicate(new QueryPredicate("TeachingGroups", QueryOperator.EQUAL, TeachingGroupConsumerTest.REF_ID));
 
     List<Response> responses = studentTester.testServicePath(queryCriteria, 10000, 0);
-    
+
     Assert.assertNotNull(responses);
     Assert.assertEquals(1, responses.size());
     Response response = responses.get(0);
-    
+
     StudentPersonalCollectionType studentPersonalCollectionType = (StudentPersonalCollectionType) response.getDataObject();
     Assert.assertNotNull(studentPersonalCollectionType.getStudentPersonal());
     Assert.assertFalse(studentPersonalCollectionType.getStudentPersonal().isEmpty());

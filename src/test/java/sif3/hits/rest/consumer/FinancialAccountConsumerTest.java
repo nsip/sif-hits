@@ -48,7 +48,7 @@ public class FinancialAccountConsumerTest extends BaseTest {
     financialTester.doCreateOne(financialAccount);
 
     financialAccount.setRefId(FinancialAccountRefIds.REF_ID_1);
-    financialAccount.setSubAccountRefId(objectFactory.createFinancialAccountTypeSubAccountRefId(FinancialAccountRefIds.REF_ID_2));
+    financialAccount.setParentAccountRefId(objectFactory.createFinancialAccountTypeParentAccountRefId(FinancialAccountRefIds.REF_ID_2));
     financialTester.doCreateOne(financialAccount);
     String xmlExpectedTo = financialTester.getXML(financialAccount);
     

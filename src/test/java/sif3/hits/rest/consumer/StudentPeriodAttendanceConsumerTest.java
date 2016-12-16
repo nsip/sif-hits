@@ -10,11 +10,11 @@ import org.junit.Test;
 import org.springframework.http.HttpStatus;
 
 import sif.dd.au30.model.AttendanceCodeType;
+import sif.dd.au30.model.AuditInfoType;
+import sif.dd.au30.model.CreationUserType;
 import sif.dd.au30.model.ObjectFactory;
 import sif.dd.au30.model.StudentPeriodAttendanceCollectionType;
 import sif.dd.au30.model.StudentPeriodAttendanceType;
-import sif.dd.au30.model.StudentPeriodAttendanceType.AuditInfo;
-import sif.dd.au30.model.StudentPeriodAttendanceType.AuditInfo.CreationUser;
 import sif3.common.ws.BulkOperationResponse;
 import sif3.common.ws.CreateOperationStatus;
 import sif3.common.ws.OperationStatus;
@@ -50,12 +50,12 @@ public class StudentPeriodAttendanceConsumerTest extends BaseTest {
     studentPeriodAttendance.setSchoolYear(objectFactory.createStudentPeriodAttendanceTypeSchoolYear(getDate("2014")));
     studentPeriodAttendance.setAttendanceComment(objectFactory
         .createStudentPeriodAttendanceTypeAttendanceComment("The Comments"));
-    AuditInfo auditInfo = new AuditInfo();
+    AuditInfoType auditInfo = new AuditInfoType();
     Calendar calendar = Calendar.getInstance();
     calendar.set(2014, 12, 20, 15, 17, 54);
     calendar.set(Calendar.MILLISECOND, 444);
     auditInfo.setCreationDateTime(calendar);
-    CreationUser creationUser = new CreationUser();
+    CreationUserType creationUser = new CreationUserType();
     creationUser.setType("Teacher");
     creationUser.setUserId("ez204ff0");
     auditInfo.setCreationUser(creationUser);

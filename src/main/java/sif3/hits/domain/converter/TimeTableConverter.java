@@ -7,8 +7,8 @@ import java.util.Set;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import sif.dd.au30.model.TimeTableDayType;
 import sif.dd.au30.model.TimeTableType;
-import sif.dd.au30.model.TimeTableType.TimeTableDayList;
 import sif3.hits.domain.converter.factory.IObjectFactory;
 import sif3.hits.domain.model.TimeTable;
 import sif3.hits.domain.model.TimeTableDay;
@@ -39,7 +39,7 @@ public class TimeTableConverter extends HitsConverter<TimeTableType, TimeTable> 
       target.setTimeTableCreationDate(objectFactory.createTimeTableTypeTimeTableCreationDate(getDateValue(source.getTimeTableCreationDate())));
       target.setStartDate(objectFactory.createTimeTableTypeStartDate(getDateValue(source.getStartDate())));
       target.setEndDate(objectFactory.createTimeTableTypeEndDate(getDateValue(source.getEndDate())));
-      target.setTimeTableDayList(new TimeTableDayList());
+      target.setTimeTableDayList(objectFactory.createTimeTableDayListType());
       if (source.getTimeTableDays() != null && !source.getTimeTableDays().isEmpty()) {
         target.getTimeTableDayList().getTimeTableDay().addAll(timeTableDayConverter.toSifModelList(source.getTimeTableDays()));
       }
@@ -78,6 +78,7 @@ public class TimeTableConverter extends HitsConverter<TimeTableType, TimeTable> 
 
   /**
    * If we could remove the composite key, this would not be neccessary.
+   * 
    * @param source
    * @param target
    */
@@ -88,7 +89,7 @@ public class TimeTableConverter extends HitsConverter<TimeTableType, TimeTable> 
     }
     target.getTimeTableDays().clear();
     if (source.getTimeTableDayList() != null && source.getTimeTableDayList().getTimeTableDay() != null) {
-      for (sif.dd.au30.model.TimeTableType.TimeTableDayList.TimeTableDay sourceTimeTableDay : source.getTimeTableDayList().getTimeTableDay()) {
+      for (TimeTableDayType sourceTimeTableDay : source.getTimeTableDayList().getTimeTableDay()) {
         TimeTableDay targetTimeTableDay = currentDays.get(sourceTimeTableDay.getDayId());
         if (targetTimeTableDay == null) {
           targetTimeTableDay = new TimeTableDay();

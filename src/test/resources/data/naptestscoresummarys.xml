@@ -1,0 +1,25 @@
+<NAPTestScoreSummarys xmlns="http://www.sifassociation.org/au/datamodel/3.4">
+<NAPTestScoreSummary RefId="0e99d081-a9ab-46e3-a5d5-a4864d35c3ca">
+  <SchoolInfoRefId>6dafb630-c439-41e3-9aa0-81f4dbd909ab</SchoolInfoRefId>
+  <SchoolACARAId>48116</SchoolACARAId>
+  <NAPTestRefId>fe555ae0-2abe-474b-8dca-e8f97ec58b9e</NAPTestRefId>
+  <NAPTestLocalId>NAPLAN-Reading-Yr3-2015</NAPTestLocalId>
+  <DomainNationalAverage>63</DomainNationalAverage>
+  <DomainSchoolAverage>74</DomainSchoolAverage>
+  <DomainJurisdictionAverage>77</DomainJurisdictionAverage>
+  <DomainTopNational60Percent>90</DomainTopNational60Percent>
+  <DomainBottomNational60Percent>68</DomainBottomNational60Percent>
+</NAPTestScoreSummary>
+<NAPTestScoreSummary RefId="82c077f0-8294-4586-b7ac-93774ff1fcc2">
+  <SchoolInfoRefId>6dafb630-c439-41e3-9aa0-81f4dbd909ab</SchoolInfoRefId>
+  <SchoolACARAId>48116</SchoolACARAId>
+  <NAPTestRefId>fe555ae0-2abe-474b-8dca-e8f97ec58b9e</NAPTestRefId>
+  <NAPTestLocalId>NAPLAN-Reading-Yr3-2015</NAPTestLocalId>
+  <DomainNationalAverage>63</DomainNationalAverage>
+  <DomainSchoolAverage>74</DomainSchoolAverage>
+  <DomainJurisdictionAverage>77</DomainJurisdictionAverage>
+  <DomainTopNational60Percent>90</DomainTopNational60Percent>
+  <DomainBottomNational60Percent>68</DomainBottomNational60Percent>
+</NAPTestScoreSummary>
+
+</NAPTestScoreSummarys>

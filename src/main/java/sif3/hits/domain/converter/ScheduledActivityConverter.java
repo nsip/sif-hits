@@ -8,12 +8,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import sif.dd.au30.model.AUCodeSetsScheduledActivityTypeType;
+import sif.dd.au30.model.RoomListType;
+import sif.dd.au30.model.ScheduledActivityOverrideType;
 import sif.dd.au30.model.ScheduledActivityType;
-import sif.dd.au30.model.ScheduledActivityType.RoomList;
-import sif.dd.au30.model.ScheduledActivityType.StudentList;
-import sif.dd.au30.model.ScheduledActivityType.TeacherList;
-import sif.dd.au30.model.ScheduledActivityType.TeacherList.TeacherCover;
-import sif.dd.au30.model.ScheduledActivityType.TeachingGroupList;
+import sif.dd.au30.model.ScheduledTeacherListType;
+import sif.dd.au30.model.StudentsType;
+import sif.dd.au30.model.TeacherCoverType;
+import sif.dd.au30.model.TeachingGroupListType;
 import sif.dd.au30.model.YearLevelType;
 import sif.dd.au30.model.YearLevelsType;
 import sif3.hits.domain.converter.factory.IObjectFactory;
@@ -50,26 +51,26 @@ public class ScheduledActivityConverter extends HitsConverter<ScheduledActivityT
       target.setActivityName(objectFactory.createScheduledActivityTypeActivityName(source.getName()));
       target.setActivityComment(objectFactory.createScheduledActivityTypeActivityComment(source.getComment()));
 
-      RoomList roomList = new RoomList();
+      RoomListType roomList = objectFactory.createRoomListType();
       for (String roomInfoRefId : source.getRoomInfoRefIds()) {
         roomList.getRoomInfoRefId().add(roomInfoRefId);
       }
       target.setRoomList(objectFactory.createScheduledActivityTypeRoomList(roomList));
 
-      StudentList studentList = new StudentList();
+      StudentsType studentList = objectFactory.createStudentsType();
       for (String studentPersonalRefId : source.getStudentPersonalRefIds()) {
         studentList.getStudentPersonalRefId().add(studentPersonalRefId);
       }
       target.setStudentList(objectFactory.createScheduledActivityTypeStudentList(studentList));
 
-      TeachingGroupList teachingGroupList = new TeachingGroupList();
+      TeachingGroupListType teachingGroupList = objectFactory.createTeachingGroupListType();
       for (String teachingGroupRefId : source.getTeachingGroupRefIds()) {
         teachingGroupList.getTeachingGroupRefId().add(teachingGroupRefId);
       }
       target.setTeachingGroupList(objectFactory.createScheduledActivityTypeTeachingGroupList(teachingGroupList));
 
-      List<TeacherCover> teachers = scheduledActivityTeacherConverter.toSifModelList(source.getTeachers());
-      TeacherList teacherList = new TeacherList();
+      List<TeacherCoverType> teachers = scheduledActivityTeacherConverter.toSifModelList(source.getTeachers());
+      ScheduledTeacherListType teacherList = objectFactory.createScheduledTeacherListType();
       teacherList.getTeacherCover().addAll(teachers);
       target.setTeacherList(objectFactory.createScheduledActivityTypeTeacherList(teacherList));
 
@@ -79,7 +80,7 @@ public class ScheduledActivityConverter extends HitsConverter<ScheduledActivityT
       yearLevelsType.getYearLevel().add(yearLevelType);
       target.setYearLevels(objectFactory.createScheduledActivityTypeYearLevels(yearLevelsType));
 
-      sif.dd.au30.model.ScheduledActivityType.Override override = objectFactory.createScheduledActivityTypeOverride();
+      ScheduledActivityOverrideType override = objectFactory.createScheduledActivityOverrideType();
       override.setValue(source.getOverride());
       override.setDateOfOverride(getDateValue(source.getDateOfOverride()));
       target.setOverride(objectFactory.createScheduledActivityTypeOverride(override));
@@ -106,28 +107,28 @@ public class ScheduledActivityConverter extends HitsConverter<ScheduledActivityT
       target.setComment(getJAXBValue(source.getActivityComment()));
 
       Set<String> roomInfoRefIds = new HashSet<String>();
-      RoomList roomList = getJAXBValue(source.getRoomList());
+      RoomListType roomList = getJAXBValue(source.getRoomList());
       if (roomList != null && roomList.getRoomInfoRefId() != null) {
         roomInfoRefIds.addAll(roomList.getRoomInfoRefId());
       }
       target.setRoomInfoRefIds(roomInfoRefIds);
 
       Set<String> studentPersonalRefIds = new HashSet<String>();
-      StudentList studentList = getJAXBValue(source.getStudentList());
+      StudentsType studentList = getJAXBValue(source.getStudentList());
       if (studentList != null && studentList.getStudentPersonalRefId() != null) {
         studentPersonalRefIds.addAll(studentList.getStudentPersonalRefId());
       }
       target.setStudentPersonalRefIds(studentPersonalRefIds);
 
       Set<String> teachingGroupRefIds = new HashSet<String>();
-      TeachingGroupList teachingGroupList = getJAXBValue(source.getTeachingGroupList());
+      TeachingGroupListType teachingGroupList = getJAXBValue(source.getTeachingGroupList());
       if (teachingGroupList != null && teachingGroupList.getTeachingGroupRefId() != null) {
         teachingGroupRefIds.addAll(teachingGroupList.getTeachingGroupRefId());
       }
       target.setTeachingGroupRefIds(teachingGroupRefIds);
 
       Set<ScheduledActivityTeacher> teachers = new HashSet<ScheduledActivityTeacher>();
-      TeacherList teacherList = getJAXBValue(source.getTeacherList());
+      ScheduledTeacherListType teacherList = getJAXBValue(source.getTeacherList());
       if (teacherList != null && teacherList.getTeacherCover() != null) {
         teachers.addAll(scheduledActivityTeacherConverter.toHitsModelList(teacherList.getTeacherCover()));
         for (ScheduledActivityTeacher teacher : teachers) {
@@ -149,7 +150,7 @@ public class ScheduledActivityConverter extends HitsConverter<ScheduledActivityT
         }
       }
 
-      sif.dd.au30.model.ScheduledActivityType.Override override = getJAXBValue(source.getOverride());
+      ScheduledActivityOverrideType override = getJAXBValue(source.getOverride());
       if (override != null) {
         target.setOverride(override.getValue());
         target.setDateOfOverride(getDateValue(override.getDateOfOverride()));

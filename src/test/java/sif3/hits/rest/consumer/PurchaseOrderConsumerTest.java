@@ -10,14 +10,14 @@ import org.junit.Test;
 import org.springframework.http.HttpStatus;
 
 import sif.dd.au30.model.AUCodeSetsYesOrNoCategoryType;
+import sif.dd.au30.model.ExpenseAccountType;
+import sif.dd.au30.model.ExpenseAccountsType;
 import sif.dd.au30.model.MonetaryAmountType;
 import sif.dd.au30.model.ObjectFactory;
 import sif.dd.au30.model.PurchaseOrderCollectionType;
 import sif.dd.au30.model.PurchaseOrderType;
-import sif.dd.au30.model.PurchaseOrderType.PurchasingItems;
-import sif.dd.au30.model.PurchaseOrderType.PurchasingItems.PurchasingItem;
-import sif.dd.au30.model.PurchaseOrderType.PurchasingItems.PurchasingItem.ExpenseAccounts;
-import sif.dd.au30.model.PurchaseOrderType.PurchasingItems.PurchasingItem.ExpenseAccounts.ExpenseAccount;
+import sif.dd.au30.model.PurchasingItemType;
+import sif.dd.au30.model.PurchasingItemsType;
 import sif3.common.ws.BulkOperationResponse;
 import sif3.common.ws.CreateOperationStatus;
 import sif3.common.ws.OperationStatus;
@@ -44,40 +44,32 @@ public class PurchaseOrderConsumerTest extends BaseTest implements UsesConstants
   private final String REF_ID_2 = "72abf49f-05de-43e8-ac47-ed78245235eb";
   private final String[] REF_IDS = { REF_ID_1, REF_ID_2 };
 
-  private PurchasingItem getPurchasingItem(ObjectFactory objectFactory, String amount, String description,
-      String itemNumber, String quantity, String delivered, String unitCost) {
-    PurchasingItem purchasingItem = new PurchasingItem();
+  private PurchasingItemType getPurchasingItem(ObjectFactory objectFactory, String amount, String description, String itemNumber, String quantity, String delivered, String unitCost) {
+    PurchasingItemType purchasingItem = new PurchasingItemType();
 
-    ExpenseAccounts expenseAccounts = new ExpenseAccounts();
-    ExpenseAccount expenseAccount = new ExpenseAccount();
+    ExpenseAccountsType expenseAccounts = objectFactory.createExpenseAccountsType();
+    ExpenseAccountType expenseAccount = objectFactory.createExpenseAccountType();
     expenseAccount.setAccountCode("Code");
-    expenseAccount.setAccountingPeriod(objectFactory
-        .createPurchaseOrderTypePurchasingItemsPurchasingItemExpenseAccountsExpenseAccountAccountingPeriod("201504"));
+    expenseAccount.setAccountingPeriod(objectFactory.createExpenseAccountTypeAccountingPeriod("201504"));
 
     MonetaryAmountType monetaryAmount = objectFactory.createMonetaryAmountType();
     monetaryAmount.setCurrency(DEFAULT_CURRENCY_ENUM);
     monetaryAmount.setValue(amount);
     expenseAccount.setAmount(monetaryAmount);
 
-    expenseAccount.setFinancialAccountRefId(objectFactory
-        .createPurchaseOrderTypePurchasingItemsPurchasingItemExpenseAccountsExpenseAccountFinancialAccountRefId(
-            FinancialAccountRefIds.REF_ID_1));
-    expenseAccounts.setExpenseAccount(objectFactory.createPurchaseOrderTypePurchasingItemsPurchasingItemExpenseAccountsExpenseAccount(expenseAccount));
-    purchasingItem.setExpenseAccounts(
-        objectFactory.createPurchaseOrderTypePurchasingItemsPurchasingItemExpenseAccounts(expenseAccounts));
+    expenseAccount.setFinancialAccountRefId(objectFactory.createExpenseAccountTypeFinancialAccountRefId(FinancialAccountRefIds.REF_ID_1));
+    expenseAccounts.getExpenseAccount().add(expenseAccount);
+    purchasingItem.setExpenseAccounts(objectFactory.createPurchasingItemTypeExpenseAccounts(expenseAccounts));
 
     purchasingItem.setItemDescription(description);
-    purchasingItem
-        .setItemNumber(objectFactory.createPurchaseOrderTypePurchasingItemsPurchasingItemItemNumber(itemNumber));
-    purchasingItem.setQuantity(objectFactory.createPurchaseOrderTypePurchasingItemsPurchasingItemQuantity(quantity));
-    purchasingItem.setQuantityDelivered(
-        objectFactory.createPurchaseOrderTypePurchasingItemsPurchasingItemQuantityDelivered(delivered));
+    purchasingItem.setItemNumber(objectFactory.createPurchasingItemTypeItemNumber(itemNumber));
+    purchasingItem.setQuantity(objectFactory.createPurchasingItemTypeQuantity(quantity));
+    purchasingItem.setQuantityDelivered(objectFactory.createPurchasingItemTypeQuantityDelivered(delivered));
 
     MonetaryAmountType monetaryAmountType = new MonetaryAmountType();
     monetaryAmountType.setCurrency(DEFAULT_CURRENCY_ENUM);
     monetaryAmountType.setValue(unitCost);
-    purchasingItem
-        .setUnitCost(objectFactory.createPurchaseOrderTypePurchasingItemsPurchasingItemUnitCost(monetaryAmountType));
+    purchasingItem.setUnitCost(objectFactory.createPurchasingItemTypeUnitCost(monetaryAmountType));
     return purchasingItem;
   }
 
@@ -87,20 +79,15 @@ public class PurchaseOrderConsumerTest extends BaseTest implements UsesConstants
     PurchaseOrderType purchaseOrderType = new PurchaseOrderType();
     purchaseOrderType.setRefId(PurchaseOrderRefIds.REF_ID_1);
 
-    purchaseOrderType.setChargedLocationInfoRefId(
-        objectFactory.createPurchaseOrderTypeChargedLocationInfoRefId(LocationInfoRefIds.REF_ID_1));
+    purchaseOrderType.setChargedLocationInfoRefId(objectFactory.createPurchaseOrderTypeChargedLocationInfoRefId(LocationInfoRefIds.REF_ID_1));
     purchaseOrderType.setCreationDate(objectFactory.createPurchaseOrderTypeCreationDate(getDate("2015-02-23")));
-    purchaseOrderType.setEmployeePersonalRefId(
-        objectFactory.createPurchaseOrderTypeEmployeePersonalRefId(StaffPersonalRefIds.REF_ID_1));
+    purchaseOrderType.setEmployeePersonalRefId(objectFactory.createPurchaseOrderTypeEmployeePersonalRefId(StaffPersonalRefIds.REF_ID_1));
     purchaseOrderType.setFormNumber("3");
-    purchaseOrderType
-        .setFullyDelivered(objectFactory.createPurchaseOrderTypeFullyDelivered(AUCodeSetsYesOrNoCategoryType.Y));
+    purchaseOrderType.setFullyDelivered(objectFactory.createPurchaseOrderTypeFullyDelivered(AUCodeSetsYesOrNoCategoryType.Y));
 
-    PurchasingItems purchasingItems = new PurchasingItems();
-    purchasingItems.getPurchasingItem()
-        .add(getPurchasingItem(objectFactory, "20.00", "Description", "123456", "2", "2", "10.00"));
-    purchasingItems.getPurchasingItem()
-        .add(getPurchasingItem(objectFactory, "60.00", "Description", "123156", "3", "3", "20.00"));
+    PurchasingItemsType purchasingItems = new PurchasingItemsType();
+    purchasingItems.getPurchasingItem().add(getPurchasingItem(objectFactory, "20.00", "Description", "123456", "2", "2", "10.00"));
+    purchasingItems.getPurchasingItem().add(getPurchasingItem(objectFactory, "60.00", "Description", "123156", "3", "3", "20.00"));
     purchaseOrderType.setPurchasingItems(purchasingItems);
 
     MonetaryAmountType monetaryAmountType = new MonetaryAmountType();
@@ -137,11 +124,10 @@ public class PurchaseOrderConsumerTest extends BaseTest implements UsesConstants
   @Before
   public void setup() {
     ConsumerLoader.initialise("TestConsumer");
-    purchaseOrderTester = new ConsumerTest<PurchaseOrderType, PurchaseOrderCollectionType>(PurchaseOrderType.class,
-        "PurchaseOrder", PurchaseOrderCollectionType.class, "PurchaseOrders");
+    purchaseOrderTester = new ConsumerTest<PurchaseOrderType, PurchaseOrderCollectionType>(PurchaseOrderType.class, "PurchaseOrder", PurchaseOrderCollectionType.class, "PurchaseOrders");
     purchaseOrderTester.testDeleteMany(REF_IDS);
   }
-  
+
   @Test
   public void testUpdateSingle() throws Exception {
     List<Response> responses = purchaseOrderTester.testGetSingle(PurchaseOrderRefIds.REF_ID_1);
@@ -151,14 +137,14 @@ public class PurchaseOrderConsumerTest extends BaseTest implements UsesConstants
     Assert.assertNotNull(response.getDataObject());
     PurchaseOrderType purchaseOrder = (PurchaseOrderType) response.getDataObject();
     Assert.assertEquals(PurchaseOrderRefIds.REF_ID_1, purchaseOrder.getRefId());
-    
+
     String xmlExpectedFrom = purchaseOrderTester.getXML(purchaseOrder);
-    
+
     List<Response> updateResponses = purchaseOrderTester.doUpdateOne(purchaseOrder, PurchaseOrderRefIds.REF_ID_1);
     Assert.assertNotNull(updateResponses);
     Assert.assertEquals(1, updateResponses.size());
     Assert.assertEquals(updateResponses.get(0).getStatus(), HttpStatus.NO_CONTENT.value());
-    
+
     List<Response> getResponses = purchaseOrderTester.testGetSingle(PurchaseOrderRefIds.REF_ID_1);
     Assert.assertNotNull(getResponses);
     Assert.assertEquals(1, getResponses.size());
@@ -167,7 +153,7 @@ public class PurchaseOrderConsumerTest extends BaseTest implements UsesConstants
     PurchaseOrderType comparisonTo = (PurchaseOrderType) getResponse.getDataObject();
     Assert.assertEquals(PurchaseOrderRefIds.REF_ID_1, comparisonTo.getRefId());
     String xmlExpectedTo = purchaseOrderTester.getXML(comparisonTo);
-    
+
     boolean semiEquals = semiEquals(xmlExpectedFrom, xmlExpectedTo);
     if (!semiEquals) {
       System.out.println("From:\n" + xmlExpectedFrom);
@@ -221,8 +207,7 @@ public class PurchaseOrderConsumerTest extends BaseTest implements UsesConstants
   public void testCreateDeleteMany() {
     final List<String> REF_ID_LIST = Arrays.asList(REF_IDS);
 
-    List<BulkOperationResponse<CreateOperationStatus>> createResponses = purchaseOrderTester
-        .testCreateMany("purchaseorders.xml");
+    List<BulkOperationResponse<CreateOperationStatus>> createResponses = purchaseOrderTester.testCreateMany("purchaseorders.xml");
     Assert.assertNotNull(createResponses);
     Assert.assertEquals(1, createResponses.size());
     BulkOperationResponse<CreateOperationStatus> createResponse = createResponses.get(0);

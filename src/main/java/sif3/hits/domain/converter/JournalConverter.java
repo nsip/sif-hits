@@ -25,7 +25,7 @@ public class JournalConverter extends HitsConverter<JournalType, Journal>impleme
       target.setRefId(source.getRefId());
 
       if (StringUtils.isNotBlank(source.getAmount())) {
-        MonetaryAmountType monetaryAmount = new MonetaryAmountType();
+        MonetaryAmountType monetaryAmount = objectFactory.createMonetaryAmountType();
         monetaryAmount.setCurrency(DEFAULT_CURRENCY_ENUM);
         monetaryAmount.setValue(source.getAmount());
         target.setAmount(monetaryAmount);
@@ -41,7 +41,7 @@ public class JournalConverter extends HitsConverter<JournalType, Journal>impleme
       target.setNote(objectFactory.createJournalTypeNote(source.getNote()));
 
       if (StringUtils.isNotBlank(source.getOriginatingTransactionRefId()) || StringUtils.isNotBlank(source.getOriginationTransactionSIFRefObject())) {
-        OriginatingTransactionRefId originatingTransactionRefId = new OriginatingTransactionRefId();
+        OriginatingTransactionRefId originatingTransactionRefId = objectFactory.createJournalTypeOriginatingTransactionRefId();
         originatingTransactionRefId.setValue(source.getOriginatingTransactionRefId());
         originatingTransactionRefId.setSIFRefObject(source.getOriginationTransactionSIFRefObject());
         target.setOriginatingTransactionRefId(objectFactory.createJournalTypeOriginatingTransactionRefId(originatingTransactionRefId));

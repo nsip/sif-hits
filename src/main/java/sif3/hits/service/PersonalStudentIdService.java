@@ -12,8 +12,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import sif.dd.au30.model.OtherIdType;
 import sif.dd.au30.model.StudentPersonalType;
-import sif.dd.au30.model.StudentPersonalType.OtherIdList.OtherId;
 import sif3.hits.domain.converter.StudentPersonalOtherIdConverter;
 import sif3.hits.domain.shared.dao.PersonalStudentSequenceDAO;
 
@@ -21,10 +21,10 @@ import sif3.hits.domain.shared.dao.PersonalStudentSequenceDAO;
 public class PersonalStudentIdService {
 
   private static final Logger L = LoggerFactory.getLogger(PersonalStudentIdService.class);
-  
+
   @Autowired
   private PersonalStudentSequenceDAO personalStudentSequenceDAO;
-  
+
   @Autowired
   private StudentPersonalOtherIdConverter studentPersonalOtherIdConverter;
 
@@ -54,7 +54,7 @@ public class PersonalStudentIdService {
     if (!hasIdentifier(studentPersonalType)) {
       Integer id = personalStudentSequenceDAO.getNextId();
       String identifier = getIdentifier(getStateCode(studentPersonalType), id);
-      OtherId otherId = new OtherId();
+      OtherIdType otherId = new OtherIdType();
       otherId.setType(PERSONAL_STUDENT_IDENTIFIER_TYPE);
       otherId.setValue(identifier);
       if (studentPersonalType.getOtherIdList() != null && studentPersonalType.getOtherIdList().getValue() != null && studentPersonalType.getOtherIdList().getValue().getOtherId() != null) {
@@ -64,10 +64,10 @@ public class PersonalStudentIdService {
       }
     }
   }
-  
+
   public static String getIdentifier(String typeCode, String stateCode, Integer sequence) {
     String result = null;
-    String identifier = CHECK_FORMAT.format(new Object[]{sequence});
+    String identifier = CHECK_FORMAT.format(new Object[] { sequence });
     LuhnCheckDigit lcd = new LuhnCheckDigit();
     try {
       String checkIndex = lcd.calculate(identifier);
@@ -77,35 +77,40 @@ public class PersonalStudentIdService {
     }
     return result;
   }
-  
+
   public static String getIdentifier(String stateCode, Integer sequence) {
     return getIdentifier(TYPE_CODE, stateCode, sequence);
   }
-  
+
   public static String getIdentifier(Integer sequence) {
     return getIdentifier(TYPE_CODE, STATE_CODE, sequence);
   }
+  
+  public static String getIdentifier(StudentPersonalType studentPersonalType) {
+    String result = null;
 
-  public static boolean hasIdentifier(StudentPersonalType studentPersonalType) {
-    boolean result = false;
-    
     if (studentPersonalType.getOtherIdList() != null && studentPersonalType.getOtherIdList().getValue() != null && studentPersonalType.getOtherIdList().getValue().getOtherId() != null) {
-      List<OtherId> otherIds = studentPersonalType.getOtherIdList().getValue().getOtherId();
-      for (int i = 0; !result && otherIds != null && i < otherIds.size(); i++) {
-        OtherId otherId = otherIds.get(i);
-        result = otherId != null && PERSONAL_STUDENT_IDENTIFIER_TYPE.equals(otherId.getType());
+      List<OtherIdType> otherIds = studentPersonalType.getOtherIdList().getValue().getOtherId();
+      for (int i = 0; result == null && otherIds != null && i < otherIds.size(); i++) {
+        OtherIdType otherId = otherIds.get(i);
+        if (otherId != null && PERSONAL_STUDENT_IDENTIFIER_TYPE.equals(otherId.getType())) {
+          result = otherId.getValue();
+        }
       }
     }
     return result;
+  }
+
+  public static boolean hasIdentifier(StudentPersonalType studentPersonalType) {
+    return getIdentifier(studentPersonalType) != null;
   }
 
   private String getStateCode(StudentPersonalType studentPersonalType) {
     // We are not calculating this from the student
     return STATE_CODE;
   }
-  
-  public static void main(String[] args) {
-    System.out.println(getIdentifier(245883245));
-  }
 
+  public static void main(String[] args) {
+    System.out.println(getIdentifier(5));
+  }
 }

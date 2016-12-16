@@ -10,13 +10,13 @@ import sif.dd.au30.model.AUCodeSetsYesOrNoCategoryType;
 import sif.dd.au30.model.AddressListType;
 import sif.dd.au30.model.AddressType;
 import sif.dd.au30.model.DemographicsType;
-import sif.dd.au30.model.DemographicsType.Religion;
 import sif.dd.au30.model.EmailListType;
 import sif.dd.au30.model.EmailType;
 import sif.dd.au30.model.NameOfRecordType;
 import sif.dd.au30.model.PersonInfoType;
 import sif.dd.au30.model.PhoneNumberListType;
 import sif.dd.au30.model.PhoneNumberType;
+import sif.dd.au30.model.ReligionType;
 import sif3.hits.domain.converter.factory.IObjectFactory;
 import sif3.hits.domain.model.Address;
 import sif3.hits.domain.model.AddressPerson;
@@ -25,7 +25,7 @@ import sif3.hits.domain.model.StudentPerson;
 import sif3.hits.utils.UsesConstants;
 
 @Component
-public class PersonInfoConverter extends HitsConverter<PersonInfoType, Person>implements UsesConstants {
+public class PersonInfoConverter extends HitsConverter<PersonInfoType, Person> implements UsesConstants {
 
   public PersonInfoConverter() {
     super(PersonInfoType.class, null);
@@ -43,40 +43,40 @@ public class PersonInfoConverter extends HitsConverter<PersonInfoType, Person>im
       IObjectFactory objectFactory = getObjectFactory();
       NameOfRecordType name = target.getName();
       if (name == null) {
-        name = new NameOfRecordType();
+        name = objectFactory.createNameOfRecordType();
       }
       nameOfRecordConverter.toSifModel(source, name);
       target.setName(name);
 
-      EmailListType emailList = new EmailListType();
-      EmailType email = new EmailType();
+      EmailListType emailList = objectFactory.createEmailListType();
+      EmailType email = objectFactory.createEmailType();
       email.setType(DEFAULT_EMAIL_TYPE);
       email.setValue(source.getEmail());
       emailList.getEmail().add(email);
-      target.setEmailList(objectFactory.createEmailList(emailList));
+      target.setEmailList(objectFactory.createPersonInfoTypeEmailList(emailList));
 
       if (StringUtils.isNotBlank(source.getPhoneNumber())) {
-        PhoneNumberListType phoneNumberList = new PhoneNumberListType();
-        PhoneNumberType phoneNumber = new PhoneNumberType();
+        PhoneNumberListType phoneNumberList = objectFactory.createPhoneNumberListType();
+        PhoneNumberType phoneNumber = objectFactory.createPhoneNumberType();
         phoneNumber.setNumber(source.getPhoneNumber());
         phoneNumber.setType(DEFAULT_PHONE_TYPE);
         phoneNumberList.getPhoneNumber().add(phoneNumber);
-        target.setPhoneNumberList(objectFactory.createPhoneNumberList(phoneNumberList));
+        target.setPhoneNumberList(objectFactory.createPersonInfoTypePhoneNumberList(phoneNumberList));
       }
 
-      DemographicsType demographics = new DemographicsType();
+      DemographicsType demographics = objectFactory.createDemographicsType();
       demographics.setSex(objectFactory.createDemographicsTypeSex(source.getSex()));
       demographics.setBirthDate(objectFactory.createDemographicsTypeBirthDate(getDateValue(source.getBirthDate())));
 
       if (source instanceof StudentPerson) {
         StudentPerson studentSource = (StudentPerson) source;
-        if (StringUtils.isNotBlank(studentSource.getIndigenousStatus()) || StringUtils.isNotBlank(studentSource.getLbote()) || StringUtils.isNotBlank(studentSource.getCountryOfBirth())
-            || StringUtils.isNotBlank(studentSource.getReligion())) {
+        if (StringUtils.isNotBlank(studentSource.getIndigenousStatus()) || StringUtils.isNotBlank(studentSource.getLbote())
+            || StringUtils.isNotBlank(studentSource.getCountryOfBirth()) || StringUtils.isNotBlank(studentSource.getReligion())) {
           demographics.setLBOTE(objectFactory.createDemographicsTypeLBOTE(getEnumValue(studentSource.getLbote(), AUCodeSetsYesOrNoCategoryType.class)));
           demographics.setIndigenousStatus(objectFactory.createDemographicsTypeIndigenousStatus(studentSource.getIndigenousStatus()));
           demographics.setCountryOfBirth(objectFactory.createDemographicsTypeCountryOfBirth(studentSource.getCountryOfBirth()));
           if (StringUtils.isNotBlank(studentSource.getReligion())) {
-            Religion religion = objectFactory.createDemographicsTypeReligion();
+            ReligionType religion = objectFactory.createReligionType();
             religion.setCode(studentSource.getReligion());
             demographics.setReligion(objectFactory.createDemographicsTypeReligion(religion));
           }
@@ -91,7 +91,7 @@ public class PersonInfoConverter extends HitsConverter<PersonInfoType, Person>im
         }
       }
 
-      target.setDemographics(objectFactory.createDemographics(demographics));
+      target.setDemographics(objectFactory.createPersonInfoTypeDemographics(demographics));
     }
   }
 
@@ -139,7 +139,7 @@ public class PersonInfoConverter extends HitsConverter<PersonInfoType, Person>im
           studentTarget.setCountryOfBirth(getJAXBValue(demographics.getCountryOfBirth()));
           studentTarget.setLbote(getJAXBEnumValue(demographics.getLBOTE()));
 
-          Religion religion = getJAXBValue(demographics.getReligion());
+          ReligionType religion = getJAXBValue(demographics.getReligion());
           if (religion != null && StringUtils.isNotBlank(religion.getCode())) {
             studentTarget.setReligion(religion.getCode());
           }

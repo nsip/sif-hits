@@ -13,11 +13,11 @@
 		<!-- Dependency Versions -->
 		<java.version>1.7</java.version>
 
-		<sif3.framework.version>v0.10.0-beta</sif3.framework.version>
-		<sif3.datamodel.version>3.4</sif3.datamodel.version>
+		<sif3.framework.version>0.10.0-beta</sif3.framework.version>
+		<sif3.datamodel.version>au-3.4-NAPv2</sif3.datamodel.version>
 
 		<log4j.version>1.2.14</log4j.version>
-		<slf4j.version>1.7.6</slf4j.version>
+		<slf4j.version>1.5.8</slf4j.version>
 		<jersey.version>1.19</jersey.version>
 		<hibernate.version>4.3.10.Final</hibernate.version>
 		<jaxb.version>2.2.5</jaxb.version>
@@ -28,34 +28,29 @@
 	<dependencies>
 		<!-- sif3 -->
 		<dependency>
-			<groupId>sif3</groupId>
-			<artifactId>Common</artifactId>
+			<groupId>sif3.framework</groupId>
+			<artifactId>sif3-common</artifactId>
+			<version>${sif3.framework.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>sif3.framework</groupId>
+			<artifactId>sif3-infra-common</artifactId>
+			<version>${sif3.framework.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>sif3.framework</groupId>
+			<artifactId>sif3-infra-model</artifactId>
+			<version>${sif3.framework.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>sif3.framework</groupId>
+			<artifactId>sif3-infra-rest</artifactId>
 			<version>${sif3.framework.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>sif3</groupId>
-			<artifactId>Infra-common</artifactId>
-			<version>${sif3.framework.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>sif3</groupId>
-			<artifactId>Infra-model</artifactId>
-			<version>${sif3.framework.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>sif3</groupId>
-			<artifactId>Infra-rest</artifactId>
-			<version>${sif3.framework.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>sif3</groupId>
-			<artifactId>DataModel_au</artifactId>
+			<artifactId>DataModel</artifactId>
 			<version>${sif3.datamodel.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>sif3</groupId>
-			<artifactId>systemic-framework</artifactId>
-			<version>1.0</version>
 		</dependency>
 
 		<!-- logging -->

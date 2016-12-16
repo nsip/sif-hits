@@ -9,14 +9,14 @@ import org.junit.Test;
 import org.springframework.http.HttpStatus;
 
 import sif.dd.au30.model.ObjectFactory;
+import sif.dd.au30.model.StudentListType;
+import sif.dd.au30.model.TeacherListType;
 import sif.dd.au30.model.TeachingGroupCollectionType;
+import sif.dd.au30.model.TeachingGroupPeriodListType;
+import sif.dd.au30.model.TeachingGroupPeriodType;
+import sif.dd.au30.model.TeachingGroupStudentType;
+import sif.dd.au30.model.TeachingGroupTeacherType;
 import sif.dd.au30.model.TeachingGroupType;
-import sif.dd.au30.model.TeachingGroupType.StudentList;
-import sif.dd.au30.model.TeachingGroupType.StudentList.TeachingGroupStudent;
-import sif.dd.au30.model.TeachingGroupType.TeacherList;
-import sif.dd.au30.model.TeachingGroupType.TeacherList.TeachingGroupTeacher;
-import sif.dd.au30.model.TeachingGroupType.TeachingGroupPeriodList;
-import sif.dd.au30.model.TeachingGroupType.TeachingGroupPeriodList.TeachingGroupPeriod;
 import sif3.common.model.QueryCriteria;
 import sif3.common.model.QueryOperator;
 import sif3.common.model.QueryPredicate;
@@ -42,103 +42,86 @@ public class TeachingGroupConsumerTest extends BaseTest {
     ObjectFactory objectFactory = new ObjectFactory();
     TeachingGroupType teachingGroup = new TeachingGroupType();
     teachingGroup.setRefId(REF_ID);
-    teachingGroup.setSchoolInfoRefId(objectFactory
-        .createTeachingGroupTypeSchoolInfoRefId(SchoolInfoConsumerTest.REF_ID));
-    teachingGroup.setSchoolCourseLocalId(objectFactory
-        .createTeachingGroupTypeSchoolLocalId(SchoolInfoConsumerTest.LOCAL_ID));
+    teachingGroup.setSchoolInfoRefId(objectFactory.createTeachingGroupTypeSchoolInfoRefId(SchoolInfoConsumerTest.REF_ID));
+    teachingGroup.setSchoolCourseLocalId(objectFactory.createTeachingGroupTypeSchoolLocalId(SchoolInfoConsumerTest.LOCAL_ID));
     teachingGroup.setShortName("Short Name");
     teachingGroup.setLongName(objectFactory.createTeachingGroupTypeLongName("Long Name"));
     teachingGroup.setLocalId(LOCAL_ID);
     teachingGroup.setSchoolYear(getDate("2014"));
 
-    TeacherList teacherList = new TeacherList();
-    TeachingGroupTeacher teacher = new TeachingGroupTeacher();
-    teacher
-        .setStaffPersonalRefId(objectFactory
-            .createTeachingGroupTypeTeacherListTeachingGroupTeacherStaffPersonalRefId(StaffPersonalConsumerTest.StaffPersonalRefIds.REF_ID_1));
+    TeacherListType teacherList = new TeacherListType();
+    TeachingGroupTeacherType teacher = new TeachingGroupTeacherType();
+    teacher.setStaffPersonalRefId(objectFactory.createTeachingGroupTeacherTypeStaffPersonalRefId(StaffPersonalConsumerTest.StaffPersonalRefIds.REF_ID_1));
     teacher.setStaffLocalId("ez7b7b7");
     teacher.setAssociation("Class Teacher");
-    teacher.setName(StaffPersonalRefIds.getNameOfRecord(objectFactory));
+    teacher.setName(objectFactory.createTeachingGroupStudentTypeName(StaffPersonalRefIds.getNameOfRecord(objectFactory)));
     teacherList.getTeachingGroupTeacher().add(teacher);
     teachingGroup.setTeacherList(objectFactory.createTeachingGroupTypeTeacherList(teacherList));
 
-    StudentList studentList = new StudentList();
-    TeachingGroupStudent student = new TeachingGroupStudent();
-    student.setStudentPersonalRefId(objectFactory
-        .createTeachingGroupTypeStudentListTeachingGroupStudentStudentPersonalRefId(StudentPersonalRefIds.REF_ID_1));
-    student.setName(StudentPersonalRefIds.getNameOfRecord(objectFactory));
+    StudentListType studentList = new StudentListType();
+    TeachingGroupStudentType student = new TeachingGroupStudentType();
+    student.setStudentPersonalRefId(objectFactory.createTeachingGroupStudentTypeStudentPersonalRefId(StudentPersonalRefIds.REF_ID_1));
+    student.setName(objectFactory.createTeachingGroupStudentTypeName(StudentPersonalRefIds.getNameOfRecord(objectFactory)));
     student.setStudentLocalId(StudentPersonalRefIds.LOCAL_ID);
     studentList.getTeachingGroupStudent().add(student);
 
-    student = new TeachingGroupStudent();
-    student.setStudentPersonalRefId(objectFactory
-        .createTeachingGroupTypeStudentListTeachingGroupStudentStudentPersonalRefId(StudentPersonalRefIds.REF_ID_2));
-    student.setName(StudentPersonalRefIds.getNameOfRecord(objectFactory));
+    student = new TeachingGroupStudentType();
+    student.setStudentPersonalRefId(objectFactory.createTeachingGroupStudentTypeStudentPersonalRefId(StudentPersonalRefIds.REF_ID_2));
+    student.setName(objectFactory.createTeachingGroupStudentTypeName(StudentPersonalRefIds.getNameOfRecord(objectFactory)));
     student.setStudentLocalId(StudentPersonalRefIds.LOCAL_ID);
     studentList.getTeachingGroupStudent().add(student);
 
-    student = new TeachingGroupStudent();
-    student.setStudentPersonalRefId(objectFactory
-        .createTeachingGroupTypeStudentListTeachingGroupStudentStudentPersonalRefId(StudentPersonalRefIds.REF_ID_3));
-    student.setName(StudentPersonalRefIds.getNameOfRecord(objectFactory));
+    student = new TeachingGroupStudentType();
+    student.setStudentPersonalRefId(objectFactory.createTeachingGroupStudentTypeStudentPersonalRefId(StudentPersonalRefIds.REF_ID_3));
+    student.setName(objectFactory.createTeachingGroupStudentTypeName(StudentPersonalRefIds.getNameOfRecord(objectFactory)));
     student.setStudentLocalId(StudentPersonalRefIds.LOCAL_ID);
     studentList.getTeachingGroupStudent().add(student);
 
-    student = new TeachingGroupStudent();
-    student.setStudentPersonalRefId(objectFactory
-        .createTeachingGroupTypeStudentListTeachingGroupStudentStudentPersonalRefId(StudentPersonalRefIds.REF_ID_4));
-    student.setName(StudentPersonalRefIds.getNameOfRecord(objectFactory));
+    student = new TeachingGroupStudentType();
+    student.setStudentPersonalRefId(objectFactory.createTeachingGroupStudentTypeStudentPersonalRefId(StudentPersonalRefIds.REF_ID_4));
+    student.setName(objectFactory.createTeachingGroupStudentTypeName(StudentPersonalRefIds.getNameOfRecord(objectFactory)));
     student.setStudentLocalId(StudentPersonalRefIds.LOCAL_ID);
     studentList.getTeachingGroupStudent().add(student);
 
-    student = new TeachingGroupStudent();
-    student.setStudentPersonalRefId(objectFactory
-        .createTeachingGroupTypeStudentListTeachingGroupStudentStudentPersonalRefId(StudentPersonalRefIds.REF_ID_5));
-    student.setName(StudentPersonalRefIds.getNameOfRecord(objectFactory));
+    student = new TeachingGroupStudentType();
+    student.setStudentPersonalRefId(objectFactory.createTeachingGroupStudentTypeStudentPersonalRefId(StudentPersonalRefIds.REF_ID_5));
+    student.setName(objectFactory.createTeachingGroupStudentTypeName(StudentPersonalRefIds.getNameOfRecord(objectFactory)));
     student.setStudentLocalId(StudentPersonalRefIds.LOCAL_ID);
     studentList.getTeachingGroupStudent().add(student);
 
     teachingGroup.setStudentList(objectFactory.createTeachingGroupTypeStudentList(studentList));
 
     // Need to add TeachingGroupPeriods!
-    TeachingGroupPeriodList periodList = new TeachingGroupPeriodList();
-    TeachingGroupPeriod period = new TeachingGroupPeriod();
-    period.setTimeTableCellRefId(objectFactory.createTeachingGroupTypeTeachingGroupPeriodListTeachingGroupPeriodTimeTableCellRefId(TimeTableCellConsumerTest.REF_ID));
-    period.setRoomNumber(objectFactory.createTeachingGroupTypeTeachingGroupPeriodListTeachingGroupPeriodRoomNumber(RoomInfoConsumerTest.ROOM_NUMBER));
-    period.setCellType(objectFactory.createTeachingGroupTypeTeachingGroupPeriodListTeachingGroupPeriodCellType(TimeTableCellConsumerTest.CELL_TYPE));
-    period.setStaffLocalId(objectFactory.createTeachingGroupTypeTeachingGroupPeriodListTeachingGroupPeriodStaffLocalId(StaffPersonalRefIds.LOCAL_ID));
+    TeachingGroupPeriodListType periodList = new TeachingGroupPeriodListType();
+    TeachingGroupPeriodType period = new TeachingGroupPeriodType();
+    period.setTimeTableCellRefId(objectFactory.createTeachingGroupPeriodTypeTimeTableCellRefId(TimeTableCellConsumerTest.REF_ID));
+    period.setRoomNumber(objectFactory.createTeachingGroupPeriodTypeRoomNumber(RoomInfoConsumerTest.ROOM_NUMBER));
+    period.setCellType(objectFactory.createTeachingGroupPeriodTypeCellType(TimeTableCellConsumerTest.CELL_TYPE));
+    period.setStaffLocalId(objectFactory.createTeachingGroupPeriodTypeStaffLocalId(StaffPersonalRefIds.LOCAL_ID));
     period.setDayId(TimeTableCellConsumerTest.DAY_ID);
-    period.setPeriodId(objectFactory.createTeachingGroupTypeTeachingGroupPeriodListTeachingGroupPeriodPeriodId(TimeTableCellConsumerTest.PERIOD_ID));
+    period.setPeriodId(objectFactory.createTeachingGroupPeriodTypePeriodId(TimeTableCellConsumerTest.PERIOD_ID));
     periodList.getTeachingGroupPeriod().add(period);
     teachingGroup.setTeachingGroupPeriodList(objectFactory.createTeachingGroupTypeTeachingGroupPeriodList(periodList));
-    
+
     teachingGroupTester.doCreateOne(teachingGroup);
     String xmlExpectedTo = teachingGroupTester.getXML(teachingGroup);
 
     teachingGroup.setRefId("6cd60385-006e-4268-92ef-f69ffc8c5c9f");
-    teacher
-        .setStaffPersonalRefId(objectFactory
-            .createTeachingGroupTypeTeacherListTeachingGroupTeacherStaffPersonalRefId(StaffPersonalConsumerTest.StaffPersonalRefIds.REF_ID_2));
+    teacher.setStaffPersonalRefId(objectFactory.createTeachingGroupTeacherTypeStaffPersonalRefId(StaffPersonalConsumerTest.StaffPersonalRefIds.REF_ID_2));
     teachingGroupTester.doCreateOne(teachingGroup);
 
     teachingGroup.setRefId("ef3a3fab-ba19-4974-b1d0-ec2ceb9d9ff6");
-    teacher
-        .setStaffPersonalRefId(objectFactory
-            .createTeachingGroupTypeTeacherListTeachingGroupTeacherStaffPersonalRefId(StaffPersonalConsumerTest.StaffPersonalRefIds.REF_ID_3));
+    teacher.setStaffPersonalRefId(objectFactory.createTeachingGroupTeacherTypeStaffPersonalRefId(StaffPersonalConsumerTest.StaffPersonalRefIds.REF_ID_3));
     teachingGroupTester.doCreateOne(teachingGroup);
 
     teachingGroup.setRefId("af76418f-fcaf-45d3-b0cf-416abac3a810");
-    teacher
-        .setStaffPersonalRefId(objectFactory
-            .createTeachingGroupTypeTeacherListTeachingGroupTeacherStaffPersonalRefId(StaffPersonalConsumerTest.StaffPersonalRefIds.REF_ID_4));
+    teacher.setStaffPersonalRefId(objectFactory.createTeachingGroupTeacherTypeStaffPersonalRefId(StaffPersonalConsumerTest.StaffPersonalRefIds.REF_ID_4));
     teachingGroupTester.doCreateOne(teachingGroup);
 
     teachingGroup.setRefId("e22faf89-f4a6-4ba6-ba3b-95474f259232");
-    teacher
-        .setStaffPersonalRefId(objectFactory
-            .createTeachingGroupTypeTeacherListTeachingGroupTeacherStaffPersonalRefId(StaffPersonalConsumerTest.StaffPersonalRefIds.REF_ID_5));
+    teacher.setStaffPersonalRefId(objectFactory.createTeachingGroupTeacherTypeStaffPersonalRefId(StaffPersonalConsumerTest.StaffPersonalRefIds.REF_ID_5));
     teachingGroupTester.doCreateOne(teachingGroup);
-    
+
     TeachingGroupType getResult = teachingGroupTester.doGetOne(REF_ID);
     String xmlExpectedFrom = teachingGroupTester.getXML(getResult);
     boolean semiEquals = semiEquals(xmlExpectedFrom, xmlExpectedTo);
@@ -151,11 +134,10 @@ public class TeachingGroupConsumerTest extends BaseTest {
   @Before
   public void setup() {
     ConsumerLoader.initialise("TestConsumer");
-    teachingGroupTester = new ConsumerTest<TeachingGroupType, TeachingGroupCollectionType>(TeachingGroupType.class,
-        "TeachingGroup", TeachingGroupCollectionType.class, "TeachingGroups");
+    teachingGroupTester = new ConsumerTest<TeachingGroupType, TeachingGroupCollectionType>(TeachingGroupType.class, "TeachingGroup", TeachingGroupCollectionType.class, "TeachingGroups");
     teachingGroupTester.testDeleteMany(REF_IDS);
   }
-  
+
   @Test
   public void testQBE() {
     ObjectFactory objectFactory = new ObjectFactory();
@@ -176,14 +158,14 @@ public class TeachingGroupConsumerTest extends BaseTest {
     }
     Assert.assertTrue(found);
   }
-  
+
   @Test
   public void testServicePathStudentPersonal() {
     QueryCriteria queryCriteria = new QueryCriteria();
     queryCriteria.addPredicate(new QueryPredicate("StudentPersonals", QueryOperator.EQUAL, StudentPersonalRefIds.REF_ID_1));
 
     List<Response> responses = teachingGroupTester.testServicePath(queryCriteria, 10000, 0);
-    
+
     Assert.assertNotNull(responses);
     Assert.assertEquals(1, responses.size());
     Response response = responses.get(0);
@@ -199,7 +181,7 @@ public class TeachingGroupConsumerTest extends BaseTest {
       Assert.assertNotNull(teachingGroupType.getStudentList().getValue().getTeachingGroupStudent());
       Assert.assertFalse(teachingGroupType.getStudentList().getValue().getTeachingGroupStudent().isEmpty());
       boolean studentFound = false;
-      for (TeachingGroupStudent teachingGroupStudent : teachingGroupType.getStudentList().getValue().getTeachingGroupStudent()) {
+      for (TeachingGroupStudentType teachingGroupStudent : teachingGroupType.getStudentList().getValue().getTeachingGroupStudent()) {
         if (teachingGroupStudent.getStudentPersonalRefId() != null) {
           studentFound = studentFound || StudentPersonalRefIds.REF_ID_1.equals(teachingGroupStudent.getStudentPersonalRefId().getValue());
         }
@@ -208,14 +190,14 @@ public class TeachingGroupConsumerTest extends BaseTest {
     }
     Assert.assertTrue(found);
   }
-  
+
   @Test
   public void testServicePathStaffPersonal() {
     QueryCriteria queryCriteria = new QueryCriteria();
     queryCriteria.addPredicate(new QueryPredicate("StaffPersonals", QueryOperator.EQUAL, StaffPersonalConsumerTest.StaffPersonalRefIds.REF_ID_1));
 
     List<Response> responses = teachingGroupTester.testServicePath(queryCriteria, 10000, 0);
-    
+
     Assert.assertNotNull(responses);
     Assert.assertEquals(1, responses.size());
     Response response = responses.get(0);
@@ -231,7 +213,7 @@ public class TeachingGroupConsumerTest extends BaseTest {
       Assert.assertNotNull(teachingGroupType.getTeacherList().getValue().getTeachingGroupTeacher());
       Assert.assertFalse(teachingGroupType.getTeacherList().getValue().getTeachingGroupTeacher().isEmpty());
       boolean staffFound = false;
-      for (TeachingGroupTeacher teachingGroupTeacher : teachingGroupType.getTeacherList().getValue().getTeachingGroupTeacher()) {
+      for (TeachingGroupTeacherType teachingGroupTeacher : teachingGroupType.getTeacherList().getValue().getTeachingGroupTeacher()) {
         if (teachingGroupTeacher.getStaffPersonalRefId() != null) {
           staffFound = staffFound || StaffPersonalConsumerTest.StaffPersonalRefIds.REF_ID_1.equals(teachingGroupTeacher.getStaffPersonalRefId().getValue());
         }
@@ -240,7 +222,7 @@ public class TeachingGroupConsumerTest extends BaseTest {
     }
     Assert.assertTrue(found);
   }
-  
+
   @Test
   public void testUpdateSingle() throws Exception {
     List<Response> responses = teachingGroupTester.testGetSingle(REF_ID);
@@ -320,8 +302,7 @@ public class TeachingGroupConsumerTest extends BaseTest {
   public void testCreateDeleteMany() {
     final List<String> REF_ID_LIST = Arrays.asList(REF_IDS);
 
-    List<BulkOperationResponse<CreateOperationStatus>> createResponses = teachingGroupTester
-        .testCreateMany("teachinggroups.xml");
+    List<BulkOperationResponse<CreateOperationStatus>> createResponses = teachingGroupTester.testCreateMany("teachinggroups.xml");
     Assert.assertNotNull(createResponses);
     Assert.assertEquals(1, createResponses.size());
     BulkOperationResponse<CreateOperationStatus> createResponse = createResponses.get(0);

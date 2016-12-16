@@ -7,13 +7,13 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import sif.dd.au30.model.StudentListType;
+import sif.dd.au30.model.TeacherListType;
+import sif.dd.au30.model.TeachingGroupPeriodListType;
+import sif.dd.au30.model.TeachingGroupPeriodType;
+import sif.dd.au30.model.TeachingGroupStudentType;
+import sif.dd.au30.model.TeachingGroupTeacherType;
 import sif.dd.au30.model.TeachingGroupType;
-import sif.dd.au30.model.TeachingGroupType.StudentList;
-import sif.dd.au30.model.TeachingGroupType.StudentList.TeachingGroupStudent;
-import sif.dd.au30.model.TeachingGroupType.TeacherList;
-import sif.dd.au30.model.TeachingGroupType.TeacherList.TeachingGroupTeacher;
-import sif.dd.au30.model.TeachingGroupType.TeachingGroupPeriodList;
-import sif.dd.au30.model.TeachingGroupType.TeachingGroupPeriodList.TeachingGroupPeriod;
 import sif3.hits.domain.converter.factory.IObjectFactory;
 import sif3.hits.domain.model.StudentPersonal;
 import sif3.hits.domain.model.TeachingGroup;
@@ -47,21 +47,21 @@ public class TeachingGroupConverter extends HitsConverter<TeachingGroupType, Tea
       target.setShortName(source.getShortName());
       target.setLongName(objectFactory.createTeachingGroupTypeLongName(source.getLongName()));
 
-      List<TeachingGroupStudent> students = teachingGroupStudentConverter.toSifModelList(source.getStudentPersonals());
-      StudentList studentList = new StudentList();
+      List<TeachingGroupStudentType> students = teachingGroupStudentConverter.toSifModelList(source.getStudentPersonals());
+      StudentListType studentList = objectFactory.createStudentListType();
       studentList.getTeachingGroupStudent().addAll(students);
       target.setStudentList(objectFactory.createTeachingGroupTypeStudentList(studentList));
 
-      List<TeachingGroupTeacher> teachers = teachingGroupTeacherConverter.toSifModelList(source.getTeachingGroupTeachers());
+      List<TeachingGroupTeacherType> teachers = teachingGroupTeacherConverter.toSifModelList(source.getTeachingGroupTeachers());
       if (teachers != null && !teachers.isEmpty()) {
-        TeacherList teacherList = new TeacherList();
+        TeacherListType teacherList = objectFactory.createTeacherListType();
         teacherList.getTeachingGroupTeacher().addAll(teachers);
         target.setTeacherList(objectFactory.createTeachingGroupTypeTeacherList(teacherList));
       }
 
-      List<TeachingGroupPeriod> teachingGroupPeriods = teachingGroupPeriodTimeTableCellConverter.toSifModelList(source.getTimeTablePeriods());
+      List<TeachingGroupPeriodType> teachingGroupPeriods = teachingGroupPeriodTimeTableCellConverter.toSifModelList(source.getTimeTablePeriods());
       if (teachingGroupPeriods != null && !teachingGroupPeriods.isEmpty()) {
-        TeachingGroupPeriodList teachingGroupPeriodList = new TeachingGroupPeriodList();
+        TeachingGroupPeriodListType teachingGroupPeriodList = objectFactory.createTeachingGroupPeriodListType();
         teachingGroupPeriodList.getTeachingGroupPeriod().addAll(teachingGroupPeriods);
         target.setTeachingGroupPeriodList(objectFactory.createTeachingGroupTypeTeachingGroupPeriodList(teachingGroupPeriodList));
       }

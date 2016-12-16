@@ -33,6 +33,7 @@ public class SchoolInfo extends HitsEntity {
   private String campusAdminStatus;
   private String campusType;
   private String campusParentSchoolId;
+  private String acaraId;
 
   @Id
   public String getRefId() {
@@ -247,5 +248,13 @@ public class SchoolInfo extends HitsEntity {
 
   public void setCampusParentSchoolId(String campusParentSchoolId) {
     this.campusParentSchoolId = campusParentSchoolId;
+  }
+
+  public String getAcaraId() {
+    return acaraId;
+  }
+
+  public void setAcaraId(String acaraId) {
+    this.acaraId = acaraId;
   }
 }

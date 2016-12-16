@@ -6,9 +6,9 @@ import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Component;
 
 import sif.dd.au30.model.AUCodeSetsYesOrNoCategoryType;
+import sif.dd.au30.model.DebitOrCreditAmountType;
+import sif.dd.au30.model.FinancialAccountRefIdListType;
 import sif.dd.au30.model.InvoiceType;
-import sif.dd.au30.model.InvoiceType.BilledAmount;
-import sif.dd.au30.model.InvoiceType.FinancialAccountRefIdList;
 import sif.dd.au30.model.InvoiceType.InvoicedEntity;
 import sif.dd.au30.model.MonetaryAmountType;
 import sif3.hits.domain.converter.factory.IObjectFactory;
@@ -16,7 +16,7 @@ import sif3.hits.domain.model.Invoice;
 import sif3.hits.utils.UsesConstants;
 
 @Component
-public class InvoiceConverter extends HitsConverter<InvoiceType, Invoice>implements UsesConstants {
+public class InvoiceConverter extends HitsConverter<InvoiceType, Invoice> implements UsesConstants {
 
   public InvoiceConverter() {
     super(InvoiceType.class, Invoice.class);
@@ -37,7 +37,7 @@ public class InvoiceConverter extends HitsConverter<InvoiceType, Invoice>impleme
       target.setBillingDate(getDateValue(source.getBillingDate()));
       target.setTransactionDescription(source.getTransactionDescription());
 
-      BilledAmount billedAmount = objectFactory.createInvoiceTypeBilledAmount();
+      DebitOrCreditAmountType billedAmount = objectFactory.createDebitOrCreditAmountType();
       billedAmount.setValue(source.getBilledAmount());
       billedAmount.setType(source.getBilledAmountType());
       billedAmount.setCurrency(DEFAULT_CURRENCY_ENUM);
@@ -65,7 +65,7 @@ public class InvoiceConverter extends HitsConverter<InvoiceType, Invoice>impleme
       target.setVoluntary(objectFactory.createInvoiceTypeVoluntary(getEnumValue(source.getVoluntary(), AUCodeSetsYesOrNoCategoryType.class)));
 
       if (source.getFinancialAccountRefIds() != null && !source.getFinancialAccountRefIds().isEmpty()) {
-        FinancialAccountRefIdList financialAccountRefIdList = objectFactory.createInvoiceTypeFinancialAccountRefIdList();
+        FinancialAccountRefIdListType financialAccountRefIdList = objectFactory.createFinancialAccountRefIdListType();
         financialAccountRefIdList.getFinancialAccountRefId().addAll(source.getFinancialAccountRefIds());
         target.setFinancialAccountRefIdList(objectFactory.createInvoiceTypeFinancialAccountRefIdList(financialAccountRefIdList));
       }
@@ -105,8 +105,9 @@ public class InvoiceConverter extends HitsConverter<InvoiceType, Invoice>impleme
       target.setRelatedPurchaseOrderRefId(getJAXBValue(source.getRelatedPurchaseOrderRefId()));
       target.setVoluntary(getJAXBEnumValue(source.getVoluntary()));
 
-      FinancialAccountRefIdList financialAccountRefIdList = getJAXBValue(source.getFinancialAccountRefIdList());
-      if (financialAccountRefIdList != null && financialAccountRefIdList.getFinancialAccountRefId() != null && !financialAccountRefIdList.getFinancialAccountRefId().isEmpty()) {
+      FinancialAccountRefIdListType financialAccountRefIdList = getJAXBValue(source.getFinancialAccountRefIdList());
+      if (financialAccountRefIdList != null && financialAccountRefIdList.getFinancialAccountRefId() != null
+          && !financialAccountRefIdList.getFinancialAccountRefId().isEmpty()) {
         if (target.getFinancialAccountRefIds() == null) {
           target.setFinancialAccountRefIds(new HashSet<String>());
         } else {

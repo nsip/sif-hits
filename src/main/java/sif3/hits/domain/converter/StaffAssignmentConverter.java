@@ -3,8 +3,8 @@ package sif3.hits.domain.converter;
 import org.springframework.stereotype.Component;
 
 import sif.dd.au30.model.AUCodeSetsYesOrNoCategoryType;
+import sif.dd.au30.model.StaffActivityExtensionType;
 import sif.dd.au30.model.StaffAssignmentType;
-import sif.dd.au30.model.StaffAssignmentType.StaffActivity;
 import sif3.hits.domain.converter.factory.IObjectFactory;
 import sif3.hits.domain.model.StaffAssignment;
 
@@ -32,7 +32,7 @@ public class StaffAssignmentConverter extends HitsConverter<StaffAssignmentType,
       target.setJobEndDate(objectFactory.createStaffAssignmentTypeJobEndDate(getDateValue(source.getJobEndDate())));
       target.setJobFunction(objectFactory.createStaffAssignmentTypeJobFunction(source.getJobFunction()));
 
-      StaffActivity staffActivity = new StaffActivity();
+      StaffActivityExtensionType staffActivity = objectFactory.createStaffActivityExtensionType();
       staffActivity.setCode(source.getStaffActivityCode());
       target.setStaffActivity(objectFactory.createStaffAssignmentTypeStaffActivity(staffActivity));
     }
@@ -52,7 +52,7 @@ public class StaffAssignmentConverter extends HitsConverter<StaffAssignmentType,
       target.setJobEndDate(getDateValue(getJAXBValue(source.getJobEndDate())));
       target.setJobFunction(getJAXBValue(source.getJobFunction()));
 
-      StaffActivity staffActivity = getJAXBValue(source.getStaffActivity());
+      StaffActivityExtensionType staffActivity = getJAXBValue(source.getStaffActivity());
       if (staffActivity != null) {
         target.setStaffActivityCode(staffActivity.getCode());
       }

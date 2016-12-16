@@ -4,40 +4,41 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import sif.dd.au30.model.NameOfRecordType;
-import sif.dd.au30.model.TeachingGroupType.TeacherList.TeachingGroupTeacher;
+import sif.dd.au30.model.TeachingGroupTeacherType;
 import sif3.hits.domain.converter.factory.IObjectFactory;
 import sif3.hits.domain.model.StaffPersonal;
+import sif3.hits.domain.model.TeachingGroupTeacher;
 
 @Component
-public class TeachingGroupTeacherConverter extends HitsConverter<TeachingGroupTeacher, sif3.hits.domain.model.TeachingGroupTeacher> {
+public class TeachingGroupTeacherConverter extends HitsConverter<TeachingGroupTeacherType, TeachingGroupTeacher> {
 
   public TeachingGroupTeacherConverter() {
-    super(TeachingGroupTeacher.class, sif3.hits.domain.model.TeachingGroupTeacher.class);
+    super(TeachingGroupTeacherType.class, TeachingGroupTeacher.class);
   }
 
   @Autowired
   private NameOfRecordConverter nameOfRecordConverter;
 
   @Override
-  public void toSifModel(sif3.hits.domain.model.TeachingGroupTeacher source, TeachingGroupTeacher target) {
+  public void toSifModel(TeachingGroupTeacher source, TeachingGroupTeacherType target) {
     if (source != null && target != null) {
       IObjectFactory objectFactory = getObjectFactory();
       if (source.getStaffPersonal() != null) {
-        target.setStaffPersonalRefId(objectFactory.createTeachingGroupTypeTeacherListTeachingGroupTeacherStaffPersonalRefId(source.getStaffPersonal().getRefId()));
+        target.setStaffPersonalRefId(objectFactory.createTeachingGroupTeacherTypeStaffPersonalRefId(source.getStaffPersonal().getRefId()));
         target.setStaffLocalId(source.getStaffPersonal().getLocalId());
-        NameOfRecordType name = target.getName();
+        NameOfRecordType name = getJAXBValue(target.getName());
         if (name == null) {
-          name = new NameOfRecordType();
+          name = objectFactory.createNameOfRecordType();
         }
         nameOfRecordConverter.toSifModel(source.getStaffPersonal(), name);
-        target.setName(name);
+        target.setName(objectFactory.createTeachingGroupTeacherTypeName(name));
       }
       target.setAssociation(source.getTeacherAssociation());
     }
   }
 
   @Override
-  public void toHitsModel(TeachingGroupTeacher source, sif3.hits.domain.model.TeachingGroupTeacher target) {
+  public void toHitsModel(TeachingGroupTeacherType source, TeachingGroupTeacher target) {
     if (source != null && target != null) {
       StaffPersonal staffPersonal = new StaffPersonal();
       staffPersonal.setRefId(getJAXBValue(source.getStaffPersonalRefId()));

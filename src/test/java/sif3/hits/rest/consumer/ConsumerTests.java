@@ -36,7 +36,14 @@ import org.junit.runners.Suite.SuiteClasses;
   PurchaseOrderConsumerTest.class,
   InvoiceConsumerTest.class,
   PaymentReceiptConsumerTest.class,
-  PersonPictureConsumerTest.class
+  PersonPictureConsumerTest.class,
+  NAPTestConsumerTest.class,
+  NAPEventStudentLinkConsumerTest.class,
+  NAPTestScoreSummaryConsumerTest.class,
+  NAPTestletConsumerTest.class,
+  NAPTestItemConsumerTest.class,
+  NAPStudentResponseSetConsumerTest.class,
+  NAPCodeFrameConsumerTest.class
 })
 public class ConsumerTests {
 /*
@@ -47,6 +54,29 @@ public class ConsumerTests {
  * <pre>
 delete from hits_sif3_infra.SIF3_SESSION;
 
+delete from NAPCodeFrame;
+delete from NAPStudentResponseSet_Testlet_TestItem_Subscore;
+delete from NAPStudentResponseSet_Testlet_TestItem;
+delete from NAPStudentResponseSet_Testlet;
+delete from NAPStudentResponseSet_DomainScore;
+delete from NAPStudentResponseSet;
+delete from NAPTestlet_TestItem;
+delete from NAPTestItem_NAPWritingRubric_Score_ScoreDescription;
+delete from NAPTestItem_NAPWritingRubric_Score;
+delete from NAPTestItem_NAPWritingRubric;
+delete from ItemSubstitutedFor_PNPCode;
+delete from NAPTestItem_SubstituteItem;
+delete from NAPTestItem_Stimulus;
+delete from NAPTestItem_ContentDescription;
+delete from NAPTestItem;
+delete from NAPTestlet;
+delete from NAPTestScoreSummary;
+delete from NAPEventStudentLink_Adjustment_PNPCode;
+delete from NAPEventStudentLink_Adjustment;
+delete from NAPEventStudentLink_TestDisruption;
+delete from NAPEventStudentLink;
+delete from NAPTest;
+delete from PersonPicture;
 delete from Journal;
 delete from Invoice_FinancialAccount;
 delete from PaymentReceipt_FinancialAccount;
@@ -100,6 +130,6 @@ delete from StaffPersonal_OtherId;
 delete from StaffPersonal;
 delete from RoomInfo;
 delete from SchoolInfo;
- * </pre>
+</pre>
  */
 }

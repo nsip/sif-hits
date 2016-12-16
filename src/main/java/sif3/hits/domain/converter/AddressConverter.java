@@ -2,8 +2,8 @@ package sif3.hits.domain.converter;
 
 import org.springframework.stereotype.Component;
 
+import sif.dd.au30.model.AddressStreetType;
 import sif.dd.au30.model.AddressType;
-import sif.dd.au30.model.AddressType.Street;
 import sif.dd.au30.model.GridLocationType;
 import sif3.hits.domain.converter.factory.IObjectFactory;
 import sif3.hits.domain.model.Address;
@@ -26,9 +26,9 @@ public class AddressConverter extends HitsConverter<AddressType, Address> {
       target.setRole(source.getAddressRole());
       target.setPostalCode(source.getPostalCode());
 
-      Street street = objectFactory.createAddressTypeStreet();
+      AddressStreetType street = objectFactory.createAddressStreetType();
       street.setLine1(source.getLineOne());
-      street.setLine2(objectFactory.createAddressTypeStreetLine2(source.getLineTwo()));
+      street.setLine2(objectFactory.createAddressStreetTypeLine2(source.getLineTwo()));
       target.setStreet(street);
 
       if (source.getLatitude() != null || source.getLongitude() != null) {
@@ -50,7 +50,7 @@ public class AddressConverter extends HitsConverter<AddressType, Address> {
       target.setAddressRole(source.getRole());
       target.setPostalCode(source.getPostalCode());
 
-      Street street = source.getStreet();
+      AddressStreetType street = source.getStreet();
       if (street != null) {
         target.setLineOne(street.getLine1());
         target.setLineTwo(getJAXBValue(street.getLine2()));

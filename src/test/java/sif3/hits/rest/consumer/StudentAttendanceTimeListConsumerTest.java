@@ -11,13 +11,13 @@ import org.junit.Test;
 import org.springframework.http.HttpStatus;
 
 import sif.dd.au30.model.AttendanceCodeType;
+import sif.dd.au30.model.AttendanceTimeType;
+import sif.dd.au30.model.AttendanceTimesType;
 import sif.dd.au30.model.ObjectFactory;
 import sif.dd.au30.model.OtherCodeListType;
 import sif.dd.au30.model.OtherCodeListType.OtherCode;
 import sif.dd.au30.model.StudentAttendanceTimeListCollectionType;
 import sif.dd.au30.model.StudentAttendanceTimeListType;
-import sif.dd.au30.model.StudentAttendanceTimeListType.AttendanceTimes;
-import sif.dd.au30.model.StudentAttendanceTimeListType.AttendanceTimes.AttendanceTime;
 import sif3.common.ws.BulkOperationResponse;
 import sif3.common.ws.CreateOperationStatus;
 import sif3.common.ws.OperationStatus;
@@ -33,17 +33,14 @@ public class StudentAttendanceTimeListConsumerTest extends BaseTest {
   private final String REF_ID_2 = "3ec79d15-b5e8-40a8-be56-587ae099015b";
   private final String[] REF_IDS = { REF_ID_1, REF_ID_2 };
 
-  private AttendanceTime getAttendanceTime(String startTime, String endTime, String status, String absence,
-      String note, String code, String... otherCodes) throws Exception {
+  private AttendanceTimeType getAttendanceTime(String startTime, String endTime, String status, String absence, String note, String code, String... otherCodes) throws Exception {
     ObjectFactory objectFactory = new ObjectFactory();
-    AttendanceTime attendanceTime = new AttendanceTime();
+    AttendanceTimeType attendanceTime = new AttendanceTimeType();
     if (StringUtils.isNotBlank(absence)) {
-      attendanceTime.setDurationValue( objectFactory
-          .createStudentAttendanceTimeListTypeAttendanceTimesAttendanceTimeDurationValue(new BigDecimal(absence)));
+      attendanceTime.setDurationValue(objectFactory.createAttendanceTimeTypeDurationValue(new BigDecimal(absence)));
     }
     if (StringUtils.isNotBlank(note)) {
-      attendanceTime.setAttendanceNote(objectFactory
-          .createStudentAttendanceTimeListTypeAttendanceTimesAttendanceTimeAttendanceNote(note));
+      attendanceTime.setAttendanceNote(objectFactory.createAttendanceTimeTypeAttendanceNote(note));
     }
     attendanceTime.setAttendanceStatus(status);
     attendanceTime.setStartTime(getDate(startTime));
@@ -74,14 +71,11 @@ public class StudentAttendanceTimeListConsumerTest extends BaseTest {
     studentAttendanceTimeList.setDate(getDate("2014-11-11"));
     studentAttendanceTimeList.setSchoolYear(getDate("2014"));
 
-    AttendanceTimes attendanceTimes = new AttendanceTimes();
+    AttendanceTimesType attendanceTimes = new AttendanceTimesType();
     studentAttendanceTimeList.setAttendanceTimes(attendanceTimes);
     attendanceTimes.getAttendanceTime().add(getAttendanceTime("09:00:00", "11:00:00", "01", null, null, "100"));
-    attendanceTimes.getAttendanceTime().add(
-        getAttendanceTime("11:00:00", "13:00:00", "01", "0.2", "Orthodontist Appt, returned to school.", "200", "S",
-            "Local", "C", "Text"));
-    attendanceTimes.getAttendanceTime().add(
-        getAttendanceTime("13:00:00", "15:30:00", "01", null, null, "100", "C", "Text"));
+    attendanceTimes.getAttendanceTime().add(getAttendanceTime("11:00:00", "13:00:00", "01", "0.2", "Orthodontist Appt, returned to school.", "200", "S", "Local", "C", "Text"));
+    attendanceTimes.getAttendanceTime().add(getAttendanceTime("13:00:00", "15:30:00", "01", null, null, "100", "C", "Text"));
 
     studentAttendanceTimeListTester.doCreateOne(studentAttendanceTimeList);
     String xmlExpectedTo = studentAttendanceTimeListTester.getXML(studentAttendanceTimeList);
@@ -113,12 +107,11 @@ public class StudentAttendanceTimeListConsumerTest extends BaseTest {
   @Before
   public void setup() {
     ConsumerLoader.initialise("TestConsumer");
-    studentAttendanceTimeListTester = new ConsumerTest<StudentAttendanceTimeListType, StudentAttendanceTimeListCollectionType>(
-        StudentAttendanceTimeListType.class, "StudentAttendanceTimeList",
+    studentAttendanceTimeListTester = new ConsumerTest<StudentAttendanceTimeListType, StudentAttendanceTimeListCollectionType>(StudentAttendanceTimeListType.class, "StudentAttendanceTimeList",
         StudentAttendanceTimeListCollectionType.class, "StudentAttendanceTimeLists");
     studentAttendanceTimeListTester.testDeleteMany(REF_IDS);
   }
-  
+
   @Test
   public void testUpdateSingle() throws Exception {
     List<Response> responses = studentAttendanceTimeListTester.testGetSingle(REF_ID);
@@ -171,8 +164,7 @@ public class StudentAttendanceTimeListConsumerTest extends BaseTest {
     Assert.assertEquals(1, responses.size());
     Response response = responses.get(0);
     Assert.assertNotNull(response.getDataObject());
-    StudentAttendanceTimeListCollectionType studentAttendanceTimeLists = (StudentAttendanceTimeListCollectionType) response
-        .getDataObject();
+    StudentAttendanceTimeListCollectionType studentAttendanceTimeLists = (StudentAttendanceTimeListCollectionType) response.getDataObject();
     Assert.assertNotNull(studentAttendanceTimeLists.getStudentAttendanceTimeList());
     Assert.assertEquals(5, studentAttendanceTimeLists.getStudentAttendanceTimeList().size());
   }
@@ -194,7 +186,7 @@ public class StudentAttendanceTimeListConsumerTest extends BaseTest {
     Assert.assertNull(deleteResponse.getDataObject());
     Assert.assertEquals(HttpStatus.NO_CONTENT.value(), deleteResponse.getStatus());
   }
-  
+
   @Test
   public void testCreateUpdate() {
     List<Response> createResponses = studentAttendanceTimeListTester.testCreateOne("studentattendancetimelist.xml");
@@ -205,14 +197,14 @@ public class StudentAttendanceTimeListConsumerTest extends BaseTest {
     StudentAttendanceTimeListType studentAttendanceTimeList = (StudentAttendanceTimeListType) createResponse.getDataObject();
     Assert.assertEquals(REF_ID_1, studentAttendanceTimeList.getRefId());
     Assert.assertEquals(3, studentAttendanceTimeList.getAttendanceTimes().getAttendanceTime().size());
-    
+
     List<Response> updateResponses = studentAttendanceTimeListTester.testUpdateOne("studentattendancetimelistupdate.xml", REF_ID_1);
     Assert.assertNotNull(updateResponses);
     Assert.assertEquals(1, updateResponses.size());
     Response updateResponse = updateResponses.get(0);
     Assert.assertNull(updateResponse.getDataObject());
     Assert.assertEquals(HttpStatus.NO_CONTENT.value(), updateResponse.getStatus());
-    
+
     List<Response> responses = studentAttendanceTimeListTester.testGetSingle(REF_ID_1);
     Assert.assertNotNull(responses);
     Assert.assertEquals(1, responses.size());
@@ -229,8 +221,7 @@ public class StudentAttendanceTimeListConsumerTest extends BaseTest {
   public void testCreateDeleteMany() {
     final List<String> REF_ID_LIST = Arrays.asList(REF_IDS);
 
-    List<BulkOperationResponse<CreateOperationStatus>> createResponses = studentAttendanceTimeListTester
-        .testCreateMany("studentattendancetimelists.xml");
+    List<BulkOperationResponse<CreateOperationStatus>> createResponses = studentAttendanceTimeListTester.testCreateMany("studentattendancetimelists.xml");
     Assert.assertNotNull(createResponses);
     Assert.assertEquals(1, createResponses.size());
     BulkOperationResponse<CreateOperationStatus> createResponse = createResponses.get(0);
@@ -241,8 +232,7 @@ public class StudentAttendanceTimeListConsumerTest extends BaseTest {
       Assert.assertEquals(HttpStatus.CREATED.value(), operationStatus.getStatus());
     }
 
-    List<BulkOperationResponse<OperationStatus>> deleteResponses = studentAttendanceTimeListTester
-        .testDeleteMany(REF_IDS);
+    List<BulkOperationResponse<OperationStatus>> deleteResponses = studentAttendanceTimeListTester.testDeleteMany(REF_IDS);
     Assert.assertNotNull(deleteResponses);
     Assert.assertEquals(1, deleteResponses.size());
     BulkOperationResponse<OperationStatus> deleteResponse = deleteResponses.get(0);

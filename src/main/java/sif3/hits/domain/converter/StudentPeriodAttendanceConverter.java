@@ -3,9 +3,9 @@ package sif3.hits.domain.converter;
 import org.springframework.stereotype.Component;
 
 import sif.dd.au30.model.AttendanceCodeType;
+import sif.dd.au30.model.AuditInfoType;
+import sif.dd.au30.model.CreationUserType;
 import sif.dd.au30.model.StudentPeriodAttendanceType;
-import sif.dd.au30.model.StudentPeriodAttendanceType.AuditInfo;
-import sif.dd.au30.model.StudentPeriodAttendanceType.AuditInfo.CreationUser;
 import sif3.hits.domain.converter.factory.IObjectFactory;
 import sif3.hits.domain.model.StudentPeriodAttendance;
 
@@ -39,10 +39,10 @@ public class StudentPeriodAttendanceConverter extends HitsConverter<StudentPerio
       target.setSchoolYear(objectFactory.createStudentPeriodAttendanceTypeSchoolYear(getYearValue(source.getSchoolYear())));
 
       if (source.getCreationUserType() != null || source.getAuditInfoCreationDateTime() != null || source.getAuditInfoCreationUserUserId() != null) {
-        AuditInfo auditInfo = new AuditInfo();
+        AuditInfoType auditInfo = objectFactory.createAuditInfoType();
         auditInfo.setCreationDateTime(getCalendarValue(source.getAuditInfoCreationDateTime()));
 
-        CreationUser creationUser = new CreationUser();
+        CreationUserType creationUser = objectFactory.createCreationUserType();
         creationUser.setType(source.getCreationUserType());
         creationUser.setUserId(source.getAuditInfoCreationUserUserId());
         if (source.getCreationUserType() != null || source.getAuditInfoCreationUserUserId() != null) {
@@ -72,11 +72,11 @@ public class StudentPeriodAttendanceConverter extends HitsConverter<StudentPerio
       target.setAttendanceStatus(source.getAttendanceStatus());
       target.setSchoolYear(getYearValue(getJAXBValue(source.getSchoolYear())));
 
-      AuditInfo auditInfo = getJAXBValue(source.getAuditInfo());
+      AuditInfoType auditInfo = getJAXBValue(source.getAuditInfo());
       if (auditInfo != null) {
         target.setAuditInfoCreationDateTime(getCalendarValue(auditInfo.getCreationDateTime()));
 
-        CreationUser creationUser = auditInfo.getCreationUser();
+        CreationUserType creationUser = auditInfo.getCreationUser();
         if (creationUser != null) {
           target.setCreationUserType(creationUser.getType());
           target.setAuditInfoCreationUserUserId(creationUser.getUserId());

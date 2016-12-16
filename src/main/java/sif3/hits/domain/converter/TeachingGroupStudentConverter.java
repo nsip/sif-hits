@@ -4,42 +4,42 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import sif.dd.au30.model.NameOfRecordType;
-import sif.dd.au30.model.TeachingGroupType.StudentList.TeachingGroupStudent;
+import sif.dd.au30.model.TeachingGroupStudentType;
 import sif3.hits.domain.converter.factory.IObjectFactory;
 import sif3.hits.domain.model.StudentPersonal;
 
 @Component
-public class TeachingGroupStudentConverter extends HitsConverter<TeachingGroupStudent, StudentPersonal> {
+public class TeachingGroupStudentConverter extends HitsConverter<TeachingGroupStudentType, StudentPersonal> {
 
   public TeachingGroupStudentConverter() {
-    super(TeachingGroupStudent.class, StudentPersonal.class);
+    super(TeachingGroupStudentType.class, StudentPersonal.class);
   }
 
   @Autowired
   private NameOfRecordConverter nameOfRecordConverter;
 
   @Override
-  public void toSifModel(StudentPersonal source, TeachingGroupStudent target) {
+  public void toSifModel(StudentPersonal source, TeachingGroupStudentType target) {
     if (source != null && target != null) {
       IObjectFactory objectFactory = getObjectFactory();
-      target.setStudentPersonalRefId(objectFactory.createTeachingGroupTypeStudentListTeachingGroupStudentStudentPersonalRefId(source.getRefId()));
+      target.setStudentPersonalRefId(objectFactory.createTeachingGroupStudentTypeStudentPersonalRefId(source.getRefId()));
       target.setStudentLocalId(source.getLocalId());
 
-      NameOfRecordType name = target.getName();
+      NameOfRecordType name = getJAXBValue(target.getName());
       if (name == null) {
-        name = new NameOfRecordType();
+        name = objectFactory.createNameOfRecordType();
       }
       nameOfRecordConverter.toSifModel(source, name);
-      target.setName(name);
+      target.setName(objectFactory.createTeachingGroupStudentTypeName(name));
     }
   }
 
   @Override
-  public void toHitsModel(TeachingGroupStudent source, StudentPersonal target) {
+  public void toHitsModel(TeachingGroupStudentType source, StudentPersonal target) {
     if (source != null && target != null) {
       target.setRefId(getJAXBValue(source.getStudentPersonalRefId()));
       target.setLocalId(source.getStudentLocalId());
-      nameOfRecordConverter.toHitsModel(source.getName(), target);
+      nameOfRecordConverter.toHitsModel(getJAXBValue(source.getName()), target);
     }
   }
 }

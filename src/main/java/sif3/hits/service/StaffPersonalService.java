@@ -8,7 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Service;
 
-import sif.dd.au30.model.StaffCollectionType;
+import sif.dd.au30.model.StaffPersonalCollectionType;
 import sif.dd.au30.model.StaffPersonalType;
 import sif3.hits.domain.converter.HitsConverter;
 import sif3.hits.domain.converter.StaffPersonalConverter;
@@ -21,7 +21,7 @@ import sif3.hits.domain.model.StaffPersonalOtherId;
 import sif3.hits.rest.dto.RequestDTO;
 
 @Service
-public class StaffPersonalService extends BaseService<StaffPersonalType, StaffCollectionType, StaffPersonal> {
+public class StaffPersonalService extends BaseService<StaffPersonalType, StaffPersonalCollectionType, StaffPersonal> {
 
   @Autowired
   private StaffPersonalConverter staffPersonalConverter;
@@ -36,8 +36,8 @@ public class StaffPersonalService extends BaseService<StaffPersonalType, StaffCo
   private StaffPersonalOtherIdDAO staffPersonalOtherIdDAO;
 
   @Override
-  protected StaffCollectionType getCollection(List<StaffPersonalType> items) {
-    StaffCollectionType result = new StaffCollectionType();
+  protected StaffPersonalCollectionType getCollection(List<StaffPersonalType> items) {
+    StaffPersonalCollectionType result = new StaffPersonalCollectionType();
     if (items != null && !items.isEmpty()) {
       result.getStaffPersonal().addAll(items);
     }

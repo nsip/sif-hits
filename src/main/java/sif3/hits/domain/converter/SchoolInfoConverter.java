@@ -11,11 +11,11 @@ import sif.dd.au30.model.AUCodeSetsSchoolLevelType;
 import sif.dd.au30.model.AUCodeSetsSchoolSectorCodeType;
 import sif.dd.au30.model.AUCodeSetsYesOrNoCategoryType;
 import sif.dd.au30.model.AddressListType;
+import sif.dd.au30.model.AddressStreetType;
 import sif.dd.au30.model.AddressType;
-import sif.dd.au30.model.AddressType.Street;
+import sif.dd.au30.model.CampusContainerType;
 import sif.dd.au30.model.GridLocationType;
 import sif.dd.au30.model.SchoolInfoType;
-import sif.dd.au30.model.SchoolInfoType.Campus;
 import sif3.hits.domain.converter.factory.IObjectFactory;
 import sif3.hits.domain.model.SchoolInfo;
 
@@ -32,6 +32,7 @@ public class SchoolInfoConverter extends HitsConverter<SchoolInfoType, SchoolInf
       IObjectFactory objFactory = getObjectFactory();
       target.setRefId(source.getRefId());
       target.setLocalId(objFactory.createSchoolInfoTypeLocalId(source.getLocalId()));
+      target.setACARAId(objFactory.createSchoolInfoTypeACARAId(source.getAcaraId()));
       target.setSchoolName(source.getSchoolName());
       target.setStateProvinceId(objFactory.createSchoolInfoTypeStateProvinceId(source.getStateProvinceId()));
       target.setCommonwealthId(objFactory.createSchoolInfoTypeCommonwealthId(source.getCommonwealthId()));
@@ -51,9 +52,9 @@ public class SchoolInfoConverter extends HitsConverter<SchoolInfoType, SchoolInf
       address.setCity(source.getAddressCity());
       address.setPostalCode(source.getAddressPostalCode());
 
-      Street street = objFactory.createAddressTypeStreet();
-      street.setStreetNumber(objFactory.createAddressTypeStreetStreetNumber(source.getAddressStreetNumber()));
-      street.setStreetName(objFactory.createAddressTypeStreetStreetName(source.getAddressStreetName()));
+      AddressStreetType street = objFactory.createAddressStreetType();
+      street.setStreetNumber(objFactory.createAddressStreetTypeStreetNumber(source.getAddressStreetNumber()));
+      street.setStreetName(objFactory.createAddressStreetTypeStreetName(source.getAddressStreetName()));
       address.setStreet(street);
 
       GridLocationType gridLocation = objFactory.createGridLocationType();
@@ -73,13 +74,13 @@ public class SchoolInfoConverter extends HitsConverter<SchoolInfoType, SchoolInf
       XMLGregorianCalendar entityClose = getDateValue(source.getEntityClose());
       target.setEntityClose(objFactory.createSchoolInfoTypeEntityClose(entityClose));
 
-      Campus campus = objFactory.createSchoolInfoTypeCampus();
+      CampusContainerType campus = objFactory.createCampusContainerType();
       campus.setSchoolCampusId(source.getCampusId());
       AUCodeSetsYesOrNoCategoryType adminStatus = getEnumValue(source.getCampusAdminStatus(), AUCodeSetsYesOrNoCategoryType.class);
       campus.setAdminStatus(adminStatus);
       AUCodeSetsSchoolLevelType campusType = getEnumValue(source.getCampusType(), AUCodeSetsSchoolLevelType.class);
-      campus.setCampusType(objFactory.createSchoolInfoTypeCampusCampusType(campusType));
-      campus.setParentSchoolId(objFactory.createSchoolInfoTypeCampusParentSchoolId(source.getCampusParentSchoolId()));
+      campus.setCampusType(objFactory.createCampusContainerTypeCampusType(campusType));
+      campus.setParentSchoolId(objFactory.createCampusContainerTypeParentSchoolId(source.getCampusParentSchoolId()));
       target.setCampus(objFactory.createSchoolInfoTypeCampus(campus));
     }
   }
@@ -89,6 +90,7 @@ public class SchoolInfoConverter extends HitsConverter<SchoolInfoType, SchoolInf
     if (source != null && target != null) {
       target.setRefId(source.getRefId());
       target.setLocalId(getJAXBValue(source.getLocalId()));
+      target.setAcaraId(getJAXBValue(source.getACARAId()));
       target.setSchoolName(source.getSchoolName());
       target.setStateProvinceId(getJAXBValue(source.getStateProvinceId()));
       target.setCommonwealthId(getJAXBValue(source.getCommonwealthId()));
@@ -105,7 +107,7 @@ public class SchoolInfoConverter extends HitsConverter<SchoolInfoType, SchoolInf
         target.setAddressCity(address.getCity());
         target.setAddressPostalCode(address.getPostalCode());
 
-        Street street = address.getStreet();
+        AddressStreetType street = address.getStreet();
         if (street != null) {
           target.setAddressStreetNumber(getJAXBValue(street.getStreetNumber()));
           target.setAddressStreetName(getJAXBValue(street.getStreetName()));
@@ -124,7 +126,7 @@ public class SchoolInfoConverter extends HitsConverter<SchoolInfoType, SchoolInf
       target.setEntityOpen(getDateValue(getJAXBValue(source.getEntityOpen())));
       target.setEntityClose(getDateValue(getJAXBValue(source.getEntityClose())));
 
-      Campus campus = getJAXBValue(source.getCampus());
+      CampusContainerType campus = getJAXBValue(source.getCampus());
       if (campus != null) {
         target.setCampusId(campus.getSchoolCampusId());
         target.setCampusAdminStatus(getEnumValue(campus.getAdminStatus()));

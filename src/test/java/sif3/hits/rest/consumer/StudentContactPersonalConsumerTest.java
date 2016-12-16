@@ -17,7 +17,7 @@ import sif.dd.au30.model.ObjectFactory;
 import sif.dd.au30.model.PersonInfoType;
 import sif.dd.au30.model.PhoneNumberListType;
 import sif.dd.au30.model.PhoneNumberType;
-import sif.dd.au30.model.StudentContactCollectionType;
+import sif.dd.au30.model.StudentContactPersonalCollectionType;
 import sif.dd.au30.model.StudentContactPersonalType;
 import sif3.common.ws.BulkOperationResponse;
 import sif3.common.ws.CreateOperationStatus;
@@ -27,7 +27,7 @@ import sif3.hits.rest.consumer.StudentPersonalConsumerTest.StudentPersonalRefIds
 import sif3.infra.rest.consumer.ConsumerLoader;
 
 public class StudentContactPersonalConsumerTest extends BaseTest {
-  private ConsumerTest<StudentContactPersonalType, StudentContactCollectionType> studentTester = null;
+  private ConsumerTest<StudentContactPersonalType, StudentContactPersonalCollectionType> studentTester = null;
 
   public static class StudentContactPersonalRefIds {
     public static String REF_ID_1 = "281bc155-8598-4873-933e-7a9ef336b98d";
@@ -74,14 +74,14 @@ public class StudentContactPersonalConsumerTest extends BaseTest {
     phoneNumber.setType("0096");
     phoneNumber.setNumber("+61400000000");
     phoneNumberList.getPhoneNumber().add(phoneNumber);
-    personInfo.setPhoneNumberList(objectFactory.createPhoneNumberList(phoneNumberList));
+    personInfo.setPhoneNumberList(objectFactory.createPersonInfoTypePhoneNumberList(phoneNumberList));
 
     EmailListType emailList = new EmailListType();
     EmailType email = new EmailType();
     email.setType("06"); // AUCodeSetsEmailTypeType.WORK
     email.setValue("the.email@not.a.real.domain");
     emailList.getEmail().add(email);
-    personInfo.setEmailList(objectFactory.createEmailList(emailList));
+    personInfo.setEmailList(objectFactory.createPersonInfoTypeEmailList(emailList));
 
     AddressListType addresses = objectFactory.createAddressListType();
     addresses.getAddress()
@@ -116,8 +116,8 @@ public class StudentContactPersonalConsumerTest extends BaseTest {
   @Before
   public void setup() {
     ConsumerLoader.initialise("TestConsumer");
-    studentTester = new ConsumerTest<StudentContactPersonalType, StudentContactCollectionType>(
-        StudentContactPersonalType.class, "StudentContactPersonal", StudentContactCollectionType.class,
+    studentTester = new ConsumerTest<StudentContactPersonalType, StudentContactPersonalCollectionType>(
+        StudentContactPersonalType.class, "StudentContactPersonal", StudentContactPersonalCollectionType.class,
         "StudentContactPersonals");
     studentTester.testDeleteMany(REF_IDS);
   }
@@ -174,7 +174,7 @@ public class StudentContactPersonalConsumerTest extends BaseTest {
     Assert.assertEquals(1, responses.size());
     Response response = responses.get(0);
     Assert.assertNotNull(response.getDataObject());
-    StudentContactCollectionType studentCollection = (StudentContactCollectionType) response.getDataObject();
+    StudentContactPersonalCollectionType studentCollection = (StudentContactPersonalCollectionType) response.getDataObject();
     Assert.assertNotNull(studentCollection.getStudentContactPersonal());
     Assert.assertEquals(5, studentCollection.getStudentContactPersonal().size());
   }

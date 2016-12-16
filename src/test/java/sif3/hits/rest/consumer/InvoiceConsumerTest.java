@@ -10,11 +10,11 @@ import org.junit.Test;
 import org.springframework.http.HttpStatus;
 
 import sif.dd.au30.model.AUCodeSetsYesOrNoCategoryType;
+import sif.dd.au30.model.DebitOrCreditAmountType;
+import sif.dd.au30.model.FinancialAccountRefIdListType;
 import sif.dd.au30.model.ISO4217CurrencyNamesAndCodeElementsType;
 import sif.dd.au30.model.InvoiceCollectionType;
 import sif.dd.au30.model.InvoiceType;
-import sif.dd.au30.model.InvoiceType.BilledAmount;
-import sif.dd.au30.model.InvoiceType.FinancialAccountRefIdList;
 import sif.dd.au30.model.InvoiceType.InvoicedEntity;
 import sif.dd.au30.model.MonetaryAmountType;
 import sif.dd.au30.model.ObjectFactory;
@@ -57,15 +57,14 @@ public class InvoiceConsumerTest extends BaseTest implements UsesConstants {
     invoiceType.setBillingDate(getDate("2015-07-01"));
     invoiceType.setTransactionDescription("Textbooks");
 
-    BilledAmount billedAmount = objectFactory.createInvoiceTypeBilledAmount();
+    DebitOrCreditAmountType billedAmount = objectFactory.createDebitOrCreditAmountType();
     billedAmount.setValue("320.00");
     billedAmount.setType("Debit");
     billedAmount.setCurrency(ISO4217CurrencyNamesAndCodeElementsType.AUD);
     invoiceType.setBilledAmount(billedAmount);
 
     invoiceType.setLedger("Sundry");
-    invoiceType.setChargedLocationInfoRefId(
-        objectFactory.createInvoiceTypeChargedLocationInfoRefId(LocationInfoRefIds.REF_ID_1));
+    invoiceType.setChargedLocationInfoRefId(objectFactory.createInvoiceTypeChargedLocationInfoRefId(LocationInfoRefIds.REF_ID_1));
     invoiceType.setTaxRate(objectFactory.createInvoiceTypeTaxRate(new BigDecimal("0.10")));
     invoiceType.setTaxType(objectFactory.createInvoiceTypeTaxType("GST"));
 
@@ -82,11 +81,9 @@ public class InvoiceConsumerTest extends BaseTest implements UsesConstants {
     invoiceType.setRelatedPurchaseOrderRefId(objectFactory.createInvoiceTypeRelatedPurchaseOrderRefId(PurchaseOrderRefIds.REF_ID_1));
     invoiceType.setVoluntary(objectFactory.createInvoiceTypeVoluntary(AUCodeSetsYesOrNoCategoryType.N));
 
-    FinancialAccountRefIdList financialAccountRefIdList = objectFactory.createInvoiceTypeFinancialAccountRefIdList();
-    financialAccountRefIdList.getFinancialAccountRefId()
-        .addAll(Arrays.asList(FinancialAccountRefIds.REF_ID_1, FinancialAccountRefIds.REF_ID_2));
-    invoiceType.setFinancialAccountRefIdList(
-        objectFactory.createInvoiceTypeFinancialAccountRefIdList(financialAccountRefIdList));
+    FinancialAccountRefIdListType financialAccountRefIdList = objectFactory.createFinancialAccountRefIdListType();
+    financialAccountRefIdList.getFinancialAccountRefId().addAll(Arrays.asList(FinancialAccountRefIds.REF_ID_1, FinancialAccountRefIds.REF_ID_2));
+    invoiceType.setFinancialAccountRefIdList(objectFactory.createInvoiceTypeFinancialAccountRefIdList(financialAccountRefIdList));
 
     invoiceTester.doCreateOne(invoiceType);
     String xmlExpectedTo = invoiceTester.getXML(invoiceType);
@@ -111,11 +108,10 @@ public class InvoiceConsumerTest extends BaseTest implements UsesConstants {
   @Before
   public void setup() {
     ConsumerLoader.initialise("TestConsumer");
-    invoiceTester = new ConsumerTest<InvoiceType, InvoiceCollectionType>(InvoiceType.class, "Invoice",
-        InvoiceCollectionType.class, "Invoices");
+    invoiceTester = new ConsumerTest<InvoiceType, InvoiceCollectionType>(InvoiceType.class, "Invoice", InvoiceCollectionType.class, "Invoices");
     invoiceTester.testDeleteMany(REF_IDS);
   }
-  
+
   @Test
   public void testUpdateSingle() throws Exception {
     List<Response> responses = invoiceTester.testGetSingle(InvoiceRefIds.REF_ID_1);
@@ -125,14 +121,14 @@ public class InvoiceConsumerTest extends BaseTest implements UsesConstants {
     Assert.assertNotNull(response.getDataObject());
     InvoiceType invoice = (InvoiceType) response.getDataObject();
     Assert.assertEquals(InvoiceRefIds.REF_ID_1, invoice.getRefId());
-    
+
     String xmlExpectedFrom = invoiceTester.getXML(invoice);
-    
+
     List<Response> updateResponses = invoiceTester.doUpdateOne(invoice, InvoiceRefIds.REF_ID_1);
     Assert.assertNotNull(updateResponses);
     Assert.assertEquals(1, updateResponses.size());
     Assert.assertEquals(updateResponses.get(0).getStatus(), HttpStatus.NO_CONTENT.value());
-    
+
     List<Response> getResponses = invoiceTester.testGetSingle(InvoiceRefIds.REF_ID_1);
     Assert.assertNotNull(getResponses);
     Assert.assertEquals(1, getResponses.size());
@@ -141,7 +137,7 @@ public class InvoiceConsumerTest extends BaseTest implements UsesConstants {
     InvoiceType comparisonTo = (InvoiceType) getResponse.getDataObject();
     Assert.assertEquals(InvoiceRefIds.REF_ID_1, comparisonTo.getRefId());
     String xmlExpectedTo = invoiceTester.getXML(comparisonTo);
-    
+
     boolean semiEquals = semiEquals(xmlExpectedFrom, xmlExpectedTo);
     if (!semiEquals) {
       System.out.println("From:\n" + xmlExpectedFrom);

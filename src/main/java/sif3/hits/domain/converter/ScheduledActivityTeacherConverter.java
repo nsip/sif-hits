@@ -4,33 +4,33 @@ import org.springframework.stereotype.Component;
 
 import sif.dd.au30.model.AUCodeSetsTeacherCoverCreditType;
 import sif.dd.au30.model.AUCodeSetsTeacherCoverSupervisionType;
-import sif.dd.au30.model.ScheduledActivityType.TeacherList.TeacherCover;
+import sif.dd.au30.model.TeacherCoverType;
 import sif3.hits.domain.converter.factory.IObjectFactory;
 import sif3.hits.domain.model.ScheduledActivityTeacher;
 
 @Component
-public class ScheduledActivityTeacherConverter extends HitsConverter<TeacherCover, ScheduledActivityTeacher> {
+public class ScheduledActivityTeacherConverter extends HitsConverter<TeacherCoverType, ScheduledActivityTeacher> {
 
   public ScheduledActivityTeacherConverter() {
-    super(TeacherCover.class, ScheduledActivityTeacher.class);
+    super(TeacherCoverType.class, ScheduledActivityTeacher.class);
   }
 
   @Override
-  public void toSifModel(ScheduledActivityTeacher source, TeacherCover target) {
+  public void toSifModel(ScheduledActivityTeacher source, TeacherCoverType target) {
     if (source != null && target != null) {
       IObjectFactory objectFactory = getObjectFactory();
       target.setStaffPersonalRefId(source.getStaffPersonalRefId());
-      target.setStaffLocalId(objectFactory.createScheduledActivityTypeTeacherListTeacherCoverStaffLocalId(source.getTeacherLocalId()));
-      target.setStartTime(objectFactory.createScheduledActivityTypeTeacherListTeacherCoverStartTime(getTimeValue(source.getStartTime())));
-      target.setFinishTime(objectFactory.createScheduledActivityTypeTeacherListTeacherCoverFinishTime(getTimeValue(source.getFinishTime())));
-      target.setCredit(objectFactory.createScheduledActivityTypeTeacherListTeacherCoverCredit(getEnumValue(source.getCredit(), AUCodeSetsTeacherCoverCreditType.class)));
-      target.setSupervision(objectFactory.createScheduledActivityTypeTeacherListTeacherCoverSupervision(getEnumValue(source.getSupervision(), AUCodeSetsTeacherCoverSupervisionType.class)));
-      target.setWeighting(objectFactory.createScheduledActivityTypeTeacherListTeacherCoverWeighting(getBigDecimalValue(source.getWeighting())));
+      target.setStaffLocalId(objectFactory.createTeacherCoverTypeStaffLocalId(source.getTeacherLocalId()));
+      target.setStartTime(objectFactory.createTeacherCoverTypeStartTime(getTimeValue(source.getStartTime())));
+      target.setFinishTime(objectFactory.createTeacherCoverTypeFinishTime(getTimeValue(source.getFinishTime())));
+      target.setCredit(objectFactory.createTeacherCoverTypeCredit(getEnumValue(source.getCredit(), AUCodeSetsTeacherCoverCreditType.class)));
+      target.setSupervision(objectFactory.createTeacherCoverTypeSupervision(getEnumValue(source.getSupervision(), AUCodeSetsTeacherCoverSupervisionType.class)));
+      target.setWeighting(objectFactory.createTeacherCoverTypeWeighting(getBigDecimalValue(source.getWeighting())));
     }
   }
 
   @Override
-  public void toHitsModel(TeacherCover source, ScheduledActivityTeacher target) {
+  public void toHitsModel(TeacherCoverType source, ScheduledActivityTeacher target) {
     if (source != null && target != null) {
       target.setStaffPersonalRefId(source.getStaffPersonalRefId());
       target.setTeacherLocalId(getJAXBValue(source.getStaffLocalId()));

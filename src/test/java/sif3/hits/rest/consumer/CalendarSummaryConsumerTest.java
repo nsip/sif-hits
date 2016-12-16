@@ -92,6 +92,7 @@ public class CalendarSummaryConsumerTest extends BaseTest {
   public void testQBE() {
     CalendarSummaryType calendarSummary = new CalendarSummaryType();
     calendarSummary.setSchoolInfoRefId(SchoolInfoConsumerTest.REF_ID);
+    calendarSummary.setDaysInSession(75L);
     List<Response> responses = calendarSummaryTester.testQBE(calendarSummary, 10000, 0);
     Assert.assertNotNull(responses);
     Assert.assertEquals(1, responses.size());

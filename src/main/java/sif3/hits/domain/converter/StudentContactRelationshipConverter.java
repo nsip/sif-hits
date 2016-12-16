@@ -3,9 +3,9 @@ package sif3.hits.domain.converter;
 import org.springframework.stereotype.Component;
 
 import sif.dd.au30.model.AUCodeSetsYesOrNoCategoryType;
+import sif.dd.au30.model.ContactFlagsType;
 import sif.dd.au30.model.RelationshipType;
 import sif.dd.au30.model.StudentContactRelationshipType;
-import sif.dd.au30.model.StudentContactRelationshipType.ContactFlags;
 import sif3.hits.domain.converter.factory.IObjectFactory;
 import sif3.hits.domain.model.StudentContactRelationship;
 
@@ -30,24 +30,24 @@ public class StudentContactRelationshipConverter extends HitsConverter<StudentCo
       target.setStudentContactPersonalRefId(source.getStudentContactPersonalRefId());
 
       if (source.hasRelationship()) {
-        RelationshipType relationship = new RelationshipType();
+        RelationshipType relationship = objectFactory.createRelationshipType();
         relationship.setCode(source.getRelationship());
         target.setRelationship(relationship);
       }
 
       if (source.hasContactFlags()) {
-        ContactFlags contactFlags = new ContactFlags();
-        contactFlags.setParentLegalGuardian(objectFactory.createStudentContactRelationshipTypeContactFlagsParentLegalGuardian(getEnumValue(source.getParentLegalGuardian(), AUCodeSetsYesOrNoCategoryType.class)));
-        contactFlags.setPickupRights(objectFactory.createStudentContactRelationshipTypeContactFlagsPickupRights(getEnumValue(source.getPickupRights(), AUCodeSetsYesOrNoCategoryType.class)));
-        contactFlags.setLivesWith(objectFactory.createStudentContactRelationshipTypeContactFlagsLivesWith(getEnumValue(source.getLivesWith(), AUCodeSetsYesOrNoCategoryType.class)));
-        contactFlags.setAccessToRecords(objectFactory.createStudentContactRelationshipTypeContactFlagsAccessToRecords(getEnumValue(source.getAccessToRecords(), AUCodeSetsYesOrNoCategoryType.class)));
-        contactFlags.setEmergencyContact(objectFactory.createStudentContactRelationshipTypeContactFlagsEmergencyContact(getEnumValue(source.getEmergencyContact(), AUCodeSetsYesOrNoCategoryType.class)));
-        contactFlags.setHasCustody(objectFactory.createStudentContactRelationshipTypeContactFlagsHasCustody(getEnumValue(source.getHasCustody(), AUCodeSetsYesOrNoCategoryType.class)));
-        contactFlags.setDisciplinaryContact(objectFactory.createStudentContactRelationshipTypeContactFlagsDisciplinaryContact(getEnumValue(source.getDisciplinaryContact(), AUCodeSetsYesOrNoCategoryType.class)));
-        contactFlags.setPrimaryCareProvider(objectFactory.createStudentContactRelationshipTypeContactFlagsPrimaryCareProvider(getEnumValue(source.getPrimaryCareProvider(), AUCodeSetsYesOrNoCategoryType.class)));
-        contactFlags.setFeesBilling(objectFactory.createStudentContactRelationshipTypeContactFlagsFeesBilling(getEnumValue(source.getFeesBilling(), AUCodeSetsYesOrNoCategoryType.class)));
-        contactFlags.setFamilyMail(objectFactory.createStudentContactRelationshipTypeContactFlagsFamilyMail(getEnumValue(source.getFamilyMail(), AUCodeSetsYesOrNoCategoryType.class)));
-        contactFlags.setInterventionOrder(objectFactory.createStudentContactRelationshipTypeContactFlagsInterventionOrder(getEnumValue(source.getInterventionOrder(), AUCodeSetsYesOrNoCategoryType.class)));
+        ContactFlagsType contactFlags = objectFactory.createContactFlagsType();
+        contactFlags.setParentLegalGuardian(objectFactory.createContactFlagsTypeParentLegalGuardian(getEnumValue(source.getParentLegalGuardian(), AUCodeSetsYesOrNoCategoryType.class)));
+        contactFlags.setPickupRights(objectFactory.createContactFlagsTypePickupRights(getEnumValue(source.getPickupRights(), AUCodeSetsYesOrNoCategoryType.class)));
+        contactFlags.setLivesWith(objectFactory.createContactFlagsTypeLivesWith(getEnumValue(source.getLivesWith(), AUCodeSetsYesOrNoCategoryType.class)));
+        contactFlags.setAccessToRecords(objectFactory.createContactFlagsTypeAccessToRecords(getEnumValue(source.getAccessToRecords(), AUCodeSetsYesOrNoCategoryType.class)));
+        contactFlags.setEmergencyContact(objectFactory.createContactFlagsTypeEmergencyContact(getEnumValue(source.getEmergencyContact(), AUCodeSetsYesOrNoCategoryType.class)));
+        contactFlags.setHasCustody(objectFactory.createContactFlagsTypeHasCustody(getEnumValue(source.getHasCustody(), AUCodeSetsYesOrNoCategoryType.class)));
+        contactFlags.setDisciplinaryContact(objectFactory.createContactFlagsTypeDisciplinaryContact(getEnumValue(source.getDisciplinaryContact(), AUCodeSetsYesOrNoCategoryType.class)));
+        contactFlags.setPrimaryCareProvider(objectFactory.createContactFlagsTypePrimaryCareProvider(getEnumValue(source.getPrimaryCareProvider(), AUCodeSetsYesOrNoCategoryType.class)));
+        contactFlags.setFeesBilling(objectFactory.createContactFlagsTypeFeesBilling(getEnumValue(source.getFeesBilling(), AUCodeSetsYesOrNoCategoryType.class)));
+        contactFlags.setFamilyMail(objectFactory.createContactFlagsTypeFamilyMail(getEnumValue(source.getFamilyMail(), AUCodeSetsYesOrNoCategoryType.class)));
+        contactFlags.setInterventionOrder(objectFactory.createContactFlagsTypeInterventionOrder(getEnumValue(source.getInterventionOrder(), AUCodeSetsYesOrNoCategoryType.class)));
         target.setContactFlags(objectFactory.createStudentContactRelationshipTypeContactFlags(contactFlags));
       }
     }
@@ -63,7 +63,7 @@ public class StudentContactRelationshipConverter extends HitsConverter<StudentCo
       if (source.getRelationship() != null) {
         target.setRelationship(source.getRelationship().getCode());
       }
-      ContactFlags contactFlags = getJAXBValue(source.getContactFlags());
+      ContactFlagsType contactFlags = getJAXBValue(source.getContactFlags());
       if (contactFlags != null) {
         target.setParentLegalGuardian(getJAXBEnumValue(contactFlags.getParentLegalGuardian()));
         target.setPickupRights(getJAXBEnumValue(contactFlags.getPickupRights()));

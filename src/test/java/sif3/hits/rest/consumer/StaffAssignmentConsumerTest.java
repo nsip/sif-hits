@@ -10,9 +10,9 @@ import org.springframework.http.HttpStatus;
 
 import sif.dd.au30.model.AUCodeSetsYesOrNoCategoryType;
 import sif.dd.au30.model.ObjectFactory;
+import sif.dd.au30.model.StaffActivityExtensionType;
 import sif.dd.au30.model.StaffAssignmentCollectionType;
 import sif.dd.au30.model.StaffAssignmentType;
-import sif.dd.au30.model.StaffAssignmentType.StaffActivity;
 import sif3.common.ws.BulkOperationResponse;
 import sif3.common.ws.CreateOperationStatus;
 import sif3.common.ws.OperationStatus;
@@ -42,48 +42,46 @@ public class StaffAssignmentConsumerTest extends BaseTest {
     staffAssignment.setJobStartDate(objectFactory.createStaffAssignmentTypeJobStartDate(getDate("2012-01-20")));
     staffAssignment.setJobEndDate(objectFactory.createStaffAssignmentTypeJobEndDate(getDate("2014-12-20")));
     staffAssignment.setJobFunction(objectFactory.createStaffAssignmentTypeJobFunction("Teacher"));
-    
-    StaffActivity staffActivity = new StaffActivity();
+
+    StaffActivityExtensionType staffActivity = new StaffActivityExtensionType();
     staffActivity.setCode("1102");
     staffAssignment.setStaffActivity(objectFactory.createStaffAssignmentTypeStaffActivity(staffActivity));
 
     staffAssignmentTester.doCreateOne(staffAssignment);
     String xmlExpectedTo = staffAssignmentTester.getXML(staffAssignment);
-    
 
     staffAssignment.setRefId("c60fe125-ad63-4b28-b227-efc08d936891");
     staffAssignment.setStaffPersonalRefId(StaffPersonalRefIds.REF_ID_2);
     staffAssignmentTester.doCreateOne(staffAssignment);
-    
+
     staffAssignment.setRefId("9ee3f538-c0e3-4bc5-a7ee-c64a957221db");
     staffAssignment.setStaffPersonalRefId(StaffPersonalRefIds.REF_ID_3);
     staffAssignmentTester.doCreateOne(staffAssignment);
-    
+
     staffAssignment.setRefId("909f0ea1-e4cb-48fb-b3b8-a5dae0260cd2");
     staffAssignment.setStaffPersonalRefId(StaffPersonalRefIds.REF_ID_4);
     staffAssignmentTester.doCreateOne(staffAssignment);
-    
+
     staffAssignment.setRefId("903ca5e7-eefe-45e0-92ac-7eb0ee2e14a3");
     staffAssignment.setStaffPersonalRefId(StaffPersonalRefIds.REF_ID_5);
     staffAssignmentTester.doCreateOne(staffAssignment);
 
     StaffAssignmentType getResult = staffAssignmentTester.doGetOne(REF_ID);
-    
+
     String xmlExpectedFrom = staffAssignmentTester.getXML(getResult);
     boolean semiEquals = semiEquals(xmlExpectedFrom, xmlExpectedTo);
     if (!semiEquals) {
-      Assert.assertEquals("XML Differs", xmlExpectedFrom, xmlExpectedTo);  
+      Assert.assertEquals("XML Differs", xmlExpectedFrom, xmlExpectedTo);
     }
   }
 
   @Before
   public void setup() {
     ConsumerLoader.initialise("TestConsumer");
-    staffAssignmentTester = new ConsumerTest<StaffAssignmentType, StaffAssignmentCollectionType>(
-        StaffAssignmentType.class, "StaffAssignment", StaffAssignmentCollectionType.class, "StaffAssignments");
+    staffAssignmentTester = new ConsumerTest<StaffAssignmentType, StaffAssignmentCollectionType>(StaffAssignmentType.class, "StaffAssignment", StaffAssignmentCollectionType.class, "StaffAssignments");
     staffAssignmentTester.testDeleteMany(REF_IDS);
   }
-  
+
   @Test
   public void testQBE() {
     StaffAssignmentType staffAssignment = new StaffAssignmentType();
@@ -103,7 +101,6 @@ public class StaffAssignmentConsumerTest extends BaseTest {
     Assert.assertTrue(found);
   }
 
-  
   @Test
   public void testUpdateSingle() throws Exception {
     List<Response> responses = staffAssignmentTester.testGetSingle(REF_ID);
@@ -137,7 +134,6 @@ public class StaffAssignmentConsumerTest extends BaseTest {
       Assert.assertEquals("XML Differs", xmlExpectedFrom, xmlExpectedTo);
     }
   }
-  
 
   @Test
   public void testGetSingle() {
@@ -184,8 +180,7 @@ public class StaffAssignmentConsumerTest extends BaseTest {
   public void testCreateDeleteMany() {
     final List<String> REF_ID_LIST = Arrays.asList(REF_IDS);
 
-    List<BulkOperationResponse<CreateOperationStatus>> createResponses = staffAssignmentTester
-        .testCreateMany("staffassignments.xml");
+    List<BulkOperationResponse<CreateOperationStatus>> createResponses = staffAssignmentTester.testCreateMany("staffassignments.xml");
     Assert.assertNotNull(createResponses);
     Assert.assertEquals(1, createResponses.size());
     BulkOperationResponse<CreateOperationStatus> createResponse = createResponses.get(0);

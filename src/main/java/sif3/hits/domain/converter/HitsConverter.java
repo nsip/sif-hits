@@ -14,8 +14,10 @@ import java.util.Map;
 
 import javax.xml.bind.JAXBElement;
 import javax.xml.datatype.DatatypeFactory;
+import javax.xml.datatype.Duration;
 import javax.xml.datatype.XMLGregorianCalendar;
 
+import org.apache.commons.codec.binary.Base64;
 import org.apache.commons.lang3.time.FastDateFormat;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -206,6 +208,30 @@ public abstract class HitsConverter<S, H> {
     }
     return result;
   }
+  
+  protected Duration getDurationValue(String value) {
+    Duration result = null;
+    try {
+      if (value != null) {
+        result = DatatypeFactory.newInstance().newDuration(value);
+      }
+    } catch (Exception ex) {
+      logger.error("Unable to convert value [" + value + "] to duration.", ex);
+    }
+    return result;
+  }
+
+  protected String getDurationValue(Duration value) {
+    String result = null;
+    try {
+      if (value != null) {
+        result = value.toString();
+      }
+    } catch (Exception ex) {
+      logger.error("Unable to convert duration value [" + value + "] to string.", ex);
+    }
+    return result;
+  }
 
   private static final FastDateFormat calendarFormat = FastDateFormat.getInstance("yyyyMMddHHmmssSSSZZ");
 
@@ -305,7 +331,56 @@ public abstract class HitsConverter<S, H> {
     }
     return result;
   }
+  
+  protected Integer getIntegerValue(BigInteger value) {
+    Integer result = null;
+    if (value != null) {
+      try {
+        result = value.intValue();
+      } catch (Exception ex) {
+        logger.error("Unable to convert value [" + value + "] to BigInteger.", ex);
+      }
+    }
+    return result;
+  }
+  
+  protected String getIntegerValue(Integer value) {
+    String result = null;
+    if (value != null) {
+      try {
+        result = Integer.toString(value, 10);
+      } catch (Exception ex) {
+        logger.error("Unable to convert integer value [" + value + "] to string.", ex);
+      }
+    }
+    return result;
+  }
 
+  
+  protected Integer getIntegerValue(String value) {
+    Integer result = null;
+    if (value != null) {
+      try {
+        result = Integer.parseInt(value, 10);
+      } catch (Exception ex) {
+        logger.error("Unable to convert value [" + value + "] to integer.", ex);
+      }
+    }
+    return result;
+  }
+
+  protected BigInteger getBigIntegerValue(Integer value) {
+    BigInteger result = null;
+    if (value != null) {
+      try {
+        result = new BigInteger(value.toString());
+      } catch (Exception ex) {
+        logger.error("Unable to convert value [" + value + "] to BigInteger.", ex);
+      }
+    }
+    return result;
+  }
+  
   protected BigInteger getBigIntegerValue(String value) {
     BigInteger result = null;
     if (value != null) {
@@ -349,6 +424,58 @@ public abstract class HitsConverter<S, H> {
         result = Long.toString(value, 10);
       } catch (Exception ex) {
         logger.error("Unable to convert long value [" + value + "] to string.", ex);
+      }
+    }
+    return result;
+  }
+  
+  protected Boolean getBooleanValue(String value) {
+    Boolean result = null;
+    if (value != null) {
+      try {
+        result = Boolean.parseBoolean(value);
+      } catch (Exception ex) {
+        logger.error("Unable to convert value [" + value + "] to boolean.", ex);
+      }
+    }
+    return result;
+  }
+  
+  protected boolean getBoolValue(String value) {
+    return "true".equals(value);
+  }
+
+  protected String getBooleanValue(Boolean value) {
+    String result = null;
+    if (value != null) {
+      try {
+        result = value.toString();
+      } catch (Exception ex) {
+        logger.error("Unable to convert boolean value [" + value + "] to string.", ex);
+      }
+    }
+    return result;
+  }
+  
+  protected byte[] getByteArrayValue(String value) {
+    byte[] result = null;
+    if (value != null) {
+      try {
+        result = Base64.decodeBase64(value);
+      } catch (Exception ex) {
+        logger.error("Unable to convert boolean value [" + value + "] to string.", ex);
+      }
+    }
+    return result;
+  }
+  
+  protected String getByteArrayValue(byte[] value) {
+    String result = null;
+    if (value != null) {
+      try {
+        result = Base64.encodeBase64String(value);
+      } catch (Exception ex) {
+        logger.error("Unable to convert boolean value [" + value + "] to string.", ex);
       }
     }
     return result;

@@ -5,16 +5,16 @@ import java.util.HashSet;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Component;
 
+import sif.dd.au30.model.DebitOrCreditAmountType;
+import sif.dd.au30.model.FinancialAccountRefIdListType;
 import sif.dd.au30.model.MonetaryAmountType;
 import sif.dd.au30.model.PaymentReceiptType;
-import sif.dd.au30.model.PaymentReceiptType.FinancialAccountRefIdList;
-import sif.dd.au30.model.PaymentReceiptType.TransactionAmount;
 import sif3.hits.domain.converter.factory.IObjectFactory;
 import sif3.hits.domain.model.PaymentReceipt;
 import sif3.hits.utils.UsesConstants;
 
 @Component
-public class PaymentReceiptConverter extends HitsConverter<PaymentReceiptType, PaymentReceipt>implements UsesConstants {
+public class PaymentReceiptConverter extends HitsConverter<PaymentReceiptType, PaymentReceipt> implements UsesConstants {
 
   public PaymentReceiptConverter() {
     super(PaymentReceiptType.class, PaymentReceipt.class);
@@ -32,7 +32,7 @@ public class PaymentReceiptConverter extends HitsConverter<PaymentReceiptType, P
       target.setDebtorRefId(objectFactory.createPaymentReceiptTypeDebtorRefId(source.getDebtorRefId()));
 
       if (source.getFinancialAccountRefIds() != null && !source.getFinancialAccountRefIds().isEmpty()) {
-        FinancialAccountRefIdList financialAccountRefIdList = new FinancialAccountRefIdList();
+        FinancialAccountRefIdListType financialAccountRefIdList = objectFactory.createFinancialAccountRefIdListType();
         financialAccountRefIdList.getFinancialAccountRefId().addAll(source.getFinancialAccountRefIds());
         target.setFinancialAccountRefIdList(objectFactory.createPaymentReceiptTypeFinancialAccountRefIdList(financialAccountRefIdList));
       }
@@ -40,7 +40,7 @@ public class PaymentReceiptConverter extends HitsConverter<PaymentReceiptType, P
       target.setInvoiceRefId(objectFactory.createPaymentReceiptTypeInvoiceRefId(source.getInvoiceRefId()));
 
       if (StringUtils.isNotBlank(source.getReceivedAmount()) || StringUtils.isNotBlank(source.getReceivedAmountType())) {
-        TransactionAmount receivedAmount = new TransactionAmount();
+        DebitOrCreditAmountType receivedAmount = objectFactory.createDebitOrCreditAmountType();
         receivedAmount.setCurrency(DEFAULT_CURRENCY_ENUM);
         receivedAmount.setValue(source.getReceivedAmount());
         receivedAmount.setType(source.getReceivedAmountType());
@@ -50,7 +50,7 @@ public class PaymentReceiptConverter extends HitsConverter<PaymentReceiptType, P
       target.setReceivedTransactionId(source.getReceivedTransactionId());
 
       if (StringUtils.isNotBlank(source.getTaxAmount())) {
-        MonetaryAmountType monetaryAmountType = new MonetaryAmountType();
+        MonetaryAmountType monetaryAmountType = objectFactory.createMonetaryAmountType();
         monetaryAmountType.setCurrency(DEFAULT_CURRENCY_ENUM);
         monetaryAmountType.setValue(source.getTaxAmount());
         target.setTaxAmount(objectFactory.createPaymentReceiptTypeTaxAmount(monetaryAmountType));
@@ -81,14 +81,15 @@ public class PaymentReceiptConverter extends HitsConverter<PaymentReceiptType, P
         target.setFinancialAccountRefIds(new HashSet<String>());
       }
 
-      FinancialAccountRefIdList financialAccountRefIdList = getJAXBValue(source.getFinancialAccountRefIdList());
-      if (financialAccountRefIdList != null && financialAccountRefIdList.getFinancialAccountRefId() != null && !financialAccountRefIdList.getFinancialAccountRefId().isEmpty()) {
+      FinancialAccountRefIdListType financialAccountRefIdList = getJAXBValue(source.getFinancialAccountRefIdList());
+      if (financialAccountRefIdList != null && financialAccountRefIdList.getFinancialAccountRefId() != null
+          && !financialAccountRefIdList.getFinancialAccountRefId().isEmpty()) {
         target.getFinancialAccountRefIds().addAll(financialAccountRefIdList.getFinancialAccountRefId());
       }
 
       target.setInvoiceRefId(getJAXBValue(source.getInvoiceRefId()));
 
-      TransactionAmount receivedAmount = source.getTransactionAmount();
+      DebitOrCreditAmountType receivedAmount = source.getTransactionAmount();
       if (receivedAmount != null) {
         target.setReceivedAmount(receivedAmount.getValue());
         target.setReceivedAmountType(receivedAmount.getType());

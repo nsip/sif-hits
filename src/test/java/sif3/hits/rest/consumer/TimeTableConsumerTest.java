@@ -10,11 +10,11 @@ import org.springframework.http.HttpStatus;
 
 import sif.dd.au30.model.ObjectFactory;
 import sif.dd.au30.model.TimeTableCollectionType;
+import sif.dd.au30.model.TimeTableDayListType;
+import sif.dd.au30.model.TimeTableDayType;
+import sif.dd.au30.model.TimeTablePeriodListType;
+import sif.dd.au30.model.TimeTablePeriodType;
 import sif.dd.au30.model.TimeTableType;
-import sif.dd.au30.model.TimeTableType.TimeTableDayList;
-import sif.dd.au30.model.TimeTableType.TimeTableDayList.TimeTableDay;
-import sif.dd.au30.model.TimeTableType.TimeTableDayList.TimeTableDay.TimeTablePeriodList;
-import sif.dd.au30.model.TimeTableType.TimeTableDayList.TimeTableDay.TimeTablePeriodList.TimeTablePeriod;
 import sif3.common.exception.MarshalException;
 import sif3.common.exception.UnmarshalException;
 import sif3.common.exception.UnsupportedMediaTypeExcpetion;
@@ -29,13 +29,13 @@ import sif3.infra.rest.consumer.ConsumerLoader;
 
 public class TimeTableConsumerTest extends BaseTest {
   private ConsumerTest<TimeTableType, TimeTableCollectionType> timeTableTester = null;
-  
+
   public final static String REF_ID = "4b4a6b5d-4f0a-4f84-88ba-15610caf092f";
   public final static String LOCAL_ID = "Term 4 2014";
   private final String REF_ID_1 = "68681573-638e-4aa7-abdc-4fe19788f772";
   private final String REF_ID_2 = "369d4b5d-95e5-4751-be88-84dd439c4c21";
   private final String[] REF_IDS = { REF_ID_1, REF_ID_2 };
-  
+
   @Test
   public void initialiseData() throws Exception {
     ObjectFactory objectFactory = new ObjectFactory();
@@ -53,46 +53,46 @@ public class TimeTableConsumerTest extends BaseTest {
     timeTable.setTimeTableCreationDate(objectFactory.createTimeTableTypeTimeTableCreationDate(getDate("2014-06-01")));
     timeTable.setStartDate(objectFactory.createTimeTableTypeStartDate(getDate("2014-09-01")));
     timeTable.setEndDate(objectFactory.createTimeTableTypeEndDate(getDate("2014-12-21")));
-    
-    TimeTableDayList timeTableDayList = new TimeTableDayList();
-    TimeTableDay timeTableDay = new TimeTableDay();
+
+    TimeTableDayListType timeTableDayList = new TimeTableDayListType();
+    TimeTableDayType timeTableDay = new TimeTableDayType();
     timeTableDay.setDayId("1");
     timeTableDay.setDayTitle("Monday");
     timeTableDayList.getTimeTableDay().add(timeTableDay);
-    timeTableDay = new TimeTableDay();
+    timeTableDay = new TimeTableDayType();
     timeTableDay.setDayId("2");
     timeTableDay.setDayTitle("Tuesday");
     timeTableDayList.getTimeTableDay().add(timeTableDay);
-    timeTableDay = new TimeTableDay();
+    timeTableDay = new TimeTableDayType();
     timeTableDay.setDayId("3");
     timeTableDay.setDayTitle("Wednesday");
     timeTableDayList.getTimeTableDay().add(timeTableDay);
-    timeTableDay = new TimeTableDay();
+    timeTableDay = new TimeTableDayType();
     timeTableDay.setDayId("4");
     timeTableDay.setDayTitle("Thursday");
     timeTableDayList.getTimeTableDay().add(timeTableDay);
-    timeTableDay = new TimeTableDay();
+    timeTableDay = new TimeTableDayType();
     timeTableDay.setDayId("5");
     timeTableDay.setDayTitle("Friday");
-    
-    TimeTablePeriodList timeTablePeriodList = new TimeTablePeriodList();
-    TimeTablePeriod timeTablePeriod = new TimeTablePeriod();
+
+    TimeTablePeriodListType timeTablePeriodList = new TimeTablePeriodListType();
+    TimeTablePeriodType timeTablePeriod = new TimeTablePeriodType();
     timeTablePeriod.setPeriodId("1");
     timeTablePeriod.setPeriodTitle("Form");
-    timeTablePeriod.setBellPeriod(objectFactory.createTimeTableTypeTimeTableDayListTimeTableDayTimeTablePeriodListTimeTablePeriodBellPeriod("1"));
-    timeTablePeriod.setStartTime(objectFactory.createTimeTableTypeTimeTableDayListTimeTableDayTimeTablePeriodListTimeTablePeriodStartTime(getDate("08:45:00")));
-    timeTablePeriod.setEndTime(objectFactory.createTimeTableTypeTimeTableDayListTimeTableDayTimeTablePeriodListTimeTablePeriodEndTime(getDate("09:00:00")));
+    timeTablePeriod.setBellPeriod(objectFactory.createTimeTablePeriodTypeBellPeriod("1"));
+    timeTablePeriod.setStartTime(objectFactory.createTimeTablePeriodTypeStartTime(getDate("08:45:00")));
+    timeTablePeriod.setEndTime(objectFactory.createTimeTablePeriodTypeEndTime(getDate("09:00:00")));
     timeTablePeriodList.getTimeTablePeriod().add(timeTablePeriod);
     timeTableDay.setTimeTablePeriodList(timeTablePeriodList);
-    
+
     timeTableDayList.getTimeTableDay().add(timeTableDay);
     timeTable.setTimeTableDayList(timeTableDayList);
     timeTableTester.doCreateOne(timeTable);
     String xmlExpectedTo = timeTableTester.getXML(timeTable);
-    
+
     timeTable.setRefId("52d3f540-b619-41a4-961c-27ab156c89dd");
     timeTableTester.doCreateOne(timeTable);
-    
+
     timeTable.setRefId("09900c4f-1ac6-4581-a65e-10d978d98bb3");
     timeTableTester.doCreateOne(timeTable);
 
@@ -111,15 +111,14 @@ public class TimeTableConsumerTest extends BaseTest {
       Assert.assertEquals("XML Differs", xmlExpectedFrom, xmlExpectedTo);
     }
   }
-  
+
   @Before
   public void setup() {
     ConsumerLoader.initialise("TestConsumer");
-    timeTableTester = new ConsumerTest<TimeTableType, TimeTableCollectionType>(
-        TimeTableType.class, "TimeTable", TimeTableCollectionType.class, "TimeTables");
+    timeTableTester = new ConsumerTest<TimeTableType, TimeTableCollectionType>(TimeTableType.class, "TimeTable", TimeTableCollectionType.class, "TimeTables");
     timeTableTester.testDeleteMany(REF_IDS);
   }
-  
+
   @Test
   public void testServicePathSchoolInfo() {
     QueryCriteria queryCriteria = new QueryCriteria();
@@ -140,7 +139,7 @@ public class TimeTableConsumerTest extends BaseTest {
     }
     Assert.assertTrue(found);
   }
-  
+
   @Test
   public void testUpdateSingle() throws Exception {
     List<Response> responses = timeTableTester.testGetSingle(REF_ID);
@@ -174,14 +173,14 @@ public class TimeTableConsumerTest extends BaseTest {
       Assert.assertEquals("XML Differs", xmlExpectedFrom, xmlExpectedTo);
     }
   }
-  
+
   @Test
   public void testUpdateEmptyDays() throws UnmarshalException, UnsupportedMediaTypeExcpetion, MarshalException {
     String contents = timeTableTester.getFileContents("timetable.xml");
     TimeTableType timeTable = timeTableTester.fromXML(contents);
     timeTable.getTimeTableDayList().getTimeTableDay().clear();
     String xmlExpectedFrom = timeTableTester.getXML(timeTable);
-    
+
     List<Response> createResponses = timeTableTester.doCreateOne(timeTable);
     Assert.assertNotNull(createResponses);
     Assert.assertEquals(1, createResponses.size());
@@ -189,14 +188,14 @@ public class TimeTableConsumerTest extends BaseTest {
     Assert.assertNotNull(createResponse.getDataObject());
     TimeTableType createdTimeTable = (TimeTableType) createResponse.getDataObject();
     Assert.assertEquals(REF_ID_1, createdTimeTable.getRefId());
-    
+
     String xmlExpectedCreate = timeTableTester.getXML(createdTimeTable);
-    
+
     List<Response> updateResponses = timeTableTester.doUpdateOne(timeTable, REF_ID_1);
     Assert.assertNotNull(updateResponses);
     Assert.assertEquals(1, updateResponses.size());
     Assert.assertEquals(updateResponses.get(0).getStatus(), HttpStatus.NO_CONTENT.value());
-    
+
     List<Response> getResponses = timeTableTester.testGetSingle(REF_ID_1);
     Assert.assertNotNull(getResponses);
     Assert.assertEquals(1, getResponses.size());
@@ -215,13 +214,13 @@ public class TimeTableConsumerTest extends BaseTest {
       Assert.assertEquals("XML Differs", xmlExpectedFrom, xmlExpectedTo);
     }
   }
-  
+
   @Test
   public void testUpdateFullDays() throws UnmarshalException, UnsupportedMediaTypeExcpetion, MarshalException {
     String contents = timeTableTester.getFileContents("timetable.xml");
     TimeTableType timeTable = timeTableTester.fromXML(contents);
     String xmlExpectedFrom = timeTableTester.getXML(timeTable);
-    
+
     List<Response> createResponses = timeTableTester.doCreateOne(timeTable);
     Assert.assertNotNull(createResponses);
     Assert.assertEquals(1, createResponses.size());
@@ -230,15 +229,15 @@ public class TimeTableConsumerTest extends BaseTest {
     TimeTableType createdTimeTable = (TimeTableType) createResponse.getDataObject();
     Assert.assertEquals(REF_ID_1, createdTimeTable.getRefId());
     String xmlExpectedCreate = timeTableTester.getXML(createdTimeTable);
-    
+
     timeTable.getTimeTableDayList().getTimeTableDay().clear();
     String xmlExpectedUpdate = timeTableTester.getXML(timeTable);
-    
+
     List<Response> updateResponses = timeTableTester.doUpdateOne(timeTable, REF_ID_1);
     Assert.assertNotNull(updateResponses);
     Assert.assertEquals(1, updateResponses.size());
     Assert.assertEquals(updateResponses.get(0).getStatus(), HttpStatus.NO_CONTENT.value());
-    
+
     List<Response> getResponses = timeTableTester.testGetSingle(REF_ID_1);
     Assert.assertNotNull(getResponses);
     Assert.assertEquals(1, getResponses.size());
@@ -261,7 +260,7 @@ public class TimeTableConsumerTest extends BaseTest {
       Assert.assertEquals("XML Differs", xmlExpectedUpdate, xmlExpectedTo);
     }
   }
-  
+
   @Test
   public void testGetSingle() {
     List<Response> responses = timeTableTester.testGetSingle(REF_ID);
@@ -272,7 +271,7 @@ public class TimeTableConsumerTest extends BaseTest {
     TimeTableType timeTable = (TimeTableType) response.getDataObject();
     Assert.assertEquals(REF_ID, timeTable.getRefId());
   }
-  
+
   @Test
   public void testGetMany() {
     List<Response> responses = timeTableTester.testGetMany(5, 0);
@@ -284,9 +283,9 @@ public class TimeTableConsumerTest extends BaseTest {
     Assert.assertNotNull(timeTables.getTimeTable());
     Assert.assertEquals(5, timeTables.getTimeTable().size());
   }
-  
+
   @Test
-  public void testCreateDelete() {   
+  public void testCreateDelete() {
     List<Response> createResponses = timeTableTester.testCreateOne("timetable.xml");
     Assert.assertNotNull(createResponses);
     Assert.assertEquals(1, createResponses.size());
@@ -294,7 +293,7 @@ public class TimeTableConsumerTest extends BaseTest {
     Assert.assertNotNull(createResponse.getDataObject());
     TimeTableType timeTable = (TimeTableType) createResponse.getDataObject();
     Assert.assertEquals(REF_ID_1, timeTable.getRefId());
-    
+
     List<Response> deleteResponses = timeTableTester.testDeleteOne(REF_ID_1);
     Assert.assertNotNull(deleteResponses);
     Assert.assertEquals(1, deleteResponses.size());
@@ -302,7 +301,7 @@ public class TimeTableConsumerTest extends BaseTest {
     Assert.assertNull(deleteResponse.getDataObject());
     Assert.assertEquals(HttpStatus.NO_CONTENT.value(), deleteResponse.getStatus());
   }
-  
+
   @Test
   public void testCreateDeleteMany() {
     final List<String> REF_ID_LIST = Arrays.asList(REF_IDS);

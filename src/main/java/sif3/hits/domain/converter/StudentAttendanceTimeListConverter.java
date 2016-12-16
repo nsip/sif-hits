@@ -6,11 +6,11 @@ import java.util.Set;
 import org.springframework.stereotype.Component;
 
 import sif.dd.au30.model.AttendanceCodeType;
+import sif.dd.au30.model.AttendanceTimeType;
+import sif.dd.au30.model.AttendanceTimesType;
 import sif.dd.au30.model.OtherCodeListType;
 import sif.dd.au30.model.OtherCodeListType.OtherCode;
 import sif.dd.au30.model.StudentAttendanceTimeListType;
-import sif.dd.au30.model.StudentAttendanceTimeListType.AttendanceTimes;
-import sif.dd.au30.model.StudentAttendanceTimeListType.AttendanceTimes.AttendanceTime;
 import sif3.hits.domain.converter.factory.IObjectFactory;
 import sif3.hits.domain.model.StudentAttendanceTime;
 import sif3.hits.domain.model.StudentAttendanceTimeList;
@@ -34,11 +34,11 @@ public class StudentAttendanceTimeListConverter extends HitsConverter<StudentAtt
       target.setStudentPersonalRefId(source.getStudentPersonalRefId());
 
       if (source.getAttendanceTimes() != null && !source.getAttendanceTimes().isEmpty()) {
-        AttendanceTimes attendanceTimes = objectFactory.createStudentAttendanceTimeListTypeAttendanceTimes();
+        AttendanceTimesType attendanceTimes = objectFactory.createAttendanceTimesType();
         for (StudentAttendanceTime studentAttendanceTime : source.getAttendanceTimes()) {
-          AttendanceTime attendanceTime = objectFactory.createStudentAttendanceTimeListTypeAttendanceTimesAttendanceTime();
-          attendanceTime.setDurationValue(objectFactory.createStudentAttendanceTimeListTypeAttendanceTimesAttendanceTimeDurationValue(getBigDecimalValue(studentAttendanceTime.getAbsenceValue())));
-          attendanceTime.setAttendanceNote(objectFactory.createStudentAttendanceTimeListTypeAttendanceTimesAttendanceTimeAttendanceNote(studentAttendanceTime.getAttendanceNote()));
+          AttendanceTimeType attendanceTime = objectFactory.createAttendanceTimeType();
+          attendanceTime.setDurationValue(objectFactory.createAttendanceTimeTypeDurationValue(getBigDecimalValue(studentAttendanceTime.getAbsenceValue())));
+          attendanceTime.setAttendanceNote(objectFactory.createAttendanceTimeTypeAttendanceNote(studentAttendanceTime.getAttendanceNote()));
           attendanceTime.setAttendanceStatus(studentAttendanceTime.getAttendanceStatus());
           attendanceTime.setEndTime(getTimeValue(studentAttendanceTime.getEndTime()));
           attendanceTime.setStartTime(getTimeValue(studentAttendanceTime.getStartTime()));
@@ -78,7 +78,7 @@ public class StudentAttendanceTimeListConverter extends HitsConverter<StudentAtt
       target.setAttendanceTimes(attendanceTimes);
 
       if (source.getAttendanceTimes() != null) {
-        for (AttendanceTime attendanceTime : source.getAttendanceTimes().getAttendanceTime()) {
+        for (AttendanceTimeType attendanceTime : source.getAttendanceTimes().getAttendanceTime()) {
           StudentAttendanceTime studentAttendanceTime = new StudentAttendanceTime();
           studentAttendanceTime.setStudentAttendanceTimeList(target);
           studentAttendanceTime.setAbsenceValue(getBigDecimalValue(getJAXBValue(attendanceTime.getDurationValue())));

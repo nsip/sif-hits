@@ -4,56 +4,57 @@ import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import sif.dd.au30.model.ExpenseAccountType;
+import sif.dd.au30.model.ExpenseAccountsType;
 import sif.dd.au30.model.MonetaryAmountType;
-import sif.dd.au30.model.PurchaseOrderType.PurchasingItems.PurchasingItem.ExpenseAccounts;
-import sif.dd.au30.model.PurchaseOrderType.PurchasingItems.PurchasingItem.ExpenseAccounts.ExpenseAccount;
+import sif.dd.au30.model.PurchasingItemType;
 import sif3.hits.domain.converter.factory.IObjectFactory;
 import sif3.hits.domain.model.PurchasingItem;
 import sif3.hits.utils.UsesConstants;
 
 @Component
-public class PurchasingItemsConverter extends HitsConverter<sif.dd.au30.model.PurchaseOrderType.PurchasingItems.PurchasingItem, PurchasingItem>implements UsesConstants {
+public class PurchasingItemsConverter extends HitsConverter<PurchasingItemType, PurchasingItem> implements UsesConstants {
 
   @Autowired
   private ExpenseAccountConverter expenseAccountConverter;
 
   public PurchasingItemsConverter() {
-    super(sif.dd.au30.model.PurchaseOrderType.PurchasingItems.PurchasingItem.class, PurchasingItem.class);
+    super(PurchasingItemType.class, PurchasingItem.class);
   }
 
   @Override
-  public void toSifModel(PurchasingItem source, sif.dd.au30.model.PurchaseOrderType.PurchasingItems.PurchasingItem target) {
+  public void toSifModel(PurchasingItem source, PurchasingItemType target) {
     if (source != null && target != null) {
       IObjectFactory objectFactory = getObjectFactory();
-
+      
       if (source.getExpenseAccount() != null) {
-        ExpenseAccounts expenseAccounts = new ExpenseAccounts();
-        ExpenseAccount expenseAccount = expenseAccountConverter.toSifModel(source.getExpenseAccount());
-        expenseAccounts.setExpenseAccount(objectFactory.createPurchaseOrderTypePurchasingItemsPurchasingItemExpenseAccountsExpenseAccount(expenseAccount));
-        target.setExpenseAccounts(objectFactory.createPurchaseOrderTypePurchasingItemsPurchasingItemExpenseAccounts(expenseAccounts));
+        ExpenseAccountsType expenseAccounts = objectFactory.createExpenseAccountsType();
+        ExpenseAccountType expenseAccount = expenseAccountConverter.toSifModel(source.getExpenseAccount());
+        expenseAccounts.getExpenseAccount().add(expenseAccount);
+        target.setExpenseAccounts(objectFactory.createPurchasingItemTypeExpenseAccounts(expenseAccounts));
       }
 
       target.setItemDescription(source.getItemDescription());
-      target.setItemNumber(objectFactory.createPurchaseOrderTypePurchasingItemsPurchasingItemItemNumber(source.getItemNumber()));
-      target.setQuantity(objectFactory.createPurchaseOrderTypePurchasingItemsPurchasingItemQuantity(source.getQuantity()));
-      target.setQuantityDelivered(objectFactory.createPurchaseOrderTypePurchasingItemsPurchasingItemQuantityDelivered(source.getQuantityDelivered()));
+      target.setItemNumber(objectFactory.createPurchasingItemTypeItemNumber(source.getItemNumber()));
+      target.setQuantity(objectFactory.createPurchasingItemTypeQuantity(source.getQuantity()));
+      target.setQuantityDelivered(objectFactory.createPurchasingItemTypeQuantityDelivered(source.getQuantityDelivered()));
 
       if (StringUtils.isNotBlank(source.getUnitCost())) {
-        MonetaryAmountType monetaryAmountType = new MonetaryAmountType();
+        MonetaryAmountType monetaryAmountType = objectFactory.createMonetaryAmountType();
         monetaryAmountType.setCurrency(DEFAULT_CURRENCY_ENUM);
         monetaryAmountType.setValue(source.getUnitCost());
-        target.setUnitCost(objectFactory.createPurchaseOrderTypePurchasingItemsPurchasingItemUnitCost(monetaryAmountType));
+        target.setUnitCost(objectFactory.createPurchasingItemTypeUnitCost(monetaryAmountType));
       }
     }
   }
 
   @Override
-  public void toHitsModel(sif.dd.au30.model.PurchaseOrderType.PurchasingItems.PurchasingItem source, PurchasingItem target) {
+  public void toHitsModel(PurchasingItemType source, PurchasingItem target) {
     if (source != null && target != null) {
-      ExpenseAccounts expenseAccounts = getJAXBValue(source.getExpenseAccounts());
-      ExpenseAccount expenseAccount = null;
-      if (expenseAccounts != null) {
-        expenseAccount = getJAXBValue(expenseAccounts.getExpenseAccount());
+      ExpenseAccountsType expenseAccounts = getJAXBValue(source.getExpenseAccounts());
+      ExpenseAccountType expenseAccount = null;
+      if (expenseAccounts != null && !expenseAccounts.getExpenseAccount().isEmpty()) {
+        expenseAccount = expenseAccounts.getExpenseAccount().get(0);
       }
       target.setExpenseAccount(expenseAccountConverter.toHitsModel(expenseAccount));
       if (target.getExpenseAccount() != null) {

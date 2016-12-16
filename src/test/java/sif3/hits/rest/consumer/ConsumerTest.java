@@ -36,13 +36,13 @@ public class ConsumerTest<S, M> {
 
   private TestConsumer<S, M> testConsumer;
 
-  protected ConsumerTest(Class<S> singleClass, String singleName, Class<M> multiClass, String multiName) {
+  public ConsumerTest(Class<S> singleClass, String singleName, Class<M> multiClass, String multiName) {
     this.testConsumer = new TestConsumer<S, M>(singleClass, singleName, multiClass, multiName);
     this.SINGLE_CLASS = singleClass;
     this.MULTI_CLASS = multiClass;
   }
 
-  protected List<Response> testGetSingle(String refId) {
+   List<Response> testGetSingle(String refId) {
     List<Response> result = null;
     System.out.println("Start 'Get " + getSingleName() + "' in all connected environments...");
     try {
@@ -56,7 +56,7 @@ public class ConsumerTest<S, M> {
     return result;
   }
 
-  protected List<Response> testGetMany(int recordsPerPage, int page) {
+   List<Response> testGetMany(int recordsPerPage, int page) {
     List<Response> result = null;
     if (page == 0) page = 1;
     System.out.println("Start 'Get All " + getMultiName() + "' in all connected environments...");
@@ -71,7 +71,7 @@ public class ConsumerTest<S, M> {
     return result;
   }
   
-  protected List<Response> testQBE(S example, int recordsPerPage, int page) {
+   List<Response> testQBE(S example, int recordsPerPage, int page) {
     List<Response> result = null;
     if (page == 0) page = 1;
     System.out.println("Start 'Retrieve by QBE " + getMultiName() + "' in all connected environments...");
@@ -86,7 +86,7 @@ public class ConsumerTest<S, M> {
     return result;
   }
   
-  protected List<Response> testServicePath(QueryCriteria queryCriteria, int recordsPerPage, int page) {
+   List<Response> testServicePath(QueryCriteria queryCriteria, int recordsPerPage, int page) {
     List<Response> result = null;
     if (page == 0) page = 1;
     System.out.println("Start 'Retrieve by ServicePath " + getMultiName() + "' in all connected environments...");
@@ -101,7 +101,7 @@ public class ConsumerTest<S, M> {
     return result;
   }
 
-  protected List<Response> testCreateOne(String filename) {
+   List<Response> testCreateOne(String filename) {
     List<Response> result = null;
     System.out.println("Start 'Create " + getSingleName() + "' in all connected environments...");
     try {
@@ -121,7 +121,7 @@ public class ConsumerTest<S, M> {
     return result;
   }
 
-  protected List<Response> doCreateOne(S object) {
+   List<Response> doCreateOne(S object) {
     List<Response> result = null;
     System.out.println("Start 'Create " + getSingleName() + "' in all connected environments...");
     try {
@@ -137,7 +137,7 @@ public class ConsumerTest<S, M> {
     return result;
   }
   
-  protected List<Response> doUpdateOne(S object, String refId) {
+   List<Response> doUpdateOne(S object, String refId) {
     List<Response> result = null;
     System.out.println("Start 'Update " + getSingleName() + "' in all connected environments...");
     try {
@@ -153,7 +153,7 @@ public class ConsumerTest<S, M> {
     return result;
   }
   
-  protected String getXML(S object) throws MarshalException, UnsupportedMediaTypeExcpetion {
+  String getXML(S object) throws MarshalException, UnsupportedMediaTypeExcpetion {
     String result = null;
     if (object != null) {
       result = testConsumer.getMarshaller().marshalToXML(object);
@@ -161,7 +161,7 @@ public class ConsumerTest<S, M> {
     return result;
   }
   
-  protected S fromXML(String xml) throws UnmarshalException, UnsupportedMediaTypeExcpetion {
+   S fromXML(String xml) throws UnmarshalException, UnsupportedMediaTypeExcpetion {
     S result = null;
     if (xml != null) {
       Object sifObject = testConsumer.getUnmarshaller().unmarshalFromXML(xml, SINGLE_CLASS);
@@ -173,7 +173,7 @@ public class ConsumerTest<S, M> {
   }
 
 
-  protected List<Response> testUpdateOne(String filename, String refId) {
+   List<Response> testUpdateOne(String filename, String refId) {
     List<Response> result = null;
     System.out.println("Start 'Update " + getSingleName() + "' in all connected environments...");
     try {
@@ -193,7 +193,7 @@ public class ConsumerTest<S, M> {
     return result;
   }
 
-  protected List<BulkOperationResponse<CreateOperationStatus>> testCreateMany(String filename) {
+   List<BulkOperationResponse<CreateOperationStatus>> testCreateMany(String filename) {
     List<BulkOperationResponse<CreateOperationStatus>> result = null;
     System.out.println("Start 'Create " + getMultiName() + "' in all connected environments...");
     try {
@@ -213,7 +213,7 @@ public class ConsumerTest<S, M> {
     return result;
   }
 
-  protected List<Response> testDeleteOne(String refId) {
+   List<Response> testDeleteOne(String refId) {
     List<Response> result = null;
     System.out.println("Start 'Remove " + getSingleName() + "' in all connected environments...");
     try {
@@ -227,7 +227,7 @@ public class ConsumerTest<S, M> {
     return result;
   }
 
-  protected List<BulkOperationResponse<OperationStatus>> testDeleteMany(String... refIds) {
+   List<BulkOperationResponse<OperationStatus>> testDeleteMany(String... refIds) {
     List<BulkOperationResponse<OperationStatus>> result = null;
     System.out.println("Start 'Remove " + getMultiName() + "' in all connected environments...");
     try {
@@ -241,7 +241,7 @@ public class ConsumerTest<S, M> {
     return result;
   }
 
-  protected String getFileContents(String filename) {
+   String getFileContents(String filename) {
     String result = "";
     try {
       Resource resource = new ClassPathResource(FILE_PATH + "/" + filename);

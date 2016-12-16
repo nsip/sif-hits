@@ -11,7 +11,7 @@ import sif3.hits.domain.model.PersonPicture;
 import sif3.hits.utils.UsesConstants;
 
 @Component
-public class PersonPictureConverter extends HitsConverter<PersonPictureType, PersonPicture>implements UsesConstants {
+public class PersonPictureConverter extends HitsConverter<PersonPictureType, PersonPicture> implements UsesConstants {
 
   public PersonPictureConverter() {
     super(PersonPictureType.class, PersonPicture.class);
@@ -34,7 +34,7 @@ public class PersonPictureConverter extends HitsConverter<PersonPictureType, Per
       }
 
       if (source.getPictureSource() != null || source.getPictureSourceType() != null) {
-        PictureSource pictureSource = new PictureSource();
+        PictureSource pictureSource = objectFactory.createPersonPictureTypePictureSource();
         pictureSource.getValue().add(source.getPictureSource());
         pictureSource.setType(source.getPictureSourceType());
         target.setPictureSource(pictureSource);
@@ -48,13 +48,13 @@ public class PersonPictureConverter extends HitsConverter<PersonPictureType, Per
       target.setRefId(source.getRefId());
       target.setSchoolYear(getYearValue(source.getSchoolYear()));
       target.setOkToPublish(getJAXBEnumValue(source.getOKToPublish()));
-      
+
       ParentObjectRefId parentObject = source.getParentObjectRefId();
       if (parentObject != null) {
         target.setParentObjectRefId(parentObject.getValue());
         target.setParentObjectRefObject(parentObject.getSIFRefObject());
       }
-      
+
       PictureSource pictureSource = source.getPictureSource();
       if (pictureSource != null) {
         if (pictureSource.getValue() != null && !pictureSource.getValue().isEmpty()) {

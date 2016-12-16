@@ -9,11 +9,11 @@ import org.junit.Test;
 import org.springframework.http.HttpStatus;
 
 import sif.dd.au30.model.AUCodeSetsYesOrNoCategoryType;
+import sif.dd.au30.model.ContactFlagsType;
 import sif.dd.au30.model.ObjectFactory;
 import sif.dd.au30.model.RelationshipType;
 import sif.dd.au30.model.StudentContactRelationshipCollectionType;
 import sif.dd.au30.model.StudentContactRelationshipType;
-import sif.dd.au30.model.StudentContactRelationshipType.ContactFlags;
 import sif3.common.ws.BulkOperationResponse;
 import sif3.common.ws.CreateOperationStatus;
 import sif3.common.ws.OperationStatus;
@@ -32,61 +32,56 @@ public class StudentContactRelationshipConsumerTest extends BaseTest {
     public static String REF_ID_4 = "292c3f3a-2a0a-4607-b02e-02ead900e7a1";
     public static String REF_ID_5 = "afc1f6e7-7edf-4f98-8cb4-badd646cf92d";
   }
-  
+
   private final String REF_ID_1 = "5eede4c3-f468-4ee3-b64b-8fe37e2b82b7";
   private final String REF_ID_2 = "559ea81b-62c7-4e51-ade2-74d42e1084b1";
   private final String[] REF_IDS = { REF_ID_1, REF_ID_2 };
 
   @Test
-  public void initialiseData() throws Exception {    
+  public void initialiseData() throws Exception {
     ObjectFactory objectFactory = new ObjectFactory();
     StudentContactRelationshipType studentContactRelationshipType = new StudentContactRelationshipType();
-    
-    studentContactRelationshipType.setStudentContactRelationshipRefId(
-        StudentContactRelationshipRefIds.REF_ID_1);
+
+    studentContactRelationshipType.setStudentContactRelationshipRefId(StudentContactRelationshipRefIds.REF_ID_1);
     studentContactRelationshipType.setStudentPersonalRefId(StudentPersonalRefIds.REF_ID_1);
     studentContactRelationshipType.setStudentContactPersonalRefId(StudentContactPersonalRefIds.REF_ID_1);
-    
+
     RelationshipType relationshipType = new RelationshipType();
     relationshipType.setCode("01");
     studentContactRelationshipType.setRelationship(relationshipType);
-    
-    ContactFlags contactFlags = new ContactFlags();
-    contactFlags.setParentLegalGuardian(objectFactory.createStudentContactRelationshipTypeContactFlagsParentLegalGuardian(AUCodeSetsYesOrNoCategoryType.Y));
-    contactFlags.setPickupRights(objectFactory.createStudentContactRelationshipTypeContactFlagsPickupRights(AUCodeSetsYesOrNoCategoryType.N));
-    contactFlags.setLivesWith(objectFactory.createStudentContactRelationshipTypeContactFlagsLivesWith(AUCodeSetsYesOrNoCategoryType.U));
-    contactFlags.setAccessToRecords(objectFactory.createStudentContactRelationshipTypeContactFlagsAccessToRecords(AUCodeSetsYesOrNoCategoryType.X));
-    contactFlags.setEmergencyContact(objectFactory.createStudentContactRelationshipTypeContactFlagsEmergencyContact(AUCodeSetsYesOrNoCategoryType.Y));
-    contactFlags.setHasCustody(objectFactory.createStudentContactRelationshipTypeContactFlagsHasCustody(AUCodeSetsYesOrNoCategoryType.N));
-    contactFlags.setDisciplinaryContact(objectFactory.createStudentContactRelationshipTypeContactFlagsDisciplinaryContact(AUCodeSetsYesOrNoCategoryType.U));
-    contactFlags.setPrimaryCareProvider(objectFactory.createStudentContactRelationshipTypeContactFlagsPrimaryCareProvider(AUCodeSetsYesOrNoCategoryType.X));
-    contactFlags.setFeesBilling(objectFactory.createStudentContactRelationshipTypeContactFlagsFeesBilling(AUCodeSetsYesOrNoCategoryType.Y));
-    contactFlags.setFamilyMail(objectFactory.createStudentContactRelationshipTypeContactFlagsFamilyMail(AUCodeSetsYesOrNoCategoryType.N));
-    contactFlags.setInterventionOrder(objectFactory.createStudentContactRelationshipTypeContactFlagsInterventionOrder(AUCodeSetsYesOrNoCategoryType.U));
+
+    ContactFlagsType contactFlags = new ContactFlagsType();
+    contactFlags.setParentLegalGuardian(objectFactory.createContactFlagsTypeParentLegalGuardian(AUCodeSetsYesOrNoCategoryType.Y));
+    contactFlags.setPickupRights(objectFactory.createContactFlagsTypePickupRights(AUCodeSetsYesOrNoCategoryType.N));
+    contactFlags.setLivesWith(objectFactory.createContactFlagsTypeLivesWith(AUCodeSetsYesOrNoCategoryType.U));
+    contactFlags.setAccessToRecords(objectFactory.createContactFlagsTypeAccessToRecords(AUCodeSetsYesOrNoCategoryType.X));
+    contactFlags.setEmergencyContact(objectFactory.createContactFlagsTypeEmergencyContact(AUCodeSetsYesOrNoCategoryType.Y));
+    contactFlags.setHasCustody(objectFactory.createContactFlagsTypeHasCustody(AUCodeSetsYesOrNoCategoryType.N));
+    contactFlags.setDisciplinaryContact(objectFactory.createContactFlagsTypeDisciplinaryContact(AUCodeSetsYesOrNoCategoryType.U));
+    contactFlags.setPrimaryCareProvider(objectFactory.createContactFlagsTypePrimaryCareProvider(AUCodeSetsYesOrNoCategoryType.X));
+    contactFlags.setFeesBilling(objectFactory.createContactFlagsTypeFeesBilling(AUCodeSetsYesOrNoCategoryType.Y));
+    contactFlags.setFamilyMail(objectFactory.createContactFlagsTypeFamilyMail(AUCodeSetsYesOrNoCategoryType.N));
+    contactFlags.setInterventionOrder(objectFactory.createContactFlagsTypeInterventionOrder(AUCodeSetsYesOrNoCategoryType.U));
     studentContactRelationshipType.setContactFlags(objectFactory.createStudentContactRelationshipTypeContactFlags(contactFlags));
     studentTester.doCreateOne(studentContactRelationshipType);
     String xmlExpectedTo = studentTester.getXML(studentContactRelationshipType);
-    
-    studentContactRelationshipType.setStudentContactRelationshipRefId(
-        StudentContactRelationshipRefIds.REF_ID_2);
+
+    studentContactRelationshipType.setStudentContactRelationshipRefId(StudentContactRelationshipRefIds.REF_ID_2);
     studentContactRelationshipType.setStudentPersonalRefId(StudentPersonalRefIds.REF_ID_2);
     studentContactRelationshipType.setStudentContactPersonalRefId(StudentContactPersonalRefIds.REF_ID_2);
     studentTester.doCreateOne(studentContactRelationshipType);
 
-    studentContactRelationshipType.setStudentContactRelationshipRefId(
-        StudentContactRelationshipRefIds.REF_ID_3);
+    studentContactRelationshipType.setStudentContactRelationshipRefId(StudentContactRelationshipRefIds.REF_ID_3);
     studentContactRelationshipType.setStudentPersonalRefId(StudentPersonalRefIds.REF_ID_3);
     studentContactRelationshipType.setStudentContactPersonalRefId(StudentContactPersonalRefIds.REF_ID_3);
     studentTester.doCreateOne(studentContactRelationshipType);
-    
-    studentContactRelationshipType.setStudentContactRelationshipRefId(
-        StudentContactRelationshipRefIds.REF_ID_4);
+
+    studentContactRelationshipType.setStudentContactRelationshipRefId(StudentContactRelationshipRefIds.REF_ID_4);
     studentContactRelationshipType.setStudentPersonalRefId(StudentPersonalRefIds.REF_ID_4);
-    studentContactRelationshipType.setStudentContactPersonalRefId(StudentContactPersonalRefIds.REF_ID_4);    
+    studentContactRelationshipType.setStudentContactPersonalRefId(StudentContactPersonalRefIds.REF_ID_4);
     studentTester.doCreateOne(studentContactRelationshipType);
-    
-    studentContactRelationshipType.setStudentContactRelationshipRefId(
-        StudentContactRelationshipRefIds.REF_ID_5);
+
+    studentContactRelationshipType.setStudentContactRelationshipRefId(StudentContactRelationshipRefIds.REF_ID_5);
     studentContactRelationshipType.setStudentPersonalRefId(StudentPersonalRefIds.REF_ID_5);
     studentContactRelationshipType.setStudentContactPersonalRefId(StudentContactPersonalRefIds.REF_ID_5);
     studentTester.doCreateOne(studentContactRelationshipType);
@@ -104,11 +99,11 @@ public class StudentContactRelationshipConsumerTest extends BaseTest {
   @Before
   public void setup() {
     ConsumerLoader.initialise("TestConsumer");
-    studentTester = new ConsumerTest<StudentContactRelationshipType, StudentContactRelationshipCollectionType>(StudentContactRelationshipType.class,
-        "StudentContactRelationship", StudentContactRelationshipCollectionType.class, "StudentContactRelationships");
+    studentTester = new ConsumerTest<StudentContactRelationshipType, StudentContactRelationshipCollectionType>(StudentContactRelationshipType.class, "StudentContactRelationship",
+        StudentContactRelationshipCollectionType.class, "StudentContactRelationships");
     studentTester.testDeleteMany(REF_IDS);
   }
-  
+
   @Test
   public void testUpdateSingle() throws Exception {
     List<Response> responses = studentTester.testGetSingle(StudentContactRelationshipRefIds.REF_ID_1);
@@ -142,7 +137,7 @@ public class StudentContactRelationshipConsumerTest extends BaseTest {
       Assert.assertEquals("XML Differs", xmlExpectedFrom, xmlExpectedTo);
     }
   }
-  
+
   @Test
   public void testGetSingle() {
     List<Response> responses = studentTester.testGetSingle(StudentContactRelationshipRefIds.REF_ID_1);

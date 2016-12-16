@@ -428,6 +428,83 @@
                     <right type="QUERY">APPROVED</right>
                   </rights>
                 </service>
+                <service name="NAPTests" contextId="DEFAULT" type="OBJECT">
+                  <rights>
+                    <right type="QUERY">APPROVED</right>
+                    <right type="CREATE">APPROVED</right>
+                    <right type="UPDATE">APPROVED</right>
+                    <right type="DELETE">APPROVED</right>
+                    <right type="PROVIDE">REJECTED</right>
+                    <right type="SUBSCRIBE">APPROVED</right>
+                    <right type="ADMIN">REJECTED</right>
+                  </rights>
+                </service>
+                <service name="NAPTestlets" contextId="DEFAULT" type="OBJECT">
+                  <rights>
+                    <right type="QUERY">APPROVED</right>
+                    <right type="CREATE">APPROVED</right>
+                    <right type="UPDATE">APPROVED</right>
+                    <right type="DELETE">APPROVED</right>
+                    <right type="PROVIDE">REJECTED</right>
+                    <right type="SUBSCRIBE">APPROVED</right>
+                    <right type="ADMIN">REJECTED</right>
+                  </rights>
+                </service>
+                <service name="NAPTestScoreSummarys" contextId="DEFAULT" type="OBJECT">
+                  <rights>
+                    <right type="QUERY">APPROVED</right>
+                    <right type="CREATE">APPROVED</right>
+                    <right type="UPDATE">APPROVED</right>
+                    <right type="DELETE">APPROVED</right>
+                    <right type="PROVIDE">REJECTED</right>
+                    <right type="SUBSCRIBE">APPROVED</right>
+                    <right type="ADMIN">REJECTED</right>
+                  </rights>
+                </service>
+                <service name="NAPStudentResponseSets" contextId="DEFAULT" type="OBJECT">
+                  <rights>
+                    <right type="QUERY">APPROVED</right>
+                    <right type="CREATE">APPROVED</right>
+                    <right type="UPDATE">APPROVED</right>
+                    <right type="DELETE">APPROVED</right>
+                    <right type="PROVIDE">REJECTED</right>
+                    <right type="SUBSCRIBE">APPROVED</right>
+                    <right type="ADMIN">REJECTED</right>
+                  </rights>
+                </service>
+                <service name="NAPEventStudentLinks" contextId="DEFAULT" type="OBJECT">
+                  <rights>
+                    <right type="QUERY">APPROVED</right>
+                    <right type="CREATE">APPROVED</right>
+                    <right type="UPDATE">APPROVED</right>
+                    <right type="DELETE">APPROVED</right>
+                    <right type="PROVIDE">REJECTED</right>
+                    <right type="SUBSCRIBE">APPROVED</right>
+                    <right type="ADMIN">REJECTED</right>
+                  </rights>
+                </service>
+                <service name="NAPTestItems" contextId="DEFAULT" type="OBJECT">
+                  <rights>
+                    <right type="QUERY">APPROVED</right>
+                    <right type="CREATE">APPROVED</right>
+                    <right type="UPDATE">APPROVED</right>
+                    <right type="DELETE">APPROVED</right>
+                    <right type="PROVIDE">REJECTED</right>
+                    <right type="SUBSCRIBE">APPROVED</right>
+                    <right type="ADMIN">REJECTED</right>
+                  </rights>
+                </service>
+                <service name="NAPCodeFrames" contextId="DEFAULT" type="OBJECT">
+                  <rights>
+                    <right type="QUERY">APPROVED</right>
+                    <right type="CREATE">APPROVED</right>
+                    <right type="UPDATE">REJECTED</right>
+                    <right type="DELETE">APPROVED</right>
+                    <right type="PROVIDE">REJECTED</right>
+                    <right type="SUBSCRIBE">REJECTED</right>
+                    <right type="ADMIN">REJECTED</right>
+                  </rights>
+                </service>
             </services>            
         </provisionedZone>
     </provisionedZones>

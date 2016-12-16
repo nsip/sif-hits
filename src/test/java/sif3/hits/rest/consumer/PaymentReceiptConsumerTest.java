@@ -9,12 +9,12 @@ import org.junit.Before;
 import org.junit.Test;
 import org.springframework.http.HttpStatus;
 
+import sif.dd.au30.model.DebitOrCreditAmountType;
+import sif.dd.au30.model.FinancialAccountRefIdListType;
 import sif.dd.au30.model.MonetaryAmountType;
 import sif.dd.au30.model.ObjectFactory;
 import sif.dd.au30.model.PaymentReceiptCollectionType;
 import sif.dd.au30.model.PaymentReceiptType;
-import sif.dd.au30.model.PaymentReceiptType.FinancialAccountRefIdList;
-import sif.dd.au30.model.PaymentReceiptType.TransactionAmount;
 import sif3.common.ws.BulkOperationResponse;
 import sif3.common.ws.CreateOperationStatus;
 import sif3.common.ws.OperationStatus;
@@ -48,20 +48,18 @@ public class PaymentReceiptConsumerTest extends BaseTest implements UsesConstant
     PaymentReceiptType paymentReceiptType = new PaymentReceiptType();
     paymentReceiptType.setRefId(PaymentReceiptRefIds.REF_ID_1);
     paymentReceiptType.setAccountingPeriod(objectFactory.createPaymentReceiptTypeAccountingPeriod("2015Q3"));
-    paymentReceiptType.setChargedLocationInfoRefId(
-        objectFactory.createPaymentReceiptTypeChargedLocationInfoRefId(LocationInfoRefIds.REF_ID_1));
+    paymentReceiptType.setChargedLocationInfoRefId(objectFactory.createPaymentReceiptTypeChargedLocationInfoRefId(LocationInfoRefIds.REF_ID_1));
     paymentReceiptType.setChequeNumber(objectFactory.createPaymentReceiptTypeChequeNumber("23593032"));
     paymentReceiptType.setDebtorRefId(objectFactory.createPaymentReceiptTypeDebtorRefId(DebtorRefIds.REF_ID_1));
 
-    FinancialAccountRefIdList financialAccountRefIdList = new FinancialAccountRefIdList();
+    FinancialAccountRefIdListType financialAccountRefIdList = new FinancialAccountRefIdListType();
     financialAccountRefIdList.getFinancialAccountRefId().add(FinancialAccountRefIds.REF_ID_1);
     financialAccountRefIdList.getFinancialAccountRefId().add(FinancialAccountRefIds.REF_ID_2);
-    paymentReceiptType.setFinancialAccountRefIdList(
-        objectFactory.createPaymentReceiptTypeFinancialAccountRefIdList(financialAccountRefIdList));
+    paymentReceiptType.setFinancialAccountRefIdList(objectFactory.createPaymentReceiptTypeFinancialAccountRefIdList(financialAccountRefIdList));
 
     paymentReceiptType.setInvoiceRefId(objectFactory.createPaymentReceiptTypeInvoiceRefId(InvoiceRefIds.REF_ID_1));
 
-    TransactionAmount receivedAmount = new TransactionAmount();
+    DebitOrCreditAmountType receivedAmount = new DebitOrCreditAmountType();
     receivedAmount.setCurrency(DEFAULT_CURRENCY_ENUM);
     receivedAmount.setValue("25.00");
     receivedAmount.setType("Debit");
@@ -74,15 +72,12 @@ public class PaymentReceiptConsumerTest extends BaseTest implements UsesConstant
     paymentReceiptType.setTaxAmount(objectFactory.createPaymentReceiptTypeTaxAmount(monetaryAmountType));
     paymentReceiptType.setTaxRate(objectFactory.createPaymentReceiptTypeTaxRate(new BigDecimal("0.10")));
     paymentReceiptType.setTransactionDate(getDate("2015-06-23"));
-    paymentReceiptType
-        .setTransactionDescription(objectFactory.createPaymentReceiptTypeTransactionDescription("Some description"));
+    paymentReceiptType.setTransactionDescription(objectFactory.createPaymentReceiptTypeTransactionDescription("Some description"));
 
     paymentReceiptType.setTransactionMethod(objectFactory.createPaymentReceiptTypeTransactionMethod("Cash"));
-    paymentReceiptType
-        .setTransactionNote(objectFactory.createPaymentReceiptTypeTransactionNote("Transaction note goes here"));
+    paymentReceiptType.setTransactionNote(objectFactory.createPaymentReceiptTypeTransactionNote("Transaction note goes here"));
     paymentReceiptType.setTransactionType("Creditor payment");
-    paymentReceiptType
-        .setVendorInfoRefId(objectFactory.createPaymentReceiptTypeVendorInfoRefId(VendorInfoRefIds.REF_ID_1));
+    paymentReceiptType.setVendorInfoRefId(objectFactory.createPaymentReceiptTypeVendorInfoRefId(VendorInfoRefIds.REF_ID_1));
 
     paymentReceiptTester.doCreateOne(paymentReceiptType);
     String xmlExpectedTo = paymentReceiptTester.getXML(paymentReceiptType);
@@ -107,11 +102,10 @@ public class PaymentReceiptConsumerTest extends BaseTest implements UsesConstant
   @Before
   public void setup() {
     ConsumerLoader.initialise("TestConsumer");
-    paymentReceiptTester = new ConsumerTest<PaymentReceiptType, PaymentReceiptCollectionType>(PaymentReceiptType.class,
-        "PaymentReceipt", PaymentReceiptCollectionType.class, "PaymentReceipts");
+    paymentReceiptTester = new ConsumerTest<PaymentReceiptType, PaymentReceiptCollectionType>(PaymentReceiptType.class, "PaymentReceipt", PaymentReceiptCollectionType.class, "PaymentReceipts");
     paymentReceiptTester.testDeleteMany(REF_IDS);
   }
-  
+
   @Test
   public void testUpdateSingle() throws Exception {
     List<Response> responses = paymentReceiptTester.testGetSingle(PaymentReceiptRefIds.REF_ID_1);
@@ -121,14 +115,14 @@ public class PaymentReceiptConsumerTest extends BaseTest implements UsesConstant
     Assert.assertNotNull(response.getDataObject());
     PaymentReceiptType paymentReceipt = (PaymentReceiptType) response.getDataObject();
     Assert.assertEquals(PaymentReceiptRefIds.REF_ID_1, paymentReceipt.getRefId());
-    
+
     String xmlExpectedFrom = paymentReceiptTester.getXML(paymentReceipt);
-    
+
     List<Response> updateResponses = paymentReceiptTester.doUpdateOne(paymentReceipt, PaymentReceiptRefIds.REF_ID_1);
     Assert.assertNotNull(updateResponses);
     Assert.assertEquals(1, updateResponses.size());
     Assert.assertEquals(updateResponses.get(0).getStatus(), HttpStatus.NO_CONTENT.value());
-    
+
     List<Response> getResponses = paymentReceiptTester.testGetSingle(PaymentReceiptRefIds.REF_ID_1);
     Assert.assertNotNull(getResponses);
     Assert.assertEquals(1, getResponses.size());
@@ -137,7 +131,7 @@ public class PaymentReceiptConsumerTest extends BaseTest implements UsesConstant
     PaymentReceiptType comparisonTo = (PaymentReceiptType) getResponse.getDataObject();
     Assert.assertEquals(PaymentReceiptRefIds.REF_ID_1, comparisonTo.getRefId());
     String xmlExpectedTo = paymentReceiptTester.getXML(comparisonTo);
-    
+
     boolean semiEquals = semiEquals(xmlExpectedFrom, xmlExpectedTo);
     if (!semiEquals) {
       System.out.println("From:\n" + xmlExpectedFrom);
@@ -191,8 +185,7 @@ public class PaymentReceiptConsumerTest extends BaseTest implements UsesConstant
   public void testCreateDeleteMany() {
     final List<String> REF_ID_LIST = Arrays.asList(REF_IDS);
 
-    List<BulkOperationResponse<CreateOperationStatus>> createResponses = paymentReceiptTester
-        .testCreateMany("paymentreceipts.xml");
+    List<BulkOperationResponse<CreateOperationStatus>> createResponses = paymentReceiptTester.testCreateMany("paymentreceipts.xml");
     Assert.assertNotNull(createResponses);
     Assert.assertEquals(1, createResponses.size());
     BulkOperationResponse<CreateOperationStatus> createResponse = createResponses.get(0);

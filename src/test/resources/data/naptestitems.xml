@@ -1,0 +1,58 @@
+<NAPTestItems xmlns="http://www.sifassociation.org/datamodel/au/3.4">
+<NAPTestItem RefId="ba116707-005a-4388-864d-864c96aebeed">
+    <LocalId>NAPLAN-2017-0005-F-00-00</LocalId>
+    <ItemTypeList>
+      <ItemType>IC</ItemType>
+    </ItemTypeList>
+    <Domain>Language Conventions Grammar and Punctuation</Domain>
+    <Subdomain>1</Subdomain>
+    <ItemDescriptor>Descriptor #1410524360699280</ItemDescriptor>
+    <ReleasedStatus>true</ReleasedStatus>
+    <CorrectAnswer>7</CorrectAnswer>
+    <MaximumScore>10</MaximumScore>
+    <ItemDifficulty>3</ItemDifficulty>
+    <ItemProficiencyBand>32</ItemProficiencyBand>
+    <ItemProficiencyLevel>C</ItemProficiencyLevel>
+    <ExemplarURL>http://example.com/n3.xml</ExemplarURL>
+    <NAPTestletList>
+      <NAPTestlet>
+         <NAPTestletRefId>cfe94174-447d-4494-8e4f-594041680dbc</NAPTestletRefId>
+         <NAPTestletLocalId>R-3-1</NAPTestletLocalId>
+	     <SequenceNumber>0</SequenceNumber>
+      </NAPTestlet>
+     </NAPTestletList>
+     <ContentDescriptionList>
+        <ContentDescription>MNA32</ContentDescription>
+        <ContentDescription>MNA37</ContentDescription>
+      </ContentDescriptionList>
+      <MarkingType>AS</MarkingType>
+</NAPTestItem>
+<NAPTestItem RefId="99529a93-acfb-4ca9-b38d-38c3e8617329">
+    <LocalId>NAPLAN-2017-0005-F-00-10</LocalId>
+    <ItemTypeList>
+      <ItemType>IC</ItemType>
+    </ItemTypeList>
+    <Domain>Language Conventions Grammar and Punctuation</Domain>
+    <Subdomain>1</Subdomain>
+    <ItemDescriptor>Descriptor #1405243460699280</ItemDescriptor>
+    <ReleasedStatus>true</ReleasedStatus>
+    <CorrectAnswer>7</CorrectAnswer>
+    <MaximumScore>10</MaximumScore>
+    <ItemDifficulty>3</ItemDifficulty>
+    <ItemProficiencyBand>32</ItemProficiencyBand>
+    <ItemProficiencyLevel>C</ItemProficiencyLevel>
+    <ExemplarURL>http://example.com/n3.xml</ExemplarURL>
+    <NAPTestletList>
+      <NAPTestlet>
+         <NAPTestletRefId>cfe94174-447d-4494-8e4f-594041680dbc</NAPTestletRefId>
+         <NAPTestletLocalId>R-3-1</NAPTestletLocalId>
+	     <SequenceNumber>0</SequenceNumber>
+      </NAPTestlet>
+     </NAPTestletList>
+     <ContentDescriptionList>
+        <ContentDescription>MNA32</ContentDescription>
+        <ContentDescription>MNA37</ContentDescription>
+      </ContentDescriptionList>
+      <MarkingType>AS</MarkingType>
+</NAPTestItem>
+</NAPTestItems>

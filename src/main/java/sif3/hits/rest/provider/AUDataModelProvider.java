@@ -52,9 +52,10 @@ public abstract class AUDataModelProvider extends BaseProvider {
     }
     return result;
   }
-  
+
   @Override
-  public HeaderProperties getCustomServiceInfo(SIFZone zone, SIFContext context, PagingInfo pagingInfo, RequestMetadata metadata) throws PersistenceException, UnsupportedQueryException, DataTooLargeException {
+  public HeaderProperties getCustomServiceInfo(SIFZone zone, SIFContext context, PagingInfo pagingInfo, RequestMetadata metadata)
+      throws PersistenceException, UnsupportedQueryException, DataTooLargeException {
     // TODO: Does this need to be implemented?
     HeaderProperties headers = new HeaderProperties();
     return headers;

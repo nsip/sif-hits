@@ -9,10 +9,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import sif.dd.au30.model.AUCodeSetsStaffStatusType;
+import sif.dd.au30.model.OtherIdListType;
+import sif.dd.au30.model.OtherIdType;
+import sif.dd.au30.model.StaffMostRecentContainerType;
 import sif.dd.au30.model.StaffPersonalType;
-import sif.dd.au30.model.StaffPersonalType.MostRecent;
-import sif.dd.au30.model.StaffPersonalType.OtherIdList;
-import sif.dd.au30.model.StaffPersonalType.OtherIdList.OtherId;
 import sif3.hits.domain.converter.factory.IObjectFactory;
 import sif3.hits.domain.model.StaffPersonal;
 import sif3.hits.domain.model.StaffPersonalOtherId;
@@ -38,23 +38,25 @@ public class StaffPersonalConverter extends HitsConverter<StaffPersonalType, Sta
       target.setEmploymentStatus(objectFactory.createStaffPersonalTypeEmploymentStatus(employmentStatus));
       target.setPersonInfo(personInfoConverter.toSifModel(source));
 
-      if (StringUtils.isNotBlank(source.getMostRecentSchoolAcaraId()) || StringUtils.isNotBlank(source.getMostRecentSchoolLocalId()) || StringUtils.isNotBlank(source.getMostRecentLocalCampusId())) {
-        MostRecent mostRecent = new MostRecent();
-        mostRecent.setSchoolACARAId(objectFactory.createStaffPersonalTypeMostRecentSchoolACARAId(source.getMostRecentSchoolAcaraId()));
-        mostRecent.setSchoolLocalId(objectFactory.createStaffPersonalTypeMostRecentSchoolLocalId(source.getMostRecentSchoolLocalId()));
-        mostRecent.setLocalCampusId(objectFactory.createStaffPersonalTypeMostRecentLocalCampusId(source.getMostRecentLocalCampusId()));
+      if (StringUtils.isNotBlank(source.getMostRecentSchoolAcaraId()) || StringUtils.isNotBlank(source.getMostRecentSchoolLocalId())
+          || StringUtils.isNotBlank(source.getMostRecentLocalCampusId())) {
+        StaffMostRecentContainerType mostRecent = objectFactory.createStaffMostRecentContainerType();
+        mostRecent.setSchoolACARAId(objectFactory.createStaffMostRecentContainerTypeSchoolACARAId(source.getMostRecentSchoolAcaraId()));
+        mostRecent.setSchoolLocalId(objectFactory.createStaffMostRecentContainerTypeSchoolLocalId(source.getMostRecentSchoolLocalId()));
+        mostRecent.setLocalCampusId(objectFactory.createStaffMostRecentContainerTypeLocalCampusId(source.getMostRecentLocalCampusId()));
+        target.setMostRecent(objectFactory.createStaffPersonalTypeMostRecent(mostRecent));
       }
 
-      ArrayList<OtherId> otherIds = new ArrayList<OtherId>();
+      ArrayList<OtherIdType> otherIds = new ArrayList<OtherIdType>();
       if (source.getOtherIds() != null) {
         for (StaffPersonalOtherId staffPersonalOtherId : source.getOtherIds()) {
-          OtherId otherId = new OtherId();
+          OtherIdType otherId = objectFactory.createOtherIdType();
           otherId.setType(staffPersonalOtherId.getOtherIdType());
           otherId.setValue(staffPersonalOtherId.getOtherId());
           otherIds.add(otherId);
         }
       }
-      OtherIdList otherIdList = new OtherIdList();
+      OtherIdListType otherIdList = objectFactory.createOtherIdListType();
       otherIdList.getOtherId().addAll(otherIds);
       target.setOtherIdList(objectFactory.createStaffPersonalTypeOtherIdList(otherIdList));
     }
@@ -69,7 +71,7 @@ public class StaffPersonalConverter extends HitsConverter<StaffPersonalType, Sta
       target.setEmploymentStatus(getJAXBEnumValue(source.getEmploymentStatus()));
       personInfoConverter.toHitsModel(source.getPersonInfo(), target);
 
-      MostRecent mostRecent = getJAXBValue(source.getMostRecent());
+      StaffMostRecentContainerType mostRecent = getJAXBValue(source.getMostRecent());
       if (mostRecent != null) {
         target.setMostRecentSchoolAcaraId(getJAXBValue(mostRecent.getSchoolACARAId()));
         target.setMostRecentSchoolLocalId(getJAXBValue(mostRecent.getSchoolLocalId()));
@@ -77,9 +79,9 @@ public class StaffPersonalConverter extends HitsConverter<StaffPersonalType, Sta
       }
 
       Set<StaffPersonalOtherId> otherIds = new HashSet<StaffPersonalOtherId>();
-      OtherIdList otherIdList = getJAXBValue(source.getOtherIdList());
+      OtherIdListType otherIdList = getJAXBValue(source.getOtherIdList());
       if (otherIdList != null && otherIdList.getOtherId() != null) {
-        for (OtherId otherId : otherIdList.getOtherId()) {
+        for (OtherIdType otherId : otherIdList.getOtherId()) {
           StaffPersonalOtherId staffPersonalOtherId = new StaffPersonalOtherId();
           staffPersonalOtherId.setOtherId(otherId.getValue());
           staffPersonalOtherId.setOtherIdType(otherId.getType());

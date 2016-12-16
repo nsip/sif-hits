@@ -9,6 +9,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Service;
 
 import sif.dd.au30.model.CalendarDateCollectionType;
+import sif.dd.au30.model.CalendarDateType;
 import sif3.hits.domain.converter.CalendarDateConverter;
 import sif3.hits.domain.converter.HitsConverter;
 import sif3.hits.domain.dao.CalendarDateDAO;
@@ -20,7 +21,7 @@ import sif3.hits.domain.model.CalendarDateTypeOtherCode;
 import sif3.hits.rest.dto.RequestDTO;
 
 @Service
-public class CalendarDateService extends BaseService<sif.dd.au30.model.CalendarDate, CalendarDateCollectionType, CalendarDate> {
+public class CalendarDateService extends BaseService<CalendarDateType, CalendarDateCollectionType, CalendarDate> {
 
   @Autowired
   private CalendarDateConverter calendarDateConverter;
@@ -35,7 +36,7 @@ public class CalendarDateService extends BaseService<sif.dd.au30.model.CalendarD
   private CalendarDateOtherCodeDAO calendarDateOtherCodeDAO;
 
   @Override
-  protected CalendarDateCollectionType getCollection(List<sif.dd.au30.model.CalendarDate> items) {
+  protected CalendarDateCollectionType getCollection(List<CalendarDateType> items) {
     CalendarDateCollectionType result = new CalendarDateCollectionType();
     if (items != null) {
       result.getCalendarDate().addAll(items);
@@ -44,7 +45,7 @@ public class CalendarDateService extends BaseService<sif.dd.au30.model.CalendarD
   }
 
   @Override
-  protected HitsConverter<sif.dd.au30.model.CalendarDate, CalendarDate> getConverter() {
+  protected HitsConverter<CalendarDateType, CalendarDate> getConverter() {
     return calendarDateConverter;
   }
 
@@ -69,7 +70,7 @@ public class CalendarDateService extends BaseService<sif.dd.au30.model.CalendarD
   }
 
   @Override
-  protected CalendarDate saveWithChildObjects(CalendarDate hitsObject, RequestDTO<sif.dd.au30.model.CalendarDate> dto, String zoneId, boolean create) {
+  protected CalendarDate saveWithChildObjects(CalendarDate hitsObject, RequestDTO<CalendarDateType> dto, String zoneId, boolean create) {
     CalendarDate result = null;
     Set<CalendarDateTypeOtherCode> otherCodes = new HashSet<CalendarDateTypeOtherCode>();
     otherCodes.addAll(hitsObject.getCalendarDateTypeOtherCodes());
