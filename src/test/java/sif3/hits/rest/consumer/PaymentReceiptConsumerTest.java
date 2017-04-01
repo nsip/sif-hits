@@ -61,14 +61,14 @@ public class PaymentReceiptConsumerTest extends BaseTest implements UsesConstant
 
     DebitOrCreditAmountType receivedAmount = new DebitOrCreditAmountType();
     receivedAmount.setCurrency(DEFAULT_CURRENCY_ENUM);
-    receivedAmount.setValue("25.00");
+    receivedAmount.setValue(new BigDecimal("25.00"));
     receivedAmount.setType("Debit");
     paymentReceiptType.setTransactionAmount(receivedAmount);
 
     paymentReceiptType.setReceivedTransactionId("201546");
     MonetaryAmountType monetaryAmountType = new MonetaryAmountType();
     monetaryAmountType.setCurrency(DEFAULT_CURRENCY_ENUM);
-    monetaryAmountType.setValue("2.50");
+    monetaryAmountType.setValue(new BigDecimal("2.50"));
     paymentReceiptType.setTaxAmount(objectFactory.createPaymentReceiptTypeTaxAmount(monetaryAmountType));
     paymentReceiptType.setTaxRate(objectFactory.createPaymentReceiptTypeTaxRate(new BigDecimal("0.10")));
     paymentReceiptType.setTransactionDate(getDate("2015-06-23"));

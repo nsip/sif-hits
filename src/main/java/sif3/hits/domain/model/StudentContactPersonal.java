@@ -31,6 +31,7 @@ public class StudentContactPersonal extends HitsEntity implements Person, Addres
   private String nonSchoolEducation;
   private String employmentType;
   private Set<Address> addresses;
+  private Set<Language> languages;
 
   @Id
   public String getRefId() {
@@ -169,6 +170,18 @@ public class StudentContactPersonal extends HitsEntity implements Person, Addres
 
   public void setAddresses(Set<Address> addresses) {
     this.addresses = addresses;
+  }
+
+  @Override
+  @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
+  @JoinColumn(name = "Person_RefId")
+  public Set<Language> getLanguages() {
+    return this.languages;
+  }
+
+  @Override
+  public void setLanguages(Set<Language> languages) {
+    this.languages = languages;
   }
 
   @Transient

@@ -1,4 +1,4 @@
-<NAPTestScoreSummarys xmlns="http://www.sifassociation.org/au/datamodel/3.4">
+<NAPTestScoreSummarys xmlns="http://www.sifassociation.org/au/datamodel/3.4.1">
 <NAPTestScoreSummary RefId="0e99d081-a9ab-46e3-a5d5-a4864d35c3ca">
   <SchoolInfoRefId>6dafb630-c439-41e3-9aa0-81f4dbd909ab</SchoolInfoRefId>
   <SchoolACARAId>48116</SchoolACARAId>

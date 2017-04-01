@@ -8,7 +8,6 @@ import org.junit.Test;
 
 import sif.dd.au30.model.NAPCodeFrameCollectionType;
 import sif.dd.au30.model.NAPCodeFrameType;
-import sif.dd.au30.model.ObjectFactory;
 import sif3.common.ws.Response;
 import sif3.hits.rest.consumer.NAPTestConsumerTest.NAPTestRefIds;
 import sif3.infra.rest.consumer.ConsumerLoader;
@@ -27,39 +26,37 @@ public class NAPCodeFrameConsumerTest extends BaseTest {
   private final String REF_ID_1 = "81fc94d7-c2d1-4a32-af5f-a0ab7c36ee99";
   private final String REF_ID_2 = "d9a48489-bb2f-4171-a334-cb3226607d0d";
   private final String[] REF_IDS = { REF_ID_1, REF_ID_2 };
-  
+
   @Test
   public void initialiseData() throws Exception {
-    ObjectFactory objectFactory = new ObjectFactory();
-    
     NAPCodeFrameType codeFrame = new NAPCodeFrameType();
     codeFrame.setRefId(NAPCodeFrameRefIds.REF_ID_1);
-    codeFrame.setNAPTestRefId(objectFactory.createNAPCodeFrameTypeNAPTestRefId(NAPTestRefIds.REF_ID_1));
+    codeFrame.setNAPTestRefId(NAPTestRefIds.REF_ID_1);
     codeFrameTester.doCreateOne(codeFrame);
-    
+
     codeFrame.setRefId(NAPCodeFrameRefIds.REF_ID_2);
-    codeFrame.setNAPTestRefId(objectFactory.createNAPCodeFrameTypeNAPTestRefId(NAPTestRefIds.REF_ID_2));
+    codeFrame.setNAPTestRefId(NAPTestRefIds.REF_ID_2);
     codeFrameTester.doCreateOne(codeFrame);
-    
+
     codeFrame.setRefId(NAPCodeFrameRefIds.REF_ID_3);
-    codeFrame.setNAPTestRefId(objectFactory.createNAPCodeFrameTypeNAPTestRefId(NAPTestRefIds.REF_ID_3));
+    codeFrame.setNAPTestRefId(NAPTestRefIds.REF_ID_3);
     codeFrameTester.doCreateOne(codeFrame);
 
     codeFrame.setRefId(NAPCodeFrameRefIds.REF_ID_4);
-    codeFrame.setNAPTestRefId(objectFactory.createNAPCodeFrameTypeNAPTestRefId(NAPTestRefIds.REF_ID_4));
+    codeFrame.setNAPTestRefId(NAPTestRefIds.REF_ID_4);
     codeFrameTester.doCreateOne(codeFrame);
 
     codeFrame.setRefId(NAPCodeFrameRefIds.REF_ID_5);
-    codeFrame.setNAPTestRefId(objectFactory.createNAPCodeFrameTypeNAPTestRefId(NAPTestRefIds.REF_ID_5));
+    codeFrame.setNAPTestRefId(NAPTestRefIds.REF_ID_5);
     codeFrameTester.doCreateOne(codeFrame);
-    
+
     NAPCodeFrameType getResult = codeFrameTester.doGetOne(NAPCodeFrameRefIds.REF_ID_1);
     Assert.assertNotNull(getResult);
     Assert.assertNotNull(getResult.getTestContent());
-    Assert.assertNotNull(getResult.getTestContent().getValue().getNAPTestLocalId());
+    Assert.assertNotNull(getResult.getTestContent().getNAPTestLocalId());
     Assert.assertNotNull(getResult.getTestletList());
     Assert.assertNotNull(getResult.getTestletList().getTestlet());
-    Assert.assertEquals(5,getResult.getTestletList().getTestlet().size());
+    Assert.assertEquals(5, getResult.getTestletList().getTestlet().size());
   }
 
   @Before
@@ -71,13 +68,12 @@ public class NAPCodeFrameConsumerTest extends BaseTest {
 
   @Test
   public void testQBE() {
-    ObjectFactory objectFactory = new ObjectFactory();
     NAPCodeFrameType codeFrame = new NAPCodeFrameType();
-    codeFrame.setNAPTestRefId(objectFactory.createNAPCodeFrameTypeNAPTestRefId(NAPTestRefIds.REF_ID_1));
+    codeFrame.setNAPTestRefId(NAPTestRefIds.REF_ID_1);
     List<Response> responses = codeFrameTester.testQBE(codeFrame, 10000, 0);
     Assert.assertNotNull(responses);
     Assert.assertEquals(1, responses.size());
-    
+
     Response response = responses.get(0);
     NAPCodeFrameCollectionType codeFrames = (NAPCodeFrameCollectionType) response.getDataObject();
     Assert.assertNotNull(codeFrames.getNAPCodeFrame());
@@ -85,7 +81,7 @@ public class NAPCodeFrameConsumerTest extends BaseTest {
     boolean found = false;
     for (NAPCodeFrameType codeFrameType : codeFrames.getNAPCodeFrame()) {
       found = found || NAPCodeFrameRefIds.REF_ID_1.equals(codeFrameType.getRefId());
-      Assert.assertEquals(NAPTestRefIds.REF_ID_1, codeFrameType.getNAPTestRefId().getValue());
+      Assert.assertEquals(NAPTestRefIds.REF_ID_1, codeFrameType.getNAPTestRefId());
     }
     Assert.assertTrue(found);
   }

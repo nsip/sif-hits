@@ -43,6 +43,7 @@ public class StudentPersonal extends HitsEntity implements StudentPerson, Addres
   private String religion;
   private Set<StudentPersonalOtherId> otherIds;
   private Set<Address> addresses;
+  private Set<Language> languages;
 
   // naplan
   private String lbote;
@@ -466,5 +467,15 @@ public class StudentPersonal extends HitsEntity implements StudentPerson, Addres
 
   public void setEsl(String esl) {
     this.esl = esl;
+  }
+  
+  @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
+  @JoinColumn(name="Person_RefId")
+  public Set<Language> getLanguages() {
+    return languages;
+  }
+  
+  public void setLanguages(Set<Language> languages) {
+    this.languages = languages;
   }
 }

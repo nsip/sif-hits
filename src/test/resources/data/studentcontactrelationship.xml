@@ -1,4 +1,4 @@
-<StudentContactRelationship StudentContactRelationshipRefId="5eede4c3-f468-4ee3-b64b-8fe37e2b82b7" xmlns="http://www.sifassociation.org/au/datamodel/3.4">
+<StudentContactRelationship StudentContactRelationshipRefId="5eede4c3-f468-4ee3-b64b-8fe37e2b82b7" xmlns="http://www.sifassociation.org/au/datamodel/3.4.1">
     <StudentPersonalRefId>f7dd788e-3cef-40eb-9cb4-af90a2fa3147</StudentPersonalRefId>
     <StudentContactPersonalRefId>281bc155-8598-4873-933e-7a9ef336b98d</StudentContactPersonalRefId>
     <Relationship>

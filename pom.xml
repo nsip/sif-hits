@@ -13,8 +13,8 @@
 		<!-- Dependency Versions -->
 		<java.version>1.7</java.version>
 
-		<sif3.framework.version>0.10.0-beta</sif3.framework.version>
-		<sif3.datamodel.version>au-3.4-NAPv2</sif3.datamodel.version>
+		<sif3.framework.version>0.11.0-beta</sif3.framework.version>
+		<sif3.datamodel.version>au-3.4.1</sif3.datamodel.version>
 
 		<log4j.version>1.2.14</log4j.version>
 		<slf4j.version>1.5.8</slf4j.version>
@@ -48,10 +48,19 @@
 			<version>${sif3.framework.version}</version>
 		</dependency>
 		<dependency>
-			<groupId>sif3</groupId>
-			<artifactId>DataModel</artifactId>
+			<groupId>sif3.datamodel</groupId>
+			<artifactId>sifau-datamodel</artifactId>
 			<version>${sif3.datamodel.version}</version>
 		</dependency>
+<!-- 
+
+		<dependency>
+			<groupId>sif3.datamodel</groupId>
+			<artifactId>DataModel</artifactId>
+			<version>au-3.4-NAP-v3</version>
+		</dependency>
+
+-->		
 
 		<!-- logging -->
 		<dependency>

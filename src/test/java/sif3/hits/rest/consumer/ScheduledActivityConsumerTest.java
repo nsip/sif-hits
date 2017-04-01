@@ -12,6 +12,7 @@ import org.springframework.http.HttpStatus;
 import sif.dd.au30.model.AUCodeSetsScheduledActivityTypeType;
 import sif.dd.au30.model.AUCodeSetsTeacherCoverCreditType;
 import sif.dd.au30.model.AUCodeSetsTeacherCoverSupervisionType;
+import sif.dd.au30.model.AUCodeSetsYesOrNoCategoryType;
 import sif.dd.au30.model.ObjectFactory;
 import sif.dd.au30.model.RoomListType;
 import sif.dd.au30.model.ScheduledActivityCollectionType;
@@ -73,7 +74,7 @@ public class ScheduledActivityConsumerTest extends BaseTest {
     scheduledActivity.setYearLevels(objectFactory.createScheduledActivityTypeYearLevels(yearLevelsType));
 
     ScheduledActivityOverrideType override = new ScheduledActivityOverrideType();
-    override.setValue("Y");
+    override.setValue(AUCodeSetsYesOrNoCategoryType.Y);
     override.setDateOfOverride(getDate("2014-09-02"));
     scheduledActivity.setOverride(objectFactory.createScheduledActivityTypeOverride(override));
 

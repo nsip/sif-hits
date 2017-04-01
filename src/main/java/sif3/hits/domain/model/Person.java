@@ -1,5 +1,7 @@
 package sif3.hits.domain.model;
 
+import java.util.Set;
+
 public interface Person {
 
   public String getRefId();
@@ -47,5 +49,9 @@ public interface Person {
   public String getTitle();
 
   public void setTitle(String title);
+  
+  public Set<Language> getLanguages();
+  
+  public void setLanguages(Set<Language> languages);
 
 }

@@ -6,7 +6,6 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import sif.dd.au30.model.AUCodeSetsNAPWritingRubricTypeType;
 import sif.dd.au30.model.NAPWritingRubricType;
 import sif.dd.au30.model.ScoreListType;
 import sif.dd.au30.model.ScoreType;
@@ -30,7 +29,7 @@ public class NAPWritingRubricConverter extends HitsConverter<NAPWritingRubricTyp
       IObjectFactory objectFactory = getObjectFactory();
 
       target.setDescriptor(objectFactory.createNAPWritingRubricTypeDescriptor(source.getDescriptor()));
-      target.setRubricType(getEnumValue(source.getRubricType(), AUCodeSetsNAPWritingRubricTypeType.class));
+      target.setRubricType(source.getRubricType());
 
       List<ScoreType> scoreList = scoreConverter.toSifModelList(source.getScoreList());
       if (scoreList != null && !scoreList.isEmpty()) {
@@ -45,7 +44,7 @@ public class NAPWritingRubricConverter extends HitsConverter<NAPWritingRubricTyp
   public void toHitsModel(NAPWritingRubricType source, NAPWritingRubric target) {
     if (source != null && target != null) {
       target.setDescriptor(getJAXBValue(source.getDescriptor()));
-      target.setRubricType(getEnumValue(source.getRubricType()));
+      target.setRubricType(source.getRubricType());
 
       if (target.getScoreList() == null) {
         target.setScoreList(new HashSet<Score>());

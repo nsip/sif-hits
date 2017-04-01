@@ -42,7 +42,7 @@ public class PurchasingItemsConverter extends HitsConverter<PurchasingItemType, 
       if (StringUtils.isNotBlank(source.getUnitCost())) {
         MonetaryAmountType monetaryAmountType = objectFactory.createMonetaryAmountType();
         monetaryAmountType.setCurrency(DEFAULT_CURRENCY_ENUM);
-        monetaryAmountType.setValue(source.getUnitCost());
+        monetaryAmountType.setValue(getBigDecimalValue(source.getUnitCost()));
         target.setUnitCost(objectFactory.createPurchasingItemTypeUnitCost(monetaryAmountType));
       }
     }
@@ -67,7 +67,7 @@ public class PurchasingItemsConverter extends HitsConverter<PurchasingItemType, 
 
       MonetaryAmountType monetaryAmountType = getJAXBValue(source.getUnitCost());
       if (monetaryAmountType != null) {
-        target.setUnitCost(monetaryAmountType.getValue());
+        target.setUnitCost(getBigDecimalValue(monetaryAmountType.getValue()));
       }
     }
   }

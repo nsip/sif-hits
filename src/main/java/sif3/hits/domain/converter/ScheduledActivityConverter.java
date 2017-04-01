@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import sif.dd.au30.model.AUCodeSetsScheduledActivityTypeType;
+import sif.dd.au30.model.AUCodeSetsYesOrNoCategoryType;
 import sif.dd.au30.model.RoomListType;
 import sif.dd.au30.model.ScheduledActivityOverrideType;
 import sif.dd.au30.model.ScheduledActivityType;
@@ -81,7 +82,7 @@ public class ScheduledActivityConverter extends HitsConverter<ScheduledActivityT
       target.setYearLevels(objectFactory.createScheduledActivityTypeYearLevels(yearLevelsType));
 
       ScheduledActivityOverrideType override = objectFactory.createScheduledActivityOverrideType();
-      override.setValue(source.getOverride());
+      override.setValue(getEnumValue(source.getOverride(), AUCodeSetsYesOrNoCategoryType.class));
       override.setDateOfOverride(getDateValue(source.getDateOfOverride()));
       target.setOverride(objectFactory.createScheduledActivityTypeOverride(override));
     }
@@ -152,7 +153,7 @@ public class ScheduledActivityConverter extends HitsConverter<ScheduledActivityT
 
       ScheduledActivityOverrideType override = getJAXBValue(source.getOverride());
       if (override != null) {
-        target.setOverride(override.getValue());
+        target.setOverride(getEnumValue(override.getValue()));
         target.setDateOfOverride(getDateValue(override.getDateOfOverride()));
       }
     }

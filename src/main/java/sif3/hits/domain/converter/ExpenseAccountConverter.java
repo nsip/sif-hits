@@ -10,7 +10,7 @@ import sif3.hits.domain.model.ExpenseAccount;
 import sif3.hits.utils.UsesConstants;
 
 @Component
-public class ExpenseAccountConverter extends HitsConverter<ExpenseAccountType, ExpenseAccount>implements UsesConstants {
+public class ExpenseAccountConverter extends HitsConverter<ExpenseAccountType, ExpenseAccount> implements UsesConstants {
 
   public ExpenseAccountConverter() {
     super(ExpenseAccountType.class, ExpenseAccount.class);
@@ -27,7 +27,7 @@ public class ExpenseAccountConverter extends HitsConverter<ExpenseAccountType, E
       if (StringUtils.isNotBlank(source.getAmount())) {
         MonetaryAmountType monetaryAmount = objectFactory.createMonetaryAmountType();
         monetaryAmount.setCurrency(DEFAULT_CURRENCY_ENUM);
-        monetaryAmount.setValue(source.getAmount());
+        monetaryAmount.setValue(getBigDecimalValue(source.getAmount()));
         target.setAmount(monetaryAmount);
       }
       target.setFinancialAccountRefId(objectFactory.createExpenseAccountTypeFinancialAccountRefId(source.getFinancialAccountRefId()));
@@ -41,7 +41,7 @@ public class ExpenseAccountConverter extends HitsConverter<ExpenseAccountType, E
       target.setAccountingPeriod(getJAXBValue(source.getAccountingPeriod()));
 
       if (source.getAmount() != null) {
-        target.setAmount(source.getAmount().getValue());
+        target.setAmount(getBigDecimalValue(source.getAmount().getValue()));
       }
       target.setFinancialAccountRefId(getJAXBValue(source.getFinancialAccountRefId()));
     }

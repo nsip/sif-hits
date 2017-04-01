@@ -13,7 +13,6 @@ import org.springframework.http.HttpStatus;
 import sif.dd.au30.model.AUCodeSetsNAPTestItemMarkingTypeType;
 import sif.dd.au30.model.AUCodeSetsNAPTestItemTypeType;
 import sif.dd.au30.model.AUCodeSetsNAPWritingGenreType;
-import sif.dd.au30.model.AUCodeSetsNAPWritingRubricTypeType;
 import sif.dd.au30.model.AUCodeSetsPNPCodeType;
 import sif.dd.au30.model.ContentDescriptionListType;
 import sif.dd.au30.model.NAPTestItemCollectionType;
@@ -105,6 +104,7 @@ public class NAPTestItemConsumerTest extends BaseTest {
     napTestItemType.setTestItemContent(napTestItemContentType);
     
     napTestItemTester.doCreateOne(napTestItemType);
+    napTestItemTester.doUpdateOne(napTestItemType, NAPTestItemRefIds.REF_ID_1);
     String xmlExpectedTo = napTestItemTester.getXML(napTestItemType);
 
     napTestItemType.setRefId(NAPTestItemRefIds.REF_ID_2);
@@ -135,7 +135,7 @@ public class NAPTestItemConsumerTest extends BaseTest {
   private NAPWritingRubricType getWritingRubric(int index) {
     ObjectFactory objectFactory = new ObjectFactory();
     NAPWritingRubricType napWritingRubricType = new NAPWritingRubricType();
-    napWritingRubricType.setRubricType(AUCodeSetsNAPWritingRubricTypeType.CHARACTER_AND_SETTING);
+    napWritingRubricType.setRubricType("CS");
     napWritingRubricType.setDescriptor(objectFactory.createNAPWritingRubricTypeDescriptor("Descriptor " + index));
 
     ScoreListType scoreList = new ScoreListType();

@@ -19,6 +19,11 @@ import sif.dd.au30.model.PhoneNumberListType;
 import sif.dd.au30.model.PhoneNumberType;
 import sif.dd.au30.model.StudentContactPersonalCollectionType;
 import sif.dd.au30.model.StudentContactPersonalType;
+import sif.dd.au30.model.StudentPersonalCollectionType;
+import sif.dd.au30.model.StudentPersonalType;
+import sif3.common.model.QueryCriteria;
+import sif3.common.model.QueryOperator;
+import sif3.common.model.QueryPredicate;
 import sif3.common.ws.BulkOperationResponse;
 import sif3.common.ws.CreateOperationStatus;
 import sif3.common.ws.OperationStatus;
@@ -222,5 +227,27 @@ public class StudentContactPersonalConsumerTest extends BaseTest {
       Assert.assertTrue(REF_ID_LIST.contains(operationStatus.getResourceID()));
       Assert.assertEquals(HttpStatus.OK.value(), operationStatus.getStatus());
     }
+  }
+  
+
+  @Test
+  public void testServicePathStudentPersonal() {
+    QueryCriteria queryCriteria = new QueryCriteria();
+    queryCriteria.addPredicate(new QueryPredicate("StudentPersonals", QueryOperator.EQUAL, StudentPersonalRefIds.REF_ID_1));
+
+    List<Response> responses = studentTester.testServicePath(queryCriteria, 10000, 0);
+
+    Assert.assertNotNull(responses);
+    Assert.assertEquals(1, responses.size());
+    Response response = responses.get(0);
+
+    StudentContactPersonalCollectionType studentContactPersonalCollectionType = (StudentContactPersonalCollectionType) response.getDataObject();
+    Assert.assertNotNull(studentContactPersonalCollectionType.getStudentContactPersonal());
+    Assert.assertFalse(studentContactPersonalCollectionType.getStudentContactPersonal().isEmpty());
+    boolean found = false;
+    for (StudentContactPersonalType studentContactPersonal : studentContactPersonalCollectionType.getStudentContactPersonal()) {
+      found = found || StudentContactPersonalRefIds.REF_ID_1.equals(studentContactPersonal.getRefId());
+    }
+    Assert.assertTrue(found);
   }
 }

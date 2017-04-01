@@ -52,7 +52,7 @@ public class TeachingGroupConsumerTest extends BaseTest {
     TeacherListType teacherList = new TeacherListType();
     TeachingGroupTeacherType teacher = new TeachingGroupTeacherType();
     teacher.setStaffPersonalRefId(objectFactory.createTeachingGroupTeacherTypeStaffPersonalRefId(StaffPersonalConsumerTest.StaffPersonalRefIds.REF_ID_1));
-    teacher.setStaffLocalId("ez7b7b7");
+    teacher.setStaffLocalId(objectFactory.createTeachingGroupTeacherTypeStaffLocalId("ez7b7b7"));
     teacher.setAssociation("Class Teacher");
     teacher.setName(objectFactory.createTeachingGroupStudentTypeName(StaffPersonalRefIds.getNameOfRecord(objectFactory)));
     teacherList.getTeachingGroupTeacher().add(teacher);
@@ -62,31 +62,31 @@ public class TeachingGroupConsumerTest extends BaseTest {
     TeachingGroupStudentType student = new TeachingGroupStudentType();
     student.setStudentPersonalRefId(objectFactory.createTeachingGroupStudentTypeStudentPersonalRefId(StudentPersonalRefIds.REF_ID_1));
     student.setName(objectFactory.createTeachingGroupStudentTypeName(StudentPersonalRefIds.getNameOfRecord(objectFactory)));
-    student.setStudentLocalId(StudentPersonalRefIds.LOCAL_ID);
+    student.setStudentLocalId(objectFactory.createTeachingGroupStudentTypeStudentLocalId(StudentPersonalRefIds.LOCAL_ID));
     studentList.getTeachingGroupStudent().add(student);
 
     student = new TeachingGroupStudentType();
     student.setStudentPersonalRefId(objectFactory.createTeachingGroupStudentTypeStudentPersonalRefId(StudentPersonalRefIds.REF_ID_2));
     student.setName(objectFactory.createTeachingGroupStudentTypeName(StudentPersonalRefIds.getNameOfRecord(objectFactory)));
-    student.setStudentLocalId(StudentPersonalRefIds.LOCAL_ID);
+    student.setStudentLocalId(objectFactory.createTeachingGroupStudentTypeStudentLocalId(StudentPersonalRefIds.LOCAL_ID));
     studentList.getTeachingGroupStudent().add(student);
 
     student = new TeachingGroupStudentType();
     student.setStudentPersonalRefId(objectFactory.createTeachingGroupStudentTypeStudentPersonalRefId(StudentPersonalRefIds.REF_ID_3));
     student.setName(objectFactory.createTeachingGroupStudentTypeName(StudentPersonalRefIds.getNameOfRecord(objectFactory)));
-    student.setStudentLocalId(StudentPersonalRefIds.LOCAL_ID);
+    student.setStudentLocalId(objectFactory.createTeachingGroupStudentTypeStudentLocalId(StudentPersonalRefIds.LOCAL_ID));
     studentList.getTeachingGroupStudent().add(student);
 
     student = new TeachingGroupStudentType();
     student.setStudentPersonalRefId(objectFactory.createTeachingGroupStudentTypeStudentPersonalRefId(StudentPersonalRefIds.REF_ID_4));
     student.setName(objectFactory.createTeachingGroupStudentTypeName(StudentPersonalRefIds.getNameOfRecord(objectFactory)));
-    student.setStudentLocalId(StudentPersonalRefIds.LOCAL_ID);
+    student.setStudentLocalId(objectFactory.createTeachingGroupStudentTypeStudentLocalId(StudentPersonalRefIds.LOCAL_ID));
     studentList.getTeachingGroupStudent().add(student);
 
     student = new TeachingGroupStudentType();
     student.setStudentPersonalRefId(objectFactory.createTeachingGroupStudentTypeStudentPersonalRefId(StudentPersonalRefIds.REF_ID_5));
     student.setName(objectFactory.createTeachingGroupStudentTypeName(StudentPersonalRefIds.getNameOfRecord(objectFactory)));
-    student.setStudentLocalId(StudentPersonalRefIds.LOCAL_ID);
+    student.setStudentLocalId(objectFactory.createTeachingGroupStudentTypeStudentLocalId(StudentPersonalRefIds.LOCAL_ID));
     studentList.getTeachingGroupStudent().add(student);
 
     teachingGroup.setStudentList(objectFactory.createTeachingGroupTypeStudentList(studentList));

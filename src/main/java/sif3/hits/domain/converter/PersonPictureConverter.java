@@ -35,7 +35,7 @@ public class PersonPictureConverter extends HitsConverter<PersonPictureType, Per
 
       if (source.getPictureSource() != null || source.getPictureSourceType() != null) {
         PictureSource pictureSource = objectFactory.createPersonPictureTypePictureSource();
-        pictureSource.getValue().add(source.getPictureSource());
+        pictureSource.setValue(source.getPictureSource());
         pictureSource.setType(source.getPictureSourceType());
         target.setPictureSource(pictureSource);
       }
@@ -58,7 +58,7 @@ public class PersonPictureConverter extends HitsConverter<PersonPictureType, Per
       PictureSource pictureSource = source.getPictureSource();
       if (pictureSource != null) {
         if (pictureSource.getValue() != null && !pictureSource.getValue().isEmpty()) {
-          target.setPictureSource(pictureSource.getValue().get(0));
+          target.setPictureSource(pictureSource.getValue());
         }
         target.setPictureSourceType(pictureSource.getType());
       }

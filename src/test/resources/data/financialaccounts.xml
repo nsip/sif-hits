@@ -1,4 +1,4 @@
-<FinancialAccounts xmlns="http://www.sifassociation.org/au/datamodel/3.4">
+<FinancialAccounts xmlns="http://www.sifassociation.org/au/datamodel/3.4.1">
 <FinancialAccount RefId="d747f069-e911-4bf3-b899-109b053915c3">
     <SubAccountRefId>c03b27f4-b0f8-4e46-93fb-4f0dc3b930e9</SubAccountRefId>
     <ChargedLocationInfoRefId>5a34535f-9521-43ca-8038-de8250acb3ab</ChargedLocationInfoRefId>

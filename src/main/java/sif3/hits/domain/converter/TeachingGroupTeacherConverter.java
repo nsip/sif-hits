@@ -25,7 +25,7 @@ public class TeachingGroupTeacherConverter extends HitsConverter<TeachingGroupTe
       IObjectFactory objectFactory = getObjectFactory();
       if (source.getStaffPersonal() != null) {
         target.setStaffPersonalRefId(objectFactory.createTeachingGroupTeacherTypeStaffPersonalRefId(source.getStaffPersonal().getRefId()));
-        target.setStaffLocalId(source.getStaffPersonal().getLocalId());
+        target.setStaffLocalId(objectFactory.createTeachingGroupTeacherTypeStaffLocalId(source.getStaffPersonal().getLocalId()));
         NameOfRecordType name = getJAXBValue(target.getName());
         if (name == null) {
           name = objectFactory.createNameOfRecordType();

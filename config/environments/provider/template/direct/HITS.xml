@@ -1,4 +1,4 @@
-<environment xmlns="http://www.sifassociation.org/infrastructure/3.0.1" type="DIRECT">
+<environment xmlns="http://www.sifassociation.org/infrastructure/3.2.1" type="DIRECT">
     <sessionToken></sessionToken>
     <solutionId>HITS</solutionId>
     <defaultZone id="HITS">
@@ -505,6 +505,11 @@
                     <right type="ADMIN">REJECTED</right>
                   </rights>
                 </service>
+                <service name="StudentPersonals/{}/StudentContactPersonals" contextId="DEFAULT" type="OBJECT">
+                  <rights>
+                    <right type="QUERY">APPROVED</right>
+                  </rights>
+                </service> 
             </services>            
         </provisionedZone>
     </provisionedZones>

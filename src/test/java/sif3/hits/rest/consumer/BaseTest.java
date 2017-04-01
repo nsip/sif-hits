@@ -25,9 +25,10 @@ public abstract class BaseTest {
     List<String> fromElements = Arrays.asList(fromStrings);
     String[] toStrings = xmlTo.split("\n");
     List<String> toElements = Arrays.asList(toStrings);
-    boolean same = fromElements.size() == toElements.size();
-    for (int i = 0; same && i < fromElements.size(); i++) {
+    boolean allSame = fromElements.size() == toElements.size();
+    for (int i = 0; i < fromElements.size(); i++) {
       String element = fromElements.get(i);
+      boolean same = true;
       if (element.contains("<CreationDateTime>")) {
         same = simpleFrequency(fromElements, element) == simpleFrequency(toElements, element);
       } else {
@@ -36,9 +37,11 @@ public abstract class BaseTest {
       if (!same) {
         System.out.println("Error:" + element);
       }
+      allSame &= same;
     }
-    for (int i = 0; same && i < toElements.size(); i++) {
+    for (int i = 0; i < toElements.size(); i++) {
       String element = toElements.get(i);
+      boolean same = true;
       if (element.contains("<CreationDateTime>")) {
         same = simpleFrequency(fromElements, element) == simpleFrequency(toElements, element);
       } else {
@@ -47,8 +50,9 @@ public abstract class BaseTest {
       if (!same) {
         System.out.println("Error:" + element);
       }
+      allSame &= same;
     }
-    return same;
+    return allSame;
   }
   
   private int simpleFrequency(List<String> elements, String search) {

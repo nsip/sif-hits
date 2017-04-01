@@ -42,7 +42,7 @@ public class PaymentReceiptConverter extends HitsConverter<PaymentReceiptType, P
       if (StringUtils.isNotBlank(source.getReceivedAmount()) || StringUtils.isNotBlank(source.getReceivedAmountType())) {
         DebitOrCreditAmountType receivedAmount = objectFactory.createDebitOrCreditAmountType();
         receivedAmount.setCurrency(DEFAULT_CURRENCY_ENUM);
-        receivedAmount.setValue(source.getReceivedAmount());
+        receivedAmount.setValue(getBigDecimalValue(source.getReceivedAmount()));
         receivedAmount.setType(source.getReceivedAmountType());
         target.setTransactionAmount(receivedAmount);
       }
@@ -52,7 +52,7 @@ public class PaymentReceiptConverter extends HitsConverter<PaymentReceiptType, P
       if (StringUtils.isNotBlank(source.getTaxAmount())) {
         MonetaryAmountType monetaryAmountType = objectFactory.createMonetaryAmountType();
         monetaryAmountType.setCurrency(DEFAULT_CURRENCY_ENUM);
-        monetaryAmountType.setValue(source.getTaxAmount());
+        monetaryAmountType.setValue(getBigDecimalValue(source.getTaxAmount()));
         target.setTaxAmount(objectFactory.createPaymentReceiptTypeTaxAmount(monetaryAmountType));
       }
 
@@ -82,8 +82,7 @@ public class PaymentReceiptConverter extends HitsConverter<PaymentReceiptType, P
       }
 
       FinancialAccountRefIdListType financialAccountRefIdList = getJAXBValue(source.getFinancialAccountRefIdList());
-      if (financialAccountRefIdList != null && financialAccountRefIdList.getFinancialAccountRefId() != null
-          && !financialAccountRefIdList.getFinancialAccountRefId().isEmpty()) {
+      if (financialAccountRefIdList != null && financialAccountRefIdList.getFinancialAccountRefId() != null && !financialAccountRefIdList.getFinancialAccountRefId().isEmpty()) {
         target.getFinancialAccountRefIds().addAll(financialAccountRefIdList.getFinancialAccountRefId());
       }
 
@@ -91,7 +90,7 @@ public class PaymentReceiptConverter extends HitsConverter<PaymentReceiptType, P
 
       DebitOrCreditAmountType receivedAmount = source.getTransactionAmount();
       if (receivedAmount != null) {
-        target.setReceivedAmount(receivedAmount.getValue());
+        target.setReceivedAmount(getBigDecimalValue(receivedAmount.getValue()));
         target.setReceivedAmountType(receivedAmount.getType());
       }
 
@@ -99,7 +98,7 @@ public class PaymentReceiptConverter extends HitsConverter<PaymentReceiptType, P
 
       MonetaryAmountType monetaryAmountType = getJAXBValue(source.getTaxAmount());
       if (monetaryAmountType != null) {
-        target.setTaxAmount(monetaryAmountType.getValue());
+        target.setTaxAmount(getBigDecimalValue(monetaryAmountType.getValue()));
       }
 
       target.setTaxRate(getBigDecimalValue(getJAXBValue(source.getTaxRate())));

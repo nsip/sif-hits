@@ -2,10 +2,12 @@ package sif3.hits.domain.model;
 
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.Transient;
 
@@ -32,6 +34,7 @@ public class StaffPersonal extends HitsEntity implements StaffPerson {
   private String mostRecentSchoolLocalId;
   private String mostRecentLocalCampusId;
   private Set<StaffPersonalOtherId> otherIds;
+  private Set<Language> languages;
 
   @Id
   public String getRefId() {
@@ -188,6 +191,18 @@ public class StaffPersonal extends HitsEntity implements StaffPerson {
 
   public void setOtherIds(Set<StaffPersonalOtherId> otherIds) {
     this.otherIds = otherIds;
+  }
+
+  @Override
+  @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
+  @JoinColumn(name = "Person_RefId")
+  public Set<Language> getLanguages() {
+    return this.languages;
+  }
+
+  @Override
+  public void setLanguages(Set<Language> languages) {
+    this.languages = languages;
   }
 
   @Transient

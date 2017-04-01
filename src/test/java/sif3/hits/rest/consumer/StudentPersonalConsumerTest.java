@@ -17,6 +17,8 @@ import sif.dd.au30.model.DemographicsType;
 import sif.dd.au30.model.EmailListType;
 import sif.dd.au30.model.EmailType;
 import sif.dd.au30.model.GridLocationType;
+import sif.dd.au30.model.LanguageBaseType;
+import sif.dd.au30.model.LanguageListType;
 import sif.dd.au30.model.NameOfRecordType;
 import sif.dd.au30.model.ObjectFactory;
 import sif.dd.au30.model.OtherIdListType;
@@ -120,14 +122,14 @@ public class StudentPersonalConsumerTest extends BaseTest {
     YearLevelType yearLevel = new YearLevelType();
     yearLevel.setCode("4");
     mostRecent.setYearLevel(objectFactory.createStudentMostRecentContainerTypeYearLevel(yearLevel));
-    mostRecent.setParent1Language(objectFactory.createStudentMostRecentContainerTypeParent1Language("English"));
-    mostRecent.setParent2Language(objectFactory.createStudentMostRecentContainerTypeParent2Language("French"));
-    mostRecent.setParent1SchoolEducationLevel(objectFactory.createStudentMostRecentContainerTypeParent1SchoolEducationLevel("High School"));
-    mostRecent.setParent2SchoolEducationLevel(objectFactory.createStudentMostRecentContainerTypeParent2SchoolEducationLevel("High School"));
-    mostRecent.setParent1NonSchoolEducation(objectFactory.createStudentMostRecentContainerTypeParent1NonSchoolEducation("Tafe"));
-    mostRecent.setParent2NonSchoolEducation(objectFactory.createStudentMostRecentContainerTypeParent2NonSchoolEducation("College"));
-    mostRecent.setParent1EmploymentType(objectFactory.createStudentMostRecentContainerTypeParent1EmploymentType("Self Employed"));
-    mostRecent.setParent2EmploymentType(objectFactory.createStudentMostRecentContainerTypeParent2EmploymentType("Full Time"));
+    mostRecent.setParent1Language(objectFactory.createStudentMostRecentContainerTypeParent1Language("1201"));
+    mostRecent.setParent2Language(objectFactory.createStudentMostRecentContainerTypeParent2Language("2305"));
+    mostRecent.setParent1SchoolEducationLevel(objectFactory.createStudentMostRecentContainerTypeParent1SchoolEducationLevel("4"));
+    mostRecent.setParent2SchoolEducationLevel(objectFactory.createStudentMostRecentContainerTypeParent2SchoolEducationLevel("0"));
+    mostRecent.setParent1NonSchoolEducation(objectFactory.createStudentMostRecentContainerTypeParent1NonSchoolEducation("7"));
+    mostRecent.setParent2NonSchoolEducation(objectFactory.createStudentMostRecentContainerTypeParent2NonSchoolEducation("0"));
+    mostRecent.setParent1EmploymentType(objectFactory.createStudentMostRecentContainerTypeParent1EmploymentType("1"));
+    mostRecent.setParent2EmploymentType(objectFactory.createStudentMostRecentContainerTypeParent2EmploymentType("2"));
     studentPersonalType.setMostRecent(objectFactory.createStudentPersonalTypeMostRecent(mostRecent));
 
     PersonInfoType personInfo = new PersonInfoType();
@@ -139,6 +141,14 @@ public class StudentPersonalConsumerTest extends BaseTest {
     demographics.setBirthDate(objectFactory.createDemographicsTypeBirthDate(getDate("1984-12-20")));
     demographics.setIndigenousStatus(objectFactory.createDemographicsTypeIndigenousStatus("9"));
     demographics.setCountryOfBirth(objectFactory.createDemographicsTypeCountryOfBirth("AUS"));
+    
+    LanguageListType languageListType = new LanguageListType();
+    LanguageBaseType languageBaseType = new LanguageBaseType();
+    languageBaseType.setCode("1201");
+    languageBaseType.setLanguageType(objectFactory.createLanguageBaseTypeLanguageType("1"));
+    languageBaseType.setDialect(objectFactory.createLanguageBaseTypeDialect("West Australian"));
+    languageListType.getLanguage().add(languageBaseType);
+    demographics.setLanguageList(objectFactory.createDemographicsTypeLanguageList(languageListType));
 
     ReligionType religion = new ReligionType();
     religion.setCode("0001");
@@ -182,23 +192,28 @@ public class StudentPersonalConsumerTest extends BaseTest {
     studentPersonalType.setOtherIdList(objectFactory.createStudentPersonalTypeOtherIdList(otherIdList));
 
     studentTester.doCreateOne(studentPersonalType);
+    studentTester.doUpdateOne(studentPersonalType, studentPersonalType.getRefId());
     String xmlExpectedTo = studentTester.getXML(studentPersonalType);
 
     studentPersonalType.setRefId(StudentPersonalRefIds.REF_ID_2);
     otherId.setValue(StudentPersonalRefIds.PSI_ID_2);
     studentTester.doCreateOne(studentPersonalType);
+    studentTester.doUpdateOne(studentPersonalType, studentPersonalType.getRefId());
     
     studentPersonalType.setRefId(StudentPersonalRefIds.REF_ID_3);
     otherId.setValue(StudentPersonalRefIds.PSI_ID_3);
     studentTester.doCreateOne(studentPersonalType);
+    studentTester.doUpdateOne(studentPersonalType, studentPersonalType.getRefId());
 
     studentPersonalType.setRefId(StudentPersonalRefIds.REF_ID_4);
     otherId.setValue(StudentPersonalRefIds.PSI_ID_4);
     studentTester.doCreateOne(studentPersonalType);
+    studentTester.doUpdateOne(studentPersonalType, studentPersonalType.getRefId());
 
     studentPersonalType.setRefId(StudentPersonalRefIds.REF_ID_5);
     otherId.setValue(StudentPersonalRefIds.PSI_ID_5);
     studentTester.doCreateOne(studentPersonalType);
+    studentTester.doUpdateOne(studentPersonalType, studentPersonalType.getRefId());
 
     StudentPersonalType getResult = studentTester.doGetOne(StudentPersonalRefIds.REF_ID_1);
     String xmlExpectedFrom = studentTester.getXML(getResult);

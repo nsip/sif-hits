@@ -12,6 +12,8 @@ import sif.dd.au30.model.AddressType;
 import sif.dd.au30.model.DemographicsType;
 import sif.dd.au30.model.EmailListType;
 import sif.dd.au30.model.EmailType;
+import sif.dd.au30.model.LanguageBaseType;
+import sif.dd.au30.model.LanguageListType;
 import sif.dd.au30.model.NameOfRecordType;
 import sif.dd.au30.model.PersonInfoType;
 import sif.dd.au30.model.PhoneNumberListType;
@@ -20,6 +22,7 @@ import sif.dd.au30.model.ReligionType;
 import sif3.hits.domain.converter.factory.IObjectFactory;
 import sif3.hits.domain.model.Address;
 import sif3.hits.domain.model.AddressPerson;
+import sif3.hits.domain.model.Language;
 import sif3.hits.domain.model.Person;
 import sif3.hits.domain.model.StudentPerson;
 import sif3.hits.utils.UsesConstants;
@@ -70,8 +73,8 @@ public class PersonInfoConverter extends HitsConverter<PersonInfoType, Person> i
 
       if (source instanceof StudentPerson) {
         StudentPerson studentSource = (StudentPerson) source;
-        if (StringUtils.isNotBlank(studentSource.getIndigenousStatus()) || StringUtils.isNotBlank(studentSource.getLbote())
-            || StringUtils.isNotBlank(studentSource.getCountryOfBirth()) || StringUtils.isNotBlank(studentSource.getReligion())) {
+        if (StringUtils.isNotBlank(studentSource.getIndigenousStatus()) || StringUtils.isNotBlank(studentSource.getLbote()) || StringUtils.isNotBlank(studentSource.getCountryOfBirth())
+            || StringUtils.isNotBlank(studentSource.getReligion())) {
           demographics.setLBOTE(objectFactory.createDemographicsTypeLBOTE(getEnumValue(studentSource.getLbote(), AUCodeSetsYesOrNoCategoryType.class)));
           demographics.setIndigenousStatus(objectFactory.createDemographicsTypeIndigenousStatus(studentSource.getIndigenousStatus()));
           demographics.setCountryOfBirth(objectFactory.createDemographicsTypeCountryOfBirth(studentSource.getCountryOfBirth()));
@@ -90,7 +93,17 @@ public class PersonInfoConverter extends HitsConverter<PersonInfoType, Person> i
           target.setAddressList(objectFactory.createPersonInfoTypeAddressList(addressList));
         }
       }
-
+      if (source.getLanguages() != null && !source.getLanguages().isEmpty()) {
+        LanguageListType languageListType = objectFactory.createLanguageListType();
+        for (Language language : source.getLanguages()) {
+          LanguageBaseType languageBaseType = objectFactory.createLanguageBaseType();
+          languageBaseType.setCode(language.getLanguageCode());
+          languageBaseType.setDialect(objectFactory.createLanguageBaseTypeDialect(language.getLanguageDialect()));
+          languageBaseType.setLanguageType(objectFactory.createLanguageBaseTypeLanguageType(language.getLanguageType()));
+          languageListType.getLanguage().add(languageBaseType);
+        }
+        demographics.setLanguageList(objectFactory.createDemographicsTypeLanguageList(languageListType));
+      }
       target.setDemographics(objectFactory.createPersonInfoTypeDemographics(demographics));
     }
   }
@@ -133,6 +146,23 @@ public class PersonInfoConverter extends HitsConverter<PersonInfoType, Person> i
       if (demographics != null) {
         target.setSex(getJAXBValue(demographics.getSex()));
         target.setBirthDate(getDateValue(getJAXBValue(demographics.getBirthDate())));
+
+        if (target.getLanguages() == null) {
+          target.setLanguages(new HashSet<Language>());
+        } else {
+          target.getLanguages().clear();
+        }
+        if (getJAXBValue(demographics.getLanguageList()) != null) {
+          for (LanguageBaseType languageBaseType : getJAXBValue(demographics.getLanguageList()).getLanguage()) {
+            Language language = new Language();
+            language.setPersonRefId(target.getRefId());
+            language.setLanguageCode(languageBaseType.getCode());
+            language.setLanguageDialect(getJAXBValue(languageBaseType.getDialect()));
+            language.setLanguageType(getJAXBValue(languageBaseType.getLanguageType()));
+            target.getLanguages().add(language);
+          }
+        }
+
         if (target instanceof StudentPerson) {
           StudentPerson studentTarget = (StudentPerson) target;
           studentTarget.setIndigenousStatus(getJAXBValue(demographics.getIndigenousStatus()));

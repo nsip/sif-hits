@@ -1,4 +1,4 @@
-<SessionInfos xmlns="http://www.sifassociation.org/au/datamodel/3.4">
+<SessionInfos xmlns="http://www.sifassociation.org/au/datamodel/3.4.1">
 	<SessionInfo RefId="5f18d34a-4b9b-4959-9af5-5c991378de99">
 		<SchoolInfoRefId>6dafb630-c439-41e3-9aa0-81f4dbd909ab</SchoolInfoRefId>
 		<TimeTableCellRefId>301c949d-3769-45fc-9c82-7119c1f9df03</TimeTableCellRefId>

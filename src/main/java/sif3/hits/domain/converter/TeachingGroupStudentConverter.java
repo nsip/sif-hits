@@ -23,7 +23,7 @@ public class TeachingGroupStudentConverter extends HitsConverter<TeachingGroupSt
     if (source != null && target != null) {
       IObjectFactory objectFactory = getObjectFactory();
       target.setStudentPersonalRefId(objectFactory.createTeachingGroupStudentTypeStudentPersonalRefId(source.getRefId()));
-      target.setStudentLocalId(source.getLocalId());
+      target.setStudentLocalId(objectFactory.createTeachingGroupStudentTypeStudentLocalId(source.getLocalId()));
 
       NameOfRecordType name = getJAXBValue(target.getName());
       if (name == null) {
@@ -38,7 +38,7 @@ public class TeachingGroupStudentConverter extends HitsConverter<TeachingGroupSt
   public void toHitsModel(TeachingGroupStudentType source, StudentPersonal target) {
     if (source != null && target != null) {
       target.setRefId(getJAXBValue(source.getStudentPersonalRefId()));
-      target.setLocalId(source.getStudentLocalId());
+      target.setLocalId(getJAXBValue(source.getStudentLocalId()));
       nameOfRecordConverter.toHitsModel(getJAXBValue(source.getName()), target);
     }
   }

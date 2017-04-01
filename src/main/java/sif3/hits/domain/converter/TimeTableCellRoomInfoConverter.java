@@ -17,7 +17,7 @@ public class TimeTableCellRoomInfoConverter extends HitsConverter<TimeTableCellT
   public void toSifModel(RoomInfo source, TimeTableCellType target) {
     if (source != null && target != null) {
       IObjectFactory objectFactory = getObjectFactory();
-      target.setRoomInfoRefId(source.getRefId());
+      target.setRoomInfoRefId(objectFactory.createTimeTableCellTypeRoomInfoRefId(source.getRefId()));
       target.setRoomNumber(objectFactory.createTimeTableCellTypeRoomNumber(source.getRoomNumber()));
     }
   }
@@ -25,7 +25,7 @@ public class TimeTableCellRoomInfoConverter extends HitsConverter<TimeTableCellT
   @Override
   public void toHitsModel(TimeTableCellType source, RoomInfo target) {
     if (source != null && target != null) {
-      target.setRefId(source.getRoomInfoRefId());
+      target.setRefId(getJAXBValue(source.getRoomInfoRefId()));
       target.setRoomNumber(getJAXBValue(source.getRoomNumber()));
     }
   }

@@ -2,7 +2,6 @@ package sif3.hits.domain.converter;
 
 import org.springframework.stereotype.Component;
 
-import sif.dd.au30.model.AUCodeSetsNAPWritingRubricTypeType;
 import sif.dd.au30.model.NAPSubscoreType;
 import sif3.hits.domain.model.NAPSubscore;
 
@@ -16,7 +15,7 @@ public class NAPSubscoreConverter extends HitsConverter<NAPSubscoreType, NAPSubs
   @Override
   public void toSifModel(NAPSubscore source, NAPSubscoreType target) {
     if (source != null && target != null) {
-      target.setSubscoreType(getEnumValue(source.getSubscoreType(), AUCodeSetsNAPWritingRubricTypeType.class));
+      target.setSubscoreType(source.getSubscoreType());
       target.setSubscoreValue(getBigDecimalValue(source.getSubscoreValue()));
     }
   }
@@ -24,7 +23,7 @@ public class NAPSubscoreConverter extends HitsConverter<NAPSubscoreType, NAPSubs
   @Override
   public void toHitsModel(NAPSubscoreType source, NAPSubscore target) {
     if (source != null && target != null) {
-      target.setSubscoreType(getEnumValue(source.getSubscoreType()));
+      target.setSubscoreType(source.getSubscoreType());
       target.setSubscoreValue(getBigDecimalValue(source.getSubscoreValue()));
     }
   }

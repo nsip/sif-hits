@@ -2,7 +2,6 @@ package sif3.hits.domain.converter.factory;
 
 import java.math.BigDecimal;
 import java.math.BigInteger;
-import java.util.Calendar;
 
 import javax.xml.bind.JAXBElement;
 import javax.xml.datatype.XMLGregorianCalendar;
@@ -20,2818 +19,8455 @@ import sif.dd.au30.model.*;
  */
 public interface IObjectFactory {
 
-  SIFMetadataType createSIFMetadataType();
-
-  OtherCodeListType createOtherCodeListType();
-
-  ActivityTimeType createActivityTimeType();
-
-  AssociatedObjectsType createAssociatedObjectsType();
-
-  TimeElementType createTimeElementType();
-
-  TimeElementType.SpanGaps createTimeElementTypeSpanGaps();
-
-  LocationType createLocationType();
-
-  IdentityAssertionsType createIdentityAssertionsType();
-
-  AbstractContentPackageType createAbstractContentPackageType();
-
-  SourceObjectsType createSourceObjectsType();
-
+  /**
+   * Create an instance of {@link AbstractContentElementType }
+   * 
+   */
   AbstractContentElementType createAbstractContentElementType();
 
-  LifeCycleType createLifeCycleType();
+  /**
+   * Create an instance of {@link AbstractContentPackageType }
+   * 
+   */
+  AbstractContentPackageType createAbstractContentPackageType();
 
-  LifeCycleType.ModificationHistory createLifeCycleTypeModificationHistory();
+  /**
+   * Create an instance of {@link SIFMetadataType }
+   * 
+   */
+  SIFMetadataType createSIFMetadataType();
 
-  LifeCycleType.Created createLifeCycleTypeCreated();
-
-  LifeCycleType.Created.Creators createLifeCycleTypeCreatedCreators();
-
-  PasswordListType createPasswordListType();
-
+  /**
+   * Create an instance of {@link SIFExtendedElementsType }
+   * 
+   */
   SIFExtendedElementsType createSIFExtendedElementsType();
 
-  IdentityType createIdentityType();
+  /**
+   * Create an instance of {@link OtherCodeListType }
+   * 
+   */
+  OtherCodeListType createOtherCodeListType();
 
-  EquipmentInfoType createEquipmentInfoType();
+  /**
+   * Create an instance of {@link LifeCycleType }
+   * 
+   */
+  LifeCycleType createLifeCycleType();
 
-  StudentParticipationType createStudentParticipationType();
+  /**
+   * Create an instance of {@link LifeCycleType.ModificationHistory }
+   * 
+   */
+  LifeCycleType.ModificationHistory createLifeCycleTypeModificationHistory();
 
-  InvoiceType createInvoiceType();
+  /**
+   * Create an instance of {@link LifeCycleType.Created }
+   * 
+   */
+  LifeCycleType.Created createLifeCycleTypeCreated();
 
-  LearningStandardItemType createLearningStandardItemType();
+  /**
+   * Create an instance of {@link LifeCycleType.Created.Creators }
+   * 
+   */
+  LifeCycleType.Created.Creators createLifeCycleTypeCreatedCreators();
 
-  LearningStandardItemType.RelatedLearningStandardItems createLearningStandardItemTypeRelatedLearningStandardItems();
+  /**
+   * Create an instance of {@link TimeElementType }
+   * 
+   */
+  TimeElementType createTimeElementType();
 
-  LearningStandardItemType.StandardIdentifier createLearningStandardItemTypeStandardIdentifier();
+  /**
+   * Create an instance of {@link TimeElementType.SpanGaps }
+   * 
+   */
+  TimeElementType.SpanGaps createTimeElementTypeSpanGaps();
 
-  JournalType createJournalType();
+  /**
+   * Create an instance of {@link LocationType }
+   * 
+   */
+  LocationType createLocationType();
 
-  SystemRoleType createSystemRoleType();
+  /**
+   * Create an instance of {@link PasswordListType }
+   * 
+   */
+  PasswordListType createPasswordListType();
 
-  SystemRoleType.SystemContextList createSystemRoleTypeSystemContextList();
+  /**
+   * Create an instance of {@link AssociatedObjectsType }
+   * 
+   */
+  AssociatedObjectsType createAssociatedObjectsType();
 
-  SystemRoleType.SystemContextList.SystemContext createSystemRoleTypeSystemContextListSystemContext();
+  /**
+   * Create an instance of {@link IdentityAssertionsType }
+   * 
+   */
+  IdentityAssertionsType createIdentityAssertionsType();
 
-  SystemRoleType.SystemContextList.SystemContext.RoleList createSystemRoleTypeSystemContextListSystemContextRoleList();
+  /**
+   * Create an instance of {@link SourceObjectsType }
+   * 
+   */
+  SourceObjectsType createSourceObjectsType();
 
-  SystemRoleType.SystemContextList.SystemContext.RoleList.Role createSystemRoleTypeSystemContextListSystemContextRoleListRole();
+  /**
+   * Create an instance of {@link ActivityTimeType }
+   * 
+   */
+  ActivityTimeType createActivityTimeType();
 
-  SystemRoleType.SystemContextList.SystemContext.RoleList.Role.RoleScopeList createSystemRoleTypeSystemContextListSystemContextRoleListRoleRoleScopeList();
-
-  SystemRoleType.SystemContextList.SystemContext.RoleList.Role.RoleScopeList.RoleScope createSystemRoleTypeSystemContextListSystemContextRoleListRoleRoleScopeListRoleScope();
-
-  ResourceUsageType createResourceUsageType();
-
-  ResourceUsageType.ResourceReportLineList createResourceUsageTypeResourceReportLineList();
-
-  ResourceUsageType.ResourceReportLineList.ResourceReportLine createResourceUsageTypeResourceReportLineListResourceReportLine();
-
-  ResourceUsageType.ResourceReportColumnList createResourceUsageTypeResourceReportColumnList();
-
-  LearningResourceType createLearningResourceType();
-
-  AggregateStatisticInfoType createAggregateStatisticInfoType();
-
-  LearningStandardDocumentType createLearningStandardDocumentType();
-
+  /**
+   * Create an instance of {@link DebtorType }
+   * 
+   */
   DebtorType createDebtorType();
 
-  PersonPictureType createPersonPictureType();
+  /**
+   * Create an instance of {@link JournalType }
+   * 
+   */
+  JournalType createJournalType();
 
-  ActivityType createActivityType();
+  /**
+   * Create an instance of {@link InvoiceType }
+   * 
+   */
+  InvoiceType createInvoiceType();
 
+  /**
+   * Create an instance of {@link EquipmentInfoType }
+   * 
+   */
+  EquipmentInfoType createEquipmentInfoType();
+
+  /**
+   * Create an instance of {@link ResourceBookingType }
+   * 
+   */
   ResourceBookingType createResourceBookingType();
 
+  /**
+   * Create an instance of {@link ActivityType }
+   * 
+   */
+  ActivityType createActivityType();
+
+  /**
+   * Create an instance of {@link IdentityType }
+   * 
+   */
+  IdentityType createIdentityType();
+
+  /**
+   * Create an instance of {@link LearningResourceType }
+   * 
+   */
+  LearningResourceType createLearningResourceType();
+
+  /**
+   * Create an instance of {@link LearningStandardItemType }
+   * 
+   */
+  LearningStandardItemType createLearningStandardItemType();
+
+  /**
+   * Create an instance of {@link LearningStandardItemType.RelatedLearningStandardItems }
+   * 
+   */
+  LearningStandardItemType.RelatedLearningStandardItems createLearningStandardItemTypeRelatedLearningStandardItems();
+
+  /**
+   * Create an instance of {@link LearningStandardItemType.StandardIdentifier }
+   * 
+   */
+  LearningStandardItemType.StandardIdentifier createLearningStandardItemTypeStandardIdentifier();
+
+  /**
+   * Create an instance of {@link LearningStandardDocumentType }
+   * 
+   */
+  LearningStandardDocumentType createLearningStandardDocumentType();
+
+  /**
+   * Create an instance of {@link PersonPictureType }
+   * 
+   */
+  PersonPictureType createPersonPictureType();
+
+  /**
+   * Create an instance of {@link StudentParticipationType }
+   * 
+   */
+  StudentParticipationType createStudentParticipationType();
+
+  /**
+   * Create an instance of {@link StudentSchoolEnrollmentType }
+   * 
+   */
   StudentSchoolEnrollmentType createStudentSchoolEnrollmentType();
 
+  /**
+   * Create an instance of {@link ResourceUsageType }
+   * 
+   */
+  ResourceUsageType createResourceUsageType();
+
+  /**
+   * Create an instance of {@link ResourceUsageType.ResourceReportLineList }
+   * 
+   */
+  ResourceUsageType.ResourceReportLineList createResourceUsageTypeResourceReportLineList();
+
+  /**
+   * Create an instance of {@link ResourceUsageType.ResourceReportLineList.ResourceReportLine }
+   * 
+   */
+  ResourceUsageType.ResourceReportLineList.ResourceReportLine createResourceUsageTypeResourceReportLineListResourceReportLine();
+
+  /**
+   * Create an instance of {@link ResourceUsageType.ResourceReportColumnList }
+   * 
+   */
+  ResourceUsageType.ResourceReportColumnList createResourceUsageTypeResourceReportColumnList();
+
+  /**
+   * Create an instance of {@link AggregateStatisticInfoType }
+   * 
+   */
+  AggregateStatisticInfoType createAggregateStatisticInfoType();
+
+  /**
+   * Create an instance of {@link SystemRoleType }
+   * 
+   */
+  SystemRoleType createSystemRoleType();
+
+  /**
+   * Create an instance of {@link SystemRoleType.SystemContextList }
+   * 
+   */
+  SystemRoleType.SystemContextList createSystemRoleTypeSystemContextList();
+
+  /**
+   * Create an instance of {@link SystemRoleType.SystemContextList.SystemContext }
+   * 
+   */
+  SystemRoleType.SystemContextList.SystemContext createSystemRoleTypeSystemContextListSystemContext();
+
+  /**
+   * Create an instance of {@link SystemRoleType.SystemContextList.SystemContext.RoleList }
+   * 
+   */
+  SystemRoleType.SystemContextList.SystemContext.RoleList createSystemRoleTypeSystemContextListSystemContextRoleList();
+
+  /**
+   * Create an instance of {@link SystemRoleType.SystemContextList.SystemContext.RoleList.Role }
+   * 
+   */
+  SystemRoleType.SystemContextList.SystemContext.RoleList.Role createSystemRoleTypeSystemContextListSystemContextRoleListRole();
+
+  /**
+   * Create an instance of {@link SystemRoleType.SystemContextList.SystemContext.RoleList.Role.RoleScopeList }
+   * 
+   */
+  SystemRoleType.SystemContextList.SystemContext.RoleList.Role.RoleScopeList createSystemRoleTypeSystemContextListSystemContextRoleListRoleRoleScopeList();
+
+  /**
+   * Create an instance of {@link SystemRoleType.SystemContextList.SystemContext.RoleList.Role.RoleScopeList.RoleScope }
+   * 
+   */
+  SystemRoleType.SystemContextList.SystemContext.RoleList.Role.RoleScopeList.RoleScope createSystemRoleTypeSystemContextListSystemContextRoleListRoleRoleScopeListRoleScope();
+
+  /**
+   * Create an instance of {@link SchoolInfoType }
+   * 
+   */
   SchoolInfoType createSchoolInfoType();
 
-  CalendarSummaryType createCalendarSummaryType();
-
-  TeachingGroupType createTeachingGroupType();
-
-  ScheduledActivityType createScheduledActivityType();
-
-  StudentPersonalCollectionType createStudentPersonalCollectionType();
-
-  TermInfoCollectionType createTermInfoCollectionType();
-
-  StaffAssignmentType createStaffAssignmentType();
-
-  LearningResourcePackageType createLearningResourcePackageType();
-
-  SectionInfoType createSectionInfoType();
-
-  PaymentReceiptCollectionType createPaymentReceiptCollectionType();
-
-  SchoolCourseInfoCollectionType createSchoolCourseInfoCollectionType();
-
-  NAPEventStudentLinkCollectionType createNAPEventStudentLinkCollectionType();
-
-  EquipmentInfoCollectionType createEquipmentInfoCollectionType();
-
-  TeachingGroupCollectionType createTeachingGroupCollectionType();
-
-  PurchaseOrderType createPurchaseOrderType();
-
-  StudentAttendanceTimeListType createStudentAttendanceTimeListType();
-
-  ChargedLocationInfoType createChargedLocationInfoType();
-
-  StudentActivityInfoCollectionType createStudentActivityInfoCollectionType();
-
-  TimeTableSubjectCollectionType createTimeTableSubjectCollectionType();
-
-  StudentParticipationCollectionType createStudentParticipationCollectionType();
-
-  StaffPersonalCollectionType createStaffPersonalCollectionType();
-
-  StudentDailyAttendanceCollectionType createStudentDailyAttendanceCollectionType();
-
-  StudentContactRelationshipCollectionType createStudentContactRelationshipCollectionType();
-
-  StaffAssignmentCollectionType createStaffAssignmentCollectionType();
-
-  CalendarSummaryCollectionType createCalendarSummaryCollectionType();
-
-  NAPStudentResponseSetCollectionType createNAPStudentResponseSetCollectionType();
-
-  JournalCollectionType createJournalCollectionType();
-
-  StudentAttendanceSummaryType createStudentAttendanceSummaryType();
-
-  NAPTestCollectionType createNAPTestCollectionType();
-
-  StudentPeriodAttendanceType createStudentPeriodAttendanceType();
-
-  AggregateStatisticFactCollectionType createAggregateStatisticFactCollectionType();
-
-  SchoolProgramsType createSchoolProgramsType();
-
-  NAPTestItemType createNAPTestItemType();
-
-  NAPTestScoreSummaryCollectionType createNAPTestScoreSummaryCollectionType();
-
-  AggregateCharacteristicInfoCollectionType createAggregateCharacteristicInfoCollectionType();
-
-  FinancialAccountType createFinancialAccountType();
-
-  LearningResourcePackageCollectionType createLearningResourcePackageCollectionType();
-
-  StudentContactRelationshipType createStudentContactRelationshipType();
-
-  AggregateCharacteristicInfoType createAggregateCharacteristicInfoType();
-
-  IdentityCollectionType createIdentityCollectionType();
-
-  AggregateStatisticFactType createAggregateStatisticFactType();
-
-  AggregateStatisticInfoCollectionType createAggregateStatisticInfoCollectionType();
-
-  NAPStudentResponseSetType createNAPStudentResponseSetType();
-
-  ResourceUsageCollectionType createResourceUsageCollectionType();
-
-  ChargedLocationInfoCollectionType createChargedLocationInfoCollectionType();
-
-  TimeTableCellCollectionType createTimeTableCellCollectionType();
-
-  TimeTableType createTimeTableType();
-
-  ResourceBookingCollectionType createResourceBookingCollectionType();
-
-  SessionInfoType createSessionInfoType();
-
-  RoomInfoCollectionType createRoomInfoCollectionType();
-
-  GradingAssignmentType createGradingAssignmentType();
-
-  LearningStandardDocumentCollectionType createLearningStandardDocumentCollectionType();
-
-  StudentActivityParticipationCollectionType createStudentActivityParticipationCollectionType();
-
-  PaymentReceiptType createPaymentReceiptType();
-
-  StudentAttendanceTimeListCollectionType createStudentAttendanceTimeListCollectionType();
-
-  VendorInfoCollectionType createVendorInfoCollectionType();
-
-  TimeTableCellType createTimeTableCellType();
-
-  GradingAssignmentScoreType createGradingAssignmentScoreType();
-
-  TimeTableSubjectType createTimeTableSubjectType();
-
-  SchoolProgramsCollectionType createSchoolProgramsCollectionType();
-
-  NAPTestItemCollectionType createNAPTestItemCollectionType();
-
-  LearningStandardItemCollectionType createLearningStandardItemCollectionType();
-
-  StudentSectionEnrollmentCollectionType createStudentSectionEnrollmentCollectionType();
-
-  StudentContactPersonalType createStudentContactPersonalType();
-
-  StudentActivityInfoType createStudentActivityInfoType();
-
-  StudentPersonalType createStudentPersonalType();
-
-  NAPTestScoreSummaryType createNAPTestScoreSummaryType();
-
-  CalendarDateCollectionType createCalendarDateCollectionType();
-
-  StudentPeriodAttendanceCollectionType createStudentPeriodAttendanceCollectionType();
-
-  TermInfoType createTermInfoType();
-
-  StudentActivityParticipationType createStudentActivityParticipationType();
-
-  NAPCodeFrameCollectionType createNAPCodeFrameCollectionType();
-
-  NAPCodeFrameType createNAPCodeFrameType();
-
-  RoomInfoType createRoomInfoType();
-
-  CalendarDateType createCalendarDateType();
-
-  NAPTestletCollectionType createNAPTestletCollectionType();
-
-  SectionInfoCollectionType createSectionInfoCollectionType();
-
-  SystemRoleCollectionType createSystemRoleCollectionType();
-
-  PersonPictureCollectionType createPersonPictureCollectionType();
-
-  StudentContactPersonalCollectionType createStudentContactPersonalCollectionType();
-
-  StudentAttendanceSummaryCollectionType createStudentAttendanceSummaryCollectionType();
-
-  StaffPersonalType createStaffPersonalType();
-
-  VendorInfoType createVendorInfoType();
-
-  StudentSchoolEnrollmentCollectionType createStudentSchoolEnrollmentCollectionType();
-
-  NAPEventStudentLinkType createNAPEventStudentLinkType();
-
-  ScheduledActivityCollectionType createScheduledActivityCollectionType();
-
-  GradingAssignmentCollectionType createGradingAssignmentCollectionType();
-
-  LEAInfoCollectionType createLEAInfoCollectionType();
-
-  DebtorCollectionType createDebtorCollectionType();
-
-  LearningResourceCollectionType createLearningResourceCollectionType();
-
-  PurchaseOrderCollectionType createPurchaseOrderCollectionType();
-
-  StudentDailyAttendanceType createStudentDailyAttendanceType();
-
-  GradingAssignmentScoreCollectionType createGradingAssignmentScoreCollectionType();
-
-  SchoolCourseInfoType createSchoolCourseInfoType();
-
-  StudentSectionEnrollmentType createStudentSectionEnrollmentType();
-
-  LEAInfoType createLEAInfoType();
-
-  TimeTableCollectionType createTimeTableCollectionType();
-
+  /**
+   * Create an instance of {@link SchoolInfoCollectionType }
+   * 
+   */
   SchoolInfoCollectionType createSchoolInfoCollectionType();
 
-  NAPTestType createNAPTestType();
+  /**
+   * Create an instance of {@link SystemRoleCollectionType }
+   * 
+   */
+  SystemRoleCollectionType createSystemRoleCollectionType();
 
+  /**
+   * Create an instance of {@link AggregateStatisticInfoCollectionType }
+   * 
+   */
+  AggregateStatisticInfoCollectionType createAggregateStatisticInfoCollectionType();
+
+  /**
+   * Create an instance of {@link AggregateCharacteristicInfoType }
+   * 
+   */
+  AggregateCharacteristicInfoType createAggregateCharacteristicInfoType();
+
+  /**
+   * Create an instance of {@link AggregateCharacteristicInfoCollectionType }
+   * 
+   */
+  AggregateCharacteristicInfoCollectionType createAggregateCharacteristicInfoCollectionType();
+
+  /**
+   * Create an instance of {@link AggregateStatisticFactType }
+   * 
+   */
+  AggregateStatisticFactType createAggregateStatisticFactType();
+
+  /**
+   * Create an instance of {@link AggregateStatisticFactCollectionType }
+   * 
+   */
+  AggregateStatisticFactCollectionType createAggregateStatisticFactCollectionType();
+
+  /**
+   * Create an instance of {@link ResourceUsageCollectionType }
+   * 
+   */
+  ResourceUsageCollectionType createResourceUsageCollectionType();
+
+  /**
+   * Create an instance of {@link RoomInfoType }
+   * 
+   */
+  RoomInfoType createRoomInfoType();
+
+  /**
+   * Create an instance of {@link RoomInfoCollectionType }
+   * 
+   */
+  RoomInfoCollectionType createRoomInfoCollectionType();
+
+  /**
+   * Create an instance of {@link StaffAssignmentType }
+   * 
+   */
+  StaffAssignmentType createStaffAssignmentType();
+
+  /**
+   * Create an instance of {@link StaffAssignmentCollectionType }
+   * 
+   */
+  StaffAssignmentCollectionType createStaffAssignmentCollectionType();
+
+  /**
+   * Create an instance of {@link StaffPersonalType }
+   * 
+   */
+  StaffPersonalType createStaffPersonalType();
+
+  /**
+   * Create an instance of {@link StaffPersonalCollectionType }
+   * 
+   */
+  StaffPersonalCollectionType createStaffPersonalCollectionType();
+
+  /**
+   * Create an instance of {@link StudentPersonalType }
+   * 
+   */
+  StudentPersonalType createStudentPersonalType();
+
+  /**
+   * Create an instance of {@link StudentPersonalCollectionType }
+   * 
+   */
+  StudentPersonalCollectionType createStudentPersonalCollectionType();
+
+  /**
+   * Create an instance of {@link StudentSchoolEnrollmentCollectionType }
+   * 
+   */
+  StudentSchoolEnrollmentCollectionType createStudentSchoolEnrollmentCollectionType();
+
+  /**
+   * Create an instance of {@link StudentContactPersonalType }
+   * 
+   */
+  StudentContactPersonalType createStudentContactPersonalType();
+
+  /**
+   * Create an instance of {@link StudentContactPersonalCollectionType }
+   * 
+   */
+  StudentContactPersonalCollectionType createStudentContactPersonalCollectionType();
+
+  /**
+   * Create an instance of {@link StudentParticipationCollectionType }
+   * 
+   */
+  StudentParticipationCollectionType createStudentParticipationCollectionType();
+
+  /**
+   * Create an instance of {@link PersonPictureCollectionType }
+   * 
+   */
+  PersonPictureCollectionType createPersonPictureCollectionType();
+
+  /**
+   * Create an instance of {@link CalendarDateType }
+   * 
+   */
+  CalendarDateType createCalendarDateType();
+
+  /**
+   * Create an instance of {@link CalendarDateCollectionType }
+   * 
+   */
+  CalendarDateCollectionType createCalendarDateCollectionType();
+
+  /**
+   * Create an instance of {@link CalendarSummaryType }
+   * 
+   */
+  CalendarSummaryType createCalendarSummaryType();
+
+  /**
+   * Create an instance of {@link CalendarSummaryCollectionType }
+   * 
+   */
+  CalendarSummaryCollectionType createCalendarSummaryCollectionType();
+
+  /**
+   * Create an instance of {@link StudentAttendanceSummaryType }
+   * 
+   */
+  StudentAttendanceSummaryType createStudentAttendanceSummaryType();
+
+  /**
+   * Create an instance of {@link StudentAttendanceSummaryCollectionType }
+   * 
+   */
+  StudentAttendanceSummaryCollectionType createStudentAttendanceSummaryCollectionType();
+
+  /**
+   * Create an instance of {@link StudentDailyAttendanceType }
+   * 
+   */
+  StudentDailyAttendanceType createStudentDailyAttendanceType();
+
+  /**
+   * Create an instance of {@link StudentDailyAttendanceCollectionType }
+   * 
+   */
+  StudentDailyAttendanceCollectionType createStudentDailyAttendanceCollectionType();
+
+  /**
+   * Create an instance of {@link StudentPeriodAttendanceType }
+   * 
+   */
+  StudentPeriodAttendanceType createStudentPeriodAttendanceType();
+
+  /**
+   * Create an instance of {@link StudentPeriodAttendanceCollectionType }
+   * 
+   */
+  StudentPeriodAttendanceCollectionType createStudentPeriodAttendanceCollectionType();
+
+  /**
+   * Create an instance of {@link SessionInfoType }
+   * 
+   */
+  SessionInfoType createSessionInfoType();
+
+  /**
+   * Create an instance of {@link SessionInfoCollectionType }
+   * 
+   */
   SessionInfoCollectionType createSessionInfoCollectionType();
 
-  NAPTestletType createNAPTestletType();
+  /**
+   * Create an instance of {@link LearningStandardDocumentCollectionType }
+   * 
+   */
+  LearningStandardDocumentCollectionType createLearningStandardDocumentCollectionType();
 
-  FinancialAccountCollectionType createFinancialAccountCollectionType();
+  /**
+   * Create an instance of {@link LearningStandardItemCollectionType }
+   * 
+   */
+  LearningStandardItemCollectionType createLearningStandardItemCollectionType();
 
-  InvoiceCollectionType createInvoiceCollectionType();
+  /**
+   * Create an instance of {@link LearningResourceCollectionType }
+   * 
+   */
+  LearningResourceCollectionType createLearningResourceCollectionType();
 
+  /**
+   * Create an instance of {@link LearningResourcePackageType }
+   * 
+   */
+  LearningResourcePackageType createLearningResourcePackageType();
+
+  /**
+   * Create an instance of {@link LearningResourcePackageCollectionType }
+   * 
+   */
+  LearningResourcePackageCollectionType createLearningResourcePackageCollectionType();
+
+  /**
+   * Create an instance of {@link TimeTableSubjectType }
+   * 
+   */
+  TimeTableSubjectType createTimeTableSubjectType();
+
+  /**
+   * Create an instance of {@link TimeTableSubjectCollectionType }
+   * 
+   */
+  TimeTableSubjectCollectionType createTimeTableSubjectCollectionType();
+
+  /**
+   * Create an instance of {@link TimeTableType }
+   * 
+   */
+  TimeTableType createTimeTableType();
+
+  /**
+   * Create an instance of {@link TimeTableCollectionType }
+   * 
+   */
+  TimeTableCollectionType createTimeTableCollectionType();
+
+  /**
+   * Create an instance of {@link TeachingGroupType }
+   * 
+   */
+  TeachingGroupType createTeachingGroupType();
+
+  /**
+   * Create an instance of {@link TeachingGroupCollectionType }
+   * 
+   */
+  TeachingGroupCollectionType createTeachingGroupCollectionType();
+
+  /**
+   * Create an instance of {@link TimeTableCellType }
+   * 
+   */
+  TimeTableCellType createTimeTableCellType();
+
+  /**
+   * Create an instance of {@link TimeTableCellCollectionType }
+   * 
+   */
+  TimeTableCellCollectionType createTimeTableCellCollectionType();
+
+  /**
+   * Create an instance of {@link SchoolCourseInfoType }
+   * 
+   */
+  SchoolCourseInfoType createSchoolCourseInfoType();
+
+  /**
+   * Create an instance of {@link SchoolCourseInfoCollectionType }
+   * 
+   */
+  SchoolCourseInfoCollectionType createSchoolCourseInfoCollectionType();
+
+  /**
+   * Create an instance of {@link LEAInfoType }
+   * 
+   */
+  LEAInfoType createLEAInfoType();
+
+  /**
+   * Create an instance of {@link LEAInfoCollectionType }
+   * 
+   */
+  LEAInfoCollectionType createLEAInfoCollectionType();
+
+  /**
+   * Create an instance of {@link TermInfoType }
+   * 
+   */
+  TermInfoType createTermInfoType();
+
+  /**
+   * Create an instance of {@link TermInfoCollectionType }
+   * 
+   */
+  TermInfoCollectionType createTermInfoCollectionType();
+
+  /**
+   * Create an instance of {@link StudentContactRelationshipType }
+   * 
+   */
+  StudentContactRelationshipType createStudentContactRelationshipType();
+
+  /**
+   * Create an instance of {@link StudentContactRelationshipCollectionType }
+   * 
+   */
+  StudentContactRelationshipCollectionType createStudentContactRelationshipCollectionType();
+
+  /**
+   * Create an instance of {@link StudentActivityInfoType }
+   * 
+   */
+  StudentActivityInfoType createStudentActivityInfoType();
+
+  /**
+   * Create an instance of {@link StudentActivityInfoCollectionType }
+   * 
+   */
+  StudentActivityInfoCollectionType createStudentActivityInfoCollectionType();
+
+  /**
+   * Create an instance of {@link StudentActivityParticipationType }
+   * 
+   */
+  StudentActivityParticipationType createStudentActivityParticipationType();
+
+  /**
+   * Create an instance of {@link StudentActivityParticipationCollectionType }
+   * 
+   */
+  StudentActivityParticipationCollectionType createStudentActivityParticipationCollectionType();
+
+  /**
+   * Create an instance of {@link IdentityCollectionType }
+   * 
+   */
+  IdentityCollectionType createIdentityCollectionType();
+
+  /**
+   * Create an instance of {@link SchoolProgramsType }
+   * 
+   */
+  SchoolProgramsType createSchoolProgramsType();
+
+  /**
+   * Create an instance of {@link SchoolProgramsCollectionType }
+   * 
+   */
+  SchoolProgramsCollectionType createSchoolProgramsCollectionType();
+
+  /**
+   * Create an instance of {@link SectionInfoType }
+   * 
+   */
+  SectionInfoType createSectionInfoType();
+
+  /**
+   * Create an instance of {@link SectionInfoCollectionType }
+   * 
+   */
+  SectionInfoCollectionType createSectionInfoCollectionType();
+
+  /**
+   * Create an instance of {@link StudentSectionEnrollmentType }
+   * 
+   */
+  StudentSectionEnrollmentType createStudentSectionEnrollmentType();
+
+  /**
+   * Create an instance of {@link StudentSectionEnrollmentCollectionType }
+   * 
+   */
+  StudentSectionEnrollmentCollectionType createStudentSectionEnrollmentCollectionType();
+
+  /**
+   * Create an instance of {@link ActivityCollectionType }
+   * 
+   */
   ActivityCollectionType createActivityCollectionType();
 
-  VisaSubClassListType createVisaSubClassListType();
-
-  PlausibleScaledValueListType createPlausibleScaledValueListType();
-
-  NAPTestContentType createNAPTestContentType();
-
-  TestDisruptionType createTestDisruptionType();
-
-  TestDisruptionListType createTestDisruptionListType();
-
-  TimeTableDayType createTimeTableDayType();
-
-  ExpenseAccountsType createExpenseAccountsType();
-
-  SubstituteItemType createSubstituteItemType();
-
-  AlertMessageType createAlertMessageType();
-
-  HouseholdContactInfoListType createHouseholdContactInfoListType();
-
-  StudentExitStatusContainerType createStudentExitStatusContainerType();
-
-  StudentSubjectChoiceListType createStudentSubjectChoiceListType();
-
-  AddressListType createAddressListType();
-
-  PrincipalInfoType createPrincipalInfoType();
-
-  ElectronicIdListType createElectronicIdListType();
-
-  LanguageOfInstructionType createLanguageOfInstructionType();
-
-  OtherIdType createOtherIdType();
-
-  AdjustmentContainerType createAdjustmentContainerType();
-
-  CatchmentStatusContainerType createCatchmentStatusContainerType();
-
-  AuthorsType createAuthorsType();
-
-  ContactFlagsType createContactFlagsType();
-
-  AlternateIdentificationCodesType createAlternateIdentificationCodesType();
-
-  GridLocationType createGridLocationType();
-
-  LearningStandardsDocumentType createLearningStandardsDocumentType();
-
-  NAPSubscoreType createNAPSubscoreType();
-
-  CalendarDateInfoType createCalendarDateInfoType();
-
-  PhoneNumberListType createPhoneNumberListType();
-
-  NAPTestletResponseType createNAPTestletResponseType();
-
-  HouseholdListType createHouseholdListType();
-
-  VisaSubClassType createVisaSubClassType();
-
-  CalendarSummaryListType createCalendarSummaryListType();
-
-  StaffSubjectListType createStaffSubjectListType();
-
-  PhoneNumberType createPhoneNumberType();
-
-  StimulusListType createStimulusListType();
-
-  RelationshipType createRelationshipType();
-
-  TimeTablePeriodType createTimeTablePeriodType();
-
-  PurchasingItemsType createPurchasingItemsType();
-
-  YearRangeType createYearRangeType();
-
-  SchoolProgramListType createSchoolProgramListType();
-
-  SchoolContactListType createSchoolContactListType();
-
-  MonetaryAmountType createMonetaryAmountType();
-
-  StudentMostRecentContainerType createStudentMostRecentContainerType();
-
-  NAPWritingRubricListType createNAPWritingRubricListType();
-
-  TeacherListType createTeacherListType();
-
-  NAPCodeFrameTestletListType createNAPCodeFrameTestletListType();
-
-  AddressType createAddressType();
-
-  StaffSubjectType createStaffSubjectType();
-
-  DomainScoreType createDomainScoreType();
-
-  AuditInfoType createAuditInfoType();
-
-  ContactType createContactType();
-
-  SchoolGroupListType createSchoolGroupListType();
-
-  LearningResourcesType createLearningResourcesType();
-
-  StimulusType createStimulusType();
-
-  SubjectAreaListType createSubjectAreaListType();
-
-  EnglishProficiencyType createEnglishProficiencyType();
-
-  ReligionType createReligionType();
-
-  ReportPackageType createReportPackageType();
-
-  LanguageListType createLanguageListType();
-
-  ACStrandAreaListType createACStrandAreaListType();
-
-  ComponentType createComponentType();
-
-  TimeTablePeriodListType createTimeTablePeriodListType();
-
-  StatementsType createStatementsType();
-
-  ExclusionRuleType createExclusionRuleType();
-
-  NAPLANClassListType createNAPLANClassListType();
-
+  /**
+   * Create an instance of {@link ScheduledActivityType }
+   * 
+   */
+  ScheduledActivityType createScheduledActivityType();
+
+  /**
+   * Create an instance of {@link ScheduledActivityCollectionType }
+   * 
+   */
+  ScheduledActivityCollectionType createScheduledActivityCollectionType();
+
+  /**
+   * Create an instance of {@link ResourceBookingCollectionType }
+   * 
+   */
+  ResourceBookingCollectionType createResourceBookingCollectionType();
+
+  /**
+   * Create an instance of {@link EquipmentInfoCollectionType }
+   * 
+   */
+  EquipmentInfoCollectionType createEquipmentInfoCollectionType();
+
+  /**
+   * Create an instance of {@link InvoiceCollectionType }
+   * 
+   */
+  InvoiceCollectionType createInvoiceCollectionType();
+
+  /**
+   * Create an instance of {@link FinancialAccountType }
+   * 
+   */
+  FinancialAccountType createFinancialAccountType();
+
+  /**
+   * Create an instance of {@link FinancialAccountCollectionType }
+   * 
+   */
+  FinancialAccountCollectionType createFinancialAccountCollectionType();
+
+  /**
+   * Create an instance of {@link ChargedLocationInfoType }
+   * 
+   */
+  ChargedLocationInfoType createChargedLocationInfoType();
+
+  /**
+   * Create an instance of {@link ChargedLocationInfoCollectionType }
+   * 
+   */
+  ChargedLocationInfoCollectionType createChargedLocationInfoCollectionType();
+
+  /**
+   * Create an instance of {@link PaymentReceiptType }
+   * 
+   */
+  PaymentReceiptType createPaymentReceiptType();
+
+  /**
+   * Create an instance of {@link PaymentReceiptCollectionType }
+   * 
+   */
+  PaymentReceiptCollectionType createPaymentReceiptCollectionType();
+
+  /**
+   * Create an instance of {@link PurchaseOrderType }
+   * 
+   */
+  PurchaseOrderType createPurchaseOrderType();
+
+  /**
+   * Create an instance of {@link PurchaseOrderCollectionType }
+   * 
+   */
+  PurchaseOrderCollectionType createPurchaseOrderCollectionType();
+
+  /**
+   * Create an instance of {@link VendorInfoType }
+   * 
+   */
+  VendorInfoType createVendorInfoType();
+
+  /**
+   * Create an instance of {@link VendorInfoCollectionType }
+   * 
+   */
+  VendorInfoCollectionType createVendorInfoCollectionType();
+
+  /**
+   * Create an instance of {@link JournalCollectionType }
+   * 
+   */
+  JournalCollectionType createJournalCollectionType();
+
+  /**
+   * Create an instance of {@link DebtorCollectionType }
+   * 
+   */
+  DebtorCollectionType createDebtorCollectionType();
+
+  /**
+   * Create an instance of {@link StudentAttendanceTimeListType }
+   * 
+   */
+  StudentAttendanceTimeListType createStudentAttendanceTimeListType();
+
+  /**
+   * Create an instance of {@link StudentAttendanceTimeListCollectionType }
+   * 
+   */
+  StudentAttendanceTimeListCollectionType createStudentAttendanceTimeListCollectionType();
+
+  /**
+   * Create an instance of {@link GradingAssignmentType }
+   * 
+   */
+  GradingAssignmentType createGradingAssignmentType();
+
+  /**
+   * Create an instance of {@link GradingAssignmentCollectionType }
+   * 
+   */
+  GradingAssignmentCollectionType createGradingAssignmentCollectionType();
+
+  /**
+   * Create an instance of {@link GradingAssignmentScoreType }
+   * 
+   */
+  GradingAssignmentScoreType createGradingAssignmentScoreType();
+
+  /**
+   * Create an instance of {@link GradingAssignmentScoreCollectionType }
+   * 
+   */
+  GradingAssignmentScoreCollectionType createGradingAssignmentScoreCollectionType();
+
+  /**
+   * Create an instance of {@link NAPEventStudentLinkType }
+   * 
+   */
+  NAPEventStudentLinkType createNAPEventStudentLinkType();
+
+  /**
+   * Create an instance of {@link NAPEventStudentLinkCollectionType }
+   * 
+   */
+  NAPEventStudentLinkCollectionType createNAPEventStudentLinkCollectionType();
+
+  /**
+   * Create an instance of {@link NAPTestType }
+   * 
+   */
+  NAPTestType createNAPTestType();
+
+  /**
+   * Create an instance of {@link NAPTestCollectionType }
+   * 
+   */
+  NAPTestCollectionType createNAPTestCollectionType();
+
+  /**
+   * Create an instance of {@link NAPTestletType }
+   * 
+   */
+  NAPTestletType createNAPTestletType();
+
+  /**
+   * Create an instance of {@link NAPTestletCollectionType }
+   * 
+   */
+  NAPTestletCollectionType createNAPTestletCollectionType();
+
+  /**
+   * Create an instance of {@link NAPTestScoreSummaryType }
+   * 
+   */
+  NAPTestScoreSummaryType createNAPTestScoreSummaryType();
+
+  /**
+   * Create an instance of {@link NAPTestScoreSummaryCollectionType }
+   * 
+   */
+  NAPTestScoreSummaryCollectionType createNAPTestScoreSummaryCollectionType();
+
+  /**
+   * Create an instance of {@link NAPTestItemType }
+   * 
+   */
+  NAPTestItemType createNAPTestItemType();
+
+  /**
+   * Create an instance of {@link NAPTestItemCollectionType }
+   * 
+   */
+  NAPTestItemCollectionType createNAPTestItemCollectionType();
+
+  /**
+   * Create an instance of {@link NAPStudentResponseSetType }
+   * 
+   */
+  NAPStudentResponseSetType createNAPStudentResponseSetType();
+
+  /**
+   * Create an instance of {@link NAPStudentResponseSetCollectionType }
+   * 
+   */
+  NAPStudentResponseSetCollectionType createNAPStudentResponseSetCollectionType();
+
+  /**
+   * Create an instance of {@link NAPCodeFrameType }
+   * 
+   */
+  NAPCodeFrameType createNAPCodeFrameType();
+
+  /**
+   * Create an instance of {@link NAPCodeFrameCollectionType }
+   * 
+   */
+  NAPCodeFrameCollectionType createNAPCodeFrameCollectionType();
+
+  /**
+   * Create an instance of {@link NAPTestItemContentType }
+   * 
+   */
   NAPTestItemContentType createNAPTestItemContentType();
 
-  NAPStudentResponseTestletListType createNAPStudentResponseTestletListType();
-
-  AgencyType createAgencyType();
-
-  HouseholdContactInfoType createHouseholdContactInfoType();
-
-  PrerequisitesType createPrerequisitesType();
-
-  StatisticalAreasType createStatisticalAreasType();
-
-  ReligiousEventListType createReligiousEventListType();
-
-  ACStrandSubjectAreaType createACStrandSubjectAreaType();
-
-  NameOfRecordType createNameOfRecordType();
-
-  DomainBandsContainerType createDomainBandsContainerType();
-
-  TeacherCoverType createTeacherCoverType();
-
-  StudentActivityType createStudentActivityType();
-
-  DebitOrCreditAmountType createDebitOrCreditAmountType();
-
-  EssentialMaterialsType createEssentialMaterialsType();
-
-  ContactInfoType createContactInfoType();
-
-  OtherNamesType createOtherNamesType();
-
-  TeachingGroupStudentType createTeachingGroupStudentType();
-
-  ProgramAvailabilityType createProgramAvailabilityType();
-
-  MedicalAlertMessagesType createMedicalAlertMessagesType();
-
-  MediumOfInstructionType createMediumOfInstructionType();
-
-  StatementCodesType createStatementCodesType();
-
-  NameType createNameType();
-
-  OrganizationsType createOrganizationsType();
-
-  ScoreType createScoreType();
-
-  EvaluationType createEvaluationType();
-
-  StimulusLocalIdListType createStimulusLocalIdListType();
-
-  CountryListType createCountryListType();
-
-  AttendanceTimesType createAttendanceTimesType();
-
-  DomainProficiencyContainerType createDomainProficiencyContainerType();
-
-  AlertMessagesType createAlertMessagesType();
-
-  ApprovalsType createApprovalsType();
-
-  TechnicalRequirementsType createTechnicalRequirementsType();
-
-  StudentExitContainerType createStudentExitContainerType();
-
-  CodeFrameTestItemListType createCodeFrameTestItemListType();
-
-  StudentListType createStudentListType();
-
-  SubstituteItemListType createSubstituteItemListType();
-
-  CodeFrameTestItemType createCodeFrameTestItemType();
-
-  PersonInfoType createPersonInfoType();
-
-  ReligiousEventType createReligiousEventType();
-
-  YearLevelEnrollmentListType createYearLevelEnrollmentListType();
-
-  RecognitionListType createRecognitionListType();
-
-  TeachingGroupListType createTeachingGroupListType();
-
-  ScoreListType createScoreListType();
-
-  ContentDescriptionListType createContentDescriptionListType();
-
-  LEAContactType createLEAContactType();
-
-  TimeTableDayListType createTimeTableDayListType();
-
-  YearLevelType createYearLevelType();
-
-  SelectedContentType createSelectedContentType();
-
-  LanguageBaseType createLanguageBaseType();
-
-  NAPWritingRubricType createNAPWritingRubricType();
-
-  LocationOfInstructionType createLocationOfInstructionType();
-
-  EmailListType createEmailListType();
-
-  AttendanceCodeType createAttendanceCodeType();
-
-  ProgramStatusType createProgramStatusType();
-
-  TotalEnrollmentsType createTotalEnrollmentsType();
-
-  NAPSubscoreListType createNAPSubscoreListType();
-
-  CreationUserType createCreationUserType();
-
-  ScoreDescriptionListType createScoreDescriptionListType();
-
-  SubjectAreaType createSubjectAreaType();
-
-  SchoolCourseInfoOverrideType createSchoolCourseInfoOverrideType();
-
-  ExpenseAccountType createExpenseAccountType();
-
-  CountryList2Type createCountryList2Type();
-
-  NAPTestletCodeFrameType createNAPTestletCodeFrameType();
-
-  FinancialAccountRefIdListType createFinancialAccountRefIdListType();
-
-  AttendanceInfoType createAttendanceInfoType();
-
-  YearLevelsType createYearLevelsType();
-
-  CharacteristicsType createCharacteristicsType();
-
-  PurchasingItemType createPurchasingItemType();
-
-  StudentsType createStudentsType();
-
-  PromotionInfoType createPromotionInfoType();
-
-  SchoolProgramType createSchoolProgramType();
-
+  /**
+   * Create an instance of {@link NAPTestletContentType }
+   * 
+   */
   NAPTestletContentType createNAPTestletContentType();
 
-  StaffActivityExtensionType createStaffActivityExtensionType();
+  /**
+   * Create an instance of {@link NAPTestContentType }
+   * 
+   */
+  NAPTestContentType createNAPTestContentType();
 
-  SchoolFocusListType createSchoolFocusListType();
+  /**
+   * Create an instance of {@link PlausibleScaledValueListType }
+   * 
+   */
+  PlausibleScaledValueListType createPlausibleScaledValueListType();
 
-  StudentSubjectChoiceType createStudentSubjectChoiceType();
+  /**
+   * Create an instance of {@link SubstituteItemListType }
+   * 
+   */
+  SubstituteItemListType createSubstituteItemListType();
 
-  AttendanceTimeType createAttendanceTimeType();
+  /**
+   * Create an instance of {@link SubstituteItemType }
+   * 
+   */
+  SubstituteItemType createSubstituteItemType();
 
-  DwellingArrangementType createDwellingArrangementType();
+  /**
+   * Create an instance of {@link CodeFrameTestItemListType }
+   * 
+   */
+  CodeFrameTestItemListType createCodeFrameTestItemListType();
 
-  ProgramFundingSourceType createProgramFundingSourceType();
+  /**
+   * Create an instance of {@link CodeFrameTestItemType }
+   * 
+   */
+  CodeFrameTestItemType createCodeFrameTestItemType();
 
-  ScheduledTeacherListType createScheduledTeacherListType();
+  /**
+   * Create an instance of {@link StimulusLocalIdListType }
+   * 
+   */
+  StimulusLocalIdListType createStimulusLocalIdListType();
 
-  CampusContainerType createCampusContainerType();
+  /**
+   * Create an instance of {@link DomainBandsContainerType }
+   * 
+   */
+  DomainBandsContainerType createDomainBandsContainerType();
 
-  ScoreDescriptionType createScoreDescriptionType();
+  /**
+   * Create an instance of {@link DomainProficiencyContainerType }
+   * 
+   */
+  DomainProficiencyContainerType createDomainProficiencyContainerType();
 
-  TeachingGroupTeacherType createTeachingGroupTeacherType();
-
-  EducationFilterType createEducationFilterType();
-
-  TeachingGroupPeriodType createTeachingGroupPeriodType();
-
-  ExclusionRulesType createExclusionRulesType();
-
-  SoftwareRequirementType createSoftwareRequirementType();
-
-  ElectronicIdType createElectronicIdType();
-
-  MapReferenceType createMapReferenceType();
-
-  DemographicsType createDemographicsType();
-
-  StaffMostRecentContainerType createStaffMostRecentContainerType();
-
-  LResourcesType createLResourcesType();
-
-  ExtendedContentType createExtendedContentType();
-
-  ResourcesType createResourcesType();
-
-  NAPTestletItemResponseListType createNAPTestletItemResponseListType();
-
-  StudentEntryContainerType createStudentEntryContainerType();
-
-  NAPTestItem2Type createNAPTestItem2Type();
-
-  ApprovalType createApprovalType();
-
-  AddressStreetType createAddressStreetType();
-
-  ScheduledActivityOverrideType createScheduledActivityOverrideType();
-
-  PNPCodeListType createPNPCodeListType();
-
-  BaseNameType createBaseNameType();
-
-  ContactsType createContactsType();
-
-  OtherIdListType createOtherIdListType();
-
-  EvaluationsType createEvaluationsType();
-
-  MedicalAlertMessageType createMedicalAlertMessageType();
-
-  LearningObjectivesType createLearningObjectivesType();
-
-  ReferralSourceType createReferralSourceType();
-
-  LEAContactListType createLEAContactListType();
-
-  LearningStandardsType createLearningStandardsType();
-
+  /**
+   * Create an instance of {@link NAPTestItemListType }
+   * 
+   */
   NAPTestItemListType createNAPTestItemListType();
 
-  SchoolContactType createSchoolContactType();
+  /**
+   * Create an instance of {@link NAPTestItem2Type }
+   * 
+   */
+  NAPTestItem2Type createNAPTestItem2Type();
 
-  RoomListType createRoomListType();
+  /**
+   * Create an instance of {@link NAPCodeFrameTestletListType }
+   * 
+   */
+  NAPCodeFrameTestletListType createNAPCodeFrameTestletListType();
 
-  ReportDataObjectType createReportDataObjectType();
+  /**
+   * Create an instance of {@link NAPTestletCodeFrameType }
+   * 
+   */
+  NAPTestletCodeFrameType createNAPTestletCodeFrameType();
 
-  StatisticalAreaType createStatisticalAreaType();
+  /**
+   * Create an instance of {@link NAPStudentResponseTestletListType }
+   * 
+   */
+  NAPStudentResponseTestletListType createNAPStudentResponseTestletListType();
 
-  OtherNameType createOtherNameType();
+  /**
+   * Create an instance of {@link NAPTestletResponseType }
+   * 
+   */
+  NAPTestletResponseType createNAPTestletResponseType();
 
-  YearLevelEnrollmentType createYearLevelEnrollmentType();
+  /**
+   * Create an instance of {@link NAPTestletItemResponseListType }
+   * 
+   */
+  NAPTestletItemResponseListType createNAPTestletItemResponseListType();
 
-  TeachingGroupPeriodListType createTeachingGroupPeriodListType();
-
-  EmailType createEmailType();
-
-  MediaTypesType createMediaTypesType();
-
-  ComponentsType createComponentsType();
-
-  StaffListType createStaffListType();
-
-  ObjectType createObjectType();
-
-  SoftwareRequirementListType createSoftwareRequirementListType();
-
-  StrategiesType createStrategiesType();
-
+  /**
+   * Create an instance of {@link NAPTestletResponseItemType }
+   * 
+   */
   NAPTestletResponseItemType createNAPTestletResponseItemType();
 
+  /**
+   * Create an instance of {@link NAPSubscoreListType }
+   * 
+   */
+  NAPSubscoreListType createNAPSubscoreListType();
+
+  /**
+   * Create an instance of {@link NAPSubscoreType }
+   * 
+   */
+  NAPSubscoreType createNAPSubscoreType();
+
+  /**
+   * Create an instance of {@link DomainScoreType }
+   * 
+   */
+  DomainScoreType createDomainScoreType();
+
+  /**
+   * Create an instance of {@link NAPWritingRubricListType }
+   * 
+   */
+  NAPWritingRubricListType createNAPWritingRubricListType();
+
+  /**
+   * Create an instance of {@link NAPWritingRubricType }
+   * 
+   */
+  NAPWritingRubricType createNAPWritingRubricType();
+
+  /**
+   * Create an instance of {@link ScoreListType }
+   * 
+   */
+  ScoreListType createScoreListType();
+
+  /**
+   * Create an instance of {@link ScoreType }
+   * 
+   */
+  ScoreType createScoreType();
+
+  /**
+   * Create an instance of {@link ScoreDescriptionListType }
+   * 
+   */
+  ScoreDescriptionListType createScoreDescriptionListType();
+
+  /**
+   * Create an instance of {@link ScoreDescriptionType }
+   * 
+   */
+  ScoreDescriptionType createScoreDescriptionType();
+
+  /**
+   * Create an instance of {@link StimulusListType }
+   * 
+   */
+  StimulusListType createStimulusListType();
+
+  /**
+   * Create an instance of {@link StimulusType }
+   * 
+   */
+  StimulusType createStimulusType();
+
+  /**
+   * Create an instance of {@link ContentDescriptionListType }
+   * 
+   */
+  ContentDescriptionListType createContentDescriptionListType();
+
+  /**
+   * Create an instance of {@link PNPCodeListType }
+   * 
+   */
+  PNPCodeListType createPNPCodeListType();
+
+  /**
+   * Create an instance of {@link AdjustmentContainerType }
+   * 
+   */
+  AdjustmentContainerType createAdjustmentContainerType();
+
+  /**
+   * Create an instance of {@link TestDisruptionListType }
+   * 
+   */
+  TestDisruptionListType createTestDisruptionListType();
+
+  /**
+   * Create an instance of {@link TestDisruptionType }
+   * 
+   */
+  TestDisruptionType createTestDisruptionType();
+
+  /**
+   * Create an instance of {@link CalendarSummaryListType }
+   * 
+   */
+  CalendarSummaryListType createCalendarSummaryListType();
+
+  /**
+   * Create an instance of {@link VisaSubClassType }
+   * 
+   */
+  VisaSubClassType createVisaSubClassType();
+
+  /**
+   * Create an instance of {@link VisaSubClassListType }
+   * 
+   */
+  VisaSubClassListType createVisaSubClassListType();
+
+  /**
+   * Create an instance of {@link LanguageBaseType }
+   * 
+   */
+  LanguageBaseType createLanguageBaseType();
+
+  /**
+   * Create an instance of {@link ReligiousEventListType }
+   * 
+   */
+  ReligiousEventListType createReligiousEventListType();
+
+  /**
+   * Create an instance of {@link ReligiousEventType }
+   * 
+   */
+  ReligiousEventType createReligiousEventType();
+
+  /**
+   * Create an instance of {@link ReligionType }
+   * 
+   */
+  ReligionType createReligionType();
+
+  /**
+   * Create an instance of {@link DwellingArrangementType }
+   * 
+   */
+  DwellingArrangementType createDwellingArrangementType();
+
+  /**
+   * Create an instance of {@link CountryListType }
+   * 
+   */
+  CountryListType createCountryListType();
+
+  /**
+   * Create an instance of {@link CountryList2Type }
+   * 
+   */
+  CountryList2Type createCountryList2Type();
+
+  /**
+   * Create an instance of {@link DebitOrCreditAmountType }
+   * 
+   */
+  DebitOrCreditAmountType createDebitOrCreditAmountType();
+
+  /**
+   * Create an instance of {@link ScheduledActivityOverrideType }
+   * 
+   */
+  ScheduledActivityOverrideType createScheduledActivityOverrideType();
+
+  /**
+   * Create an instance of {@link SchoolCourseInfoOverrideType }
+   * 
+   */
+  SchoolCourseInfoOverrideType createSchoolCourseInfoOverrideType();
+
+  /**
+   * Create an instance of {@link LocationOfInstructionType }
+   * 
+   */
+  LocationOfInstructionType createLocationOfInstructionType();
+
+  /**
+   * Create an instance of {@link LanguageOfInstructionType }
+   * 
+   */
+  LanguageOfInstructionType createLanguageOfInstructionType();
+
+  /**
+   * Create an instance of {@link MediumOfInstructionType }
+   * 
+   */
+  MediumOfInstructionType createMediumOfInstructionType();
+
+  /**
+   * Create an instance of {@link StudentActivityType }
+   * 
+   */
+  StudentActivityType createStudentActivityType();
+
+  /**
+   * Create an instance of {@link ContactFlagsType }
+   * 
+   */
+  ContactFlagsType createContactFlagsType();
+
+  /**
+   * Create an instance of {@link AgencyType }
+   * 
+   */
+  AgencyType createAgencyType();
+
+  /**
+   * Create an instance of {@link YearRangeType }
+   * 
+   */
+  YearRangeType createYearRangeType();
+
+  /**
+   * Create an instance of {@link CreationUserType }
+   * 
+   */
+  CreationUserType createCreationUserType();
+
+  /**
+   * Create an instance of {@link AuditInfoType }
+   * 
+   */
+  AuditInfoType createAuditInfoType();
+
+  /**
+   * Create an instance of {@link AttendanceInfoType }
+   * 
+   */
+  AttendanceInfoType createAttendanceInfoType();
+
+  /**
+   * Create an instance of {@link CalendarDateInfoType }
+   * 
+   */
+  CalendarDateInfoType createCalendarDateInfoType();
+
+  /**
+   * Create an instance of {@link ProgramAvailabilityType }
+   * 
+   */
+  ProgramAvailabilityType createProgramAvailabilityType();
+
+  /**
+   * Create an instance of {@link ReferralSourceType }
+   * 
+   */
+  ReferralSourceType createReferralSourceType();
+
+  /**
+   * Create an instance of {@link PromotionInfoType }
+   * 
+   */
+  PromotionInfoType createPromotionInfoType();
+
+  /**
+   * Create an instance of {@link CatchmentStatusContainerType }
+   * 
+   */
+  CatchmentStatusContainerType createCatchmentStatusContainerType();
+
+  /**
+   * Create an instance of {@link StudentExitStatusContainerType }
+   * 
+   */
+  StudentExitStatusContainerType createStudentExitStatusContainerType();
+
+  /**
+   * Create an instance of {@link StudentExitContainerType }
+   * 
+   */
+  StudentExitContainerType createStudentExitContainerType();
+
+  /**
+   * Create an instance of {@link StudentEntryContainerType }
+   * 
+   */
+  StudentEntryContainerType createStudentEntryContainerType();
+
+  /**
+   * Create an instance of {@link StudentMostRecentContainerType }
+   * 
+   */
+  StudentMostRecentContainerType createStudentMostRecentContainerType();
+
+  /**
+   * Create an instance of {@link StaffMostRecentContainerType }
+   * 
+   */
+  StaffMostRecentContainerType createStaffMostRecentContainerType();
+
+  /**
+   * Create an instance of {@link StaffActivityExtensionType }
+   * 
+   */
+  StaffActivityExtensionType createStaffActivityExtensionType();
+
+  /**
+   * Create an instance of {@link TotalEnrollmentsType }
+   * 
+   */
+  TotalEnrollmentsType createTotalEnrollmentsType();
+
+  /**
+   * Create an instance of {@link CampusContainerType }
+   * 
+   */
+  CampusContainerType createCampusContainerType();
+
+  /**
+   * Create an instance of {@link HouseholdContactInfoListType }
+   * 
+   */
+  HouseholdContactInfoListType createHouseholdContactInfoListType();
+
+  /**
+   * Create an instance of {@link HouseholdContactInfoType }
+   * 
+   */
+  HouseholdContactInfoType createHouseholdContactInfoType();
+
+  /**
+   * Create an instance of {@link StatementCodesType }
+   * 
+   */
+  StatementCodesType createStatementCodesType();
+
+  /**
+   * Create an instance of {@link StatementsType }
+   * 
+   */
+  StatementsType createStatementsType();
+
+  /**
+   * Create an instance of {@link ProgramFundingSourcesType }
+   * 
+   */
   ProgramFundingSourcesType createProgramFundingSourcesType();
 
-  SIFMetadataType.TimeElements createSIFMetadataTypeTimeElements();
+  /**
+   * Create an instance of {@link ProgramFundingSourceType }
+   * 
+   */
+  ProgramFundingSourceType createProgramFundingSourceType();
 
-  OtherCodeListType.OtherCode createOtherCodeListTypeOtherCode();
+  /**
+   * Create an instance of {@link AttendanceTimesType }
+   * 
+   */
+  AttendanceTimesType createAttendanceTimesType();
 
-  ActivityTimeType.Duration createActivityTimeTypeDuration();
+  /**
+   * Create an instance of {@link AttendanceTimeType }
+   * 
+   */
+  AttendanceTimeType createAttendanceTimeType();
 
-  AssociatedObjectsType.AssociatedObject createAssociatedObjectsTypeAssociatedObject();
+  /**
+   * Create an instance of {@link StaffSubjectListType }
+   * 
+   */
+  StaffSubjectListType createStaffSubjectListType();
 
-  TimeElementType.SpanGaps.SpanGap createTimeElementTypeSpanGapsSpanGap();
+  /**
+   * Create an instance of {@link StaffSubjectType }
+   * 
+   */
+  StaffSubjectType createStaffSubjectType();
 
-  LocationType.LocationRefId createLocationTypeLocationRefId();
+  /**
+   * Create an instance of {@link TeachingGroupListType }
+   * 
+   */
+  TeachingGroupListType createTeachingGroupListType();
 
-  IdentityAssertionsType.IdentityAssertion createIdentityAssertionsTypeIdentityAssertion();
+  /**
+   * Create an instance of {@link ScheduledTeacherListType }
+   * 
+   */
+  ScheduledTeacherListType createScheduledTeacherListType();
 
-  AbstractContentPackageType.XMLData createAbstractContentPackageTypeXMLData();
+  /**
+   * Create an instance of {@link TeacherCoverType }
+   * 
+   */
+  TeacherCoverType createTeacherCoverType();
 
-  AbstractContentPackageType.TextData createAbstractContentPackageTypeTextData();
+  /**
+   * Create an instance of {@link RoomListType }
+   * 
+   */
+  RoomListType createRoomListType();
 
-  AbstractContentPackageType.BinaryData createAbstractContentPackageTypeBinaryData();
+  /**
+   * Create an instance of {@link StaffListType }
+   * 
+   */
+  StaffListType createStaffListType();
 
-  AbstractContentPackageType.Reference createAbstractContentPackageTypeReference();
+  /**
+   * Create an instance of {@link AlternateIdentificationCodesType }
+   * 
+   */
+  AlternateIdentificationCodesType createAlternateIdentificationCodesType();
 
-  SourceObjectsType.SourceObject createSourceObjectsTypeSourceObject();
+  /**
+   * Create an instance of {@link AuthorsType }
+   * 
+   */
+  AuthorsType createAuthorsType();
 
+  /**
+   * Create an instance of {@link OrganizationsType }
+   * 
+   */
+  OrganizationsType createOrganizationsType();
+
+  /**
+   * Create an instance of {@link PurchasingItemsType }
+   * 
+   */
+  PurchasingItemsType createPurchasingItemsType();
+
+  /**
+   * Create an instance of {@link PurchasingItemType }
+   * 
+   */
+  PurchasingItemType createPurchasingItemType();
+
+  /**
+   * Create an instance of {@link ExpenseAccountsType }
+   * 
+   */
+  ExpenseAccountsType createExpenseAccountsType();
+
+  /**
+   * Create an instance of {@link ExpenseAccountType }
+   * 
+   */
+  ExpenseAccountType createExpenseAccountType();
+
+  /**
+   * Create an instance of {@link SchoolProgramListType }
+   * 
+   */
+  SchoolProgramListType createSchoolProgramListType();
+
+  /**
+   * Create an instance of {@link SchoolProgramType }
+   * 
+   */
+  SchoolProgramType createSchoolProgramType();
+
+  /**
+   * Create an instance of {@link LearningObjectivesType }
+   * 
+   */
+  LearningObjectivesType createLearningObjectivesType();
+
+  /**
+   * Create an instance of {@link RecognitionListType }
+   * 
+   */
+  RecognitionListType createRecognitionListType();
+
+  /**
+   * Create an instance of {@link LResourcesType }
+   * 
+   */
+  LResourcesType createLResourcesType();
+
+  /**
+   * Create an instance of {@link ResourcesType }
+   * 
+   */
+  ResourcesType createResourcesType();
+
+  /**
+   * Create an instance of {@link StudentsType }
+   * 
+   */
+  StudentsType createStudentsType();
+
+  /**
+   * Create an instance of {@link PrerequisitesType }
+   * 
+   */
+  PrerequisitesType createPrerequisitesType();
+
+  /**
+   * Create an instance of {@link EssentialMaterialsType }
+   * 
+   */
+  EssentialMaterialsType createEssentialMaterialsType();
+
+  /**
+   * Create an instance of {@link TechnicalRequirementsType }
+   * 
+   */
+  TechnicalRequirementsType createTechnicalRequirementsType();
+
+  /**
+   * Create an instance of {@link SoftwareRequirementListType }
+   * 
+   */
+  SoftwareRequirementListType createSoftwareRequirementListType();
+
+  /**
+   * Create an instance of {@link SoftwareRequirementType }
+   * 
+   */
+  SoftwareRequirementType createSoftwareRequirementType();
+
+  /**
+   * Create an instance of {@link HouseholdListType }
+   * 
+   */
+  HouseholdListType createHouseholdListType();
+
+  /**
+   * Create an instance of {@link StudentSubjectChoiceListType }
+   * 
+   */
+  StudentSubjectChoiceListType createStudentSubjectChoiceListType();
+
+  /**
+   * Create an instance of {@link StudentSubjectChoiceType }
+   * 
+   */
+  StudentSubjectChoiceType createStudentSubjectChoiceType();
+
+  /**
+   * Create an instance of {@link LearningStandardsType }
+   * 
+   */
+  LearningStandardsType createLearningStandardsType();
+
+  /**
+   * Create an instance of {@link LearningResourcesType }
+   * 
+   */
+  LearningResourcesType createLearningResourcesType();
+
+  /**
+   * Create an instance of {@link LearningStandardsDocumentType }
+   * 
+   */
+  LearningStandardsDocumentType createLearningStandardsDocumentType();
+
+  /**
+   * Create an instance of {@link ComponentsType }
+   * 
+   */
+  ComponentsType createComponentsType();
+
+  /**
+   * Create an instance of {@link ComponentType }
+   * 
+   */
+  ComponentType createComponentType();
+
+  /**
+   * Create an instance of {@link StrategiesType }
+   * 
+   */
+  StrategiesType createStrategiesType();
+
+  /**
+   * Create an instance of {@link EvaluationsType }
+   * 
+   */
+  EvaluationsType createEvaluationsType();
+
+  /**
+   * Create an instance of {@link EvaluationType }
+   * 
+   */
+  EvaluationType createEvaluationType();
+
+  /**
+   * Create an instance of {@link ApprovalsType }
+   * 
+   */
+  ApprovalsType createApprovalsType();
+
+  /**
+   * Create an instance of {@link ApprovalType }
+   * 
+   */
+  ApprovalType createApprovalType();
+
+  /**
+   * Create an instance of {@link MediaTypesType }
+   * 
+   */
+  MediaTypesType createMediaTypesType();
+
+  /**
+   * Create an instance of {@link LEAContactListType }
+   * 
+   */
+  LEAContactListType createLEAContactListType();
+
+  /**
+   * Create an instance of {@link LEAContactType }
+   * 
+   */
+  LEAContactType createLEAContactType();
+
+  /**
+   * Create an instance of {@link FinancialAccountRefIdListType }
+   * 
+   */
+  FinancialAccountRefIdListType createFinancialAccountRefIdListType();
+
+  /**
+   * Create an instance of {@link ExclusionRulesType }
+   * 
+   */
+  ExclusionRulesType createExclusionRulesType();
+
+  /**
+   * Create an instance of {@link ExclusionRuleType }
+   * 
+   */
+  ExclusionRuleType createExclusionRuleType();
+
+  /**
+   * Create an instance of {@link CharacteristicsType }
+   * 
+   */
+  CharacteristicsType createCharacteristicsType();
+
+  /**
+   * Create an instance of {@link ContactsType }
+   * 
+   */
+  ContactsType createContactsType();
+
+  /**
+   * Create an instance of {@link ContactType }
+   * 
+   */
+  ContactType createContactType();
+
+  /**
+   * Create an instance of {@link TeachingGroupPeriodListType }
+   * 
+   */
+  TeachingGroupPeriodListType createTeachingGroupPeriodListType();
+
+  /**
+   * Create an instance of {@link TeachingGroupPeriodType }
+   * 
+   */
+  TeachingGroupPeriodType createTeachingGroupPeriodType();
+
+  /**
+   * Create an instance of {@link TeacherListType }
+   * 
+   */
+  TeacherListType createTeacherListType();
+
+  /**
+   * Create an instance of {@link TeachingGroupTeacherType }
+   * 
+   */
+  TeachingGroupTeacherType createTeachingGroupTeacherType();
+
+  /**
+   * Create an instance of {@link StudentListType }
+   * 
+   */
+  StudentListType createStudentListType();
+
+  /**
+   * Create an instance of {@link TeachingGroupStudentType }
+   * 
+   */
+  TeachingGroupStudentType createTeachingGroupStudentType();
+
+  /**
+   * Create an instance of {@link TimeTableDayListType }
+   * 
+   */
+  TimeTableDayListType createTimeTableDayListType();
+
+  /**
+   * Create an instance of {@link TimeTableDayType }
+   * 
+   */
+  TimeTableDayType createTimeTableDayType();
+
+  /**
+   * Create an instance of {@link TimeTablePeriodListType }
+   * 
+   */
+  TimeTablePeriodListType createTimeTablePeriodListType();
+
+  /**
+   * Create an instance of {@link TimeTablePeriodType }
+   * 
+   */
+  TimeTablePeriodType createTimeTablePeriodType();
+
+  /**
+   * Create an instance of {@link NAPLANClassListType }
+   * 
+   */
+  NAPLANClassListType createNAPLANClassListType();
+
+  /**
+   * Create an instance of {@link SchoolGroupListType }
+   * 
+   */
+  SchoolGroupListType createSchoolGroupListType();
+
+  /**
+   * Create an instance of {@link YearLevelEnrollmentListType }
+   * 
+   */
+  YearLevelEnrollmentListType createYearLevelEnrollmentListType();
+
+  /**
+   * Create an instance of {@link YearLevelEnrollmentType }
+   * 
+   */
+  YearLevelEnrollmentType createYearLevelEnrollmentType();
+
+  /**
+   * Create an instance of {@link SchoolFocusListType }
+   * 
+   */
+  SchoolFocusListType createSchoolFocusListType();
+
+  /**
+   * Create an instance of {@link AlertMessagesType }
+   * 
+   */
+  AlertMessagesType createAlertMessagesType();
+
+  /**
+   * Create an instance of {@link AlertMessageType }
+   * 
+   */
+  AlertMessageType createAlertMessageType();
+
+  /**
+   * Create an instance of {@link MedicalAlertMessagesType }
+   * 
+   */
+  MedicalAlertMessagesType createMedicalAlertMessagesType();
+
+  /**
+   * Create an instance of {@link MedicalAlertMessageType }
+   * 
+   */
+  MedicalAlertMessageType createMedicalAlertMessageType();
+
+  /**
+   * Create an instance of {@link OtherIdListType }
+   * 
+   */
+  OtherIdListType createOtherIdListType();
+
+  /**
+   * Create an instance of {@link OtherIdType }
+   * 
+   */
+  OtherIdType createOtherIdType();
+
+  /**
+   * Create an instance of {@link BaseNameType }
+   * 
+   */
+  BaseNameType createBaseNameType();
+
+  /**
+   * Create an instance of {@link NameOfRecordType }
+   * 
+   */
+  NameOfRecordType createNameOfRecordType();
+
+  /**
+   * Create an instance of {@link OtherNameType }
+   * 
+   */
+  OtherNameType createOtherNameType();
+
+  /**
+   * Create an instance of {@link AttendanceCodeType }
+   * 
+   */
+  AttendanceCodeType createAttendanceCodeType();
+
+  /**
+   * Create an instance of {@link YearLevelType }
+   * 
+   */
+  YearLevelType createYearLevelType();
+
+  /**
+   * Create an instance of {@link PersonInfoType }
+   * 
+   */
+  PersonInfoType createPersonInfoType();
+
+  /**
+   * Create an instance of {@link YearLevelsType }
+   * 
+   */
+  YearLevelsType createYearLevelsType();
+
+  /**
+   * Create an instance of {@link PrincipalInfoType }
+   * 
+   */
+  PrincipalInfoType createPrincipalInfoType();
+
+  /**
+   * Create an instance of {@link SchoolContactType }
+   * 
+   */
+  SchoolContactType createSchoolContactType();
+
+  /**
+   * Create an instance of {@link SchoolContactListType }
+   * 
+   */
+  SchoolContactListType createSchoolContactListType();
+
+  /**
+   * Create an instance of {@link ContactInfoType }
+   * 
+   */
+  ContactInfoType createContactInfoType();
+
+  /**
+   * Create an instance of {@link AddressStreetType }
+   * 
+   */
+  AddressStreetType createAddressStreetType();
+
+  /**
+   * Create an instance of {@link AddressType }
+   * 
+   */
+  AddressType createAddressType();
+
+  /**
+   * Create an instance of {@link MapReferenceType }
+   * 
+   */
+  MapReferenceType createMapReferenceType();
+
+  /**
+   * Create an instance of {@link StatisticalAreasType }
+   * 
+   */
+  StatisticalAreasType createStatisticalAreasType();
+
+  /**
+   * Create an instance of {@link StatisticalAreaType }
+   * 
+   */
+  StatisticalAreaType createStatisticalAreaType();
+
+  /**
+   * Create an instance of {@link AddressListType }
+   * 
+   */
+  AddressListType createAddressListType();
+
+  /**
+   * Create an instance of {@link EmailListType }
+   * 
+   */
+  EmailListType createEmailListType();
+
+  /**
+   * Create an instance of {@link EmailType }
+   * 
+   */
+  EmailType createEmailType();
+
+  /**
+   * Create an instance of {@link PhoneNumberListType }
+   * 
+   */
+  PhoneNumberListType createPhoneNumberListType();
+
+  /**
+   * Create an instance of {@link PhoneNumberType }
+   * 
+   */
+  PhoneNumberType createPhoneNumberType();
+
+  /**
+   * Create an instance of {@link GridLocationType }
+   * 
+   */
+  GridLocationType createGridLocationType();
+
+  /**
+   * Create an instance of {@link ElectronicIdListType }
+   * 
+   */
+  ElectronicIdListType createElectronicIdListType();
+
+  /**
+   * Create an instance of {@link ElectronicIdType }
+   * 
+   */
+  ElectronicIdType createElectronicIdType();
+
+  /**
+   * Create an instance of {@link OtherNamesType }
+   * 
+   */
+  OtherNamesType createOtherNamesType();
+
+  /**
+   * Create an instance of {@link DemographicsType }
+   * 
+   */
+  DemographicsType createDemographicsType();
+
+  /**
+   * Create an instance of {@link EnglishProficiencyType }
+   * 
+   */
+  EnglishProficiencyType createEnglishProficiencyType();
+
+  /**
+   * Create an instance of {@link LanguageListType }
+   * 
+   */
+  LanguageListType createLanguageListType();
+
+  /**
+   * Create an instance of {@link RelationshipType }
+   * 
+   */
+  RelationshipType createRelationshipType();
+
+  /**
+   * Create an instance of {@link NameType }
+   * 
+   */
+  NameType createNameType();
+
+  /**
+   * Create an instance of {@link ProgramStatusType }
+   * 
+   */
+  ProgramStatusType createProgramStatusType();
+
+  /**
+   * Create an instance of {@link SubjectAreaListType }
+   * 
+   */
+  SubjectAreaListType createSubjectAreaListType();
+
+  /**
+   * Create an instance of {@link ACStrandAreaListType }
+   * 
+   */
+  ACStrandAreaListType createACStrandAreaListType();
+
+  /**
+   * Create an instance of {@link SubjectAreaType }
+   * 
+   */
+  SubjectAreaType createSubjectAreaType();
+
+  /**
+   * Create an instance of {@link ACStrandSubjectAreaType }
+   * 
+   */
+  ACStrandSubjectAreaType createACStrandSubjectAreaType();
+
+  /**
+   * Create an instance of {@link EducationFilterType }
+   * 
+   */
+  EducationFilterType createEducationFilterType();
+
+  /**
+   * Create an instance of {@link ReportPackageType }
+   * 
+   */
+  ReportPackageType createReportPackageType();
+
+  /**
+   * Create an instance of {@link MonetaryAmountType }
+   * 
+   */
+  MonetaryAmountType createMonetaryAmountType();
+
+  /**
+   * Create an instance of {@link ObjectType }
+   * 
+   */
+  ObjectType createObjectType();
+
+  /**
+   * Create an instance of {@link ReportDataObjectType }
+   * 
+   */
+  ReportDataObjectType createReportDataObjectType();
+
+  /**
+   * Create an instance of {@link ExtendedContentType }
+   * 
+   */
+  ExtendedContentType createExtendedContentType();
+
+  /**
+   * Create an instance of {@link SelectedContentType }
+   * 
+   */
+  SelectedContentType createSelectedContentType();
+
+  /**
+   * Create an instance of {@link AbstractContentElementType.XMLData }
+   * 
+   */
   AbstractContentElementType.XMLData createAbstractContentElementTypeXMLData();
 
+  /**
+   * Create an instance of {@link AbstractContentElementType.TextData }
+   * 
+   */
   AbstractContentElementType.TextData createAbstractContentElementTypeTextData();
 
+  /**
+   * Create an instance of {@link AbstractContentElementType.BinaryData }
+   * 
+   */
   AbstractContentElementType.BinaryData createAbstractContentElementTypeBinaryData();
 
+  /**
+   * Create an instance of {@link AbstractContentElementType.Reference }
+   * 
+   */
   AbstractContentElementType.Reference createAbstractContentElementTypeReference();
 
-  LifeCycleType.TimeElements createLifeCycleTypeTimeElements();
+  /**
+   * Create an instance of {@link AbstractContentPackageType.XMLData }
+   * 
+   */
+  AbstractContentPackageType.XMLData createAbstractContentPackageTypeXMLData();
 
-  LifeCycleType.ModificationHistory.Modified createLifeCycleTypeModificationHistoryModified();
+  /**
+   * Create an instance of {@link AbstractContentPackageType.TextData }
+   * 
+   */
+  AbstractContentPackageType.TextData createAbstractContentPackageTypeTextData();
 
-  LifeCycleType.Created.Creators.Creator createLifeCycleTypeCreatedCreatorsCreator();
+  /**
+   * Create an instance of {@link AbstractContentPackageType.BinaryData }
+   * 
+   */
+  AbstractContentPackageType.BinaryData createAbstractContentPackageTypeBinaryData();
 
-  PasswordListType.Password createPasswordListTypePassword();
+  /**
+   * Create an instance of {@link AbstractContentPackageType.Reference }
+   * 
+   */
+  AbstractContentPackageType.Reference createAbstractContentPackageTypeReference();
 
+  /**
+   * Create an instance of {@link SIFMetadataType.TimeElements }
+   * 
+   */
+  SIFMetadataType.TimeElements createSIFMetadataTypeTimeElements();
+
+  /**
+   * Create an instance of {@link SIFExtendedElementsType.SIFExtendedElement }
+   * 
+   */
   SIFExtendedElementsType.SIFExtendedElement createSIFExtendedElementsTypeSIFExtendedElement();
 
-  IdentityType.SIFRefId createIdentityTypeSIFRefId();
+  /**
+   * Create an instance of {@link OtherCodeListType.OtherCode }
+   * 
+   */
+  OtherCodeListType.OtherCode createOtherCodeListTypeOtherCode();
 
-  EquipmentInfoType.SIFRefId createEquipmentInfoTypeSIFRefId();
+  /**
+   * Create an instance of {@link LifeCycleType.TimeElements }
+   * 
+   */
+  LifeCycleType.TimeElements createLifeCycleTypeTimeElements();
 
-  StudentParticipationType.ManagingSchool createStudentParticipationTypeManagingSchool();
+  /**
+   * Create an instance of {@link LifeCycleType.ModificationHistory.Modified }
+   * 
+   */
+  LifeCycleType.ModificationHistory.Modified createLifeCycleTypeModificationHistoryModified();
 
-  InvoiceType.InvoicedEntity createInvoiceTypeInvoicedEntity();
+  /**
+   * Create an instance of {@link LifeCycleType.Created.Creators.Creator }
+   * 
+   */
+  LifeCycleType.Created.Creators.Creator createLifeCycleTypeCreatedCreatorsCreator();
 
-  LearningStandardItemType.StandardSettingBody createLearningStandardItemTypeStandardSettingBody();
+  /**
+   * Create an instance of {@link TimeElementType.SpanGaps.SpanGap }
+   * 
+   */
+  TimeElementType.SpanGaps.SpanGap createTimeElementTypeSpanGapsSpanGap();
 
-  LearningStandardItemType.StandardHierarchyLevel createLearningStandardItemTypeStandardHierarchyLevel();
+  /**
+   * Create an instance of {@link LocationType.LocationRefId }
+   * 
+   */
+  LocationType.LocationRefId createLocationTypeLocationRefId();
 
-  LearningStandardItemType.RelatedLearningStandardItems.LearningStandardItemRefId createLearningStandardItemTypeRelatedLearningStandardItemsLearningStandardItemRefId();
+  /**
+   * Create an instance of {@link PasswordListType.Password }
+   * 
+   */
+  PasswordListType.Password createPasswordListTypePassword();
 
-  LearningStandardItemType.StandardIdentifier.AlternateIdentificationCodes createLearningStandardItemTypeStandardIdentifierAlternateIdentificationCodes();
+  /**
+   * Create an instance of {@link AssociatedObjectsType.AssociatedObject }
+   * 
+   */
+  AssociatedObjectsType.AssociatedObject createAssociatedObjectsTypeAssociatedObject();
 
-  JournalType.OriginatingTransactionRefId createJournalTypeOriginatingTransactionRefId();
+  /**
+   * Create an instance of {@link IdentityAssertionsType.IdentityAssertion }
+   * 
+   */
+  IdentityAssertionsType.IdentityAssertion createIdentityAssertionsTypeIdentityAssertion();
 
-  SystemRoleType.SIFRefId createSystemRoleTypeSIFRefId();
+  /**
+   * Create an instance of {@link SourceObjectsType.SourceObject }
+   * 
+   */
+  SourceObjectsType.SourceObject createSourceObjectsTypeSourceObject();
 
-  SystemRoleType.SystemContextList.SystemContext.RoleList.Role.RoleScopeList.RoleScope.RoleScopeRefId createSystemRoleTypeSystemContextListSystemContextRoleListRoleRoleScopeListRoleScopeRoleScopeRefId();
+  /**
+   * Create an instance of {@link ActivityTimeType.Duration }
+   * 
+   */
+  ActivityTimeType.Duration createActivityTimeTypeDuration();
 
-  ResourceUsageType.ResourceUsageContentType createResourceUsageTypeResourceUsageContentType();
-
-  ResourceUsageType.ResourceReportLineList.ResourceReportLine.SIFRefId createResourceUsageTypeResourceReportLineListResourceReportLineSIFRefId();
-
-  ResourceUsageType.ResourceReportColumnList.ResourceReportColumn createResourceUsageTypeResourceReportColumnListResourceReportColumn();
-
-  LearningResourceType.Location createLearningResourceTypeLocation();
-
-  AggregateStatisticInfoType.CalculationRule createAggregateStatisticInfoTypeCalculationRule();
-
-  LearningStandardDocumentType.Copyright createLearningStandardDocumentTypeCopyright();
-
+  /**
+   * Create an instance of {@link DebtorType.BilledEntity }
+   * 
+   */
   DebtorType.BilledEntity createDebtorTypeBilledEntity();
 
-  PersonPictureType.ParentObjectRefId createPersonPictureTypeParentObjectRefId();
+  /**
+   * Create an instance of {@link JournalType.OriginatingTransactionRefId }
+   * 
+   */
+  JournalType.OriginatingTransactionRefId createJournalTypeOriginatingTransactionRefId();
 
-  PersonPictureType.PictureSource createPersonPictureTypePictureSource();
+  /**
+   * Create an instance of {@link InvoiceType.InvoicedEntity }
+   * 
+   */
+  InvoiceType.InvoicedEntity createInvoiceTypeInvoicedEntity();
 
-  ActivityType.Evaluation createActivityTypeEvaluation();
+  /**
+   * Create an instance of {@link EquipmentInfoType.SIFRefId }
+   * 
+   */
+  EquipmentInfoType.SIFRefId createEquipmentInfoTypeSIFRefId();
 
+  /**
+   * Create an instance of {@link ResourceBookingType.ResourceRefId }
+   * 
+   */
   ResourceBookingType.ResourceRefId createResourceBookingTypeResourceRefId();
 
+  /**
+   * Create an instance of {@link ActivityType.Evaluation }
+   * 
+   */
+  ActivityType.Evaluation createActivityTypeEvaluation();
+
+  /**
+   * Create an instance of {@link IdentityType.SIFRefId }
+   * 
+   */
+  IdentityType.SIFRefId createIdentityTypeSIFRefId();
+
+  /**
+   * Create an instance of {@link LearningResourceType.Location }
+   * 
+   */
+  LearningResourceType.Location createLearningResourceTypeLocation();
+
+  /**
+   * Create an instance of {@link LearningStandardItemType.StandardSettingBody }
+   * 
+   */
+  LearningStandardItemType.StandardSettingBody createLearningStandardItemTypeStandardSettingBody();
+
+  /**
+   * Create an instance of {@link LearningStandardItemType.StandardHierarchyLevel }
+   * 
+   */
+  LearningStandardItemType.StandardHierarchyLevel createLearningStandardItemTypeStandardHierarchyLevel();
+
+  /**
+   * Create an instance of {@link LearningStandardItemType.RelatedLearningStandardItems.LearningStandardItemRefId }
+   * 
+   */
+  LearningStandardItemType.RelatedLearningStandardItems.LearningStandardItemRefId createLearningStandardItemTypeRelatedLearningStandardItemsLearningStandardItemRefId();
+
+  /**
+   * Create an instance of {@link LearningStandardItemType.StandardIdentifier.AlternateIdentificationCodes }
+   * 
+   */
+  LearningStandardItemType.StandardIdentifier.AlternateIdentificationCodes createLearningStandardItemTypeStandardIdentifierAlternateIdentificationCodes();
+
+  /**
+   * Create an instance of {@link LearningStandardDocumentType.Copyright }
+   * 
+   */
+  LearningStandardDocumentType.Copyright createLearningStandardDocumentTypeCopyright();
+
+  /**
+   * Create an instance of {@link PersonPictureType.ParentObjectRefId }
+   * 
+   */
+  PersonPictureType.ParentObjectRefId createPersonPictureTypeParentObjectRefId();
+
+  /**
+   * Create an instance of {@link PersonPictureType.PictureSource }
+   * 
+   */
+  PersonPictureType.PictureSource createPersonPictureTypePictureSource();
+
+  /**
+   * Create an instance of {@link StudentParticipationType.ManagingSchool }
+   * 
+   */
+  StudentParticipationType.ManagingSchool createStudentParticipationTypeManagingSchool();
+
+  /**
+   * Create an instance of {@link StudentSchoolEnrollmentType.Homeroom }
+   * 
+   */
   StudentSchoolEnrollmentType.Homeroom createStudentSchoolEnrollmentTypeHomeroom();
 
+  /**
+   * Create an instance of {@link StudentSchoolEnrollmentType.Advisor }
+   * 
+   */
   StudentSchoolEnrollmentType.Advisor createStudentSchoolEnrollmentTypeAdvisor();
 
+  /**
+   * Create an instance of {@link StudentSchoolEnrollmentType.Counselor }
+   * 
+   */
   StudentSchoolEnrollmentType.Counselor createStudentSchoolEnrollmentTypeCounselor();
 
+  /**
+   * Create an instance of {@link StudentSchoolEnrollmentType.Calendar }
+   * 
+   */
   StudentSchoolEnrollmentType.Calendar createStudentSchoolEnrollmentTypeCalendar();
 
+  /**
+   * Create an instance of {@link ResourceUsageType.ResourceUsageContentType }
+   * 
+   */
+  ResourceUsageType.ResourceUsageContentType createResourceUsageTypeResourceUsageContentType();
+
+  /**
+   * Create an instance of {@link ResourceUsageType.ResourceReportLineList.ResourceReportLine.SIFRefId }
+   * 
+   */
+  ResourceUsageType.ResourceReportLineList.ResourceReportLine.SIFRefId createResourceUsageTypeResourceReportLineListResourceReportLineSIFRefId();
+
+  /**
+   * Create an instance of {@link ResourceUsageType.ResourceReportColumnList.ResourceReportColumn }
+   * 
+   */
+  ResourceUsageType.ResourceReportColumnList.ResourceReportColumn createResourceUsageTypeResourceReportColumnListResourceReportColumn();
+
+  /**
+   * Create an instance of {@link AggregateStatisticInfoType.CalculationRule }
+   * 
+   */
+  AggregateStatisticInfoType.CalculationRule createAggregateStatisticInfoTypeCalculationRule();
+
+  /**
+   * Create an instance of {@link SystemRoleType.SIFRefId }
+   * 
+   */
+  SystemRoleType.SIFRefId createSystemRoleTypeSIFRefId();
+
+  /**
+   * Create an instance of {@link SystemRoleType.SystemContextList.SystemContext.RoleList.Role.RoleScopeList.RoleScope.RoleScopeRefId }
+   * 
+   */
+  SystemRoleType.SystemContextList.SystemContext.RoleList.Role.RoleScopeList.RoleScope.RoleScopeRefId createSystemRoleTypeSystemContextListSystemContextRoleListRoleRoleScopeListRoleScopeRoleScopeRefId();
+
+  /**
+   * Create an instance of {@link SchoolInfoType.OtherLEA }
+   * 
+   */
   SchoolInfoType.OtherLEA createSchoolInfoTypeOtherLEA();
 
-  JAXBElement<SchoolInfoCollectionType> createSchoolInfos(SchoolInfoCollectionType value);
-
-  JAXBElement<TimeTableCollectionType> createTimeTables(TimeTableCollectionType value);
-
-  JAXBElement<NAPTestType> createNAPTest(NAPTestType value);
-
-  JAXBElement<StudentDailyAttendanceType> createStudentDailyAttendance(StudentDailyAttendanceType value);
-
-  JAXBElement<PurchaseOrderCollectionType> createPurchaseOrders(PurchaseOrderCollectionType value);
-
-  JAXBElement<LEAInfoType> createLEAInfo(LEAInfoType value);
-
-  JAXBElement<StudentSectionEnrollmentType> createStudentSectionEnrollment(StudentSectionEnrollmentType value);
-
-  JAXBElement<SchoolCourseInfoType> createSchoolCourseInfo(SchoolCourseInfoType value);
-
-  JAXBElement<GradingAssignmentScoreCollectionType> createGradingAssignmentScores(GradingAssignmentScoreCollectionType value);
-
-  JAXBElement<ActivityCollectionType> createActivitys(ActivityCollectionType value);
-
-  JAXBElement<FinancialAccountCollectionType> createFinancialAccounts(FinancialAccountCollectionType value);
-
-  JAXBElement<NAPTestletType> createNAPTestlet(NAPTestletType value);
-
-  JAXBElement<SessionInfoCollectionType> createSessionInfos(SessionInfoCollectionType value);
-
-  JAXBElement<InvoiceCollectionType> createInvoices(InvoiceCollectionType value);
-
-  JAXBElement<IdentityType> createIdentity(IdentityType value);
-
-  JAXBElement<StudentContactPersonalCollectionType> createStudentContactPersonals(StudentContactPersonalCollectionType value);
-
-  JAXBElement<PersonPictureCollectionType> createPersonPictures(PersonPictureCollectionType value);
-
-  JAXBElement<EquipmentInfoType> createEquipmentInfo(EquipmentInfoType value);
-
-  JAXBElement<StaffPersonalType> createStaffPersonal(StaffPersonalType value);
-
-  JAXBElement<StudentAttendanceSummaryCollectionType> createStudentAttendanceSummarys(StudentAttendanceSummaryCollectionType value);
-
-  JAXBElement<StudentParticipationType> createStudentParticipation(StudentParticipationType value);
-
-  JAXBElement<SectionInfoCollectionType> createSectionInfos(SectionInfoCollectionType value);
-
-  JAXBElement<NAPTestletCollectionType> createNAPTestlets(NAPTestletCollectionType value);
-
-  JAXBElement<CalendarDateType> createCalendarDate(CalendarDateType value);
-
-  JAXBElement<SystemRoleCollectionType> createSystemRoles(SystemRoleCollectionType value);
-
-  JAXBElement<ScheduledActivityCollectionType> createScheduledActivitys(ScheduledActivityCollectionType value);
-
-  JAXBElement<NAPEventStudentLinkType> createNAPEventStudentLink(NAPEventStudentLinkType value);
-
-  JAXBElement<LearningResourceCollectionType> createLearningResources(LearningResourceCollectionType value);
-
-  JAXBElement<DebtorCollectionType> createDebtors(DebtorCollectionType value);
-
-  JAXBElement<LEAInfoCollectionType> createLEAInfos(LEAInfoCollectionType value);
-
-  JAXBElement<GradingAssignmentCollectionType> createGradingAssignments(GradingAssignmentCollectionType value);
-
-  JAXBElement<VendorInfoType> createVendorInfo(VendorInfoType value);
-
-  JAXBElement<StudentSchoolEnrollmentCollectionType> createStudentSchoolEnrollments(StudentSchoolEnrollmentCollectionType value);
-
-  JAXBElement<StudentSectionEnrollmentCollectionType> createStudentSectionEnrollments(StudentSectionEnrollmentCollectionType value);
-
-  JAXBElement<InvoiceType> createInvoice(InvoiceType value);
-
-  JAXBElement<NAPTestItemCollectionType> createNAPTestItems(NAPTestItemCollectionType value);
-
-  JAXBElement<LearningStandardItemCollectionType> createLearningStandardItems(LearningStandardItemCollectionType value);
-
-  JAXBElement<TimeTableSubjectType> createTimeTableSubject(TimeTableSubjectType value);
-
-  JAXBElement<GradingAssignmentScoreType> createGradingAssignmentScore(GradingAssignmentScoreType value);
-
-  JAXBElement<SchoolProgramsCollectionType> createSchoolProgramss(SchoolProgramsCollectionType value);
-
-  JAXBElement<StudentPeriodAttendanceCollectionType> createStudentPeriodAttendances(StudentPeriodAttendanceCollectionType value);
-
-  JAXBElement<CalendarDateCollectionType> createCalendarDates(CalendarDateCollectionType value);
-
-  JAXBElement<NAPTestScoreSummaryType> createNAPTestScoreSummary(NAPTestScoreSummaryType value);
-
-  JAXBElement<RoomInfoType> createRoomInfo(RoomInfoType value);
-
-  JAXBElement<NAPCodeFrameCollectionType> createNAPCodeFrames(NAPCodeFrameCollectionType value);
-
-  JAXBElement<NAPCodeFrameType> createNAPCodeFrame(NAPCodeFrameType value);
-
-  JAXBElement<TermInfoType> createTermInfo(TermInfoType value);
-
-  JAXBElement<StudentActivityParticipationType> createStudentActivityParticipation(StudentActivityParticipationType value);
-
-  JAXBElement<StudentPersonalType> createStudentPersonal(StudentPersonalType value);
-
-  JAXBElement<StudentContactPersonalType> createStudentContactPersonal(StudentContactPersonalType value);
-
-  JAXBElement<StudentActivityInfoType> createStudentActivityInfo(StudentActivityInfoType value);
-
-  JAXBElement<TimeTableType> createTimeTable(TimeTableType value);
-
-  JAXBElement<ResourceBookingCollectionType> createResourceBookings(ResourceBookingCollectionType value);
-
-  JAXBElement<RoomInfoCollectionType> createRoomInfos(RoomInfoCollectionType value);
-
-  JAXBElement<SessionInfoType> createSessionInfo(SessionInfoType value);
-
-  JAXBElement<TimeTableCellCollectionType> createTimeTableCells(TimeTableCellCollectionType value);
-
-  JAXBElement<ChargedLocationInfoCollectionType> createChargedLocationInfos(ChargedLocationInfoCollectionType value);
-
-  JAXBElement<SystemRoleType> createSystemRole(SystemRoleType value);
-
-  JAXBElement<StudentAttendanceTimeListCollectionType> createStudentAttendanceTimeLists(StudentAttendanceTimeListCollectionType value);
-
-  JAXBElement<StudentActivityParticipationCollectionType> createStudentActivityParticipations(StudentActivityParticipationCollectionType value);
-
-  JAXBElement<PaymentReceiptType> createPaymentReceipt(PaymentReceiptType value);
-
-  JAXBElement<TimeTableCellType> createTimeTableCell(TimeTableCellType value);
-
-  JAXBElement<VendorInfoCollectionType> createVendorInfos(VendorInfoCollectionType value);
-
-  JAXBElement<GradingAssignmentType> createGradingAssignment(GradingAssignmentType value);
-
-  JAXBElement<LearningStandardDocumentCollectionType> createLearningStandardDocuments(LearningStandardDocumentCollectionType value);
-
-  JAXBElement<LearningStandardItemType> createLearningStandardItem(LearningStandardItemType value);
-
-  JAXBElement<JournalType> createJournal(JournalType value);
-
-  JAXBElement<ResourceUsageType> createResourceUsage(ResourceUsageType value);
-
-  JAXBElement<AggregateCharacteristicInfoType> createAggregateCharacteristicInfo(AggregateCharacteristicInfoType value);
-
-  JAXBElement<StudentContactRelationshipType> createStudentContactRelationship(StudentContactRelationshipType value);
-
-  JAXBElement<AggregateStatisticFactType> createAggregateStatisticFact(AggregateStatisticFactType value);
-
-  JAXBElement<IdentityCollectionType> createIdentitys(IdentityCollectionType value);
-
-  JAXBElement<AggregateCharacteristicInfoCollectionType> createAggregateCharacteristicInfos(AggregateCharacteristicInfoCollectionType value);
-
-  JAXBElement<LearningResourceType> createLearningResource(LearningResourceType value);
-
-  JAXBElement<LearningResourcePackageCollectionType> createLearningResourcePackages(LearningResourcePackageCollectionType value);
-
-  JAXBElement<FinancialAccountType> createFinancialAccount(FinancialAccountType value);
-
-  JAXBElement<AggregateStatisticInfoType> createAggregateStatisticInfo(AggregateStatisticInfoType value);
-
-  JAXBElement<LearningStandardDocumentType> createLearningStandardDocument(LearningStandardDocumentType value);
-
-  JAXBElement<ResourceUsageCollectionType> createResourceUsages(ResourceUsageCollectionType value);
-
-  JAXBElement<NAPStudentResponseSetType> createNAPStudentResponseSet(NAPStudentResponseSetType value);
-
-  JAXBElement<AggregateStatisticInfoCollectionType> createAggregateStatisticInfos(AggregateStatisticInfoCollectionType value);
-
-  JAXBElement<StaffPersonalCollectionType> createStaffPersonals(StaffPersonalCollectionType value);
-
-  JAXBElement<PersonPictureType> createPersonPicture(PersonPictureType value);
-
-  JAXBElement<StudentDailyAttendanceCollectionType> createStudentDailyAttendances(StudentDailyAttendanceCollectionType value);
-
-  JAXBElement<StudentParticipationCollectionType> createStudentParticipations(StudentParticipationCollectionType value);
-
-  JAXBElement<NAPTestCollectionType> createNAPTests(NAPTestCollectionType value);
-
-  JAXBElement<StudentAttendanceSummaryType> createStudentAttendanceSummary(StudentAttendanceSummaryType value);
-
-  JAXBElement<JournalCollectionType> createJournals(JournalCollectionType value);
-
-  JAXBElement<NAPStudentResponseSetCollectionType> createNAPStudentResponseSets(NAPStudentResponseSetCollectionType value);
-
-  JAXBElement<NAPTestScoreSummaryCollectionType> createNAPTestScoreSummarys(NAPTestScoreSummaryCollectionType value);
-
-  JAXBElement<NAPTestItemType> createNAPTestItem(NAPTestItemType value);
-
-  JAXBElement<SchoolProgramsType> createSchoolPrograms(SchoolProgramsType value);
-
-  JAXBElement<AggregateStatisticFactCollectionType> createAggregateStatisticFacts(AggregateStatisticFactCollectionType value);
-
-  JAXBElement<StudentPeriodAttendanceType> createStudentPeriodAttendance(StudentPeriodAttendanceType value);
-
-  JAXBElement<StudentContactRelationshipCollectionType> createStudentContactRelationships(StudentContactRelationshipCollectionType value);
-
-  JAXBElement<CalendarSummaryCollectionType> createCalendarSummarys(CalendarSummaryCollectionType value);
-
-  JAXBElement<StaffAssignmentCollectionType> createStaffAssignments(StaffAssignmentCollectionType value);
-
-  JAXBElement<DebtorType> createDebtor(DebtorType value);
-
-  JAXBElement<TeachingGroupCollectionType> createTeachingGroups(TeachingGroupCollectionType value);
-
-  JAXBElement<EquipmentInfoCollectionType> createEquipmentInfos(EquipmentInfoCollectionType value);
-
-  JAXBElement<ResourceBookingType> createResourceBooking(ResourceBookingType value);
-
-  JAXBElement<PurchaseOrderType> createPurchaseOrder(PurchaseOrderType value);
-
-  JAXBElement<SchoolCourseInfoCollectionType> createSchoolCourseInfos(SchoolCourseInfoCollectionType value);
-
-  JAXBElement<NAPEventStudentLinkCollectionType> createNAPEventStudentLinks(NAPEventStudentLinkCollectionType value);
-
-  JAXBElement<StudentSchoolEnrollmentType> createStudentSchoolEnrollment(StudentSchoolEnrollmentType value);
-
-  JAXBElement<TimeTableSubjectCollectionType> createTimeTableSubjects(TimeTableSubjectCollectionType value);
-
-  JAXBElement<StudentActivityInfoCollectionType> createStudentActivityInfos(StudentActivityInfoCollectionType value);
-
-  JAXBElement<ActivityType> createActivity(ActivityType value);
-
-  JAXBElement<StudentAttendanceTimeListType> createStudentAttendanceTimeList(StudentAttendanceTimeListType value);
-
-  JAXBElement<ChargedLocationInfoType> createChargedLocationInfo(ChargedLocationInfoType value);
-
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link SchoolInfoType }{@code >}}
+   * 
+   */
   JAXBElement<SchoolInfoType> createSchoolInfo(SchoolInfoType value);
 
-  JAXBElement<PaymentReceiptCollectionType> createPaymentReceipts(PaymentReceiptCollectionType value);
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link SchoolInfoCollectionType }{@code >}}
+   * 
+   */
+  JAXBElement<SchoolInfoCollectionType> createSchoolInfos(SchoolInfoCollectionType value);
 
-  JAXBElement<SectionInfoType> createSectionInfo(SectionInfoType value);
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link SystemRoleType }{@code >}}
+   * 
+   */
+  JAXBElement<SystemRoleType> createSystemRole(SystemRoleType value);
 
-  JAXBElement<LearningResourcePackageType> createLearningResourcePackage(LearningResourcePackageType value);
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link SystemRoleCollectionType }{@code >}}
+   * 
+   */
+  JAXBElement<SystemRoleCollectionType> createSystemRoles(SystemRoleCollectionType value);
 
-  JAXBElement<TeachingGroupType> createTeachingGroup(TeachingGroupType value);
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link AggregateStatisticInfoType }{@code >}}
+   * 
+   */
+  JAXBElement<AggregateStatisticInfoType> createAggregateStatisticInfo(AggregateStatisticInfoType value);
 
-  JAXBElement<CalendarSummaryType> createCalendarSummary(CalendarSummaryType value);
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link AggregateStatisticInfoCollectionType }{@code >}}
+   * 
+   */
+  JAXBElement<AggregateStatisticInfoCollectionType> createAggregateStatisticInfos(AggregateStatisticInfoCollectionType value);
 
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link AggregateCharacteristicInfoType }{@code >}}
+   * 
+   */
+  JAXBElement<AggregateCharacteristicInfoType> createAggregateCharacteristicInfo(AggregateCharacteristicInfoType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link AggregateCharacteristicInfoCollectionType }{@code >}}
+   * 
+   */
+  JAXBElement<AggregateCharacteristicInfoCollectionType> createAggregateCharacteristicInfos(AggregateCharacteristicInfoCollectionType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link AggregateStatisticFactType }{@code >}}
+   * 
+   */
+  JAXBElement<AggregateStatisticFactType> createAggregateStatisticFact(AggregateStatisticFactType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link AggregateStatisticFactCollectionType }{@code >}}
+   * 
+   */
+  JAXBElement<AggregateStatisticFactCollectionType> createAggregateStatisticFacts(AggregateStatisticFactCollectionType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link ResourceUsageType }{@code >}}
+   * 
+   */
+  JAXBElement<ResourceUsageType> createResourceUsage(ResourceUsageType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link ResourceUsageCollectionType }{@code >}}
+   * 
+   */
+  JAXBElement<ResourceUsageCollectionType> createResourceUsages(ResourceUsageCollectionType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link RoomInfoType }{@code >}}
+   * 
+   */
+  JAXBElement<RoomInfoType> createRoomInfo(RoomInfoType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link RoomInfoCollectionType }{@code >}}
+   * 
+   */
+  JAXBElement<RoomInfoCollectionType> createRoomInfos(RoomInfoCollectionType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link StaffAssignmentType }{@code >}}
+   * 
+   */
   JAXBElement<StaffAssignmentType> createStaffAssignment(StaffAssignmentType value);
 
-  JAXBElement<TermInfoCollectionType> createTermInfos(TermInfoCollectionType value);
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link StaffAssignmentCollectionType }{@code >}}
+   * 
+   */
+  JAXBElement<StaffAssignmentCollectionType> createStaffAssignments(StaffAssignmentCollectionType value);
 
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link StaffPersonalType }{@code >}}
+   * 
+   */
+  JAXBElement<StaffPersonalType> createStaffPersonal(StaffPersonalType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link StaffPersonalCollectionType }{@code >}}
+   * 
+   */
+  JAXBElement<StaffPersonalCollectionType> createStaffPersonals(StaffPersonalCollectionType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link StudentPersonalType }{@code >}}
+   * 
+   */
+  JAXBElement<StudentPersonalType> createStudentPersonal(StudentPersonalType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link StudentPersonalCollectionType }{@code >}}
+   * 
+   */
   JAXBElement<StudentPersonalCollectionType> createStudentPersonals(StudentPersonalCollectionType value);
 
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link StudentSchoolEnrollmentType }{@code >}}
+   * 
+   */
+  JAXBElement<StudentSchoolEnrollmentType> createStudentSchoolEnrollment(StudentSchoolEnrollmentType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link StudentSchoolEnrollmentCollectionType }{@code >}}
+   * 
+   */
+  JAXBElement<StudentSchoolEnrollmentCollectionType> createStudentSchoolEnrollments(StudentSchoolEnrollmentCollectionType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link StudentContactPersonalType }{@code >}}
+   * 
+   */
+  JAXBElement<StudentContactPersonalType> createStudentContactPersonal(StudentContactPersonalType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link StudentContactPersonalCollectionType }{@code >}}
+   * 
+   */
+  JAXBElement<StudentContactPersonalCollectionType> createStudentContactPersonals(StudentContactPersonalCollectionType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link StudentParticipationType }{@code >}}
+   * 
+   */
+  JAXBElement<StudentParticipationType> createStudentParticipation(StudentParticipationType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link StudentParticipationCollectionType }{@code >}}
+   * 
+   */
+  JAXBElement<StudentParticipationCollectionType> createStudentParticipations(StudentParticipationCollectionType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link PersonPictureType }{@code >}}
+   * 
+   */
+  JAXBElement<PersonPictureType> createPersonPicture(PersonPictureType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link PersonPictureCollectionType }{@code >}}
+   * 
+   */
+  JAXBElement<PersonPictureCollectionType> createPersonPictures(PersonPictureCollectionType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link CalendarDateType }{@code >}}
+   * 
+   */
+  JAXBElement<CalendarDateType> createCalendarDate(CalendarDateType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link CalendarDateCollectionType }{@code >}}
+   * 
+   */
+  JAXBElement<CalendarDateCollectionType> createCalendarDates(CalendarDateCollectionType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link CalendarSummaryType }{@code >}}
+   * 
+   */
+  JAXBElement<CalendarSummaryType> createCalendarSummary(CalendarSummaryType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link CalendarSummaryCollectionType }{@code >}}
+   * 
+   */
+  JAXBElement<CalendarSummaryCollectionType> createCalendarSummarys(CalendarSummaryCollectionType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link StudentAttendanceSummaryType }{@code >}}
+   * 
+   */
+  JAXBElement<StudentAttendanceSummaryType> createStudentAttendanceSummary(StudentAttendanceSummaryType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link StudentAttendanceSummaryCollectionType }{@code >}}
+   * 
+   */
+  JAXBElement<StudentAttendanceSummaryCollectionType> createStudentAttendanceSummarys(StudentAttendanceSummaryCollectionType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link StudentDailyAttendanceType }{@code >}}
+   * 
+   */
+  JAXBElement<StudentDailyAttendanceType> createStudentDailyAttendance(StudentDailyAttendanceType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link StudentDailyAttendanceCollectionType }{@code >}}
+   * 
+   */
+  JAXBElement<StudentDailyAttendanceCollectionType> createStudentDailyAttendances(StudentDailyAttendanceCollectionType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link StudentPeriodAttendanceType }{@code >}}
+   * 
+   */
+  JAXBElement<StudentPeriodAttendanceType> createStudentPeriodAttendance(StudentPeriodAttendanceType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link StudentPeriodAttendanceCollectionType }{@code >}}
+   * 
+   */
+  JAXBElement<StudentPeriodAttendanceCollectionType> createStudentPeriodAttendances(StudentPeriodAttendanceCollectionType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link SessionInfoType }{@code >}}
+   * 
+   */
+  JAXBElement<SessionInfoType> createSessionInfo(SessionInfoType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link SessionInfoCollectionType }{@code >}}
+   * 
+   */
+  JAXBElement<SessionInfoCollectionType> createSessionInfos(SessionInfoCollectionType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link LearningStandardDocumentType }{@code >}}
+   * 
+   */
+  JAXBElement<LearningStandardDocumentType> createLearningStandardDocument(LearningStandardDocumentType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link LearningStandardDocumentCollectionType }{@code >}}
+   * 
+   */
+  JAXBElement<LearningStandardDocumentCollectionType> createLearningStandardDocuments(LearningStandardDocumentCollectionType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link LearningStandardItemType }{@code >}}
+   * 
+   */
+  JAXBElement<LearningStandardItemType> createLearningStandardItem(LearningStandardItemType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link LearningStandardItemCollectionType }{@code >}}
+   * 
+   */
+  JAXBElement<LearningStandardItemCollectionType> createLearningStandardItems(LearningStandardItemCollectionType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link LearningResourceType }{@code >}}
+   * 
+   */
+  JAXBElement<LearningResourceType> createLearningResource(LearningResourceType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link LearningResourceCollectionType }{@code >}}
+   * 
+   */
+  JAXBElement<LearningResourceCollectionType> createLearningResources(LearningResourceCollectionType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link LearningResourcePackageType }{@code >}}
+   * 
+   */
+  JAXBElement<LearningResourcePackageType> createLearningResourcePackage(LearningResourcePackageType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link LearningResourcePackageCollectionType }{@code >}}
+   * 
+   */
+  JAXBElement<LearningResourcePackageCollectionType> createLearningResourcePackages(LearningResourcePackageCollectionType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link TimeTableSubjectType }{@code >}}
+   * 
+   */
+  JAXBElement<TimeTableSubjectType> createTimeTableSubject(TimeTableSubjectType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link TimeTableSubjectCollectionType }{@code >}}
+   * 
+   */
+  JAXBElement<TimeTableSubjectCollectionType> createTimeTableSubjects(TimeTableSubjectCollectionType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link TimeTableType }{@code >}}
+   * 
+   */
+  JAXBElement<TimeTableType> createTimeTable(TimeTableType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link TimeTableCollectionType }{@code >}}
+   * 
+   */
+  JAXBElement<TimeTableCollectionType> createTimeTables(TimeTableCollectionType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link TeachingGroupType }{@code >}}
+   * 
+   */
+  JAXBElement<TeachingGroupType> createTeachingGroup(TeachingGroupType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link TeachingGroupCollectionType }{@code >}}
+   * 
+   */
+  JAXBElement<TeachingGroupCollectionType> createTeachingGroups(TeachingGroupCollectionType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link TimeTableCellType }{@code >}}
+   * 
+   */
+  JAXBElement<TimeTableCellType> createTimeTableCell(TimeTableCellType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link TimeTableCellCollectionType }{@code >}}
+   * 
+   */
+  JAXBElement<TimeTableCellCollectionType> createTimeTableCells(TimeTableCellCollectionType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link SchoolCourseInfoType }{@code >}}
+   * 
+   */
+  JAXBElement<SchoolCourseInfoType> createSchoolCourseInfo(SchoolCourseInfoType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link SchoolCourseInfoCollectionType }{@code >}}
+   * 
+   */
+  JAXBElement<SchoolCourseInfoCollectionType> createSchoolCourseInfos(SchoolCourseInfoCollectionType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link LEAInfoType }{@code >}}
+   * 
+   */
+  JAXBElement<LEAInfoType> createLEAInfo(LEAInfoType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link LEAInfoCollectionType }{@code >}}
+   * 
+   */
+  JAXBElement<LEAInfoCollectionType> createLEAInfos(LEAInfoCollectionType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link TermInfoType }{@code >}}
+   * 
+   */
+  JAXBElement<TermInfoType> createTermInfo(TermInfoType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link TermInfoCollectionType }{@code >}}
+   * 
+   */
+  JAXBElement<TermInfoCollectionType> createTermInfos(TermInfoCollectionType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link StudentContactRelationshipType }{@code >}}
+   * 
+   */
+  JAXBElement<StudentContactRelationshipType> createStudentContactRelationship(StudentContactRelationshipType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link StudentContactRelationshipCollectionType }{@code >}}
+   * 
+   */
+  JAXBElement<StudentContactRelationshipCollectionType> createStudentContactRelationships(StudentContactRelationshipCollectionType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link StudentActivityInfoType }{@code >}}
+   * 
+   */
+  JAXBElement<StudentActivityInfoType> createStudentActivityInfo(StudentActivityInfoType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link StudentActivityInfoCollectionType }{@code >}}
+   * 
+   */
+  JAXBElement<StudentActivityInfoCollectionType> createStudentActivityInfos(StudentActivityInfoCollectionType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link StudentActivityParticipationType }{@code >}}
+   * 
+   */
+  JAXBElement<StudentActivityParticipationType> createStudentActivityParticipation(StudentActivityParticipationType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link StudentActivityParticipationCollectionType }{@code >}}
+   * 
+   */
+  JAXBElement<StudentActivityParticipationCollectionType> createStudentActivityParticipations(StudentActivityParticipationCollectionType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link IdentityType }{@code >}}
+   * 
+   */
+  JAXBElement<IdentityType> createIdentity(IdentityType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link IdentityCollectionType }{@code >}}
+   * 
+   */
+  JAXBElement<IdentityCollectionType> createIdentitys(IdentityCollectionType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link SchoolProgramsType }{@code >}}
+   * 
+   */
+  JAXBElement<SchoolProgramsType> createSchoolPrograms(SchoolProgramsType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link SchoolProgramsCollectionType }{@code >}}
+   * 
+   */
+  JAXBElement<SchoolProgramsCollectionType> createSchoolProgramss(SchoolProgramsCollectionType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link SectionInfoType }{@code >}}
+   * 
+   */
+  JAXBElement<SectionInfoType> createSectionInfo(SectionInfoType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link SectionInfoCollectionType }{@code >}}
+   * 
+   */
+  JAXBElement<SectionInfoCollectionType> createSectionInfos(SectionInfoCollectionType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link StudentSectionEnrollmentType }{@code >}}
+   * 
+   */
+  JAXBElement<StudentSectionEnrollmentType> createStudentSectionEnrollment(StudentSectionEnrollmentType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link StudentSectionEnrollmentCollectionType }{@code >}}
+   * 
+   */
+  JAXBElement<StudentSectionEnrollmentCollectionType> createStudentSectionEnrollments(StudentSectionEnrollmentCollectionType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link ActivityType }{@code >}}
+   * 
+   */
+  JAXBElement<ActivityType> createActivity(ActivityType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link ActivityCollectionType }{@code >}}
+   * 
+   */
+  JAXBElement<ActivityCollectionType> createActivitys(ActivityCollectionType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link ScheduledActivityType }{@code >}}
+   * 
+   */
   JAXBElement<ScheduledActivityType> createScheduledActivity(ScheduledActivityType value);
 
-  JAXBElement<AUCodeSetsTeacherCoverSupervisionType> createTeacherCoverTypeSupervision(AUCodeSetsTeacherCoverSupervisionType value);
-
-  JAXBElement<XMLGregorianCalendar> createTeacherCoverTypeStartTime(XMLGregorianCalendar value);
-
-  JAXBElement<String> createTeacherCoverTypeStaffLocalId(String value);
-
-  JAXBElement<AUCodeSetsTeacherCoverCreditType> createTeacherCoverTypeCredit(AUCodeSetsTeacherCoverCreditType value);
-
-  JAXBElement<XMLGregorianCalendar> createTeacherCoverTypeFinishTime(XMLGregorianCalendar value);
-
-  JAXBElement<BigDecimal> createTeacherCoverTypeWeighting(BigDecimal value);
-
-  JAXBElement<XMLGregorianCalendar> createPurchaseOrderTypeUpdateDate(XMLGregorianCalendar value);
-
-  JAXBElement<MonetaryAmountType> createPurchaseOrderTypeTaxAmount(MonetaryAmountType value);
-
-  JAXBElement<MonetaryAmountType> createPurchaseOrderTypeTotalAmount(MonetaryAmountType value);
-
-  JAXBElement<BigDecimal> createPurchaseOrderTypeTaxRate(BigDecimal value);
-
-  JAXBElement<XMLGregorianCalendar> createPurchaseOrderTypeCreationDate(XMLGregorianCalendar value);
-
-  JAXBElement<AUCodeSetsYesOrNoCategoryType> createPurchaseOrderTypeFullyDelivered(AUCodeSetsYesOrNoCategoryType value);
-
-  JAXBElement<String> createPurchaseOrderTypeEmployeePersonalRefId(String value);
-
-  JAXBElement<String> createPurchaseOrderTypeOriginalPurchaseOrderRefId(String value);
-
-  JAXBElement<SIFExtendedElementsType> createPurchaseOrderTypeSIFExtendedElements(SIFExtendedElementsType value);
-
-  JAXBElement<SIFMetadataType> createPurchaseOrderTypeSIFMetadata(SIFMetadataType value);
-
-  JAXBElement<String> createPurchaseOrderTypeChargedLocationInfoRefId(String value);
-
-  JAXBElement<Object> createAlternateIdentificationCodesTypeAlternateIdentificationCodes(Object value);
-
-  JAXBElement<String> createResourceUsageTypeResourceUsageContentTypeLocalDescription(String value);
-
-  JAXBElement<String> createNAPTestletCodeFrameTypeNAPTestletRefId(String value);
-
-  JAXBElement<String> createSoftwareRequirementTypeOS(String value);
-
-  JAXBElement<String> createSoftwareRequirementTypeVersion(String value);
-
-  JAXBElement<String> createSoftwareRequirementTypeVendor(String value);
-
-  JAXBElement<BigInteger> createStimulusTypeWordCount(BigInteger value);
-
-  JAXBElement<String> createStimulusTypeTextType(String value);
-
-  JAXBElement<String> createStimulusTypeTextGenre(String value);
-
-  JAXBElement<String> createActivityTypeEvaluationDescription(String value);
-
-  JAXBElement<OtherCodeListType> createReligionTypeOtherCodeList(OtherCodeListType value);
-
-  JAXBElement<String> createCampusContainerTypeParentSchoolId(String value);
-
-  JAXBElement<AUCodeSetsSchoolLevelType> createCampusContainerTypeCampusType(AUCodeSetsSchoolLevelType value);
-
-  JAXBElement<String> createStaffSubjectTypeSubjectLocalId(String value);
-
-  JAXBElement<String> createStaffSubjectTypeTimeTableSubjectRefId(String value);
-
-  JAXBElement<NAPTestContentType> createNAPCodeFrameTypeTestContent(NAPTestContentType value);
-
-  JAXBElement<String> createNAPCodeFrameTypeNAPTestRefId(String value);
-
-  JAXBElement<SIFExtendedElementsType> createNAPCodeFrameTypeSIFExtendedElements(SIFExtendedElementsType value);
-
-  JAXBElement<SIFMetadataType> createNAPCodeFrameTypeSIFMetadata(SIFMetadataType value);
-
-  JAXBElement<String> createStudentActivityParticipationTypeRole(String value);
-
-  JAXBElement<XMLGregorianCalendar> createStudentActivityParticipationTypeSchoolYear(XMLGregorianCalendar value);
-
-  JAXBElement<String> createStudentActivityParticipationTypeParticipationComment(String value);
-
-  JAXBElement<RecognitionListType> createStudentActivityParticipationTypeRecognitionList(RecognitionListType value);
-
-  JAXBElement<XMLGregorianCalendar> createStudentActivityParticipationTypeEndDate(XMLGregorianCalendar value);
-
-  JAXBElement<SIFExtendedElementsType> createStudentActivityParticipationTypeSIFExtendedElements(SIFExtendedElementsType value);
-
-  JAXBElement<SIFMetadataType> createStudentActivityParticipationTypeSIFMetadata(SIFMetadataType value);
-
-  JAXBElement<XMLGregorianCalendar> createStudentActivityParticipationTypeStartDate(XMLGregorianCalendar value);
-
-  JAXBElement<OtherCodeListType> createEnglishProficiencyTypeOtherCodeList(OtherCodeListType value);
-
-  JAXBElement<String> createScheduledActivityTypeDayId(String value);
-
-  JAXBElement<String> createScheduledActivityTypeLocation(String value);
-
-  JAXBElement<AUCodeSetsScheduledActivityTypeType> createScheduledActivityTypeActivityType(AUCodeSetsScheduledActivityTypeType value);
-
-  JAXBElement<String> createScheduledActivityTypePeriodId(String value);
-
-  JAXBElement<String> createScheduledActivityTypeTimeTableCellRefId(String value);
-
-  JAXBElement<String> createScheduledActivityTypeCellType(String value);
-
-  JAXBElement<AddressListType> createScheduledActivityTypeAddressList(AddressListType value);
-
-  JAXBElement<String> createScheduledActivityTypeActivityComment(String value);
-
-  JAXBElement<String> createScheduledActivityTypeTimeTableRefId(String value);
-
-  JAXBElement<ScheduledTeacherListType> createScheduledActivityTypeTeacherList(ScheduledTeacherListType value);
-
-  JAXBElement<String> createScheduledActivityTypeTimeTableSubjectRefId(String value);
-
-  JAXBElement<String> createScheduledActivityTypeActivityName(String value);
-
-  JAXBElement<TeachingGroupListType> createScheduledActivityTypeTeachingGroupList(TeachingGroupListType value);
-
-  JAXBElement<RoomListType> createScheduledActivityTypeRoomList(RoomListType value);
-
-  JAXBElement<StudentsType> createScheduledActivityTypeStudentList(StudentsType value);
-
-  JAXBElement<SIFExtendedElementsType> createScheduledActivityTypeSIFExtendedElements(SIFExtendedElementsType value);
-
-  JAXBElement<YearLevelsType> createScheduledActivityTypeYearLevels(YearLevelsType value);
-
-  JAXBElement<SIFMetadataType> createScheduledActivityTypeSIFMetadata(SIFMetadataType value);
-
-  JAXBElement<ScheduledActivityOverrideType> createScheduledActivityTypeOverride(ScheduledActivityOverrideType value);
-
-  JAXBElement<AssociatedObjectsType> createComponentTypeAssociatedObjects(AssociatedObjectsType value);
-
-  JAXBElement<StrategiesType> createComponentTypeStrategies(StrategiesType value);
-
-  JAXBElement<String> createComponentTypeDescription(String value);
-
-  JAXBElement<TimeElementType.SpanGaps> createTimeElementTypeSpanGaps(TimeElementType.SpanGaps value);
-
-  JAXBElement<Calendar> createTimeElementTypeEndDateTime(Calendar value);
-
-  JAXBElement<Calendar> createTimeElementTypeStartDateTime(Calendar value);
-
-  JAXBElement<OtherCodeListType> createCalendarDateInfoTypeOtherCodeList(OtherCodeListType value);
-
-  JAXBElement<OtherCodeListType> createTimeTableSubjectTypeOtherCodeList(OtherCodeListType value);
-
-  JAXBElement<XMLGregorianCalendar> createTimeTableSubjectTypeSchoolYear(XMLGregorianCalendar value);
-
-  JAXBElement<YearLevelType> createTimeTableSubjectTypeAcademicYear(YearLevelType value);
-
-  JAXBElement<String> createTimeTableSubjectTypeFaculty(String value);
-
-  JAXBElement<Long> createTimeTableSubjectTypeSemester(Long value);
-
-  JAXBElement<YearRangeType> createTimeTableSubjectTypeAcademicYearRange(YearRangeType value);
-
-  JAXBElement<String> createTimeTableSubjectTypeCourseLocalId(String value);
-
-  JAXBElement<String> createTimeTableSubjectTypeSubjectType(String value);
-
-  JAXBElement<BigDecimal> createTimeTableSubjectTypeProposedMinClassSize(BigDecimal value);
-
-  JAXBElement<String> createTimeTableSubjectTypeSchoolInfoRefId(String value);
-
-  JAXBElement<String> createTimeTableSubjectTypeSchoolCourseInfoRefId(String value);
-
-  JAXBElement<BigDecimal> createTimeTableSubjectTypeProposedMaxClassSize(BigDecimal value);
-
-  JAXBElement<String> createTimeTableSubjectTypeSchoolLocalId(String value);
-
-  JAXBElement<String> createTimeTableSubjectTypeSubjectShortName(String value);
-
-  JAXBElement<SIFExtendedElementsType> createTimeTableSubjectTypeSIFExtendedElements(SIFExtendedElementsType value);
-
-  JAXBElement<SIFMetadataType> createTimeTableSubjectTypeSIFMetadata(SIFMetadataType value);
-
-  JAXBElement<OtherCodeListType> createSchoolProgramTypeOtherCodeList(OtherCodeListType value);
-
-  JAXBElement<String> createSchoolProgramTypeCategory(String value);
-
-  JAXBElement<Calendar> createTimeElementTypeSpanGapsSpanGapEndDateTime(Calendar value);
-
-  JAXBElement<Calendar> createTimeElementTypeSpanGapsSpanGapStartDateTime(Calendar value);
-
-  JAXBElement<String> createLearningStandardDocumentTypeCopyrightHolder(String value);
-
-  JAXBElement<XMLGregorianCalendar> createLearningStandardDocumentTypeCopyrightDate(XMLGregorianCalendar value);
-
-  JAXBElement<YearLevelType> createStudentMostRecentContainerTypeYearLevel(YearLevelType value);
-
-  JAXBElement<String> createStudentMostRecentContainerTypeParent2Language(String value);
-
-  JAXBElement<String> createStudentMostRecentContainerTypeParent2EmploymentType(String value);
-
-  JAXBElement<String> createStudentMostRecentContainerTypeParent1Language(String value);
-
-  JAXBElement<String> createStudentMostRecentContainerTypeLocalCampusId(String value);
-
-  JAXBElement<String> createStudentMostRecentContainerTypeParent1EmploymentType(String value);
-
-  JAXBElement<String> createStudentMostRecentContainerTypeParent1SchoolEducationLevel(String value);
-
-  JAXBElement<String> createStudentMostRecentContainerTypeFFPOS(String value);
-
-  JAXBElement<String> createStudentMostRecentContainerTypeParent2SchoolEducationLevel(String value);
-
-  JAXBElement<String> createStudentMostRecentContainerTypeSchoolACARAId(String value);
-
-  JAXBElement<YearLevelType> createStudentMostRecentContainerTypeTestLevel(YearLevelType value);
-
-  JAXBElement<String> createStudentMostRecentContainerTypeHomegroup(String value);
-
-  JAXBElement<String> createStudentMostRecentContainerTypeClassCode(String value);
-
-  JAXBElement<String> createStudentMostRecentContainerTypeSchoolLocalId(String value);
-
-  JAXBElement<String> createStudentMostRecentContainerTypeHomeroomLocalId(String value);
-
-  JAXBElement<String> createStudentMostRecentContainerTypeParent1NonSchoolEducation(String value);
-
-  JAXBElement<String> createStudentMostRecentContainerTypeParent2NonSchoolEducation(String value);
-
-  JAXBElement<String> createStudentMostRecentContainerTypeOtherEnrollmentSchoolACARAId(String value);
-
-  JAXBElement<String> createStudentMostRecentContainerTypeReportingSchoolId(String value);
-
-  JAXBElement<BigDecimal> createStudentMostRecentContainerTypeFTE(BigDecimal value);
-
-  JAXBElement<Object> createExpenseAccountsTypeExpenseAccountType(Object value);
-
-  JAXBElement<String> createPrincipalInfoTypeContactTitle(String value);
-
-  JAXBElement<EmailListType> createPrincipalInfoTypeEmailList(EmailListType value);
-
-  JAXBElement<PhoneNumberListType> createPrincipalInfoTypePhoneNumberList(PhoneNumberListType value);
-
-  JAXBElement<BigInteger> createNAPTestletContentTypeLocationInStage(BigInteger value);
-
-  JAXBElement<String> createNAPTestletContentTypeNode(String value);
-
-  JAXBElement<EquipmentInfoType.SIFRefId> createEquipmentInfoTypeSIFRefId(EquipmentInfoType.SIFRefId value);
-
-  JAXBElement<String> createEquipmentInfoTypeInvoiceRefId(String value);
-
-  JAXBElement<String> createEquipmentInfoTypeAssetNumber(String value);
-
-  JAXBElement<String> createEquipmentInfoTypePurchaseOrderRefId(String value);
-
-  JAXBElement<String> createEquipmentInfoTypeDescription(String value);
-
-  JAXBElement<SIFExtendedElementsType> createEquipmentInfoTypeSIFExtendedElements(SIFExtendedElementsType value);
-
-  JAXBElement<String> createEquipmentInfoTypeEquipmentType(String value);
-
-  JAXBElement<SIFMetadataType> createEquipmentInfoTypeSIFMetadata(SIFMetadataType value);
-
-  JAXBElement<String> createGradingAssignmentTypeGradingCategory(String value);
-
-  JAXBElement<String> createGradingAssignmentTypeSchoolInfoRefId(String value);
-
-  JAXBElement<BigInteger> createGradingAssignmentTypeMaxAttemptsAllowed(BigInteger value);
-
-  JAXBElement<String> createGradingAssignmentTypeDetailedDescriptionURL(String value);
-
-  JAXBElement<String> createGradingAssignmentTypeTeachingGroupRefId(String value);
-
-  JAXBElement<XMLGregorianCalendar> createGradingAssignmentTypeCreateDate(XMLGregorianCalendar value);
-
-  JAXBElement<SIFExtendedElementsType> createGradingAssignmentTypeSIFExtendedElements(SIFExtendedElementsType value);
-
-  JAXBElement<SIFMetadataType> createGradingAssignmentTypeSIFMetadata(SIFMetadataType value);
-
-  JAXBElement<byte[]> createGradingAssignmentTypeDetailedDescriptionBinary(byte[] value);
-
-  JAXBElement<XMLGregorianCalendar> createGradingAssignmentTypeDueDate(XMLGregorianCalendar value);
-
-  JAXBElement<BigDecimal> createGradingAssignmentTypeWeight(BigDecimal value);
-
-  JAXBElement<LocationType> createStudentActivityInfoTypeLocation(LocationType value);
-
-  JAXBElement<String> createStudentActivityInfoTypeDescription(String value);
-
-  JAXBElement<String> createStudentActivityInfoTypeCurricularStatus(String value);
-
-  JAXBElement<SIFExtendedElementsType> createStudentActivityInfoTypeSIFExtendedElements(SIFExtendedElementsType value);
-
-  JAXBElement<YearLevelsType> createStudentActivityInfoTypeYearLevels(YearLevelsType value);
-
-  JAXBElement<SIFMetadataType> createStudentActivityInfoTypeSIFMetadata(SIFMetadataType value);
-
-  JAXBElement<String> createStudentActivityInfoTypeStudentActivityLevel(String value);
-
-  JAXBElement<XMLGregorianCalendar> createDemographicsTypeDateOfDeath(XMLGregorianCalendar value);
-
-  JAXBElement<String> createDemographicsTypeVisaStatisticalCode(String value);
-
-  JAXBElement<LanguageListType> createDemographicsTypeLanguageList(LanguageListType value);
-
-  JAXBElement<String> createDemographicsTypePlaceOfBirth(String value);
-
-  JAXBElement<AUCodeSetsYesOrNoCategoryType> createDemographicsTypeLBOTE(AUCodeSetsYesOrNoCategoryType value);
-
-  JAXBElement<String> createDemographicsTypeAustralianCitizenshipStatus(String value);
-
-  JAXBElement<String> createDemographicsTypeCulturalBackground(String value);
-
-  JAXBElement<XMLGregorianCalendar> createDemographicsTypeBirthDate(XMLGregorianCalendar value);
-
-  JAXBElement<XMLGregorianCalendar> createDemographicsTypeVisaExpiryDate(XMLGregorianCalendar value);
-
-  JAXBElement<String> createDemographicsTypeBirthDateVerification(String value);
-
-  JAXBElement<AUCodeSetsImmunisationCertificateStatusType> createDemographicsTypeImmunisationCertificateStatus(AUCodeSetsImmunisationCertificateStatusType value);
-
-  JAXBElement<VisaSubClassListType> createDemographicsTypeVisaSubClassList(VisaSubClassListType value);
-
-  JAXBElement<ReligionType> createDemographicsTypeReligion(ReligionType value);
-
-  JAXBElement<String> createDemographicsTypePermanentResident(String value);
-
-  JAXBElement<ReligiousEventListType> createDemographicsTypeReligiousEventList(ReligiousEventListType value);
-
-  JAXBElement<String> createDemographicsTypeMaritalStatus(String value);
-
-  JAXBElement<String> createDemographicsTypeIndigenousStatus(String value);
-
-  JAXBElement<XMLGregorianCalendar> createDemographicsTypeCountryArrivalDate(XMLGregorianCalendar value);
-
-  JAXBElement<EnglishProficiencyType> createDemographicsTypeEnglishProficiency(EnglishProficiencyType value);
-
-  JAXBElement<String> createDemographicsTypeCountryOfBirth(String value);
-
-  JAXBElement<String> createDemographicsTypeSex(String value);
-
-  JAXBElement<CountryList2Type> createDemographicsTypeCountriesOfResidency(CountryList2Type value);
-
-  JAXBElement<String> createDemographicsTypeReligiousRegion(String value);
-
-  JAXBElement<CountryListType> createDemographicsTypeCountriesOfCitizenship(CountryListType value);
-
-  JAXBElement<DwellingArrangementType> createDemographicsTypeDwellingArrangement(DwellingArrangementType value);
-
-  JAXBElement<String> createDemographicsTypeStateOfBirth(String value);
-
-  JAXBElement<String> createDemographicsTypeVisaSubClass(String value);
-
-  JAXBElement<XMLGregorianCalendar> createTeachingGroupPeriodTypeStartTime(XMLGregorianCalendar value);
-
-  JAXBElement<String> createTeachingGroupPeriodTypeStaffLocalId(String value);
-
-  JAXBElement<String> createTeachingGroupPeriodTypePeriodId(String value);
-
-  JAXBElement<String> createTeachingGroupPeriodTypeTimeTableCellRefId(String value);
-
-  JAXBElement<String> createTeachingGroupPeriodTypeCellType(String value);
-
-  JAXBElement<String> createTeachingGroupPeriodTypeRoomNumber(String value);
-
-  JAXBElement<String> createTeachingGroupTypeCurriculumLevel(String value);
-
-  JAXBElement<TeachingGroupPeriodListType> createTeachingGroupTypeTeachingGroupPeriodList(TeachingGroupPeriodListType value);
-
-  JAXBElement<String> createTeachingGroupTypeLongName(String value);
-
-  JAXBElement<Long> createTeachingGroupTypeSemester(Long value);
-
-  JAXBElement<String> createTeachingGroupTypeGroupType(String value);
-
-  JAXBElement<String> createTeachingGroupTypeSchoolCourseLocalId(String value);
-
-  JAXBElement<BigInteger> createTeachingGroupTypeMaxClassSize(BigInteger value);
-
-  JAXBElement<String> createTeachingGroupTypeSet(String value);
-
-  JAXBElement<TeacherListType> createTeachingGroupTypeTeacherList(TeacherListType value);
-
-  JAXBElement<String> createTeachingGroupTypeSchoolInfoRefId(String value);
-
-  JAXBElement<String> createTeachingGroupTypeBlock(String value);
-
-  JAXBElement<String> createTeachingGroupTypeSchoolCourseInfoRefId(String value);
-
-  JAXBElement<String> createTeachingGroupTypeTimeTableSubjectRefId(String value);
-
-  JAXBElement<String> createTeachingGroupTypeSchoolLocalId(String value);
-
-  JAXBElement<BigInteger> createTeachingGroupTypeMinClassSize(BigInteger value);
-
-  JAXBElement<StudentListType> createTeachingGroupTypeStudentList(StudentListType value);
-
-  JAXBElement<String> createTeachingGroupTypeTimeTableSubjectLocalId(String value);
-
-  JAXBElement<SIFExtendedElementsType> createTeachingGroupTypeSIFExtendedElements(SIFExtendedElementsType value);
-
-  JAXBElement<SIFMetadataType> createTeachingGroupTypeSIFMetadata(SIFMetadataType value);
-
-  JAXBElement<LearningObjectivesType> createActivityTypeLearningObjectives(LearningObjectivesType value);
-
-  JAXBElement<EssentialMaterialsType> createActivityTypeEssentialMaterials(EssentialMaterialsType value);
-
-  JAXBElement<String> createActivityTypeTitle(String value);
-
-  JAXBElement<StudentsType> createActivityTypeStudents(StudentsType value);
-
-  JAXBElement<Long> createActivityTypePoints(Long value);
-
-  JAXBElement<String> createActivityTypeAssessmentRefId(String value);
-
-  JAXBElement<TechnicalRequirementsType> createActivityTypeTechnicalRequirements(TechnicalRequirementsType value);
-
-  JAXBElement<BigDecimal> createActivityTypeActivityWeight(BigDecimal value);
-
-  JAXBElement<SoftwareRequirementListType> createActivityTypeSoftwareRequirementList(SoftwareRequirementListType value);
-
-  JAXBElement<PrerequisitesType> createActivityTypePrerequisites(PrerequisitesType value);
-
-  JAXBElement<LearningResourcesType> createActivityTypeLearningResources(LearningResourcesType value);
-
-  JAXBElement<Long> createActivityTypeMaxAttemptsAllowed(Long value);
-
-  JAXBElement<ActivityType.Evaluation> createActivityTypeEvaluation(ActivityType.Evaluation value);
-
-  JAXBElement<String> createActivityTypePreamble(String value);
-
-  JAXBElement<SourceObjectsType> createActivityTypeSourceObjects(SourceObjectsType value);
-
-  JAXBElement<SIFExtendedElementsType> createActivityTypeSIFExtendedElements(SIFExtendedElementsType value);
-
-  JAXBElement<LearningStandardsType> createActivityTypeLearningStandards(LearningStandardsType value);
-
-  JAXBElement<SIFMetadataType> createActivityTypeSIFMetadata(SIFMetadataType value);
-
-  JAXBElement<SubjectAreaType> createActivityTypeSubjectArea(SubjectAreaType value);
-
-  JAXBElement<String> createResourceUsageTypeResourceReportColumnListResourceReportColumnColumnDelimiter(String value);
-
-  JAXBElement<String> createResourceUsageTypeResourceReportColumnListResourceReportColumnColumnDescription(String value);
-
-  JAXBElement<String> createJournalTypeApprovedBy(String value);
-
-  JAXBElement<String> createJournalTypeNote(String value);
-
-  JAXBElement<XMLGregorianCalendar> createJournalTypeApprovedDate(XMLGregorianCalendar value);
-
-  JAXBElement<String> createJournalTypeCreatedBy(String value);
-
-  JAXBElement<XMLGregorianCalendar> createJournalTypeCreatedDate(XMLGregorianCalendar value);
-
-  JAXBElement<String> createJournalTypeGSTCodeOriginal(String value);
-
-  JAXBElement<String> createJournalTypeGSTCodeReplacement(String value);
-
-  JAXBElement<JournalType.OriginatingTransactionRefId> createJournalTypeOriginatingTransactionRefId(JournalType.OriginatingTransactionRefId value);
-
-  JAXBElement<SIFExtendedElementsType> createJournalTypeSIFExtendedElements(SIFExtendedElementsType value);
-
-  JAXBElement<SIFMetadataType> createJournalTypeSIFMetadata(SIFMetadataType value);
-
-  JAXBElement<String> createHouseholdContactInfoTypeHouseholdContactId(String value);
-
-  JAXBElement<AddressListType> createHouseholdContactInfoTypeAddressList(AddressListType value);
-
-  JAXBElement<String> createHouseholdContactInfoTypeHouseholdSalutation(String value);
-
-  JAXBElement<EmailListType> createHouseholdContactInfoTypeEmailList(EmailListType value);
-
-  JAXBElement<PhoneNumberListType> createHouseholdContactInfoTypePhoneNumberList(PhoneNumberListType value);
-
-  JAXBElement<String> createVisaSubClassTypeVisaStatisticalCode(String value);
-
-  JAXBElement<XMLGregorianCalendar> createVisaSubClassTypeATEExpiryDate(XMLGregorianCalendar value);
-
-  JAXBElement<XMLGregorianCalendar> createVisaSubClassTypeVisaExpiryDate(XMLGregorianCalendar value);
-
-  JAXBElement<XMLGregorianCalendar> createVisaSubClassTypeATEStartDate(XMLGregorianCalendar value);
-
-  JAXBElement<String> createAddressTypeLocalId(String value);
-
-  JAXBElement<String> createAddressTypeRadioContact(String value);
-
-  JAXBElement<MapReferenceType> createAddressTypeMapReference(MapReferenceType value);
-
-  JAXBElement<String> createAddressTypeAddressGlobalUID(String value);
-
-  JAXBElement<String> createAddressTypeStateProvince(String value);
-
-  JAXBElement<String> createAddressTypeCountry(String value);
-
-  JAXBElement<XMLGregorianCalendar> createAddressTypeEffectiveToDate(XMLGregorianCalendar value);
-
-  JAXBElement<XMLGregorianCalendar> createAddressTypeEffectiveFromDate(XMLGregorianCalendar value);
-
-  JAXBElement<String> createAddressTypeCommunity(String value);
-
-  JAXBElement<StatisticalAreasType> createAddressTypeStatisticalAreas(StatisticalAreasType value);
-
-  JAXBElement<GridLocationType> createAddressTypeGridLocation(GridLocationType value);
-
-  JAXBElement<OtherCodeListType> createMediumOfInstructionTypeOtherCodeList(OtherCodeListType value);
-
-  JAXBElement<OtherCodeListType> createStudentActivityTypeOtherCodeList(OtherCodeListType value);
-
-  JAXBElement<AUCodeSetsNAPWritingGenreType> createNAPTestItemContentTypeWritingGenre(AUCodeSetsNAPWritingGenreType value);
-
-  JAXBElement<NAPWritingRubricListType> createNAPTestItemContentTypeNAPWritingRubricList(NAPWritingRubricListType value);
-
-  JAXBElement<SubstituteItemListType> createNAPTestItemContentTypeItemSubstitutedForList(SubstituteItemListType value);
-
-  JAXBElement<StimulusListType> createNAPTestItemContentTypeStimulusList(StimulusListType value);
-
-  JAXBElement<ContentDescriptionListType> createNAPTestItemContentTypeContentDescriptionList(ContentDescriptionListType value);
-
-  JAXBElement<Integer> createNAPTestItemContentTypeMultipleChoiceOptionCount(Integer value);
-
-  JAXBElement<String> createNAPTestItemContentTypeExemplarURL(String value);
-
-  JAXBElement<String> createNAPTestItemContentTypeCorrectAnswer(String value);
-
-  JAXBElement<OtherCodeListType> createProgramStatusTypeOtherCodeList(OtherCodeListType value);
-
-  JAXBElement<String> createAdjustmentContainerTypeBookletType(String value);
-
-  JAXBElement<PhoneNumberType> createContactTypePhoneNumber(PhoneNumberType value);
-
-  JAXBElement<NameType> createContactTypeName(NameType value);
-
-  JAXBElement<AddressType> createContactTypeAddress(AddressType value);
-
-  JAXBElement<EmailType> createContactTypeEmail(EmailType value);
-
-  JAXBElement<String> createStaffMostRecentContainerTypeSchoolACARAId(String value);
-
-  JAXBElement<String> createStaffMostRecentContainerTypeHomeGroup(String value);
-
-  JAXBElement<String> createStaffMostRecentContainerTypeSchoolLocalId(String value);
-
-  JAXBElement<NAPLANClassListType> createStaffMostRecentContainerTypeNAPLANClassList(NAPLANClassListType value);
-
-  JAXBElement<String> createStaffMostRecentContainerTypeLocalCampusId(String value);
-
-  JAXBElement<OtherCodeListType> createProgramFundingSourceTypeOtherCodeList(OtherCodeListType value);
-
-  JAXBElement<OtherCodeListType> createStaffActivityExtensionTypeOtherCodeList(OtherCodeListType value);
-
-  JAXBElement<StaffActivityExtensionType> createStaffAssignmentTypeStaffActivity(StaffActivityExtensionType value);
-
-  JAXBElement<CalendarSummaryListType> createStaffAssignmentTypeCalendarSummaryList(CalendarSummaryListType value);
-
-  JAXBElement<AUCodeSetsStaffStatusType> createStaffAssignmentTypeEmploymentStatus(AUCodeSetsStaffStatusType value);
-
-  JAXBElement<XMLGregorianCalendar> createStaffAssignmentTypeSchoolYear(XMLGregorianCalendar value);
-
-  JAXBElement<XMLGregorianCalendar> createStaffAssignmentTypeJobStartDate(XMLGregorianCalendar value);
-
-  JAXBElement<String> createStaffAssignmentTypeDescription(String value);
-
-  JAXBElement<XMLGregorianCalendar> createStaffAssignmentTypeJobEndDate(XMLGregorianCalendar value);
-
-  JAXBElement<AUCodeSetsYesOrNoCategoryType> createStaffAssignmentTypeCasualReliefTeacher(AUCodeSetsYesOrNoCategoryType value);
-
-  JAXBElement<String> createStaffAssignmentTypeHouse(String value);
-
-  JAXBElement<String> createStaffAssignmentTypeHomegroup(String value);
-
-  JAXBElement<BigDecimal> createStaffAssignmentTypeJobFTE(BigDecimal value);
-
-  JAXBElement<String> createStaffAssignmentTypeJobFunction(String value);
-
-  JAXBElement<SIFExtendedElementsType> createStaffAssignmentTypeSIFExtendedElements(SIFExtendedElementsType value);
-
-  JAXBElement<YearLevelsType> createStaffAssignmentTypeYearLevels(YearLevelsType value);
-
-  JAXBElement<SIFMetadataType> createStaffAssignmentTypeSIFMetadata(SIFMetadataType value);
-
-  JAXBElement<StaffSubjectListType> createStaffAssignmentTypeStaffSubjectList(StaffSubjectListType value);
-
-  JAXBElement<LocationType> createAggregateStatisticInfoTypeLocation(LocationType value);
-
-  JAXBElement<XMLGregorianCalendar> createAggregateStatisticInfoTypeEffectiveDate(XMLGregorianCalendar value);
-
-  JAXBElement<XMLGregorianCalendar> createAggregateStatisticInfoTypeExpirationDate(XMLGregorianCalendar value);
-
-  JAXBElement<XMLGregorianCalendar> createAggregateStatisticInfoTypeApprovalDate(XMLGregorianCalendar value);
-
-  JAXBElement<AggregateStatisticInfoType.CalculationRule> createAggregateStatisticInfoTypeCalculationRule(AggregateStatisticInfoType.CalculationRule value);
-
-  JAXBElement<String> createAggregateStatisticInfoTypeMeasure(String value);
-
-  JAXBElement<XMLGregorianCalendar> createAggregateStatisticInfoTypeDiscontinueDate(XMLGregorianCalendar value);
-
-  JAXBElement<ExclusionRulesType> createAggregateStatisticInfoTypeExclusionRules(ExclusionRulesType value);
-
-  JAXBElement<String> createAggregateStatisticInfoTypeSource(String value);
-
-  JAXBElement<SIFExtendedElementsType> createAggregateStatisticInfoTypeSIFExtendedElements(SIFExtendedElementsType value);
-
-  JAXBElement<SIFMetadataType> createAggregateStatisticInfoTypeSIFMetadata(SIFMetadataType value);
-
-  JAXBElement<AUCodeSetsYesOrNoCategoryType> createLEAContactTypePublishInDirectory(AUCodeSetsYesOrNoCategoryType value);
-
-  JAXBElement<String> createSchoolInfoTypeStateProvinceId(String value);
-
-  JAXBElement<SchoolInfoType.OtherLEA> createSchoolInfoTypeOtherLEA(SchoolInfoType.OtherLEA value);
-
-  JAXBElement<AUCodeSetsYesOrNoCategoryType> createSchoolInfoTypeBoardingSchoolStatus(AUCodeSetsYesOrNoCategoryType value);
-
-  JAXBElement<String> createSchoolInfoTypeSessionType(String value);
-
-  JAXBElement<String> createSchoolInfoTypeSchoolDistrictLocalId(String value);
-
-  JAXBElement<String> createSchoolInfoTypeACARAId(String value);
-
-  JAXBElement<AddressListType> createSchoolInfoTypeAddressList(AddressListType value);
-
-  JAXBElement<AUCodeSetsOperationalStatusType> createSchoolInfoTypeOperationalStatus(AUCodeSetsOperationalStatusType value);
-
-  JAXBElement<String> createSchoolInfoTypeJurisdictionLowerHouse(String value);
-
-  JAXBElement<AUCodeSetsSchoolCoEdStatusType> createSchoolInfoTypeSchoolCoEdStatus(AUCodeSetsSchoolCoEdStatusType value);
-
-  JAXBElement<String> createSchoolInfoTypeLEAInfoRefId(String value);
-
-  JAXBElement<String> createSchoolInfoTypeLocalId(String value);
-
-  JAXBElement<BigDecimal> createSchoolInfoTypeARIA(BigDecimal value);
-
-  JAXBElement<TotalEnrollmentsType> createSchoolInfoTypeTotalEnrollments(TotalEnrollmentsType value);
-
-  JAXBElement<AUCodeSetsSchoolLevelType> createSchoolInfoTypeSchoolType(AUCodeSetsSchoolLevelType value);
-
-  JAXBElement<AUCodeSetsYesOrNoCategoryType> createSchoolInfoTypeIndependentSchool(AUCodeSetsYesOrNoCategoryType value);
-
-  JAXBElement<SchoolContactListType> createSchoolInfoTypeSchoolContactList(SchoolContactListType value);
-
-  JAXBElement<YearLevelsType> createSchoolInfoTypeYearLevels(YearLevelsType value);
-
-  JAXBElement<EmailListType> createSchoolInfoTypeSchoolEmailList(EmailListType value);
-
-  JAXBElement<PrincipalInfoType> createSchoolInfoTypePrincipalInfo(PrincipalInfoType value);
-
-  JAXBElement<String> createSchoolInfoTypeReligiousAffiliation(String value);
-
-  JAXBElement<String> createSchoolInfoTypeSchoolURL(String value);
-
-  JAXBElement<String> createSchoolInfoTypeSLA(String value);
-
-  JAXBElement<CampusContainerType> createSchoolInfoTypeCampus(CampusContainerType value);
-
-  JAXBElement<OtherIdListType> createSchoolInfoTypeOtherIdList(OtherIdListType value);
-
-  JAXBElement<String> createSchoolInfoTypeFederalElectorate(String value);
-
-  JAXBElement<XMLGregorianCalendar> createSchoolInfoTypeEntityOpen(XMLGregorianCalendar value);
-
-  JAXBElement<String> createSchoolInfoTypeLocalGovernmentArea(String value);
-
-  JAXBElement<YearLevelEnrollmentListType> createSchoolInfoTypeYearLevelEnrollmentList(YearLevelEnrollmentListType value);
-
-  JAXBElement<String> createSchoolInfoTypeSystem(String value);
-
-  JAXBElement<AUCodeSetsSystemicStatusType> createSchoolInfoTypeNonGovSystemicStatus(AUCodeSetsSystemicStatusType value);
-
-  JAXBElement<String> createSchoolInfoTypeSchoolDistrict(String value);
-
-  JAXBElement<SchoolGroupListType> createSchoolInfoTypeSchoolGroupList(SchoolGroupListType value);
-
-  JAXBElement<String> createSchoolInfoTypeCommonwealthId(String value);
-
-  JAXBElement<SIFExtendedElementsType> createSchoolInfoTypeSIFExtendedElements(SIFExtendedElementsType value);
-
-  JAXBElement<SIFMetadataType> createSchoolInfoTypeSIFMetadata(SIFMetadataType value);
-
-  JAXBElement<String> createSchoolInfoTypeSchoolGeographicLocation(String value);
-
-  JAXBElement<PhoneNumberListType> createSchoolInfoTypePhoneNumberList(PhoneNumberListType value);
-
-  JAXBElement<XMLGregorianCalendar> createSchoolInfoTypeEntityClose(XMLGregorianCalendar value);
-
-  JAXBElement<SchoolFocusListType> createSchoolInfoTypeSchoolFocusList(SchoolFocusListType value);
-
-  JAXBElement<MonetaryAmountType> createPaymentReceiptTypeTaxAmount(MonetaryAmountType value);
-
-  JAXBElement<BigDecimal> createPaymentReceiptTypeTaxRate(BigDecimal value);
-
-  JAXBElement<String> createPaymentReceiptTypeChequeNumber(String value);
-
-  JAXBElement<String> createPaymentReceiptTypeTransactionNote(String value);
-
-  JAXBElement<String> createPaymentReceiptTypeDebtorRefId(String value);
-
-  JAXBElement<String> createPaymentReceiptTypeAccountingPeriod(String value);
-
-  JAXBElement<String> createPaymentReceiptTypeVendorInfoRefId(String value);
-
-  JAXBElement<String> createPaymentReceiptTypeChargedLocationInfoRefId(String value);
-
-  JAXBElement<String> createPaymentReceiptTypeTransactionDescription(String value);
-
-  JAXBElement<String> createPaymentReceiptTypeTransactionMethod(String value);
-
-  JAXBElement<String> createPaymentReceiptTypeInvoiceRefId(String value);
-
-  JAXBElement<SIFExtendedElementsType> createPaymentReceiptTypeSIFExtendedElements(SIFExtendedElementsType value);
-
-  JAXBElement<SIFMetadataType> createPaymentReceiptTypeSIFMetadata(SIFMetadataType value);
-
-  JAXBElement<FinancialAccountRefIdListType> createPaymentReceiptTypeFinancialAccountRefIdList(FinancialAccountRefIdListType value);
-
-  JAXBElement<OtherCodeListType> createAgencyTypeOtherCodeList(OtherCodeListType value);
-
-  JAXBElement<BigDecimal> createStudentAttendanceSummaryTypeDaysTardy(BigDecimal value);
-
-  JAXBElement<Long> createStudentAttendanceSummaryTypeStartDay(Long value);
-
-  JAXBElement<SIFExtendedElementsType> createStudentAttendanceSummaryTypeSIFExtendedElements(SIFExtendedElementsType value);
-
-  JAXBElement<Long> createStudentAttendanceSummaryTypeEndDay(Long value);
-
-  JAXBElement<SIFMetadataType> createStudentAttendanceSummaryTypeSIFMetadata(SIFMetadataType value);
-
-  JAXBElement<BigDecimal> createStudentAttendanceSummaryTypeFTE(BigDecimal value);
-
-  JAXBElement<String> createStudentContactPersonalTypeLocalId(String value);
-
-  JAXBElement<String> createStudentContactPersonalTypeNonSchoolEducation(String value);
-
-  JAXBElement<String> createStudentContactPersonalTypeEmploymentType(String value);
-
-  JAXBElement<OtherIdListType> createStudentContactPersonalTypeOtherIdList(OtherIdListType value);
-
-  JAXBElement<SIFExtendedElementsType> createStudentContactPersonalTypeSIFExtendedElements(SIFExtendedElementsType value);
-
-  JAXBElement<SIFMetadataType> createStudentContactPersonalTypeSIFMetadata(SIFMetadataType value);
-
-  JAXBElement<String> createStudentContactPersonalTypeSchoolEducationalLevel(String value);
-
-  JAXBElement<String> createNAPTestletResponseItemTypeNAPTestItemLocalId(String value);
-
-  JAXBElement<BigDecimal> createNAPTestletResponseItemTypeScore(BigDecimal value);
-
-  JAXBElement<AUCodeSetsNAPResponseCorrectnessType> createNAPTestletResponseItemTypeResponseCorrectness(AUCodeSetsNAPResponseCorrectnessType value);
-
-  JAXBElement<NAPSubscoreListType> createNAPTestletResponseItemTypeSubscoreList(NAPSubscoreListType value);
-
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link ScheduledActivityCollectionType }{@code >}}
+   * 
+   */
+  JAXBElement<ScheduledActivityCollectionType> createScheduledActivitys(ScheduledActivityCollectionType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link ResourceBookingType }{@code >}}
+   * 
+   */
+  JAXBElement<ResourceBookingType> createResourceBooking(ResourceBookingType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link ResourceBookingCollectionType }{@code >}}
+   * 
+   */
+  JAXBElement<ResourceBookingCollectionType> createResourceBookings(ResourceBookingCollectionType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link EquipmentInfoType }{@code >}}
+   * 
+   */
+  JAXBElement<EquipmentInfoType> createEquipmentInfo(EquipmentInfoType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link EquipmentInfoCollectionType }{@code >}}
+   * 
+   */
+  JAXBElement<EquipmentInfoCollectionType> createEquipmentInfos(EquipmentInfoCollectionType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link InvoiceType }{@code >}}
+   * 
+   */
+  JAXBElement<InvoiceType> createInvoice(InvoiceType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link InvoiceCollectionType }{@code >}}
+   * 
+   */
+  JAXBElement<InvoiceCollectionType> createInvoices(InvoiceCollectionType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link FinancialAccountType }{@code >}}
+   * 
+   */
+  JAXBElement<FinancialAccountType> createFinancialAccount(FinancialAccountType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link FinancialAccountCollectionType }{@code >}}
+   * 
+   */
+  JAXBElement<FinancialAccountCollectionType> createFinancialAccounts(FinancialAccountCollectionType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link ChargedLocationInfoType }{@code >}}
+   * 
+   */
+  JAXBElement<ChargedLocationInfoType> createChargedLocationInfo(ChargedLocationInfoType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link ChargedLocationInfoCollectionType }{@code >}}
+   * 
+   */
+  JAXBElement<ChargedLocationInfoCollectionType> createChargedLocationInfos(ChargedLocationInfoCollectionType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link PaymentReceiptType }{@code >}}
+   * 
+   */
+  JAXBElement<PaymentReceiptType> createPaymentReceipt(PaymentReceiptType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link PaymentReceiptCollectionType }{@code >}}
+   * 
+   */
+  JAXBElement<PaymentReceiptCollectionType> createPaymentReceipts(PaymentReceiptCollectionType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link PurchaseOrderType }{@code >}}
+   * 
+   */
+  JAXBElement<PurchaseOrderType> createPurchaseOrder(PurchaseOrderType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link PurchaseOrderCollectionType }{@code >}}
+   * 
+   */
+  JAXBElement<PurchaseOrderCollectionType> createPurchaseOrders(PurchaseOrderCollectionType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link VendorInfoType }{@code >}}
+   * 
+   */
+  JAXBElement<VendorInfoType> createVendorInfo(VendorInfoType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link VendorInfoCollectionType }{@code >}}
+   * 
+   */
+  JAXBElement<VendorInfoCollectionType> createVendorInfos(VendorInfoCollectionType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link JournalType }{@code >}}
+   * 
+   */
+  JAXBElement<JournalType> createJournal(JournalType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link JournalCollectionType }{@code >}}
+   * 
+   */
+  JAXBElement<JournalCollectionType> createJournals(JournalCollectionType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link DebtorType }{@code >}}
+   * 
+   */
+  JAXBElement<DebtorType> createDebtor(DebtorType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link DebtorCollectionType }{@code >}}
+   * 
+   */
+  JAXBElement<DebtorCollectionType> createDebtors(DebtorCollectionType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link StudentAttendanceTimeListType }{@code >}}
+   * 
+   */
+  JAXBElement<StudentAttendanceTimeListType> createStudentAttendanceTimeList(StudentAttendanceTimeListType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link StudentAttendanceTimeListCollectionType }{@code >}}
+   * 
+   */
+  JAXBElement<StudentAttendanceTimeListCollectionType> createStudentAttendanceTimeLists(StudentAttendanceTimeListCollectionType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link GradingAssignmentType }{@code >}}
+   * 
+   */
+  JAXBElement<GradingAssignmentType> createGradingAssignment(GradingAssignmentType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link GradingAssignmentCollectionType }{@code >}}
+   * 
+   */
+  JAXBElement<GradingAssignmentCollectionType> createGradingAssignments(GradingAssignmentCollectionType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link GradingAssignmentScoreType }{@code >}}
+   * 
+   */
+  JAXBElement<GradingAssignmentScoreType> createGradingAssignmentScore(GradingAssignmentScoreType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link GradingAssignmentScoreCollectionType }{@code >}}
+   * 
+   */
+  JAXBElement<GradingAssignmentScoreCollectionType> createGradingAssignmentScores(GradingAssignmentScoreCollectionType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link NAPEventStudentLinkType }{@code >}}
+   * 
+   */
+  JAXBElement<NAPEventStudentLinkType> createNAPEventStudentLink(NAPEventStudentLinkType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link NAPEventStudentLinkCollectionType }{@code >}}
+   * 
+   */
+  JAXBElement<NAPEventStudentLinkCollectionType> createNAPEventStudentLinks(NAPEventStudentLinkCollectionType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link NAPTestType }{@code >}}
+   * 
+   */
+  JAXBElement<NAPTestType> createNAPTest(NAPTestType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link NAPTestCollectionType }{@code >}}
+   * 
+   */
+  JAXBElement<NAPTestCollectionType> createNAPTests(NAPTestCollectionType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link NAPTestletType }{@code >}}
+   * 
+   */
+  JAXBElement<NAPTestletType> createNAPTestlet(NAPTestletType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link NAPTestletCollectionType }{@code >}}
+   * 
+   */
+  JAXBElement<NAPTestletCollectionType> createNAPTestlets(NAPTestletCollectionType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link NAPTestScoreSummaryType }{@code >}}
+   * 
+   */
+  JAXBElement<NAPTestScoreSummaryType> createNAPTestScoreSummary(NAPTestScoreSummaryType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link NAPTestScoreSummaryCollectionType }{@code >}}
+   * 
+   */
+  JAXBElement<NAPTestScoreSummaryCollectionType> createNAPTestScoreSummarys(NAPTestScoreSummaryCollectionType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link NAPTestItemType }{@code >}}
+   * 
+   */
+  JAXBElement<NAPTestItemType> createNAPTestItem(NAPTestItemType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link NAPTestItemCollectionType }{@code >}}
+   * 
+   */
+  JAXBElement<NAPTestItemCollectionType> createNAPTestItems(NAPTestItemCollectionType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link NAPStudentResponseSetType }{@code >}}
+   * 
+   */
+  JAXBElement<NAPStudentResponseSetType> createNAPStudentResponseSet(NAPStudentResponseSetType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link NAPStudentResponseSetCollectionType }{@code >}}
+   * 
+   */
+  JAXBElement<NAPStudentResponseSetCollectionType> createNAPStudentResponseSets(NAPStudentResponseSetCollectionType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link NAPCodeFrameType }{@code >}}
+   * 
+   */
+  JAXBElement<NAPCodeFrameType> createNAPCodeFrame(NAPCodeFrameType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link NAPCodeFrameCollectionType }{@code >}}
+   * 
+   */
+  JAXBElement<NAPCodeFrameCollectionType> createNAPCodeFrames(NAPCodeFrameCollectionType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link SIFMetadataType.TimeElements }{@code >}}
+   * 
+   */
+  JAXBElement<SIFMetadataType.TimeElements> createSIFMetadataTypeTimeElements(SIFMetadataType.TimeElements value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link LifeCycleType }{@code >}}
+   * 
+   */
+  JAXBElement<LifeCycleType> createSIFMetadataTypeLifeCycle(LifeCycleType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link EducationFilterType }{@code >}}
+   * 
+   */
+  JAXBElement<EducationFilterType> createSIFMetadataTypeEducationFilter(EducationFilterType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link LearningStandardsType }{@code >}}
+   * 
+   */
   JAXBElement<LearningStandardsType> createEducationFilterTypeLearningStandardItems(LearningStandardsType value);
 
-  JAXBElement<AuthorsType> createLearningStandardDocumentTypeAuthors(AuthorsType value);
-
-  JAXBElement<XMLGregorianCalendar> createLearningStandardDocumentTypeLocalArchiveDate(XMLGregorianCalendar value);
-
-  JAXBElement<XMLGregorianCalendar> createLearningStandardDocumentTypeEndOfLifeDate(XMLGregorianCalendar value);
-
-  JAXBElement<XMLGregorianCalendar> createLearningStandardDocumentTypeDocumentDate(XMLGregorianCalendar value);
-
-  JAXBElement<String> createLearningStandardDocumentTypeDescription(String value);
-
-  JAXBElement<XMLGregorianCalendar> createLearningStandardDocumentTypeLocalAdoptionDate(XMLGregorianCalendar value);
-
-  JAXBElement<LearningStandardDocumentType.Copyright> createLearningStandardDocumentTypeCopyright(LearningStandardDocumentType.Copyright value);
-
-  JAXBElement<LearningStandardsDocumentType> createLearningStandardDocumentTypeRelatedLearningStandards(LearningStandardsDocumentType value);
-
-  JAXBElement<AbstractContentElementType> createLearningStandardDocumentTypeRichDescription(AbstractContentElementType value);
-
-  JAXBElement<XMLGregorianCalendar> createLearningStandardDocumentTypeRepositoryDate(XMLGregorianCalendar value);
-
-  JAXBElement<SIFExtendedElementsType> createLearningStandardDocumentTypeSIFExtendedElements(SIFExtendedElementsType value);
-
-  JAXBElement<YearLevelsType> createLearningStandardDocumentTypeYearLevels(YearLevelsType value);
-
-  JAXBElement<SIFMetadataType> createLearningStandardDocumentTypeSIFMetadata(SIFMetadataType value);
-
-  JAXBElement<String> createLearningStandardDocumentTypeOrganizationContactPoint(String value);
-
-  JAXBElement<String> createExpenseAccountTypeAccountingPeriod(String value);
-
-  JAXBElement<String> createExpenseAccountTypeFinancialAccountRefId(String value);
-
-  JAXBElement<XMLGregorianCalendar> createTimeTablePeriodTypeStartTime(XMLGregorianCalendar value);
-
-  JAXBElement<XMLGregorianCalendar> createTimeTablePeriodTypeEndTime(XMLGregorianCalendar value);
-
-  JAXBElement<Long> createTimeTablePeriodTypeInstructionalMinutes(Long value);
-
-  JAXBElement<String> createTimeTablePeriodTypeUseInAttendanceCalculations(String value);
-
-  JAXBElement<String> createTimeTablePeriodTypeRegularSchoolPeriod(String value);
-
-  JAXBElement<String> createTimeTablePeriodTypeBellPeriod(String value);
-
-  JAXBElement<ResourceUsageType.ResourceReportLineList.ResourceReportLine.SIFRefId> createResourceUsageTypeResourceReportLineListResourceReportLineSIFRefId(
-      ResourceUsageType.ResourceReportLineList.ResourceReportLine.SIFRefId value);
-
-  JAXBElement<XMLGregorianCalendar> createResourceUsageTypeResourceReportLineListResourceReportLineEndDate(XMLGregorianCalendar value);
-
-  JAXBElement<String> createStudentParticipationTypeEntryPerson(String value);
-
-  JAXBElement<XMLGregorianCalendar> createStudentParticipationTypeEvaluationDate(XMLGregorianCalendar value);
-
-  JAXBElement<XMLGregorianCalendar> createStudentParticipationTypeReevaluationDate(XMLGregorianCalendar value);
-
-  JAXBElement<XMLGregorianCalendar> createStudentParticipationTypeNOREPDate(XMLGregorianCalendar value);
-
-  JAXBElement<Boolean> createStudentParticipationTypeExtendedDay(Boolean value);
-
-  JAXBElement<Boolean> createStudentParticipationTypeExtendedSchoolYear(Boolean value);
-
-  JAXBElement<XMLGregorianCalendar> createStudentParticipationTypeEvaluationParentalConsentDate(XMLGregorianCalendar value);
-
-  JAXBElement<ProgramFundingSourcesType> createStudentParticipationTypeProgramFundingSources(ProgramFundingSourcesType value);
-
-  JAXBElement<XMLGregorianCalendar> createStudentParticipationTypeProgramEligibilityDate(XMLGregorianCalendar value);
-
-  JAXBElement<XMLGregorianCalendar> createStudentParticipationTypeProgramPlanDate(XMLGregorianCalendar value);
-
-  JAXBElement<String> createStudentParticipationTypeProgramType(String value);
-
-  JAXBElement<String> createStudentParticipationTypeExtensionComments(String value);
-
-  JAXBElement<ProgramStatusType> createStudentParticipationTypeProgramStatus(ProgramStatusType value);
-
-  JAXBElement<XMLGregorianCalendar> createStudentParticipationTypeProgramPlanEffectiveDate(XMLGregorianCalendar value);
-
-  JAXBElement<BigDecimal> createStudentParticipationTypeStudentSpecialEducationFTE(BigDecimal value);
-
-  JAXBElement<XMLGregorianCalendar> createStudentParticipationTypeReferralDate(XMLGregorianCalendar value);
-
-  JAXBElement<ProgramAvailabilityType> createStudentParticipationTypeProgramAvailability(ProgramAvailabilityType value);
-
-  JAXBElement<XMLGregorianCalendar> createStudentParticipationTypePlacementParentalConsentDate(XMLGregorianCalendar value);
-
-  JAXBElement<AUCodeSetsYesOrNoCategoryType> createStudentParticipationTypeGiftedEligibilityCriteria(AUCodeSetsYesOrNoCategoryType value);
-
-  JAXBElement<String> createStudentParticipationTypeParticipationContact(String value);
-
-  JAXBElement<XMLGregorianCalendar> createStudentParticipationTypeEvaluationExtensionDate(XMLGregorianCalendar value);
-
-  JAXBElement<XMLGregorianCalendar> createStudentParticipationTypeProgramPlacementDate(XMLGregorianCalendar value);
-
-  JAXBElement<SIFExtendedElementsType> createStudentParticipationTypeSIFExtendedElements(SIFExtendedElementsType value);
-
-  JAXBElement<ReferralSourceType> createStudentParticipationTypeReferralSource(ReferralSourceType value);
-
-  JAXBElement<SIFMetadataType> createStudentParticipationTypeSIFMetadata(SIFMetadataType value);
-
-  JAXBElement<Long> createPhoneNumberTypePreference(Long value);
-
-  JAXBElement<AUCodeSetsYesOrNoCategoryType> createPhoneNumberTypeListedStatus(AUCodeSetsYesOrNoCategoryType value);
-
-  JAXBElement<String> createPhoneNumberTypeExtension(String value);
-
-  JAXBElement<String> createTimeTableCellTypeStaffLocalId(String value);
-
-  JAXBElement<String> createTimeTableCellTypeSubjectLocalId(String value);
-
-  JAXBElement<String> createTimeTableCellTypeSchoolInfoRefId(String value);
-
-  JAXBElement<String> createTimeTableCellTypeStaffPersonalRefId(String value);
-
-  JAXBElement<String> createTimeTableCellTypeTimeTableLocalId(String value);
-
-  JAXBElement<String> createTimeTableCellTypeSchoolLocalId(String value);
-
-  JAXBElement<String> createTimeTableCellTypeRoomNumber(String value);
-
-  JAXBElement<SIFExtendedElementsType> createTimeTableCellTypeSIFExtendedElements(SIFExtendedElementsType value);
-
-  JAXBElement<String> createTimeTableCellTypeTeachingGroupLocalId(String value);
-
-  JAXBElement<SIFMetadataType> createTimeTableCellTypeSIFMetadata(SIFMetadataType value);
-
-  JAXBElement<Boolean> createResourceBookingTypeKeepOld(Boolean value);
-
-  JAXBElement<String> createResourceBookingTypeScheduledActivityRefId(String value);
-
-  JAXBElement<String> createResourceBookingTypeReason(String value);
-
-  JAXBElement<SIFExtendedElementsType> createResourceBookingTypeSIFExtendedElements(SIFExtendedElementsType value);
-
-  JAXBElement<SIFMetadataType> createResourceBookingTypeSIFMetadata(SIFMetadataType value);
-
-  JAXBElement<String> createResourceBookingTypeToPeriod(String value);
-
-  JAXBElement<String> createResourceBookingTypeFromPeriod(String value);
-
-  JAXBElement<ResourceBookingType.ResourceRefId> createResourceBookingTypeResourceRefId(ResourceBookingType.ResourceRefId value);
-
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link SubjectAreaType }{@code >}}
+   * 
+   */
+  JAXBElement<SubjectAreaType> createACStrandSubjectAreaTypeSubjectArea(SubjectAreaType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link OtherCodeListType }{@code >}}
+   * 
+   */
+  JAXBElement<OtherCodeListType> createSubjectAreaTypeOtherCodeList(OtherCodeListType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link OtherCodeListType }{@code >}}
+   * 
+   */
+  JAXBElement<OtherCodeListType> createProgramStatusTypeOtherCodeList(OtherCodeListType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link LifeCycleType.Created }{@code >}}
+   * 
+   */
+  JAXBElement<LifeCycleType.Created> createLifeCycleTypeCreated(LifeCycleType.Created value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link LifeCycleType.ModificationHistory }{@code >}}
+   * 
+   */
+  JAXBElement<LifeCycleType.ModificationHistory> createLifeCycleTypeModificationHistory(LifeCycleType.ModificationHistory value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link LifeCycleType.TimeElements }{@code >}}
+   * 
+   */
+  JAXBElement<LifeCycleType.TimeElements> createLifeCycleTypeTimeElements(LifeCycleType.TimeElements value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+   * 
+   */
   JAXBElement<String> createLifeCycleTypeModificationHistoryModifiedDescription(String value);
 
-  JAXBElement<XMLGregorianCalendar> createStudentSectionEnrollmentTypeEntryDate(XMLGregorianCalendar value);
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link LifeCycleType.Created.Creators }{@code >}}
+   * 
+   */
+  JAXBElement<LifeCycleType.Created.Creators> createLifeCycleTypeCreatedCreators(LifeCycleType.Created.Creators value);
 
-  JAXBElement<XMLGregorianCalendar> createStudentSectionEnrollmentTypeSchoolYear(XMLGregorianCalendar value);
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link java.util.Calendar }{@code >}}
+   * 
+   */
+  JAXBElement<java.util.Calendar> createTimeElementTypeStartDateTime(java.util.Calendar value);
 
-  JAXBElement<XMLGregorianCalendar> createStudentSectionEnrollmentTypeExitDate(XMLGregorianCalendar value);
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link java.util.Calendar }{@code >}}
+   * 
+   */
+  JAXBElement<java.util.Calendar> createTimeElementTypeEndDateTime(java.util.Calendar value);
 
-  JAXBElement<SIFExtendedElementsType> createStudentSectionEnrollmentTypeSIFExtendedElements(SIFExtendedElementsType value);
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link TimeElementType.SpanGaps }{@code >}}
+   * 
+   */
+  JAXBElement<TimeElementType.SpanGaps> createTimeElementTypeSpanGaps(TimeElementType.SpanGaps value);
 
-  JAXBElement<SIFMetadataType> createStudentSectionEnrollmentTypeSIFMetadata(SIFMetadataType value);
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link java.util.Calendar }{@code >}}
+   * 
+   */
+  JAXBElement<java.util.Calendar> createTimeElementTypeSpanGapsSpanGapStartDateTime(java.util.Calendar value);
 
-  JAXBElement<String> createAggregateStatisticFactTypeExcluded(String value);
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link java.util.Calendar }{@code >}}
+   * 
+   */
+  JAXBElement<java.util.Calendar> createTimeElementTypeSpanGapsSpanGapEndDateTime(java.util.Calendar value);
 
-  JAXBElement<SIFExtendedElementsType> createAggregateStatisticFactTypeSIFExtendedElements(SIFExtendedElementsType value);
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+   * 
+   */
+  JAXBElement<String> createBaseNameTypeTitle(String value);
 
-  JAXBElement<SIFMetadataType> createAggregateStatisticFactTypeSIFMetadata(SIFMetadataType value);
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+   * 
+   */
+  JAXBElement<String> createBaseNameTypeFamilyName(String value);
 
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+   * 
+   */
+  JAXBElement<String> createBaseNameTypeGivenName(String value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+   * 
+   */
+  JAXBElement<String> createBaseNameTypeMiddleName(String value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link AUCodeSetsYesOrNoCategoryType }{@code >}}
+   * 
+   */
+  JAXBElement<AUCodeSetsYesOrNoCategoryType> createBaseNameTypeFamilyNameFirst(AUCodeSetsYesOrNoCategoryType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+   * 
+   */
+  JAXBElement<String> createBaseNameTypePreferredFamilyName(String value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link AUCodeSetsYesOrNoCategoryType }{@code >}}
+   * 
+   */
+  JAXBElement<AUCodeSetsYesOrNoCategoryType> createBaseNameTypePreferredFamilyNameFirst(AUCodeSetsYesOrNoCategoryType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+   * 
+   */
+  JAXBElement<String> createBaseNameTypePreferredGivenName(String value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+   * 
+   */
+  JAXBElement<String> createBaseNameTypeSuffix(String value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+   * 
+   */
+  JAXBElement<String> createBaseNameTypeFullName(String value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link OtherCodeListType }{@code >}}
+   * 
+   */
+  JAXBElement<OtherCodeListType> createRelationshipTypeOtherCodeList(OtherCodeListType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link OtherCodeListType }{@code >}}
+   * 
+   */
+  JAXBElement<OtherCodeListType> createEnglishProficiencyTypeOtherCodeList(OtherCodeListType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+   * 
+   */
+  JAXBElement<String> createDemographicsTypeIndigenousStatus(String value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+   * 
+   */
+  JAXBElement<String> createDemographicsTypeSex(String value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link XMLGregorianCalendar }{@code >}}
+   * 
+   */
+  JAXBElement<XMLGregorianCalendar> createDemographicsTypeBirthDate(XMLGregorianCalendar value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link XMLGregorianCalendar }{@code >}}
+   * 
+   */
+  JAXBElement<XMLGregorianCalendar> createDemographicsTypeDateOfDeath(XMLGregorianCalendar value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+   * 
+   */
+  JAXBElement<String> createDemographicsTypeBirthDateVerification(String value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+   * 
+   */
+  JAXBElement<String> createDemographicsTypePlaceOfBirth(String value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+   * 
+   */
+  JAXBElement<String> createDemographicsTypeStateOfBirth(String value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+   * 
+   */
+  JAXBElement<String> createDemographicsTypeCountryOfBirth(String value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link CountryListType }{@code >}}
+   * 
+   */
+  JAXBElement<CountryListType> createDemographicsTypeCountriesOfCitizenship(CountryListType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link CountryList2Type }{@code >}}
+   * 
+   */
+  JAXBElement<CountryList2Type> createDemographicsTypeCountriesOfResidency(CountryList2Type value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link XMLGregorianCalendar }{@code >}}
+   * 
+   */
+  JAXBElement<XMLGregorianCalendar> createDemographicsTypeCountryArrivalDate(XMLGregorianCalendar value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+   * 
+   */
+  JAXBElement<String> createDemographicsTypeAustralianCitizenshipStatus(String value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link EnglishProficiencyType }{@code >}}
+   * 
+   */
+  JAXBElement<EnglishProficiencyType> createDemographicsTypeEnglishProficiency(EnglishProficiencyType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link LanguageListType }{@code >}}
+   * 
+   */
+  JAXBElement<LanguageListType> createDemographicsTypeLanguageList(LanguageListType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link DwellingArrangementType }{@code >}}
+   * 
+   */
+  JAXBElement<DwellingArrangementType> createDemographicsTypeDwellingArrangement(DwellingArrangementType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link ReligionType }{@code >}}
+   * 
+   */
+  JAXBElement<ReligionType> createDemographicsTypeReligion(ReligionType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link ReligiousEventListType }{@code >}}
+   * 
+   */
+  JAXBElement<ReligiousEventListType> createDemographicsTypeReligiousEventList(ReligiousEventListType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+   * 
+   */
+  JAXBElement<String> createDemographicsTypeReligiousRegion(String value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+   * 
+   */
+  JAXBElement<String> createDemographicsTypePermanentResident(String value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+   * 
+   */
+  JAXBElement<String> createDemographicsTypeVisaSubClass(String value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+   * 
+   */
+  JAXBElement<String> createDemographicsTypeVisaStatisticalCode(String value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link XMLGregorianCalendar }{@code >}}
+   * 
+   */
+  JAXBElement<XMLGregorianCalendar> createDemographicsTypeVisaExpiryDate(XMLGregorianCalendar value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link VisaSubClassListType }{@code >}}
+   * 
+   */
+  JAXBElement<VisaSubClassListType> createDemographicsTypeVisaSubClassList(VisaSubClassListType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link AUCodeSetsYesOrNoCategoryType }{@code >}}
+   * 
+   */
+  JAXBElement<AUCodeSetsYesOrNoCategoryType> createDemographicsTypeLBOTE(AUCodeSetsYesOrNoCategoryType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link AUCodeSetsImmunisationCertificateStatusType }{@code >}}
+   * 
+   */
+  JAXBElement<AUCodeSetsImmunisationCertificateStatusType> createDemographicsTypeImmunisationCertificateStatus(AUCodeSetsImmunisationCertificateStatusType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+   * 
+   */
+  JAXBElement<String> createDemographicsTypeCulturalBackground(String value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+   * 
+   */
+  JAXBElement<String> createDemographicsTypeMaritalStatus(String value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+   * 
+   */
+  JAXBElement<String> createPhoneNumberTypeExtension(String value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link AUCodeSetsYesOrNoCategoryType }{@code >}}
+   * 
+   */
+  JAXBElement<AUCodeSetsYesOrNoCategoryType> createPhoneNumberTypeListedStatus(AUCodeSetsYesOrNoCategoryType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link Long }{@code >}}
+   * 
+   */
+  JAXBElement<Long> createPhoneNumberTypePreference(Long value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link XMLGregorianCalendar }{@code >}}
+   * 
+   */
+  JAXBElement<XMLGregorianCalendar> createAddressTypeEffectiveFromDate(XMLGregorianCalendar value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link XMLGregorianCalendar }{@code >}}
+   * 
+   */
+  JAXBElement<XMLGregorianCalendar> createAddressTypeEffectiveToDate(XMLGregorianCalendar value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+   * 
+   */
+  JAXBElement<String> createAddressTypeStateProvince(String value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+   * 
+   */
+  JAXBElement<String> createAddressTypeCountry(String value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link GridLocationType }{@code >}}
+   * 
+   */
+  JAXBElement<GridLocationType> createAddressTypeGridLocation(GridLocationType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link MapReferenceType }{@code >}}
+   * 
+   */
+  JAXBElement<MapReferenceType> createAddressTypeMapReference(MapReferenceType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+   * 
+   */
+  JAXBElement<String> createAddressTypeRadioContact(String value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+   * 
+   */
+  JAXBElement<String> createAddressTypeCommunity(String value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+   * 
+   */
+  JAXBElement<String> createAddressTypeLocalId(String value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+   * 
+   */
+  JAXBElement<String> createAddressTypeAddressGlobalUID(String value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link StatisticalAreasType }{@code >}}
+   * 
+   */
+  JAXBElement<StatisticalAreasType> createAddressTypeStatisticalAreas(StatisticalAreasType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+   * 
+   */
+  JAXBElement<String> createAddressStreetTypeLine2(String value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+   * 
+   */
+  JAXBElement<String> createAddressStreetTypeLine3(String value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+   * 
+   */
+  JAXBElement<String> createAddressStreetTypeComplex(String value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+   * 
+   */
+  JAXBElement<String> createAddressStreetTypeStreetNumber(String value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+   * 
+   */
+  JAXBElement<String> createAddressStreetTypeStreetPrefix(String value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+   * 
+   */
+  JAXBElement<String> createAddressStreetTypeStreetName(String value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+   * 
+   */
+  JAXBElement<String> createAddressStreetTypeStreetType(String value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+   * 
+   */
+  JAXBElement<String> createAddressStreetTypeStreetSuffix(String value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+   * 
+   */
+  JAXBElement<String> createAddressStreetTypeApartmentType(String value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+   * 
+   */
+  JAXBElement<String> createAddressStreetTypeApartmentNumberPrefix(String value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+   * 
+   */
+  JAXBElement<String> createAddressStreetTypeApartmentNumber(String value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+   * 
+   */
+  JAXBElement<String> createAddressStreetTypeApartmentNumberSuffix(String value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+   * 
+   */
+  JAXBElement<String> createContactInfoTypePositionTitle(String value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+   * 
+   */
+  JAXBElement<String> createContactInfoTypeRole(String value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link AddressType }{@code >}}
+   * 
+   */
+  JAXBElement<AddressType> createContactInfoTypeAddress(AddressType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link EmailListType }{@code >}}
+   * 
+   */
+  JAXBElement<EmailListType> createContactInfoTypeEmailList(EmailListType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link PhoneNumberListType }{@code >}}
+   * 
+   */
+  JAXBElement<PhoneNumberListType> createContactInfoTypePhoneNumberList(PhoneNumberListType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link AUCodeSetsYesOrNoCategoryType }{@code >}}
+   * 
+   */
+  JAXBElement<AUCodeSetsYesOrNoCategoryType> createSchoolContactTypePublishInDirectory(AUCodeSetsYesOrNoCategoryType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+   * 
+   */
+  JAXBElement<String> createPrincipalInfoTypeContactTitle(String value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link PhoneNumberListType }{@code >}}
+   * 
+   */
+  JAXBElement<PhoneNumberListType> createPrincipalInfoTypePhoneNumberList(PhoneNumberListType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link EmailListType }{@code >}}
+   * 
+   */
+  JAXBElement<EmailListType> createPrincipalInfoTypeEmailList(EmailListType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link OtherNamesType }{@code >}}
+   * 
+   */
+  JAXBElement<OtherNamesType> createPersonInfoTypeOtherNames(OtherNamesType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link DemographicsType }{@code >}}
+   * 
+   */
+  JAXBElement<DemographicsType> createPersonInfoTypeDemographics(DemographicsType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link AddressListType }{@code >}}
+   * 
+   */
+  JAXBElement<AddressListType> createPersonInfoTypeAddressList(AddressListType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link PhoneNumberListType }{@code >}}
+   * 
+   */
+  JAXBElement<PhoneNumberListType> createPersonInfoTypePhoneNumberList(PhoneNumberListType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link EmailListType }{@code >}}
+   * 
+   */
+  JAXBElement<EmailListType> createPersonInfoTypeEmailList(EmailListType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link HouseholdContactInfoListType }{@code >}}
+   * 
+   */
+  JAXBElement<HouseholdContactInfoListType> createPersonInfoTypeHouseholdContactInfoList(HouseholdContactInfoListType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link OtherCodeListType }{@code >}}
+   * 
+   */
+  JAXBElement<OtherCodeListType> createAttendanceCodeTypeOtherCodeList(OtherCodeListType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+   * 
+   */
+  JAXBElement<String> createLocationTypeLocationName(String value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link LocationType.LocationRefId }{@code >}}
+   * 
+   */
+  JAXBElement<LocationType.LocationRefId> createLocationTypeLocationRefId(LocationType.LocationRefId value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+   * 
+   */
+  JAXBElement<String> createTimeTablePeriodTypeBellPeriod(String value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link XMLGregorianCalendar }{@code >}}
+   * 
+   */
+  JAXBElement<XMLGregorianCalendar> createTimeTablePeriodTypeStartTime(XMLGregorianCalendar value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link XMLGregorianCalendar }{@code >}}
+   * 
+   */
+  JAXBElement<XMLGregorianCalendar> createTimeTablePeriodTypeEndTime(XMLGregorianCalendar value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+   * 
+   */
+  JAXBElement<String> createTimeTablePeriodTypeRegularSchoolPeriod(String value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link Long }{@code >}}
+   * 
+   */
+  JAXBElement<Long> createTimeTablePeriodTypeInstructionalMinutes(Long value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+   * 
+   */
+  JAXBElement<String> createTimeTablePeriodTypeUseInAttendanceCalculations(String value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+   * 
+   */
+  JAXBElement<String> createTeachingGroupStudentTypeStudentPersonalRefId(String value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+   * 
+   */
+  JAXBElement<String> createTeachingGroupStudentTypeStudentLocalId(String value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link NameOfRecordType }{@code >}}
+   * 
+   */
+  JAXBElement<NameOfRecordType> createTeachingGroupStudentTypeName(NameOfRecordType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+   * 
+   */
+  JAXBElement<String> createTeachingGroupTeacherTypeStaffPersonalRefId(String value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+   * 
+   */
+  JAXBElement<String> createTeachingGroupTeacherTypeStaffLocalId(String value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link NameOfRecordType }{@code >}}
+   * 
+   */
+  JAXBElement<NameOfRecordType> createTeachingGroupTeacherTypeName(NameOfRecordType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+   * 
+   */
+  JAXBElement<String> createTeachingGroupPeriodTypeTimeTableCellRefId(String value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+   * 
+   */
+  JAXBElement<String> createTeachingGroupPeriodTypeRoomNumber(String value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+   * 
+   */
+  JAXBElement<String> createTeachingGroupPeriodTypeStaffLocalId(String value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+   * 
+   */
+  JAXBElement<String> createTeachingGroupPeriodTypePeriodId(String value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link XMLGregorianCalendar }{@code >}}
+   * 
+   */
+  JAXBElement<XMLGregorianCalendar> createTeachingGroupPeriodTypeStartTime(XMLGregorianCalendar value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+   * 
+   */
+  JAXBElement<String> createTeachingGroupPeriodTypeCellType(String value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link NameType }{@code >}}
+   * 
+   */
+  JAXBElement<NameType> createContactTypeName(NameType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link AddressType }{@code >}}
+   * 
+   */
+  JAXBElement<AddressType> createContactTypeAddress(AddressType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link PhoneNumberType }{@code >}}
+   * 
+   */
+  JAXBElement<PhoneNumberType> createContactTypePhoneNumber(PhoneNumberType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link EmailType }{@code >}}
+   * 
+   */
+  JAXBElement<EmailType> createContactTypeEmail(EmailType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link AUCodeSetsYesOrNoCategoryType }{@code >}}
+   * 
+   */
+  JAXBElement<AUCodeSetsYesOrNoCategoryType> createLEAContactTypePublishInDirectory(AUCodeSetsYesOrNoCategoryType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+   * 
+   */
+  JAXBElement<String> createEvaluationTypeDescription(String value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link XMLGregorianCalendar }{@code >}}
+   * 
+   */
+  JAXBElement<XMLGregorianCalendar> createEvaluationTypeDate(XMLGregorianCalendar value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link NameType }{@code >}}
+   * 
+   */
+  JAXBElement<NameType> createEvaluationTypeName(NameType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+   * 
+   */
+  JAXBElement<String> createComponentTypeDescription(String value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link StrategiesType }{@code >}}
+   * 
+   */
+  JAXBElement<StrategiesType> createComponentTypeStrategies(StrategiesType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link AssociatedObjectsType }{@code >}}
+   * 
+   */
+  JAXBElement<AssociatedObjectsType> createComponentTypeAssociatedObjects(AssociatedObjectsType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link Long }{@code >}}
+   * 
+   */
   JAXBElement<Long> createStudentSubjectChoiceTypePreferenceNumber(Long value);
 
-  JAXBElement<String> createStudentSubjectChoiceTypeOtherSchoolLocalId(String value);
-
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link SubjectAreaType }{@code >}}
+   * 
+   */
   JAXBElement<SubjectAreaType> createStudentSubjectChoiceTypeStudyDescription(SubjectAreaType value);
 
-  JAXBElement<AUCodeSetsSourceCodeTypeType> createStudentContactRelationshipTypeContactSequenceSource(AUCodeSetsSourceCodeTypeType value);
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+   * 
+   */
+  JAXBElement<String> createStudentSubjectChoiceTypeOtherSchoolLocalId(String value);
 
-  JAXBElement<AUCodeSetsYesOrNoCategoryType> createStudentContactRelationshipTypeMainlySpeaksEnglishAtHome(AUCodeSetsYesOrNoCategoryType value);
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+   * 
+   */
+  JAXBElement<String> createSoftwareRequirementTypeVersion(String value);
 
-  JAXBElement<ContactFlagsType> createStudentContactRelationshipTypeContactFlags(ContactFlagsType value);
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+   * 
+   */
+  JAXBElement<String> createSoftwareRequirementTypeVendor(String value);
 
-  JAXBElement<HouseholdListType> createStudentContactRelationshipTypeHouseholdList(HouseholdListType value);
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+   * 
+   */
+  JAXBElement<String> createSoftwareRequirementTypeOS(String value);
 
-  JAXBElement<Long> createStudentContactRelationshipTypeContactSequence(Long value);
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+   * 
+   */
+  JAXBElement<String> createTechnicalRequirementsTypeTechnicalRequirement(String value);
 
-  JAXBElement<SIFExtendedElementsType> createStudentContactRelationshipTypeSIFExtendedElements(SIFExtendedElementsType value);
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+   * 
+   */
+  JAXBElement<String> createSchoolProgramTypeCategory(String value);
 
-  JAXBElement<SIFMetadataType> createStudentContactRelationshipTypeSIFMetadata(SIFMetadataType value);
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link OtherCodeListType }{@code >}}
+   * 
+   */
+  JAXBElement<OtherCodeListType> createSchoolProgramTypeOtherCodeList(OtherCodeListType value);
 
-  JAXBElement<String> createStudentContactRelationshipTypeParentRelationshipStatus(String value);
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+   * 
+   */
+  JAXBElement<String> createExpenseAccountTypeFinancialAccountRefId(String value);
 
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+   * 
+   */
+  JAXBElement<String> createExpenseAccountTypeAccountingPeriod(String value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link Object }{@code >}}
+   * 
+   */
+  JAXBElement<Object> createExpenseAccountsTypeExpenseAccountType(Object value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+   * 
+   */
+  JAXBElement<String> createPurchasingItemTypeItemNumber(String value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+   * 
+   */
+  JAXBElement<String> createPurchasingItemTypeQuantity(String value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link MonetaryAmountType }{@code >}}
+   * 
+   */
+  JAXBElement<MonetaryAmountType> createPurchasingItemTypeUnitCost(MonetaryAmountType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link MonetaryAmountType }{@code >}}
+   * 
+   */
+  JAXBElement<MonetaryAmountType> createPurchasingItemTypeTotalCost(MonetaryAmountType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+   * 
+   */
+  JAXBElement<String> createPurchasingItemTypeQuantityDelivered(String value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link AUCodeSetsYesOrNoCategoryType }{@code >}}
+   * 
+   */
+  JAXBElement<AUCodeSetsYesOrNoCategoryType> createPurchasingItemTypeCancelledOrder(AUCodeSetsYesOrNoCategoryType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link BigDecimal }{@code >}}
+   * 
+   */
+  JAXBElement<BigDecimal> createPurchasingItemTypeTaxRate(BigDecimal value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link ExpenseAccountsType }{@code >}}
+   * 
+   */
+  JAXBElement<ExpenseAccountsType> createPurchasingItemTypeExpenseAccounts(ExpenseAccountsType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link Object }{@code >}}
+   * 
+   */
+  JAXBElement<Object> createAlternateIdentificationCodesTypeAlternateIdentificationCodes(Object value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+   * 
+   */
+  JAXBElement<String> createTeacherCoverTypeStaffLocalId(String value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link XMLGregorianCalendar }{@code >}}
+   * 
+   */
+  JAXBElement<XMLGregorianCalendar> createTeacherCoverTypeStartTime(XMLGregorianCalendar value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link XMLGregorianCalendar }{@code >}}
+   * 
+   */
+  JAXBElement<XMLGregorianCalendar> createTeacherCoverTypeFinishTime(XMLGregorianCalendar value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link AUCodeSetsTeacherCoverCreditType }{@code >}}
+   * 
+   */
+  JAXBElement<AUCodeSetsTeacherCoverCreditType> createTeacherCoverTypeCredit(AUCodeSetsTeacherCoverCreditType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link AUCodeSetsTeacherCoverSupervisionType }{@code >}}
+   * 
+   */
+  JAXBElement<AUCodeSetsTeacherCoverSupervisionType> createTeacherCoverTypeSupervision(AUCodeSetsTeacherCoverSupervisionType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link BigDecimal }{@code >}}
+   * 
+   */
+  JAXBElement<BigDecimal> createTeacherCoverTypeWeighting(BigDecimal value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+   * 
+   */
+  JAXBElement<String> createStaffSubjectTypeSubjectLocalId(String value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+   * 
+   */
+  JAXBElement<String> createStaffSubjectTypeTimeTableSubjectRefId(String value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link BigDecimal }{@code >}}
+   * 
+   */
+  JAXBElement<BigDecimal> createAttendanceTimeTypeDurationValue(BigDecimal value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+   * 
+   */
+  JAXBElement<String> createAttendanceTimeTypeAttendanceNote(String value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link OtherCodeListType }{@code >}}
+   * 
+   */
+  JAXBElement<OtherCodeListType> createProgramFundingSourceTypeOtherCodeList(OtherCodeListType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+   * 
+   */
+  JAXBElement<String> createHouseholdContactInfoTypeHouseholdContactId(String value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+   * 
+   */
+  JAXBElement<String> createHouseholdContactInfoTypeHouseholdSalutation(String value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link AddressListType }{@code >}}
+   * 
+   */
+  JAXBElement<AddressListType> createHouseholdContactInfoTypeAddressList(AddressListType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link EmailListType }{@code >}}
+   * 
+   */
+  JAXBElement<EmailListType> createHouseholdContactInfoTypeEmailList(EmailListType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link PhoneNumberListType }{@code >}}
+   * 
+   */
+  JAXBElement<PhoneNumberListType> createHouseholdContactInfoTypePhoneNumberList(PhoneNumberListType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+   * 
+   */
+  JAXBElement<String> createCampusContainerTypeParentSchoolId(String value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link AUCodeSetsSchoolLevelType }{@code >}}
+   * 
+   */
+  JAXBElement<AUCodeSetsSchoolLevelType> createCampusContainerTypeCampusType(AUCodeSetsSchoolLevelType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+   * 
+   */
+  JAXBElement<String> createTotalEnrollmentsTypeGirls(String value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+   * 
+   */
+  JAXBElement<String> createTotalEnrollmentsTypeBoys(String value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+   * 
+   */
+  JAXBElement<String> createTotalEnrollmentsTypeTotalStudents(String value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link OtherCodeListType }{@code >}}
+   * 
+   */
+  JAXBElement<OtherCodeListType> createStaffActivityExtensionTypeOtherCodeList(OtherCodeListType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+   * 
+   */
+  JAXBElement<String> createStaffMostRecentContainerTypeSchoolLocalId(String value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+   * 
+   */
+  JAXBElement<String> createStaffMostRecentContainerTypeSchoolACARAId(String value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+   * 
+   */
+  JAXBElement<String> createStaffMostRecentContainerTypeLocalCampusId(String value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link NAPLANClassListType }{@code >}}
+   * 
+   */
+  JAXBElement<NAPLANClassListType> createStaffMostRecentContainerTypeNAPLANClassList(NAPLANClassListType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+   * 
+   */
+  JAXBElement<String> createStaffMostRecentContainerTypeHomeGroup(String value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+   * 
+   */
+  JAXBElement<String> createStudentMostRecentContainerTypeSchoolLocalId(String value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+   * 
+   */
+  JAXBElement<String> createStudentMostRecentContainerTypeHomeroomLocalId(String value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link YearLevelType }{@code >}}
+   * 
+   */
+  JAXBElement<YearLevelType> createStudentMostRecentContainerTypeYearLevel(YearLevelType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link BigDecimal }{@code >}}
+   * 
+   */
+  JAXBElement<BigDecimal> createStudentMostRecentContainerTypeFTE(BigDecimal value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+   * 
+   */
+  JAXBElement<String> createStudentMostRecentContainerTypeParent1Language(String value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+   * 
+   */
+  JAXBElement<String> createStudentMostRecentContainerTypeParent2Language(String value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+   * 
+   */
+  JAXBElement<String> createStudentMostRecentContainerTypeParent1EmploymentType(String value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+   * 
+   */
+  JAXBElement<String> createStudentMostRecentContainerTypeParent2EmploymentType(String value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+   * 
+   */
+  JAXBElement<String> createStudentMostRecentContainerTypeParent1SchoolEducationLevel(String value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+   * 
+   */
+  JAXBElement<String> createStudentMostRecentContainerTypeParent2SchoolEducationLevel(String value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+   * 
+   */
+  JAXBElement<String> createStudentMostRecentContainerTypeParent1NonSchoolEducation(String value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+   * 
+   */
+  JAXBElement<String> createStudentMostRecentContainerTypeParent2NonSchoolEducation(String value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+   * 
+   */
+  JAXBElement<String> createStudentMostRecentContainerTypeLocalCampusId(String value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+   * 
+   */
+  JAXBElement<String> createStudentMostRecentContainerTypeSchoolACARAId(String value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link YearLevelType }{@code >}}
+   * 
+   */
+  JAXBElement<YearLevelType> createStudentMostRecentContainerTypeTestLevel(YearLevelType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+   * 
+   */
+  JAXBElement<String> createStudentMostRecentContainerTypeHomegroup(String value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+   * 
+   */
+  JAXBElement<String> createStudentMostRecentContainerTypeClassCode(String value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+   * 
+   */
+  JAXBElement<String> createStudentMostRecentContainerTypeFFPOS(String value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+   * 
+   */
+  JAXBElement<String> createStudentMostRecentContainerTypeReportingSchoolId(String value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+   * 
+   */
+  JAXBElement<String> createStudentMostRecentContainerTypeOtherEnrollmentSchoolACARAId(String value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link OtherCodeListType }{@code >}}
+   * 
+   */
+  JAXBElement<OtherCodeListType> createStudentEntryContainerTypeOtherCodeList(OtherCodeListType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link OtherCodeListType }{@code >}}
+   * 
+   */
+  JAXBElement<OtherCodeListType> createStudentExitContainerTypeOtherCodeList(OtherCodeListType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link OtherCodeListType }{@code >}}
+   * 
+   */
+  JAXBElement<OtherCodeListType> createStudentExitStatusContainerTypeOtherCodeList(OtherCodeListType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link OtherCodeListType }{@code >}}
+   * 
+   */
+  JAXBElement<OtherCodeListType> createCatchmentStatusContainerTypeOtherCodeList(OtherCodeListType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+   * 
+   */
+  JAXBElement<String> createPromotionInfoTypePromotionStatus(String value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link OtherCodeListType }{@code >}}
+   * 
+   */
+  JAXBElement<OtherCodeListType> createReferralSourceTypeOtherCodeList(OtherCodeListType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link OtherCodeListType }{@code >}}
+   * 
+   */
+  JAXBElement<OtherCodeListType> createProgramAvailabilityTypeOtherCodeList(OtherCodeListType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link OtherCodeListType }{@code >}}
+   * 
+   */
+  JAXBElement<OtherCodeListType> createCalendarDateInfoTypeOtherCodeList(OtherCodeListType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link OtherCodeListType }{@code >}}
+   * 
+   */
+  JAXBElement<OtherCodeListType> createAgencyTypeOtherCodeList(OtherCodeListType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link AUCodeSetsYesOrNoCategoryType }{@code >}}
+   * 
+   */
+  JAXBElement<AUCodeSetsYesOrNoCategoryType> createContactFlagsTypeParentLegalGuardian(AUCodeSetsYesOrNoCategoryType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link AUCodeSetsYesOrNoCategoryType }{@code >}}
+   * 
+   */
+  JAXBElement<AUCodeSetsYesOrNoCategoryType> createContactFlagsTypePickupRights(AUCodeSetsYesOrNoCategoryType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link AUCodeSetsYesOrNoCategoryType }{@code >}}
+   * 
+   */
+  JAXBElement<AUCodeSetsYesOrNoCategoryType> createContactFlagsTypeLivesWith(AUCodeSetsYesOrNoCategoryType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link AUCodeSetsYesOrNoCategoryType }{@code >}}
+   * 
+   */
+  JAXBElement<AUCodeSetsYesOrNoCategoryType> createContactFlagsTypeAccessToRecords(AUCodeSetsYesOrNoCategoryType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link AUCodeSetsYesOrNoCategoryType }{@code >}}
+   * 
+   */
+  JAXBElement<AUCodeSetsYesOrNoCategoryType> createContactFlagsTypeReceivesAssessmentReport(AUCodeSetsYesOrNoCategoryType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link AUCodeSetsYesOrNoCategoryType }{@code >}}
+   * 
+   */
+  JAXBElement<AUCodeSetsYesOrNoCategoryType> createContactFlagsTypeEmergencyContact(AUCodeSetsYesOrNoCategoryType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link AUCodeSetsYesOrNoCategoryType }{@code >}}
+   * 
+   */
+  JAXBElement<AUCodeSetsYesOrNoCategoryType> createContactFlagsTypeHasCustody(AUCodeSetsYesOrNoCategoryType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link AUCodeSetsYesOrNoCategoryType }{@code >}}
+   * 
+   */
+  JAXBElement<AUCodeSetsYesOrNoCategoryType> createContactFlagsTypeDisciplinaryContact(AUCodeSetsYesOrNoCategoryType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link AUCodeSetsYesOrNoCategoryType }{@code >}}
+   * 
+   */
+  JAXBElement<AUCodeSetsYesOrNoCategoryType> createContactFlagsTypeAttendanceContact(AUCodeSetsYesOrNoCategoryType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link AUCodeSetsYesOrNoCategoryType }{@code >}}
+   * 
+   */
+  JAXBElement<AUCodeSetsYesOrNoCategoryType> createContactFlagsTypePrimaryCareProvider(AUCodeSetsYesOrNoCategoryType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link AUCodeSetsYesOrNoCategoryType }{@code >}}
+   * 
+   */
+  JAXBElement<AUCodeSetsYesOrNoCategoryType> createContactFlagsTypeFeesBilling(AUCodeSetsYesOrNoCategoryType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link AUCodeSetsYesOrNoCategoryType }{@code >}}
+   * 
+   */
+  JAXBElement<AUCodeSetsYesOrNoCategoryType> createContactFlagsTypeFamilyMail(AUCodeSetsYesOrNoCategoryType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link AUCodeSetsYesOrNoCategoryType }{@code >}}
+   * 
+   */
+  JAXBElement<AUCodeSetsYesOrNoCategoryType> createContactFlagsTypeInterventionOrder(AUCodeSetsYesOrNoCategoryType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link OtherCodeListType }{@code >}}
+   * 
+   */
+  JAXBElement<OtherCodeListType> createStudentActivityTypeOtherCodeList(OtherCodeListType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link OtherCodeListType }{@code >}}
+   * 
+   */
+  JAXBElement<OtherCodeListType> createMediumOfInstructionTypeOtherCodeList(OtherCodeListType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link OtherCodeListType }{@code >}}
+   * 
+   */
+  JAXBElement<OtherCodeListType> createLanguageOfInstructionTypeOtherCodeList(OtherCodeListType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link OtherCodeListType }{@code >}}
+   * 
+   */
+  JAXBElement<OtherCodeListType> createLocationOfInstructionTypeOtherCodeList(OtherCodeListType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+   * 
+   */
+  JAXBElement<String> createSchoolCourseInfoOverrideTypeCourseCode(String value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+   * 
+   */
+  JAXBElement<String> createSchoolCourseInfoOverrideTypeStateCourseCode(String value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+   * 
+   */
+  JAXBElement<String> createSchoolCourseInfoOverrideTypeDistrictCourseCode(String value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link SubjectAreaType }{@code >}}
+   * 
+   */
+  JAXBElement<SubjectAreaType> createSchoolCourseInfoOverrideTypeSubjectArea(SubjectAreaType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+   * 
+   */
+  JAXBElement<String> createSchoolCourseInfoOverrideTypeCourseTitle(String value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+   * 
+   */
+  JAXBElement<String> createSchoolCourseInfoOverrideTypeInstructionalLevel(String value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+   * 
+   */
+  JAXBElement<String> createSchoolCourseInfoOverrideTypeCourseCredits(String value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link ActivityTimeType.Duration }{@code >}}
+   * 
+   */
+  JAXBElement<ActivityTimeType.Duration> createActivityTimeTypeDuration(ActivityTimeType.Duration value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link XMLGregorianCalendar }{@code >}}
+   * 
+   */
+  JAXBElement<XMLGregorianCalendar> createActivityTimeTypeStartDate(XMLGregorianCalendar value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link XMLGregorianCalendar }{@code >}}
+   * 
+   */
+  JAXBElement<XMLGregorianCalendar> createActivityTimeTypeFinishDate(XMLGregorianCalendar value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link XMLGregorianCalendar }{@code >}}
+   * 
+   */
+  JAXBElement<XMLGregorianCalendar> createActivityTimeTypeDueDate(XMLGregorianCalendar value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link OtherCodeListType }{@code >}}
+   * 
+   */
+  JAXBElement<OtherCodeListType> createDwellingArrangementTypeOtherCodeList(OtherCodeListType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link OtherCodeListType }{@code >}}
+   * 
+   */
+  JAXBElement<OtherCodeListType> createReligionTypeOtherCodeList(OtherCodeListType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link OtherCodeListType }{@code >}}
+   * 
+   */
   JAXBElement<OtherCodeListType> createLanguageBaseTypeOtherCodeList(OtherCodeListType value);
 
-  JAXBElement<String> createLanguageBaseTypeDialect(String value);
-
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+   * 
+   */
   JAXBElement<String> createLanguageBaseTypeLanguageType(String value);
 
-  JAXBElement<StudentSchoolEnrollmentType.Calendar> createStudentSchoolEnrollmentTypeCalendar(StudentSchoolEnrollmentType.Calendar value);
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+   * 
+   */
+  JAXBElement<String> createLanguageBaseTypeDialect(String value);
 
-  JAXBElement<StudentSchoolEnrollmentType.Homeroom> createStudentSchoolEnrollmentTypeHomeroom(StudentSchoolEnrollmentType.Homeroom value);
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link XMLGregorianCalendar }{@code >}}
+   * 
+   */
+  JAXBElement<XMLGregorianCalendar> createVisaSubClassTypeVisaExpiryDate(XMLGregorianCalendar value);
 
-  JAXBElement<StudentSchoolEnrollmentType.Counselor> createStudentSchoolEnrollmentTypeCounselor(StudentSchoolEnrollmentType.Counselor value);
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link XMLGregorianCalendar }{@code >}}
+   * 
+   */
+  JAXBElement<XMLGregorianCalendar> createVisaSubClassTypeATEExpiryDate(XMLGregorianCalendar value);
 
-  JAXBElement<String> createStudentSchoolEnrollmentTypeLocalId(String value);
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link XMLGregorianCalendar }{@code >}}
+   * 
+   */
+  JAXBElement<XMLGregorianCalendar> createVisaSubClassTypeATEStartDate(XMLGregorianCalendar value);
 
-  JAXBElement<StudentSchoolEnrollmentType.Advisor> createStudentSchoolEnrollmentTypeAdvisor(StudentSchoolEnrollmentType.Advisor value);
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+   * 
+   */
+  JAXBElement<String> createVisaSubClassTypeVisaStatisticalCode(String value);
 
-  JAXBElement<StudentExitContainerType> createStudentSchoolEnrollmentTypeExitType(StudentExitContainerType value);
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+   * 
+   */
+  JAXBElement<String> createAdjustmentContainerTypeBookletType(String value);
 
-  JAXBElement<String> createStudentSchoolEnrollmentTypePreviousSchool(String value);
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+   * 
+   */
+  JAXBElement<String> createStimulusTypeTextGenre(String value);
 
-  JAXBElement<YearLevelType> createStudentSchoolEnrollmentTypeTestLevel(YearLevelType value);
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+   * 
+   */
+  JAXBElement<String> createStimulusTypeTextType(String value);
 
-  JAXBElement<String> createStudentSchoolEnrollmentTypeDestinationSchool(String value);
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link BigInteger }{@code >}}
+   * 
+   */
+  JAXBElement<BigInteger> createStimulusTypeWordCount(BigInteger value);
 
-  JAXBElement<String> createStudentSchoolEnrollmentTypeClassCode(String value);
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+   * 
+   */
+  JAXBElement<String> createNAPWritingRubricTypeDescriptor(String value);
 
-  JAXBElement<AUCodeSetsYesOrNoCategoryType> createStudentSchoolEnrollmentTypeIndividualLearningPlan(AUCodeSetsYesOrNoCategoryType value);
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+   * 
+   */
+  JAXBElement<String> createNAPTestletResponseItemTypeNAPTestItemLocalId(String value);
 
-  JAXBElement<YearLevelType> createStudentSchoolEnrollmentTypeYearLevel(YearLevelType value);
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link AUCodeSetsNAPResponseCorrectnessType }{@code >}}
+   * 
+   */
+  JAXBElement<AUCodeSetsNAPResponseCorrectnessType> createNAPTestletResponseItemTypeResponseCorrectness(AUCodeSetsNAPResponseCorrectnessType value);
 
-  JAXBElement<PromotionInfoType> createStudentSchoolEnrollmentTypePromotionInfo(PromotionInfoType value);
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link BigDecimal }{@code >}}
+   * 
+   */
+  JAXBElement<BigDecimal> createNAPTestletResponseItemTypeScore(BigDecimal value);
 
-  JAXBElement<String> createStudentSchoolEnrollmentTypeACARASchoolId(String value);
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link NAPSubscoreListType }{@code >}}
+   * 
+   */
+  JAXBElement<NAPSubscoreListType> createNAPTestletResponseItemTypeSubscoreList(NAPSubscoreListType value);
 
-  JAXBElement<StudentEntryContainerType> createStudentSchoolEnrollmentTypeEntryType(StudentEntryContainerType value);
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+   * 
+   */
+  JAXBElement<String> createNAPTestletResponseTypeNAPTestletRefId(String value);
 
-  JAXBElement<String> createStudentSchoolEnrollmentTypeFTPTStatus(String value);
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+   * 
+   */
+  JAXBElement<String> createNAPTestletCodeFrameTypeNAPTestletRefId(String value);
 
-  JAXBElement<XMLGregorianCalendar> createStudentSchoolEnrollmentTypeExitDate(XMLGregorianCalendar value);
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+   * 
+   */
+  JAXBElement<String> createSubstituteItemTypeSubstituteItemLocalId(String value);
 
-  JAXBElement<String> createStudentSchoolEnrollmentTypeFFPOS(String value);
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+   * 
+   */
+  JAXBElement<String> createNAPTestletContentTypeNode(String value);
 
-  JAXBElement<StudentSubjectChoiceListType> createStudentSchoolEnrollmentTypeStudentSubjectChoiceList(StudentSubjectChoiceListType value);
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link BigInteger }{@code >}}
+   * 
+   */
+  JAXBElement<BigInteger> createNAPTestletContentTypeLocationInStage(BigInteger value);
 
-  JAXBElement<StudentExitStatusContainerType> createStudentSchoolEnrollmentTypeExitStatus(StudentExitStatusContainerType value);
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link AUCodeSetsNAPWritingGenreType }{@code >}}
+   * 
+   */
+  JAXBElement<AUCodeSetsNAPWritingGenreType> createNAPTestItemContentTypeWritingGenre(AUCodeSetsNAPWritingGenreType value);
 
-  JAXBElement<String> createStudentSchoolEnrollmentTypeHouse(String value);
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link Integer }{@code >}}
+   * 
+   */
+  JAXBElement<Integer> createNAPTestItemContentTypeMultipleChoiceOptionCount(Integer value);
 
-  JAXBElement<CatchmentStatusContainerType> createStudentSchoolEnrollmentTypeCatchmentStatus(CatchmentStatusContainerType value);
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+   * 
+   */
+  JAXBElement<String> createNAPTestItemContentTypeCorrectAnswer(String value);
 
-  JAXBElement<String> createStudentSchoolEnrollmentTypeHomegroup(String value);
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+   * 
+   */
+  JAXBElement<String> createNAPTestItemContentTypeExemplarURL(String value);
 
-  JAXBElement<AUCodeSetsYesOrNoCategoryType> createStudentSchoolEnrollmentTypeReportingSchool(AUCodeSetsYesOrNoCategoryType value);
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link SubstituteItemListType }{@code >}}
+   * 
+   */
+  JAXBElement<SubstituteItemListType> createNAPTestItemContentTypeItemSubstitutedForList(SubstituteItemListType value);
 
-  JAXBElement<String> createStudentSchoolEnrollmentTypeRecordClosureReason(String value);
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link ContentDescriptionListType }{@code >}}
+   * 
+   */
+  JAXBElement<ContentDescriptionListType> createNAPTestItemContentTypeContentDescriptionList(ContentDescriptionListType value);
 
-  JAXBElement<SIFExtendedElementsType> createStudentSchoolEnrollmentTypeSIFExtendedElements(SIFExtendedElementsType value);
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link StimulusListType }{@code >}}
+   * 
+   */
+  JAXBElement<StimulusListType> createNAPTestItemContentTypeStimulusList(StimulusListType value);
 
-  JAXBElement<SIFMetadataType> createStudentSchoolEnrollmentTypeSIFMetadata(SIFMetadataType value);
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link NAPWritingRubricListType }{@code >}}
+   * 
+   */
+  JAXBElement<NAPWritingRubricListType> createNAPTestItemContentTypeNAPWritingRubricList(NAPWritingRubricListType value);
 
-  JAXBElement<BigDecimal> createStudentSchoolEnrollmentTypeFTE(BigDecimal value);
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link SIFMetadataType }{@code >}}
+   * 
+   */
+  JAXBElement<SIFMetadataType> createNAPCodeFrameTypeSIFMetadata(SIFMetadataType value);
 
-  JAXBElement<AUCodeSetsYesOrNoCategoryType> createTermInfoTypeAttendanceTerm(AUCodeSetsYesOrNoCategoryType value);
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link SIFExtendedElementsType }{@code >}}
+   * 
+   */
+  JAXBElement<SIFExtendedElementsType> createNAPCodeFrameTypeSIFExtendedElements(SIFExtendedElementsType value);
 
-  JAXBElement<String> createTermInfoTypeTermSpan(String value);
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+   * 
+   */
+  JAXBElement<String> createNAPStudentResponseSetTypeCalibrationSampleFlag(String value);
 
-  JAXBElement<String> createTermInfoTypeTrack(String value);
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+   * 
+   */
+  JAXBElement<String> createNAPStudentResponseSetTypeEquatingSampleFlag(String value);
 
-  JAXBElement<String> createTermInfoTypeTermCode(String value);
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+   * 
+   */
+  JAXBElement<String> createNAPStudentResponseSetTypeStudentPersonalRefId(String value);
 
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+   * 
+   */
+  JAXBElement<String> createNAPStudentResponseSetTypeNAPTestRefId(String value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link SIFMetadataType }{@code >}}
+   * 
+   */
+  JAXBElement<SIFMetadataType> createNAPStudentResponseSetTypeSIFMetadata(SIFMetadataType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link SIFExtendedElementsType }{@code >}}
+   * 
+   */
+  JAXBElement<SIFExtendedElementsType> createNAPStudentResponseSetTypeSIFExtendedElements(SIFExtendedElementsType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link SIFMetadataType }{@code >}}
+   * 
+   */
+  JAXBElement<SIFMetadataType> createNAPTestItemTypeSIFMetadata(SIFMetadataType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link SIFExtendedElementsType }{@code >}}
+   * 
+   */
+  JAXBElement<SIFExtendedElementsType> createNAPTestItemTypeSIFExtendedElements(SIFExtendedElementsType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+   * 
+   */
+  JAXBElement<String> createNAPTestScoreSummaryTypeSchoolInfoRefId(String value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+   * 
+   */
+  JAXBElement<String> createNAPTestScoreSummaryTypeNAPTestRefId(String value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link BigDecimal }{@code >}}
+   * 
+   */
+  JAXBElement<BigDecimal> createNAPTestScoreSummaryTypeDomainNationalAverage(BigDecimal value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link BigDecimal }{@code >}}
+   * 
+   */
+  JAXBElement<BigDecimal> createNAPTestScoreSummaryTypeDomainSchoolAverage(BigDecimal value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link BigDecimal }{@code >}}
+   * 
+   */
+  JAXBElement<BigDecimal> createNAPTestScoreSummaryTypeDomainJurisdictionAverage(BigDecimal value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link BigDecimal }{@code >}}
+   * 
+   */
+  JAXBElement<BigDecimal> createNAPTestScoreSummaryTypeDomainTopNational60Percent(BigDecimal value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link BigDecimal }{@code >}}
+   * 
+   */
+  JAXBElement<BigDecimal> createNAPTestScoreSummaryTypeDomainBottomNational60Percent(BigDecimal value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link SIFMetadataType }{@code >}}
+   * 
+   */
+  JAXBElement<SIFMetadataType> createNAPTestScoreSummaryTypeSIFMetadata(SIFMetadataType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link SIFExtendedElementsType }{@code >}}
+   * 
+   */
+  JAXBElement<SIFExtendedElementsType> createNAPTestScoreSummaryTypeSIFExtendedElements(SIFExtendedElementsType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+   * 
+   */
+  JAXBElement<String> createNAPTestletTypeNAPTestRefId(String value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link SIFMetadataType }{@code >}}
+   * 
+   */
+  JAXBElement<SIFMetadataType> createNAPTestletTypeSIFMetadata(SIFMetadataType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link SIFExtendedElementsType }{@code >}}
+   * 
+   */
+  JAXBElement<SIFExtendedElementsType> createNAPTestletTypeSIFExtendedElements(SIFExtendedElementsType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link SIFMetadataType }{@code >}}
+   * 
+   */
+  JAXBElement<SIFMetadataType> createNAPTestTypeSIFMetadata(SIFMetadataType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link SIFExtendedElementsType }{@code >}}
+   * 
+   */
+  JAXBElement<SIFExtendedElementsType> createNAPTestTypeSIFExtendedElements(SIFExtendedElementsType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+   * 
+   */
+  JAXBElement<String> createNAPEventStudentLinkTypeStudentPersonalRefId(String value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+   * 
+   */
+  JAXBElement<String> createNAPEventStudentLinkTypeSchoolInfoRefId(String value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+   * 
+   */
+  JAXBElement<String> createNAPEventStudentLinkTypeNAPTestRefId(String value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+   * 
+   */
+  JAXBElement<String> createNAPEventStudentLinkTypeSystem(String value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+   * 
+   */
+  JAXBElement<String> createNAPEventStudentLinkTypeSchoolGeolocation(String value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+   * 
+   */
+  JAXBElement<String> createNAPEventStudentLinkTypeReportingSchoolName(String value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+   * 
+   */
+  JAXBElement<String> createNAPEventStudentLinkTypeNAPJurisdiction(String value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+   * 
+   */
+  JAXBElement<String> createNAPEventStudentLinkTypeDevice(String value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+   * 
+   */
+  JAXBElement<String> createNAPEventStudentLinkTypeExemptionReason(String value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link Boolean }{@code >}}
+   * 
+   */
+  JAXBElement<Boolean> createNAPEventStudentLinkTypePersonalDetailsChanged(Boolean value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link Boolean }{@code >}}
+   * 
+   */
+  JAXBElement<Boolean> createNAPEventStudentLinkTypePSIOtherIdMatch(Boolean value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link Boolean }{@code >}}
+   * 
+   */
+  JAXBElement<Boolean> createNAPEventStudentLinkTypePossibleDuplicate(Boolean value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link Boolean }{@code >}}
+   * 
+   */
+  JAXBElement<Boolean> createNAPEventStudentLinkTypeDOBRange(Boolean value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link TestDisruptionListType }{@code >}}
+   * 
+   */
+  JAXBElement<TestDisruptionListType> createNAPEventStudentLinkTypeTestDisruptionList(TestDisruptionListType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link AdjustmentContainerType }{@code >}}
+   * 
+   */
+  JAXBElement<AdjustmentContainerType> createNAPEventStudentLinkTypeAdjustment(AdjustmentContainerType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link SIFMetadataType }{@code >}}
+   * 
+   */
+  JAXBElement<SIFMetadataType> createNAPEventStudentLinkTypeSIFMetadata(SIFMetadataType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link SIFExtendedElementsType }{@code >}}
+   * 
+   */
+  JAXBElement<SIFExtendedElementsType> createNAPEventStudentLinkTypeSIFExtendedElements(SIFExtendedElementsType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+   * 
+   */
+  JAXBElement<String> createGradingAssignmentScoreTypeStudentPersonalRefId(String value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+   * 
+   */
+  JAXBElement<String> createGradingAssignmentScoreTypeTeachingGroupRefId(String value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+   * 
+   */
+  JAXBElement<String> createGradingAssignmentScoreTypeSchoolInfoRefId(String value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link Long }{@code >}}
+   * 
+   */
+  JAXBElement<Long> createGradingAssignmentScoreTypeScorePoints(Long value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link BigDecimal }{@code >}}
+   * 
+   */
+  JAXBElement<BigDecimal> createGradingAssignmentScoreTypeScorePercent(BigDecimal value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+   * 
+   */
+  JAXBElement<String> createGradingAssignmentScoreTypeScoreLetter(String value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+   * 
+   */
+  JAXBElement<String> createGradingAssignmentScoreTypeScoreDescription(String value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link SIFMetadataType }{@code >}}
+   * 
+   */
+  JAXBElement<SIFMetadataType> createGradingAssignmentScoreTypeSIFMetadata(SIFMetadataType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link SIFExtendedElementsType }{@code >}}
+   * 
+   */
+  JAXBElement<SIFExtendedElementsType> createGradingAssignmentScoreTypeSIFExtendedElements(SIFExtendedElementsType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+   * 
+   */
+  JAXBElement<String> createGradingAssignmentTypeTeachingGroupRefId(String value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+   * 
+   */
+  JAXBElement<String> createGradingAssignmentTypeSchoolInfoRefId(String value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+   * 
+   */
+  JAXBElement<String> createGradingAssignmentTypeGradingCategory(String value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link XMLGregorianCalendar }{@code >}}
+   * 
+   */
+  JAXBElement<XMLGregorianCalendar> createGradingAssignmentTypeCreateDate(XMLGregorianCalendar value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link XMLGregorianCalendar }{@code >}}
+   * 
+   */
+  JAXBElement<XMLGregorianCalendar> createGradingAssignmentTypeDueDate(XMLGregorianCalendar value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link BigDecimal }{@code >}}
+   * 
+   */
+  JAXBElement<BigDecimal> createGradingAssignmentTypeWeight(BigDecimal value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link BigInteger }{@code >}}
+   * 
+   */
+  JAXBElement<BigInteger> createGradingAssignmentTypeMaxAttemptsAllowed(BigInteger value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+   * 
+   */
+  JAXBElement<String> createGradingAssignmentTypeDetailedDescriptionURL(String value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link byte[]}{@code >}}
+   * 
+   */
+  JAXBElement<byte[]> createGradingAssignmentTypeDetailedDescriptionBinary(byte[] value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link SIFMetadataType }{@code >}}
+   * 
+   */
+  JAXBElement<SIFMetadataType> createGradingAssignmentTypeSIFMetadata(SIFMetadataType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link SIFExtendedElementsType }{@code >}}
+   * 
+   */
+  JAXBElement<SIFExtendedElementsType> createGradingAssignmentTypeSIFExtendedElements(SIFExtendedElementsType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link SIFMetadataType }{@code >}}
+   * 
+   */
+  JAXBElement<SIFMetadataType> createStudentAttendanceTimeListTypeSIFMetadata(SIFMetadataType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link SIFExtendedElementsType }{@code >}}
+   * 
+   */
+  JAXBElement<SIFExtendedElementsType> createStudentAttendanceTimeListTypeSIFExtendedElements(SIFExtendedElementsType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link AddressListType }{@code >}}
+   * 
+   */
+  JAXBElement<AddressListType> createDebtorTypeAddressList(AddressListType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+   * 
+   */
+  JAXBElement<String> createDebtorTypeBillingName(String value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+   * 
+   */
+  JAXBElement<String> createDebtorTypeBillingNote(String value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+   * 
+   */
+  JAXBElement<String> createDebtorTypeDiscount(String value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link SIFMetadataType }{@code >}}
+   * 
+   */
+  JAXBElement<SIFMetadataType> createDebtorTypeSIFMetadata(SIFMetadataType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link SIFExtendedElementsType }{@code >}}
+   * 
+   */
+  JAXBElement<SIFExtendedElementsType> createDebtorTypeSIFExtendedElements(SIFExtendedElementsType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link JournalType.OriginatingTransactionRefId }{@code >}}
+   * 
+   */
+  JAXBElement<JournalType.OriginatingTransactionRefId> createJournalTypeOriginatingTransactionRefId(JournalType.OriginatingTransactionRefId value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+   * 
+   */
+  JAXBElement<String> createJournalTypeGSTCodeOriginal(String value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+   * 
+   */
+  JAXBElement<String> createJournalTypeGSTCodeReplacement(String value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+   * 
+   */
+  JAXBElement<String> createJournalTypeNote(String value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link XMLGregorianCalendar }{@code >}}
+   * 
+   */
+  JAXBElement<XMLGregorianCalendar> createJournalTypeCreatedDate(XMLGregorianCalendar value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link XMLGregorianCalendar }{@code >}}
+   * 
+   */
+  JAXBElement<XMLGregorianCalendar> createJournalTypeApprovedDate(XMLGregorianCalendar value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+   * 
+   */
+  JAXBElement<String> createJournalTypeCreatedBy(String value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+   * 
+   */
+  JAXBElement<String> createJournalTypeApprovedBy(String value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link SIFMetadataType }{@code >}}
+   * 
+   */
+  JAXBElement<SIFMetadataType> createJournalTypeSIFMetadata(SIFMetadataType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link SIFExtendedElementsType }{@code >}}
+   * 
+   */
+  JAXBElement<SIFExtendedElementsType> createJournalTypeSIFExtendedElements(SIFExtendedElementsType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link ContactInfoType }{@code >}}
+   * 
+   */
+  JAXBElement<ContactInfoType> createVendorInfoTypeContactInfo(ContactInfoType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+   * 
+   */
+  JAXBElement<String> createVendorInfoTypeCustomerId(String value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+   * 
+   */
+  JAXBElement<String> createVendorInfoTypeABN(String value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link AUCodeSetsYesOrNoCategoryType }{@code >}}
+   * 
+   */
+  JAXBElement<AUCodeSetsYesOrNoCategoryType> createVendorInfoTypeRegisteredForGST(AUCodeSetsYesOrNoCategoryType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+   * 
+   */
+  JAXBElement<String> createVendorInfoTypePaymentTerms(String value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+   * 
+   */
+  JAXBElement<String> createVendorInfoTypeBPay(String value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+   * 
+   */
+  JAXBElement<String> createVendorInfoTypeBSB(String value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+   * 
+   */
+  JAXBElement<String> createVendorInfoTypeAccountNumber(String value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+   * 
+   */
+  JAXBElement<String> createVendorInfoTypeAccountName(String value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link SIFMetadataType }{@code >}}
+   * 
+   */
+  JAXBElement<SIFMetadataType> createVendorInfoTypeSIFMetadata(SIFMetadataType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link SIFExtendedElementsType }{@code >}}
+   * 
+   */
+  JAXBElement<SIFExtendedElementsType> createVendorInfoTypeSIFExtendedElements(SIFExtendedElementsType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+   * 
+   */
+  JAXBElement<String> createPurchaseOrderTypeChargedLocationInfoRefId(String value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+   * 
+   */
+  JAXBElement<String> createPurchaseOrderTypeEmployeePersonalRefId(String value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link XMLGregorianCalendar }{@code >}}
+   * 
+   */
+  JAXBElement<XMLGregorianCalendar> createPurchaseOrderTypeCreationDate(XMLGregorianCalendar value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link BigDecimal }{@code >}}
+   * 
+   */
+  JAXBElement<BigDecimal> createPurchaseOrderTypeTaxRate(BigDecimal value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link MonetaryAmountType }{@code >}}
+   * 
+   */
+  JAXBElement<MonetaryAmountType> createPurchaseOrderTypeTaxAmount(MonetaryAmountType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link MonetaryAmountType }{@code >}}
+   * 
+   */
+  JAXBElement<MonetaryAmountType> createPurchaseOrderTypeTotalAmount(MonetaryAmountType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link XMLGregorianCalendar }{@code >}}
+   * 
+   */
+  JAXBElement<XMLGregorianCalendar> createPurchaseOrderTypeUpdateDate(XMLGregorianCalendar value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link AUCodeSetsYesOrNoCategoryType }{@code >}}
+   * 
+   */
+  JAXBElement<AUCodeSetsYesOrNoCategoryType> createPurchaseOrderTypeFullyDelivered(AUCodeSetsYesOrNoCategoryType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+   * 
+   */
+  JAXBElement<String> createPurchaseOrderTypeOriginalPurchaseOrderRefId(String value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link SIFMetadataType }{@code >}}
+   * 
+   */
+  JAXBElement<SIFMetadataType> createPurchaseOrderTypeSIFMetadata(SIFMetadataType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link SIFExtendedElementsType }{@code >}}
+   * 
+   */
+  JAXBElement<SIFExtendedElementsType> createPurchaseOrderTypeSIFExtendedElements(SIFExtendedElementsType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+   * 
+   */
+  JAXBElement<String> createPaymentReceiptTypeInvoiceRefId(String value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+   * 
+   */
+  JAXBElement<String> createPaymentReceiptTypeVendorInfoRefId(String value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+   * 
+   */
+  JAXBElement<String> createPaymentReceiptTypeDebtorRefId(String value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+   * 
+   */
+  JAXBElement<String> createPaymentReceiptTypeChargedLocationInfoRefId(String value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link FinancialAccountRefIdListType }{@code >}}
+   * 
+   */
+  JAXBElement<FinancialAccountRefIdListType> createPaymentReceiptTypeFinancialAccountRefIdList(FinancialAccountRefIdListType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+   * 
+   */
+  JAXBElement<String> createPaymentReceiptTypeTransactionDescription(String value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link BigDecimal }{@code >}}
+   * 
+   */
+  JAXBElement<BigDecimal> createPaymentReceiptTypeTaxRate(BigDecimal value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link MonetaryAmountType }{@code >}}
+   * 
+   */
+  JAXBElement<MonetaryAmountType> createPaymentReceiptTypeTaxAmount(MonetaryAmountType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+   * 
+   */
+  JAXBElement<String> createPaymentReceiptTypeTransactionMethod(String value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+   * 
+   */
+  JAXBElement<String> createPaymentReceiptTypeChequeNumber(String value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+   * 
+   */
+  JAXBElement<String> createPaymentReceiptTypeTransactionNote(String value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+   * 
+   */
+  JAXBElement<String> createPaymentReceiptTypeAccountingPeriod(String value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link SIFMetadataType }{@code >}}
+   * 
+   */
+  JAXBElement<SIFMetadataType> createPaymentReceiptTypeSIFMetadata(SIFMetadataType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link SIFExtendedElementsType }{@code >}}
+   * 
+   */
+  JAXBElement<SIFExtendedElementsType> createPaymentReceiptTypeSIFExtendedElements(SIFExtendedElementsType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+   * 
+   */
+  JAXBElement<String> createChargedLocationInfoTypeDescription(String value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+   * 
+   */
+  JAXBElement<String> createChargedLocationInfoTypeLocalId(String value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+   * 
+   */
+  JAXBElement<String> createChargedLocationInfoTypeStateProvinceId(String value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+   * 
+   */
+  JAXBElement<String> createChargedLocationInfoTypeParentChargedLocationInfoRefId(String value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+   * 
+   */
+  JAXBElement<String> createChargedLocationInfoTypeSchoolInfoRefId(String value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link AddressListType }{@code >}}
+   * 
+   */
+  JAXBElement<AddressListType> createChargedLocationInfoTypeAddressList(AddressListType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link PhoneNumberListType }{@code >}}
+   * 
+   */
+  JAXBElement<PhoneNumberListType> createChargedLocationInfoTypePhoneNumberList(PhoneNumberListType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link SIFMetadataType }{@code >}}
+   * 
+   */
+  JAXBElement<SIFMetadataType> createChargedLocationInfoTypeSIFMetadata(SIFMetadataType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link SIFExtendedElementsType }{@code >}}
+   * 
+   */
+  JAXBElement<SIFExtendedElementsType> createChargedLocationInfoTypeSIFExtendedElements(SIFExtendedElementsType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+   * 
+   */
+  JAXBElement<String> createFinancialAccountTypeParentAccountRefId(String value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+   * 
+   */
+  JAXBElement<String> createFinancialAccountTypeChargedLocationInfoRefId(String value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+   * 
+   */
+  JAXBElement<String> createFinancialAccountTypeDescription(String value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link SIFMetadataType }{@code >}}
+   * 
+   */
+  JAXBElement<SIFMetadataType> createFinancialAccountTypeSIFMetadata(SIFMetadataType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link SIFExtendedElementsType }{@code >}}
+   * 
+   */
+  JAXBElement<SIFExtendedElementsType> createFinancialAccountTypeSIFExtendedElements(SIFExtendedElementsType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+   * 
+   */
+  JAXBElement<String> createInvoiceTypeFormNumber(String value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+   * 
+   */
+  JAXBElement<String> createInvoiceTypeChargedLocationInfoRefId(String value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link MonetaryAmountType }{@code >}}
+   * 
+   */
+  JAXBElement<MonetaryAmountType> createInvoiceTypeNetAmount(MonetaryAmountType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link BigDecimal }{@code >}}
+   * 
+   */
+  JAXBElement<BigDecimal> createInvoiceTypeTaxRate(BigDecimal value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+   * 
+   */
+  JAXBElement<String> createInvoiceTypeTaxType(String value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link MonetaryAmountType }{@code >}}
+   * 
+   */
+  JAXBElement<MonetaryAmountType> createInvoiceTypeTaxAmount(MonetaryAmountType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+   * 
+   */
+  JAXBElement<String> createInvoiceTypeCreatedBy(String value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+   * 
+   */
+  JAXBElement<String> createInvoiceTypeApprovedBy(String value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+   * 
+   */
+  JAXBElement<String> createInvoiceTypeItemDetail(String value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link XMLGregorianCalendar }{@code >}}
+   * 
+   */
+  JAXBElement<XMLGregorianCalendar> createInvoiceTypeDueDate(XMLGregorianCalendar value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link FinancialAccountRefIdListType }{@code >}}
+   * 
+   */
+  JAXBElement<FinancialAccountRefIdListType> createInvoiceTypeFinancialAccountRefIdList(FinancialAccountRefIdListType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+   * 
+   */
+  JAXBElement<String> createInvoiceTypeAccountingPeriod(String value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+   * 
+   */
+  JAXBElement<String> createInvoiceTypeRelatedPurchaseOrderRefId(String value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link PurchasingItemsType }{@code >}}
+   * 
+   */
+  JAXBElement<PurchasingItemsType> createInvoiceTypePurchasingItems(PurchasingItemsType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link AUCodeSetsYesOrNoCategoryType }{@code >}}
+   * 
+   */
+  JAXBElement<AUCodeSetsYesOrNoCategoryType> createInvoiceTypeVoluntary(AUCodeSetsYesOrNoCategoryType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link SIFMetadataType }{@code >}}
+   * 
+   */
+  JAXBElement<SIFMetadataType> createInvoiceTypeSIFMetadata(SIFMetadataType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link SIFExtendedElementsType }{@code >}}
+   * 
+   */
+  JAXBElement<SIFExtendedElementsType> createInvoiceTypeSIFExtendedElements(SIFExtendedElementsType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+   * 
+   */
+  JAXBElement<String> createEquipmentInfoTypeDescription(String value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+   * 
+   */
+  JAXBElement<String> createEquipmentInfoTypeAssetNumber(String value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+   * 
+   */
+  JAXBElement<String> createEquipmentInfoTypeInvoiceRefId(String value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+   * 
+   */
+  JAXBElement<String> createEquipmentInfoTypePurchaseOrderRefId(String value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+   * 
+   */
+  JAXBElement<String> createEquipmentInfoTypeEquipmentType(String value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link EquipmentInfoType.SIFRefId }{@code >}}
+   * 
+   */
+  JAXBElement<EquipmentInfoType.SIFRefId> createEquipmentInfoTypeSIFRefId(EquipmentInfoType.SIFRefId value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link SIFMetadataType }{@code >}}
+   * 
+   */
+  JAXBElement<SIFMetadataType> createEquipmentInfoTypeSIFMetadata(SIFMetadataType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link SIFExtendedElementsType }{@code >}}
+   * 
+   */
+  JAXBElement<SIFExtendedElementsType> createEquipmentInfoTypeSIFExtendedElements(SIFExtendedElementsType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link ResourceBookingType.ResourceRefId }{@code >}}
+   * 
+   */
+  JAXBElement<ResourceBookingType.ResourceRefId> createResourceBookingTypeResourceRefId(ResourceBookingType.ResourceRefId value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+   * 
+   */
+  JAXBElement<String> createResourceBookingTypeFromPeriod(String value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+   * 
+   */
+  JAXBElement<String> createResourceBookingTypeToPeriod(String value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+   * 
+   */
+  JAXBElement<String> createResourceBookingTypeReason(String value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+   * 
+   */
+  JAXBElement<String> createResourceBookingTypeScheduledActivityRefId(String value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link Boolean }{@code >}}
+   * 
+   */
+  JAXBElement<Boolean> createResourceBookingTypeKeepOld(Boolean value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link SIFMetadataType }{@code >}}
+   * 
+   */
+  JAXBElement<SIFMetadataType> createResourceBookingTypeSIFMetadata(SIFMetadataType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link SIFExtendedElementsType }{@code >}}
+   * 
+   */
+  JAXBElement<SIFExtendedElementsType> createResourceBookingTypeSIFExtendedElements(SIFExtendedElementsType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+   * 
+   */
+  JAXBElement<String> createScheduledActivityTypeTimeTableCellRefId(String value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+   * 
+   */
+  JAXBElement<String> createScheduledActivityTypeDayId(String value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+   * 
+   */
+  JAXBElement<String> createScheduledActivityTypePeriodId(String value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+   * 
+   */
+  JAXBElement<String> createScheduledActivityTypeTimeTableRefId(String value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+   * 
+   */
+  JAXBElement<String> createScheduledActivityTypeCellType(String value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+   * 
+   */
+  JAXBElement<String> createScheduledActivityTypeTimeTableSubjectRefId(String value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link ScheduledTeacherListType }{@code >}}
+   * 
+   */
+  JAXBElement<ScheduledTeacherListType> createScheduledActivityTypeTeacherList(ScheduledTeacherListType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link RoomListType }{@code >}}
+   * 
+   */
+  JAXBElement<RoomListType> createScheduledActivityTypeRoomList(RoomListType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link AddressListType }{@code >}}
+   * 
+   */
+  JAXBElement<AddressListType> createScheduledActivityTypeAddressList(AddressListType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+   * 
+   */
+  JAXBElement<String> createScheduledActivityTypeLocation(String value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link AUCodeSetsScheduledActivityTypeType }{@code >}}
+   * 
+   */
+  JAXBElement<AUCodeSetsScheduledActivityTypeType> createScheduledActivityTypeActivityType(AUCodeSetsScheduledActivityTypeType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+   * 
+   */
+  JAXBElement<String> createScheduledActivityTypeActivityName(String value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+   * 
+   */
+  JAXBElement<String> createScheduledActivityTypeActivityComment(String value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link StudentsType }{@code >}}
+   * 
+   */
+  JAXBElement<StudentsType> createScheduledActivityTypeStudentList(StudentsType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link TeachingGroupListType }{@code >}}
+   * 
+   */
+  JAXBElement<TeachingGroupListType> createScheduledActivityTypeTeachingGroupList(TeachingGroupListType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link YearLevelsType }{@code >}}
+   * 
+   */
+  JAXBElement<YearLevelsType> createScheduledActivityTypeYearLevels(YearLevelsType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link ScheduledActivityOverrideType }{@code >}}
+   * 
+   */
+  JAXBElement<ScheduledActivityOverrideType> createScheduledActivityTypeOverride(ScheduledActivityOverrideType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link SIFMetadataType }{@code >}}
+   * 
+   */
+  JAXBElement<SIFMetadataType> createScheduledActivityTypeSIFMetadata(SIFMetadataType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link SIFExtendedElementsType }{@code >}}
+   * 
+   */
+  JAXBElement<SIFExtendedElementsType> createScheduledActivityTypeSIFExtendedElements(SIFExtendedElementsType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+   * 
+   */
+  JAXBElement<String> createActivityTypeTitle(String value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+   * 
+   */
+  JAXBElement<String> createActivityTypePreamble(String value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link TechnicalRequirementsType }{@code >}}
+   * 
+   */
+  JAXBElement<TechnicalRequirementsType> createActivityTypeTechnicalRequirements(TechnicalRequirementsType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link SoftwareRequirementListType }{@code >}}
+   * 
+   */
+  JAXBElement<SoftwareRequirementListType> createActivityTypeSoftwareRequirementList(SoftwareRequirementListType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link EssentialMaterialsType }{@code >}}
+   * 
+   */
+  JAXBElement<EssentialMaterialsType> createActivityTypeEssentialMaterials(EssentialMaterialsType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link LearningObjectivesType }{@code >}}
+   * 
+   */
+  JAXBElement<LearningObjectivesType> createActivityTypeLearningObjectives(LearningObjectivesType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link LearningStandardsType }{@code >}}
+   * 
+   */
+  JAXBElement<LearningStandardsType> createActivityTypeLearningStandards(LearningStandardsType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link SubjectAreaType }{@code >}}
+   * 
+   */
+  JAXBElement<SubjectAreaType> createActivityTypeSubjectArea(SubjectAreaType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link PrerequisitesType }{@code >}}
+   * 
+   */
+  JAXBElement<PrerequisitesType> createActivityTypePrerequisites(PrerequisitesType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link StudentsType }{@code >}}
+   * 
+   */
+  JAXBElement<StudentsType> createActivityTypeStudents(StudentsType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link SourceObjectsType }{@code >}}
+   * 
+   */
+  JAXBElement<SourceObjectsType> createActivityTypeSourceObjects(SourceObjectsType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link Long }{@code >}}
+   * 
+   */
+  JAXBElement<Long> createActivityTypePoints(Long value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+   * 
+   */
+  JAXBElement<String> createActivityTypeAssessmentRefId(String value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link Long }{@code >}}
+   * 
+   */
+  JAXBElement<Long> createActivityTypeMaxAttemptsAllowed(Long value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link BigDecimal }{@code >}}
+   * 
+   */
+  JAXBElement<BigDecimal> createActivityTypeActivityWeight(BigDecimal value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link ActivityType.Evaluation }{@code >}}
+   * 
+   */
+  JAXBElement<ActivityType.Evaluation> createActivityTypeEvaluation(ActivityType.Evaluation value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link LearningResourcesType }{@code >}}
+   * 
+   */
+  JAXBElement<LearningResourcesType> createActivityTypeLearningResources(LearningResourcesType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link SIFMetadataType }{@code >}}
+   * 
+   */
+  JAXBElement<SIFMetadataType> createActivityTypeSIFMetadata(SIFMetadataType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link SIFExtendedElementsType }{@code >}}
+   * 
+   */
+  JAXBElement<SIFExtendedElementsType> createActivityTypeSIFExtendedElements(SIFExtendedElementsType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+   * 
+   */
+  JAXBElement<String> createActivityTypeEvaluationDescription(String value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link XMLGregorianCalendar }{@code >}}
+   * 
+   */
+  JAXBElement<XMLGregorianCalendar> createStudentSectionEnrollmentTypeSchoolYear(XMLGregorianCalendar value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link XMLGregorianCalendar }{@code >}}
+   * 
+   */
+  JAXBElement<XMLGregorianCalendar> createStudentSectionEnrollmentTypeEntryDate(XMLGregorianCalendar value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link XMLGregorianCalendar }{@code >}}
+   * 
+   */
+  JAXBElement<XMLGregorianCalendar> createStudentSectionEnrollmentTypeExitDate(XMLGregorianCalendar value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link SIFMetadataType }{@code >}}
+   * 
+   */
+  JAXBElement<SIFMetadataType> createStudentSectionEnrollmentTypeSIFMetadata(SIFMetadataType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link SIFExtendedElementsType }{@code >}}
+   * 
+   */
+  JAXBElement<SIFExtendedElementsType> createStudentSectionEnrollmentTypeSIFExtendedElements(SIFExtendedElementsType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+   * 
+   */
+  JAXBElement<String> createSectionInfoTypeDescription(String value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link XMLGregorianCalendar }{@code >}}
+   * 
+   */
+  JAXBElement<XMLGregorianCalendar> createSectionInfoTypeSchoolYear(XMLGregorianCalendar value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+   * 
+   */
+  JAXBElement<String> createSectionInfoTypeTermInfoRefId(String value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link MediumOfInstructionType }{@code >}}
+   * 
+   */
+  JAXBElement<MediumOfInstructionType> createSectionInfoTypeMediumOfInstruction(MediumOfInstructionType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link LanguageOfInstructionType }{@code >}}
+   * 
+   */
+  JAXBElement<LanguageOfInstructionType> createSectionInfoTypeLanguageOfInstruction(LanguageOfInstructionType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link LocationOfInstructionType }{@code >}}
+   * 
+   */
+  JAXBElement<LocationOfInstructionType> createSectionInfoTypeLocationOfInstruction(LocationOfInstructionType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+   * 
+   */
+  JAXBElement<String> createSectionInfoTypeSummerSchool(String value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link SchoolCourseInfoOverrideType }{@code >}}
+   * 
+   */
+  JAXBElement<SchoolCourseInfoOverrideType> createSectionInfoTypeSchoolCourseInfoOverride(SchoolCourseInfoOverrideType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+   * 
+   */
+  JAXBElement<String> createSectionInfoTypeCourseSectionCode(String value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+   * 
+   */
+  JAXBElement<String> createSectionInfoTypeSectionCode(String value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+   * 
+   */
+  JAXBElement<String> createSectionInfoTypeCountForAttendance(String value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link SIFMetadataType }{@code >}}
+   * 
+   */
+  JAXBElement<SIFMetadataType> createSectionInfoTypeSIFMetadata(SIFMetadataType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link SIFExtendedElementsType }{@code >}}
+   * 
+   */
+  JAXBElement<SIFExtendedElementsType> createSectionInfoTypeSIFExtendedElements(SIFExtendedElementsType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link XMLGregorianCalendar }{@code >}}
+   * 
+   */
+  JAXBElement<XMLGregorianCalendar> createSchoolProgramsTypeSchoolYear(XMLGregorianCalendar value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link SchoolProgramListType }{@code >}}
+   * 
+   */
+  JAXBElement<SchoolProgramListType> createSchoolProgramsTypeSchoolProgramList(SchoolProgramListType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link SIFMetadataType }{@code >}}
+   * 
+   */
+  JAXBElement<SIFMetadataType> createSchoolProgramsTypeSIFMetadata(SIFMetadataType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link SIFExtendedElementsType }{@code >}}
+   * 
+   */
+  JAXBElement<SIFExtendedElementsType> createSchoolProgramsTypeSIFExtendedElements(SIFExtendedElementsType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link IdentityAssertionsType }{@code >}}
+   * 
+   */
+  JAXBElement<IdentityAssertionsType> createIdentityTypeIdentityAssertions(IdentityAssertionsType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link PasswordListType }{@code >}}
+   * 
+   */
+  JAXBElement<PasswordListType> createIdentityTypePasswordList(PasswordListType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+   * 
+   */
+  JAXBElement<String> createIdentityTypeAuthenticationSourceGlobalUID(String value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link SIFMetadataType }{@code >}}
+   * 
+   */
+  JAXBElement<SIFMetadataType> createIdentityTypeSIFMetadata(SIFMetadataType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link SIFExtendedElementsType }{@code >}}
+   * 
+   */
+  JAXBElement<SIFExtendedElementsType> createIdentityTypeSIFExtendedElements(SIFExtendedElementsType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link XMLGregorianCalendar }{@code >}}
+   * 
+   */
+  JAXBElement<XMLGregorianCalendar> createStudentActivityParticipationTypeSchoolYear(XMLGregorianCalendar value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+   * 
+   */
+  JAXBElement<String> createStudentActivityParticipationTypeParticipationComment(String value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link XMLGregorianCalendar }{@code >}}
+   * 
+   */
+  JAXBElement<XMLGregorianCalendar> createStudentActivityParticipationTypeStartDate(XMLGregorianCalendar value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link XMLGregorianCalendar }{@code >}}
+   * 
+   */
+  JAXBElement<XMLGregorianCalendar> createStudentActivityParticipationTypeEndDate(XMLGregorianCalendar value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+   * 
+   */
+  JAXBElement<String> createStudentActivityParticipationTypeRole(String value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link RecognitionListType }{@code >}}
+   * 
+   */
+  JAXBElement<RecognitionListType> createStudentActivityParticipationTypeRecognitionList(RecognitionListType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link SIFMetadataType }{@code >}}
+   * 
+   */
+  JAXBElement<SIFMetadataType> createStudentActivityParticipationTypeSIFMetadata(SIFMetadataType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link SIFExtendedElementsType }{@code >}}
+   * 
+   */
+  JAXBElement<SIFExtendedElementsType> createStudentActivityParticipationTypeSIFExtendedElements(SIFExtendedElementsType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+   * 
+   */
+  JAXBElement<String> createStudentActivityInfoTypeDescription(String value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+   * 
+   */
+  JAXBElement<String> createStudentActivityInfoTypeStudentActivityLevel(String value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link YearLevelsType }{@code >}}
+   * 
+   */
+  JAXBElement<YearLevelsType> createStudentActivityInfoTypeYearLevels(YearLevelsType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+   * 
+   */
+  JAXBElement<String> createStudentActivityInfoTypeCurricularStatus(String value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link LocationType }{@code >}}
+   * 
+   */
+  JAXBElement<LocationType> createStudentActivityInfoTypeLocation(LocationType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link SIFMetadataType }{@code >}}
+   * 
+   */
+  JAXBElement<SIFMetadataType> createStudentActivityInfoTypeSIFMetadata(SIFMetadataType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link SIFExtendedElementsType }{@code >}}
+   * 
+   */
+  JAXBElement<SIFExtendedElementsType> createStudentActivityInfoTypeSIFExtendedElements(SIFExtendedElementsType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+   * 
+   */
+  JAXBElement<String> createStudentContactRelationshipTypeParentRelationshipStatus(String value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link HouseholdListType }{@code >}}
+   * 
+   */
+  JAXBElement<HouseholdListType> createStudentContactRelationshipTypeHouseholdList(HouseholdListType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link ContactFlagsType }{@code >}}
+   * 
+   */
+  JAXBElement<ContactFlagsType> createStudentContactRelationshipTypeContactFlags(ContactFlagsType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link AUCodeSetsYesOrNoCategoryType }{@code >}}
+   * 
+   */
+  JAXBElement<AUCodeSetsYesOrNoCategoryType> createStudentContactRelationshipTypeMainlySpeaksEnglishAtHome(AUCodeSetsYesOrNoCategoryType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link Long }{@code >}}
+   * 
+   */
+  JAXBElement<Long> createStudentContactRelationshipTypeContactSequence(Long value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link AUCodeSetsSourceCodeTypeType }{@code >}}
+   * 
+   */
+  JAXBElement<AUCodeSetsSourceCodeTypeType> createStudentContactRelationshipTypeContactSequenceSource(AUCodeSetsSourceCodeTypeType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link SIFMetadataType }{@code >}}
+   * 
+   */
+  JAXBElement<SIFMetadataType> createStudentContactRelationshipTypeSIFMetadata(SIFMetadataType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link SIFExtendedElementsType }{@code >}}
+   * 
+   */
+  JAXBElement<SIFExtendedElementsType> createStudentContactRelationshipTypeSIFExtendedElements(SIFExtendedElementsType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+   * 
+   */
   JAXBElement<String> createTermInfoTypeDescription(String value);
 
-  JAXBElement<AUCodeSetsYesOrNoCategoryType> createTermInfoTypeMarkingTerm(AUCodeSetsYesOrNoCategoryType value);
-
-  JAXBElement<SIFExtendedElementsType> createTermInfoTypeSIFExtendedElements(SIFExtendedElementsType value);
-
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link BigDecimal }{@code >}}
+   * 
+   */
   JAXBElement<BigDecimal> createTermInfoTypeRelativeDuration(BigDecimal value);
 
-  JAXBElement<SIFMetadataType> createTermInfoTypeSIFMetadata(SIFMetadataType value);
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+   * 
+   */
+  JAXBElement<String> createTermInfoTypeTermCode(String value);
 
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+   * 
+   */
+  JAXBElement<String> createTermInfoTypeTrack(String value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+   * 
+   */
+  JAXBElement<String> createTermInfoTypeTermSpan(String value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link AUCodeSetsYesOrNoCategoryType }{@code >}}
+   * 
+   */
+  JAXBElement<AUCodeSetsYesOrNoCategoryType> createTermInfoTypeMarkingTerm(AUCodeSetsYesOrNoCategoryType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link AUCodeSetsYesOrNoCategoryType }{@code >}}
+   * 
+   */
   JAXBElement<AUCodeSetsYesOrNoCategoryType> createTermInfoTypeSchedulingTerm(AUCodeSetsYesOrNoCategoryType value);
 
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link AUCodeSetsYesOrNoCategoryType }{@code >}}
+   * 
+   */
+  JAXBElement<AUCodeSetsYesOrNoCategoryType> createTermInfoTypeAttendanceTerm(AUCodeSetsYesOrNoCategoryType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link SIFMetadataType }{@code >}}
+   * 
+   */
+  JAXBElement<SIFMetadataType> createTermInfoTypeSIFMetadata(SIFMetadataType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link SIFExtendedElementsType }{@code >}}
+   * 
+   */
+  JAXBElement<SIFExtendedElementsType> createTermInfoTypeSIFExtendedElements(SIFExtendedElementsType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+   * 
+   */
+  JAXBElement<String> createLEAInfoTypeStateProvinceId(String value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+   * 
+   */
+  JAXBElement<String> createLEAInfoTypeCommonwealthId(String value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+   * 
+   */
+  JAXBElement<String> createLEAInfoTypeLEAURL(String value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link AgencyType }{@code >}}
+   * 
+   */
+  JAXBElement<AgencyType> createLEAInfoTypeEducationAgencyType(AgencyType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link LEAContactListType }{@code >}}
+   * 
+   */
+  JAXBElement<LEAContactListType> createLEAInfoTypeLEAContactList(LEAContactListType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link PhoneNumberListType }{@code >}}
+   * 
+   */
+  JAXBElement<PhoneNumberListType> createLEAInfoTypePhoneNumberList(PhoneNumberListType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link AddressListType }{@code >}}
+   * 
+   */
+  JAXBElement<AddressListType> createLEAInfoTypeAddressList(AddressListType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link AUCodeSetsOperationalStatusType }{@code >}}
+   * 
+   */
+  JAXBElement<AUCodeSetsOperationalStatusType> createLEAInfoTypeOperationalStatus(AUCodeSetsOperationalStatusType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+   * 
+   */
+  JAXBElement<String> createLEAInfoTypeJurisdictionLowerHouse(String value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+   * 
+   */
+  JAXBElement<String> createLEAInfoTypeSLA(String value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link SIFMetadataType }{@code >}}
+   * 
+   */
+  JAXBElement<SIFMetadataType> createLEAInfoTypeSIFMetadata(SIFMetadataType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link SIFExtendedElementsType }{@code >}}
+   * 
+   */
+  JAXBElement<SIFExtendedElementsType> createLEAInfoTypeSIFExtendedElements(SIFExtendedElementsType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+   * 
+   */
+  JAXBElement<String> createSchoolCourseInfoTypeSchoolLocalId(String value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link XMLGregorianCalendar }{@code >}}
+   * 
+   */
+  JAXBElement<XMLGregorianCalendar> createSchoolCourseInfoTypeSchoolYear(XMLGregorianCalendar value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+   * 
+   */
+  JAXBElement<String> createSchoolCourseInfoTypeTermInfoRefId(String value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+   * 
+   */
+  JAXBElement<String> createSchoolCourseInfoTypeStateCourseCode(String value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+   * 
+   */
+  JAXBElement<String> createSchoolCourseInfoTypeDistrictCourseCode(String value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link SubjectAreaListType }{@code >}}
+   * 
+   */
+  JAXBElement<SubjectAreaListType> createSchoolCourseInfoTypeSubjectAreaList(SubjectAreaListType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+   * 
+   */
+  JAXBElement<String> createSchoolCourseInfoTypeDescription(String value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+   * 
+   */
+  JAXBElement<String> createSchoolCourseInfoTypeInstructionalLevel(String value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+   * 
+   */
+  JAXBElement<String> createSchoolCourseInfoTypeCourseCredits(String value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link AUCodeSetsYesOrNoCategoryType }{@code >}}
+   * 
+   */
+  JAXBElement<AUCodeSetsYesOrNoCategoryType> createSchoolCourseInfoTypeCoreAcademicCourse(AUCodeSetsYesOrNoCategoryType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link AUCodeSetsYesOrNoCategoryType }{@code >}}
+   * 
+   */
+  JAXBElement<AUCodeSetsYesOrNoCategoryType> createSchoolCourseInfoTypeGraduationRequirement(AUCodeSetsYesOrNoCategoryType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+   * 
+   */
+  JAXBElement<String> createSchoolCourseInfoTypeDepartment(String value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+   * 
+   */
+  JAXBElement<String> createSchoolCourseInfoTypeCourseContent(String value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link SIFMetadataType }{@code >}}
+   * 
+   */
+  JAXBElement<SIFMetadataType> createSchoolCourseInfoTypeSIFMetadata(SIFMetadataType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link SIFExtendedElementsType }{@code >}}
+   * 
+   */
+  JAXBElement<SIFExtendedElementsType> createSchoolCourseInfoTypeSIFExtendedElements(SIFExtendedElementsType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+   * 
+   */
+  JAXBElement<String> createTimeTableCellTypeRoomInfoRefId(String value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+   * 
+   */
+  JAXBElement<String> createTimeTableCellTypeStaffPersonalRefId(String value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+   * 
+   */
+  JAXBElement<String> createTimeTableCellTypeTimeTableLocalId(String value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+   * 
+   */
+  JAXBElement<String> createTimeTableCellTypeSubjectLocalId(String value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+   * 
+   */
+  JAXBElement<String> createTimeTableCellTypeTeachingGroupLocalId(String value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+   * 
+   */
+  JAXBElement<String> createTimeTableCellTypeRoomNumber(String value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+   * 
+   */
+  JAXBElement<String> createTimeTableCellTypeStaffLocalId(String value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+   * 
+   */
+  JAXBElement<String> createTimeTableCellTypeSchoolInfoRefId(String value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+   * 
+   */
+  JAXBElement<String> createTimeTableCellTypeSchoolLocalId(String value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link ScheduledTeacherListType }{@code >}}
+   * 
+   */
+  JAXBElement<ScheduledTeacherListType> createTimeTableCellTypeTeacherList(ScheduledTeacherListType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link RoomListType }{@code >}}
+   * 
+   */
+  JAXBElement<RoomListType> createTimeTableCellTypeRoomList(RoomListType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link SIFMetadataType }{@code >}}
+   * 
+   */
+  JAXBElement<SIFMetadataType> createTimeTableCellTypeSIFMetadata(SIFMetadataType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link SIFExtendedElementsType }{@code >}}
+   * 
+   */
+  JAXBElement<SIFExtendedElementsType> createTimeTableCellTypeSIFExtendedElements(SIFExtendedElementsType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+   * 
+   */
+  JAXBElement<String> createTeachingGroupTypeLongName(String value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+   * 
+   */
+  JAXBElement<String> createTeachingGroupTypeGroupType(String value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+   * 
+   */
+  JAXBElement<String> createTeachingGroupTypeSet(String value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+   * 
+   */
+  JAXBElement<String> createTeachingGroupTypeBlock(String value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+   * 
+   */
+  JAXBElement<String> createTeachingGroupTypeCurriculumLevel(String value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+   * 
+   */
+  JAXBElement<String> createTeachingGroupTypeSchoolInfoRefId(String value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+   * 
+   */
+  JAXBElement<String> createTeachingGroupTypeSchoolLocalId(String value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+   * 
+   */
+  JAXBElement<String> createTeachingGroupTypeSchoolCourseInfoRefId(String value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+   * 
+   */
+  JAXBElement<String> createTeachingGroupTypeSchoolCourseLocalId(String value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+   * 
+   */
+  JAXBElement<String> createTeachingGroupTypeTimeTableSubjectRefId(String value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+   * 
+   */
+  JAXBElement<String> createTeachingGroupTypeTimeTableSubjectLocalId(String value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link Long }{@code >}}
+   * 
+   */
+  JAXBElement<Long> createTeachingGroupTypeSemester(Long value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link StudentListType }{@code >}}
+   * 
+   */
+  JAXBElement<StudentListType> createTeachingGroupTypeStudentList(StudentListType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link TeacherListType }{@code >}}
+   * 
+   */
+  JAXBElement<TeacherListType> createTeachingGroupTypeTeacherList(TeacherListType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link BigInteger }{@code >}}
+   * 
+   */
+  JAXBElement<BigInteger> createTeachingGroupTypeMinClassSize(BigInteger value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link BigInteger }{@code >}}
+   * 
+   */
+  JAXBElement<BigInteger> createTeachingGroupTypeMaxClassSize(BigInteger value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link TeachingGroupPeriodListType }{@code >}}
+   * 
+   */
+  JAXBElement<TeachingGroupPeriodListType> createTeachingGroupTypeTeachingGroupPeriodList(TeachingGroupPeriodListType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link SIFMetadataType }{@code >}}
+   * 
+   */
+  JAXBElement<SIFMetadataType> createTeachingGroupTypeSIFMetadata(SIFMetadataType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link SIFExtendedElementsType }{@code >}}
+   * 
+   */
+  JAXBElement<SIFExtendedElementsType> createTeachingGroupTypeSIFExtendedElements(SIFExtendedElementsType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+   * 
+   */
+  JAXBElement<String> createTimeTableTypeSchoolInfoRefId(String value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+   * 
+   */
+  JAXBElement<String> createTimeTableTypeLocalId(String value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link Long }{@code >}}
+   * 
+   */
+  JAXBElement<Long> createTimeTableTypeTeachingPeriodsPerDay(Long value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+   * 
+   */
+  JAXBElement<String> createTimeTableTypeSchoolLocalId(String value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+   * 
+   */
+  JAXBElement<String> createTimeTableTypeSchoolName(String value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link XMLGregorianCalendar }{@code >}}
+   * 
+   */
+  JAXBElement<XMLGregorianCalendar> createTimeTableTypeTimeTableCreationDate(XMLGregorianCalendar value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link XMLGregorianCalendar }{@code >}}
+   * 
+   */
+  JAXBElement<XMLGregorianCalendar> createTimeTableTypeStartDate(XMLGregorianCalendar value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link XMLGregorianCalendar }{@code >}}
+   * 
+   */
+  JAXBElement<XMLGregorianCalendar> createTimeTableTypeEndDate(XMLGregorianCalendar value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link SIFMetadataType }{@code >}}
+   * 
+   */
+  JAXBElement<SIFMetadataType> createTimeTableTypeSIFMetadata(SIFMetadataType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link SIFExtendedElementsType }{@code >}}
+   * 
+   */
+  JAXBElement<SIFExtendedElementsType> createTimeTableTypeSIFExtendedElements(SIFExtendedElementsType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link YearLevelType }{@code >}}
+   * 
+   */
+  JAXBElement<YearLevelType> createTimeTableSubjectTypeAcademicYear(YearLevelType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link YearRangeType }{@code >}}
+   * 
+   */
+  JAXBElement<YearRangeType> createTimeTableSubjectTypeAcademicYearRange(YearRangeType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+   * 
+   */
+  JAXBElement<String> createTimeTableSubjectTypeCourseLocalId(String value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+   * 
+   */
+  JAXBElement<String> createTimeTableSubjectTypeSchoolCourseInfoRefId(String value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+   * 
+   */
+  JAXBElement<String> createTimeTableSubjectTypeFaculty(String value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+   * 
+   */
+  JAXBElement<String> createTimeTableSubjectTypeSubjectShortName(String value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+   * 
+   */
+  JAXBElement<String> createTimeTableSubjectTypeSubjectType(String value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link BigDecimal }{@code >}}
+   * 
+   */
+  JAXBElement<BigDecimal> createTimeTableSubjectTypeProposedMaxClassSize(BigDecimal value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link BigDecimal }{@code >}}
+   * 
+   */
+  JAXBElement<BigDecimal> createTimeTableSubjectTypeProposedMinClassSize(BigDecimal value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+   * 
+   */
+  JAXBElement<String> createTimeTableSubjectTypeSchoolInfoRefId(String value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+   * 
+   */
+  JAXBElement<String> createTimeTableSubjectTypeSchoolLocalId(String value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link Long }{@code >}}
+   * 
+   */
+  JAXBElement<Long> createTimeTableSubjectTypeSemester(Long value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link XMLGregorianCalendar }{@code >}}
+   * 
+   */
+  JAXBElement<XMLGregorianCalendar> createTimeTableSubjectTypeSchoolYear(XMLGregorianCalendar value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link OtherCodeListType }{@code >}}
+   * 
+   */
+  JAXBElement<OtherCodeListType> createTimeTableSubjectTypeOtherCodeList(OtherCodeListType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link SIFMetadataType }{@code >}}
+   * 
+   */
+  JAXBElement<SIFMetadataType> createTimeTableSubjectTypeSIFMetadata(SIFMetadataType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link SIFExtendedElementsType }{@code >}}
+   * 
+   */
+  JAXBElement<SIFExtendedElementsType> createTimeTableSubjectTypeSIFExtendedElements(SIFExtendedElementsType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+   * 
+   */
+  JAXBElement<String> createLearningResourceTypeAuthor(String value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link ContactsType }{@code >}}
+   * 
+   */
+  JAXBElement<ContactsType> createLearningResourceTypeContacts(ContactsType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link LearningResourceType.Location }{@code >}}
+   * 
+   */
+  JAXBElement<LearningResourceType.Location> createLearningResourceTypeLocation(LearningResourceType.Location value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+   * 
+   */
+  JAXBElement<String> createLearningResourceTypeStatus(String value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+   * 
+   */
+  JAXBElement<String> createLearningResourceTypeDescription(String value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link YearLevelsType }{@code >}}
+   * 
+   */
+  JAXBElement<YearLevelsType> createLearningResourceTypeYearLevels(YearLevelsType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link ACStrandAreaListType }{@code >}}
+   * 
+   */
+  JAXBElement<ACStrandAreaListType> createLearningResourceTypeSubjectAreas(ACStrandAreaListType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link MediaTypesType }{@code >}}
+   * 
+   */
+  JAXBElement<MediaTypesType> createLearningResourceTypeMediaTypes(MediaTypesType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+   * 
+   */
+  JAXBElement<String> createLearningResourceTypeUseAgreement(String value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link XMLGregorianCalendar }{@code >}}
+   * 
+   */
+  JAXBElement<XMLGregorianCalendar> createLearningResourceTypeAgreementDate(XMLGregorianCalendar value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link ApprovalsType }{@code >}}
+   * 
+   */
+  JAXBElement<ApprovalsType> createLearningResourceTypeApprovals(ApprovalsType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link EvaluationsType }{@code >}}
+   * 
+   */
+  JAXBElement<EvaluationsType> createLearningResourceTypeEvaluations(EvaluationsType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link LearningStandardsType }{@code >}}
+   * 
+   */
+  JAXBElement<LearningStandardsType> createLearningResourceTypeLearningStandards(LearningStandardsType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+   * 
+   */
+  JAXBElement<String> createLearningResourceTypeLearningResourcePackageRefId(String value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link SIFMetadataType }{@code >}}
+   * 
+   */
+  JAXBElement<SIFMetadataType> createLearningResourceTypeSIFMetadata(SIFMetadataType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link SIFExtendedElementsType }{@code >}}
+   * 
+   */
+  JAXBElement<SIFExtendedElementsType> createLearningResourceTypeSIFExtendedElements(SIFExtendedElementsType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link LResourcesType }{@code >}}
+   * 
+   */
+  JAXBElement<LResourcesType> createLearningStandardItemTypeResources(LResourcesType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link LearningStandardItemType.StandardSettingBody }{@code >}}
+   * 
+   */
+  JAXBElement<LearningStandardItemType.StandardSettingBody> createLearningStandardItemTypeStandardSettingBody(LearningStandardItemType.StandardSettingBody value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link LearningStandardsType }{@code >}}
+   * 
+   */
+  JAXBElement<LearningStandardsType> createLearningStandardItemTypePredecessorItems(LearningStandardsType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link StatementCodesType }{@code >}}
+   * 
+   */
+  JAXBElement<StatementCodesType> createLearningStandardItemTypeStatementCodes(StatementCodesType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link StatementsType }{@code >}}
+   * 
+   */
+  JAXBElement<StatementsType> createLearningStandardItemTypeStatements(StatementsType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link ACStrandSubjectAreaType }{@code >}}
+   * 
+   */
+  JAXBElement<ACStrandSubjectAreaType> createLearningStandardItemTypeACStrandSubjectArea(ACStrandSubjectAreaType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link LearningStandardItemType.StandardIdentifier }{@code >}}
+   * 
+   */
+  JAXBElement<LearningStandardItemType.StandardIdentifier> createLearningStandardItemTypeStandardIdentifier(LearningStandardItemType.StandardIdentifier value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link LearningStandardItemType.RelatedLearningStandardItems }{@code >}}
+   * 
+   */
+  JAXBElement<LearningStandardItemType.RelatedLearningStandardItems> createLearningStandardItemTypeRelatedLearningStandardItems(LearningStandardItemType.RelatedLearningStandardItems value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+   * 
+   */
+  JAXBElement<String> createLearningStandardItemTypeLevel4(String value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+   * 
+   */
+  JAXBElement<String> createLearningStandardItemTypeLevel5(String value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link SIFMetadataType }{@code >}}
+   * 
+   */
+  JAXBElement<SIFMetadataType> createLearningStandardItemTypeSIFMetadata(SIFMetadataType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link SIFExtendedElementsType }{@code >}}
+   * 
+   */
+  JAXBElement<SIFExtendedElementsType> createLearningStandardItemTypeSIFExtendedElements(SIFExtendedElementsType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+   * 
+   */
+  JAXBElement<String> createLearningStandardItemTypeStandardIdentifierBenchmark(String value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link YearLevelType }{@code >}}
+   * 
+   */
   JAXBElement<YearLevelType> createLearningStandardItemTypeStandardIdentifierYearLevel(YearLevelType value);
 
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+   * 
+   */
+  JAXBElement<String> createLearningStandardItemTypeStandardIdentifierIndicatorNumber(String value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link LearningStandardItemType.StandardIdentifier.AlternateIdentificationCodes }{@code >}}
+   * 
+   */
   JAXBElement<LearningStandardItemType.StandardIdentifier.AlternateIdentificationCodes> createLearningStandardItemTypeStandardIdentifierAlternateIdentificationCodes(
       LearningStandardItemType.StandardIdentifier.AlternateIdentificationCodes value);
 
-  JAXBElement<String> createLearningStandardItemTypeStandardIdentifierBenchmark(String value);
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+   * 
+   */
+  JAXBElement<String> createLearningStandardItemTypeStandardSettingBodyStateProvince(String value);
 
-  JAXBElement<String> createLearningStandardItemTypeStandardIdentifierIndicatorNumber(String value);
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+   * 
+   */
+  JAXBElement<String> createLearningStandardItemTypeStandardSettingBodySettingBodyName(String value);
 
-  JAXBElement<XMLGregorianCalendar> createSessionInfoTypeStartTime(XMLGregorianCalendar value);
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+   * 
+   */
+  JAXBElement<String> createLearningStandardDocumentTypeDescription(String value);
 
-  JAXBElement<AUCodeSetsYesOrNoCategoryType> createSessionInfoTypeRollMarked(AUCodeSetsYesOrNoCategoryType value);
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link AbstractContentElementType }{@code >}}
+   * 
+   */
+  JAXBElement<AbstractContentElementType> createLearningStandardDocumentTypeRichDescription(AbstractContentElementType value);
 
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link AuthorsType }{@code >}}
+   * 
+   */
+  JAXBElement<AuthorsType> createLearningStandardDocumentTypeAuthors(AuthorsType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+   * 
+   */
+  JAXBElement<String> createLearningStandardDocumentTypeOrganizationContactPoint(String value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link XMLGregorianCalendar }{@code >}}
+   * 
+   */
+  JAXBElement<XMLGregorianCalendar> createLearningStandardDocumentTypeDocumentDate(XMLGregorianCalendar value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link XMLGregorianCalendar }{@code >}}
+   * 
+   */
+  JAXBElement<XMLGregorianCalendar> createLearningStandardDocumentTypeLocalAdoptionDate(XMLGregorianCalendar value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link XMLGregorianCalendar }{@code >}}
+   * 
+   */
+  JAXBElement<XMLGregorianCalendar> createLearningStandardDocumentTypeLocalArchiveDate(XMLGregorianCalendar value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link XMLGregorianCalendar }{@code >}}
+   * 
+   */
+  JAXBElement<XMLGregorianCalendar> createLearningStandardDocumentTypeEndOfLifeDate(XMLGregorianCalendar value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link LearningStandardDocumentType.Copyright }{@code >}}
+   * 
+   */
+  JAXBElement<LearningStandardDocumentType.Copyright> createLearningStandardDocumentTypeCopyright(LearningStandardDocumentType.Copyright value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link YearLevelsType }{@code >}}
+   * 
+   */
+  JAXBElement<YearLevelsType> createLearningStandardDocumentTypeYearLevels(YearLevelsType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link XMLGregorianCalendar }{@code >}}
+   * 
+   */
+  JAXBElement<XMLGregorianCalendar> createLearningStandardDocumentTypeRepositoryDate(XMLGregorianCalendar value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link LearningStandardsDocumentType }{@code >}}
+   * 
+   */
+  JAXBElement<LearningStandardsDocumentType> createLearningStandardDocumentTypeRelatedLearningStandards(LearningStandardsDocumentType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link SIFMetadataType }{@code >}}
+   * 
+   */
+  JAXBElement<SIFMetadataType> createLearningStandardDocumentTypeSIFMetadata(SIFMetadataType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link SIFExtendedElementsType }{@code >}}
+   * 
+   */
+  JAXBElement<SIFExtendedElementsType> createLearningStandardDocumentTypeSIFExtendedElements(SIFExtendedElementsType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link XMLGregorianCalendar }{@code >}}
+   * 
+   */
+  JAXBElement<XMLGregorianCalendar> createLearningStandardDocumentTypeCopyrightDate(XMLGregorianCalendar value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+   * 
+   */
+  JAXBElement<String> createLearningStandardDocumentTypeCopyrightHolder(String value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+   * 
+   */
   JAXBElement<String> createSessionInfoTypeSchoolLocalId(String value);
 
-  JAXBElement<String> createSessionInfoTypeRoomNumber(String value);
-
-  JAXBElement<SIFExtendedElementsType> createSessionInfoTypeSIFExtendedElements(SIFExtendedElementsType value);
-
-  JAXBElement<SIFMetadataType> createSessionInfoTypeSIFMetadata(SIFMetadataType value);
-
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+   * 
+   */
   JAXBElement<String> createSessionInfoTypeStaffPersonalLocalId(String value);
 
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+   * 
+   */
+  JAXBElement<String> createSessionInfoTypeRoomNumber(String value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link XMLGregorianCalendar }{@code >}}
+   * 
+   */
+  JAXBElement<XMLGregorianCalendar> createSessionInfoTypeStartTime(XMLGregorianCalendar value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link XMLGregorianCalendar }{@code >}}
+   * 
+   */
   JAXBElement<XMLGregorianCalendar> createSessionInfoTypeFinishTime(XMLGregorianCalendar value);
 
-  JAXBElement<SIFExtendedElementsType> createSystemRoleTypeSIFExtendedElements(SIFExtendedElementsType value);
-
-  JAXBElement<SIFMetadataType> createSystemRoleTypeSIFMetadata(SIFMetadataType value);
-
-  JAXBElement<SchoolProgramListType> createSchoolProgramsTypeSchoolProgramList(SchoolProgramListType value);
-
-  JAXBElement<XMLGregorianCalendar> createSchoolProgramsTypeSchoolYear(XMLGregorianCalendar value);
-
-  JAXBElement<SIFExtendedElementsType> createSchoolProgramsTypeSIFExtendedElements(SIFExtendedElementsType value);
-
-  JAXBElement<SIFMetadataType> createSchoolProgramsTypeSIFMetadata(SIFMetadataType value);
-
-  JAXBElement<OtherCodeListType> createAttendanceCodeTypeOtherCodeList(OtherCodeListType value);
-
-  JAXBElement<String> createNAPStudentResponseSetTypeStudentPersonalRefId(String value);
-
-  JAXBElement<String> createNAPStudentResponseSetTypeEquatingSampleFlag(String value);
-
-  JAXBElement<String> createNAPStudentResponseSetTypeCalibrationSampleFlag(String value);
-
-  JAXBElement<String> createNAPStudentResponseSetTypeNAPTestRefId(String value);
-
-  JAXBElement<SIFExtendedElementsType> createNAPStudentResponseSetTypeSIFExtendedElements(SIFExtendedElementsType value);
-
-  JAXBElement<SIFMetadataType> createNAPStudentResponseSetTypeSIFMetadata(SIFMetadataType value);
-
-  JAXBElement<OtherCodeListType> createStudentEntryContainerTypeOtherCodeList(OtherCodeListType value);
-
-  JAXBElement<String> createTeachingGroupTeacherTypeStaffPersonalRefId(String value);
-
-  JAXBElement<NameOfRecordType> createTeachingGroupTeacherTypeName(NameOfRecordType value);
-
-  JAXBElement<SystemRoleType.SystemContextList.SystemContext.RoleList.Role.RoleScopeList.RoleScope.RoleScopeRefId> createSystemRoleTypeSystemContextListSystemContextRoleListRoleRoleScopeListRoleScopeRoleScopeRefId(
-      SystemRoleType.SystemContextList.SystemContext.RoleList.Role.RoleScopeList.RoleScope.RoleScopeRefId value);
-
-  JAXBElement<String> createSystemRoleTypeSystemContextListSystemContextRoleListRoleRoleScopeListRoleScopeRoleScopeName(String value);
-
-  JAXBElement<String> createTotalEnrollmentsTypeTotalStudents(String value);
-
-  JAXBElement<String> createTotalEnrollmentsTypeGirls(String value);
-
-  JAXBElement<String> createTotalEnrollmentsTypeBoys(String value);
-
-  JAXBElement<OtherCodeListType> createCatchmentStatusContainerTypeOtherCodeList(OtherCodeListType value);
-
-  JAXBElement<String> createBaseNameTypeFamilyName(String value);
-
-  JAXBElement<String> createBaseNameTypePreferredFamilyName(String value);
-
-  JAXBElement<AUCodeSetsYesOrNoCategoryType> createBaseNameTypePreferredFamilyNameFirst(AUCodeSetsYesOrNoCategoryType value);
-
-  JAXBElement<String> createBaseNameTypeTitle(String value);
-
-  JAXBElement<String> createBaseNameTypeMiddleName(String value);
-
-  JAXBElement<String> createBaseNameTypePreferredGivenName(String value);
-
-  JAXBElement<AUCodeSetsYesOrNoCategoryType> createBaseNameTypeFamilyNameFirst(AUCodeSetsYesOrNoCategoryType value);
-
-  JAXBElement<String> createBaseNameTypeGivenName(String value);
-
-  JAXBElement<String> createBaseNameTypeFullName(String value);
-
-  JAXBElement<String> createBaseNameTypeSuffix(String value);
-
-  JAXBElement<LocationType.LocationRefId> createLocationTypeLocationRefId(LocationType.LocationRefId value);
-
-  JAXBElement<String> createLocationTypeLocationName(String value);
-
-  JAXBElement<String> createVendorInfoTypeBPay(String value);
-
-  JAXBElement<String> createVendorInfoTypeAccountName(String value);
-
-  JAXBElement<ContactInfoType> createVendorInfoTypeContactInfo(ContactInfoType value);
-
-  JAXBElement<String> createVendorInfoTypeABN(String value);
-
-  JAXBElement<String> createVendorInfoTypePaymentTerms(String value);
-
-  JAXBElement<SIFExtendedElementsType> createVendorInfoTypeSIFExtendedElements(SIFExtendedElementsType value);
-
-  JAXBElement<SIFMetadataType> createVendorInfoTypeSIFMetadata(SIFMetadataType value);
-
-  JAXBElement<String> createVendorInfoTypeAccountNumber(String value);
-
-  JAXBElement<String> createVendorInfoTypeBSB(String value);
-
-  JAXBElement<String> createVendorInfoTypeCustomerId(String value);
-
-  JAXBElement<AUCodeSetsYesOrNoCategoryType> createVendorInfoTypeRegisteredForGST(AUCodeSetsYesOrNoCategoryType value);
-
-  JAXBElement<OtherCodeListType> createSubjectAreaTypeOtherCodeList(OtherCodeListType value);
-
-  JAXBElement<String> createLEAInfoTypeStateProvinceId(String value);
-
-  JAXBElement<String> createLEAInfoTypeSLA(String value);
-
-  JAXBElement<AgencyType> createLEAInfoTypeEducationAgencyType(AgencyType value);
-
-  JAXBElement<LEAContactListType> createLEAInfoTypeLEAContactList(LEAContactListType value);
-
-  JAXBElement<AddressListType> createLEAInfoTypeAddressList(AddressListType value);
-
-  JAXBElement<AUCodeSetsOperationalStatusType> createLEAInfoTypeOperationalStatus(AUCodeSetsOperationalStatusType value);
-
-  JAXBElement<String> createLEAInfoTypeCommonwealthId(String value);
-
-  JAXBElement<SIFExtendedElementsType> createLEAInfoTypeSIFExtendedElements(SIFExtendedElementsType value);
-
-  JAXBElement<String> createLEAInfoTypeJurisdictionLowerHouse(String value);
-
-  JAXBElement<SIFMetadataType> createLEAInfoTypeSIFMetadata(SIFMetadataType value);
-
-  JAXBElement<String> createLEAInfoTypeLEAURL(String value);
-
-  JAXBElement<PhoneNumberListType> createLEAInfoTypePhoneNumberList(PhoneNumberListType value);
-
-  JAXBElement<SchoolCourseInfoOverrideType> createSectionInfoTypeSchoolCourseInfoOverride(SchoolCourseInfoOverrideType value);
-
-  JAXBElement<String> createSectionInfoTypeCourseSectionCode(String value);
-
-  JAXBElement<XMLGregorianCalendar> createSectionInfoTypeSchoolYear(XMLGregorianCalendar value);
-
-  JAXBElement<String> createSectionInfoTypeTermInfoRefId(String value);
-
-  JAXBElement<MediumOfInstructionType> createSectionInfoTypeMediumOfInstruction(MediumOfInstructionType value);
-
-  JAXBElement<LanguageOfInstructionType> createSectionInfoTypeLanguageOfInstruction(LanguageOfInstructionType value);
-
-  JAXBElement<String> createSectionInfoTypeDescription(String value);
-
-  JAXBElement<String> createSectionInfoTypeSectionCode(String value);
-
-  JAXBElement<String> createSectionInfoTypeSummerSchool(String value);
-
-  JAXBElement<LocationOfInstructionType> createSectionInfoTypeLocationOfInstruction(LocationOfInstructionType value);
-
-  JAXBElement<SIFExtendedElementsType> createSectionInfoTypeSIFExtendedElements(SIFExtendedElementsType value);
-
-  JAXBElement<SIFMetadataType> createSectionInfoTypeSIFMetadata(SIFMetadataType value);
-
-  JAXBElement<String> createSectionInfoTypeCountForAttendance(String value);
-
-  JAXBElement<String> createEvaluationTypeDescription(String value);
-
-  JAXBElement<NameType> createEvaluationTypeName(NameType value);
-
-  JAXBElement<XMLGregorianCalendar> createEvaluationTypeDate(XMLGregorianCalendar value);
-
-  JAXBElement<String> createTeachingGroupStudentTypeStudentPersonalRefId(String value);
-
-  JAXBElement<NameOfRecordType> createTeachingGroupStudentTypeName(NameOfRecordType value);
-
-  JAXBElement<AUCodeSetsYesOrNoCategoryType> createPersonPictureTypeOKToPublish(AUCodeSetsYesOrNoCategoryType value);
-
-  JAXBElement<SIFExtendedElementsType> createPersonPictureTypeSIFExtendedElements(SIFExtendedElementsType value);
-
-  JAXBElement<SIFMetadataType> createPersonPictureTypeSIFMetadata(SIFMetadataType value);
-
-  JAXBElement<Long> createRoomInfoTypeCapacity(Long value);
-
-  JAXBElement<String> createRoomInfoTypeLocalId(String value);
-
-  JAXBElement<PhoneNumberType> createRoomInfoTypePhoneNumber(PhoneNumberType value);
-
-  JAXBElement<StaffListType> createRoomInfoTypeStaffList(StaffListType value);
-
-  JAXBElement<BigDecimal> createRoomInfoTypeSize(BigDecimal value);
-
-  JAXBElement<String> createRoomInfoTypeHomeroomNumber(String value);
-
-  JAXBElement<String> createRoomInfoTypeDescription(String value);
-
-  JAXBElement<SIFExtendedElementsType> createRoomInfoTypeSIFExtendedElements(SIFExtendedElementsType value);
-
-  JAXBElement<String> createRoomInfoTypeBuilding(String value);
-
-  JAXBElement<SIFMetadataType> createRoomInfoTypeSIFMetadata(SIFMetadataType value);
-
-  JAXBElement<String> createRoomInfoTypeRoomType(String value);
-
-  JAXBElement<String> createPromotionInfoTypePromotionStatus(String value);
-
-  JAXBElement<String> createSubstituteItemTypeSubstituteItemLocalId(String value);
-
-  JAXBElement<SystemRoleType.SystemContextList.SystemContext.RoleList> createSystemRoleTypeSystemContextListSystemContextRoleList(SystemRoleType.SystemContextList.SystemContext.RoleList value);
-
-  JAXBElement<SIFExtendedElementsType> createNAPTestTypeSIFExtendedElements(SIFExtendedElementsType value);
-
-  JAXBElement<SIFMetadataType> createNAPTestTypeSIFMetadata(SIFMetadataType value);
-
-  JAXBElement<String> createSchoolCourseInfoTypeCourseContent(String value);
-
-  JAXBElement<String> createSchoolCourseInfoTypeDistrictCourseCode(String value);
-
-  JAXBElement<String> createSchoolCourseInfoTypeCourseCredits(String value);
-
-  JAXBElement<XMLGregorianCalendar> createSchoolCourseInfoTypeSchoolYear(XMLGregorianCalendar value);
-
-  JAXBElement<String> createSchoolCourseInfoTypeTermInfoRefId(String value);
-
-  JAXBElement<SubjectAreaListType> createSchoolCourseInfoTypeSubjectAreaList(SubjectAreaListType value);
-
-  JAXBElement<String> createSchoolCourseInfoTypeDescription(String value);
-
-  JAXBElement<AUCodeSetsYesOrNoCategoryType> createSchoolCourseInfoTypeCoreAcademicCourse(AUCodeSetsYesOrNoCategoryType value);
-
-  JAXBElement<AUCodeSetsYesOrNoCategoryType> createSchoolCourseInfoTypeGraduationRequirement(AUCodeSetsYesOrNoCategoryType value);
-
-  JAXBElement<String> createSchoolCourseInfoTypeStateCourseCode(String value);
-
-  JAXBElement<String> createSchoolCourseInfoTypeDepartment(String value);
-
-  JAXBElement<String> createSchoolCourseInfoTypeSchoolLocalId(String value);
-
-  JAXBElement<SIFExtendedElementsType> createSchoolCourseInfoTypeSIFExtendedElements(SIFExtendedElementsType value);
-
-  JAXBElement<SIFMetadataType> createSchoolCourseInfoTypeSIFMetadata(SIFMetadataType value);
-
-  JAXBElement<String> createSchoolCourseInfoTypeInstructionalLevel(String value);
-
-  JAXBElement<String> createContactInfoTypeRole(String value);
-
-  JAXBElement<AddressType> createContactInfoTypeAddress(AddressType value);
-
-  JAXBElement<EmailListType> createContactInfoTypeEmailList(EmailListType value);
-
-  JAXBElement<PhoneNumberListType> createContactInfoTypePhoneNumberList(PhoneNumberListType value);
-
-  JAXBElement<String> createContactInfoTypePositionTitle(String value);
-
-  JAXBElement<String> createTechnicalRequirementsTypeTechnicalRequirement(String value);
-
-  JAXBElement<OtherCodeListType> createReferralSourceTypeOtherCodeList(OtherCodeListType value);
-
-  JAXBElement<XMLGregorianCalendar> createStudentDailyAttendanceTypeTimeIn(XMLGregorianCalendar value);
-
-  JAXBElement<BigDecimal> createStudentDailyAttendanceTypeAbsenceValue(BigDecimal value);
-
-  JAXBElement<XMLGregorianCalendar> createStudentDailyAttendanceTypeTimeOut(XMLGregorianCalendar value);
-
-  JAXBElement<AUCodeSetsDayValueCodeType> createStudentDailyAttendanceTypeDayValue(AUCodeSetsDayValueCodeType value);
-
-  JAXBElement<SIFExtendedElementsType> createStudentDailyAttendanceTypeSIFExtendedElements(SIFExtendedElementsType value);
-
-  JAXBElement<String> createStudentDailyAttendanceTypeAttendanceNote(String value);
-
-  JAXBElement<SIFMetadataType> createStudentDailyAttendanceTypeSIFMetadata(SIFMetadataType value);
-
-  JAXBElement<SIFExtendedElementsType> createNAPTestItemTypeSIFExtendedElements(SIFExtendedElementsType value);
-
-  JAXBElement<SIFMetadataType> createNAPTestItemTypeSIFMetadata(SIFMetadataType value);
-
-  JAXBElement<String> createAggregateCharacteristicInfoTypeElementName(String value);
-
-  JAXBElement<String> createAggregateCharacteristicInfoTypeDescription(String value);
-
-  JAXBElement<SIFExtendedElementsType> createAggregateCharacteristicInfoTypeSIFExtendedElements(SIFExtendedElementsType value);
-
-  JAXBElement<SIFMetadataType> createAggregateCharacteristicInfoTypeSIFMetadata(SIFMetadataType value);
-
-  JAXBElement<String> createGradingAssignmentScoreTypeStudentPersonalRefId(String value);
-
-  JAXBElement<String> createGradingAssignmentScoreTypeSchoolInfoRefId(String value);
-
-  JAXBElement<String> createGradingAssignmentScoreTypeScoreDescription(String value);
-
-  JAXBElement<String> createGradingAssignmentScoreTypeTeachingGroupRefId(String value);
-
-  JAXBElement<Long> createGradingAssignmentScoreTypeScorePoints(Long value);
-
-  JAXBElement<SIFExtendedElementsType> createGradingAssignmentScoreTypeSIFExtendedElements(SIFExtendedElementsType value);
-
-  JAXBElement<BigDecimal> createGradingAssignmentScoreTypeScorePercent(BigDecimal value);
-
-  JAXBElement<SIFMetadataType> createGradingAssignmentScoreTypeSIFMetadata(SIFMetadataType value);
-
-  JAXBElement<String> createGradingAssignmentScoreTypeScoreLetter(String value);
-
-  JAXBElement<HouseholdContactInfoListType> createPersonInfoTypeHouseholdContactInfoList(HouseholdContactInfoListType value);
-
-  JAXBElement<OtherNamesType> createPersonInfoTypeOtherNames(OtherNamesType value);
-
-  JAXBElement<DemographicsType> createPersonInfoTypeDemographics(DemographicsType value);
-
-  JAXBElement<AddressListType> createPersonInfoTypeAddressList(AddressListType value);
-
-  JAXBElement<EmailListType> createPersonInfoTypeEmailList(EmailListType value);
-
-  JAXBElement<PhoneNumberListType> createPersonInfoTypePhoneNumberList(PhoneNumberListType value);
-
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link AUCodeSetsYesOrNoCategoryType }{@code >}}
+   * 
+   */
+  JAXBElement<AUCodeSetsYesOrNoCategoryType> createSessionInfoTypeRollMarked(AUCodeSetsYesOrNoCategoryType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link SIFMetadataType }{@code >}}
+   * 
+   */
+  JAXBElement<SIFMetadataType> createSessionInfoTypeSIFMetadata(SIFMetadataType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link SIFExtendedElementsType }{@code >}}
+   * 
+   */
+  JAXBElement<SIFExtendedElementsType> createSessionInfoTypeSIFExtendedElements(SIFExtendedElementsType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+   * 
+   */
   JAXBElement<String> createStudentPeriodAttendanceTypeSessionInfoRefId(String value);
 
-  JAXBElement<XMLGregorianCalendar> createStudentPeriodAttendanceTypeTimeIn(XMLGregorianCalendar value);
-
-  JAXBElement<AuditInfoType> createStudentPeriodAttendanceTypeAuditInfo(AuditInfoType value);
-
-  JAXBElement<XMLGregorianCalendar> createStudentPeriodAttendanceTypeSchoolYear(XMLGregorianCalendar value);
-
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+   * 
+   */
   JAXBElement<String> createStudentPeriodAttendanceTypeTimetablePeriod(String value);
 
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link XMLGregorianCalendar }{@code >}}
+   * 
+   */
+  JAXBElement<XMLGregorianCalendar> createStudentPeriodAttendanceTypeTimeIn(XMLGregorianCalendar value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link XMLGregorianCalendar }{@code >}}
+   * 
+   */
   JAXBElement<XMLGregorianCalendar> createStudentPeriodAttendanceTypeTimeOut(XMLGregorianCalendar value);
 
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link XMLGregorianCalendar }{@code >}}
+   * 
+   */
+  JAXBElement<XMLGregorianCalendar> createStudentPeriodAttendanceTypeSchoolYear(XMLGregorianCalendar value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link AuditInfoType }{@code >}}
+   * 
+   */
+  JAXBElement<AuditInfoType> createStudentPeriodAttendanceTypeAuditInfo(AuditInfoType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+   * 
+   */
   JAXBElement<String> createStudentPeriodAttendanceTypeAttendanceComment(String value);
 
-  JAXBElement<SIFExtendedElementsType> createStudentPeriodAttendanceTypeSIFExtendedElements(SIFExtendedElementsType value);
-
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link SIFMetadataType }{@code >}}
+   * 
+   */
   JAXBElement<SIFMetadataType> createStudentPeriodAttendanceTypeSIFMetadata(SIFMetadataType value);
 
-  JAXBElement<OtherCodeListType> createProgramAvailabilityTypeOtherCodeList(OtherCodeListType value);
-
-  JAXBElement<SIFExtendedElementsType> createStudentAttendanceTimeListTypeSIFExtendedElements(SIFExtendedElementsType value);
-
-  JAXBElement<SIFMetadataType> createStudentAttendanceTimeListTypeSIFMetadata(SIFMetadataType value);
-
-  JAXBElement<ACStrandAreaListType> createLearningResourceTypeSubjectAreas(ACStrandAreaListType value);
-
-  JAXBElement<LearningResourceType.Location> createLearningResourceTypeLocation(LearningResourceType.Location value);
-
-  JAXBElement<String> createLearningResourceTypeLearningResourcePackageRefId(String value);
-
-  JAXBElement<String> createLearningResourceTypeAuthor(String value);
-
-  JAXBElement<ApprovalsType> createLearningResourceTypeApprovals(ApprovalsType value);
-
-  JAXBElement<String> createLearningResourceTypeDescription(String value);
-
-  JAXBElement<String> createLearningResourceTypeUseAgreement(String value);
-
-  JAXBElement<MediaTypesType> createLearningResourceTypeMediaTypes(MediaTypesType value);
-
-  JAXBElement<ContactsType> createLearningResourceTypeContacts(ContactsType value);
-
-  JAXBElement<XMLGregorianCalendar> createLearningResourceTypeAgreementDate(XMLGregorianCalendar value);
-
-  JAXBElement<EvaluationsType> createLearningResourceTypeEvaluations(EvaluationsType value);
-
-  JAXBElement<String> createLearningResourceTypeStatus(String value);
-
-  JAXBElement<SIFExtendedElementsType> createLearningResourceTypeSIFExtendedElements(SIFExtendedElementsType value);
-
-  JAXBElement<LearningStandardsType> createLearningResourceTypeLearningStandards(LearningStandardsType value);
-
-  JAXBElement<YearLevelsType> createLearningResourceTypeYearLevels(YearLevelsType value);
-
-  JAXBElement<SIFMetadataType> createLearningResourceTypeSIFMetadata(SIFMetadataType value);
-
-  JAXBElement<LearningStandardItemType.StandardIdentifier> createLearningStandardItemTypeStandardIdentifier(LearningStandardItemType.StandardIdentifier value);
-
-  JAXBElement<StatementCodesType> createLearningStandardItemTypeStatementCodes(StatementCodesType value);
-
-  JAXBElement<LearningStandardItemType.RelatedLearningStandardItems> createLearningStandardItemTypeRelatedLearningStandardItems(LearningStandardItemType.RelatedLearningStandardItems value);
-
-  JAXBElement<LResourcesType> createLearningStandardItemTypeResources(LResourcesType value);
-
-  JAXBElement<LearningStandardItemType.StandardSettingBody> createLearningStandardItemTypeStandardSettingBody(LearningStandardItemType.StandardSettingBody value);
-
-  JAXBElement<ACStrandSubjectAreaType> createLearningStandardItemTypeACStrandSubjectArea(ACStrandSubjectAreaType value);
-
-  JAXBElement<String> createLearningStandardItemTypeLevel4(String value);
-
-  JAXBElement<StatementsType> createLearningStandardItemTypeStatements(StatementsType value);
-
-  JAXBElement<String> createLearningStandardItemTypeLevel5(String value);
-
-  JAXBElement<SIFExtendedElementsType> createLearningStandardItemTypeSIFExtendedElements(SIFExtendedElementsType value);
-
-  JAXBElement<SIFMetadataType> createLearningStandardItemTypeSIFMetadata(SIFMetadataType value);
-
-  JAXBElement<LearningStandardsType> createLearningStandardItemTypePredecessorItems(LearningStandardsType value);
-
-  JAXBElement<OtherCodeListType> createLocationOfInstructionTypeOtherCodeList(OtherCodeListType value);
-
-  JAXBElement<String> createNAPTestletTypeNAPTestRefId(String value);
-
-  JAXBElement<SIFExtendedElementsType> createNAPTestletTypeSIFExtendedElements(SIFExtendedElementsType value);
-
-  JAXBElement<SIFMetadataType> createNAPTestletTypeSIFMetadata(SIFMetadataType value);
-
-  JAXBElement<SIFExtendedElementsType> createResourceUsageTypeSIFExtendedElements(SIFExtendedElementsType value);
-
-  JAXBElement<SIFMetadataType> createResourceUsageTypeSIFMetadata(SIFMetadataType value);
-
-  JAXBElement<ExpenseAccountsType> createPurchasingItemTypeExpenseAccounts(ExpenseAccountsType value);
-
-  JAXBElement<BigDecimal> createPurchasingItemTypeTaxRate(BigDecimal value);
-
-  JAXBElement<String> createPurchasingItemTypeQuantityDelivered(String value);
-
-  JAXBElement<String> createPurchasingItemTypeItemNumber(String value);
-
-  JAXBElement<MonetaryAmountType> createPurchasingItemTypeTotalCost(MonetaryAmountType value);
-
-  JAXBElement<AUCodeSetsYesOrNoCategoryType> createPurchasingItemTypeCancelledOrder(AUCodeSetsYesOrNoCategoryType value);
-
-  JAXBElement<MonetaryAmountType> createPurchasingItemTypeUnitCost(MonetaryAmountType value);
-
-  JAXBElement<String> createPurchasingItemTypeQuantity(String value);
-
-  JAXBElement<BigDecimal> createAttendanceTimeTypeDurationValue(BigDecimal value);
-
-  JAXBElement<String> createAttendanceTimeTypeAttendanceNote(String value);
-
-  JAXBElement<OtherCodeListType> createStudentExitStatusContainerTypeOtherCodeList(OtherCodeListType value);
-
-  JAXBElement<OtherCodeListType> createStudentExitContainerTypeOtherCodeList(OtherCodeListType value);
-
-  JAXBElement<EducationFilterType> createSIFMetadataTypeEducationFilter(EducationFilterType value);
-
-  JAXBElement<LifeCycleType> createSIFMetadataTypeLifeCycle(LifeCycleType value);
-
-  JAXBElement<SIFMetadataType.TimeElements> createSIFMetadataTypeTimeElements(SIFMetadataType.TimeElements value);
-
-  JAXBElement<AUCodeSetsYesOrNoCategoryType> createSchoolContactTypePublishInDirectory(AUCodeSetsYesOrNoCategoryType value);
-
-  JAXBElement<LifeCycleType.Created> createLifeCycleTypeCreated(LifeCycleType.Created value);
-
-  JAXBElement<LifeCycleType.ModificationHistory> createLifeCycleTypeModificationHistory(LifeCycleType.ModificationHistory value);
-
-  JAXBElement<LifeCycleType.TimeElements> createLifeCycleTypeTimeElements(LifeCycleType.TimeElements value);
-
-  JAXBElement<MonetaryAmountType> createInvoiceTypeTaxAmount(MonetaryAmountType value);
-
-  JAXBElement<BigDecimal> createInvoiceTypeTaxRate(BigDecimal value);
-
-  JAXBElement<String> createInvoiceTypeApprovedBy(String value);
-
-  JAXBElement<AUCodeSetsYesOrNoCategoryType> createInvoiceTypeVoluntary(AUCodeSetsYesOrNoCategoryType value);
-
-  JAXBElement<String> createInvoiceTypeFormNumber(String value);
-
-  JAXBElement<String> createInvoiceTypeRelatedPurchaseOrderRefId(String value);
-
-  JAXBElement<MonetaryAmountType> createInvoiceTypeNetAmount(MonetaryAmountType value);
-
-  JAXBElement<XMLGregorianCalendar> createInvoiceTypeDueDate(XMLGregorianCalendar value);
-
-  JAXBElement<String> createInvoiceTypeAccountingPeriod(String value);
-
-  JAXBElement<String> createInvoiceTypeChargedLocationInfoRefId(String value);
-
-  JAXBElement<String> createInvoiceTypeCreatedBy(String value);
-
-  JAXBElement<String> createInvoiceTypeItemDetail(String value);
-
-  JAXBElement<SIFExtendedElementsType> createInvoiceTypeSIFExtendedElements(SIFExtendedElementsType value);
-
-  JAXBElement<SIFMetadataType> createInvoiceTypeSIFMetadata(SIFMetadataType value);
-
-  JAXBElement<PurchasingItemsType> createInvoiceTypePurchasingItems(PurchasingItemsType value);
-
-  JAXBElement<String> createInvoiceTypeTaxType(String value);
-
-  JAXBElement<FinancialAccountRefIdListType> createInvoiceTypeFinancialAccountRefIdList(FinancialAccountRefIdListType value);
-
-  JAXBElement<String> createNAPTestletResponseTypeNAPTestletRefId(String value);
-
-  JAXBElement<AttendanceInfoType> createCalendarDateTypeTeacherAttendance(AttendanceInfoType value);
-
-  JAXBElement<AttendanceInfoType> createCalendarDateTypeAdministratorAttendance(AttendanceInfoType value);
-
-  JAXBElement<AttendanceInfoType> createCalendarDateTypeStudentAttendance(AttendanceInfoType value);
-
-  JAXBElement<SIFExtendedElementsType> createCalendarDateTypeSIFExtendedElements(SIFExtendedElementsType value);
-
-  JAXBElement<SIFMetadataType> createCalendarDateTypeSIFMetadata(SIFMetadataType value);
-
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link SIFExtendedElementsType }{@code >}}
+   * 
+   */
+  JAXBElement<SIFExtendedElementsType> createStudentPeriodAttendanceTypeSIFExtendedElements(SIFExtendedElementsType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link AUCodeSetsDayValueCodeType }{@code >}}
+   * 
+   */
+  JAXBElement<AUCodeSetsDayValueCodeType> createStudentDailyAttendanceTypeDayValue(AUCodeSetsDayValueCodeType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link XMLGregorianCalendar }{@code >}}
+   * 
+   */
+  JAXBElement<XMLGregorianCalendar> createStudentDailyAttendanceTypeTimeIn(XMLGregorianCalendar value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link XMLGregorianCalendar }{@code >}}
+   * 
+   */
+  JAXBElement<XMLGregorianCalendar> createStudentDailyAttendanceTypeTimeOut(XMLGregorianCalendar value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link BigDecimal }{@code >}}
+   * 
+   */
+  JAXBElement<BigDecimal> createStudentDailyAttendanceTypeAbsenceValue(BigDecimal value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+   * 
+   */
+  JAXBElement<String> createStudentDailyAttendanceTypeAttendanceNote(String value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link SIFMetadataType }{@code >}}
+   * 
+   */
+  JAXBElement<SIFMetadataType> createStudentDailyAttendanceTypeSIFMetadata(SIFMetadataType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link SIFExtendedElementsType }{@code >}}
+   * 
+   */
+  JAXBElement<SIFExtendedElementsType> createStudentDailyAttendanceTypeSIFExtendedElements(SIFExtendedElementsType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link Long }{@code >}}
+   * 
+   */
+  JAXBElement<Long> createStudentAttendanceSummaryTypeStartDay(Long value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link Long }{@code >}}
+   * 
+   */
+  JAXBElement<Long> createStudentAttendanceSummaryTypeEndDay(Long value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link BigDecimal }{@code >}}
+   * 
+   */
+  JAXBElement<BigDecimal> createStudentAttendanceSummaryTypeFTE(BigDecimal value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link BigDecimal }{@code >}}
+   * 
+   */
+  JAXBElement<BigDecimal> createStudentAttendanceSummaryTypeDaysTardy(BigDecimal value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link SIFMetadataType }{@code >}}
+   * 
+   */
+  JAXBElement<SIFMetadataType> createStudentAttendanceSummaryTypeSIFMetadata(SIFMetadataType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link SIFExtendedElementsType }{@code >}}
+   * 
+   */
+  JAXBElement<SIFExtendedElementsType> createStudentAttendanceSummaryTypeSIFExtendedElements(SIFExtendedElementsType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+   * 
+   */
+  JAXBElement<String> createCalendarSummaryTypeDescription(String value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link XMLGregorianCalendar }{@code >}}
+   * 
+   */
+  JAXBElement<XMLGregorianCalendar> createCalendarSummaryTypeStartDate(XMLGregorianCalendar value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link XMLGregorianCalendar }{@code >}}
+   * 
+   */
+  JAXBElement<XMLGregorianCalendar> createCalendarSummaryTypeEndDate(XMLGregorianCalendar value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link XMLGregorianCalendar }{@code >}}
+   * 
+   */
+  JAXBElement<XMLGregorianCalendar> createCalendarSummaryTypeFirstInstructionDate(XMLGregorianCalendar value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link XMLGregorianCalendar }{@code >}}
+   * 
+   */
+  JAXBElement<XMLGregorianCalendar> createCalendarSummaryTypeLastInstructionDate(XMLGregorianCalendar value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+   * 
+   */
+  JAXBElement<String> createCalendarSummaryTypeGraduationDate(String value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link Long }{@code >}}
+   * 
+   */
+  JAXBElement<Long> createCalendarSummaryTypeInstructionalMinutes(Long value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link Long }{@code >}}
+   * 
+   */
+  JAXBElement<Long> createCalendarSummaryTypeMinutesPerDay(Long value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link YearLevelsType }{@code >}}
+   * 
+   */
+  JAXBElement<YearLevelsType> createCalendarSummaryTypeYearLevels(YearLevelsType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link SIFMetadataType }{@code >}}
+   * 
+   */
+  JAXBElement<SIFMetadataType> createCalendarSummaryTypeSIFMetadata(SIFMetadataType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link SIFExtendedElementsType }{@code >}}
+   * 
+   */
+  JAXBElement<SIFExtendedElementsType> createCalendarSummaryTypeSIFExtendedElements(SIFExtendedElementsType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link Long }{@code >}}
+   * 
+   */
   JAXBElement<Long> createCalendarDateTypeCalendarDateNumber(Long value);
 
-  JAXBElement<String> createAddressStreetTypeApartmentNumber(String value);
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link AttendanceInfoType }{@code >}}
+   * 
+   */
+  JAXBElement<AttendanceInfoType> createCalendarDateTypeStudentAttendance(AttendanceInfoType value);
 
-  JAXBElement<String> createAddressStreetTypeStreetNumber(String value);
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link AttendanceInfoType }{@code >}}
+   * 
+   */
+  JAXBElement<AttendanceInfoType> createCalendarDateTypeTeacherAttendance(AttendanceInfoType value);
 
-  JAXBElement<String> createAddressStreetTypeStreetSuffix(String value);
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link AttendanceInfoType }{@code >}}
+   * 
+   */
+  JAXBElement<AttendanceInfoType> createCalendarDateTypeAdministratorAttendance(AttendanceInfoType value);
 
-  JAXBElement<String> createAddressStreetTypeStreetType(String value);
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link SIFMetadataType }{@code >}}
+   * 
+   */
+  JAXBElement<SIFMetadataType> createCalendarDateTypeSIFMetadata(SIFMetadataType value);
 
-  JAXBElement<String> createAddressStreetTypeComplex(String value);
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link SIFExtendedElementsType }{@code >}}
+   * 
+   */
+  JAXBElement<SIFExtendedElementsType> createCalendarDateTypeSIFExtendedElements(SIFExtendedElementsType value);
 
-  JAXBElement<String> createAddressStreetTypeApartmentNumberSuffix(String value);
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link AUCodeSetsYesOrNoCategoryType }{@code >}}
+   * 
+   */
+  JAXBElement<AUCodeSetsYesOrNoCategoryType> createPersonPictureTypeOKToPublish(AUCodeSetsYesOrNoCategoryType value);
 
-  JAXBElement<String> createAddressStreetTypeApartmentType(String value);
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link SIFMetadataType }{@code >}}
+   * 
+   */
+  JAXBElement<SIFMetadataType> createPersonPictureTypeSIFMetadata(SIFMetadataType value);
 
-  JAXBElement<String> createAddressStreetTypeLine2(String value);
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link SIFExtendedElementsType }{@code >}}
+   * 
+   */
+  JAXBElement<SIFExtendedElementsType> createPersonPictureTypeSIFExtendedElements(SIFExtendedElementsType value);
 
-  JAXBElement<String> createAddressStreetTypeStreetPrefix(String value);
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+   * 
+   */
+  JAXBElement<String> createStudentParticipationTypeProgramType(String value);
 
-  JAXBElement<String> createAddressStreetTypeLine3(String value);
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link ProgramFundingSourcesType }{@code >}}
+   * 
+   */
+  JAXBElement<ProgramFundingSourcesType> createStudentParticipationTypeProgramFundingSources(ProgramFundingSourcesType value);
 
-  JAXBElement<String> createAddressStreetTypeApartmentNumberPrefix(String value);
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link XMLGregorianCalendar }{@code >}}
+   * 
+   */
+  JAXBElement<XMLGregorianCalendar> createStudentParticipationTypeReferralDate(XMLGregorianCalendar value);
 
-  JAXBElement<String> createAddressStreetTypeStreetName(String value);
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link ReferralSourceType }{@code >}}
+   * 
+   */
+  JAXBElement<ReferralSourceType> createStudentParticipationTypeReferralSource(ReferralSourceType value);
 
-  JAXBElement<String> createNAPWritingRubricTypeDescriptor(String value);
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link ProgramStatusType }{@code >}}
+   * 
+   */
+  JAXBElement<ProgramStatusType> createStudentParticipationTypeProgramStatus(ProgramStatusType value);
 
-  JAXBElement<String> createNAPEventStudentLinkTypeStudentPersonalRefId(String value);
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link AUCodeSetsYesOrNoCategoryType }{@code >}}
+   * 
+   */
+  JAXBElement<AUCodeSetsYesOrNoCategoryType> createStudentParticipationTypeGiftedEligibilityCriteria(AUCodeSetsYesOrNoCategoryType value);
 
-  JAXBElement<Boolean> createNAPEventStudentLinkTypePSIOtherIdMatch(Boolean value);
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link XMLGregorianCalendar }{@code >}}
+   * 
+   */
+  JAXBElement<XMLGregorianCalendar> createStudentParticipationTypeEvaluationParentalConsentDate(XMLGregorianCalendar value);
 
-  JAXBElement<String> createNAPEventStudentLinkTypeExemptionReason(String value);
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link XMLGregorianCalendar }{@code >}}
+   * 
+   */
+  JAXBElement<XMLGregorianCalendar> createStudentParticipationTypeEvaluationDate(XMLGregorianCalendar value);
 
-  JAXBElement<String> createNAPEventStudentLinkTypeDevice(String value);
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link XMLGregorianCalendar }{@code >}}
+   * 
+   */
+  JAXBElement<XMLGregorianCalendar> createStudentParticipationTypeEvaluationExtensionDate(XMLGregorianCalendar value);
 
-  JAXBElement<String> createNAPEventStudentLinkTypeSchoolInfoRefId(String value);
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+   * 
+   */
+  JAXBElement<String> createStudentParticipationTypeExtensionComments(String value);
 
-  JAXBElement<Boolean> createNAPEventStudentLinkTypePossibleDuplicate(Boolean value);
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link XMLGregorianCalendar }{@code >}}
+   * 
+   */
+  JAXBElement<XMLGregorianCalendar> createStudentParticipationTypeReevaluationDate(XMLGregorianCalendar value);
 
-  JAXBElement<TestDisruptionListType> createNAPEventStudentLinkTypeTestDisruptionList(TestDisruptionListType value);
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link XMLGregorianCalendar }{@code >}}
+   * 
+   */
+  JAXBElement<XMLGregorianCalendar> createStudentParticipationTypeProgramEligibilityDate(XMLGregorianCalendar value);
 
-  JAXBElement<Boolean> createNAPEventStudentLinkTypeDOBRange(Boolean value);
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link XMLGregorianCalendar }{@code >}}
+   * 
+   */
+  JAXBElement<XMLGregorianCalendar> createStudentParticipationTypeProgramPlanDate(XMLGregorianCalendar value);
 
-  JAXBElement<String> createNAPEventStudentLinkTypeNAPTestRefId(String value);
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link XMLGregorianCalendar }{@code >}}
+   * 
+   */
+  JAXBElement<XMLGregorianCalendar> createStudentParticipationTypeProgramPlanEffectiveDate(XMLGregorianCalendar value);
 
-  JAXBElement<String> createNAPEventStudentLinkTypeNAPJurisdiction(String value);
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link XMLGregorianCalendar }{@code >}}
+   * 
+   */
+  JAXBElement<XMLGregorianCalendar> createStudentParticipationTypeNOREPDate(XMLGregorianCalendar value);
 
-  JAXBElement<AdjustmentContainerType> createNAPEventStudentLinkTypeAdjustment(AdjustmentContainerType value);
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link XMLGregorianCalendar }{@code >}}
+   * 
+   */
+  JAXBElement<XMLGregorianCalendar> createStudentParticipationTypePlacementParentalConsentDate(XMLGregorianCalendar value);
 
-  JAXBElement<String> createNAPEventStudentLinkTypeSystem(String value);
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link XMLGregorianCalendar }{@code >}}
+   * 
+   */
+  JAXBElement<XMLGregorianCalendar> createStudentParticipationTypeProgramPlacementDate(XMLGregorianCalendar value);
 
-  JAXBElement<String> createNAPEventStudentLinkTypeSchoolGeolocation(String value);
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link Boolean }{@code >}}
+   * 
+   */
+  JAXBElement<Boolean> createStudentParticipationTypeExtendedSchoolYear(Boolean value);
 
-  JAXBElement<String> createNAPEventStudentLinkTypeReportingSchoolName(String value);
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link Boolean }{@code >}}
+   * 
+   */
+  JAXBElement<Boolean> createStudentParticipationTypeExtendedDay(Boolean value);
 
-  JAXBElement<SIFExtendedElementsType> createNAPEventStudentLinkTypeSIFExtendedElements(SIFExtendedElementsType value);
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link ProgramAvailabilityType }{@code >}}
+   * 
+   */
+  JAXBElement<ProgramAvailabilityType> createStudentParticipationTypeProgramAvailability(ProgramAvailabilityType value);
 
-  JAXBElement<SIFMetadataType> createNAPEventStudentLinkTypeSIFMetadata(SIFMetadataType value);
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+   * 
+   */
+  JAXBElement<String> createStudentParticipationTypeEntryPerson(String value);
 
-  JAXBElement<Boolean> createNAPEventStudentLinkTypePersonalDetailsChanged(Boolean value);
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link BigDecimal }{@code >}}
+   * 
+   */
+  JAXBElement<BigDecimal> createStudentParticipationTypeStudentSpecialEducationFTE(BigDecimal value);
 
-  JAXBElement<String> createDebtorTypeDiscount(String value);
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+   * 
+   */
+  JAXBElement<String> createStudentParticipationTypeParticipationContact(String value);
 
-  JAXBElement<String> createDebtorTypeBillingName(String value);
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link SIFMetadataType }{@code >}}
+   * 
+   */
+  JAXBElement<SIFMetadataType> createStudentParticipationTypeSIFMetadata(SIFMetadataType value);
 
-  JAXBElement<AddressListType> createDebtorTypeAddressList(AddressListType value);
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link SIFExtendedElementsType }{@code >}}
+   * 
+   */
+  JAXBElement<SIFExtendedElementsType> createStudentParticipationTypeSIFExtendedElements(SIFExtendedElementsType value);
 
-  JAXBElement<String> createDebtorTypeBillingNote(String value);
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+   * 
+   */
+  JAXBElement<String> createStudentContactPersonalTypeLocalId(String value);
 
-  JAXBElement<SIFExtendedElementsType> createDebtorTypeSIFExtendedElements(SIFExtendedElementsType value);
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link OtherIdListType }{@code >}}
+   * 
+   */
+  JAXBElement<OtherIdListType> createStudentContactPersonalTypeOtherIdList(OtherIdListType value);
 
-  JAXBElement<SIFMetadataType> createDebtorTypeSIFMetadata(SIFMetadataType value);
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+   * 
+   */
+  JAXBElement<String> createStudentContactPersonalTypeEmploymentType(String value);
 
-  JAXBElement<String> createTimeTableTypeLocalId(String value);
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+   * 
+   */
+  JAXBElement<String> createStudentContactPersonalTypeSchoolEducationalLevel(String value);
 
-  JAXBElement<String> createTimeTableTypeSchoolName(String value);
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+   * 
+   */
+  JAXBElement<String> createStudentContactPersonalTypeNonSchoolEducation(String value);
 
-  JAXBElement<String> createTimeTableTypeSchoolInfoRefId(String value);
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link SIFMetadataType }{@code >}}
+   * 
+   */
+  JAXBElement<SIFMetadataType> createStudentContactPersonalTypeSIFMetadata(SIFMetadataType value);
 
-  JAXBElement<XMLGregorianCalendar> createTimeTableTypeTimeTableCreationDate(XMLGregorianCalendar value);
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link SIFExtendedElementsType }{@code >}}
+   * 
+   */
+  JAXBElement<SIFExtendedElementsType> createStudentContactPersonalTypeSIFExtendedElements(SIFExtendedElementsType value);
 
-  JAXBElement<XMLGregorianCalendar> createTimeTableTypeEndDate(XMLGregorianCalendar value);
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+   * 
+   */
+  JAXBElement<String> createStudentSchoolEnrollmentTypeLocalId(String value);
 
-  JAXBElement<String> createTimeTableTypeSchoolLocalId(String value);
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link StudentEntryContainerType }{@code >}}
+   * 
+   */
+  JAXBElement<StudentEntryContainerType> createStudentSchoolEnrollmentTypeEntryType(StudentEntryContainerType value);
 
-  JAXBElement<Long> createTimeTableTypeTeachingPeriodsPerDay(Long value);
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link YearLevelType }{@code >}}
+   * 
+   */
+  JAXBElement<YearLevelType> createStudentSchoolEnrollmentTypeYearLevel(YearLevelType value);
 
-  JAXBElement<SIFExtendedElementsType> createTimeTableTypeSIFExtendedElements(SIFExtendedElementsType value);
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link StudentSchoolEnrollmentType.Homeroom }{@code >}}
+   * 
+   */
+  JAXBElement<StudentSchoolEnrollmentType.Homeroom> createStudentSchoolEnrollmentTypeHomeroom(StudentSchoolEnrollmentType.Homeroom value);
 
-  JAXBElement<SIFMetadataType> createTimeTableTypeSIFMetadata(SIFMetadataType value);
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link StudentSchoolEnrollmentType.Advisor }{@code >}}
+   * 
+   */
+  JAXBElement<StudentSchoolEnrollmentType.Advisor> createStudentSchoolEnrollmentTypeAdvisor(StudentSchoolEnrollmentType.Advisor value);
 
-  JAXBElement<XMLGregorianCalendar> createTimeTableTypeStartDate(XMLGregorianCalendar value);
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link StudentSchoolEnrollmentType.Counselor }{@code >}}
+   * 
+   */
+  JAXBElement<StudentSchoolEnrollmentType.Counselor> createStudentSchoolEnrollmentTypeCounselor(StudentSchoolEnrollmentType.Counselor value);
 
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+   * 
+   */
+  JAXBElement<String> createStudentSchoolEnrollmentTypeHomegroup(String value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+   * 
+   */
+  JAXBElement<String> createStudentSchoolEnrollmentTypeACARASchoolId(String value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+   * 
+   */
+  JAXBElement<String> createStudentSchoolEnrollmentTypeClassCode(String value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link YearLevelType }{@code >}}
+   * 
+   */
+  JAXBElement<YearLevelType> createStudentSchoolEnrollmentTypeTestLevel(YearLevelType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link AUCodeSetsYesOrNoCategoryType }{@code >}}
+   * 
+   */
+  JAXBElement<AUCodeSetsYesOrNoCategoryType> createStudentSchoolEnrollmentTypeReportingSchool(AUCodeSetsYesOrNoCategoryType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+   * 
+   */
+  JAXBElement<String> createStudentSchoolEnrollmentTypeHouse(String value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link AUCodeSetsYesOrNoCategoryType }{@code >}}
+   * 
+   */
+  JAXBElement<AUCodeSetsYesOrNoCategoryType> createStudentSchoolEnrollmentTypeIndividualLearningPlan(AUCodeSetsYesOrNoCategoryType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link StudentSchoolEnrollmentType.Calendar }{@code >}}
+   * 
+   */
+  JAXBElement<StudentSchoolEnrollmentType.Calendar> createStudentSchoolEnrollmentTypeCalendar(StudentSchoolEnrollmentType.Calendar value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link XMLGregorianCalendar }{@code >}}
+   * 
+   */
+  JAXBElement<XMLGregorianCalendar> createStudentSchoolEnrollmentTypeExitDate(XMLGregorianCalendar value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link StudentExitStatusContainerType }{@code >}}
+   * 
+   */
+  JAXBElement<StudentExitStatusContainerType> createStudentSchoolEnrollmentTypeExitStatus(StudentExitStatusContainerType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link StudentExitContainerType }{@code >}}
+   * 
+   */
+  JAXBElement<StudentExitContainerType> createStudentSchoolEnrollmentTypeExitType(StudentExitContainerType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link BigDecimal }{@code >}}
+   * 
+   */
+  JAXBElement<BigDecimal> createStudentSchoolEnrollmentTypeFTE(BigDecimal value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+   * 
+   */
+  JAXBElement<String> createStudentSchoolEnrollmentTypeFTPTStatus(String value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+   * 
+   */
+  JAXBElement<String> createStudentSchoolEnrollmentTypeFFPOS(String value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link CatchmentStatusContainerType }{@code >}}
+   * 
+   */
+  JAXBElement<CatchmentStatusContainerType> createStudentSchoolEnrollmentTypeCatchmentStatus(CatchmentStatusContainerType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+   * 
+   */
+  JAXBElement<String> createStudentSchoolEnrollmentTypeRecordClosureReason(String value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link PromotionInfoType }{@code >}}
+   * 
+   */
+  JAXBElement<PromotionInfoType> createStudentSchoolEnrollmentTypePromotionInfo(PromotionInfoType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+   * 
+   */
+  JAXBElement<String> createStudentSchoolEnrollmentTypePreviousSchool(String value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+   * 
+   */
+  JAXBElement<String> createStudentSchoolEnrollmentTypeDestinationSchool(String value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link StudentSubjectChoiceListType }{@code >}}
+   * 
+   */
+  JAXBElement<StudentSubjectChoiceListType> createStudentSchoolEnrollmentTypeStudentSubjectChoiceList(StudentSubjectChoiceListType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link SIFMetadataType }{@code >}}
+   * 
+   */
+  JAXBElement<SIFMetadataType> createStudentSchoolEnrollmentTypeSIFMetadata(SIFMetadataType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link SIFExtendedElementsType }{@code >}}
+   * 
+   */
+  JAXBElement<SIFExtendedElementsType> createStudentSchoolEnrollmentTypeSIFExtendedElements(SIFExtendedElementsType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link AlertMessagesType }{@code >}}
+   * 
+   */
+  JAXBElement<AlertMessagesType> createStudentPersonalTypeAlertMessages(AlertMessagesType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link MedicalAlertMessagesType }{@code >}}
+   * 
+   */
+  JAXBElement<MedicalAlertMessagesType> createStudentPersonalTypeMedicalAlertMessages(MedicalAlertMessagesType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+   * 
+   */
+  JAXBElement<String> createStudentPersonalTypeStateProvinceId(String value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link ElectronicIdListType }{@code >}}
+   * 
+   */
+  JAXBElement<ElectronicIdListType> createStudentPersonalTypeElectronicIdList(ElectronicIdListType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link OtherIdListType }{@code >}}
+   * 
+   */
+  JAXBElement<OtherIdListType> createStudentPersonalTypeOtherIdList(OtherIdListType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link XMLGregorianCalendar }{@code >}}
+   * 
+   */
+  JAXBElement<XMLGregorianCalendar> createStudentPersonalTypeProjectedGraduationYear(XMLGregorianCalendar value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link XMLGregorianCalendar }{@code >}}
+   * 
+   */
+  JAXBElement<XMLGregorianCalendar> createStudentPersonalTypeOnTimeGraduationYear(XMLGregorianCalendar value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+   * 
+   */
+  JAXBElement<String> createStudentPersonalTypeGraduationDate(String value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link StudentMostRecentContainerType }{@code >}}
+   * 
+   */
+  JAXBElement<StudentMostRecentContainerType> createStudentPersonalTypeMostRecent(StudentMostRecentContainerType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link AUCodeSetsYesOrNoCategoryType }{@code >}}
+   * 
+   */
+  JAXBElement<AUCodeSetsYesOrNoCategoryType> createStudentPersonalTypeAcceptableUsePolicy(AUCodeSetsYesOrNoCategoryType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link AUCodeSetsYesOrNoCategoryType }{@code >}}
+   * 
+   */
+  JAXBElement<AUCodeSetsYesOrNoCategoryType> createStudentPersonalTypeGiftedTalented(AUCodeSetsYesOrNoCategoryType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link AUCodeSetsYesOrNoCategoryType }{@code >}}
+   * 
+   */
+  JAXBElement<AUCodeSetsYesOrNoCategoryType> createStudentPersonalTypeEconomicDisadvantage(AUCodeSetsYesOrNoCategoryType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link AUCodeSetsYesOrNoCategoryType }{@code >}}
+   * 
+   */
+  JAXBElement<AUCodeSetsYesOrNoCategoryType> createStudentPersonalTypeESL(AUCodeSetsYesOrNoCategoryType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link XMLGregorianCalendar }{@code >}}
+   * 
+   */
+  JAXBElement<XMLGregorianCalendar> createStudentPersonalTypeESLDateAssessed(XMLGregorianCalendar value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link AUCodeSetsYesOrNoCategoryType }{@code >}}
+   * 
+   */
+  JAXBElement<AUCodeSetsYesOrNoCategoryType> createStudentPersonalTypeYoungCarersRole(AUCodeSetsYesOrNoCategoryType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link AUCodeSetsYesOrNoCategoryType }{@code >}}
+   * 
+   */
+  JAXBElement<AUCodeSetsYesOrNoCategoryType> createStudentPersonalTypeDisability(AUCodeSetsYesOrNoCategoryType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link AUCodeSetsYesOrNoCategoryType }{@code >}}
+   * 
+   */
+  JAXBElement<AUCodeSetsYesOrNoCategoryType> createStudentPersonalTypeIntegrationAide(AUCodeSetsYesOrNoCategoryType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link AUCodeSetsYesOrNoCategoryType }{@code >}}
+   * 
+   */
+  JAXBElement<AUCodeSetsYesOrNoCategoryType> createStudentPersonalTypeEducationSupport(AUCodeSetsYesOrNoCategoryType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link AUCodeSetsYesOrNoCategoryType }{@code >}}
+   * 
+   */
+  JAXBElement<AUCodeSetsYesOrNoCategoryType> createStudentPersonalTypeHomeSchooledStudent(AUCodeSetsYesOrNoCategoryType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link AUCodeSetsYesOrNoCategoryType }{@code >}}
+   * 
+   */
+  JAXBElement<AUCodeSetsYesOrNoCategoryType> createStudentPersonalTypeSensitive(AUCodeSetsYesOrNoCategoryType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link AUCodeSetsYesOrNoCategoryType }{@code >}}
+   * 
+   */
+  JAXBElement<AUCodeSetsYesOrNoCategoryType> createStudentPersonalTypeOfflineDelivery(AUCodeSetsYesOrNoCategoryType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+   * 
+   */
+  JAXBElement<String> createStudentPersonalTypePrePrimaryEducation(String value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link XMLGregorianCalendar }{@code >}}
+   * 
+   */
+  JAXBElement<XMLGregorianCalendar> createStudentPersonalTypeFirstAUSchoolEnrollment(XMLGregorianCalendar value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link SIFMetadataType }{@code >}}
+   * 
+   */
+  JAXBElement<SIFMetadataType> createStudentPersonalTypeSIFMetadata(SIFMetadataType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link SIFExtendedElementsType }{@code >}}
+   * 
+   */
+  JAXBElement<SIFExtendedElementsType> createStudentPersonalTypeSIFExtendedElements(SIFExtendedElementsType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+   * 
+   */
+  JAXBElement<String> createStaffPersonalTypeStateProvinceId(String value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link ElectronicIdListType }{@code >}}
+   * 
+   */
+  JAXBElement<ElectronicIdListType> createStaffPersonalTypeElectronicIdList(ElectronicIdListType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link OtherIdListType }{@code >}}
+   * 
+   */
+  JAXBElement<OtherIdListType> createStaffPersonalTypeOtherIdList(OtherIdListType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+   * 
+   */
+  JAXBElement<String> createStaffPersonalTypeTitle(String value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link AUCodeSetsStaffStatusType }{@code >}}
+   * 
+   */
+  JAXBElement<AUCodeSetsStaffStatusType> createStaffPersonalTypeEmploymentStatus(AUCodeSetsStaffStatusType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link StaffMostRecentContainerType }{@code >}}
+   * 
+   */
+  JAXBElement<StaffMostRecentContainerType> createStaffPersonalTypeMostRecent(StaffMostRecentContainerType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link SIFMetadataType }{@code >}}
+   * 
+   */
+  JAXBElement<SIFMetadataType> createStaffPersonalTypeSIFMetadata(SIFMetadataType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link SIFExtendedElementsType }{@code >}}
+   * 
+   */
+  JAXBElement<SIFExtendedElementsType> createStaffPersonalTypeSIFExtendedElements(SIFExtendedElementsType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link XMLGregorianCalendar }{@code >}}
+   * 
+   */
+  JAXBElement<XMLGregorianCalendar> createStaffAssignmentTypeSchoolYear(XMLGregorianCalendar value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+   * 
+   */
+  JAXBElement<String> createStaffAssignmentTypeDescription(String value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link XMLGregorianCalendar }{@code >}}
+   * 
+   */
+  JAXBElement<XMLGregorianCalendar> createStaffAssignmentTypeJobStartDate(XMLGregorianCalendar value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link XMLGregorianCalendar }{@code >}}
+   * 
+   */
+  JAXBElement<XMLGregorianCalendar> createStaffAssignmentTypeJobEndDate(XMLGregorianCalendar value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link BigDecimal }{@code >}}
+   * 
+   */
+  JAXBElement<BigDecimal> createStaffAssignmentTypeJobFTE(BigDecimal value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+   * 
+   */
+  JAXBElement<String> createStaffAssignmentTypeJobFunction(String value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link AUCodeSetsStaffStatusType }{@code >}}
+   * 
+   */
+  JAXBElement<AUCodeSetsStaffStatusType> createStaffAssignmentTypeEmploymentStatus(AUCodeSetsStaffStatusType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link StaffSubjectListType }{@code >}}
+   * 
+   */
+  JAXBElement<StaffSubjectListType> createStaffAssignmentTypeStaffSubjectList(StaffSubjectListType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link StaffActivityExtensionType }{@code >}}
+   * 
+   */
+  JAXBElement<StaffActivityExtensionType> createStaffAssignmentTypeStaffActivity(StaffActivityExtensionType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link YearLevelsType }{@code >}}
+   * 
+   */
+  JAXBElement<YearLevelsType> createStaffAssignmentTypeYearLevels(YearLevelsType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link AUCodeSetsYesOrNoCategoryType }{@code >}}
+   * 
+   */
+  JAXBElement<AUCodeSetsYesOrNoCategoryType> createStaffAssignmentTypeCasualReliefTeacher(AUCodeSetsYesOrNoCategoryType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+   * 
+   */
+  JAXBElement<String> createStaffAssignmentTypeHomegroup(String value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+   * 
+   */
+  JAXBElement<String> createStaffAssignmentTypeHouse(String value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link CalendarSummaryListType }{@code >}}
+   * 
+   */
+  JAXBElement<CalendarSummaryListType> createStaffAssignmentTypeCalendarSummaryList(CalendarSummaryListType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link SIFMetadataType }{@code >}}
+   * 
+   */
+  JAXBElement<SIFMetadataType> createStaffAssignmentTypeSIFMetadata(SIFMetadataType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link SIFExtendedElementsType }{@code >}}
+   * 
+   */
+  JAXBElement<SIFExtendedElementsType> createStaffAssignmentTypeSIFExtendedElements(SIFExtendedElementsType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+   * 
+   */
+  JAXBElement<String> createRoomInfoTypeLocalId(String value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link StaffListType }{@code >}}
+   * 
+   */
+  JAXBElement<StaffListType> createRoomInfoTypeStaffList(StaffListType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+   * 
+   */
+  JAXBElement<String> createRoomInfoTypeDescription(String value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+   * 
+   */
+  JAXBElement<String> createRoomInfoTypeBuilding(String value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+   * 
+   */
+  JAXBElement<String> createRoomInfoTypeHomeroomNumber(String value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link BigDecimal }{@code >}}
+   * 
+   */
+  JAXBElement<BigDecimal> createRoomInfoTypeSize(BigDecimal value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link Long }{@code >}}
+   * 
+   */
+  JAXBElement<Long> createRoomInfoTypeCapacity(Long value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link PhoneNumberType }{@code >}}
+   * 
+   */
+  JAXBElement<PhoneNumberType> createRoomInfoTypePhoneNumber(PhoneNumberType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+   * 
+   */
+  JAXBElement<String> createRoomInfoTypeRoomType(String value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link SIFMetadataType }{@code >}}
+   * 
+   */
+  JAXBElement<SIFMetadataType> createRoomInfoTypeSIFMetadata(SIFMetadataType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link SIFExtendedElementsType }{@code >}}
+   * 
+   */
+  JAXBElement<SIFExtendedElementsType> createRoomInfoTypeSIFExtendedElements(SIFExtendedElementsType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link SIFMetadataType }{@code >}}
+   * 
+   */
+  JAXBElement<SIFMetadataType> createResourceUsageTypeSIFMetadata(SIFMetadataType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link SIFExtendedElementsType }{@code >}}
+   * 
+   */
+  JAXBElement<SIFExtendedElementsType> createResourceUsageTypeSIFExtendedElements(SIFExtendedElementsType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link ResourceUsageType.ResourceReportLineList.ResourceReportLine.SIFRefId }{@code >}}
+   * 
+   */
+  JAXBElement<ResourceUsageType.ResourceReportLineList.ResourceReportLine.SIFRefId> createResourceUsageTypeResourceReportLineListResourceReportLineSIFRefId(ResourceUsageType.ResourceReportLineList.ResourceReportLine.SIFRefId value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link XMLGregorianCalendar }{@code >}}
+   * 
+   */
+  JAXBElement<XMLGregorianCalendar> createResourceUsageTypeResourceReportLineListResourceReportLineEndDate(XMLGregorianCalendar value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+   * 
+   */
+  JAXBElement<String> createResourceUsageTypeResourceReportColumnListResourceReportColumnColumnDescription(String value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+   * 
+   */
+  JAXBElement<String> createResourceUsageTypeResourceReportColumnListResourceReportColumnColumnDelimiter(String value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+   * 
+   */
+  JAXBElement<String> createResourceUsageTypeResourceUsageContentTypeLocalDescription(String value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+   * 
+   */
+  JAXBElement<String> createAggregateStatisticFactTypeExcluded(String value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link SIFMetadataType }{@code >}}
+   * 
+   */
+  JAXBElement<SIFMetadataType> createAggregateStatisticFactTypeSIFMetadata(SIFMetadataType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link SIFExtendedElementsType }{@code >}}
+   * 
+   */
+  JAXBElement<SIFExtendedElementsType> createAggregateStatisticFactTypeSIFExtendedElements(SIFExtendedElementsType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+   * 
+   */
+  JAXBElement<String> createAggregateCharacteristicInfoTypeDescription(String value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+   * 
+   */
+  JAXBElement<String> createAggregateCharacteristicInfoTypeElementName(String value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link SIFMetadataType }{@code >}}
+   * 
+   */
+  JAXBElement<SIFMetadataType> createAggregateCharacteristicInfoTypeSIFMetadata(SIFMetadataType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link SIFExtendedElementsType }{@code >}}
+   * 
+   */
+  JAXBElement<SIFExtendedElementsType> createAggregateCharacteristicInfoTypeSIFExtendedElements(SIFExtendedElementsType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link AggregateStatisticInfoType.CalculationRule }{@code >}}
+   * 
+   */
+  JAXBElement<AggregateStatisticInfoType.CalculationRule> createAggregateStatisticInfoTypeCalculationRule(AggregateStatisticInfoType.CalculationRule value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link XMLGregorianCalendar }{@code >}}
+   * 
+   */
+  JAXBElement<XMLGregorianCalendar> createAggregateStatisticInfoTypeApprovalDate(XMLGregorianCalendar value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link XMLGregorianCalendar }{@code >}}
+   * 
+   */
+  JAXBElement<XMLGregorianCalendar> createAggregateStatisticInfoTypeExpirationDate(XMLGregorianCalendar value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link ExclusionRulesType }{@code >}}
+   * 
+   */
+  JAXBElement<ExclusionRulesType> createAggregateStatisticInfoTypeExclusionRules(ExclusionRulesType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+   * 
+   */
+  JAXBElement<String> createAggregateStatisticInfoTypeSource(String value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link XMLGregorianCalendar }{@code >}}
+   * 
+   */
+  JAXBElement<XMLGregorianCalendar> createAggregateStatisticInfoTypeEffectiveDate(XMLGregorianCalendar value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link XMLGregorianCalendar }{@code >}}
+   * 
+   */
+  JAXBElement<XMLGregorianCalendar> createAggregateStatisticInfoTypeDiscontinueDate(XMLGregorianCalendar value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link LocationType }{@code >}}
+   * 
+   */
+  JAXBElement<LocationType> createAggregateStatisticInfoTypeLocation(LocationType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+   * 
+   */
+  JAXBElement<String> createAggregateStatisticInfoTypeMeasure(String value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link SIFMetadataType }{@code >}}
+   * 
+   */
+  JAXBElement<SIFMetadataType> createAggregateStatisticInfoTypeSIFMetadata(SIFMetadataType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link SIFExtendedElementsType }{@code >}}
+   * 
+   */
+  JAXBElement<SIFExtendedElementsType> createAggregateStatisticInfoTypeSIFExtendedElements(SIFExtendedElementsType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link SIFMetadataType }{@code >}}
+   * 
+   */
+  JAXBElement<SIFMetadataType> createSystemRoleTypeSIFMetadata(SIFMetadataType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link SIFExtendedElementsType }{@code >}}
+   * 
+   */
+  JAXBElement<SIFExtendedElementsType> createSystemRoleTypeSIFExtendedElements(SIFExtendedElementsType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link SystemRoleType.SystemContextList.SystemContext.RoleList }{@code >}}
+   * 
+   */
+  JAXBElement<SystemRoleType.SystemContextList.SystemContext.RoleList> createSystemRoleTypeSystemContextListSystemContextRoleList(SystemRoleType.SystemContextList.SystemContext.RoleList value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link SystemRoleType.SystemContextList.SystemContext.RoleList.Role.RoleScopeList }{@code >}}
+   * 
+   */
   JAXBElement<SystemRoleType.SystemContextList.SystemContext.RoleList.Role.RoleScopeList> createSystemRoleTypeSystemContextListSystemContextRoleListRoleRoleScopeList(
       SystemRoleType.SystemContextList.SystemContext.RoleList.Role.RoleScopeList value);
 
-  JAXBElement<String> createFinancialAccountTypeDescription(String value);
-
-  JAXBElement<SIFExtendedElementsType> createFinancialAccountTypeSIFExtendedElements(SIFExtendedElementsType value);
-
-  JAXBElement<SIFMetadataType> createFinancialAccountTypeSIFMetadata(SIFMetadataType value);
-
-  JAXBElement<String> createFinancialAccountTypeParentAccountRefId(String value);
-
-  JAXBElement<String> createFinancialAccountTypeChargedLocationInfoRefId(String value);
-
-  JAXBElement<AUCodeSetsYesOrNoCategoryType> createContactFlagsTypeReceivesAssessmentReport(AUCodeSetsYesOrNoCategoryType value);
-
-  JAXBElement<AUCodeSetsYesOrNoCategoryType> createContactFlagsTypeFeesBilling(AUCodeSetsYesOrNoCategoryType value);
-
-  JAXBElement<AUCodeSetsYesOrNoCategoryType> createContactFlagsTypeHasCustody(AUCodeSetsYesOrNoCategoryType value);
-
-  JAXBElement<AUCodeSetsYesOrNoCategoryType> createContactFlagsTypeAttendanceContact(AUCodeSetsYesOrNoCategoryType value);
-
-  JAXBElement<AUCodeSetsYesOrNoCategoryType> createContactFlagsTypePickupRights(AUCodeSetsYesOrNoCategoryType value);
-
-  JAXBElement<AUCodeSetsYesOrNoCategoryType> createContactFlagsTypeParentLegalGuardian(AUCodeSetsYesOrNoCategoryType value);
-
-  JAXBElement<AUCodeSetsYesOrNoCategoryType> createContactFlagsTypeEmergencyContact(AUCodeSetsYesOrNoCategoryType value);
-
-  JAXBElement<AUCodeSetsYesOrNoCategoryType> createContactFlagsTypePrimaryCareProvider(AUCodeSetsYesOrNoCategoryType value);
-
-  JAXBElement<AUCodeSetsYesOrNoCategoryType> createContactFlagsTypeInterventionOrder(AUCodeSetsYesOrNoCategoryType value);
-
-  JAXBElement<AUCodeSetsYesOrNoCategoryType> createContactFlagsTypeFamilyMail(AUCodeSetsYesOrNoCategoryType value);
-
-  JAXBElement<AUCodeSetsYesOrNoCategoryType> createContactFlagsTypeLivesWith(AUCodeSetsYesOrNoCategoryType value);
-
-  JAXBElement<AUCodeSetsYesOrNoCategoryType> createContactFlagsTypeDisciplinaryContact(AUCodeSetsYesOrNoCategoryType value);
-
-  JAXBElement<AUCodeSetsYesOrNoCategoryType> createContactFlagsTypeAccessToRecords(AUCodeSetsYesOrNoCategoryType value);
-
-  JAXBElement<XMLGregorianCalendar> createCalendarSummaryTypeLastInstructionDate(XMLGregorianCalendar value);
-
-  JAXBElement<XMLGregorianCalendar> createCalendarSummaryTypeFirstInstructionDate(XMLGregorianCalendar value);
-
-  JAXBElement<Long> createCalendarSummaryTypeInstructionalMinutes(Long value);
-
-  JAXBElement<String> createCalendarSummaryTypeGraduationDate(String value);
-
-  JAXBElement<Long> createCalendarSummaryTypeMinutesPerDay(Long value);
-
-  JAXBElement<XMLGregorianCalendar> createCalendarSummaryTypeEndDate(XMLGregorianCalendar value);
-
-  JAXBElement<String> createCalendarSummaryTypeDescription(String value);
-
-  JAXBElement<SIFExtendedElementsType> createCalendarSummaryTypeSIFExtendedElements(SIFExtendedElementsType value);
-
-  JAXBElement<YearLevelsType> createCalendarSummaryTypeYearLevels(YearLevelsType value);
-
-  JAXBElement<SIFMetadataType> createCalendarSummaryTypeSIFMetadata(SIFMetadataType value);
-
-  JAXBElement<XMLGregorianCalendar> createCalendarSummaryTypeStartDate(XMLGregorianCalendar value);
-
-  JAXBElement<String> createStudentPersonalTypeStateProvinceId(String value);
-
-  JAXBElement<AUCodeSetsYesOrNoCategoryType> createStudentPersonalTypeDisability(AUCodeSetsYesOrNoCategoryType value);
-
-  JAXBElement<AlertMessagesType> createStudentPersonalTypeAlertMessages(AlertMessagesType value);
-
-  JAXBElement<XMLGregorianCalendar> createStudentPersonalTypeOnTimeGraduationYear(XMLGregorianCalendar value);
-
-  JAXBElement<String> createStudentPersonalTypePrePrimaryEducation(String value);
-
-  JAXBElement<AUCodeSetsYesOrNoCategoryType> createStudentPersonalTypeEconomicDisadvantage(AUCodeSetsYesOrNoCategoryType value);
-
-  JAXBElement<AUCodeSetsYesOrNoCategoryType> createStudentPersonalTypeYoungCarersRole(AUCodeSetsYesOrNoCategoryType value);
-
-  JAXBElement<OtherIdListType> createStudentPersonalTypeOtherIdList(OtherIdListType value);
-
-  JAXBElement<AUCodeSetsYesOrNoCategoryType> createStudentPersonalTypeOfflineDelivery(AUCodeSetsYesOrNoCategoryType value);
-
-  JAXBElement<AUCodeSetsYesOrNoCategoryType> createStudentPersonalTypeSensitive(AUCodeSetsYesOrNoCategoryType value);
-
-  JAXBElement<AUCodeSetsYesOrNoCategoryType> createStudentPersonalTypeAcceptableUsePolicy(AUCodeSetsYesOrNoCategoryType value);
-
-  JAXBElement<AUCodeSetsYesOrNoCategoryType> createStudentPersonalTypeESL(AUCodeSetsYesOrNoCategoryType value);
-
-  JAXBElement<MedicalAlertMessagesType> createStudentPersonalTypeMedicalAlertMessages(MedicalAlertMessagesType value);
-
-  JAXBElement<AUCodeSetsYesOrNoCategoryType> createStudentPersonalTypeHomeSchooledStudent(AUCodeSetsYesOrNoCategoryType value);
-
-  JAXBElement<XMLGregorianCalendar> createStudentPersonalTypeProjectedGraduationYear(XMLGregorianCalendar value);
-
-  JAXBElement<AUCodeSetsYesOrNoCategoryType> createStudentPersonalTypeEducationSupport(AUCodeSetsYesOrNoCategoryType value);
-
-  JAXBElement<String> createStudentPersonalTypeGraduationDate(String value);
-
-  JAXBElement<AUCodeSetsYesOrNoCategoryType> createStudentPersonalTypeIntegrationAide(AUCodeSetsYesOrNoCategoryType value);
-
-  JAXBElement<StudentMostRecentContainerType> createStudentPersonalTypeMostRecent(StudentMostRecentContainerType value);
-
-  JAXBElement<AUCodeSetsYesOrNoCategoryType> createStudentPersonalTypeGiftedTalented(AUCodeSetsYesOrNoCategoryType value);
-
-  JAXBElement<XMLGregorianCalendar> createStudentPersonalTypeESLDateAssessed(XMLGregorianCalendar value);
-
-  JAXBElement<XMLGregorianCalendar> createStudentPersonalTypeFirstAUSchoolEnrollment(XMLGregorianCalendar value);
-
-  JAXBElement<ElectronicIdListType> createStudentPersonalTypeElectronicIdList(ElectronicIdListType value);
-
-  JAXBElement<SIFExtendedElementsType> createStudentPersonalTypeSIFExtendedElements(SIFExtendedElementsType value);
-
-  JAXBElement<SIFMetadataType> createStudentPersonalTypeSIFMetadata(SIFMetadataType value);
-
-  JAXBElement<SubjectAreaType> createACStrandSubjectAreaTypeSubjectArea(SubjectAreaType value);
-
-  JAXBElement<String> createStaffPersonalTypeStateProvinceId(String value);
-
-  JAXBElement<AUCodeSetsStaffStatusType> createStaffPersonalTypeEmploymentStatus(AUCodeSetsStaffStatusType value);
-
-  JAXBElement<String> createStaffPersonalTypeTitle(String value);
-
-  JAXBElement<OtherIdListType> createStaffPersonalTypeOtherIdList(OtherIdListType value);
-
-  JAXBElement<StaffMostRecentContainerType> createStaffPersonalTypeMostRecent(StaffMostRecentContainerType value);
-
-  JAXBElement<ElectronicIdListType> createStaffPersonalTypeElectronicIdList(ElectronicIdListType value);
-
-  JAXBElement<SIFExtendedElementsType> createStaffPersonalTypeSIFExtendedElements(SIFExtendedElementsType value);
-
-  JAXBElement<SIFMetadataType> createStaffPersonalTypeSIFMetadata(SIFMetadataType value);
-
-  JAXBElement<XMLGregorianCalendar> createActivityTimeTypeFinishDate(XMLGregorianCalendar value);
-
-  JAXBElement<ActivityTimeType.Duration> createActivityTimeTypeDuration(ActivityTimeType.Duration value);
-
-  JAXBElement<XMLGregorianCalendar> createActivityTimeTypeDueDate(XMLGregorianCalendar value);
-
-  JAXBElement<XMLGregorianCalendar> createActivityTimeTypeStartDate(XMLGregorianCalendar value);
-
-  JAXBElement<String> createNAPTestScoreSummaryTypeSchoolInfoRefId(String value);
-
-  JAXBElement<String> createNAPTestScoreSummaryTypeNAPTestRefId(String value);
-
-  JAXBElement<BigDecimal> createNAPTestScoreSummaryTypeDomainBottomNational60Percent(BigDecimal value);
-
-  JAXBElement<BigDecimal> createNAPTestScoreSummaryTypeDomainSchoolAverage(BigDecimal value);
-
-  JAXBElement<SIFExtendedElementsType> createNAPTestScoreSummaryTypeSIFExtendedElements(SIFExtendedElementsType value);
-
-  JAXBElement<SIFMetadataType> createNAPTestScoreSummaryTypeSIFMetadata(SIFMetadataType value);
-
-  JAXBElement<BigDecimal> createNAPTestScoreSummaryTypeDomainJurisdictionAverage(BigDecimal value);
-
-  JAXBElement<BigDecimal> createNAPTestScoreSummaryTypeDomainTopNational60Percent(BigDecimal value);
-
-  JAXBElement<BigDecimal> createNAPTestScoreSummaryTypeDomainNationalAverage(BigDecimal value);
-
-  JAXBElement<String> createSchoolCourseInfoOverrideTypeStateCourseCode(String value);
-
-  JAXBElement<String> createSchoolCourseInfoOverrideTypeCourseCredits(String value);
-
-  JAXBElement<String> createSchoolCourseInfoOverrideTypeDistrictCourseCode(String value);
-
-  JAXBElement<String> createSchoolCourseInfoOverrideTypeCourseTitle(String value);
-
-  JAXBElement<String> createSchoolCourseInfoOverrideTypeCourseCode(String value);
-
-  JAXBElement<SubjectAreaType> createSchoolCourseInfoOverrideTypeSubjectArea(SubjectAreaType value);
-
-  JAXBElement<String> createSchoolCourseInfoOverrideTypeInstructionalLevel(String value);
-
-  JAXBElement<OtherCodeListType> createDwellingArrangementTypeOtherCodeList(OtherCodeListType value);
-
-  JAXBElement<LifeCycleType.Created.Creators> createLifeCycleTypeCreatedCreators(LifeCycleType.Created.Creators value);
-
-  JAXBElement<OtherCodeListType> createLanguageOfInstructionTypeOtherCodeList(OtherCodeListType value);
-
-  JAXBElement<String> createChargedLocationInfoTypeStateProvinceId(String value);
-
-  JAXBElement<String> createChargedLocationInfoTypeLocalId(String value);
-
-  JAXBElement<String> createChargedLocationInfoTypeParentChargedLocationInfoRefId(String value);
-
-  JAXBElement<String> createChargedLocationInfoTypeSchoolInfoRefId(String value);
-
-  JAXBElement<AddressListType> createChargedLocationInfoTypeAddressList(AddressListType value);
-
-  JAXBElement<String> createChargedLocationInfoTypeDescription(String value);
-
-  JAXBElement<SIFExtendedElementsType> createChargedLocationInfoTypeSIFExtendedElements(SIFExtendedElementsType value);
-
-  JAXBElement<SIFMetadataType> createChargedLocationInfoTypeSIFMetadata(SIFMetadataType value);
-
-  JAXBElement<PhoneNumberListType> createChargedLocationInfoTypePhoneNumberList(PhoneNumberListType value);
-
-  JAXBElement<OtherCodeListType> createRelationshipTypeOtherCodeList(OtherCodeListType value);
-
-  JAXBElement<PasswordListType> createIdentityTypePasswordList(PasswordListType value);
-
-  JAXBElement<IdentityAssertionsType> createIdentityTypeIdentityAssertions(IdentityAssertionsType value);
-
-  JAXBElement<String> createIdentityTypeAuthenticationSourceGlobalUID(String value);
-
-  JAXBElement<SIFExtendedElementsType> createIdentityTypeSIFExtendedElements(SIFExtendedElementsType value);
-
-  JAXBElement<SIFMetadataType> createIdentityTypeSIFMetadata(SIFMetadataType value);
-
-  JAXBElement<String> createLearningStandardItemTypeStandardSettingBodyStateProvince(String value);
-
-  JAXBElement<String> createLearningStandardItemTypeStandardSettingBodySettingBodyName(String value);
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+   * 
+   */
+  JAXBElement<String> createSystemRoleTypeSystemContextListSystemContextRoleListRoleRoleScopeListRoleScopeRoleScopeName(String value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link SystemRoleType.SystemContextList.SystemContext.RoleList.Role.RoleScopeList.RoleScope.RoleScopeRefId }{@code >}}
+   * 
+   */
+  JAXBElement<SystemRoleType.SystemContextList.SystemContext.RoleList.Role.RoleScopeList.RoleScope.RoleScopeRefId> createSystemRoleTypeSystemContextListSystemContextRoleListRoleRoleScopeListRoleScopeRoleScopeRefId(
+      SystemRoleType.SystemContextList.SystemContext.RoleList.Role.RoleScopeList.RoleScope.RoleScopeRefId value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+   * 
+   */
+  JAXBElement<String> createSchoolInfoTypeLocalId(String value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+   * 
+   */
+  JAXBElement<String> createSchoolInfoTypeStateProvinceId(String value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+   * 
+   */
+  JAXBElement<String> createSchoolInfoTypeCommonwealthId(String value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+   * 
+   */
+  JAXBElement<String> createSchoolInfoTypeACARAId(String value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link OtherIdListType }{@code >}}
+   * 
+   */
+  JAXBElement<OtherIdListType> createSchoolInfoTypeOtherIdList(OtherIdListType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+   * 
+   */
+  JAXBElement<String> createSchoolInfoTypeLEAInfoRefId(String value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link SchoolInfoType.OtherLEA }{@code >}}
+   * 
+   */
+  JAXBElement<SchoolInfoType.OtherLEA> createSchoolInfoTypeOtherLEA(SchoolInfoType.OtherLEA value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+   * 
+   */
+  JAXBElement<String> createSchoolInfoTypeSchoolDistrict(String value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+   * 
+   */
+  JAXBElement<String> createSchoolInfoTypeSchoolDistrictLocalId(String value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link AUCodeSetsSchoolLevelType }{@code >}}
+   * 
+   */
+  JAXBElement<AUCodeSetsSchoolLevelType> createSchoolInfoTypeSchoolType(AUCodeSetsSchoolLevelType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link SchoolFocusListType }{@code >}}
+   * 
+   */
+  JAXBElement<SchoolFocusListType> createSchoolInfoTypeSchoolFocusList(SchoolFocusListType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+   * 
+   */
+  JAXBElement<String> createSchoolInfoTypeSchoolURL(String value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link EmailListType }{@code >}}
+   * 
+   */
+  JAXBElement<EmailListType> createSchoolInfoTypeSchoolEmailList(EmailListType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link PrincipalInfoType }{@code >}}
+   * 
+   */
+  JAXBElement<PrincipalInfoType> createSchoolInfoTypePrincipalInfo(PrincipalInfoType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link SchoolContactListType }{@code >}}
+   * 
+   */
+  JAXBElement<SchoolContactListType> createSchoolInfoTypeSchoolContactList(SchoolContactListType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link AddressListType }{@code >}}
+   * 
+   */
+  JAXBElement<AddressListType> createSchoolInfoTypeAddressList(AddressListType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link PhoneNumberListType }{@code >}}
+   * 
+   */
+  JAXBElement<PhoneNumberListType> createSchoolInfoTypePhoneNumberList(PhoneNumberListType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+   * 
+   */
+  JAXBElement<String> createSchoolInfoTypeSessionType(String value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link YearLevelsType }{@code >}}
+   * 
+   */
+  JAXBElement<YearLevelsType> createSchoolInfoTypeYearLevels(YearLevelsType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link BigDecimal }{@code >}}
+   * 
+   */
+  JAXBElement<BigDecimal> createSchoolInfoTypeARIA(BigDecimal value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link AUCodeSetsOperationalStatusType }{@code >}}
+   * 
+   */
+  JAXBElement<AUCodeSetsOperationalStatusType> createSchoolInfoTypeOperationalStatus(AUCodeSetsOperationalStatusType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+   * 
+   */
+  JAXBElement<String> createSchoolInfoTypeFederalElectorate(String value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link CampusContainerType }{@code >}}
+   * 
+   */
+  JAXBElement<CampusContainerType> createSchoolInfoTypeCampus(CampusContainerType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link AUCodeSetsYesOrNoCategoryType }{@code >}}
+   * 
+   */
+  JAXBElement<AUCodeSetsYesOrNoCategoryType> createSchoolInfoTypeIndependentSchool(AUCodeSetsYesOrNoCategoryType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link AUCodeSetsSystemicStatusType }{@code >}}
+   * 
+   */
+  JAXBElement<AUCodeSetsSystemicStatusType> createSchoolInfoTypeNonGovSystemicStatus(AUCodeSetsSystemicStatusType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+   * 
+   */
+  JAXBElement<String> createSchoolInfoTypeSystem(String value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+   * 
+   */
+  JAXBElement<String> createSchoolInfoTypeReligiousAffiliation(String value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+   * 
+   */
+  JAXBElement<String> createSchoolInfoTypeSchoolGeographicLocation(String value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+   * 
+   */
+  JAXBElement<String> createSchoolInfoTypeLocalGovernmentArea(String value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+   * 
+   */
+  JAXBElement<String> createSchoolInfoTypeJurisdictionLowerHouse(String value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+   * 
+   */
+  JAXBElement<String> createSchoolInfoTypeSLA(String value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link AUCodeSetsSchoolCoEdStatusType }{@code >}}
+   * 
+   */
+  JAXBElement<AUCodeSetsSchoolCoEdStatusType> createSchoolInfoTypeSchoolCoEdStatus(AUCodeSetsSchoolCoEdStatusType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link AUCodeSetsYesOrNoCategoryType }{@code >}}
+   * 
+   */
+  JAXBElement<AUCodeSetsYesOrNoCategoryType> createSchoolInfoTypeBoardingSchoolStatus(AUCodeSetsYesOrNoCategoryType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link YearLevelEnrollmentListType }{@code >}}
+   * 
+   */
+  JAXBElement<YearLevelEnrollmentListType> createSchoolInfoTypeYearLevelEnrollmentList(YearLevelEnrollmentListType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link TotalEnrollmentsType }{@code >}}
+   * 
+   */
+  JAXBElement<TotalEnrollmentsType> createSchoolInfoTypeTotalEnrollments(TotalEnrollmentsType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link XMLGregorianCalendar }{@code >}}
+   * 
+   */
+  JAXBElement<XMLGregorianCalendar> createSchoolInfoTypeEntityOpen(XMLGregorianCalendar value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link XMLGregorianCalendar }{@code >}}
+   * 
+   */
+  JAXBElement<XMLGregorianCalendar> createSchoolInfoTypeEntityClose(XMLGregorianCalendar value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link SchoolGroupListType }{@code >}}
+   * 
+   */
+  JAXBElement<SchoolGroupListType> createSchoolInfoTypeSchoolGroupList(SchoolGroupListType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link SIFMetadataType }{@code >}}
+   * 
+   */
+  JAXBElement<SIFMetadataType> createSchoolInfoTypeSIFMetadata(SIFMetadataType value);
+
+  /**
+   * Create an instance of {@link JAXBElement }{@code <}{@link SIFExtendedElementsType }{@code >}}
+   * 
+   */
+  JAXBElement<SIFExtendedElementsType> createSchoolInfoTypeSIFExtendedElements(SIFExtendedElementsType value);
 
 }

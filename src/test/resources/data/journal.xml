@@ -1,4 +1,4 @@
-<Journal RefId="56557dd7-1367-43ea-b0c6-be91131c1bff" xmlns="http://www.sifassociation.org/au/datamodel/3.4">
+<Journal RefId="56557dd7-1367-43ea-b0c6-be91131c1bff" xmlns="http://www.sifassociation.org/au/datamodel/3.4.1">
     <DebitFinancialAccountRefId>c03b27f4-b0f8-4e46-93fb-4f0dc3b930e9</DebitFinancialAccountRefId>
     <CreditFinancialAccountRefId>d7230685-a578-4eb5-a5e4-c19b096a3d0c</CreditFinancialAccountRefId>
     <OriginatingTransactionRefId SIF_RefObject="Invoice">22a05683-186c-40d5-b7ac-f1b707227310</OriginatingTransactionRefId>

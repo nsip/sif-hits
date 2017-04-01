@@ -33,8 +33,8 @@ public class NAPCodeFrameConverter extends HitsConverter<NAPCodeFrameType, NAPCo
 
       target.setRefId(source.getRefId());
       if (source.getNapTest() != null) {
-        target.setNAPTestRefId(objectFactory.createNAPCodeFrameTypeNAPTestRefId(source.getNapTest().getRefId()));
-        target.setTestContent(objectFactory.createNAPCodeFrameTypeTestContent(napTestContentConverter.toSifModel(source.getNapTest())));
+        target.setNAPTestRefId(source.getNapTest().getRefId());
+        target.setTestContent(napTestContentConverter.toSifModel(source.getNapTest()));
         if (source.getNapTest().getNapTestlets() != null && !source.getNapTest().getNapTestlets().isEmpty()) {
           NAPCodeFrameTestletListType napCodeFrameTestletListType = objectFactory.createNAPCodeFrameTestletListType();
           napCodeFrameTestletListType.getTestlet().addAll(napCodeFramTestletConverter.toSifModelList(source.getNapTest().getNapTestlets()));
@@ -49,7 +49,7 @@ public class NAPCodeFrameConverter extends HitsConverter<NAPCodeFrameType, NAPCo
     if (source != null && target != null) {
       target.setRefId(source.getRefId());
 
-      String testRefId = getJAXBValue(source.getNAPTestRefId());
+      String testRefId = source.getNAPTestRefId();
 
       if (testRefId != null) {
         NAPTest napTest = napTestDAO.findOne(testRefId);

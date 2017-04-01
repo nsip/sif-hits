@@ -1,4 +1,4 @@
-<Debtor RefId="83357168-8b57-40fa-a86d-eaefe70abc55" xmlns="http://www.sifassociation.org/au/datamodel/3.4">
+<Debtor RefId="83357168-8b57-40fa-a86d-eaefe70abc55" xmlns="http://www.sifassociation.org/au/datamodel/3.4.1">
     <BilledEntity SIF_RefObject="VendorInfo">df9543ee-a145-4e19-b87b-816852aa24bf</BilledEntity>
     <AddressList>
         <Address Type="0123" Role="012B">

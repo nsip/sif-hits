@@ -1,6 +1,6 @@
-<Invoices xmlns="http://www.sifassociation.org/au/datamodel/3.4">
+<Invoices xmlns="http://www.sifassociation.org/au/datamodel/3.4.1">
   <Invoice RefId="0e3ead1c-3e79-42a7-bfc7-bb5e4d5efb77">
-    <InvoicedEntity SIF_RefObject="Debtor">BA497254965FDA48965ABCE4589EA421</InvoicedEntity>
+    <InvoicedEntity SIF_RefObject="Debtor">83357168-8b57-40fa-a86d-eaefe70abc55</InvoicedEntity>
     <BillingDate>2015-07-01</BillingDate>
     <TransactionDescription>Textbooks</TransactionDescription>
     <BilledAmount Type="Debit" Currency="AUD">320.00</BilledAmount>
@@ -22,7 +22,7 @@
     <Voluntary>N</Voluntary>
   </Invoice>
   <Invoice RefId="914675bc-3521-4647-b770-58018dacb4b3">
-    <InvoicedEntity SIF_RefObject="Debtor">BA497254965FDA48965ABCE4589EA421</InvoicedEntity>
+    <InvoicedEntity SIF_RefObject="Debtor">83357168-8b57-40fa-a86d-eaefe70abc55</InvoicedEntity>
     <BillingDate>2015-07-01</BillingDate>
     <TransactionDescription>Textbooks</TransactionDescription>
     <BilledAmount Type="Debit" Currency="AUD">320.00</BilledAmount>

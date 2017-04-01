@@ -36,7 +36,6 @@ public class FinancialAccountConsumerTest extends BaseTest {
   @Test
   public void initialiseData() throws Exception {
     ObjectFactory objectFactory = new ObjectFactory();
-    
     FinancialAccountType financialAccount = new FinancialAccountType();
     financialAccount.setRefId(FinancialAccountRefIds.REF_ID_2);
     financialAccount.setAccountNumber("43242244L");

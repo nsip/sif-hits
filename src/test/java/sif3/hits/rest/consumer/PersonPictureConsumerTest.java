@@ -53,7 +53,7 @@ public class PersonPictureConsumerTest extends BaseTest {
 
     PictureSource pictureSource = objectFactory.createPersonPictureTypePictureSource();
     pictureSource.setType("01"); // url
-    pictureSource.getValue().add("http://www.gravatar.com/avatar/HASH?d=mm");
+    pictureSource.setValue("http://www.gravatar.com/avatar/HASH?d=mm");
     personPicture.setPictureSource(pictureSource);
     personPicture.setSchoolYear(getDate("2016"));
     personPictureTester.doCreateOne(personPicture);
@@ -74,8 +74,7 @@ public class PersonPictureConsumerTest extends BaseTest {
     personPicture.setRefId(PersonPictureRefIds.REF_ID_5);
     parentObjectRefId.setValue(StudentPersonalRefIds.REF_ID_5);
     pictureSource.setType("02"); // hash
-    pictureSource.getValue().clear();
-    pictureSource.getValue().add(BASE64_IMAGE);
+    pictureSource.setValue(BASE64_IMAGE);
     personPictureTester.doCreateOne(personPicture);
     String xmlExpectedToBase64 = personPictureTester.getXML(personPicture);
 

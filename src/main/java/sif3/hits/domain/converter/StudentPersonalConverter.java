@@ -159,7 +159,6 @@ public class StudentPersonalConverter extends HitsConverter<StudentPersonalType,
           target.getOtherIds().add(studentPersonalOtherId);
         }
       }
-
     }
   }
 }

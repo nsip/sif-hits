@@ -34,7 +34,11 @@ public class NAPTestContentConverter extends HitsConverter<NAPTestContentType, N
       target.setTestYear(getYearValue(source.getTestYear()));
 
       // new
-      target.setStagesCount(getIntegerValue(source.getStagesCount()));
+      Integer stagesCount = getIntegerValue(source.getStagesCount());
+      if (stagesCount != null) {
+        target.setStagesCount(stagesCount);  
+      }
+      
 
       DomainBandsContainerType domainBandsContainerType = objectFactory.createDomainBandsContainerType();
       domainBandsContainerType.setBand1Lower(getBigDecimalValue(source.getBand1Lower()));

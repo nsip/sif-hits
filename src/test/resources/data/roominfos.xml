@@ -1,4 +1,4 @@
-<RoomInfos xmlns="http://www.sifassociation.org/au/datamodel/3.4">
+<RoomInfos xmlns="http://www.sifassociation.org/au/datamodel/3.4.1">
     <RoomInfo RefId="dcafc510-c27f-45f7-b8f5-18ba612571a8">
         <SchoolInfoRefId>6dafb630-c439-41e3-9aa0-81f4dbd909ab</SchoolInfoRefId>
         <RoomNumber>604.741833843259</RoomNumber>

@@ -11,7 +11,6 @@ import org.junit.Test;
 import org.springframework.http.HttpStatus;
 
 import sif.dd.au30.model.AUCodeSetsNAPResponseCorrectnessType;
-import sif.dd.au30.model.AUCodeSetsNAPWritingRubricTypeType;
 import sif.dd.au30.model.DomainScoreType;
 import sif.dd.au30.model.NAPStudentResponseSetCollectionType;
 import sif.dd.au30.model.NAPStudentResponseSetType;
@@ -70,6 +69,7 @@ public class NAPStudentResponseSetConsumerTest extends BaseTest {
     
     String xmlExpectedTo = napStudentResponseSetTester.getXML(napStudentResponseSetType);
     napStudentResponseSetTester.doCreateOne(napStudentResponseSetType);
+    napStudentResponseSetTester.doUpdateOne(napStudentResponseSetType, napStudentResponseSetType.getRefId());
 
     napStudentResponseSetType.setRefId(NAPStudentResponseSetRefIds.REF_ID_2);
     napStudentResponseSetTester.doCreateOne(napStudentResponseSetType);
@@ -130,7 +130,7 @@ public class NAPStudentResponseSetConsumerTest extends BaseTest {
 
   private NAPSubscoreType getSubscore(int index, int i) {
     NAPSubscoreType napSubscoreType = new NAPSubscoreType();
-    napSubscoreType.setSubscoreType(AUCodeSetsNAPWritingRubricTypeType.PERSUASIVE_DEVICES);
+    napSubscoreType.setSubscoreType("PD");
     napSubscoreType.setSubscoreValue(new BigDecimal("1" + index + "" + i));
     return napSubscoreType;
   }
