@@ -11,7 +11,6 @@ import sif.dd.au30.model.YearLevelType;
 import sif.dd.au30.model.YearLevelsType;
 import sif3.hits.domain.converter.factory.IObjectFactory;
 import sif3.hits.domain.model.CalendarSummary;
-import sif3.hits.domain.model.CalendarSummaryYearLevel;
 
 @Component
 public class CalendarSummaryConverter extends HitsConverter<CalendarSummaryType, CalendarSummary> {
@@ -68,9 +67,14 @@ public class CalendarSummaryConverter extends HitsConverter<CalendarSummaryType,
       target.setMinutesPerDay(getLongValue(getJAXBValue(source.getMinutesPerDay())));
 
       YearLevelsType yearLevelsType = getJAXBValue(source.getYearLevels());
+      if (target.getCalendarSummaryYearLevels() == null) {
+        target.setCalendarSummaryYearLevels(new HashSet<String>());
+      } else {
+        target.getCalendarSummaryYearLevels().clear();
+      }
       if (yearLevelsType != null) {
-        List<CalendarSummaryYearLevel> yearLevels = calendarSummaryYearLevelConverter.toHitsModelList(yearLevelsType.getYearLevel());
-        target.setCalendarSummaryYearLevels(new HashSet<CalendarSummaryYearLevel>(yearLevels));
+        List<String> yearLevels = calendarSummaryYearLevelConverter.toHitsModelList(yearLevelsType.getYearLevel());
+        target.getCalendarSummaryYearLevels().addAll(yearLevels);
       }
     }
   }

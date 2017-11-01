@@ -2,7 +2,6 @@ package sif3.hits.domain.model;
 
 import java.io.Serializable;
 
-import javax.persistence.Column;
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 import javax.persistence.Table;
@@ -13,12 +12,9 @@ import javax.persistence.Transient;
 public class CalendarDateTypeOtherCode implements Serializable {
   private static final long serialVersionUID = -6305870667354354202L;
 
-  @EmbeddedId
   private CalendarDateTypeOtherCodeId calendarDateTypeOtherCodeId;
-  
-  @Column(name = "OtherCode_CodeSet")
-  private String codeSet;
 
+  @EmbeddedId
   public CalendarDateTypeOtherCodeId getCalendarDateTypeOtherCodeId() {
     return calendarDateTypeOtherCodeId;
   }
@@ -61,11 +57,20 @@ public class CalendarDateTypeOtherCode implements Serializable {
     this.calendarDateTypeOtherCodeId.setOtherCode(otherCode);
   }
 
+  @Transient
   public String getCodeSet() {
-    return codeSet;
+    String result = null;
+    if (calendarDateTypeOtherCodeId != null) {
+      result = calendarDateTypeOtherCodeId.getCodeSet();
+    }
+    return result;
   }
 
+  @Transient
   public void setCodeSet(String codeSet) {
-    this.codeSet = codeSet;
+    if (calendarDateTypeOtherCodeId == null) {
+      calendarDateTypeOtherCodeId = new CalendarDateTypeOtherCodeId();
+    }
+    this.calendarDateTypeOtherCodeId.setCodeSet(codeSet);
   }
 }

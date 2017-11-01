@@ -5,7 +5,6 @@ import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -152,7 +151,7 @@ public class NAPEventStudentLink extends HitsEntity {
     this.system = system;
   }
 
-  @ManyToOne(cascade = { CascadeType.DETACH })
+  @ManyToOne
   @JoinColumn(name = "SchoolInfo_RefId")
   public SchoolInfo getSchoolInfo() {
     return schoolInfo;
@@ -162,7 +161,7 @@ public class NAPEventStudentLink extends HitsEntity {
     this.schoolInfo = schoolInfo;
   }
 
-  @ManyToOne(cascade = { CascadeType.DETACH })
+  @ManyToOne
   @JoinColumn(name = "StudentPersonal_RefId")
   public StudentPersonal getStudentPersonal() {
     return studentPersonal;
@@ -172,7 +171,7 @@ public class NAPEventStudentLink extends HitsEntity {
     this.studentPersonal = studentPersonal;
   }
 
-  @ManyToOne(cascade = { CascadeType.DETACH })
+  @ManyToOne
   @JoinColumn(name = "NapTest_RefId")
   public NAPTest getNapTest() {
     return napTest;
@@ -182,7 +181,7 @@ public class NAPEventStudentLink extends HitsEntity {
     this.napTest = napTest;
   }
   
-  @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY, mappedBy="napEventStudentLink")
+  @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, mappedBy="napEventStudentLink")
   public List<Adjustment> getAdjustments() {
     return adjustments;
   }
@@ -204,7 +203,7 @@ public class NAPEventStudentLink extends HitsEntity {
     this.adjustments.add(adjustment);
   }
 
-  @OneToMany(fetch = FetchType.LAZY, mappedBy = "napEventStudentLink", cascade = { CascadeType.ALL }, orphanRemoval = true)
+  @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "napEventStudentLink")
   public List<TestDisruption> getTestDisruptions() {
     return testDisruptions;
   }

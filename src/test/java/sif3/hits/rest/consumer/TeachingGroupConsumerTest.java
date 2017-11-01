@@ -47,47 +47,20 @@ public class TeachingGroupConsumerTest extends BaseTest {
     teachingGroup.setShortName("Short Name");
     teachingGroup.setLongName(objectFactory.createTeachingGroupTypeLongName("Long Name"));
     teachingGroup.setLocalId(LOCAL_ID);
+    teachingGroup.setTimeTableSubjectRefId(objectFactory.createTeachingGroupTypeTimeTableSubjectRefId(TimeTableSubjectConsumerTest.REF_ID));
+    teachingGroup.setTimeTableSubjectLocalId(objectFactory.createTeachingGroupTypeTimeTableSubjectLocalId(TimeTableSubjectConsumerTest.LOCAL_ID));
     teachingGroup.setSchoolYear(getDate("2014"));
 
     TeacherListType teacherList = new TeacherListType();
     TeachingGroupTeacherType teacher = new TeachingGroupTeacherType();
     teacher.setStaffPersonalRefId(objectFactory.createTeachingGroupTeacherTypeStaffPersonalRefId(StaffPersonalConsumerTest.StaffPersonalRefIds.REF_ID_1));
-    teacher.setStaffLocalId(objectFactory.createTeachingGroupTeacherTypeStaffLocalId("ez7b7b7"));
+    teacher.setStaffLocalId(objectFactory.createTeachingGroupTeacherTypeStaffLocalId(StaffPersonalRefIds.LOCAL_ID));
     teacher.setAssociation("Class Teacher");
     teacher.setName(objectFactory.createTeachingGroupStudentTypeName(StaffPersonalRefIds.getNameOfRecord(objectFactory)));
     teacherList.getTeachingGroupTeacher().add(teacher);
     teachingGroup.setTeacherList(objectFactory.createTeachingGroupTypeTeacherList(teacherList));
 
-    StudentListType studentList = new StudentListType();
-    TeachingGroupStudentType student = new TeachingGroupStudentType();
-    student.setStudentPersonalRefId(objectFactory.createTeachingGroupStudentTypeStudentPersonalRefId(StudentPersonalRefIds.REF_ID_1));
-    student.setName(objectFactory.createTeachingGroupStudentTypeName(StudentPersonalRefIds.getNameOfRecord(objectFactory)));
-    student.setStudentLocalId(objectFactory.createTeachingGroupStudentTypeStudentLocalId(StudentPersonalRefIds.LOCAL_ID));
-    studentList.getTeachingGroupStudent().add(student);
-
-    student = new TeachingGroupStudentType();
-    student.setStudentPersonalRefId(objectFactory.createTeachingGroupStudentTypeStudentPersonalRefId(StudentPersonalRefIds.REF_ID_2));
-    student.setName(objectFactory.createTeachingGroupStudentTypeName(StudentPersonalRefIds.getNameOfRecord(objectFactory)));
-    student.setStudentLocalId(objectFactory.createTeachingGroupStudentTypeStudentLocalId(StudentPersonalRefIds.LOCAL_ID));
-    studentList.getTeachingGroupStudent().add(student);
-
-    student = new TeachingGroupStudentType();
-    student.setStudentPersonalRefId(objectFactory.createTeachingGroupStudentTypeStudentPersonalRefId(StudentPersonalRefIds.REF_ID_3));
-    student.setName(objectFactory.createTeachingGroupStudentTypeName(StudentPersonalRefIds.getNameOfRecord(objectFactory)));
-    student.setStudentLocalId(objectFactory.createTeachingGroupStudentTypeStudentLocalId(StudentPersonalRefIds.LOCAL_ID));
-    studentList.getTeachingGroupStudent().add(student);
-
-    student = new TeachingGroupStudentType();
-    student.setStudentPersonalRefId(objectFactory.createTeachingGroupStudentTypeStudentPersonalRefId(StudentPersonalRefIds.REF_ID_4));
-    student.setName(objectFactory.createTeachingGroupStudentTypeName(StudentPersonalRefIds.getNameOfRecord(objectFactory)));
-    student.setStudentLocalId(objectFactory.createTeachingGroupStudentTypeStudentLocalId(StudentPersonalRefIds.LOCAL_ID));
-    studentList.getTeachingGroupStudent().add(student);
-
-    student = new TeachingGroupStudentType();
-    student.setStudentPersonalRefId(objectFactory.createTeachingGroupStudentTypeStudentPersonalRefId(StudentPersonalRefIds.REF_ID_5));
-    student.setName(objectFactory.createTeachingGroupStudentTypeName(StudentPersonalRefIds.getNameOfRecord(objectFactory)));
-    student.setStudentLocalId(objectFactory.createTeachingGroupStudentTypeStudentLocalId(StudentPersonalRefIds.LOCAL_ID));
-    studentList.getTeachingGroupStudent().add(student);
+    StudentListType studentList = getFullStudentList();
 
     teachingGroup.setStudentList(objectFactory.createTeachingGroupTypeStudentList(studentList));
 
@@ -104,6 +77,7 @@ public class TeachingGroupConsumerTest extends BaseTest {
     teachingGroup.setTeachingGroupPeriodList(objectFactory.createTeachingGroupTypeTeachingGroupPeriodList(periodList));
 
     teachingGroupTester.doCreateOne(teachingGroup);
+    teachingGroupTester.doUpdateOne(teachingGroup, teachingGroup.getRefId());
     String xmlExpectedTo = teachingGroupTester.getXML(teachingGroup);
 
     teachingGroup.setRefId("6cd60385-006e-4268-92ef-f69ffc8c5c9f");
@@ -129,6 +103,41 @@ public class TeachingGroupConsumerTest extends BaseTest {
       Assert.assertEquals("XML Differs", xmlExpectedFrom, xmlExpectedTo);
     }
 
+  }
+
+  private StudentListType getFullStudentList() {
+    StudentListType result = new StudentListType();
+    ObjectFactory objectFactory = new ObjectFactory();
+    TeachingGroupStudentType student = new TeachingGroupStudentType();
+    student.setStudentPersonalRefId(objectFactory.createTeachingGroupStudentTypeStudentPersonalRefId(StudentPersonalRefIds.REF_ID_1));
+    student.setName(objectFactory.createTeachingGroupStudentTypeName(StudentPersonalRefIds.getNameOfRecord(objectFactory)));
+    student.setStudentLocalId(objectFactory.createTeachingGroupStudentTypeStudentLocalId(StudentPersonalRefIds.LOCAL_ID));
+    result.getTeachingGroupStudent().add(student);
+
+    student = new TeachingGroupStudentType();
+    student.setStudentPersonalRefId(objectFactory.createTeachingGroupStudentTypeStudentPersonalRefId(StudentPersonalRefIds.REF_ID_2));
+    student.setName(objectFactory.createTeachingGroupStudentTypeName(StudentPersonalRefIds.getNameOfRecord(objectFactory)));
+    student.setStudentLocalId(objectFactory.createTeachingGroupStudentTypeStudentLocalId(StudentPersonalRefIds.LOCAL_ID));
+    result.getTeachingGroupStudent().add(student);
+
+    student = new TeachingGroupStudentType();
+    student.setStudentPersonalRefId(objectFactory.createTeachingGroupStudentTypeStudentPersonalRefId(StudentPersonalRefIds.REF_ID_3));
+    student.setName(objectFactory.createTeachingGroupStudentTypeName(StudentPersonalRefIds.getNameOfRecord(objectFactory)));
+    student.setStudentLocalId(objectFactory.createTeachingGroupStudentTypeStudentLocalId(StudentPersonalRefIds.LOCAL_ID));
+    result.getTeachingGroupStudent().add(student);
+
+    student = new TeachingGroupStudentType();
+    student.setStudentPersonalRefId(objectFactory.createTeachingGroupStudentTypeStudentPersonalRefId(StudentPersonalRefIds.REF_ID_4));
+    student.setName(objectFactory.createTeachingGroupStudentTypeName(StudentPersonalRefIds.getNameOfRecord(objectFactory)));
+    student.setStudentLocalId(objectFactory.createTeachingGroupStudentTypeStudentLocalId(StudentPersonalRefIds.LOCAL_ID));
+    result.getTeachingGroupStudent().add(student);
+
+    student = new TeachingGroupStudentType();
+    student.setStudentPersonalRefId(objectFactory.createTeachingGroupStudentTypeStudentPersonalRefId(StudentPersonalRefIds.REF_ID_5));
+    student.setName(objectFactory.createTeachingGroupStudentTypeName(StudentPersonalRefIds.getNameOfRecord(objectFactory)));
+    student.setStudentLocalId(objectFactory.createTeachingGroupStudentTypeStudentLocalId(StudentPersonalRefIds.LOCAL_ID));
+    result.getTeachingGroupStudent().add(student);
+    return result;
   }
 
   @Before
@@ -238,7 +247,7 @@ public class TeachingGroupConsumerTest extends BaseTest {
     List<Response> updateResponses = teachingGroupTester.doUpdateOne(teachingGroup, REF_ID);
     Assert.assertNotNull(updateResponses);
     Assert.assertEquals(1, updateResponses.size());
-    Assert.assertEquals(updateResponses.get(0).getStatus(), HttpStatus.NO_CONTENT.value());
+    Assert.assertEquals(HttpStatus.NO_CONTENT.value(), updateResponses.get(0).getStatus());
 
     List<Response> getResponses = teachingGroupTester.testGetSingle(REF_ID);
     Assert.assertNotNull(getResponses);
@@ -255,6 +264,239 @@ public class TeachingGroupConsumerTest extends BaseTest {
       System.out.println("\nTo:\n" + xmlExpectedTo);
       Assert.assertEquals("XML Differs", xmlExpectedFrom, xmlExpectedTo);
     }
+  }
+
+  @Test
+  public void testUpdateSingleStudents() throws Exception {
+    ObjectFactory objectFactory = new ObjectFactory();
+    List<Response> responses = teachingGroupTester.testGetSingle(REF_ID);
+    Assert.assertNotNull(responses);
+    Assert.assertEquals(1, responses.size());
+    Response response = responses.get(0);
+    Assert.assertNotNull(response.getDataObject());
+    TeachingGroupType teachingGroup = (TeachingGroupType) response.getDataObject();
+    Assert.assertEquals(REF_ID, teachingGroup.getRefId());
+    Assert.assertNotNull(teachingGroup.getStudentList());
+    Assert.assertNotNull(teachingGroup.getStudentList().getValue());
+    Assert.assertEquals(5, teachingGroup.getStudentList().getValue().getTeachingGroupStudent().size());
+
+    teachingGroup.getStudentList().getValue().getTeachingGroupStudent().clear();
+    teachingGroupTester.doUpdateOne(teachingGroup, REF_ID);
+    responses = teachingGroupTester.testGetSingle(REF_ID);
+    Assert.assertNotNull(responses);
+    Assert.assertEquals(1, responses.size());
+    response = responses.get(0);
+    Assert.assertNotNull(response.getDataObject());
+    teachingGroup = (TeachingGroupType) response.getDataObject();
+    Assert.assertEquals(REF_ID, teachingGroup.getRefId());
+    Assert.assertNull(teachingGroup.getStudentList());
+
+    TeachingGroupStudentType newStudent = new TeachingGroupStudentType();
+    newStudent.setStudentPersonalRefId(objectFactory.createTeachingGroupStudentTypeStudentPersonalRefId(StudentPersonalRefIds.REF_ID_2));
+    newStudent.setName(objectFactory.createTeachingGroupStudentTypeName(StudentPersonalRefIds.getNameOfRecord(objectFactory)));
+    newStudent.setStudentLocalId(objectFactory.createTeachingGroupStudentTypeStudentLocalId(StudentPersonalRefIds.LOCAL_ID));
+    StudentListType studentList = new StudentListType();
+    studentList.getTeachingGroupStudent().add(newStudent);
+    teachingGroup.setStudentList(objectFactory.createTeachingGroupTypeStudentList(studentList));
+    teachingGroupTester.doUpdateOne(teachingGroup, REF_ID);
+    responses = teachingGroupTester.testGetSingle(REF_ID);
+    Assert.assertNotNull(responses);
+    Assert.assertEquals(1, responses.size());
+    response = responses.get(0);
+    Assert.assertNotNull(response.getDataObject());
+    teachingGroup = (TeachingGroupType) response.getDataObject();
+    Assert.assertEquals(REF_ID, teachingGroup.getRefId());
+    Assert.assertNotNull(teachingGroup.getStudentList());
+    Assert.assertNotNull(teachingGroup.getStudentList().getValue());
+    Assert.assertEquals(1, teachingGroup.getStudentList().getValue().getTeachingGroupStudent().size());
+    Assert.assertEquals(StudentPersonalRefIds.REF_ID_2, teachingGroup.getStudentList().getValue().getTeachingGroupStudent().get(0).getStudentPersonalRefId().getValue());
+
+    studentList = getFullStudentList();
+    teachingGroup.setStudentList(objectFactory.createTeachingGroupTypeStudentList(studentList));
+    teachingGroupTester.doUpdateOne(teachingGroup, REF_ID);
+    responses = teachingGroupTester.testGetSingle(REF_ID);
+    Assert.assertNotNull(responses);
+    Assert.assertEquals(1, responses.size());
+    response = responses.get(0);
+    Assert.assertNotNull(response.getDataObject());
+    teachingGroup = (TeachingGroupType) response.getDataObject();
+    Assert.assertEquals(REF_ID, teachingGroup.getRefId());
+    Assert.assertNotNull(teachingGroup.getStudentList());
+    Assert.assertNotNull(teachingGroup.getStudentList().getValue());
+    Assert.assertEquals(5, teachingGroup.getStudentList().getValue().getTeachingGroupStudent().size());
+
+    teachingGroupTester.doUpdateOne(teachingGroup, REF_ID);
+    responses = teachingGroupTester.testGetSingle(REF_ID);
+    Assert.assertNotNull(responses);
+    Assert.assertEquals(1, responses.size());
+    response = responses.get(0);
+    Assert.assertNotNull(response.getDataObject());
+    teachingGroup = (TeachingGroupType) response.getDataObject();
+    Assert.assertEquals(REF_ID, teachingGroup.getRefId());
+    Assert.assertNotNull(teachingGroup.getStudentList());
+    Assert.assertNotNull(teachingGroup.getStudentList().getValue());
+    Assert.assertEquals(5, teachingGroup.getStudentList().getValue().getTeachingGroupStudent().size());
+  }
+  
+  @Test
+  public void testUpdateSingleTeachers() throws Exception {
+    ObjectFactory objectFactory = new ObjectFactory();
+    List<Response> responses = teachingGroupTester.testGetSingle(REF_ID);
+    Assert.assertNotNull(responses);
+    Assert.assertEquals(1, responses.size());
+    Response response = responses.get(0);
+    Assert.assertNotNull(response.getDataObject());
+    TeachingGroupType teachingGroup = (TeachingGroupType) response.getDataObject();
+    Assert.assertEquals(REF_ID, teachingGroup.getRefId());
+    Assert.assertNotNull(teachingGroup.getTeacherList());
+    Assert.assertNotNull(teachingGroup.getTeacherList().getValue());
+    Assert.assertEquals(1, teachingGroup.getTeacherList().getValue().getTeachingGroupTeacher().size());
+    Assert.assertEquals(StaffPersonalRefIds.REF_ID_1, teachingGroup.getTeacherList().getValue().getTeachingGroupTeacher().get(0).getStaffPersonalRefId().getValue());
+    
+    teachingGroup.setTeacherList(null);
+    teachingGroupTester.doUpdateOne(teachingGroup, REF_ID);
+    responses = teachingGroupTester.testGetSingle(REF_ID);
+    Assert.assertNotNull(responses);
+    Assert.assertEquals(1, responses.size());
+    response = responses.get(0);
+    Assert.assertNotNull(response.getDataObject());
+    teachingGroup = (TeachingGroupType) response.getDataObject();
+    Assert.assertEquals(REF_ID, teachingGroup.getRefId());
+    Assert.assertNull(teachingGroup.getTeacherList());
+
+    TeacherListType teacherList = new TeacherListType();
+    TeachingGroupTeacherType teacher = new TeachingGroupTeacherType();
+    teacher.setStaffPersonalRefId(objectFactory.createTeachingGroupTeacherTypeStaffPersonalRefId(StaffPersonalConsumerTest.StaffPersonalRefIds.REF_ID_2));
+    teacher.setStaffLocalId(objectFactory.createTeachingGroupTeacherTypeStaffLocalId(StaffPersonalRefIds.LOCAL_ID));
+    teacher.setAssociation("Class Teacher");
+    teacher.setName(objectFactory.createTeachingGroupStudentTypeName(StaffPersonalRefIds.getNameOfRecord(objectFactory)));
+    teacherList.getTeachingGroupTeacher().add(teacher);
+    teachingGroup.setTeacherList(objectFactory.createTeachingGroupTypeTeacherList(teacherList));
+    
+    teachingGroupTester.doUpdateOne(teachingGroup, REF_ID);
+    responses = teachingGroupTester.testGetSingle(REF_ID);
+    Assert.assertNotNull(responses);
+    Assert.assertEquals(1, responses.size());
+    response = responses.get(0);
+    Assert.assertNotNull(response.getDataObject());
+    teachingGroup = (TeachingGroupType) response.getDataObject();
+    Assert.assertEquals(REF_ID, teachingGroup.getRefId());
+    Assert.assertNotNull(teachingGroup.getTeacherList());
+    Assert.assertNotNull(teachingGroup.getTeacherList().getValue());
+    Assert.assertEquals(1, teachingGroup.getTeacherList().getValue().getTeachingGroupTeacher().size());
+    Assert.assertEquals(StaffPersonalRefIds.REF_ID_2, teachingGroup.getTeacherList().getValue().getTeachingGroupTeacher().get(0).getStaffPersonalRefId().getValue());
+
+    
+    teachingGroup.getTeacherList().getValue().getTeachingGroupTeacher().get(0).setStaffPersonalRefId(objectFactory.createTeachingGroupTeacherTypeStaffPersonalRefId(StaffPersonalRefIds.REF_ID_1));
+    teachingGroupTester.doUpdateOne(teachingGroup, REF_ID);
+    responses = teachingGroupTester.testGetSingle(REF_ID);
+    Assert.assertNotNull(responses);
+    Assert.assertEquals(1, responses.size());
+    response = responses.get(0);
+    Assert.assertNotNull(response.getDataObject());
+    teachingGroup = (TeachingGroupType) response.getDataObject();
+    Assert.assertEquals(REF_ID, teachingGroup.getRefId());
+    Assert.assertNotNull(teachingGroup.getTeacherList());
+    Assert.assertNotNull(teachingGroup.getTeacherList().getValue());
+    Assert.assertEquals(1, teachingGroup.getTeacherList().getValue().getTeachingGroupTeacher().size());
+    Assert.assertEquals(StaffPersonalRefIds.REF_ID_1, teachingGroup.getTeacherList().getValue().getTeachingGroupTeacher().get(0).getStaffPersonalRefId().getValue());
+
+    teachingGroupTester.doUpdateOne(teachingGroup, REF_ID);
+    responses = teachingGroupTester.testGetSingle(REF_ID);
+    Assert.assertNotNull(responses);
+    Assert.assertEquals(1, responses.size());
+    response = responses.get(0);
+    Assert.assertNotNull(response.getDataObject());
+    teachingGroup = (TeachingGroupType) response.getDataObject();
+    Assert.assertEquals(REF_ID, teachingGroup.getRefId());
+    Assert.assertNotNull(teachingGroup.getTeacherList());
+    Assert.assertNotNull(teachingGroup.getTeacherList().getValue());
+    Assert.assertEquals(1, teachingGroup.getTeacherList().getValue().getTeachingGroupTeacher().size());
+    Assert.assertEquals(StaffPersonalRefIds.REF_ID_1, teachingGroup.getTeacherList().getValue().getTeachingGroupTeacher().get(0).getStaffPersonalRefId().getValue());
+  }
+  
+  @Test
+  public void testUpdateSinglePeriods() throws Exception {
+    ObjectFactory objectFactory = new ObjectFactory();
+    List<Response> responses = teachingGroupTester.testGetSingle(REF_ID);
+    Assert.assertNotNull(responses);
+    Assert.assertEquals(1, responses.size());
+    Response response = responses.get(0);
+    Assert.assertNotNull(response.getDataObject());
+    TeachingGroupType teachingGroup = (TeachingGroupType) response.getDataObject();
+    Assert.assertEquals(REF_ID, teachingGroup.getRefId());
+    Assert.assertNotNull(teachingGroup.getTeachingGroupPeriodList());
+    Assert.assertNotNull(teachingGroup.getTeachingGroupPeriodList().getValue());
+    Assert.assertEquals(1, teachingGroup.getTeachingGroupPeriodList().getValue().getTeachingGroupPeriod().size());
+    Assert.assertEquals(TimeTableCellConsumerTest.REF_ID, teachingGroup.getTeachingGroupPeriodList().getValue().getTeachingGroupPeriod().get(0).getTimeTableCellRefId().getValue());
+
+    TeachingGroupPeriodType period = new TeachingGroupPeriodType();
+    period.setTimeTableCellRefId(objectFactory.createTeachingGroupPeriodTypeTimeTableCellRefId(TimeTableCellConsumerTest.REF_ID_OTHER));
+    teachingGroup.getTeachingGroupPeriodList().getValue().getTeachingGroupPeriod().add(period);
+    teachingGroupTester.doUpdateOne(teachingGroup, REF_ID);
+    responses = teachingGroupTester.testGetSingle(REF_ID);
+    Assert.assertNotNull(responses);
+    Assert.assertEquals(1, responses.size());
+    response = responses.get(0);
+    Assert.assertNotNull(response.getDataObject());
+    teachingGroup = (TeachingGroupType) response.getDataObject();
+    Assert.assertEquals(REF_ID, teachingGroup.getRefId());
+    Assert.assertEquals(2, teachingGroup.getTeachingGroupPeriodList().getValue().getTeachingGroupPeriod().size());
+    
+    teachingGroup.setTeachingGroupPeriodList(null);
+    teachingGroupTester.doUpdateOne(teachingGroup, REF_ID);
+    responses = teachingGroupTester.testGetSingle(REF_ID);
+    Assert.assertNotNull(responses);
+    Assert.assertEquals(1, responses.size());
+    response = responses.get(0);
+    Assert.assertNotNull(response.getDataObject());
+    teachingGroup = (TeachingGroupType) response.getDataObject();
+    Assert.assertEquals(REF_ID, teachingGroup.getRefId());
+    Assert.assertNull(teachingGroup.getTeachingGroupPeriodList());
+
+    TeachingGroupPeriodListType periodList = new TeachingGroupPeriodListType();
+    periodList.getTeachingGroupPeriod().add(period);
+    teachingGroup.setTeachingGroupPeriodList(objectFactory.createTeachingGroupTypeTeachingGroupPeriodList(periodList));
+    teachingGroupTester.doUpdateOne(teachingGroup, REF_ID);
+    responses = teachingGroupTester.testGetSingle(REF_ID);
+    Assert.assertNotNull(responses);
+    Assert.assertEquals(1, responses.size());
+    response = responses.get(0);
+    Assert.assertNotNull(response.getDataObject());
+    teachingGroup = (TeachingGroupType) response.getDataObject();
+    Assert.assertEquals(REF_ID, teachingGroup.getRefId());
+    Assert.assertNotNull(teachingGroup.getTeachingGroupPeriodList());
+    Assert.assertNotNull(teachingGroup.getTeachingGroupPeriodList().getValue());
+    Assert.assertEquals(1, teachingGroup.getTeachingGroupPeriodList().getValue().getTeachingGroupPeriod().size());
+    Assert.assertEquals(TimeTableCellConsumerTest.REF_ID_OTHER, teachingGroup.getTeachingGroupPeriodList().getValue().getTeachingGroupPeriod().get(0).getTimeTableCellRefId().getValue());
+
+
+    teachingGroup.getTeachingGroupPeriodList().getValue().getTeachingGroupPeriod().get(0).setTimeTableCellRefId(objectFactory.createTeachingGroupPeriodTypeTimeTableCellRefId(TimeTableCellConsumerTest.REF_ID));
+    teachingGroupTester.doUpdateOne(teachingGroup, REF_ID);
+    responses = teachingGroupTester.testGetSingle(REF_ID);
+    Assert.assertNotNull(responses);
+    Assert.assertEquals(1, responses.size());
+    response = responses.get(0);
+    Assert.assertNotNull(response.getDataObject());
+    teachingGroup = (TeachingGroupType) response.getDataObject();
+    Assert.assertEquals(REF_ID, teachingGroup.getRefId());
+    Assert.assertNotNull(teachingGroup.getTeachingGroupPeriodList());
+    Assert.assertNotNull(teachingGroup.getTeachingGroupPeriodList().getValue());
+    Assert.assertEquals(1, teachingGroup.getTeachingGroupPeriodList().getValue().getTeachingGroupPeriod().size());
+    Assert.assertEquals(TimeTableCellConsumerTest.REF_ID, teachingGroup.getTeachingGroupPeriodList().getValue().getTeachingGroupPeriod().get(0).getTimeTableCellRefId().getValue());
+
+    teachingGroupTester.doUpdateOne(teachingGroup, REF_ID);
+    responses = teachingGroupTester.testGetSingle(REF_ID);
+    Assert.assertNotNull(responses);
+    Assert.assertEquals(1, responses.size());
+    response = responses.get(0);
+    Assert.assertNotNull(response.getDataObject());
+    teachingGroup = (TeachingGroupType) response.getDataObject();
+    Assert.assertEquals(REF_ID, teachingGroup.getRefId());
+    Assert.assertNotNull(teachingGroup.getTeachingGroupPeriodList());
+    Assert.assertNotNull(teachingGroup.getTeachingGroupPeriodList().getValue());
+    Assert.assertEquals(1, teachingGroup.getTeachingGroupPeriodList().getValue().getTeachingGroupPeriod().size());
+    Assert.assertEquals(TimeTableCellConsumerTest.REF_ID, teachingGroup.getTeachingGroupPeriodList().getValue().getTeachingGroupPeriod().get(0).getTimeTableCellRefId().getValue());
   }
 
   @Test

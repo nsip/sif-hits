@@ -5,6 +5,8 @@ import java.util.Set;
 
 import org.springframework.stereotype.Component;
 
+import sif.dd.au30.model.AUCodeSetsAttendanceCodeType;
+import sif.dd.au30.model.AUCodeSetsAttendanceStatusType;
 import sif.dd.au30.model.AttendanceCodeType;
 import sif.dd.au30.model.AttendanceTimeType;
 import sif.dd.au30.model.AttendanceTimesType;
@@ -39,12 +41,12 @@ public class StudentAttendanceTimeListConverter extends HitsConverter<StudentAtt
           AttendanceTimeType attendanceTime = objectFactory.createAttendanceTimeType();
           attendanceTime.setDurationValue(objectFactory.createAttendanceTimeTypeDurationValue(getBigDecimalValue(studentAttendanceTime.getAbsenceValue())));
           attendanceTime.setAttendanceNote(objectFactory.createAttendanceTimeTypeAttendanceNote(studentAttendanceTime.getAttendanceNote()));
-          attendanceTime.setAttendanceStatus(studentAttendanceTime.getAttendanceStatus());
+          attendanceTime.setAttendanceStatus(getEnumValue(studentAttendanceTime.getAttendanceStatus(), AUCodeSetsAttendanceStatusType.class));
           attendanceTime.setEndTime(getTimeValue(studentAttendanceTime.getEndTime()));
           attendanceTime.setStartTime(getTimeValue(studentAttendanceTime.getStartTime()));
 
           AttendanceCodeType attendanceCodeType = new AttendanceCodeType();
-          attendanceCodeType.setCode(studentAttendanceTime.getCode());
+          attendanceCodeType.setCode(getEnumValue(studentAttendanceTime.getCode(), AUCodeSetsAttendanceCodeType.class));
 
           if (studentAttendanceTime.getOtherCodes() != null && !studentAttendanceTime.getOtherCodes().isEmpty()) {
             OtherCodeListType otherCodeList = new OtherCodeListType();
@@ -73,9 +75,13 @@ public class StudentAttendanceTimeListConverter extends HitsConverter<StudentAtt
       target.setSchoolInfoRefId(source.getSchoolInfoRefId());
       target.setSchoolYear(getYearValue(source.getSchoolYear()));
       target.setStudentPersonalRefId(source.getStudentPersonalRefId());
+      
+      if (target.getAttendanceTimes() == null) {
+        target.setAttendanceTimes(new HashSet<StudentAttendanceTime>());
+      } else {
+        target.getAttendanceTimes().clear();
+      }
 
-      Set<StudentAttendanceTime> attendanceTimes = new HashSet<StudentAttendanceTime>();
-      target.setAttendanceTimes(attendanceTimes);
 
       if (source.getAttendanceTimes() != null) {
         for (AttendanceTimeType attendanceTime : source.getAttendanceTimes().getAttendanceTime()) {
@@ -83,13 +89,13 @@ public class StudentAttendanceTimeListConverter extends HitsConverter<StudentAtt
           studentAttendanceTime.setStudentAttendanceTimeList(target);
           studentAttendanceTime.setAbsenceValue(getBigDecimalValue(getJAXBValue(attendanceTime.getDurationValue())));
           studentAttendanceTime.setAttendanceNote(getJAXBValue(attendanceTime.getAttendanceNote()));
-          studentAttendanceTime.setAttendanceStatus(attendanceTime.getAttendanceStatus());
+          studentAttendanceTime.setAttendanceStatus(getEnumValue(attendanceTime.getAttendanceStatus()));
           studentAttendanceTime.setStartTime(getTimeValue(attendanceTime.getStartTime()));
           studentAttendanceTime.setEndTime(getTimeValue(attendanceTime.getEndTime()));
           if (attendanceTime.getAttendanceCode() != null) {
             AttendanceCodeType attendanceCode = attendanceTime.getAttendanceCode();
 
-            studentAttendanceTime.setCode(attendanceCode.getCode());
+            studentAttendanceTime.setCode(getEnumValue(attendanceCode.getCode()));
 
             Set<StudentAttendanceTimeOtherCode> otherCodes = new HashSet<StudentAttendanceTimeOtherCode>();
             studentAttendanceTime.setOtherCodes(otherCodes);
@@ -107,7 +113,7 @@ public class StudentAttendanceTimeListConverter extends HitsConverter<StudentAtt
               }
             }
           }
-          attendanceTimes.add(studentAttendanceTime);
+          target.getAttendanceTimes().add(studentAttendanceTime);
         }
       }
     }

@@ -1,4 +1,4 @@
-<CalendarDate CalendarDateRefId="d283db7b-1716-4b82-ae90-51155b5def0d" Date="2014-11-06" xmlns="http://www.sifassociation.org/au/datamodel/3.4.1">
+<CalendarDate CalendarDateRefId="d283db7b-1716-4b82-ae90-51155b5def0d" Date="2014-11-06" xmlns="http://www.sifassociation.org/au/datamodel/3.4">
   <CalendarSummaryRefId>fccc615a-8288-4148-8934-424ae2da69ca</CalendarSummaryRefId>
   <SchoolInfoRefId>6dafb630-c439-41e3-9aa0-81f4dbd909ab</SchoolInfoRefId>
   <SchoolYear>2014</SchoolYear>

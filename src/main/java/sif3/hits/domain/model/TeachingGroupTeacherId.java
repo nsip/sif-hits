@@ -10,14 +10,11 @@ import javax.persistence.ManyToOne;
 public class TeachingGroupTeacherId implements Serializable {
   private static final long serialVersionUID = -1744780977301679895L;
 
-  @ManyToOne(optional = false)
-  @JoinColumn(name = "TeachingGroup_RefId", referencedColumnName = "RefId")
   private TeachingGroup teachingGroup;
-
-  @ManyToOne(optional = false)
-  @JoinColumn(name = "StaffPersonal_RefId", referencedColumnName = "RefId")
   private StaffPersonal staffPersonal;
 
+  @ManyToOne(optional = false)
+  @JoinColumn(name = "TeachingGroup_RefId", referencedColumnName = "RefId")
   public TeachingGroup getTeachingGroup() {
     return teachingGroup;
   }
@@ -26,6 +23,8 @@ public class TeachingGroupTeacherId implements Serializable {
     this.teachingGroup = teachingGroup;
   }
 
+  @ManyToOne(optional = false)
+  @JoinColumn(name = "StaffPersonal_RefId", referencedColumnName = "RefId")
   public StaffPersonal getStaffPersonal() {
     return staffPersonal;
   }
@@ -33,4 +32,5 @@ public class TeachingGroupTeacherId implements Serializable {
   public void setStaffPersonal(StaffPersonal staffPersonal) {
     this.staffPersonal = staffPersonal;
   }
+
 }

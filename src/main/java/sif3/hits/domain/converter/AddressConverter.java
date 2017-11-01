@@ -2,6 +2,8 @@ package sif3.hits.domain.converter;
 
 import org.springframework.stereotype.Component;
 
+import sif.dd.au30.model.AUCodeSetsAddressRoleType;
+import sif.dd.au30.model.AUCodeSetsAddressTypeType;
 import sif.dd.au30.model.AddressStreetType;
 import sif.dd.au30.model.AddressType;
 import sif.dd.au30.model.GridLocationType;
@@ -22,8 +24,8 @@ public class AddressConverter extends HitsConverter<AddressType, Address> {
 
       target.setCity(source.getCity());
       target.setStateProvince(objectFactory.createAddressTypeStateProvince(source.getStateProvince()));
-      target.setType(source.getAddressType());
-      target.setRole(source.getAddressRole());
+      target.setType(getEnumValue(source.getAddressType(), AUCodeSetsAddressTypeType.class));
+      target.setRole(getEnumValue(source.getAddressRole(), AUCodeSetsAddressRoleType.class));
       target.setPostalCode(source.getPostalCode());
 
       AddressStreetType street = objectFactory.createAddressStreetType();
@@ -46,8 +48,8 @@ public class AddressConverter extends HitsConverter<AddressType, Address> {
 
       target.setCity(source.getCity());
       target.setStateProvince(getJAXBValue(source.getStateProvince()));
-      target.setAddressType(source.getType());
-      target.setAddressRole(source.getRole());
+      target.setAddressType(getEnumValue(source.getType()));
+      target.setAddressRole(getEnumValue(source.getRole()));
       target.setPostalCode(source.getPostalCode());
 
       AddressStreetType street = source.getStreet();

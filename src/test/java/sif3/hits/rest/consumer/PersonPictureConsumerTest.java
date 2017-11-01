@@ -8,6 +8,7 @@ import org.junit.Before;
 import org.junit.Test;
 import org.springframework.http.HttpStatus;
 
+import sif.dd.au30.model.AUCodeSetsPictureSourceType;
 import sif.dd.au30.model.AUCodeSetsYesOrNoCategoryType;
 import sif.dd.au30.model.ObjectFactory;
 import sif.dd.au30.model.PersonPictureCollectionType;
@@ -52,7 +53,7 @@ public class PersonPictureConsumerTest extends BaseTest {
     personPicture.setParentObjectRefId(parentObjectRefId);
 
     PictureSource pictureSource = objectFactory.createPersonPictureTypePictureSource();
-    pictureSource.setType("01"); // url
+    pictureSource.setType(AUCodeSetsPictureSourceType.fromValue("01")); // url
     pictureSource.setValue("http://www.gravatar.com/avatar/HASH?d=mm");
     personPicture.setPictureSource(pictureSource);
     personPicture.setSchoolYear(getDate("2016"));
@@ -73,7 +74,7 @@ public class PersonPictureConsumerTest extends BaseTest {
 
     personPicture.setRefId(PersonPictureRefIds.REF_ID_5);
     parentObjectRefId.setValue(StudentPersonalRefIds.REF_ID_5);
-    pictureSource.setType("02"); // hash
+    pictureSource.setType(AUCodeSetsPictureSourceType.fromValue("02")); // hash
     pictureSource.setValue(BASE64_IMAGE);
     personPictureTester.doCreateOne(personPicture);
     String xmlExpectedToBase64 = personPictureTester.getXML(personPicture);

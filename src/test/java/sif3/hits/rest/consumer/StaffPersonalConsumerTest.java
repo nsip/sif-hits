@@ -8,7 +8,10 @@ import org.junit.Before;
 import org.junit.Test;
 import org.springframework.http.HttpStatus;
 
+import sif.dd.au30.model.AUCodeSetsEmailTypeType;
+import sif.dd.au30.model.AUCodeSetsSexCodeType;
 import sif.dd.au30.model.AUCodeSetsStaffStatusType;
+import sif.dd.au30.model.AUCodeSetsTelephoneNumberTypeType;
 import sif.dd.au30.model.DemographicsType;
 import sif.dd.au30.model.EmailListType;
 import sif.dd.au30.model.EmailType;
@@ -69,20 +72,20 @@ public class StaffPersonalConsumerTest extends BaseTest {
     personInfo.setName(nameOfRecordType);
 
     DemographicsType demographics = new DemographicsType();
-    demographics.setSex(objectFactory.createDemographicsTypeSex("1"));
+    demographics.setSex(objectFactory.createDemographicsTypeSex(AUCodeSetsSexCodeType.fromValue("1")));
     demographics.setBirthDate(objectFactory.createDemographicsTypeBirthDate(getDate("1984-12-20")));
     personInfo.setDemographics(objectFactory.createPersonInfoTypeDemographics(demographics));
 
     PhoneNumberListType phoneNumberList = new PhoneNumberListType();
     PhoneNumberType phoneNumber = new PhoneNumberType();
-    phoneNumber.setType("0096");
+    phoneNumber.setType(AUCodeSetsTelephoneNumberTypeType.fromValue("0096"));
     phoneNumber.setNumber("+61400000000");
     phoneNumberList.getPhoneNumber().add(phoneNumber);
     personInfo.setPhoneNumberList(objectFactory.createPersonInfoTypePhoneNumberList(phoneNumberList));
 
     EmailListType emailList = new EmailListType();
     EmailType email = new EmailType();
-    email.setType("06"); // AUCodeSetsEmailTypeType.WORK
+    email.setType(AUCodeSetsEmailTypeType.fromValue("06")); // AUCodeSetsEmailTypeType.WORK
     email.setValue("the.email@not.a.real.domain");
     emailList.getEmail().add(email);
     personInfo.setEmailList(objectFactory.createPersonInfoTypeEmailList(emailList));

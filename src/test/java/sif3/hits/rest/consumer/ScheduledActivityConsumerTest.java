@@ -12,6 +12,7 @@ import org.springframework.http.HttpStatus;
 import sif.dd.au30.model.AUCodeSetsScheduledActivityTypeType;
 import sif.dd.au30.model.AUCodeSetsTeacherCoverCreditType;
 import sif.dd.au30.model.AUCodeSetsTeacherCoverSupervisionType;
+import sif.dd.au30.model.AUCodeSetsYearLevelCodeType;
 import sif.dd.au30.model.AUCodeSetsYesOrNoCategoryType;
 import sif.dd.au30.model.ObjectFactory;
 import sif.dd.au30.model.RoomListType;
@@ -69,7 +70,7 @@ public class ScheduledActivityConsumerTest extends BaseTest {
 
     YearLevelsType yearLevelsType = new YearLevelsType();
     YearLevelType yearLevel = new YearLevelType();
-    yearLevel.setCode("9");
+    yearLevel.setCode(AUCodeSetsYearLevelCodeType.fromValue("9"));
     yearLevelsType.getYearLevel().add(yearLevel);
     scheduledActivity.setYearLevels(objectFactory.createScheduledActivityTypeYearLevels(yearLevelsType));
 

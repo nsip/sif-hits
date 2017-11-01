@@ -6,6 +6,7 @@ import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import sif.dd.au30.model.AUCodeSetsTelephoneNumberTypeType;
 import sif.dd.au30.model.AddressListType;
 import sif.dd.au30.model.AddressType;
 import sif.dd.au30.model.ChargedLocationInfoType;
@@ -42,7 +43,7 @@ public class LocationInfoConverter extends HitsConverter<ChargedLocationInfoType
         PhoneNumberListType phoneNumberList = objectFactory.createPhoneNumberListType();
         PhoneNumberType phoneNumber = objectFactory.createPhoneNumberType();
         phoneNumber.setNumber(source.getPhoneNumber());
-        phoneNumber.setType(DEFAULT_PHONE_TYPE);
+        phoneNumber.setType(getEnumValue(DEFAULT_PHONE_TYPE, AUCodeSetsTelephoneNumberTypeType.class));
         phoneNumberList.getPhoneNumber().add(phoneNumber);
         target.setPhoneNumberList(objectFactory.createChargedLocationInfoTypePhoneNumberList(phoneNumberList));
       }

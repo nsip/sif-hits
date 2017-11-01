@@ -2,63 +2,70 @@ package sif3.hits.domain.model;
 
 import java.io.Serializable;
 
-import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-import javax.persistence.Transient;
 
 @Entity
 @Table(name = "TimeTable_Period")
 public class TimeTablePeriod implements Serializable {
   private static final long serialVersionUID = -6732324236116970159L;
 
-  @EmbeddedId
-  private TimeTablePeriodId timeTablePeriodId;
+  private Long id;
+  private TimeTableDay timeTableDay;
+  private String TimeTable_RefId;
+  private String dayId;
+  private String periodId;
   private String periodTitle;
   private String bellPeriod;
   private String startTime;
   private String endTime;
 
-  public TimeTablePeriodId getTimeTablePeriodId() {
-    return timeTablePeriodId;
+  @Id
+  @GeneratedValue
+  public Long getId() {
+    return id;
   }
 
-  public void setTimeTablePeriodId(TimeTablePeriodId timeTablePeriodId) {
-    this.timeTablePeriodId = timeTablePeriodId;
+  public void setId(Long id) {
+    this.id = id;
   }
 
-  @Transient
+  @ManyToOne(optional = false)
+  @JoinColumn(name = "TimeTable_Day_Id")
   public TimeTableDay getTimeTableDay() {
-    TimeTableDay result = null;
-    if (timeTablePeriodId != null) {
-      result = timeTablePeriodId.getTimeTableDay();
-    }
-    return result;
+    return timeTableDay;
   }
 
-  @Transient
   public void setTimeTableDay(TimeTableDay timeTableDay) {
-    if (timeTablePeriodId == null) {
-      timeTablePeriodId = new TimeTablePeriodId();
-    }
-    this.timeTablePeriodId.setTimeTableDay(timeTableDay);
+    this.timeTableDay = timeTableDay;
   }
 
-  @Transient
+  public String getTimeTable_RefId() {
+    return TimeTable_RefId;
+  }
+
+  public void setTimeTable_RefId(String timeTable_RefId) {
+    TimeTable_RefId = timeTable_RefId;
+  }
+
+  public String getDayId() {
+    return dayId;
+  }
+
+  public void setDayId(String dayId) {
+    this.dayId = dayId;
+  }
+
   public String getPeriodId() {
-    String result = null;
-    if (timeTablePeriodId != null) {
-      result = timeTablePeriodId.getPeriodId();
-    }
-    return result;
+    return periodId;
   }
 
-  @Transient
-  public void setPeriodId(String dayId) {
-    if (timeTablePeriodId == null) {
-      timeTablePeriodId = new TimeTablePeriodId();
-    }
-    this.timeTablePeriodId.setPeriodId(dayId);
+  public void setPeriodId(String periodId) {
+    this.periodId = periodId;
   }
 
   public String getPeriodTitle() {

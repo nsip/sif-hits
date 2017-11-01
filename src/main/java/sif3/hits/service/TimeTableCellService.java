@@ -85,9 +85,9 @@ public class TimeTableCellService extends BaseService<TimeTableCellType, TimeTab
   @Override
   protected TimeTableCell saveWithChildObjects(TimeTableCell hitsObject, RequestDTO<TimeTableCellType> dto, String zoneId, boolean create) {
     // need to populate foreign keys
+    hitsObject.setStaffPersonal(getStaffPersonal(hitsObject.getStaffPersonal(), zoneId));
     hitsObject.setRoomInfo(getRoomInfo(hitsObject.getRoomInfo(), zoneId));
     hitsObject.setTimeTable(getTimeTable(hitsObject.getTimeTable(), zoneId));
-    hitsObject.setStaffPersonal(getStaffPersonal(hitsObject.getStaffPersonal(), zoneId));
     hitsObject.setTimeTableSubject(getTimeTableSubject(hitsObject.getTimeTableSubject(), zoneId));
     hitsObject.setTeachingGroup(getTeachingGroup(hitsObject.getTeachingGroup(), zoneId));
     return super.saveWithChildObjects(hitsObject, dto, zoneId, create);

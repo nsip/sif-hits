@@ -4,6 +4,7 @@ import org.springframework.stereotype.Component;
 
 import sif.dd.au30.model.AUCodeSetsNAPTestDomainType;
 import sif.dd.au30.model.AUCodeSetsNAPTestTypeType;
+import sif.dd.au30.model.AUCodeSetsYearLevelCodeType;
 import sif.dd.au30.model.DomainBandsContainerType;
 import sif.dd.au30.model.DomainProficiencyContainerType;
 import sif.dd.au30.model.NAPTestContentType;
@@ -27,7 +28,7 @@ public class NAPTestContentConverter extends HitsConverter<NAPTestContentType, N
       target.setTestName(source.getTestName());
 
       YearLevelType yearLevelType = objectFactory.createYearLevelType();
-      yearLevelType.setCode(source.getTestLevel());
+      yearLevelType.setCode(getEnumValue(source.getTestLevel(), AUCodeSetsYearLevelCodeType.class));
       target.setTestLevel(yearLevelType);
       target.setTestType(getEnumValue(source.getTestType(), AUCodeSetsNAPTestTypeType.class));
       target.setDomain(getEnumValue(source.getDomain(), AUCodeSetsNAPTestDomainType.class));
@@ -99,7 +100,7 @@ public class NAPTestContentConverter extends HitsConverter<NAPTestContentType, N
       target.setTestName(source.getTestName());
       YearLevelType yearLevelType = source.getTestLevel();
       if (yearLevelType != null) {
-        target.setTestLevel(yearLevelType.getCode());
+        target.setTestLevel(getEnumValue(yearLevelType.getCode()));
       } else {
         target.setTestLevel(null);
       }

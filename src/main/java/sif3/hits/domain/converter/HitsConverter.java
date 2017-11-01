@@ -145,7 +145,7 @@ public abstract class HitsConverter<S, H> {
     return result;
   }
 
-  private <X> S getSifValue(X value) {
+  protected <X> S getSifValue(X value) {
     S result = null;
     if (value != null && sifClass != null && sifClass.isAssignableFrom(value.getClass())) {
       result = sifClass.cast(value);

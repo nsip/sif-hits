@@ -4,6 +4,8 @@ import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import sif.dd.au30.model.AUCodeSetsEmailTypeType;
+import sif.dd.au30.model.AUCodeSetsTelephoneNumberTypeType;
 import sif.dd.au30.model.AUCodeSetsYesOrNoCategoryType;
 import sif.dd.au30.model.ContactInfoType;
 import sif.dd.au30.model.EmailListType;
@@ -45,7 +47,7 @@ public class VendorInfoConverter extends HitsConverter<VendorInfoType, VendorInf
           EmailListType emailListType = new EmailListType();
           EmailType email = new EmailType();
           email.setValue(source.getContactInfoEmail());
-          email.setType(DEFAULT_EMAIL_TYPE);
+          email.setType(getEnumValue(DEFAULT_EMAIL_TYPE, AUCodeSetsEmailTypeType.class));
           emailListType.getEmail().add(email);
           contactInfoType.setEmailList(objectFactory.createContactInfoTypeEmailList(emailListType));
         }
@@ -60,7 +62,7 @@ public class VendorInfoConverter extends HitsConverter<VendorInfoType, VendorInf
         if (StringUtils.isNotBlank(source.getContactInfoPhoneNumber())) {
           PhoneNumberListType phoneNumberList = new PhoneNumberListType();
           PhoneNumberType phoneNumber = new PhoneNumberType();
-          phoneNumber.setType(DEFAULT_PHONE_TYPE);
+          phoneNumber.setType(getEnumValue(DEFAULT_PHONE_TYPE, AUCodeSetsTelephoneNumberTypeType.class));
           phoneNumber.setNumber(source.getContactInfoPhoneNumber());
           phoneNumberList.getPhoneNumber().add(phoneNumber);
           contactInfoType.setPhoneNumberList(objectFactory.createContactInfoTypePhoneNumberList(phoneNumberList));

@@ -5,7 +5,6 @@ import java.util.Set;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
@@ -372,7 +371,7 @@ public class NAPTest extends HitsEntity {
     this.band10Upper = band10Upper;
   }
   
-  @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "napTest", fetch = FetchType.LAZY)
+  @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "napTest")
   public Set<NAPTestlet> getNapTestlets() {
     return napTestlets;
   }

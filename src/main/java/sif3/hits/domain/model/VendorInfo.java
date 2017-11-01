@@ -6,7 +6,6 @@ import java.util.Set;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
@@ -181,7 +180,7 @@ public class VendorInfo extends HitsEntity {
     this.accountName = accountName;
   }
 
-  @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
+  @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
   @JoinColumn(name = "Person_RefId")
   public Set<Address> getAddresses() {
     return addresses;
@@ -214,7 +213,8 @@ public class VendorInfo extends HitsEntity {
 
   @Transient
   public boolean hasContactInfo() {
-    return StringUtils.isNotBlank(contactInfoEmail) || hasNameInfo() || StringUtils.isNotBlank(contactInfoPhoneNumber) || StringUtils.isNotBlank(contactInfoPositionTitle) || StringUtils.isNotBlank(contactInfoRole) || getAddress() != null;
+    return StringUtils.isNotBlank(contactInfoEmail) || hasNameInfo() || StringUtils.isNotBlank(contactInfoPhoneNumber) || StringUtils.isNotBlank(contactInfoPositionTitle)
+        || StringUtils.isNotBlank(contactInfoRole) || getAddress() != null;
   }
 
   public boolean hasNameInfo() {

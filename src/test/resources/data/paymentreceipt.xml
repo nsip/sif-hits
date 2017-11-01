@@ -1,4 +1,4 @@
-<PaymentReceipt RefId="65e49126-a787-4d6d-ad5d-21353c3c8bf0" xmlns="http://www.sifassociation.org/au/datamodel/3.4.1">
+<PaymentReceipt RefId="65e49126-a787-4d6d-ad5d-21353c3c8bf0" xmlns="http://www.sifassociation.org/au/datamodel/3.4">
     <TransactionType>Creditor payment</TransactionType>
     <InvoiceRefId>22a05683-186c-40d5-b7ac-f1b707227310</InvoiceRefId>
     <VendorInfoRefId>df9543ee-a145-4e19-b87b-816852aa24bf</VendorInfoRefId>

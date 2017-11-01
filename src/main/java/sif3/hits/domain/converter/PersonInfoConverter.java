@@ -6,6 +6,14 @@ import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import sif.dd.au30.model.AUCodeSetsAustralianStandardClassificationOfLanguagesASCLType;
+import sif.dd.au30.model.AUCodeSetsAustralianStandardClassificationOfReligiousGroupsASCRGType;
+import sif.dd.au30.model.AUCodeSetsEmailTypeType;
+import sif.dd.au30.model.AUCodeSetsIndigenousStatusType;
+import sif.dd.au30.model.AUCodeSetsLanguageTypeType;
+import sif.dd.au30.model.AUCodeSetsSexCodeType;
+import sif.dd.au30.model.AUCodeSetsStandardAustralianClassificationOfCountriesSACCType;
+import sif.dd.au30.model.AUCodeSetsTelephoneNumberTypeType;
 import sif.dd.au30.model.AUCodeSetsYesOrNoCategoryType;
 import sif.dd.au30.model.AddressListType;
 import sif.dd.au30.model.AddressType;
@@ -53,7 +61,7 @@ public class PersonInfoConverter extends HitsConverter<PersonInfoType, Person> i
 
       EmailListType emailList = objectFactory.createEmailListType();
       EmailType email = objectFactory.createEmailType();
-      email.setType(DEFAULT_EMAIL_TYPE);
+      email.setType(getEnumValue(DEFAULT_EMAIL_TYPE, AUCodeSetsEmailTypeType.class));
       email.setValue(source.getEmail());
       emailList.getEmail().add(email);
       target.setEmailList(objectFactory.createPersonInfoTypeEmailList(emailList));
@@ -62,13 +70,13 @@ public class PersonInfoConverter extends HitsConverter<PersonInfoType, Person> i
         PhoneNumberListType phoneNumberList = objectFactory.createPhoneNumberListType();
         PhoneNumberType phoneNumber = objectFactory.createPhoneNumberType();
         phoneNumber.setNumber(source.getPhoneNumber());
-        phoneNumber.setType(DEFAULT_PHONE_TYPE);
+        phoneNumber.setType(getEnumValue(DEFAULT_PHONE_TYPE, AUCodeSetsTelephoneNumberTypeType.class));
         phoneNumberList.getPhoneNumber().add(phoneNumber);
         target.setPhoneNumberList(objectFactory.createPersonInfoTypePhoneNumberList(phoneNumberList));
       }
 
       DemographicsType demographics = objectFactory.createDemographicsType();
-      demographics.setSex(objectFactory.createDemographicsTypeSex(source.getSex()));
+      demographics.setSex(objectFactory.createDemographicsTypeSex(getEnumValue(source.getSex(), AUCodeSetsSexCodeType.class)));
       demographics.setBirthDate(objectFactory.createDemographicsTypeBirthDate(getDateValue(source.getBirthDate())));
 
       if (source instanceof StudentPerson) {
@@ -76,11 +84,12 @@ public class PersonInfoConverter extends HitsConverter<PersonInfoType, Person> i
         if (StringUtils.isNotBlank(studentSource.getIndigenousStatus()) || StringUtils.isNotBlank(studentSource.getLbote()) || StringUtils.isNotBlank(studentSource.getCountryOfBirth())
             || StringUtils.isNotBlank(studentSource.getReligion())) {
           demographics.setLBOTE(objectFactory.createDemographicsTypeLBOTE(getEnumValue(studentSource.getLbote(), AUCodeSetsYesOrNoCategoryType.class)));
-          demographics.setIndigenousStatus(objectFactory.createDemographicsTypeIndigenousStatus(studentSource.getIndigenousStatus()));
-          demographics.setCountryOfBirth(objectFactory.createDemographicsTypeCountryOfBirth(studentSource.getCountryOfBirth()));
+          demographics.setIndigenousStatus(objectFactory.createDemographicsTypeIndigenousStatus(getEnumValue(studentSource.getIndigenousStatus(), AUCodeSetsIndigenousStatusType.class)));
+          demographics.setCountryOfBirth(
+              objectFactory.createDemographicsTypeCountryOfBirth(getEnumValue(studentSource.getCountryOfBirth(), AUCodeSetsStandardAustralianClassificationOfCountriesSACCType.class)));
           if (StringUtils.isNotBlank(studentSource.getReligion())) {
             ReligionType religion = objectFactory.createReligionType();
-            religion.setCode(studentSource.getReligion());
+            religion.setCode(getEnumValue(studentSource.getReligion(), AUCodeSetsAustralianStandardClassificationOfReligiousGroupsASCRGType.class));
             demographics.setReligion(objectFactory.createDemographicsTypeReligion(religion));
           }
         }
@@ -97,9 +106,9 @@ public class PersonInfoConverter extends HitsConverter<PersonInfoType, Person> i
         LanguageListType languageListType = objectFactory.createLanguageListType();
         for (Language language : source.getLanguages()) {
           LanguageBaseType languageBaseType = objectFactory.createLanguageBaseType();
-          languageBaseType.setCode(language.getLanguageCode());
+          languageBaseType.setCode(getEnumValue(language.getLanguageCode(), AUCodeSetsAustralianStandardClassificationOfLanguagesASCLType.class));
           languageBaseType.setDialect(objectFactory.createLanguageBaseTypeDialect(language.getLanguageDialect()));
-          languageBaseType.setLanguageType(objectFactory.createLanguageBaseTypeLanguageType(language.getLanguageType()));
+          languageBaseType.setLanguageType(objectFactory.createLanguageBaseTypeLanguageType(getEnumValue(language.getLanguageType(), AUCodeSetsLanguageTypeType.class)));
           languageListType.getLanguage().add(languageBaseType);
         }
         demographics.setLanguageList(objectFactory.createDemographicsTypeLanguageList(languageListType));
@@ -144,7 +153,7 @@ public class PersonInfoConverter extends HitsConverter<PersonInfoType, Person> i
 
       DemographicsType demographics = getJAXBValue(source.getDemographics());
       if (demographics != null) {
-        target.setSex(getJAXBValue(demographics.getSex()));
+        target.setSex(getJAXBEnumValue(demographics.getSex()));
         target.setBirthDate(getDateValue(getJAXBValue(demographics.getBirthDate())));
 
         if (target.getLanguages() == null) {
@@ -156,23 +165,21 @@ public class PersonInfoConverter extends HitsConverter<PersonInfoType, Person> i
           for (LanguageBaseType languageBaseType : getJAXBValue(demographics.getLanguageList()).getLanguage()) {
             Language language = new Language();
             language.setPersonRefId(target.getRefId());
-            language.setLanguageCode(languageBaseType.getCode());
+            language.setLanguageCode(getEnumValue(languageBaseType.getCode()));
             language.setLanguageDialect(getJAXBValue(languageBaseType.getDialect()));
-            language.setLanguageType(getJAXBValue(languageBaseType.getLanguageType()));
+            language.setLanguageType(getJAXBEnumValue(languageBaseType.getLanguageType()));
             target.getLanguages().add(language);
           }
         }
 
         if (target instanceof StudentPerson) {
           StudentPerson studentTarget = (StudentPerson) target;
-          studentTarget.setIndigenousStatus(getJAXBValue(demographics.getIndigenousStatus()));
-          studentTarget.setCountryOfBirth(getJAXBValue(demographics.getCountryOfBirth()));
+          studentTarget.setIndigenousStatus(getJAXBEnumValue(demographics.getIndigenousStatus()));
+          studentTarget.setCountryOfBirth(getJAXBEnumValue(demographics.getCountryOfBirth()));
           studentTarget.setLbote(getJAXBEnumValue(demographics.getLBOTE()));
 
           ReligionType religion = getJAXBValue(demographics.getReligion());
-          if (religion != null && StringUtils.isNotBlank(religion.getCode())) {
-            studentTarget.setReligion(religion.getCode());
-          }
+          if (religion != null) studentTarget.setReligion(getEnumValue(religion.getCode()));
         }
       }
     }

@@ -24,6 +24,7 @@ public class TimeTableCellConsumerTest extends BaseTest {
   private ConsumerTest<TimeTableCellType, TimeTableCellCollectionType> timeTableCellTester = null;
 
   public static final String REF_ID = "301c949d-3769-45fc-9c82-7119c1f9df03";
+  public static final String REF_ID_OTHER = "5c6ff7c3-d20d-4fba-a785-b69fccdfbad3";
   public static final String CELL_TYPE = "Teaching";
   public static final String DAY_ID = "1";
   public static final String PERIOD_ID = "1";
@@ -55,7 +56,11 @@ public class TimeTableCellConsumerTest extends BaseTest {
 
     timeTableCellTester.doCreateOne(timeTableCell);
     String xmlExpectedTo = timeTableCellTester.getXML(timeTableCell);
-
+    
+    timeTableCell.setRefId(REF_ID_OTHER);
+    timeTableCell.setTeachingGroupRefId(null);
+    timeTableCellTester.doCreateOne(timeTableCell);
+    
     timeTableCell.setRefId("400d6ef0-7bcf-4513-a45a-3dd9003adbbf");
     timeTableCell.setTeachingGroupRefId("6cd60385-006e-4268-92ef-f69ffc8c5c9f");
     timeTableCell.setDayId("2");
@@ -72,6 +77,17 @@ public class TimeTableCellConsumerTest extends BaseTest {
     timeTableCell.setRefId("5abe4fa8-572c-40f1-97a6-d363a62508f1");
     timeTableCell.setDayId("5");
     timeTableCellTester.doCreateOne(timeTableCell);
+    
+    timeTableCell.setRefId("65a9dafb-6361-4b0d-89a8-12e8b195b4fb");
+    timeTableCell.setDayId("1");
+    timeTableCellTester.doCreateOne(timeTableCell);
+    timeTableCell.setStaffPersonalRefId(null);
+    timeTableCell.setRoomInfoRefId(null);
+
+    List<Response> extraRsponse = timeTableCellTester.doUpdateOne(timeTableCell, timeTableCell.getRefId());
+    Assert.assertEquals("Invalid response status", 204, extraRsponse.get(0).getStatus());
+    System.out.println(extraRsponse.get(0).getStatus());
+    
 
     TimeTableCellType getResult = timeTableCellTester.doGetOne(REF_ID);
     String xmlExpectedFrom = timeTableCellTester.getXML(getResult);

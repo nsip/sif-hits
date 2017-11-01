@@ -10,6 +10,21 @@ import org.junit.Before;
 import org.junit.Test;
 import org.springframework.http.HttpStatus;
 
+import sif.dd.au30.model.AUCodeSetsAddressRoleType;
+import sif.dd.au30.model.AUCodeSetsAddressTypeType;
+import sif.dd.au30.model.AUCodeSetsAustralianStandardClassificationOfLanguagesASCLType;
+import sif.dd.au30.model.AUCodeSetsAustralianStandardClassificationOfReligiousGroupsASCRGType;
+import sif.dd.au30.model.AUCodeSetsEmailTypeType;
+import sif.dd.au30.model.AUCodeSetsEmploymentTypeType;
+import sif.dd.au30.model.AUCodeSetsFFPOSStatusCodeType;
+import sif.dd.au30.model.AUCodeSetsIndigenousStatusType;
+import sif.dd.au30.model.AUCodeSetsLanguageTypeType;
+import sif.dd.au30.model.AUCodeSetsNonSchoolEducationType;
+import sif.dd.au30.model.AUCodeSetsSchoolEducationLevelTypeType;
+import sif.dd.au30.model.AUCodeSetsSexCodeType;
+import sif.dd.au30.model.AUCodeSetsStandardAustralianClassificationOfCountriesSACCType;
+import sif.dd.au30.model.AUCodeSetsTelephoneNumberTypeType;
+import sif.dd.au30.model.AUCodeSetsYearLevelCodeType;
 import sif.dd.au30.model.AddressListType;
 import sif.dd.au30.model.AddressStreetType;
 import sif.dd.au30.model.AddressType;
@@ -89,8 +104,8 @@ public class StudentPersonalConsumerTest extends BaseTest {
     public static void getAddress(ObjectFactory objectFactory, AddressType address, String addressLineOne, String addressLineTwo) {
       address.setCity("Perth");
       address.setStateProvince(objectFactory.createAddressTypeStateProvince("WA"));
-      address.setType("0123");
-      address.setRole("012B");
+      address.setType(AUCodeSetsAddressTypeType.fromValue("0123"));
+      address.setRole(AUCodeSetsAddressRoleType.fromValue("012B"));
       address.setPostalCode("6000");
 
       AddressStreetType street = objectFactory.createAddressStreetType();
@@ -117,19 +132,22 @@ public class StudentPersonalConsumerTest extends BaseTest {
     StudentPersonalType studentPersonalType = new StudentPersonalType();
     studentPersonalType.setRefId(StudentPersonalRefIds.REF_ID_1);
     studentPersonalType.setLocalId(StudentPersonalRefIds.LOCAL_ID);
+    
 
     StudentMostRecentContainerType mostRecent = new StudentMostRecentContainerType();
     YearLevelType yearLevel = new YearLevelType();
-    yearLevel.setCode("4");
+    yearLevel.setCode(AUCodeSetsYearLevelCodeType.fromValue("3"));
     mostRecent.setYearLevel(objectFactory.createStudentMostRecentContainerTypeYearLevel(yearLevel));
-    mostRecent.setParent1Language(objectFactory.createStudentMostRecentContainerTypeParent1Language("1201"));
-    mostRecent.setParent2Language(objectFactory.createStudentMostRecentContainerTypeParent2Language("2305"));
-    mostRecent.setParent1SchoolEducationLevel(objectFactory.createStudentMostRecentContainerTypeParent1SchoolEducationLevel("4"));
-    mostRecent.setParent2SchoolEducationLevel(objectFactory.createStudentMostRecentContainerTypeParent2SchoolEducationLevel("0"));
-    mostRecent.setParent1NonSchoolEducation(objectFactory.createStudentMostRecentContainerTypeParent1NonSchoolEducation("7"));
-    mostRecent.setParent2NonSchoolEducation(objectFactory.createStudentMostRecentContainerTypeParent2NonSchoolEducation("0"));
-    mostRecent.setParent1EmploymentType(objectFactory.createStudentMostRecentContainerTypeParent1EmploymentType("1"));
-    mostRecent.setParent2EmploymentType(objectFactory.createStudentMostRecentContainerTypeParent2EmploymentType("2"));
+    mostRecent.setParent1Language(objectFactory.createStudentMostRecentContainerTypeParent1Language(AUCodeSetsAustralianStandardClassificationOfLanguagesASCLType.fromValue("1201")));
+    mostRecent.setParent2Language(objectFactory.createStudentMostRecentContainerTypeParent2Language(AUCodeSetsAustralianStandardClassificationOfLanguagesASCLType.fromValue("2303")));
+    mostRecent.setParent1SchoolEducationLevel(objectFactory.createStudentMostRecentContainerTypeParent1SchoolEducationLevel(AUCodeSetsSchoolEducationLevelTypeType.fromValue("4")));
+    mostRecent.setParent2SchoolEducationLevel(objectFactory.createStudentMostRecentContainerTypeParent2SchoolEducationLevel(AUCodeSetsSchoolEducationLevelTypeType.fromValue("0")));
+    mostRecent.setParent1NonSchoolEducation(objectFactory.createStudentMostRecentContainerTypeParent1NonSchoolEducation(AUCodeSetsNonSchoolEducationType.fromValue("7")));
+    mostRecent.setParent2NonSchoolEducation(objectFactory.createStudentMostRecentContainerTypeParent2NonSchoolEducation(AUCodeSetsNonSchoolEducationType.fromValue("0")));
+    mostRecent.setParent1EmploymentType(objectFactory.createStudentMostRecentContainerTypeParent1EmploymentType(AUCodeSetsEmploymentTypeType.fromValue("1")));
+    mostRecent.setParent2EmploymentType(objectFactory.createStudentMostRecentContainerTypeParent2EmploymentType(AUCodeSetsEmploymentTypeType.fromValue("2")));
+    mostRecent.setFFPOS(objectFactory.createStudentMostRecentContainerTypeFFPOS(AUCodeSetsFFPOSStatusCodeType.fromValue("2")));
+    mostRecent.setTestLevel(objectFactory.createStudentMostRecentContainerTypeTestLevel(yearLevel));
     studentPersonalType.setMostRecent(objectFactory.createStudentPersonalTypeMostRecent(mostRecent));
 
     PersonInfoType personInfo = new PersonInfoType();
@@ -137,34 +155,35 @@ public class StudentPersonalConsumerTest extends BaseTest {
     personInfo.setName(nameOfRecordType);
 
     DemographicsType demographics = new DemographicsType();
-    demographics.setSex(objectFactory.createDemographicsTypeSex("1"));
+    demographics.setSex(objectFactory.createDemographicsTypeSex(AUCodeSetsSexCodeType.fromValue("1")));
     demographics.setBirthDate(objectFactory.createDemographicsTypeBirthDate(getDate("1984-12-20")));
-    demographics.setIndigenousStatus(objectFactory.createDemographicsTypeIndigenousStatus("9"));
-    demographics.setCountryOfBirth(objectFactory.createDemographicsTypeCountryOfBirth("AUS"));
+    demographics.setIndigenousStatus(objectFactory.createDemographicsTypeIndigenousStatus(AUCodeSetsIndigenousStatusType.fromValue("9")));
+    demographics.setCountryOfBirth(objectFactory.createDemographicsTypeCountryOfBirth(AUCodeSetsStandardAustralianClassificationOfCountriesSACCType.fromValue("1101")));
+    
     
     LanguageListType languageListType = new LanguageListType();
     LanguageBaseType languageBaseType = new LanguageBaseType();
-    languageBaseType.setCode("1201");
-    languageBaseType.setLanguageType(objectFactory.createLanguageBaseTypeLanguageType("1"));
+    languageBaseType.setCode(AUCodeSetsAustralianStandardClassificationOfLanguagesASCLType.fromValue("1201"));
+    languageBaseType.setLanguageType(objectFactory.createLanguageBaseTypeLanguageType(AUCodeSetsLanguageTypeType.fromValue("1")));
     languageBaseType.setDialect(objectFactory.createLanguageBaseTypeDialect("West Australian"));
     languageListType.getLanguage().add(languageBaseType);
     demographics.setLanguageList(objectFactory.createDemographicsTypeLanguageList(languageListType));
 
     ReligionType religion = new ReligionType();
-    religion.setCode("0001");
+    religion.setCode(AUCodeSetsAustralianStandardClassificationOfReligiousGroupsASCRGType.fromValue("0001"));
     demographics.setReligion(objectFactory.createDemographicsTypeReligion(religion));
     personInfo.setDemographics(objectFactory.createPersonInfoTypeDemographics(demographics));
 
     PhoneNumberListType phoneNumberList = new PhoneNumberListType();
     PhoneNumberType phoneNumber = new PhoneNumberType();
-    phoneNumber.setType("0096");
+    phoneNumber.setType(AUCodeSetsTelephoneNumberTypeType.fromValue("0096"));
     phoneNumber.setNumber("+61400000000");
     phoneNumberList.getPhoneNumber().add(phoneNumber);
     personInfo.setPhoneNumberList(objectFactory.createPersonInfoTypePhoneNumberList(phoneNumberList));
 
     EmailListType emailList = new EmailListType();
     EmailType email = new EmailType();
-    email.setType("06"); // AUCodeSetsEmailTypeType.WORK
+    email.setType(AUCodeSetsEmailTypeType.fromValue("06")); // AUCodeSetsEmailTypeType.WORK
     email.setValue("the.email@not.a.real.domain");
     emailList.getEmail().add(email);
     personInfo.setEmailList(objectFactory.createPersonInfoTypeEmailList(emailList));
@@ -439,6 +458,27 @@ public class StudentPersonalConsumerTest extends BaseTest {
   public void testServicePathTeachingGroup() {
     QueryCriteria queryCriteria = new QueryCriteria();
     queryCriteria.addPredicate(new QueryPredicate("TeachingGroups", QueryOperator.EQUAL, TeachingGroupConsumerTest.REF_ID));
+
+    List<Response> responses = studentTester.testServicePath(queryCriteria, 10000, 0);
+
+    Assert.assertNotNull(responses);
+    Assert.assertEquals(1, responses.size());
+    Response response = responses.get(0);
+
+    StudentPersonalCollectionType studentPersonalCollectionType = (StudentPersonalCollectionType) response.getDataObject();
+    Assert.assertNotNull(studentPersonalCollectionType.getStudentPersonal());
+    Assert.assertFalse(studentPersonalCollectionType.getStudentPersonal().isEmpty());
+    boolean found = false;
+    for (StudentPersonalType studentPersonal : studentPersonalCollectionType.getStudentPersonal()) {
+      found = found || StudentPersonalRefIds.REF_ID_1.equals(studentPersonal.getRefId());
+    }
+    Assert.assertTrue(found);
+  }
+  
+  @Test
+  public void testServicePathSchoolInfo() {
+    QueryCriteria queryCriteria = new QueryCriteria();
+    queryCriteria.addPredicate(new QueryPredicate("SchoolInfos", QueryOperator.EQUAL, SchoolInfoConsumerTest.REF_ID));
 
     List<Response> responses = studentTester.testServicePath(queryCriteria, 10000, 0);
 

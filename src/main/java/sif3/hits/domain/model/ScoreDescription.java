@@ -1,8 +1,6 @@
 package sif3.hits.domain.model;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
@@ -28,7 +26,7 @@ public class ScoreDescription {
     this.id = id;
   }
 
-  @ManyToOne(cascade = CascadeType.DETACH, fetch = FetchType.LAZY, optional = false)
+  @ManyToOne(optional = false)
   @JoinColumn(name = "Score_Id")
   public Score getScore() {
     return score;

@@ -39,8 +39,6 @@ public class TeachingGroupPeriodTimeTableCellConverter extends HitsConverter<Tea
       target.setCellType(getJAXBValue(source.getCellType()));
       target.setDayId(source.getDayId());
       target.setPeriodId(getJAXBValue(source.getPeriodId()));
-      target.setRoomInfo(teachingGroupPeriodRoomInfoConverter.toHitsModel(source));
-      target.setStaffPersonal(teachingGroupPeriodStaffPersonalConverter.toHitsModel(source));
       target.setRefId(getJAXBValue(source.getTimeTableCellRefId()));
     }
   }

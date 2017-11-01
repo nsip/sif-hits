@@ -22,6 +22,7 @@ import sif3.common.ws.BulkOperationResponse;
 import sif3.common.ws.CreateOperationStatus;
 import sif3.common.ws.OperationStatus;
 import sif3.common.ws.Response;
+import sif3.hits.rest.consumer.DebtorConsumerTest.DebtorRefIds;
 import sif3.hits.rest.consumer.FinancialAccountConsumerTest.FinancialAccountRefIds;
 import sif3.hits.rest.consumer.LocationInfoConsumerTest.LocationInfoRefIds;
 import sif3.hits.rest.consumer.PurchaseOrderConsumerTest.PurchaseOrderRefIds;
@@ -50,7 +51,7 @@ public class InvoiceConsumerTest extends BaseTest implements UsesConstants {
     invoiceType.setRefId(InvoiceRefIds.REF_ID_1);
 
     InvoicedEntity invoicedEntity = objectFactory.createInvoiceTypeInvoicedEntity();
-    invoicedEntity.setValue("83357168-8b57-40fa-a86d-eaefe70abc55");
+    invoicedEntity.setValue(DebtorRefIds.REF_ID_1);
     invoicedEntity.setSIFRefObject("Debtor");
     invoiceType.setInvoicedEntity(invoicedEntity);
 

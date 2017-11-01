@@ -3,11 +3,14 @@ package sif3.hits.rest.consumer;
 import java.util.Arrays;
 import java.util.List;
 
+import javax.xml.bind.JAXBElement;
+
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.springframework.http.HttpStatus;
 
+import sif.dd.au30.model.AUCodeSetsYearLevelCodeType;
 import sif.dd.au30.model.CalendarSummaryCollectionType;
 import sif.dd.au30.model.CalendarSummaryType;
 import sif.dd.au30.model.ObjectFactory;
@@ -46,10 +49,10 @@ public class CalendarSummaryConsumerTest extends BaseTest {
     
     YearLevelsType yearLevels = new YearLevelsType();
     YearLevelType yearLevel = new YearLevelType();
-    yearLevel.setCode("4");
+    yearLevel.setCode(AUCodeSetsYearLevelCodeType.fromValue("4"));
     yearLevels.getYearLevel().add(yearLevel);
     yearLevel = new YearLevelType();
-    yearLevel.setCode("5");
+    yearLevel.setCode(AUCodeSetsYearLevelCodeType.fromValue("5"));
     yearLevels.getYearLevel().add(yearLevel);
     calendarSummary.setYearLevels(objectFactory.createCalendarSummaryTypeYearLevels(yearLevels));
     
@@ -139,6 +142,55 @@ public class CalendarSummaryConsumerTest extends BaseTest {
       System.out.println("\nTo:\n" + xmlExpectedTo);
       Assert.assertEquals("XML Differs", xmlExpectedFrom, xmlExpectedTo);
     }
+  }
+  
+  @Test
+  public void testUpdateSingleYearLevels() throws Exception {
+    List<Response> responses = calendarSummaryTester.testGetSingle(REF_ID);
+    Assert.assertNotNull(responses);
+    Assert.assertEquals(1, responses.size());
+    Response response = responses.get(0);
+    Assert.assertNotNull(response.getDataObject());
+    CalendarSummaryType calendarSummary = (CalendarSummaryType) response.getDataObject();
+    Assert.assertEquals(REF_ID, calendarSummary.getRefId());
+    Assert.assertEquals(2, calendarSummary.getYearLevels().getValue().getYearLevel().size());
+    
+    JAXBElement<YearLevelsType> yearLevels = calendarSummary.getYearLevels();
+    calendarSummary.setYearLevels(null);
+    calendarSummaryTester.doUpdateOne(calendarSummary, calendarSummary.getRefId());
+    
+    responses = calendarSummaryTester.testGetSingle(REF_ID);
+    Assert.assertNotNull(responses);
+    Assert.assertEquals(1, responses.size());
+    response = responses.get(0);
+    Assert.assertNotNull(response.getDataObject());
+    calendarSummary = (CalendarSummaryType) response.getDataObject();
+    Assert.assertEquals(REF_ID, calendarSummary.getRefId());
+    Assert.assertNull(calendarSummary.getYearLevels());
+    
+    calendarSummary.setYearLevels(yearLevels);
+    calendarSummaryTester.doUpdateOne(calendarSummary, calendarSummary.getRefId());
+    
+    responses = calendarSummaryTester.testGetSingle(REF_ID);
+    Assert.assertNotNull(responses);
+    Assert.assertEquals(1, responses.size());
+    response = responses.get(0);
+    Assert.assertNotNull(response.getDataObject());
+    calendarSummary = (CalendarSummaryType) response.getDataObject();
+    Assert.assertEquals(REF_ID, calendarSummary.getRefId());
+    Assert.assertEquals(2, calendarSummary.getYearLevels().getValue().getYearLevel().size());
+    
+    calendarSummary.setYearLevels(yearLevels);
+    calendarSummaryTester.doUpdateOne(calendarSummary, calendarSummary.getRefId());
+    
+    responses = calendarSummaryTester.testGetSingle(REF_ID);
+    Assert.assertNotNull(responses);
+    Assert.assertEquals(1, responses.size());
+    response = responses.get(0);
+    Assert.assertNotNull(response.getDataObject());
+    calendarSummary = (CalendarSummaryType) response.getDataObject();
+    Assert.assertEquals(REF_ID, calendarSummary.getRefId());
+    Assert.assertEquals(2, calendarSummary.getYearLevels().getValue().getYearLevel().size());
   }
 
   @Test

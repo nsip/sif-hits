@@ -4,7 +4,6 @@ import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -34,7 +33,7 @@ public class NAPStudentResponseSet extends HitsEntity {
     this.refId = refId;
   }
 
-  @ManyToOne(cascade = CascadeType.DETACH, fetch = FetchType.LAZY, optional = false)
+  @ManyToOne(optional = false)
   @JoinColumn(name = "NAPTest_RefId")
   public NAPTest getNapTest() {
     return napTest;
@@ -44,7 +43,7 @@ public class NAPStudentResponseSet extends HitsEntity {
     this.napTest = napTest;
   }
 
-  @ManyToOne(cascade = CascadeType.DETACH, fetch = FetchType.LAZY)
+  @ManyToOne
   @JoinColumn(name = "StudentPersonal_RefId")
   public StudentPersonal getStudentPersonal() {
     return studentPersonal;
@@ -54,7 +53,7 @@ public class NAPStudentResponseSet extends HitsEntity {
     this.studentPersonal = studentPersonal;
   }
 
-  @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "napStudentResponseSet", orphanRemoval = true)
+  @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "napStudentResponseSet")
   public Set<DomainScore> getDomainScores() {
     return domainScores;
   }
@@ -63,7 +62,7 @@ public class NAPStudentResponseSet extends HitsEntity {
     this.domainScores = domainScores;
   }
 
-  @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "napStudentResponseSet", orphanRemoval = true)
+  @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "napStudentResponseSet")
   public Set<TestletResponse> getTestletList() {
     return testletList;
   }

@@ -2,11 +2,13 @@ package sif3.hits.domain.model;
 
 import java.util.Set;
 
+import javax.persistence.CollectionTable;
 import javax.persistence.Column;
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.JoinColumn;
 
 @Entity
 public class CalendarSummary extends HitsEntity {
@@ -23,7 +25,7 @@ public class CalendarSummary extends HitsEntity {
   private String lastInstructionDate;
   private String instructionalMinutes;
   private String minutesPerDay;
-  private Set<CalendarSummaryYearLevel> calendarSummaryYearLevels;
+  private Set<String> calendarSummaryYearLevels;
 
   @Id
   public String getRefId() {
@@ -116,12 +118,14 @@ public class CalendarSummary extends HitsEntity {
     this.minutesPerDay = minutesPerDay;
   }
 
-  @OneToMany(fetch = FetchType.LAZY, mappedBy = "calendarSummaryYearLevelId.calendarSummary")
-  public Set<CalendarSummaryYearLevel> getCalendarSummaryYearLevels() {
+  @ElementCollection(fetch = FetchType.LAZY)
+  @CollectionTable(name = "CalendarSummary_YearLevel", joinColumns = @JoinColumn(name = "CalendarSummary_RefId"))
+  @Column(name="YearLevel")
+  public Set<String> getCalendarSummaryYearLevels() {
     return calendarSummaryYearLevels;
   }
 
-  public void setCalendarSummaryYearLevels(Set<CalendarSummaryYearLevel> calendarSummaryYearLevels) {
+  public void setCalendarSummaryYearLevels(Set<String> calendarSummaryYearLevels) {
     this.calendarSummaryYearLevels = calendarSummaryYearLevels;
   }
 }

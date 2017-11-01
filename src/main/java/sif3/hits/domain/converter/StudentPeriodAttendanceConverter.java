@@ -2,6 +2,8 @@ package sif3.hits.domain.converter;
 
 import org.springframework.stereotype.Component;
 
+import sif.dd.au30.model.AUCodeSetsAttendanceCodeType;
+import sif.dd.au30.model.AUCodeSetsAttendanceStatusType;
 import sif.dd.au30.model.AttendanceCodeType;
 import sif.dd.au30.model.AuditInfoType;
 import sif.dd.au30.model.CreationUserType;
@@ -31,11 +33,11 @@ public class StudentPeriodAttendanceConverter extends HitsConverter<StudentPerio
 
       if (source.getAttendanceCode() != null) {
         AttendanceCodeType attendanceCode = objectFactory.createAttendanceCodeType();
-        attendanceCode.setCode(source.getAttendanceCode());
+        attendanceCode.setCode(getEnumValue(source.getAttendanceCode(),AUCodeSetsAttendanceCodeType.class));
         target.setAttendanceCode(attendanceCode);
       }
 
-      target.setAttendanceStatus(source.getAttendanceStatus());
+      target.setAttendanceStatus(getEnumValue(source.getAttendanceStatus(),AUCodeSetsAttendanceStatusType.class));
       target.setSchoolYear(objectFactory.createStudentPeriodAttendanceTypeSchoolYear(getYearValue(source.getSchoolYear())));
 
       if (source.getCreationUserType() != null || source.getAuditInfoCreationDateTime() != null || source.getAuditInfoCreationUserUserId() != null) {
@@ -67,9 +69,9 @@ public class StudentPeriodAttendanceConverter extends HitsConverter<StudentPerio
       target.setTimeOut(getTimeValue(getJAXBValue(source.getTimeOut())));
 
       if (source.getAttendanceCode() != null) {
-        target.setAttendanceCode(source.getAttendanceCode().getCode());
+        target.setAttendanceCode(getEnumValue(source.getAttendanceCode().getCode()));
       }
-      target.setAttendanceStatus(source.getAttendanceStatus());
+      target.setAttendanceStatus(getEnumValue(source.getAttendanceStatus()));
       target.setSchoolYear(getYearValue(getJAXBValue(source.getSchoolYear())));
 
       AuditInfoType auditInfo = getJAXBValue(source.getAuditInfo());

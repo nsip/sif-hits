@@ -4,7 +4,6 @@ import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
@@ -162,7 +161,7 @@ public class StudentContactPersonal extends HitsEntity implements Person, Addres
     this.employmentType = employmentType;
   }
 
-  @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
+  @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
   @JoinColumn(name = "Person_RefId")
   public Set<Address> getAddresses() {
     return addresses;
@@ -173,7 +172,7 @@ public class StudentContactPersonal extends HitsEntity implements Person, Addres
   }
 
   @Override
-  @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
+  @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
   @JoinColumn(name = "Person_RefId")
   public Set<Language> getLanguages() {
     return this.languages;

@@ -2,11 +2,11 @@ package sif3.hits.domain.converter;
 
 import java.util.ArrayList;
 import java.util.HashSet;
-import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import sif.dd.au30.model.AUCodeSetsYearLevelCodeType;
 import sif.dd.au30.model.OtherCodeListType;
 import sif.dd.au30.model.OtherCodeListType.OtherCode;
 import sif.dd.au30.model.TimeTableSubjectType;
@@ -34,7 +34,7 @@ public class TimeTableSubjectConverter extends HitsConverter<TimeTableSubjectTyp
       timeTableSubjectSchoolInfoConverter.toSifModel(source.getSchoolInfo(), target);
 
       YearLevelType yearLevel = new YearLevelType();
-      yearLevel.setCode(source.getAcademicYear());
+      yearLevel.setCode(getEnumValue(source.getAcademicYear(), AUCodeSetsYearLevelCodeType.class));
       target.setAcademicYear(objectFactory.createTimeTableSubjectTypeAcademicYear(yearLevel));
 
       target.setFaculty(objectFactory.createTimeTableSubjectTypeFaculty(source.getFaculty()));
@@ -53,7 +53,9 @@ public class TimeTableSubjectConverter extends HitsConverter<TimeTableSubjectTyp
       }
       OtherCodeListType otherCodeList = new OtherCodeListType();
       otherCodeList.getOtherCode().addAll(otherCodes);
-      target.setOtherCodeList(objectFactory.createTimeTableSubjectTypeOtherCodeList(otherCodeList));
+      if (!otherCodes.isEmpty()) {
+        target.setOtherCodeList(objectFactory.createTimeTableSubjectTypeOtherCodeList(otherCodeList));
+      }
 
       target.setProposedMinClassSize(objectFactory.createTimeTableSubjectTypeProposedMinClassSize(getBigDecimalValue(source.getProposedMinClassSize())));
       target.setProposedMaxClassSize(objectFactory.createTimeTableSubjectTypeProposedMaxClassSize(getBigDecimalValue(source.getProposedMaxClassSize())));
@@ -75,26 +77,29 @@ public class TimeTableSubjectConverter extends HitsConverter<TimeTableSubjectTyp
       target.setSchoolInfo(timeTableSubjectSchoolInfoConverter.toHitsModel(source));
       YearLevelType academicYear = getJAXBValue(source.getAcademicYear());
       if (academicYear != null) {
-        target.setAcademicYear(academicYear.getCode());
+        target.setAcademicYear(getEnumValue(academicYear.getCode()));
       }
       target.setFaculty(getJAXBValue(source.getFaculty()));
       target.setSubjectShortName(getJAXBValue(source.getSubjectShortName()));
       target.setSubjectLongName(source.getSubjectLongName());
       target.setSubjectType(getJAXBValue(source.getSubjectType()));
 
-      Set<TimeTableSubjectOtherCode> otherCodes = new HashSet<TimeTableSubjectOtherCode>();
       OtherCodeListType otherCodeList = getJAXBValue(source.getOtherCodeList());
+      if (target.getOtherCodes() == null) {
+        target.setOtherCodes(new HashSet<TimeTableSubjectOtherCode>());
+      } else {
+        target.getOtherCodes().clear();
+      }
+
       if (otherCodeList != null && otherCodeList.getOtherCode() != null) {
         for (OtherCode otherCode : otherCodeList.getOtherCode()) {
           TimeTableSubjectOtherCode timeTableSubjectOtherCode = new TimeTableSubjectOtherCode();
           timeTableSubjectOtherCode.setTimeTableSubject(target);
           timeTableSubjectOtherCode.setOtherCode(otherCode.getValue());
           timeTableSubjectOtherCode.setCodeSet(otherCode.getCodeset());
-          otherCodes.add(timeTableSubjectOtherCode);
+          target.getOtherCodes().add(timeTableSubjectOtherCode);
         }
       }
-      target.setOtherCodes(otherCodes);
-
       target.setProposedMinClassSize(getBigDecimalValue(getJAXBValue(source.getProposedMinClassSize())));
       target.setProposedMaxClassSize(getBigDecimalValue(getJAXBValue(source.getProposedMaxClassSize())));
       target.setSemester(getLongValue(getJAXBValue(source.getSemester())));

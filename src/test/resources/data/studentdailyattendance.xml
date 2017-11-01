@@ -1,4 +1,4 @@
-<StudentDailyAttendance RefId="96c40bb2-40b5-49fa-8549-e744698828c4" xmlns="http://www.sifassociation.org/au/datamodel/3.4.1">
+<StudentDailyAttendance RefId="96c40bb2-40b5-49fa-8549-e744698828c4" xmlns="http://www.sifassociation.org/au/datamodel/3.4">
    <StudentPersonalRefId>1f631f1d-8832-4775-b199-5eb9650e8ebb</StudentPersonalRefId>
    <SchoolInfoRefId>6dafb630-c439-41e3-9aa0-81f4dbd909ab</SchoolInfoRefId>
    <Date>2014-11-24</Date>

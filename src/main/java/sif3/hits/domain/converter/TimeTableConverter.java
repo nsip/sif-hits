@@ -1,17 +1,16 @@
 package sif3.hits.domain.converter;
 
-import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import sif.dd.au30.model.TimeTableDayType;
 import sif.dd.au30.model.TimeTableType;
 import sif3.hits.domain.converter.factory.IObjectFactory;
 import sif3.hits.domain.model.TimeTable;
 import sif3.hits.domain.model.TimeTableDay;
+import sif3.hits.domain.model.TimeTablePeriod;
 
 @Component
 public class TimeTableConverter extends HitsConverter<TimeTableType, TimeTable> {
@@ -61,42 +60,23 @@ public class TimeTableConverter extends HitsConverter<TimeTableType, TimeTable> 
       target.setStartDate(getDateValue(getJAXBValue(source.getStartDate())));
       target.setEndDate(getDateValue(getJAXBValue(source.getEndDate())));
 
-      if (target.getTimeTableDays() == null) {
-        Set<TimeTableDay> timeTableDays = new HashSet<TimeTableDay>();
-        if (source.getTimeTableDayList() != null && source.getTimeTableDayList().getTimeTableDay() != null) {
-          timeTableDays.addAll(timeTableDayConverter.toHitsModelList(source.getTimeTableDayList().getTimeTableDay()));
-        }
-        for (TimeTableDay timeTableDay : timeTableDays) {
-          timeTableDay.setTimeTable(target);
-        }
-        target.setTimeTableDays(timeTableDays);
-      } else {
-        mergeTimeTableDays(source, target);
+      Set<TimeTableDay> timeTableDays = new HashSet<TimeTableDay>();
+      if (target.getTimeTableDays() != null) {
+        timeTableDays = target.getTimeTableDays();
+        timeTableDays.clear();
       }
-    }
-  }
-
-  /**
-   * If we could remove the composite key, this would not be neccessary.
-   * 
-   * @param source
-   * @param target
-   */
-  private void mergeTimeTableDays(TimeTableType source, TimeTable target) {
-    HashMap<String, TimeTableDay> currentDays = new HashMap<String, TimeTableDay>();
-    for (TimeTableDay timeTableDay : target.getTimeTableDays()) {
-      currentDays.put(timeTableDay.getDayId(), timeTableDay);
-    }
-    target.getTimeTableDays().clear();
-    if (source.getTimeTableDayList() != null && source.getTimeTableDayList().getTimeTableDay() != null) {
-      for (TimeTableDayType sourceTimeTableDay : source.getTimeTableDayList().getTimeTableDay()) {
-        TimeTableDay targetTimeTableDay = currentDays.get(sourceTimeTableDay.getDayId());
-        if (targetTimeTableDay == null) {
-          targetTimeTableDay = new TimeTableDay();
-        }
-        timeTableDayConverter.toHitsModel(sourceTimeTableDay, targetTimeTableDay);
-        target.getTimeTableDays().add(targetTimeTableDay);
+      if (source.getTimeTableDayList() != null && source.getTimeTableDayList().getTimeTableDay() != null) {
+        timeTableDays.addAll(timeTableDayConverter.toHitsModelList(source.getTimeTableDayList().getTimeTableDay()));
       }
+      for (TimeTableDay timeTableDay : timeTableDays) {
+        timeTableDay.setTimeTable(target);
+        for (TimeTablePeriod period : timeTableDay.getPeriods()) {
+          period.setTimeTable_RefId(target.getRefId());
+          period.setDayId(timeTableDay.getDayId());
+          period.setTimeTableDay(timeTableDay);
+        }
+      }
+      target.setTimeTableDays(timeTableDays);
     }
   }
 }

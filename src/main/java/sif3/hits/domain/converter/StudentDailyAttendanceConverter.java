@@ -2,6 +2,8 @@ package sif3.hits.domain.converter;
 
 import org.springframework.stereotype.Component;
 
+import sif.dd.au30.model.AUCodeSetsAttendanceCodeType;
+import sif.dd.au30.model.AUCodeSetsAttendanceStatusType;
 import sif.dd.au30.model.AUCodeSetsDayValueCodeType;
 import sif.dd.au30.model.AttendanceCodeType;
 import sif.dd.au30.model.StudentDailyAttendanceType;
@@ -29,11 +31,11 @@ public class StudentDailyAttendanceConverter extends HitsConverter<StudentDailyA
 
       if (source.getAttendanceCode() != null) {
         AttendanceCodeType attendanceCodeType = objectFactory.createAttendanceCodeType();
-        attendanceCodeType.setCode(source.getAttendanceCode());
+        attendanceCodeType.setCode(getEnumValue(source.getAttendanceCode(),AUCodeSetsAttendanceCodeType.class));
         target.setAttendanceCode(attendanceCodeType);
       }
 
-      target.setAttendanceStatus(source.getAttendanceStatus());
+      target.setAttendanceStatus(getEnumValue(source.getAttendanceStatus(),AUCodeSetsAttendanceStatusType.class));
       target.setTimeIn(objectFactory.createStudentDailyAttendanceTypeTimeIn(getTimeValue(source.getTimeIn())));
       target.setTimeOut(objectFactory.createStudentDailyAttendanceTypeTimeOut(getTimeValue(source.getTimeOut())));
       target.setAbsenceValue(objectFactory.createStudentDailyAttendanceTypeAbsenceValue(getBigDecimalValue(source.getAbsenceValue())));
@@ -53,10 +55,10 @@ public class StudentDailyAttendanceConverter extends HitsConverter<StudentDailyA
 
       if (source.getAttendanceCode() != null) {
         AttendanceCodeType attendanceCodeType = source.getAttendanceCode();
-        target.setAttendanceCode(attendanceCodeType.getCode());
+        target.setAttendanceCode(getEnumValue(attendanceCodeType.getCode()));
       }
 
-      target.setAttendanceStatus(source.getAttendanceStatus());
+      target.setAttendanceStatus(getEnumValue(source.getAttendanceStatus()));
       target.setTimeIn(getTimeValue(getJAXBValue(source.getTimeIn())));
       target.setTimeOut(getTimeValue(getJAXBValue(source.getTimeOut())));
       target.setAbsenceValue(getBigDecimalValue(getJAXBValue(source.getAbsenceValue())));

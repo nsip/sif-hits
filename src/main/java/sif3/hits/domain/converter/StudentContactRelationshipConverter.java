@@ -2,6 +2,7 @@ package sif3.hits.domain.converter;
 
 import org.springframework.stereotype.Component;
 
+import sif.dd.au30.model.AUCodeSetsRelationshipToStudentType;
 import sif.dd.au30.model.AUCodeSetsYesOrNoCategoryType;
 import sif.dd.au30.model.ContactFlagsType;
 import sif.dd.au30.model.RelationshipType;
@@ -31,7 +32,7 @@ public class StudentContactRelationshipConverter extends HitsConverter<StudentCo
 
       if (source.hasRelationship()) {
         RelationshipType relationship = objectFactory.createRelationshipType();
-        relationship.setCode(source.getRelationship());
+        relationship.setCode(getEnumValue(source.getRelationship(), AUCodeSetsRelationshipToStudentType.class));
         target.setRelationship(relationship);
       }
 
@@ -61,7 +62,7 @@ public class StudentContactRelationshipConverter extends HitsConverter<StudentCo
       target.setStudentPersonalRefId(source.getStudentPersonalRefId());
 
       if (source.getRelationship() != null) {
-        target.setRelationship(source.getRelationship().getCode());
+        target.setRelationship(getEnumValue(source.getRelationship().getCode()));
       }
       ContactFlagsType contactFlags = getJAXBValue(source.getContactFlags());
       if (contactFlags != null) {

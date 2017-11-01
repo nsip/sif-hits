@@ -4,7 +4,6 @@ import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
@@ -32,7 +31,7 @@ public class Score extends HitsEntity {
     this.id = id;
   }
 
-  @ManyToOne(cascade = CascadeType.DETACH, fetch = FetchType.LAZY, optional = false)
+  @ManyToOne(optional = false)
   @JoinColumn(name = "NAPWritingRubric_Id")
   public NAPWritingRubric getNapWritingRubric() {
     return napWritingRubric;
@@ -50,7 +49,7 @@ public class Score extends HitsEntity {
     this.maxScoreValue = maxScoreValue;
   }
 
-  @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "score", orphanRemoval = true)
+  @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "score")
   public Set<ScoreDescription> getScoreDescriptionList() {
     return scoreDescriptionList;
   }

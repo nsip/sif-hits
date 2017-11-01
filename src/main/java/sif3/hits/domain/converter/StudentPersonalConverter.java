@@ -7,6 +7,13 @@ import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import sif.dd.au30.model.AUCodeSetsAustralianStandardClassificationOfLanguagesASCLType;
+import sif.dd.au30.model.AUCodeSetsEmploymentTypeType;
+import sif.dd.au30.model.AUCodeSetsFFPOSStatusCodeType;
+import sif.dd.au30.model.AUCodeSetsNonSchoolEducationType;
+import sif.dd.au30.model.AUCodeSetsSchoolEducationLevelTypeType;
+import sif.dd.au30.model.AUCodeSetsSchoolEnrollmentTypeType;
+import sif.dd.au30.model.AUCodeSetsYearLevelCodeType;
 import sif.dd.au30.model.AUCodeSetsYesOrNoCategoryType;
 import sif.dd.au30.model.OtherIdListType;
 import sif.dd.au30.model.OtherIdType;
@@ -40,18 +47,20 @@ public class StudentPersonalConverter extends HitsConverter<StudentPersonalType,
 
       if (StringUtils.isNotBlank(source.getMostRecentYearLevel())) {
         YearLevelType yearLevel = objectFactory.createYearLevelType();
-        yearLevel.setCode(source.getMostRecentYearLevel());
+        yearLevel.setCode(getEnumValue(source.getMostRecentYearLevel(), AUCodeSetsYearLevelCodeType.class));
         mostRecent.setYearLevel(objectFactory.createStudentMostRecentContainerTypeYearLevel(yearLevel));
       }
 
-      mostRecent.setParent1Language(objectFactory.createStudentMostRecentContainerTypeParent1Language(source.getMostRecentParent1Language()));
-      mostRecent.setParent2Language(objectFactory.createStudentMostRecentContainerTypeParent2Language(source.getMostRecentParent2Language()));
-      mostRecent.setParent1SchoolEducationLevel(objectFactory.createStudentMostRecentContainerTypeParent1SchoolEducationLevel(source.getMostRecentParent1SchoolEducation()));
-      mostRecent.setParent2SchoolEducationLevel(objectFactory.createStudentMostRecentContainerTypeParent2SchoolEducationLevel(source.getMostRecentParent2SchoolEducation()));
-      mostRecent.setParent1NonSchoolEducation(objectFactory.createStudentMostRecentContainerTypeParent1NonSchoolEducation(source.getMostRecentParent1NonSchoolEducation()));
-      mostRecent.setParent2NonSchoolEducation(objectFactory.createStudentMostRecentContainerTypeParent2NonSchoolEducation(source.getMostRecentParent2NonSchoolEducation()));
-      mostRecent.setParent1EmploymentType(objectFactory.createStudentMostRecentContainerTypeParent1EmploymentType(source.getMostRecentParent1EmploymentType()));
-      mostRecent.setParent2EmploymentType(objectFactory.createStudentMostRecentContainerTypeParent2EmploymentType(source.getMostRecentParent2EmploymentType()));
+      mostRecent.setParent1Language(
+          objectFactory.createStudentMostRecentContainerTypeParent1Language(getEnumValue(source.getMostRecentParent1Language(), AUCodeSetsAustralianStandardClassificationOfLanguagesASCLType.class)));
+      mostRecent.setParent2Language(
+          objectFactory.createStudentMostRecentContainerTypeParent2Language(getEnumValue(source.getMostRecentParent2Language(), AUCodeSetsAustralianStandardClassificationOfLanguagesASCLType.class)));
+      mostRecent.setParent1SchoolEducationLevel(objectFactory.createStudentMostRecentContainerTypeParent1SchoolEducationLevel(getEnumValue(source.getMostRecentParent1SchoolEducation(),AUCodeSetsSchoolEducationLevelTypeType.class)));
+      mostRecent.setParent2SchoolEducationLevel(objectFactory.createStudentMostRecentContainerTypeParent2SchoolEducationLevel(getEnumValue(source.getMostRecentParent2SchoolEducation(),AUCodeSetsSchoolEducationLevelTypeType.class)));
+      mostRecent.setParent1NonSchoolEducation(objectFactory.createStudentMostRecentContainerTypeParent1NonSchoolEducation(getEnumValue(source.getMostRecentParent1NonSchoolEducation(),AUCodeSetsNonSchoolEducationType.class)));
+      mostRecent.setParent2NonSchoolEducation(objectFactory.createStudentMostRecentContainerTypeParent2NonSchoolEducation(getEnumValue(source.getMostRecentParent2NonSchoolEducation(),AUCodeSetsNonSchoolEducationType.class)));
+      mostRecent.setParent1EmploymentType(objectFactory.createStudentMostRecentContainerTypeParent1EmploymentType(getEnumValue(source.getMostRecentParent1EmploymentType(),AUCodeSetsEmploymentTypeType.class)));
+      mostRecent.setParent2EmploymentType(objectFactory.createStudentMostRecentContainerTypeParent2EmploymentType(getEnumValue(source.getMostRecentParent2EmploymentType(),AUCodeSetsEmploymentTypeType.class)));
 
       // naplan
       mostRecent.setSchoolLocalId(objectFactory.createStudentMostRecentContainerTypeSchoolLocalId(source.getMostRecentSchoolLocalId()));
@@ -61,14 +70,14 @@ public class StudentPersonalConverter extends HitsConverter<StudentPersonalType,
       mostRecent.setFTE(objectFactory.createStudentMostRecentContainerTypeFTE(getBigDecimalValue(source.getMostRecentFTE())));
       mostRecent.setHomegroup(objectFactory.createStudentMostRecentContainerTypeHomegroup(source.getMostRecentHomegroup()));
       mostRecent.setClassCode(objectFactory.createStudentMostRecentContainerTypeClassCode(source.getMostRecentClassCode()));
-      mostRecent.setMembershipType(source.getMostRecentMembershipType());
+      mostRecent.setMembershipType(getEnumValue(source.getMostRecentMembershipType(),AUCodeSetsSchoolEnrollmentTypeType.class));
       mostRecent.setOtherEnrollmentSchoolACARAId(objectFactory.createStudentMostRecentContainerTypeOtherEnrollmentSchoolACARAId(source.getMostRecentOtherEnrollmentSchoolAcaraId()));
-      mostRecent.setFFPOS(objectFactory.createStudentMostRecentContainerTypeFFPOS(source.getMostRecentFFPOS()));
+      mostRecent.setFFPOS(objectFactory.createStudentMostRecentContainerTypeFFPOS(getEnumValue(source.getMostRecentFFPOS(),AUCodeSetsFFPOSStatusCodeType.class)));
       mostRecent.setReportingSchoolId(objectFactory.createStudentMostRecentContainerTypeReportingSchoolId(source.getMostRecentReportingSchool()));
 
       if (StringUtils.isNotBlank(source.getMostRecentTestLevel())) {
         YearLevelType testLevel = objectFactory.createYearLevelType();
-        testLevel.setCode(source.getMostRecentTestLevel());
+        testLevel.setCode(getEnumValue(source.getMostRecentTestLevel(), AUCodeSetsYearLevelCodeType.class));
         mostRecent.setTestLevel(objectFactory.createStudentMostRecentContainerTypeTestLevel(testLevel));
       }
 
@@ -107,17 +116,17 @@ public class StudentPersonalConverter extends HitsConverter<StudentPersonalType,
       if (mostRecent != null) {
         YearLevelType yearLevel = getJAXBValue(mostRecent.getYearLevel());
         if (yearLevel != null) {
-          target.setYearLevel(yearLevel.getCode());
-          target.setMostRecentYearLevel(yearLevel.getCode());
+          target.setYearLevel(getEnumValue(yearLevel.getCode()));
+          target.setMostRecentYearLevel(getEnumValue(yearLevel.getCode()));
         }
-        target.setMostRecentParent1Language(getJAXBValue(mostRecent.getParent1Language()));
-        target.setMostRecentParent2Language(getJAXBValue(mostRecent.getParent2Language()));
-        target.setMostRecentParent1SchoolEducation(getJAXBValue(mostRecent.getParent1SchoolEducationLevel()));
-        target.setMostRecentParent2SchoolEducation(getJAXBValue(mostRecent.getParent2SchoolEducationLevel()));
-        target.setMostRecentParent1NonSchoolEducation(getJAXBValue(mostRecent.getParent1NonSchoolEducation()));
-        target.setMostRecentParent2NonSchoolEducation(getJAXBValue(mostRecent.getParent2NonSchoolEducation()));
-        target.setMostRecentParent1EmploymentType(getJAXBValue(mostRecent.getParent1EmploymentType()));
-        target.setMostRecentParent2EmploymentType(getJAXBValue(mostRecent.getParent2EmploymentType()));
+        target.setMostRecentParent1Language(getJAXBEnumValue(mostRecent.getParent1Language()));
+        target.setMostRecentParent2Language(getJAXBEnumValue(mostRecent.getParent2Language()));
+        target.setMostRecentParent1SchoolEducation(getJAXBEnumValue(mostRecent.getParent1SchoolEducationLevel()));
+        target.setMostRecentParent2SchoolEducation(getJAXBEnumValue(mostRecent.getParent2SchoolEducationLevel()));
+        target.setMostRecentParent1NonSchoolEducation(getJAXBEnumValue(mostRecent.getParent1NonSchoolEducation()));
+        target.setMostRecentParent2NonSchoolEducation(getJAXBEnumValue(mostRecent.getParent2NonSchoolEducation()));
+        target.setMostRecentParent1EmploymentType(getJAXBEnumValue(mostRecent.getParent1EmploymentType()));
+        target.setMostRecentParent2EmploymentType(getJAXBEnumValue(mostRecent.getParent2EmploymentType()));
 
         // naplan
         target.setMostRecentSchoolLocalId(getJAXBValue(mostRecent.getSchoolLocalId()));
@@ -127,14 +136,14 @@ public class StudentPersonalConverter extends HitsConverter<StudentPersonalType,
         target.setMostRecentFTE(getBigDecimalValue(getJAXBValue(mostRecent.getFTE())));
         target.setMostRecentHomegroup(getJAXBValue(mostRecent.getHomegroup()));
         target.setMostRecentClassCode(getJAXBValue(mostRecent.getClassCode()));
-        target.setMostRecentMembershipType(mostRecent.getMembershipType());
+        target.setMostRecentMembershipType(getEnumValue(mostRecent.getMembershipType()));
         target.setMostRecentOtherEnrollmentSchoolAcaraId(getJAXBValue(mostRecent.getOtherEnrollmentSchoolACARAId()));
-        target.setMostRecentFFPOS(getJAXBValue(mostRecent.getFFPOS()));
+        target.setMostRecentFFPOS(getJAXBEnumValue(mostRecent.getFFPOS()));
         target.setMostRecentReportingSchool(getJAXBValue(mostRecent.getReportingSchoolId()));
 
         YearLevelType testLevel = getJAXBValue(mostRecent.getTestLevel());
         if (testLevel != null) {
-          target.setMostRecentTestLevel(testLevel.getCode());
+          target.setMostRecentTestLevel(getEnumValue(testLevel.getCode()));
         }
 
         target.setOfflineDelivery(getJAXBEnumValue(source.getOfflineDelivery()));

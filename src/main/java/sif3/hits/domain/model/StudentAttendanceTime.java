@@ -2,8 +2,8 @@ package sif3.hits.domain.model;
 
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -96,7 +96,7 @@ public class StudentAttendanceTime {
     this.attendanceNote = attendanceNote;
   }
 
-  @OneToMany(fetch = FetchType.LAZY, mappedBy = "studentAttendanceTimeOtherCodeId.studentAttendanceTime")
+  @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "studentAttendanceTime")
   public Set<StudentAttendanceTimeOtherCode> getOtherCodes() {
     return otherCodes;
   }

@@ -2,6 +2,9 @@ package sif3.hits.domain.model;
 
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.MapsId;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
@@ -10,6 +13,7 @@ import javax.persistence.Transient;
 public class StudentAttendanceTimeOtherCode {
 
   private StudentAttendanceTimeOtherCodeId studentAttendanceTimeOtherCodeId;
+  private StudentAttendanceTime studentAttendanceTime;
 
   @EmbeddedId
   public StudentAttendanceTimeOtherCodeId getStudentAttendanceTimeOtherCodeId() {
@@ -20,21 +24,15 @@ public class StudentAttendanceTimeOtherCode {
     this.studentAttendanceTimeOtherCodeId = studentAttendanceTimeOtherCodeId;
   }
 
-  @Transient
+  @ManyToOne(optional = false)
+  @MapsId("id")
+  @JoinColumn(name = "StudentAttendanceTimeList_AttendanceTime_id", referencedColumnName = "id")
   public StudentAttendanceTime getStudentAttendanceTime() {
-    StudentAttendanceTime result = null;
-    if (studentAttendanceTimeOtherCodeId != null) {
-      result = studentAttendanceTimeOtherCodeId.getStudentAttendanceTime();
-    }
-    return result;
+    return studentAttendanceTime;
   }
 
-  @Transient
   public void setStudentAttendanceTime(StudentAttendanceTime studentAttendanceTime) {
-    if (studentAttendanceTimeOtherCodeId == null) {
-      studentAttendanceTimeOtherCodeId = new StudentAttendanceTimeOtherCodeId();
-    }
-    this.studentAttendanceTimeOtherCodeId.setStudentAttendanceTime(studentAttendanceTime);
+    this.studentAttendanceTime = studentAttendanceTime;
   }
 
   @Transient

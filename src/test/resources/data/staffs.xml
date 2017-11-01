@@ -1,4 +1,4 @@
-<StaffPersonals xmlns="http://www.sifassociation.org/au/datamodel/3.4.1">
+<StaffPersonals xmlns="http://www.sifassociation.org/au/datamodel/3.4">
 	<StaffPersonal RefId="E9F19488026B11E3A5325DE06940ABA2">
 		<LocalId>SMIT</LocalId>
 		<PersonInfo>

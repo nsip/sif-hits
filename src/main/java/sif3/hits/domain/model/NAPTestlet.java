@@ -4,7 +4,6 @@ import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -73,7 +72,7 @@ public class NAPTestlet extends HitsEntity {
     this.locationInStage = locationInStage;
   }
 
-  @ManyToOne(cascade = CascadeType.DETACH)
+  @ManyToOne
   @JoinColumn(name = "NAPTest_RefId")
   public NAPTest getNapTest() {
     return napTest;
@@ -83,7 +82,7 @@ public class NAPTestlet extends HitsEntity {
     this.napTest = napTest;
   }
 
-  @OneToMany(fetch = FetchType.LAZY, mappedBy = "napTestlet", cascade = { CascadeType.ALL }, orphanRemoval = true)
+  @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "napTestlet")
   public Set<NAPTestletTestItem> getTestItems() {
     return testItems;
   }

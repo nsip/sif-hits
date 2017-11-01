@@ -4,11 +4,14 @@ import java.math.BigDecimal;
 import java.util.Arrays;
 import java.util.List;
 
+import javax.xml.bind.JAXBElement;
+
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.springframework.http.HttpStatus;
 
+import sif.dd.au30.model.AUCodeSetsYearLevelCodeType;
 import sif.dd.au30.model.ObjectFactory;
 import sif.dd.au30.model.OtherCodeListType;
 import sif.dd.au30.model.OtherCodeListType.OtherCode;
@@ -43,7 +46,7 @@ public class TimeTableSubjectConsumerTest extends BaseTest {
     timeTableSubject.setSchoolLocalId(objectFactory.createTimeTableSubjectTypeSchoolLocalId(SchoolInfoConsumerTest.LOCAL_ID));
     timeTableSubject.setSubjectLocalId(LOCAL_ID);
     YearLevelType yearLevel = new YearLevelType();
-    yearLevel.setCode("4");
+    yearLevel.setCode(AUCodeSetsYearLevelCodeType.fromValue("4"));
     timeTableSubject.setAcademicYear(objectFactory.createTimeTableSubjectTypeAcademicYear(yearLevel));
     timeTableSubject.setFaculty(objectFactory.createTimeTableSubjectTypeFaculty("Science"));
     timeTableSubject.setSubjectShortName(objectFactory.createTimeTableSubjectTypeSubjectShortName("Computing"));
@@ -67,6 +70,7 @@ public class TimeTableSubjectConsumerTest extends BaseTest {
     timeTableSubject.setOtherCodeList(objectFactory.createTimeTableSubjectTypeOtherCodeList(otherCodeList));
     
     timeTableSubjectTester.doCreateOne(timeTableSubject);
+    timeTableSubjectTester.doUpdateOne(timeTableSubject, REF_ID);
     String xmlExpectedTo = timeTableSubjectTester.getXML(timeTableSubject);
     
     timeTableSubject.setRefId("c390d8b1-0f1f-4f23-aec1-880401248512");
@@ -135,7 +139,7 @@ public class TimeTableSubjectConsumerTest extends BaseTest {
     List<Response> updateResponses = timeTableSubjectTester.doUpdateOne(timeTableSubject, REF_ID);
     Assert.assertNotNull(updateResponses);
     Assert.assertEquals(1, updateResponses.size());
-    Assert.assertEquals(updateResponses.get(0).getStatus(), HttpStatus.NO_CONTENT.value());
+    Assert.assertEquals(HttpStatus.NO_CONTENT.value(), updateResponses.get(0).getStatus());
 
     List<Response> getResponses = timeTableSubjectTester.testGetSingle(REF_ID);
     Assert.assertNotNull(getResponses);
@@ -152,6 +156,55 @@ public class TimeTableSubjectConsumerTest extends BaseTest {
       System.out.println("\nTo:\n" + xmlExpectedTo);
       Assert.assertEquals("XML Differs", xmlExpectedFrom, xmlExpectedTo);
     }
+  }
+  
+  @Test
+  public void testUpdateSingleOtherCodes() throws Exception {
+    List<Response> responses = timeTableSubjectTester.testGetSingle(REF_ID);
+    Assert.assertNotNull(responses);
+    Assert.assertEquals(1, responses.size());
+    Response response = responses.get(0);
+    Assert.assertNotNull(response.getDataObject());
+    TimeTableSubjectType timeTableSubject = (TimeTableSubjectType) response.getDataObject();
+    Assert.assertEquals(REF_ID, timeTableSubject.getRefId());
+    Assert.assertEquals(2, timeTableSubject.getOtherCodeList().getValue().getOtherCode().size());
+    
+    JAXBElement<OtherCodeListType> otherCodes = timeTableSubject.getOtherCodeList();
+    timeTableSubject.setOtherCodeList(null);
+    timeTableSubjectTester.doUpdateOne(timeTableSubject, timeTableSubject.getRefId());
+    
+    responses = timeTableSubjectTester.testGetSingle(REF_ID);
+    Assert.assertNotNull(responses);
+    Assert.assertEquals(1, responses.size());
+    response = responses.get(0);
+    Assert.assertNotNull(response.getDataObject());
+    timeTableSubject = (TimeTableSubjectType) response.getDataObject();
+    Assert.assertEquals(REF_ID, timeTableSubject.getRefId());
+    Assert.assertNull(timeTableSubject.getOtherCodeList());
+    
+    timeTableSubject.setOtherCodeList(otherCodes);
+    timeTableSubjectTester.doUpdateOne(timeTableSubject, timeTableSubject.getRefId());
+    
+    responses = timeTableSubjectTester.testGetSingle(REF_ID);
+    Assert.assertNotNull(responses);
+    Assert.assertEquals(1, responses.size());
+    response = responses.get(0);
+    Assert.assertNotNull(response.getDataObject());
+    timeTableSubject = (TimeTableSubjectType) response.getDataObject();
+    Assert.assertEquals(REF_ID, timeTableSubject.getRefId());
+    Assert.assertEquals(2, timeTableSubject.getOtherCodeList().getValue().getOtherCode().size());
+    
+    timeTableSubject.setOtherCodeList(otherCodes);
+    timeTableSubjectTester.doUpdateOne(timeTableSubject, timeTableSubject.getRefId());
+    
+    responses = timeTableSubjectTester.testGetSingle(REF_ID);
+    Assert.assertNotNull(responses);
+    Assert.assertEquals(1, responses.size());
+    response = responses.get(0);
+    Assert.assertNotNull(response.getDataObject());
+    timeTableSubject = (TimeTableSubjectType) response.getDataObject();
+    Assert.assertEquals(REF_ID, timeTableSubject.getRefId());
+    Assert.assertEquals(2, timeTableSubject.getOtherCodeList().getValue().getOtherCode().size());
   }
   
   

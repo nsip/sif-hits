@@ -3,6 +3,8 @@ package sif3.hits.domain.converter;
 import org.springframework.stereotype.Component;
 
 import sif.dd.au30.model.AUCodeSetsEnrollmentTimeFrameType;
+import sif.dd.au30.model.AUCodeSetsSchoolEnrollmentTypeType;
+import sif.dd.au30.model.AUCodeSetsYearLevelCodeType;
 import sif.dd.au30.model.AUCodeSetsYesOrNoCategoryType;
 import sif.dd.au30.model.StudentSchoolEnrollmentType;
 import sif.dd.au30.model.YearLevelType;
@@ -23,14 +25,14 @@ public class StudentSchoolEnrollmentConverter extends HitsConverter<StudentSchoo
       target.setRefId(source.getRefId());
       target.setSchoolInfoRefId(source.getSchoolInfoRefId());
       target.setStudentPersonalRefId(source.getStudentPersonalRefId());
-      target.setMembershipType(source.getMembershipType());
+      target.setMembershipType(getEnumValue(source.getMembershipType(), AUCodeSetsSchoolEnrollmentTypeType.class));
       target.setSchoolYear(getYearValue(source.getSchoolYear()));
 
       AUCodeSetsEnrollmentTimeFrameType timeFrame = getEnumValue(source.getTimeFrame(), AUCodeSetsEnrollmentTimeFrameType.class);
       target.setTimeFrame(timeFrame);
 
       YearLevelType yearLevel = new YearLevelType();
-      yearLevel.setCode(source.getYearLevel());
+      yearLevel.setCode(getEnumValue(source.getYearLevel(), AUCodeSetsYearLevelCodeType.class));
       target.setYearLevel(objectFactory.createStudentSchoolEnrollmentTypeYearLevel(yearLevel));
 
       target.setFTE(objectFactory.createStudentSchoolEnrollmentTypeFTE(getBigDecimalValue(source.getFte())));
@@ -48,13 +50,13 @@ public class StudentSchoolEnrollmentConverter extends HitsConverter<StudentSchoo
     target.setRefId(source.getRefId());
     target.setSchoolInfoRefId(source.getSchoolInfoRefId());
     target.setStudentPersonalRefId(source.getStudentPersonalRefId());
-    target.setMembershipType(source.getMembershipType());
+    target.setMembershipType(getEnumValue(source.getMembershipType()));
     target.setSchoolYear(getYearValue(source.getSchoolYear()));
     target.setTimeFrame(getEnumValue(source.getTimeFrame()));
 
     YearLevelType yearLevel = getJAXBValue(source.getYearLevel());
     if (yearLevel != null) {
-      target.setYearLevel(yearLevel.getCode());
+      target.setYearLevel(getEnumValue(yearLevel.getCode()));
     }
 
     target.setFte(getBigDecimalValue(getJAXBValue(source.getFTE())));

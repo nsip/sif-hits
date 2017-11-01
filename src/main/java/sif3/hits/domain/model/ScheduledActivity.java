@@ -7,7 +7,6 @@ import javax.persistence.CollectionTable;
 import javax.persistence.Column;
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
@@ -221,7 +220,7 @@ public class ScheduledActivity extends HitsEntity {
     this.teachingGroupRefIds = teachingGroupRefIds;
   }
 
-  @OneToMany(fetch = FetchType.LAZY, mappedBy = "scheduledActivityTeacherId.scheduledActivity", cascade = CascadeType.ALL, orphanRemoval = true)
+  @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "scheduledActivityTeacherId.scheduledActivity")
   public Set<ScheduledActivityTeacher> getTeachers() {
     return teachers;
   }

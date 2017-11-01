@@ -36,7 +36,7 @@ public class TimeTableSubjectService extends BaseService<TimeTableSubjectType, T
 
   @Autowired
   private TimeTableSubjectOtherCodeDAO timeTableSubjectOtherCodeDAO;
-  
+
   @Autowired
   private SchoolInfoFilterDAO schoolInfoFilterDAO;
 
@@ -58,42 +58,31 @@ public class TimeTableSubjectService extends BaseService<TimeTableSubjectType, T
   protected JpaRepository<TimeTableSubject, String> getDAO() {
     return timeTableSubjectDAO;
   }
-  
+
   @Override
   protected FilterableRepository<TimeTableSubject> getFilterableDAO() {
     return timeTableSubjectFilterDAO;
   }
-  
-  @Override
-  protected void deleteChildObjects(TimeTableSubject hitsObject) {
-    timeTableSubjectOtherCodeDAO.deleteAllWithTimeTableSubject(hitsObject);
-  }
 
   @Override
-  protected boolean hasChildObjects(TimeTableSubject hitsObject) {
-    return true;
-  }
-  
-  @Override
-  protected TimeTableSubject saveWithChildObjects(TimeTableSubject hitsObject, RequestDTO<TimeTableSubjectType> dto, String zoneId, boolean create) {
-    TimeTableSubject result = null;
-    hitsObject.setSchoolInfo(getSchoolInfo(hitsObject.getSchoolInfo(), zoneId));
-    if (hitsObject.getOtherCodes() != null && hitsObject.getOtherCodes().size() > 0) {
-      Set<TimeTableSubjectOtherCode> otherCodes = new HashSet<TimeTableSubjectOtherCode>();
-      otherCodes.addAll(hitsObject.getOtherCodes());
-      hitsObject.getOtherCodes().clear();
-      result = super.saveWithChildObjects(hitsObject, dto, zoneId, create);
-      for (TimeTableSubjectOtherCode otherCode : otherCodes) {
-        otherCode.setTimeTableSubject(hitsObject);
-        timeTableSubjectOtherCodeDAO.save(otherCode);
+  protected TimeTableSubject preSave(TimeTableSubject hitsObject, RequestDTO<TimeTableSubjectType> dto, String zoneId, boolean create) {
+    Set<TimeTableSubjectOtherCode> otherCodes = new HashSet<>();
+    if (hitsObject != null && hitsObject.getOtherCodes() != null) {
+      for (TimeTableSubjectOtherCode otherCode : hitsObject.getOtherCodes()) {
+        TimeTableSubjectOtherCode existing = timeTableSubjectOtherCodeDAO.findOne(otherCode.getTimeTableSubjectOtherCodeId());
+        if (existing != null) {
+          otherCodes.add(existing);
+        } else {
+          otherCodes.add(otherCode);
+        }
       }
-      result.setOtherCodes(otherCodes);
-    } else {
-      result = super.saveWithChildObjects(hitsObject, dto, zoneId, create);
+      hitsObject.getOtherCodes().clear();
+      hitsObject.getOtherCodes().addAll(otherCodes);
     }
-    return result;
+    hitsObject.setSchoolInfo(getSchoolInfo(hitsObject.getSchoolInfo(), zoneId));
+    return hitsObject;
   }
-  
+
   private SchoolInfo getSchoolInfo(SchoolInfo schoolInfo, String zoneId) {
     SchoolInfo result = null;
     if (schoolInfo != null) {

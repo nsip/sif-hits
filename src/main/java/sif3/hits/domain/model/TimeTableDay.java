@@ -4,65 +4,51 @@ import java.io.Serializable;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
-import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import javax.persistence.Transient;
 
 @Entity
 @Table(name = "TimeTable_Day")
 public class TimeTableDay implements Serializable {
   private static final long serialVersionUID = -6305870667354354202L;
 
-  @EmbeddedId
-  private TimeTableDayId timeTableDayId;
+  private Long id;
+  private TimeTable timeTable;
+  private String dayId;
   private String dayTitle;
-
-  @OneToMany(fetch = FetchType.LAZY, mappedBy = "timeTablePeriodId.timeTableDay", cascade = CascadeType.ALL, orphanRemoval = true)
   private Set<TimeTablePeriod> periods;
 
-  public TimeTableDayId getTimeTableDayId() {
-    return timeTableDayId;
+  @Id
+  @GeneratedValue
+  public Long getId() {
+    return id;
   }
 
-  public void setTimeTableDayId(TimeTableDayId timeTableDayId) {
-    this.timeTableDayId = timeTableDayId;
+  public void setId(Long id) {
+    this.id = id;
   }
 
-  @Transient
+  @ManyToOne(optional = false)
+  @JoinColumn(name = "TimeTable_RefId")
   public TimeTable getTimeTable() {
-    TimeTable result = null;
-    if (timeTableDayId != null) {
-      result = timeTableDayId.getTimeTable();
-    }
-    return result;
+    return timeTable;
   }
 
-  @Transient
   public void setTimeTable(TimeTable timeTable) {
-    if (timeTableDayId == null) {
-      timeTableDayId = new TimeTableDayId();
-    }
-    this.timeTableDayId.setTimeTable(timeTable);
+    this.timeTable = timeTable;
   }
 
-  @Transient
   public String getDayId() {
-    String result = null;
-    if (timeTableDayId != null) {
-      result = timeTableDayId.getDayId();
-    }
-    return result;
+    return dayId;
   }
 
-  @Transient
   public void setDayId(String dayId) {
-    if (timeTableDayId == null) {
-      timeTableDayId = new TimeTableDayId();
-    }
-    this.timeTableDayId.setDayId(dayId);
+    this.dayId = dayId;
   }
 
   public String getDayTitle() {
@@ -73,6 +59,7 @@ public class TimeTableDay implements Serializable {
     this.dayTitle = dayTitle;
   }
 
+  @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "timeTableDay")
   public Set<TimeTablePeriod> getPeriods() {
     return periods;
   }

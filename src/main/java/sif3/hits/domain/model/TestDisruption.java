@@ -1,7 +1,6 @@
 package sif3.hits.domain.model;
 
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
@@ -28,7 +27,7 @@ public class TestDisruption extends HitsEntity {
     this.id = id;
   }
 
-  @ManyToOne(optional = false, fetch = FetchType.LAZY)
+  @ManyToOne(optional = false)
   @JoinColumn(name = "NAPEventStudentLink_RefId")
   public NAPEventStudentLink getNapEventStudentLink() {
     return napEventStudentLink;

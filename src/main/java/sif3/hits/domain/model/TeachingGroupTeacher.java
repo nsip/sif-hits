@@ -1,5 +1,7 @@
 package sif3.hits.domain.model;
 
+
+
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 import javax.persistence.Table;
@@ -8,10 +10,11 @@ import javax.persistence.Transient;
 @Entity
 @Table(name = "TeachingGroup_Teacher")
 public class TeachingGroupTeacher {
-  @EmbeddedId
+
   private TeachingGroupTeacherId teachingGroupTeacherId;
   private String teacherAssociation;
 
+  @EmbeddedId
   public TeachingGroupTeacherId getTeachingGroupTeacherId() {
     return teachingGroupTeacherId;
   }
@@ -28,6 +31,7 @@ public class TeachingGroupTeacher {
     this.teacherAssociation = teacherAssociation;
   }
 
+
   @Transient
   public TeachingGroup getTeachingGroup() {
     TeachingGroup result = null;
@@ -36,7 +40,7 @@ public class TeachingGroupTeacher {
     }
     return result;
   }
-
+  
   @Transient
   public void setTeachingGroup(TeachingGroup teachingGroup) {
     if (teachingGroupTeacherId == null) {
@@ -53,7 +57,7 @@ public class TeachingGroupTeacher {
     }
     return result;
   }
-
+  
   @Transient
   public void setStaffPersonal(StaffPersonal staffPersonal) {
     if (teachingGroupTeacherId == null) {
@@ -61,5 +65,7 @@ public class TeachingGroupTeacher {
     }
     teachingGroupTeacherId.setStaffPersonal(staffPersonal);
   }
+
+
 
 }

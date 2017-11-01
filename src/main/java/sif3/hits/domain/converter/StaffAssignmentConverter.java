@@ -2,6 +2,7 @@ package sif3.hits.domain.converter;
 
 import org.springframework.stereotype.Component;
 
+import sif.dd.au30.model.AUCodeSetsStaffActivityType;
 import sif.dd.au30.model.AUCodeSetsYesOrNoCategoryType;
 import sif.dd.au30.model.StaffActivityExtensionType;
 import sif.dd.au30.model.StaffAssignmentType;
@@ -33,7 +34,7 @@ public class StaffAssignmentConverter extends HitsConverter<StaffAssignmentType,
       target.setJobFunction(objectFactory.createStaffAssignmentTypeJobFunction(source.getJobFunction()));
 
       StaffActivityExtensionType staffActivity = objectFactory.createStaffActivityExtensionType();
-      staffActivity.setCode(source.getStaffActivityCode());
+      staffActivity.setCode(getEnumValue(source.getStaffActivityCode(),AUCodeSetsStaffActivityType.class));
       target.setStaffActivity(objectFactory.createStaffAssignmentTypeStaffActivity(staffActivity));
     }
   }
@@ -54,7 +55,7 @@ public class StaffAssignmentConverter extends HitsConverter<StaffAssignmentType,
 
       StaffActivityExtensionType staffActivity = getJAXBValue(source.getStaffActivity());
       if (staffActivity != null) {
-        target.setStaffActivityCode(staffActivity.getCode());
+        target.setStaffActivityCode(getEnumValue(staffActivity.getCode()));
       }
     }
   }

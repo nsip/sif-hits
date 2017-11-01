@@ -8,6 +8,12 @@ import org.junit.Before;
 import org.junit.Test;
 import org.springframework.http.HttpStatus;
 
+import sif.dd.au30.model.AUCodeSetsEmailTypeType;
+import sif.dd.au30.model.AUCodeSetsEmploymentTypeType;
+import sif.dd.au30.model.AUCodeSetsNonSchoolEducationType;
+import sif.dd.au30.model.AUCodeSetsSchoolEducationLevelTypeType;
+import sif.dd.au30.model.AUCodeSetsSexCodeType;
+import sif.dd.au30.model.AUCodeSetsTelephoneNumberTypeType;
 import sif.dd.au30.model.AddressListType;
 import sif.dd.au30.model.DemographicsType;
 import sif.dd.au30.model.EmailListType;
@@ -19,8 +25,6 @@ import sif.dd.au30.model.PhoneNumberListType;
 import sif.dd.au30.model.PhoneNumberType;
 import sif.dd.au30.model.StudentContactPersonalCollectionType;
 import sif.dd.au30.model.StudentContactPersonalType;
-import sif.dd.au30.model.StudentPersonalCollectionType;
-import sif.dd.au30.model.StudentPersonalType;
 import sif3.common.model.QueryCriteria;
 import sif3.common.model.QueryOperator;
 import sif3.common.model.QueryPredicate;
@@ -52,11 +56,10 @@ public class StudentContactPersonalConsumerTest extends BaseTest {
 
     StudentContactPersonalType studentContactPersonal = new StudentContactPersonalType();
     studentContactPersonal.setRefId(StudentContactPersonalRefIds.REF_ID_1);
-    studentContactPersonal.setEmploymentType(objectFactory.createStudentContactPersonalTypeEmploymentType("1"));
+    studentContactPersonal.setEmploymentType(objectFactory.createStudentContactPersonalTypeEmploymentType(AUCodeSetsEmploymentTypeType.fromValue("1")));
     studentContactPersonal.setLocalId(objectFactory.createStudentContactPersonalTypeLocalId("LocalId"));
-    studentContactPersonal.setNonSchoolEducation(objectFactory.createStudentContactPersonalTypeNonSchoolEducation("7"));
-    studentContactPersonal
-        .setSchoolEducationalLevel(objectFactory.createStudentContactPersonalTypeSchoolEducationalLevel("4"));
+    studentContactPersonal.setNonSchoolEducation(objectFactory.createStudentContactPersonalTypeNonSchoolEducation(AUCodeSetsNonSchoolEducationType.fromValue("7")));
+    studentContactPersonal.setSchoolEducationalLevel(objectFactory.createStudentContactPersonalTypeSchoolEducationalLevel(AUCodeSetsSchoolEducationLevelTypeType.fromValue("4")));
 
     PersonInfoType personInfo = new PersonInfoType();
 
@@ -71,26 +74,25 @@ public class StudentContactPersonalConsumerTest extends BaseTest {
     personInfo.setName(nameOfRecord);
 
     DemographicsType demographics = new DemographicsType();
-    demographics.setSex(objectFactory.createDemographicsTypeSex("1"));
+    demographics.setSex(objectFactory.createDemographicsTypeSex(AUCodeSetsSexCodeType.fromValue("1")));
     personInfo.setDemographics(objectFactory.createPersonInfoTypeDemographics(demographics));
-    
+
     PhoneNumberListType phoneNumberList = new PhoneNumberListType();
     PhoneNumberType phoneNumber = new PhoneNumberType();
-    phoneNumber.setType("0096");
+    phoneNumber.setType(AUCodeSetsTelephoneNumberTypeType.fromValue("0096"));
     phoneNumber.setNumber("+61400000000");
     phoneNumberList.getPhoneNumber().add(phoneNumber);
     personInfo.setPhoneNumberList(objectFactory.createPersonInfoTypePhoneNumberList(phoneNumberList));
 
     EmailListType emailList = new EmailListType();
     EmailType email = new EmailType();
-    email.setType("06"); // AUCodeSetsEmailTypeType.WORK
+    email.setType(AUCodeSetsEmailTypeType.fromValue("06")); // AUCodeSetsEmailTypeType.WORK
     email.setValue("the.email@not.a.real.domain");
     emailList.getEmail().add(email);
     personInfo.setEmailList(objectFactory.createPersonInfoTypeEmailList(emailList));
 
     AddressListType addresses = objectFactory.createAddressListType();
-    addresses.getAddress()
-        .add(StudentPersonalRefIds.getAddress(objectFactory, "123 Address Line One", "Address Line Two"));
+    addresses.getAddress().add(StudentPersonalRefIds.getAddress(objectFactory, "123 Address Line One", "Address Line Two"));
     addresses.getAddress().add(StudentPersonalRefIds.getAddress(objectFactory, "234 Address Line One", null));
     personInfo.setAddressList(objectFactory.createPersonInfoTypeAddressList(addresses));
 
@@ -121,12 +123,11 @@ public class StudentContactPersonalConsumerTest extends BaseTest {
   @Before
   public void setup() {
     ConsumerLoader.initialise("TestConsumer");
-    studentTester = new ConsumerTest<StudentContactPersonalType, StudentContactPersonalCollectionType>(
-        StudentContactPersonalType.class, "StudentContactPersonal", StudentContactPersonalCollectionType.class,
-        "StudentContactPersonals");
+    studentTester = new ConsumerTest<StudentContactPersonalType, StudentContactPersonalCollectionType>(StudentContactPersonalType.class, "StudentContactPersonal",
+        StudentContactPersonalCollectionType.class, "StudentContactPersonals");
     studentTester.testDeleteMany(REF_IDS);
   }
-  
+
   @Test
   public void testUpdateSingle() throws Exception {
     List<Response> responses = studentTester.testGetSingle(StudentContactPersonalRefIds.REF_ID_1);
@@ -228,7 +229,6 @@ public class StudentContactPersonalConsumerTest extends BaseTest {
       Assert.assertEquals(HttpStatus.OK.value(), operationStatus.getStatus());
     }
   }
-  
 
   @Test
   public void testServicePathStudentPersonal() {

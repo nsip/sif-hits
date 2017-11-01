@@ -194,7 +194,7 @@ public class NAPTestItem extends HitsEntity {
     this.writingGenre = writingGenre;
   }
 
-  @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "testItem", orphanRemoval = true)
+  @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "testItem" )
   public Set<Stimulus> getStimulusList() {
     return stimulusList;
   }
@@ -214,7 +214,7 @@ public class NAPTestItem extends HitsEntity {
     this.contentDescriptionList = contentDescriptionList;
   }
 
-  @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "napTestItem", orphanRemoval = true)
+  @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "napTestItem")
   public Set<NAPWritingRubric> getWritingRubricList() {
     return writingRubricList;
   }
@@ -223,7 +223,7 @@ public class NAPTestItem extends HitsEntity {
     this.writingRubricList = writingRubricList;
   }
   
-  @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "napTestItem", orphanRemoval = true)
+  @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "napTestItem")
   public Set<SubstituteItem> getItemSubstitutedForList() {
     return itemSubstitutedForList;
   }

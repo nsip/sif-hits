@@ -1,6 +1,5 @@
 package sif3.hits.domain.model;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -28,7 +27,7 @@ public class NAPTestletTestItem {
     this.id = id;
   }
 
-  @ManyToOne(cascade = CascadeType.DETACH)
+  @ManyToOne
   @JoinColumn(name = "NAPTestlet_RefId")
   public NAPTestlet getNapTestlet() {
     return napTestlet;
@@ -38,7 +37,7 @@ public class NAPTestletTestItem {
     this.napTestlet = napTestlet;
   }
 
-  @ManyToOne(cascade = CascadeType.DETACH)
+  @ManyToOne
   @JoinColumn(name = "NAPTestItem_RefId")
   public NAPTestItem getNapTestItem() {
     return napTestItem;

@@ -10,6 +10,7 @@ import org.springframework.http.HttpStatus;
 
 import sif.dd.au30.model.AUCodeSetsNAPTestDomainType;
 import sif.dd.au30.model.AUCodeSetsNAPTestTypeType;
+import sif.dd.au30.model.AUCodeSetsYearLevelCodeType;
 import sif.dd.au30.model.NAPTestCollectionType;
 import sif.dd.au30.model.NAPTestContentType;
 import sif.dd.au30.model.NAPTestType;
@@ -54,7 +55,7 @@ public class NAPTestConsumerTest extends BaseTest {
     napTestContent.setNAPTestLocalId(NAPTestRefIds.LOCAL_ID_1);
     napTestContent.setTestName("NAPLAN Reading Yr 3, 2015");
     YearLevelType yearLevel = objectFactory.createYearLevelType();
-    yearLevel.setCode("3");
+    yearLevel.setCode(AUCodeSetsYearLevelCodeType.fromValue("3"));
     napTestContent.setTestLevel(yearLevel);
     napTestContent.setTestType(AUCodeSetsNAPTestTypeType.NORMAL);
     napTestContent.setDomain(AUCodeSetsNAPTestDomainType.READING);
@@ -67,7 +68,7 @@ public class NAPTestConsumerTest extends BaseTest {
     napTestType.setRefId(NAPTestRefIds.REF_ID_2);
     napTestContent.setNAPTestLocalId(NAPTestRefIds.LOCAL_ID_2);
     napTestContent.setTestName("NAPLAN Reading Yr 5, 2015");
-    yearLevel.setCode("5");
+    yearLevel.setCode(AUCodeSetsYearLevelCodeType.fromValue("5"));
     napTestContent.setTestType(AUCodeSetsNAPTestTypeType.NORMAL);
     napTestContent.setDomain(AUCodeSetsNAPTestDomainType.READING);
     napTestContent.setTestYear(getDate("2015"));
@@ -76,7 +77,7 @@ public class NAPTestConsumerTest extends BaseTest {
     napTestType.setRefId(NAPTestRefIds.REF_ID_3);
     napTestContent.setNAPTestLocalId(NAPTestRefIds.LOCAL_ID_3);
     napTestContent.setTestName("NAPLAN Reading Yr 7, 2015");
-    yearLevel.setCode("7");
+    yearLevel.setCode(AUCodeSetsYearLevelCodeType.fromValue("7"));
     napTestContent.setTestType(AUCodeSetsNAPTestTypeType.NORMAL);
     napTestContent.setDomain(AUCodeSetsNAPTestDomainType.READING);
     napTestContent.setTestYear(getDate("2015"));
@@ -85,7 +86,7 @@ public class NAPTestConsumerTest extends BaseTest {
     napTestType.setRefId(NAPTestRefIds.REF_ID_4);
     napTestContent.setNAPTestLocalId(NAPTestRefIds.LOCAL_ID_4);
     napTestContent.setTestName("NAPLAN Reading Yr 9, 2015");
-    yearLevel.setCode("9");
+    yearLevel.setCode(AUCodeSetsYearLevelCodeType.fromValue("9"));
     napTestContent.setTestType(AUCodeSetsNAPTestTypeType.NORMAL);
     napTestContent.setDomain(AUCodeSetsNAPTestDomainType.READING);
     napTestContent.setTestYear(getDate("2015"));
@@ -94,7 +95,7 @@ public class NAPTestConsumerTest extends BaseTest {
     napTestType.setRefId(NAPTestRefIds.REF_ID_5);
     napTestContent.setNAPTestLocalId(NAPTestRefIds.LOCAL_ID_5);
     napTestContent.setTestName("NAPLAN Numeracy Yr 3, 2015");
-    yearLevel.setCode("3");
+    yearLevel.setCode(AUCodeSetsYearLevelCodeType.fromValue("3"));
     napTestContent.setTestLevel(yearLevel);
     napTestContent.setTestType(AUCodeSetsNAPTestTypeType.NORMAL);
     napTestContent.setDomain(AUCodeSetsNAPTestDomainType.NUMERACY);

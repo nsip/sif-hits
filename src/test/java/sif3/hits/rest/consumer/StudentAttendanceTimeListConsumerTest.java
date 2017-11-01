@@ -10,6 +10,8 @@ import org.junit.Before;
 import org.junit.Test;
 import org.springframework.http.HttpStatus;
 
+import sif.dd.au30.model.AUCodeSetsAttendanceCodeType;
+import sif.dd.au30.model.AUCodeSetsAttendanceStatusType;
 import sif.dd.au30.model.AttendanceCodeType;
 import sif.dd.au30.model.AttendanceTimeType;
 import sif.dd.au30.model.AttendanceTimesType;
@@ -42,13 +44,13 @@ public class StudentAttendanceTimeListConsumerTest extends BaseTest {
     if (StringUtils.isNotBlank(note)) {
       attendanceTime.setAttendanceNote(objectFactory.createAttendanceTimeTypeAttendanceNote(note));
     }
-    attendanceTime.setAttendanceStatus(status);
+    attendanceTime.setAttendanceStatus(AUCodeSetsAttendanceStatusType.fromValue(status));
     attendanceTime.setStartTime(getDate(startTime));
     attendanceTime.setEndTime(getDate(endTime));
 
     AttendanceCodeType attendanceCodeType = new AttendanceCodeType();
     attendanceTime.setAttendanceCode(attendanceCodeType);
-    attendanceCodeType.setCode(code);
+    attendanceCodeType.setCode(AUCodeSetsAttendanceCodeType.fromValue(code));
     if (otherCodes != null && otherCodes.length > 1) {
       OtherCodeListType otherCodeListType = new OtherCodeListType();
       for (int i = 0; i < otherCodes.length; i += 2) {
@@ -169,6 +171,48 @@ public class StudentAttendanceTimeListConsumerTest extends BaseTest {
     Assert.assertEquals(5, studentAttendanceTimeLists.getStudentAttendanceTimeList().size());
   }
 
+  @Test
+  public void testCreateConstraintError() {
+    List<Response> responses = studentAttendanceTimeListTester.testGetSingle(REF_ID);
+    Assert.assertNotNull(responses);
+    Assert.assertEquals(1, responses.size());
+    Response response = responses.get(0);
+    Assert.assertNotNull(response.getDataObject());
+    StudentAttendanceTimeListType studentAttendanceTimeList = (StudentAttendanceTimeListType) response.getDataObject();
+    Assert.assertEquals(REF_ID, studentAttendanceTimeList.getRefId());
+
+    studentAttendanceTimeList.setRefId(REF_ID_1);
+    studentAttendanceTimeList.setStudentPersonalRefId("xxx");
+    responses = studentAttendanceTimeListTester.doCreateOne(studentAttendanceTimeList);
+    Assert.assertNotNull(responses);
+    Assert.assertEquals(1, responses.size());
+    Response updateResponse = responses.get(0);
+    Assert.assertNull(updateResponse.getDataObject());
+    Assert.assertEquals(HttpStatus.INTERNAL_SERVER_ERROR.value(), updateResponse.getStatus());
+    Assert.assertTrue(updateResponse.getError().getMessage().contains("Cannot create object because we are unable to find referenced child objects"));
+  }
+
+  @Test
+  public void testUpdateConstraintError() throws Exception {
+    List<Response> responses = studentAttendanceTimeListTester.testGetSingle(REF_ID);
+    Assert.assertNotNull(responses);
+    Assert.assertEquals(1, responses.size());
+    Response response = responses.get(0);
+    Assert.assertNotNull(response.getDataObject());
+    StudentAttendanceTimeListType studentAttendanceTimeList = (StudentAttendanceTimeListType) response.getDataObject();
+    Assert.assertEquals(REF_ID, studentAttendanceTimeList.getRefId());
+
+    studentAttendanceTimeList.setStudentPersonalRefId("xxx");
+    responses = studentAttendanceTimeListTester.doUpdateOne(studentAttendanceTimeList, REF_ID);
+    Assert.assertNotNull(responses);
+    Assert.assertEquals(1, responses.size());
+    Response updateResponse = responses.get(0);
+    Assert.assertNull(updateResponse.getDataObject());
+    Assert.assertEquals(HttpStatus.INTERNAL_SERVER_ERROR.value(), updateResponse.getStatus());
+    Assert.assertTrue(updateResponse.getError().getMessage().contains("Cannot update object because we are unable to find referenced child objects"));
+  }
+
+  
   @Test
   public void testCreateDelete() {
     List<Response> createResponses = studentAttendanceTimeListTester.testCreateOne("studentattendancetimelist.xml");

@@ -8,6 +8,7 @@ import org.springframework.stereotype.Component;
 
 import sif.dd.au30.model.AUCodeSetsOperationalStatusType;
 import sif.dd.au30.model.AUCodeSetsSchoolLevelType;
+import sif.dd.au30.model.AUCodeSetsSchoolLocationType;
 import sif.dd.au30.model.AUCodeSetsSchoolSectorCodeType;
 import sif.dd.au30.model.AUCodeSetsYesOrNoCategoryType;
 import sif.dd.au30.model.AddressListType;
@@ -65,7 +66,7 @@ public class SchoolInfoConverter extends HitsConverter<SchoolInfoType, SchoolInf
       addressList.getAddress().add(address);
       target.setAddressList(objFactory.createSchoolInfoTypeAddressList(addressList));
 
-      target.setSchoolGeographicLocation(objFactory.createSchoolInfoTypeSchoolGeographicLocation(source.getAddressGeographicLocation()));
+      target.setSchoolGeographicLocation(objFactory.createSchoolInfoTypeSchoolGeographicLocation(getEnumValue(source.getAddressGeographicLocation(), AUCodeSetsSchoolLocationType.class)));
 
       BigDecimal aria = getBigDecimalValue(source.getAddressARIA());
       target.setARIA(objFactory.createSchoolInfoTypeARIA(aria));
@@ -120,7 +121,7 @@ public class SchoolInfoConverter extends HitsConverter<SchoolInfoType, SchoolInf
         }
       }
 
-      target.setAddressGeographicLocation(getJAXBValue(source.getSchoolGeographicLocation()));
+      target.setAddressGeographicLocation(getJAXBEnumValue(source.getSchoolGeographicLocation()));
 
       target.setAddressARIA(getBigDecimalValue(getJAXBValue(source.getARIA())));
       target.setEntityOpen(getDateValue(getJAXBValue(source.getEntityOpen())));

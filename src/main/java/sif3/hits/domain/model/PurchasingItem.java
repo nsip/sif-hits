@@ -2,7 +2,6 @@ package sif3.hits.domain.model;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
@@ -85,7 +84,7 @@ public class PurchasingItem extends HitsEntity {
     this.quantityDelivered = quantityDelivered;
   }
 
-  @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
+  @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
   @PrimaryKeyJoinColumn
   public ExpenseAccount getExpenseAccount() {
     return expenseAccount;

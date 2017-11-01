@@ -10,9 +10,9 @@ import javax.persistence.Transient;
 public class TimeTableSubjectOtherCode extends HitsEntity {
   private static final long serialVersionUID = 1161008894259012408L;
 
-  @EmbeddedId
   private TimeTableSubjectOtherCodeId timeTableSubjectOtherCodeId;
 
+  @EmbeddedId
   public TimeTableSubjectOtherCodeId getTimeTableSubjectOtherCodeId() {
     return timeTableSubjectOtherCodeId;
   }
@@ -71,4 +71,5 @@ public class TimeTableSubjectOtherCode extends HitsEntity {
     }
     this.timeTableSubjectOtherCodeId.setCodeSet(codeSet);
   }
+
 }

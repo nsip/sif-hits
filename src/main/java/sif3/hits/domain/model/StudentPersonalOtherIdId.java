@@ -3,7 +3,6 @@ package sif3.hits.domain.model;
 import java.io.Serializable;
 
 import javax.persistence.Embeddable;
-import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
@@ -11,7 +10,7 @@ import javax.persistence.ManyToOne;
 public class StudentPersonalOtherIdId implements Serializable {
   private static final long serialVersionUID = 8116304826135644138L;
 
-  @ManyToOne(optional = false, fetch = FetchType.LAZY)
+  @ManyToOne(optional = false)
   @JoinColumn(name = "StudentPersonal_RefId", referencedColumnName = "RefId")
   private StudentPersonal studentPersonal;
   private String otherId;

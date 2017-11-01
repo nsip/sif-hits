@@ -9,6 +9,8 @@ import org.junit.Before;
 import org.junit.Test;
 import org.springframework.http.HttpStatus;
 
+import sif.dd.au30.model.AUCodeSetsAttendanceCodeType;
+import sif.dd.au30.model.AUCodeSetsAttendanceStatusType;
 import sif.dd.au30.model.AttendanceCodeType;
 import sif.dd.au30.model.AuditInfoType;
 import sif.dd.au30.model.CreationUserType;
@@ -44,9 +46,9 @@ public class StudentPeriodAttendanceConsumerTest extends BaseTest {
     studentPeriodAttendance.setTimeIn(objectFactory.createStudentPeriodAttendanceTypeTimeIn(getDate("09:00:00")));
     studentPeriodAttendance.setTimeOut(objectFactory.createStudentPeriodAttendanceTypeTimeOut(getDate("15:30:00")));
     AttendanceCodeType attendanceCode = new AttendanceCodeType();
-    attendanceCode.setCode("802");
+    attendanceCode.setCode(AUCodeSetsAttendanceCodeType.fromValue("802"));
     studentPeriodAttendance.setAttendanceCode(attendanceCode);
-    studentPeriodAttendance.setAttendanceStatus("01");
+    studentPeriodAttendance.setAttendanceStatus(AUCodeSetsAttendanceStatusType.fromValue("01"));
     studentPeriodAttendance.setSchoolYear(objectFactory.createStudentPeriodAttendanceTypeSchoolYear(getDate("2014")));
     studentPeriodAttendance.setAttendanceComment(objectFactory
         .createStudentPeriodAttendanceTypeAttendanceComment("The Comments"));

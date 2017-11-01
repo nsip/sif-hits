@@ -4,7 +4,6 @@ import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
@@ -37,7 +36,7 @@ public class TestItemResponse {
     this.id = id;
   }
 
-  @ManyToOne(cascade = CascadeType.DETACH, fetch = FetchType.LAZY, optional = false)
+  @ManyToOne(optional = false)
   @JoinColumn(name = "ResponseTestlet_Id")
   public TestletResponse getTestletResponse() {
     return testletResponse;
@@ -47,7 +46,7 @@ public class TestItemResponse {
     this.testletResponse = testletResponse;
   }
 
-  @ManyToOne(cascade = CascadeType.DETACH, fetch = FetchType.LAZY, optional = false)
+  @ManyToOne(optional = false)
   @JoinColumn(name = "NAPTestItem_RefId")
   public NAPTestItem getTestItem() {
     return testItem;
@@ -57,7 +56,7 @@ public class TestItemResponse {
     this.testItem = testItem;
   }
 
-  @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "testItemResponse", orphanRemoval = true)
+  @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "testItemResponse")
   public Set<NAPSubscore> getSubscoreList() {
     return subscoreList;
   }

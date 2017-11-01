@@ -2,9 +2,9 @@ package sif3.hits.domain.model;
 
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
@@ -26,6 +26,7 @@ public class TeachingGroup extends HitsEntity {
   private Set<StudentPersonal> studentPersonals;
   private Set<TeachingGroupTeacher> teachingGroupTeachers;
   private Set<TimeTableCell> timeTablePeriods;
+  private TimeTableSubject timeTableSubject;
 
   @Id
   public String getRefId() {
@@ -77,8 +78,8 @@ public class TeachingGroup extends HitsEntity {
     this.kla = kla;
   }
 
-  @ManyToOne(fetch = FetchType.LAZY)
-  @JoinColumn(name = "SchoolInfo_RefId", referencedColumnName = "RefId")
+  @ManyToOne
+  @JoinColumn(name = "SchoolInfo_RefId")
   public SchoolInfo getSchoolInfo() {
     return schoolInfo;
   }
@@ -87,8 +88,9 @@ public class TeachingGroup extends HitsEntity {
     this.schoolInfo = schoolInfo;
   }
 
-  @ManyToMany(fetch = FetchType.LAZY)
-  @JoinTable(name = "TeachingGroup_Student", joinColumns = { @JoinColumn(name = "TeachingGroup_RefId", referencedColumnName = "RefId") }, inverseJoinColumns = { @JoinColumn(name = "StudentPersonal_RefId", referencedColumnName = "RefId") })
+  @ManyToMany
+  @JoinTable(name = "TeachingGroup_Student", joinColumns = { @JoinColumn(name = "TeachingGroup_RefId", referencedColumnName = "RefId") }, inverseJoinColumns = {
+      @JoinColumn(name = "StudentPersonal_RefId", referencedColumnName = "RefId") })
   public Set<StudentPersonal> getStudentPersonals() {
     return studentPersonals;
   }
@@ -97,7 +99,7 @@ public class TeachingGroup extends HitsEntity {
     this.studentPersonals = studentPersonals;
   }
 
-  @OneToMany(fetch = FetchType.LAZY, mappedBy = "teachingGroupTeacherId.teachingGroup")
+  @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "teachingGroupTeacherId.teachingGroup")
   public Set<TeachingGroupTeacher> getTeachingGroupTeachers() {
     return teachingGroupTeachers;
   }
@@ -106,12 +108,22 @@ public class TeachingGroup extends HitsEntity {
     this.teachingGroupTeachers = teachingGroupTeachers;
   }
 
-  @OneToMany(mappedBy = "teachingGroup", fetch = FetchType.LAZY)
+  @OneToMany(cascade = { CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH }, mappedBy = "teachingGroup")
   public Set<TimeTableCell> getTimeTablePeriods() {
     return timeTablePeriods;
   }
 
   public void setTimeTablePeriods(Set<TimeTableCell> timeTablePeriods) {
     this.timeTablePeriods = timeTablePeriods;
+  }
+
+  @ManyToOne
+  @JoinColumn(name = "TimeTableSubject_RefId", referencedColumnName = "RefId")
+  public TimeTableSubject getTimeTableSubject() {
+    return timeTableSubject;
+  }
+
+  public void setTimeTableSubject(TimeTableSubject timeTableSubject) {
+    this.timeTableSubject = timeTableSubject;
   }
 }

@@ -3,9 +3,11 @@ package sif3.hits.service;
 import static sif3.hits.service.e.OperationStatus.CREATE_ERR_EXISTS;
 import static sif3.hits.service.e.OperationStatus.CREATE_ERR_NO_ADVISORY;
 import static sif3.hits.service.e.OperationStatus.CREATE_OK;
+import static sif3.hits.service.e.OperationStatus.DELETE_ERR_INVALID;
 import static sif3.hits.service.e.OperationStatus.DELETE_ERR_NO_OBJECT;
 import static sif3.hits.service.e.OperationStatus.DELETE_OK;
 import static sif3.hits.service.e.OperationStatus.UPDATE_ERR_NO_OBJECT;
+import static sif3.hits.service.e.OperationStatus.UPDATE_ERR_REFID_MISMATCH;
 import static sif3.hits.service.e.OperationStatus.UPDATE_OK;
 
 import java.util.List;
@@ -37,15 +39,15 @@ public abstract class BaseService<S, SC, H> {
   private static final Logger L = LoggerFactory.getLogger(BaseService.class);
 
   private final ThreadLocal<ApplicationKeyUrl> currentApplicationKeyUrl = new ThreadLocal<ApplicationKeyUrl>();
-  
+
   protected abstract SC getCollection(List<S> items);
 
   protected abstract HitsConverter<S, H> getConverter();
 
   protected abstract JpaRepository<H, String> getDAO();
-  
+
   protected abstract FilterableRepository<H> getFilterableDAO();
-  
+
   @Autowired
   private ApplicationKeyUrlService applicationKeyUrlService;
 
@@ -70,11 +72,17 @@ public abstract class BaseService<S, SC, H> {
 
   private void delete(H hitsObject, RequestDTO<S> dto) {
     deleteChildObjects(hitsObject);
-    getDAO().delete(hitsObject);
+    try {
+      getDAO().delete(hitsObject);
+    } catch (Exception ex) {
+      System.out.println(ex);
+      throw ex;
+    }
   }
 
   /**
    * Override this in services that need child objects managed
+   * 
    * @param hitsObject
    */
   protected void deleteChildObjects(H hitsObject) {
@@ -84,22 +92,28 @@ public abstract class BaseService<S, SC, H> {
   // Delete
   public ResponseDTO<S> deleteSingle(RequestDTO<S> dto, String zoneId) {
     ResponseDTO<S> result = null;
-    if (!StringUtils.isEmpty(dto.getRefId())) {
-      H hitsObject = getDAO().findOne(dto.getRefId());
-      if (hitsObject != null) {
-        delete(hitsObject, dto);
-        result = new ResponseDTO<S>(dto, null, DELETE_OK);
+    try {
+      if (!StringUtils.isEmpty(dto.getRefId())) {
+        H hitsObject = getDAO().findOne(dto.getRefId());
+        if (hitsObject != null) {
+          delete(hitsObject, dto);
+          result = new ResponseDTO<S>(dto, null, DELETE_OK);
+        } else {
+          result = new ResponseDTO<S>(dto, null, DELETE_ERR_NO_OBJECT);
+        }
       } else {
-        result = new ResponseDTO<S>(dto, null, DELETE_ERR_NO_OBJECT);
+        result = new ResponseDTO<S>(dto, null, DELETE_ERR_INVALID);
       }
-    } else {
-      result = new ResponseDTO<S>(dto, null, DELETE_ERR_NO_OBJECT);
+    } catch (Exception ex) {
+      System.out.println(ex);
+      throw ex;
     }
     return result;
   }
 
   /**
    * Read All
+   * 
    * @param zoneId
    * @param pagingInfo
    * @return
@@ -124,9 +138,10 @@ public abstract class BaseService<S, SC, H> {
     }
     return result;
   }
-  
+
   /**
    * Query by Example
+   * 
    * @param example
    * @param zoneId
    * @param pagingInfo
@@ -159,6 +174,7 @@ public abstract class BaseService<S, SC, H> {
 
   /**
    * Service Path Query
+   * 
    * @param filters
    * @param pagingInfo
    * @param zoneId
@@ -175,7 +191,7 @@ public abstract class BaseService<S, SC, H> {
           List<S> sifResultObjects = getConverter().toSifModelList(results.getContent());
           result = getCollectionResult(sifResultObjects);
         }
-      } 
+      }
     }
     return result;
   }
@@ -210,7 +226,7 @@ public abstract class BaseService<S, SC, H> {
    * @param zoneId
    * @throws PersistenceException
    */
-  public final H save(H hitsObject, RequestDTO<S> dto, String zoneId, boolean create) {
+  public H save(H hitsObject, RequestDTO<S> dto, String zoneId, boolean create) {
     H result = preSave(hitsObject, dto, zoneId, create);
     if (!create) {
       deleteChildObjects(hitsObject);
@@ -222,9 +238,10 @@ public abstract class BaseService<S, SC, H> {
     }
     return result;
   }
-  
+
   /**
    * Override this to implement pre-save actions.
+   * 
    * @param hitsObject
    */
   protected H preSave(H hitsObject, RequestDTO<S> dto, String zoneId, boolean create) {
@@ -233,15 +250,17 @@ public abstract class BaseService<S, SC, H> {
 
   /**
    * Override this for objects that need child objects managed
+   * 
    * @param hitsObject
    * @return
    */
   protected boolean hasChildObjects(H hitsObject) {
     return false;
   }
-  
+
   /**
    * Override this for objects that need child objects managed
+   * 
    * @param hitsObject
    * @param dto
    * @param zoneId
@@ -263,26 +282,30 @@ public abstract class BaseService<S, SC, H> {
   // Update
   public ResponseDTO<S> updateSingle(RequestDTO<S> dto, String zoneId) {
     ResponseDTO<S> result = null;
-    if (!StringUtils.isEmpty(dto.getRefId())) {
-      H hitsObject = getDAO().findOne(dto.getRefId());
-      if (hitsObject != null) {
-        getConverter().toHitsModel(dto.getSifObject(), hitsObject);
-        H savedHitsObject = save(hitsObject, dto, zoneId, false);
-        S resultObject = getConverter().toSifModel(savedHitsObject);
-        result = new ResponseDTO<S>(dto, resultObject, UPDATE_OK);
+    if (StringUtils.isEmpty(dto.getAdvisoryId()) || StringUtils.equals(dto.getAdvisoryId(), dto.getRefId())) {
+      if (!StringUtils.isEmpty(dto.getRefId())) {
+        H hitsObject = getDAO().findOne(dto.getRefId());
+        if (hitsObject != null) {
+          getConverter().toHitsModel(dto.getSifObject(), hitsObject);
+          H savedHitsObject = save(hitsObject, dto, zoneId, false);
+          S resultObject = getConverter().toSifModel(savedHitsObject);
+          result = new ResponseDTO<S>(dto, resultObject, UPDATE_OK);
+        } else {
+          result = new ResponseDTO<S>(dto, null, UPDATE_ERR_NO_OBJECT);
+        }
       } else {
         result = new ResponseDTO<S>(dto, null, UPDATE_ERR_NO_OBJECT);
       }
     } else {
-      result = new ResponseDTO<S>(dto, null, UPDATE_ERR_NO_OBJECT);
+      result = new ResponseDTO<S>(dto, null, UPDATE_ERR_REFID_MISMATCH);
     }
     return result;
   }
-  
+
   private PageRequest getPageRequest(PagingInfo pagingInfo) {
     return new PageRequest(pagingInfo.getCurrentPageNo() - CommonConstants.FIRST_PAGE, pagingInfo.getPageSize());
   }
-  
+
   private SC getCollectionResult(List<S> items) {
     if (items == null || items.isEmpty()) {
       return null;

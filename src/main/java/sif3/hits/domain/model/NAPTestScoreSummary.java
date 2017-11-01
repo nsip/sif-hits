@@ -1,6 +1,5 @@
 package sif3.hits.domain.model;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
@@ -69,7 +68,7 @@ public class NAPTestScoreSummary extends HitsEntity {
     this.domainTopNational60Percent = domainTopNational60Percent;
   }
 
-  @ManyToOne(cascade = { CascadeType.DETACH })
+  @ManyToOne
   @JoinColumn(name="NAPTest_RefId")
   public NAPTest getNapTest() {
     return napTest;
@@ -79,7 +78,7 @@ public class NAPTestScoreSummary extends HitsEntity {
     this.napTest = napTest;
   }
 
-  @ManyToOne(cascade = { CascadeType.DETACH })
+  @ManyToOne
   @JoinColumn(name="SchoolInfo_RefId")
   public SchoolInfo getSchoolInfo() {
     return schoolInfo;

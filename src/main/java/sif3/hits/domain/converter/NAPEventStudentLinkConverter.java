@@ -6,8 +6,11 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import sif.dd.au30.model.AUCodeSetsNAPJurisdictionType;
 import sif.dd.au30.model.AUCodeSetsNAPParticipationCodeType;
+import sif.dd.au30.model.AUCodeSetsSchoolLocationType;
 import sif.dd.au30.model.AUCodeSetsSchoolSectorCodeType;
+import sif.dd.au30.model.AUCodeSetsSchoolSystemType;
 import sif.dd.au30.model.AdjustmentContainerType;
 import sif.dd.au30.model.NAPEventStudentLinkType;
 import sif.dd.au30.model.StudentPersonalType;
@@ -60,12 +63,12 @@ public class NAPEventStudentLinkConverter extends HitsConverter<NAPEventStudentL
       target.setDevice(objectFactory.createNAPEventStudentLinkTypeDevice(source.getDevice()));
       target.setDOBRange(objectFactory.createNAPEventStudentLinkTypeDOBRange(getBooleanValue(source.getDobRange())));
       target.setLapsedTimeTest(getDurationValue(source.getLapsedTimeTest()));
-      target.setNAPJurisdiction(objectFactory.createNAPEventStudentLinkTypeNAPJurisdiction(source.getNapJurisdiction()));
+      target.setNAPJurisdiction(objectFactory.createNAPEventStudentLinkTypeNAPJurisdiction(getEnumValue(source.getNapJurisdiction(), AUCodeSetsNAPJurisdictionType.class)));
       target.setPersonalDetailsChanged(objectFactory.createNAPEventStudentLinkTypePersonalDetailsChanged(getBooleanValue(source.getPersonalDetailsChanged())));
       target.setPossibleDuplicate(objectFactory.createNAPEventStudentLinkTypePossibleDuplicate(getBooleanValue(source.getPossibleDuplicate())));
       target.setPSIOtherIdMatch(objectFactory.createNAPEventStudentLinkTypePSIOtherIdMatch(getBooleanValue(source.getPsiOtherIdMatch())));
       target.setStartTime(getTimeValue(source.getStartTime()));
-      target.setSystem(objectFactory.createNAPEventStudentLinkTypeSystem(source.getSystem()));
+      target.setSystem(objectFactory.createNAPEventStudentLinkTypeSystem(getEnumValue(source.getSystem(), AUCodeSetsSchoolSystemType.class)));
 
       target.setExemptionReason(objectFactory.createNAPEventStudentLinkTypeExemptionReason(source.getExemptionReason()));
       target.setParticipationCode(getEnumValue(source.getParticipationCode(), AUCodeSetsNAPParticipationCodeType.class));
@@ -81,7 +84,7 @@ public class NAPEventStudentLinkConverter extends HitsConverter<NAPEventStudentL
       if (schoolInfo != null) {
         target.setSchoolInfoRefId(objectFactory.createNAPEventStudentLinkTypeSchoolInfoRefId(schoolInfo.getRefId()));
         target.setSchoolACARAId(schoolInfo.getAcaraId());
-        target.setSchoolGeolocation(objectFactory.createNAPEventStudentLinkTypeSchoolGeolocation(schoolInfo.getAddressGeographicLocation()));
+        target.setSchoolGeolocation(objectFactory.createNAPEventStudentLinkTypeSchoolGeolocation(getEnumValue(schoolInfo.getAddressGeographicLocation(), AUCodeSetsSchoolLocationType.class)));
         target.setSchoolSector(getEnumValue(schoolInfo.getSchoolSector(), AUCodeSetsSchoolSectorCodeType.class));
         target.setReportingSchoolName(objectFactory.createNAPEventStudentLinkTypeReportingSchoolName(schoolInfo.getSchoolName()));
       }
@@ -115,12 +118,12 @@ public class NAPEventStudentLinkConverter extends HitsConverter<NAPEventStudentL
       target.setDevice(getJAXBValue(source.getDevice()));
       target.setDobRange(getBooleanValue(getJAXBValue(source.getDOBRange())));
       target.setLapsedTimeTest(getDurationValue(source.getLapsedTimeTest()));
-      target.setNapJurisdiction(getJAXBValue(source.getNAPJurisdiction()));
+      target.setNapJurisdiction(getJAXBEnumValue(source.getNAPJurisdiction()));
       target.setPersonalDetailsChanged(getBooleanValue(getJAXBValue(source.getPersonalDetailsChanged())));
       target.setPossibleDuplicate(getBooleanValue(getJAXBValue(source.getPossibleDuplicate())));
       target.setPsiOtherIdMatch(getBooleanValue(getJAXBValue(source.getPSIOtherIdMatch())));
       target.setStartTime(getTimeValue(source.getStartTime()));
-      target.setSystem(getJAXBValue(source.getSystem()));
+      target.setSystem(getJAXBEnumValue(source.getSystem()));
 
       target.setExemptionReason(getJAXBValue(source.getExemptionReason()));
       target.setParticipationCode(getEnumValue(source.getParticipationCode()));

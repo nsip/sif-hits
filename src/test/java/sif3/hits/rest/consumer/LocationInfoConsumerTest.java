@@ -8,6 +8,7 @@ import org.junit.Before;
 import org.junit.Test;
 import org.springframework.http.HttpStatus;
 
+import sif.dd.au30.model.AUCodeSetsTelephoneNumberTypeType;
 import sif.dd.au30.model.AddressListType;
 import sif.dd.au30.model.ChargedLocationInfoCollectionType;
 import sif.dd.au30.model.ChargedLocationInfoType;
@@ -51,7 +52,7 @@ public class LocationInfoConsumerTest extends BaseTest implements UsesConstants 
     PhoneNumberListType phoneNumberList = objectFactory.createPhoneNumberListType();
     PhoneNumberType phoneNumber = objectFactory.createPhoneNumberType();
     phoneNumber.setNumber("0894463125");
-    phoneNumber.setType(DEFAULT_PHONE_TYPE);
+    phoneNumber.setType(AUCodeSetsTelephoneNumberTypeType.fromValue(DEFAULT_PHONE_TYPE));
     phoneNumberList.getPhoneNumber().add(phoneNumber);
     locationInfo.setPhoneNumberList(objectFactory.createChargedLocationInfoTypePhoneNumberList(phoneNumberList));
     

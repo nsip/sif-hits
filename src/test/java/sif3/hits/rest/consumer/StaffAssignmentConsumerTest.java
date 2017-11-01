@@ -8,6 +8,7 @@ import org.junit.Before;
 import org.junit.Test;
 import org.springframework.http.HttpStatus;
 
+import sif.dd.au30.model.AUCodeSetsStaffActivityType;
 import sif.dd.au30.model.AUCodeSetsYesOrNoCategoryType;
 import sif.dd.au30.model.ObjectFactory;
 import sif.dd.au30.model.StaffActivityExtensionType;
@@ -44,7 +45,7 @@ public class StaffAssignmentConsumerTest extends BaseTest {
     staffAssignment.setJobFunction(objectFactory.createStaffAssignmentTypeJobFunction("Teacher"));
 
     StaffActivityExtensionType staffActivity = new StaffActivityExtensionType();
-    staffActivity.setCode("1102");
+    staffActivity.setCode(AUCodeSetsStaffActivityType.fromValue("1102"));
     staffAssignment.setStaffActivity(objectFactory.createStaffAssignmentTypeStaffActivity(staffActivity));
 
     staffAssignmentTester.doCreateOne(staffAssignment);

@@ -5,7 +5,6 @@ import java.util.Set;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
@@ -44,6 +43,8 @@ public class StudentPersonal extends HitsEntity implements StudentPerson, Addres
   private Set<StudentPersonalOtherId> otherIds;
   private Set<Address> addresses;
   private Set<Language> languages;
+  
+  private boolean temporary = false;
 
   // naplan
   private String lbote;
@@ -284,7 +285,7 @@ public class StudentPersonal extends HitsEntity implements StudentPerson, Addres
     this.religion = religion;
   }
 
-  @OneToMany(fetch = FetchType.LAZY, mappedBy = "studentPersonalOtherIdId.studentPersonal", cascade = CascadeType.ALL, orphanRemoval = true)
+  @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "studentPersonalOtherIdId.studentPersonal")
   public Set<StudentPersonalOtherId> getOtherIds() {
     return otherIds;
   }
@@ -293,7 +294,7 @@ public class StudentPersonal extends HitsEntity implements StudentPerson, Addres
     this.otherIds = otherIds;
   }
 
-  @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
+  @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
   @JoinColumn(name = "Person_RefId")
   public Set<Address> getAddresses() {
     return addresses;
@@ -469,7 +470,7 @@ public class StudentPersonal extends HitsEntity implements StudentPerson, Addres
     this.esl = esl;
   }
   
-  @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
+  @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
   @JoinColumn(name="Person_RefId")
   public Set<Language> getLanguages() {
     return languages;
@@ -477,5 +478,15 @@ public class StudentPersonal extends HitsEntity implements StudentPerson, Addres
   
   public void setLanguages(Set<Language> languages) {
     this.languages = languages;
+  }
+  
+  @Transient
+  public boolean isTemporary() {
+    return temporary;
+  }
+  
+  @Transient
+  public void setTemporary(boolean temporary) {
+    this.temporary = temporary;
   }
 }

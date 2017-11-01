@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import sif.dd.au30.model.AUCodeSetsScheduledActivityTypeType;
+import sif.dd.au30.model.AUCodeSetsYearLevelCodeType;
 import sif.dd.au30.model.AUCodeSetsYesOrNoCategoryType;
 import sif.dd.au30.model.RoomListType;
 import sif.dd.au30.model.ScheduledActivityOverrideType;
@@ -77,7 +78,7 @@ public class ScheduledActivityConverter extends HitsConverter<ScheduledActivityT
 
       YearLevelsType yearLevelsType = new YearLevelsType();
       YearLevelType yearLevelType = new YearLevelType();
-      yearLevelType.setCode(source.getYearLevels());
+      yearLevelType.setCode(getEnumValue(source.getYearLevels(), AUCodeSetsYearLevelCodeType.class));
       yearLevelsType.getYearLevel().add(yearLevelType);
       target.setYearLevels(objectFactory.createScheduledActivityTypeYearLevels(yearLevelsType));
 
@@ -147,7 +148,7 @@ public class ScheduledActivityConverter extends HitsConverter<ScheduledActivityT
       if (yearLevelsType != null) {
         List<YearLevelType> yearLevels = yearLevelsType.getYearLevel();
         if (yearLevels != null && yearLevels.size() > 0 && yearLevels.get(0) != null) {
-          target.setYearLevels(yearLevels.get(0).getCode());
+          target.setYearLevels(getEnumValue(yearLevels.get(0).getCode()));
         }
       }
 

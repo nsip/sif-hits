@@ -13,6 +13,7 @@ import java.util.Map;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.http.HttpStatus;
 
 import au.com.systemic.framework.utils.StringUtils;
 import sif3.common.conversion.ModelObjectInfo;
@@ -35,6 +36,7 @@ import sif3.hits.rest.dto.KeyValuePair;
 import sif3.hits.rest.dto.RequestDTO;
 import sif3.hits.rest.dto.ResponseDTO;
 import sif3.hits.service.BaseService;
+import sif3.hits.utils.ConstraintViolationHelper;
 import sif3.hits.utils.RefIdGenerator;
 
 public abstract class HitsBaseProvider<S, SC, H, HS extends BaseService<S, SC, H>> extends AUDataModelProvider implements QueryProvider {
@@ -81,7 +83,8 @@ public abstract class HitsBaseProvider<S, SC, H, HS extends BaseService<S, SC, H
    * sif3.common.model.SIFZone, sif3.common.model.SIFContext)
    */
   @Override
-  public Object retrievByPrimaryKey(String resourceID, SIFZone zone, SIFContext context, RequestMetadata metadata, ResponseParameters customResponseParams) throws IllegalArgumentException, PersistenceException {
+  public Object retrievByPrimaryKey(String resourceID, SIFZone zone, SIFContext context, RequestMetadata metadata, ResponseParameters customResponseParams)
+      throws IllegalArgumentException, PersistenceException {
 
     try {
       setDatabaseContext(zone, context, metadata);
@@ -112,7 +115,8 @@ public abstract class HitsBaseProvider<S, SC, H, HS extends BaseService<S, SC, H
    * sif3.common.model.SIFZone, sif3.common.model.SIFContext)
    */
   @Override
-  public Object createSingle(Object data, boolean useAdvisory, SIFZone zone, SIFContext context, RequestMetadata metadata, ResponseParameters customResponseParams) throws IllegalArgumentException, PersistenceException {
+  public Object createSingle(Object data, boolean useAdvisory, SIFZone zone, SIFContext context, RequestMetadata metadata, ResponseParameters customResponseParams)
+      throws IllegalArgumentException, PersistenceException {
 
     try {
       setDatabaseContext(zone, context, metadata);
@@ -120,7 +124,7 @@ public abstract class HitsBaseProvider<S, SC, H, HS extends BaseService<S, SC, H
       // Must be of type SIF_CLASS
       if (data != null && SIF_CLASS.isAssignableFrom(data.getClass())) {
         S sifObject = SIF_CLASS.cast(data);
-        RequestDTO<S> baseDTO = getRequestDTO(sifObject, null, useAdvisory, SIF_CLASS);
+        RequestDTO<S> baseDTO = getRequestDTO(sifObject, useAdvisory, SIF_CLASS);
         ResponseDTO<S> result = createSingle(baseDTO, getZoneId(zone));
         CreateOperationStatus createOperationStatus = getCreateOperationStatus(result);
         if (result.getOperationStatus().isOk()) {
@@ -146,12 +150,16 @@ public abstract class HitsBaseProvider<S, SC, H, HS extends BaseService<S, SC, H
     }
   }
 
-  private ResponseDTO<S> createSingle(RequestDTO<S> baseDTO, String zoneId) {
+  private ResponseDTO<S> createSingle(RequestDTO<S> dto, String zoneId) {
     try {
-      return getService().createSingle(baseDTO, zoneId);
+      return getService().createSingle(dto, zoneId);
     } catch (Exception ex) {
-      L.error(CREATE_ERR_OTHER.getMessage(), ex);
-      return new ResponseDTO<S>(baseDTO, null, CREATE_ERR_OTHER, ex.getMessage());
+      ResponseDTO<S> response = ConstraintViolationHelper.handleConstraintViolation(dto, ex, ConstraintViolationHelper.CREATE);
+      if (response == null) {
+        L.error(CREATE_ERR_OTHER.getMessage(), ex);
+        return new ResponseDTO<S>(dto, null, CREATE_ERR_OTHER, ex.getMessage());
+      }
+      return response;
     }
   }
 
@@ -173,7 +181,8 @@ public abstract class HitsBaseProvider<S, SC, H, HS extends BaseService<S, SC, H
    * java.lang.String, sif3.common.model.SIFZone, sif3.common.model.SIFContext)
    */
   @Override
-  public boolean updateSingle(Object data, String resourceID, SIFZone zone, SIFContext context, RequestMetadata metadata, ResponseParameters customResponseParams) throws IllegalArgumentException, PersistenceException {
+  public boolean updateSingle(Object data, String resourceID, SIFZone zone, SIFContext context, RequestMetadata metadata, ResponseParameters customResponseParams)
+      throws IllegalArgumentException, PersistenceException {
     try {
       setDatabaseContext(zone, context, metadata);
 
@@ -185,7 +194,7 @@ public abstract class HitsBaseProvider<S, SC, H, HS extends BaseService<S, SC, H
       if (data != null && SIF_CLASS.isAssignableFrom(data.getClass())) {
         L.debug("Update " + SINGLE_NAME + " with Resoucre ID = " + resourceID);
         S sifObject = SIF_CLASS.cast(data);
-        RequestDTO<S> dto = getRequestDTO(sifObject, resourceID, null, SIF_CLASS);
+        RequestDTO<S> dto = getRequestDTO(sifObject, resourceID, SIF_CLASS);
         ResponseDTO<S> result = updateSingle(dto, getZoneId(zone));
         OperationStatus operationStatus = getOperationStatus(result);
         if (result.getOperationStatus().isOk()) {
@@ -214,8 +223,12 @@ public abstract class HitsBaseProvider<S, SC, H, HS extends BaseService<S, SC, H
     try {
       return getService().updateSingle(dto, zoneId);
     } catch (Exception ex) {
-      L.error(UPDATE_ERR_OTHER.getMessage(), ex);
-      return new ResponseDTO<S>(dto, null, UPDATE_ERR_OTHER, ex.getMessage());
+      ResponseDTO<S> response = ConstraintViolationHelper.handleConstraintViolation(dto, ex, ConstraintViolationHelper.UPDATE);
+      if (response == null) {
+        L.error(UPDATE_ERR_OTHER.getMessage(), ex);
+        return new ResponseDTO<S>(dto, null, UPDATE_ERR_OTHER, ex.getMessage());
+      }
+      return response;
     }
   }
 
@@ -226,7 +239,8 @@ public abstract class HitsBaseProvider<S, SC, H, HS extends BaseService<S, SC, H
    * sif3.common.model.SIFZone, sif3.common.model.SIFContext)
    */
   @Override
-  public boolean deleteSingle(String resourceID, SIFZone zone, SIFContext context, RequestMetadata metadata, ResponseParameters customResponseParams) throws IllegalArgumentException, PersistenceException {
+  public boolean deleteSingle(String resourceID, SIFZone zone, SIFContext context, RequestMetadata metadata, ResponseParameters customResponseParams)
+      throws IllegalArgumentException, PersistenceException {
     try {
       setDatabaseContext(zone, context, metadata);
 
@@ -236,10 +250,12 @@ public abstract class HitsBaseProvider<S, SC, H, HS extends BaseService<S, SC, H
 
       L.debug("Remove " + SINGLE_NAME + " with Resoucre ID = " + resourceID);
       S object = null;
-      ResponseDTO<S> result = deleteSingle(getRequestDTO(object, resourceID, null, SIF_CLASS), getZoneId(zone));
+      ResponseDTO<S> result = deleteSingle(getRequestDTO(object, resourceID, SIF_CLASS), getZoneId(zone));
       OperationStatus operationStatus = getOperationStatus(result);
       if (result.getOperationStatus().isOk()) {
         return true;
+      } else if (result.getOperationStatus().getHttpStatus() == HttpStatus.NOT_FOUND.value()) {
+        return false;
       } else {
         throw new PersistenceException(operationStatus.getError().getMessage());
       }
@@ -257,8 +273,12 @@ public abstract class HitsBaseProvider<S, SC, H, HS extends BaseService<S, SC, H
     try {
       return getService().deleteSingle(dto, zoneId);
     } catch (Exception ex) {
-      L.error(DELETE_ERR_OTHER.getMessage(), ex);
-      return new ResponseDTO<S>(dto, null, DELETE_ERR_OTHER, ex.getMessage());
+      ResponseDTO<S> response = ConstraintViolationHelper.handleConstraintViolation(dto, ex, ConstraintViolationHelper.DELETE);
+      if (response == null) {
+        L.error(DELETE_ERR_OTHER.getMessage(), ex);
+        response = new ResponseDTO<S>(dto, null, DELETE_ERR_OTHER, ex.getMessage());
+      }
+      return response;
     }
   }
 
@@ -269,7 +289,8 @@ public abstract class HitsBaseProvider<S, SC, H, HS extends BaseService<S, SC, H
    * sif3.common.model.SIFContext, sif3.common.model.PagingInfo)
    */
   @Override
-  public Object retrieve(SIFZone zone, SIFContext context, PagingInfo pagingInfo, RequestMetadata metadata, ResponseParameters customResponseParams) throws PersistenceException, UnsupportedQueryException {
+  public Object retrieve(SIFZone zone, SIFContext context, PagingInfo pagingInfo, RequestMetadata metadata, ResponseParameters customResponseParams)
+      throws PersistenceException, UnsupportedQueryException {
     try {
       setDatabaseContext(zone, context, metadata);
 
@@ -282,7 +303,8 @@ public abstract class HitsBaseProvider<S, SC, H, HS extends BaseService<S, SC, H
   }
 
   @Override
-  public Object retrieveByServicePath(QueryCriteria criteria, SIFZone zone, SIFContext context, PagingInfo pagingInfo, RequestMetadata metadata, ResponseParameters customResponseParams) throws UnsupportedQueryException, PersistenceException {
+  public Object retrieveByServicePath(QueryCriteria criteria, SIFZone zone, SIFContext context, PagingInfo pagingInfo, RequestMetadata metadata, ResponseParameters customResponseParams)
+      throws UnsupportedQueryException, PersistenceException {
 
     try {
       setDatabaseContext(zone, context, metadata);
@@ -302,7 +324,8 @@ public abstract class HitsBaseProvider<S, SC, H, HS extends BaseService<S, SC, H
   }
 
   @Override
-  public Object retrieveByQBE(Object example, SIFZone zone, SIFContext context, PagingInfo pagingInfo, RequestMetadata metadata, ResponseParameters customResponseParams) throws PersistenceException, UnsupportedQueryException, DataTooLargeException {
+  public Object retrieveByQBE(Object example, SIFZone zone, SIFContext context, PagingInfo pagingInfo, RequestMetadata metadata, ResponseParameters customResponseParams)
+      throws PersistenceException, UnsupportedQueryException, DataTooLargeException {
     try {
       setDatabaseContext(zone, context, metadata);
 
@@ -333,7 +356,8 @@ public abstract class HitsBaseProvider<S, SC, H, HS extends BaseService<S, SC, H
    * sif3.common.model.SIFZone, sif3.common.model.SIFContext)
    */
   @Override
-  public List<CreateOperationStatus> createMany(Object data, boolean useAdvisory, SIFZone zone, SIFContext context, RequestMetadata metadata, ResponseParameters customResponseParams) throws IllegalArgumentException, PersistenceException {
+  public List<CreateOperationStatus> createMany(Object data, boolean useAdvisory, SIFZone zone, SIFContext context, RequestMetadata metadata, ResponseParameters customResponseParams)
+      throws IllegalArgumentException, PersistenceException {
 
     try {
       setDatabaseContext(zone, context, metadata);
@@ -369,7 +393,8 @@ public abstract class HitsBaseProvider<S, SC, H, HS extends BaseService<S, SC, H
    * sif3.common.model.SIFZone, sif3.common.model.SIFContext)
    */
   @Override
-  public List<OperationStatus> updateMany(Object data, SIFZone zone, SIFContext context, RequestMetadata metadata, ResponseParameters customResponseParams) throws IllegalArgumentException, PersistenceException {
+  public List<OperationStatus> updateMany(Object data, SIFZone zone, SIFContext context, RequestMetadata metadata, ResponseParameters customResponseParams)
+      throws IllegalArgumentException, PersistenceException {
     try {
       setDatabaseContext(zone, context, metadata);
 
@@ -415,7 +440,8 @@ public abstract class HitsBaseProvider<S, SC, H, HS extends BaseService<S, SC, H
    * sif3.common.model.SIFZone, sif3.common.model.SIFContext)
    */
   @Override
-  public List<OperationStatus> deleteMany(List<String> resourceIDs, SIFZone zone, SIFContext context, RequestMetadata metadata, ResponseParameters customResponseParams) throws IllegalArgumentException, PersistenceException {
+  public List<OperationStatus> deleteMany(List<String> resourceIDs, SIFZone zone, SIFContext context, RequestMetadata metadata, ResponseParameters customResponseParams)
+      throws IllegalArgumentException, PersistenceException {
     try {
       setDatabaseContext(zone, context, metadata);
 
@@ -453,7 +479,7 @@ public abstract class HitsBaseProvider<S, SC, H, HS extends BaseService<S, SC, H
     List<RequestDTO<S>> dtoList = new ArrayList<RequestDTO<S>>();
     if (sifList != null) {
       for (S sifObject : sifList) {
-        dtoList.add(getRequestDTO(sifObject, null, null, SIF_CLASS));
+        dtoList.add(getRequestDTO(sifObject, (Boolean) null, SIF_CLASS));
       }
     }
     return dtoList;
@@ -464,7 +490,7 @@ public abstract class HitsBaseProvider<S, SC, H, HS extends BaseService<S, SC, H
     if (resourceIds != null) {
       for (String resourceId : resourceIds) {
         S object = null;
-        dtoList.add(getRequestDTO(object, resourceId, false, SIF_CLASS));
+        dtoList.add(getRequestDTO(object, resourceId, SIF_CLASS));
       }
     }
     return dtoList;
@@ -475,7 +501,7 @@ public abstract class HitsBaseProvider<S, SC, H, HS extends BaseService<S, SC, H
     List<RequestDTO<S>> dtoList = new ArrayList<RequestDTO<S>>();
     if (sifList != null) {
       for (S sifObject : sifList) {
-        dtoList.add(getRequestDTO(sifObject, null, useAdvisory, SIF_CLASS));
+        dtoList.add(getRequestDTO(sifObject, useAdvisory, SIF_CLASS));
       }
     }
     return dtoList;
@@ -530,9 +556,9 @@ public abstract class HitsBaseProvider<S, SC, H, HS extends BaseService<S, SC, H
     return status;
   }
 
-  protected RequestDTO<S> getRequestDTO(S sifObject, String resourceId, Boolean useAdvisory, Class<S> sifClass) throws PersistenceException {
-    String advisoryId = resourceId;
-    String refId = resourceId;
+  protected RequestDTO<S> getRequestDTO(S sifObject, Boolean useAdvisory, Class<S> sifClass) throws PersistenceException {
+    String advisoryId = null;
+    String refId = null;
     if (sifObject != null) {
       advisoryId = getRefId(sifObject, sifClass);
       refId = advisoryId;
@@ -542,6 +568,15 @@ public abstract class HitsBaseProvider<S, SC, H, HS extends BaseService<S, SC, H
       }
     }
     return new RequestDTO<S>(advisoryId, refId, useAdvisory, sifObject);
+  }
+
+  protected RequestDTO<S> getRequestDTO(S sifObject, String resourceId, Class<S> sifClass) throws PersistenceException {
+    String advisoryId = resourceId;
+    String refId = resourceId;
+    if (sifObject != null) {
+      advisoryId = getRefId(sifObject, sifClass);
+    }
+    return new RequestDTO<S>(advisoryId, refId, null, sifObject);
   }
 
   /**

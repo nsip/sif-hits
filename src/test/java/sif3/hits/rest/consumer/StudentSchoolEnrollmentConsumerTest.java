@@ -10,6 +10,8 @@ import org.junit.Test;
 import org.springframework.http.HttpStatus;
 
 import sif.dd.au30.model.AUCodeSetsEnrollmentTimeFrameType;
+import sif.dd.au30.model.AUCodeSetsSchoolEnrollmentTypeType;
+import sif.dd.au30.model.AUCodeSetsYearLevelCodeType;
 import sif.dd.au30.model.ObjectFactory;
 import sif.dd.au30.model.StudentSchoolEnrollmentCollectionType;
 import sif.dd.au30.model.StudentSchoolEnrollmentType;
@@ -37,12 +39,12 @@ public class StudentSchoolEnrollmentConsumerTest extends BaseTest {
     studentEnrollment.setRefId(REF_ID);
     studentEnrollment.setStudentPersonalRefId(StudentPersonalRefIds.REF_ID_1);
     studentEnrollment.setSchoolInfoRefId(SchoolInfoConsumerTest.REF_ID);
-    studentEnrollment.setMembershipType("01");
+    studentEnrollment.setMembershipType(AUCodeSetsSchoolEnrollmentTypeType.fromValue("01"));
     studentEnrollment.setSchoolYear(getDate("2014"));
     studentEnrollment.setTimeFrame(AUCodeSetsEnrollmentTimeFrameType.C);
 
     YearLevelType yearLevel = new YearLevelType();
-    yearLevel.setCode("4");
+    yearLevel.setCode(AUCodeSetsYearLevelCodeType.fromValue("4"));
     studentEnrollment.setYearLevel(objectFactory.createStudentSchoolEnrollmentTypeYearLevel(yearLevel));
     studentEnrollment.setFTE(objectFactory.createStudentSchoolEnrollmentTypeFTE(new BigDecimal("1.0")));
     studentEnrollment.setEntryDate(getDate("2012-01-20"));

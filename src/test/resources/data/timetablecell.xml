@@ -1,4 +1,4 @@
-<TimeTableCell RefId="2d108d35-1ab9-46cd-b2e9-480aaa3f58b8" xmlns="http://www.sifassociation.org/au/datamodel/3.4.1">
+<TimeTableCell RefId="2d108d35-1ab9-46cd-b2e9-480aaa3f58b8" xmlns="http://www.sifassociation.org/au/datamodel/3.4">
     <TimeTableRefId>4b4a6b5d-4f0a-4f84-88ba-15610caf092f</TimeTableRefId>
     <TimeTableSubjectRefId>47b8518b-a430-4848-bd01-dd5d2ea2c617</TimeTableSubjectRefId>
     <TeachingGroupRefId>597ad3fe-47e7-4b2c-b919-a93c564d19d0</TeachingGroupRefId>

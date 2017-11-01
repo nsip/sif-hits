@@ -3,6 +3,9 @@ package sif3.hits.domain.converter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import sif.dd.au30.model.AUCodeSetsEmploymentTypeType;
+import sif.dd.au30.model.AUCodeSetsNonSchoolEducationType;
+import sif.dd.au30.model.AUCodeSetsSchoolEducationLevelTypeType;
 import sif.dd.au30.model.PersonInfoType;
 import sif.dd.au30.model.StudentContactPersonalType;
 import sif3.hits.domain.converter.factory.IObjectFactory;
@@ -22,11 +25,11 @@ public class StudentContactPersonalConverter extends HitsConverter<StudentContac
   public void toSifModel(StudentContactPersonal source, StudentContactPersonalType target) {
     if (source != null && target != null) {
       IObjectFactory objectFactory = getObjectFactory();
-      target.setEmploymentType(objectFactory.createStudentContactPersonalTypeEmploymentType(source.getEmploymentType()));
+      target.setEmploymentType(objectFactory.createStudentContactPersonalTypeEmploymentType(getEnumValue(source.getEmploymentType(), AUCodeSetsEmploymentTypeType.class)));
       target.setLocalId(objectFactory.createStudentContactPersonalTypeLocalId(source.getLocalId()));
-      target.setNonSchoolEducation(objectFactory.createStudentContactPersonalTypeNonSchoolEducation(source.getNonSchoolEducation()));
+      target.setNonSchoolEducation(objectFactory.createStudentContactPersonalTypeNonSchoolEducation(getEnumValue(source.getNonSchoolEducation(), AUCodeSetsNonSchoolEducationType.class)));
       target.setRefId(source.getRefId());
-      target.setSchoolEducationalLevel(objectFactory.createStudentContactPersonalTypeSchoolEducationalLevel(source.getSchoolEducationLevel()));
+      target.setSchoolEducationalLevel(objectFactory.createStudentContactPersonalTypeSchoolEducationalLevel(getEnumValue(source.getSchoolEducationLevel(),AUCodeSetsSchoolEducationLevelTypeType.class)));
 
       PersonInfoType personInfoType = personInfoConverter.toSifModel(source);
       target.setPersonInfo(personInfoType);
@@ -36,11 +39,11 @@ public class StudentContactPersonalConverter extends HitsConverter<StudentContac
   @Override
   public void toHitsModel(StudentContactPersonalType source, StudentContactPersonal target) {
     if (source != null && target != null) {
-      target.setEmploymentType(getJAXBValue(source.getEmploymentType()));
+      target.setEmploymentType(getJAXBEnumValue(source.getEmploymentType()));
       target.setLocalId(getJAXBValue(source.getLocalId()));
-      target.setNonSchoolEducation(getJAXBValue(source.getNonSchoolEducation()));
+      target.setNonSchoolEducation(getJAXBEnumValue(source.getNonSchoolEducation()));
       target.setRefId(source.getRefId());
-      target.setSchoolEducationLevel(getJAXBValue(source.getSchoolEducationalLevel()));
+      target.setSchoolEducationLevel(getJAXBEnumValue(source.getSchoolEducationalLevel()));
 
       personInfoConverter.toHitsModel(source.getPersonInfo(), target);
     }

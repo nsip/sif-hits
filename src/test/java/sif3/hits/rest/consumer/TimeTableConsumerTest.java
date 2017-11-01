@@ -87,7 +87,7 @@ public class TimeTableConsumerTest extends BaseTest {
 
     timeTableDayList.getTimeTableDay().add(timeTableDay);
     timeTable.setTimeTableDayList(timeTableDayList);
-    timeTableTester.doCreateOne(timeTable);
+    List<Response> responses = timeTableTester.doCreateOne(timeTable);
     String xmlExpectedTo = timeTableTester.getXML(timeTable);
 
     timeTable.setRefId("52d3f540-b619-41a4-961c-27ab156c89dd");
@@ -103,7 +103,7 @@ public class TimeTableConsumerTest extends BaseTest {
 
     timeTable.setRefId("626e3e08-cab9-4ddd-80fa-26fbf325b8c9");
     timeTableTester.doCreateOne(timeTable);
-
+    
     TimeTableType getResult = timeTableTester.doGetOne(REF_ID);
     String xmlExpectedFrom = timeTableTester.getXML(getResult);
     boolean semiEquals = semiEquals(xmlExpectedFrom, xmlExpectedTo);
@@ -300,6 +300,17 @@ public class TimeTableConsumerTest extends BaseTest {
     Response deleteResponse = deleteResponses.get(0);
     Assert.assertNull(deleteResponse.getDataObject());
     Assert.assertEquals(HttpStatus.NO_CONTENT.value(), deleteResponse.getStatus());
+  }
+  
+  @Test
+  public void testDeleteFailsConstraint() {
+    List<Response> responses = timeTableTester.testDeleteOne(REF_ID);
+    Assert.assertNotNull(responses);
+    Assert.assertEquals(1, responses.size());
+    Response deleteResponse = responses.get(0);
+    Assert.assertNull(deleteResponse.getDataObject());
+    Assert.assertEquals(HttpStatus.INTERNAL_SERVER_ERROR.value(), deleteResponse.getStatus());
+    Assert.assertTrue(deleteResponse.getError().getMessage().contains("Cannot delete object because it has child objects"));
   }
 
   @Test

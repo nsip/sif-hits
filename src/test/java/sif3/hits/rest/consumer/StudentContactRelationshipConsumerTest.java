@@ -8,6 +8,7 @@ import org.junit.Before;
 import org.junit.Test;
 import org.springframework.http.HttpStatus;
 
+import sif.dd.au30.model.AUCodeSetsRelationshipToStudentType;
 import sif.dd.au30.model.AUCodeSetsYesOrNoCategoryType;
 import sif.dd.au30.model.ContactFlagsType;
 import sif.dd.au30.model.ObjectFactory;
@@ -47,7 +48,7 @@ public class StudentContactRelationshipConsumerTest extends BaseTest {
     studentContactRelationshipType.setStudentContactPersonalRefId(StudentContactPersonalRefIds.REF_ID_1);
 
     RelationshipType relationshipType = new RelationshipType();
-    relationshipType.setCode("01");
+    relationshipType.setCode(AUCodeSetsRelationshipToStudentType.fromValue("01"));
     studentContactRelationshipType.setRelationship(relationshipType);
 
     ContactFlagsType contactFlags = new ContactFlagsType();

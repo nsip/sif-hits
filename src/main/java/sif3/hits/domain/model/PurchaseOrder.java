@@ -5,7 +5,6 @@ import java.util.Set;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
@@ -118,7 +117,7 @@ public class PurchaseOrder extends HitsEntity {
     this.fullyDelivered = fullyDelivered;
   }
 
-  @OneToMany(mappedBy = "purchaseOrder", fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
+  @OneToMany(mappedBy = "purchaseOrder", orphanRemoval = true, cascade = CascadeType.ALL)
   public Set<PurchasingItem> getPurchasingItems() {
     return purchasingItems;
   }

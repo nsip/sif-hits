@@ -1,4 +1,4 @@
-<StudentPeriodAttendance RefId="14bb2fe7-0a99-4858-bedf-635b24cff18c" xmlns="http://www.sifassociation.org/au/datamodel/3.4.1">
+<StudentPeriodAttendance RefId="14bb2fe7-0a99-4858-bedf-635b24cff18c" xmlns="http://www.sifassociation.org/au/datamodel/3.4">
     <StudentPersonalRefId>f7dd788e-3cef-40eb-9cb4-af90a2fa3147</StudentPersonalRefId>
     <SchoolInfoRefId>6dafb630-c439-41e3-9aa0-81f4dbd909ab</SchoolInfoRefId>
     <Date>2014-11-11</Date>

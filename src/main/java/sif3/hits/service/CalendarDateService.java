@@ -60,27 +60,21 @@ public class CalendarDateService extends BaseService<CalendarDateType, CalendarD
   }
 
   @Override
-  protected void deleteChildObjects(CalendarDate hitsObject) {
-    calendarDateOtherCodeDAO.deleteAllWithCalendarDate(hitsObject);
-  }
-
-  @Override
-  protected boolean hasChildObjects(CalendarDate hitsObject) {
-    return hitsObject != null && hitsObject.getCalendarDateTypeOtherCodes() != null && !hitsObject.getCalendarDateTypeOtherCodes().isEmpty();
-  }
-
-  @Override
-  protected CalendarDate saveWithChildObjects(CalendarDate hitsObject, RequestDTO<CalendarDateType> dto, String zoneId, boolean create) {
-    CalendarDate result = null;
-    Set<CalendarDateTypeOtherCode> otherCodes = new HashSet<CalendarDateTypeOtherCode>();
-    otherCodes.addAll(hitsObject.getCalendarDateTypeOtherCodes());
-    hitsObject.getCalendarDateTypeOtherCodes().clear();
-    result = super.saveWithChildObjects(hitsObject, dto, zoneId, create);
-    for (CalendarDateTypeOtherCode otherCode : otherCodes) {
-      otherCode.setCalendarDate(hitsObject);
-      calendarDateOtherCodeDAO.save(otherCode);
+  protected CalendarDate preSave(CalendarDate hitsObject, RequestDTO<CalendarDateType> dto, String zoneId, boolean create) {
+    Set<CalendarDateTypeOtherCode> otherCodes = new HashSet<>();
+    if (hitsObject != null && hitsObject.getCalendarDateTypeOtherCodes() != null) {
+      for (CalendarDateTypeOtherCode otherCode : hitsObject.getCalendarDateTypeOtherCodes()) {
+        CalendarDateTypeOtherCode existing = calendarDateOtherCodeDAO.findOne(otherCode.getCalendarDateTypeOtherCodeId());
+        if (existing != null) {
+          otherCodes.add(existing);
+        } else {
+          otherCodes.add(otherCode);
+        }
+      }
+      hitsObject.getCalendarDateTypeOtherCodes().clear();
+      hitsObject.getCalendarDateTypeOtherCodes().addAll(otherCodes);
     }
-    result.setCalendarDateTypeOtherCodes(otherCodes);
-    return result;
+    return hitsObject;
   }
+
 }

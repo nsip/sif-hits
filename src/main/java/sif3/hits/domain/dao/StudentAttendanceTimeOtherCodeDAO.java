@@ -11,7 +11,7 @@ import sif3.hits.domain.model.StudentAttendanceTimeOtherCodeId;
 
 public interface StudentAttendanceTimeOtherCodeDAO extends JpaRepository<StudentAttendanceTimeOtherCode, StudentAttendanceTimeOtherCodeId> {
 
-  @Query("delete from StudentAttendanceTimeOtherCode a where a.studentAttendanceTimeOtherCodeId.studentAttendanceTime in (select b from StudentAttendanceTime b where b.studentAttendanceTimeList = :studentAttendanceTimeList)")
+  @Query("delete from StudentAttendanceTimeOtherCode a where a.studentAttendanceTimeOtherCodeId.id in (select b.id from StudentAttendanceTime b where b.studentAttendanceTimeList = :studentAttendanceTimeList)")
   @Modifying
   public void deleteAllWithStudentAttendanceTimeList(@Param("studentAttendanceTimeList") StudentAttendanceTimeList studentAttendanceTimeList);
 }

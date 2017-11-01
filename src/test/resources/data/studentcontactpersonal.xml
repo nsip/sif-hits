@@ -1,4 +1,4 @@
-<StudentContactPersonal RefId="884fafd9-2feb-4770-827d-a5121bd85e41" xmlns="http://www.sifassociation.org/au/datamodel/3.4.1">
+<StudentContactPersonal RefId="884fafd9-2feb-4770-827d-a5121bd85e41" xmlns="http://www.sifassociation.org/au/datamodel/3.4">
     <LocalId>LocalId</LocalId>
     <PersonInfo>
         <Name>

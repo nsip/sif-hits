@@ -5,7 +5,6 @@ import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -112,7 +111,7 @@ public class TimeTable implements Serializable {
     this.endDate = endDate;
   }
 
-  @OneToMany(fetch = FetchType.LAZY, mappedBy = "timeTableDayId.timeTable", cascade = CascadeType.ALL, orphanRemoval = true)
+  @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "timeTable")
   public Set<TimeTableDay> getTimeTableDays() {
     return timeTableDays;
   }

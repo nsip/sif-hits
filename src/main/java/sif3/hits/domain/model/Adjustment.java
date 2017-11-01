@@ -2,7 +2,6 @@ package sif3.hits.domain.model;
 
 import java.util.Set;
 
-import javax.persistence.CascadeType;
 import javax.persistence.CollectionTable;
 import javax.persistence.Column;
 import javax.persistence.ElementCollection;
@@ -33,7 +32,7 @@ public class Adjustment {
     this.id = id;
   }
 
-  @ManyToOne(optional = false, fetch = FetchType.LAZY, cascade = CascadeType.DETACH)
+  @ManyToOne(optional = false)
   @JoinColumn(name = "NAPEventStudentLink_RefId")
   public NAPEventStudentLink getNapEventStudentLink() {
     return napEventStudentLink;

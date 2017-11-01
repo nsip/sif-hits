@@ -11,6 +11,7 @@ import org.springframework.http.HttpStatus;
 
 import sif.dd.au30.model.AUCodeSetsOperationalStatusType;
 import sif.dd.au30.model.AUCodeSetsSchoolLevelType;
+import sif.dd.au30.model.AUCodeSetsSchoolLocationType;
 import sif.dd.au30.model.AUCodeSetsSchoolSectorCodeType;
 import sif.dd.au30.model.AUCodeSetsYesOrNoCategoryType;
 import sif.dd.au30.model.AddressListType;
@@ -80,7 +81,7 @@ public class SchoolInfoConsumerTest extends BaseTest {
 
     addressList.getAddress().add(address);
     schoolInfo.setAddressList(objectFactory.createSchoolInfoTypeAddressList(addressList));
-    schoolInfo.setSchoolGeographicLocation(objectFactory.createSchoolInfoTypeSchoolGeographicLocation("2"));
+    schoolInfo.setSchoolGeographicLocation(objectFactory.createSchoolInfoTypeSchoolGeographicLocation(AUCodeSetsSchoolLocationType.fromValue("2")));
     schoolInfo.setARIA(objectFactory.createSchoolInfoTypeARIA(new BigDecimal("1")));
     schoolInfo.setEntityOpen(objectFactory.createSchoolInfoTypeEntityOpen(getDate("1990-02-01")));
     schoolInfo.setEntityClose(objectFactory.createSchoolInfoTypeEntityClose(getDate("2014-12-20")));

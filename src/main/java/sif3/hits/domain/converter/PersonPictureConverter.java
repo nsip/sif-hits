@@ -2,6 +2,7 @@ package sif3.hits.domain.converter;
 
 import org.springframework.stereotype.Component;
 
+import sif.dd.au30.model.AUCodeSetsPictureSourceType;
 import sif.dd.au30.model.AUCodeSetsYesOrNoCategoryType;
 import sif.dd.au30.model.PersonPictureType;
 import sif.dd.au30.model.PersonPictureType.ParentObjectRefId;
@@ -36,7 +37,7 @@ public class PersonPictureConverter extends HitsConverter<PersonPictureType, Per
       if (source.getPictureSource() != null || source.getPictureSourceType() != null) {
         PictureSource pictureSource = objectFactory.createPersonPictureTypePictureSource();
         pictureSource.setValue(source.getPictureSource());
-        pictureSource.setType(source.getPictureSourceType());
+        pictureSource.setType(getEnumValue(source.getPictureSourceType(), AUCodeSetsPictureSourceType.class));
         target.setPictureSource(pictureSource);
       }
     }
@@ -60,7 +61,7 @@ public class PersonPictureConverter extends HitsConverter<PersonPictureType, Per
         if (pictureSource.getValue() != null && !pictureSource.getValue().isEmpty()) {
           target.setPictureSource(pictureSource.getValue());
         }
-        target.setPictureSourceType(pictureSource.getType());
+        target.setPictureSourceType(getEnumValue(pictureSource.getType()));
       }
     }
   }

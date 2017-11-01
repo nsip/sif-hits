@@ -2,7 +2,6 @@ package sif3.hits.domain.model;
 
 import java.util.Set;
 
-import javax.persistence.CascadeType;
 import javax.persistence.CollectionTable;
 import javax.persistence.Column;
 import javax.persistence.ElementCollection;
@@ -33,7 +32,7 @@ public class SubstituteItem {
     this.id = id;
   }
 
-  @ManyToOne(cascade = CascadeType.DETACH)
+  @ManyToOne
   @JoinColumn(name = "NAPTestItem_RefId")
   public NAPTestItem getNapTestItem() {
     return napTestItem;
@@ -43,7 +42,7 @@ public class SubstituteItem {
     this.napTestItem = napTestItem;
   }
 
-  @ManyToOne(cascade = CascadeType.DETACH)
+  @ManyToOne
   @JoinColumn(name = "SubstituteItem_RefId")
   public NAPTestItem getSubstituteItem() {
     return substituteItem;
@@ -52,7 +51,7 @@ public class SubstituteItem {
   public void setSubstituteItem(NAPTestItem substituteItem) {
     this.substituteItem = substituteItem;
   }
-  
+
   @ElementCollection(fetch = FetchType.LAZY)
   @CollectionTable(name = "ItemSubstitutedFor_PNPCode", joinColumns = @JoinColumn(name = "ItemSubstitutedFor_Id"))
   @Column(name = "Code")

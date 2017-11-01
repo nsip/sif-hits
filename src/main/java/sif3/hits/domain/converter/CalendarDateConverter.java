@@ -6,6 +6,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import sif.dd.au30.model.AUCodeSetsCalendarEventType;
 import sif.dd.au30.model.AttendanceInfoType;
 import sif.dd.au30.model.CalendarDateInfoType;
 import sif.dd.au30.model.CalendarDateType;
@@ -37,12 +38,14 @@ public class CalendarDateConverter extends HitsConverter<CalendarDateType, Calen
       target.setSchoolYear(getYearValue(source.getSchoolYear()));
 
       CalendarDateInfoType calendarDateType = objectFactory.createCalendarDateInfoType();
-      calendarDateType.setCode(source.getTypeCode());
+      calendarDateType.setCode(getEnumValue(source.getTypeCode(), AUCodeSetsCalendarEventType.class));
 
       OtherCodeListType otherCodeListType = objectFactory.createOtherCodeListType();
       List<OtherCode> otherCodes = calendarDateTypeOtherCodeConverter.toSifModelList(source.getCalendarDateTypeOtherCodes());
       otherCodeListType.getOtherCode().addAll(otherCodes);
-      calendarDateType.setOtherCodeList(objectFactory.createCalendarDateInfoTypeOtherCodeList(otherCodeListType));
+      if (otherCodes != null && !otherCodes.isEmpty()) {
+        calendarDateType.setOtherCodeList(objectFactory.createCalendarDateInfoTypeOtherCodeList(otherCodeListType));
+      }
 
       target.setCalendarDateType(calendarDateType);
       target.setCalendarDateNumber(objectFactory.createCalendarDateTypeCalendarDateNumber(getLongValue(source.getNumber())));
@@ -67,12 +70,20 @@ public class CalendarDateConverter extends HitsConverter<CalendarDateType, Calen
 
       CalendarDateInfoType calendarDateType = source.getCalendarDateType();
       if (calendarDateType != null) {
-        target.setTypeCode(calendarDateType.getCode());
-
+        target.setTypeCode(getEnumValue(calendarDateType.getCode()));
+        if (target.getCalendarDateTypeOtherCodes() == null) {
+          target.setCalendarDateTypeOtherCodes(new HashSet<CalendarDateTypeOtherCode>());
+        } else {
+          target.getCalendarDateTypeOtherCodes().clear();
+        }
+        
         OtherCodeListType otherCodeList = getJAXBValue(calendarDateType.getOtherCodeList());
         if (otherCodeList != null) {
           List<CalendarDateTypeOtherCode> otherCodes = calendarDateTypeOtherCodeConverter.toHitsModelList(otherCodeList.getOtherCode());
-          target.setCalendarDateTypeOtherCodes(new HashSet<CalendarDateTypeOtherCode>(otherCodes));
+          for (CalendarDateTypeOtherCode otherCode : otherCodes) {
+            otherCode.setCalendarDate(target);
+          }
+          target.getCalendarDateTypeOtherCodes().addAll(otherCodes);
         }
       }
       target.setNumber(getLongValue(getJAXBValue(source.getCalendarDateNumber())));

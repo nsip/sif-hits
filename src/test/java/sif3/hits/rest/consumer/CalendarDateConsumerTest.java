@@ -4,11 +4,14 @@ import java.math.BigDecimal;
 import java.util.Arrays;
 import java.util.List;
 
+import javax.xml.bind.JAXBElement;
+
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.springframework.http.HttpStatus;
 
+import sif.dd.au30.model.AUCodeSetsCalendarEventType;
 import sif.dd.au30.model.AttendanceInfoType;
 import sif.dd.au30.model.CalendarDateCollectionType;
 import sif.dd.au30.model.CalendarDateInfoType;
@@ -42,7 +45,7 @@ public class CalendarDateConsumerTest extends BaseTest {
     calendarDate.setSchoolYear(getDate("2014"));
     
     CalendarDateInfoType calendarDateType = new CalendarDateInfoType();
-    calendarDateType.setCode("INST");
+    calendarDateType.setCode(AUCodeSetsCalendarEventType.fromValue("INST"));
     
     OtherCodeListType otherCodeList = new OtherCodeListType();
     OtherCode otherCode = new OtherCode();
@@ -63,6 +66,7 @@ public class CalendarDateConsumerTest extends BaseTest {
     calendarDate.setStudentAttendance(objectFactory.createCalendarDateTypeStudentAttendance(studentAttendance));
     
     calendarDateTester.doCreateOne(calendarDate);
+    calendarDateTester.doUpdateOne(calendarDate, REF_ID);
     String xmlExpectedTo = calendarDateTester.getXML(calendarDate);
 
     calendarDate.setCalendarDateRefId("2d647ff7-2091-445b-b4c0-2ee5527277ed");
@@ -125,6 +129,55 @@ public class CalendarDateConsumerTest extends BaseTest {
       System.out.println("\nTo:\n" + xmlExpectedTo);
       Assert.assertEquals("XML Differs", xmlExpectedFrom, xmlExpectedTo);
     }
+  }
+  
+  @Test
+  public void testUpdateSingleOtherCodes() throws Exception {
+    List<Response> responses = calendarDateTester.testGetSingle(REF_ID);
+    Assert.assertNotNull(responses);
+    Assert.assertEquals(1, responses.size());
+    Response response = responses.get(0);
+    Assert.assertNotNull(response.getDataObject());
+    CalendarDateType calendarDate = (CalendarDateType) response.getDataObject();
+    Assert.assertEquals(REF_ID, calendarDate.getCalendarDateRefId());
+    Assert.assertEquals(2, calendarDate.getCalendarDateType().getOtherCodeList().getValue().getOtherCode().size());
+    
+    JAXBElement<OtherCodeListType> otherCodes = calendarDate.getCalendarDateType().getOtherCodeList();
+    calendarDate.getCalendarDateType().setOtherCodeList(null);
+    calendarDateTester.doUpdateOne(calendarDate, calendarDate.getCalendarDateRefId());
+    
+    responses = calendarDateTester.testGetSingle(REF_ID);
+    Assert.assertNotNull(responses);
+    Assert.assertEquals(1, responses.size());
+    response = responses.get(0);
+    Assert.assertNotNull(response.getDataObject());
+    calendarDate = (CalendarDateType) response.getDataObject();
+    Assert.assertEquals(REF_ID, calendarDate.getCalendarDateRefId());
+    Assert.assertNull(calendarDate.getCalendarDateType().getOtherCodeList());
+    
+    calendarDate.getCalendarDateType().setOtherCodeList(otherCodes);
+    calendarDateTester.doUpdateOne(calendarDate, calendarDate.getCalendarDateRefId());
+    
+    responses = calendarDateTester.testGetSingle(REF_ID);
+    Assert.assertNotNull(responses);
+    Assert.assertEquals(1, responses.size());
+    response = responses.get(0);
+    Assert.assertNotNull(response.getDataObject());
+    calendarDate = (CalendarDateType) response.getDataObject();
+    Assert.assertEquals(REF_ID, calendarDate.getCalendarDateRefId());
+    Assert.assertEquals(2, calendarDate.getCalendarDateType().getOtherCodeList().getValue().getOtherCode().size());
+    
+    calendarDate.getCalendarDateType().setOtherCodeList(otherCodes);
+    calendarDateTester.doUpdateOne(calendarDate, calendarDate.getCalendarDateRefId());
+    
+    responses = calendarDateTester.testGetSingle(REF_ID);
+    Assert.assertNotNull(responses);
+    Assert.assertEquals(1, responses.size());
+    response = responses.get(0);
+    Assert.assertNotNull(response.getDataObject());
+    calendarDate = (CalendarDateType) response.getDataObject();
+    Assert.assertEquals(REF_ID, calendarDate.getCalendarDateRefId());
+    Assert.assertEquals(2, calendarDate.getCalendarDateType().getOtherCodeList().getValue().getOtherCode().size());
   }
 
   @Test

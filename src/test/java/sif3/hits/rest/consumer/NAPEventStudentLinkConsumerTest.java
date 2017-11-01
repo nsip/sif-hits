@@ -10,6 +10,7 @@ import org.springframework.http.HttpStatus;
 
 import sif.dd.au30.model.AUCodeSetsNAPParticipationCodeType;
 import sif.dd.au30.model.AUCodeSetsPNPCodeType;
+import sif.dd.au30.model.AUCodeSetsSchoolLocationType;
 import sif.dd.au30.model.AUCodeSetsSchoolSectorCodeType;
 import sif.dd.au30.model.AdjustmentContainerType;
 import sif.dd.au30.model.NAPEventStudentLinkCollectionType;
@@ -55,7 +56,7 @@ public class NAPEventStudentLinkConsumerTest extends BaseTest {
     napEventStudentLinkType.setParticipationText("Participated");
     napEventStudentLinkType.setPlatformStudentIdentifier(StudentPersonalRefIds.PSI_ID_1);
     napEventStudentLinkType.setSchoolACARAId(SchoolInfoConsumerTest.ACARA_ID);
-    napEventStudentLinkType.setSchoolGeolocation(objectFactory.createNAPEventStudentLinkTypeSchoolGeolocation("2"));
+    napEventStudentLinkType.setSchoolGeolocation(objectFactory.createNAPEventStudentLinkTypeSchoolGeolocation(AUCodeSetsSchoolLocationType.fromValue("2")));
     napEventStudentLinkType.setSchoolSector(AUCodeSetsSchoolSectorCodeType.GOV);
     napEventStudentLinkType.setReportingSchoolName(objectFactory.createNAPEventStudentLinkTypeReportingSchoolName("Bens Test State High School"));
     napEventStudentLinkType.setSchoolInfoRefId(objectFactory.createNAPEventStudentLinkTypeSchoolInfoRefId(SchoolInfoConsumerTest.REF_ID));

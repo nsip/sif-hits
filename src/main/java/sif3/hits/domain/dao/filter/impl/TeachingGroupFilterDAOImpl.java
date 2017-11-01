@@ -60,6 +60,12 @@ public class TeachingGroupFilterDAOImpl extends BaseFilterableRepository<Teachin
       teachingGroupTeacherQuery.add(Restrictions.eq("teachingGroupTeacherId.staffPersonal.refId", value));
       teachingGroupTeacherQuery.setProjection(Projections.property("teachingGroupTeacherId.teachingGroup.refId"));
       criteria.add(Subqueries.propertyIn("refId", teachingGroupTeacherQuery));
+    } else if ("SchoolInfos".equals(key)) {
+      DetachedCriteria teachingGroupQuery = DetachedCriteria.forClass(TeachingGroup.class);
+      teachingGroupQuery.createAlias("schoolInfo", "s");
+      teachingGroupQuery.add(Restrictions.eq("s.refId", value));
+      teachingGroupQuery.setProjection(Projections.property("refId"));
+      criteria.add(Subqueries.propertyIn("refId", teachingGroupQuery));
     } else {
       super.addServicePathCriteria(criteria, key, value);
     }

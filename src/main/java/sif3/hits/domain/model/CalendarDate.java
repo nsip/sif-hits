@@ -2,9 +2,9 @@ package sif3.hits.domain.model;
 
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
@@ -102,7 +102,7 @@ public class CalendarDate extends HitsEntity {
     this.studentAttendanceAttendanceValue = studentAttendanceAttendanceValue;
   }
 
-  @OneToMany(fetch = FetchType.LAZY, mappedBy = "calendarDateTypeOtherCodeId.calendarDate")
+  @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "calendarDateTypeOtherCodeId.calendarDate")
   public Set<CalendarDateTypeOtherCode> getCalendarDateTypeOtherCodes() {
     return calendarDateTypeOtherCodes;
   }

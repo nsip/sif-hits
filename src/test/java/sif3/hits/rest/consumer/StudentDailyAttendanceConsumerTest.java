@@ -9,6 +9,8 @@ import org.junit.Before;
 import org.junit.Test;
 import org.springframework.http.HttpStatus;
 
+import sif.dd.au30.model.AUCodeSetsAttendanceCodeType;
+import sif.dd.au30.model.AUCodeSetsAttendanceStatusType;
 import sif.dd.au30.model.AUCodeSetsDayValueCodeType;
 import sif.dd.au30.model.AttendanceCodeType;
 import sif.dd.au30.model.ObjectFactory;
@@ -41,9 +43,9 @@ public class StudentDailyAttendanceConsumerTest extends BaseTest {
     studentDailyAttendance.setSchoolYear(getDate("2014"));
     studentDailyAttendance.setDayValue(objectFactory.createStudentDailyAttendanceTypeDayValue(AUCodeSetsDayValueCodeType.FULL));
     AttendanceCodeType attendanceCodeType = new AttendanceCodeType();
-    attendanceCodeType.setCode("100");
+    attendanceCodeType.setCode(AUCodeSetsAttendanceCodeType.fromValue("100"));
     studentDailyAttendance.setAttendanceCode(attendanceCodeType);
-    studentDailyAttendance.setAttendanceStatus("NA");
+    studentDailyAttendance.setAttendanceStatus(AUCodeSetsAttendanceStatusType.fromValue("NA"));
     studentDailyAttendance.setTimeIn(objectFactory.createStudentDailyAttendanceTypeTimeIn(getDate("08:30:00")));
     studentDailyAttendance.setTimeOut(objectFactory.createStudentDailyAttendanceTypeTimeOut(getDate("15:30:00")));
     studentDailyAttendance.setAbsenceValue(objectFactory.createStudentDailyAttendanceTypeAbsenceValue(BigDecimal.ZERO));

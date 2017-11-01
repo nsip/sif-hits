@@ -1,10 +1,10 @@
 package sif3.hits.domain.model;
 
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.Transient;
 
 @Entity
 public class TimeTableCell extends HitsEntity {
@@ -19,6 +19,7 @@ public class TimeTableCell extends HitsEntity {
   private String periodId;
   private String dayId;
   private StaffPersonal staffPersonal;
+  private boolean temporary = false;
 
   @Id
   public String getRefId() {
@@ -49,7 +50,7 @@ public class TimeTableCell extends HitsEntity {
     this.timeTableSubject = timeTableSubject;
   }
 
-  @ManyToOne(fetch = FetchType.LAZY)
+  @ManyToOne
   @JoinColumn(name = "TeachingGroup_RefId", referencedColumnName = "RefId")
   public TeachingGroup getTeachingGroup() {
     return teachingGroup;
@@ -59,7 +60,7 @@ public class TimeTableCell extends HitsEntity {
     this.teachingGroup = teachingGroup;
   }
 
-  @ManyToOne(fetch = FetchType.LAZY)
+  @ManyToOne
   @JoinColumn(name = "RoomInfo_RefId", referencedColumnName = "RefId")
   public RoomInfo getRoomInfo() {
     return roomInfo;
@@ -93,7 +94,7 @@ public class TimeTableCell extends HitsEntity {
     this.dayId = dayId;
   }
 
-  @ManyToOne(fetch = FetchType.LAZY)
+  @ManyToOne
   @JoinColumn(name = "StaffPersonal_RefId", referencedColumnName = "RefId")
   public StaffPersonal getStaffPersonal() {
     return staffPersonal;
@@ -101,5 +102,15 @@ public class TimeTableCell extends HitsEntity {
 
   public void setStaffPersonal(StaffPersonal staffPersonal) {
     this.staffPersonal = staffPersonal;
+  }
+  
+  @Transient
+  public boolean isTemporary() {
+    return temporary;
+  }
+  
+  @Transient
+  public void setTemporary(boolean temporary) {
+    this.temporary = temporary;
   }
 }

@@ -8,6 +8,8 @@ import org.junit.Before;
 import org.junit.Test;
 import org.springframework.http.HttpStatus;
 
+import sif.dd.au30.model.AUCodeSetsEmailTypeType;
+import sif.dd.au30.model.AUCodeSetsTelephoneNumberTypeType;
 import sif.dd.au30.model.AUCodeSetsYesOrNoCategoryType;
 import sif.dd.au30.model.ContactInfoType;
 import sif.dd.au30.model.EmailListType;
@@ -57,7 +59,7 @@ public class VendorInfoConsumerTest extends BaseTest implements UsesConstants {
     EmailListType emailListType = new EmailListType();
     EmailType email = new EmailType();
     email.setValue("email@not.a.real.domain");
-    email.setType(DEFAULT_EMAIL_TYPE);
+    email.setType(AUCodeSetsEmailTypeType.fromValue(DEFAULT_EMAIL_TYPE));
     emailListType.getEmail().add(email);
     contactInfoType.setEmailList(objectFactory.createContactInfoTypeEmailList(emailListType));
 
@@ -70,7 +72,7 @@ public class VendorInfoConsumerTest extends BaseTest implements UsesConstants {
 
     PhoneNumberListType phoneNumberList = new PhoneNumberListType();
     PhoneNumberType phoneNumber = new PhoneNumberType();
-    phoneNumber.setType(DEFAULT_PHONE_TYPE);
+    phoneNumber.setType(AUCodeSetsTelephoneNumberTypeType.fromValue(DEFAULT_PHONE_TYPE));
     phoneNumber.setNumber("08 9455 3382");
     phoneNumberList.getPhoneNumber().add(phoneNumber);
     contactInfoType.setPhoneNumberList(objectFactory.createContactInfoTypePhoneNumberList(phoneNumberList));

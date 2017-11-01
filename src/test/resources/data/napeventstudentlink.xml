@@ -1,4 +1,4 @@
-<NAPEventStudentLink RefId="1adc0ede-bfbd-4b7d-83ac-b29fb4fb5e08" xmlns="http://www.sifassociation.org/au/datamodel/3.4.1">
+<NAPEventStudentLink RefId="1adc0ede-bfbd-4b7d-83ac-b29fb4fb5e08" xmlns="http://www.sifassociation.org/au/datamodel/3.4">
 	<StudentPersonalRefId>f7dd788e-3cef-40eb-9cb4-af90a2fa3147</StudentPersonalRefId>
 	<PlatformStudentIdentifier>R100000001H</PlatformStudentIdentifier>
 	<SchoolInfoRefId>6dafb630-c439-41e3-9aa0-81f4dbd909ab</SchoolInfoRefId>

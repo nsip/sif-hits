@@ -2,8 +2,8 @@ package sif3.hits.domain.model;
 
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -94,7 +94,7 @@ public class TimeTableSubject extends HitsEntity {
     this.subjectType = subjectType;
   }
 
-  @OneToMany(fetch = FetchType.LAZY, mappedBy = "timeTableSubjectOtherCodeId.timeTableSubject")
+  @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "timeTableSubjectOtherCodeId.timeTableSubject")
   public Set<TimeTableSubjectOtherCode> getOtherCodes() {
     return otherCodes;
   }

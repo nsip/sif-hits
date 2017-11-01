@@ -1,8 +1,6 @@
 package sif3.hits.domain.model;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
@@ -35,7 +33,7 @@ public class Stimulus extends HitsEntity {
     this.id = id;
   }
   
-  @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.DETACH, optional = false)
+  @ManyToOne(optional = false)
   @JoinColumn(name = "NAPTestItem_RefId")
   public NAPTestItem getTestItem() {
     return testItem;

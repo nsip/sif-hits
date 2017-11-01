@@ -1,8 +1,11 @@
 package sif3.hits.domain.converter;
 
-import java.util.Collection;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -15,8 +18,10 @@ import sif.dd.au30.model.TeachingGroupStudentType;
 import sif.dd.au30.model.TeachingGroupTeacherType;
 import sif.dd.au30.model.TeachingGroupType;
 import sif3.hits.domain.converter.factory.IObjectFactory;
+import sif3.hits.domain.model.StaffPersonal;
 import sif3.hits.domain.model.StudentPersonal;
 import sif3.hits.domain.model.TeachingGroup;
+import sif3.hits.domain.model.TeachingGroupTeacher;
 import sif3.hits.domain.model.TimeTableCell;
 
 @Component
@@ -36,6 +41,9 @@ public class TeachingGroupConverter extends HitsConverter<TeachingGroupType, Tea
   private TeachingGroupSchoolInfoConverter teachingGroupSchoolInfoConverter;
 
   @Autowired
+  private TeachingGroupTimeTableSubjectConveter teachingGroupTimeTableSubjectConveter;
+
+  @Autowired
   private TeachingGroupPeriodTimeTableCellConverter teachingGroupPeriodTimeTableCellConverter;
 
   @Override
@@ -47,14 +55,19 @@ public class TeachingGroupConverter extends HitsConverter<TeachingGroupType, Tea
       target.setShortName(source.getShortName());
       target.setLongName(objectFactory.createTeachingGroupTypeLongName(source.getLongName()));
 
+      teachingGroupTimeTableSubjectConveter.toSifModel(source.getTimeTableSubject(), target);
+
       List<TeachingGroupStudentType> students = teachingGroupStudentConverter.toSifModelList(source.getStudentPersonals());
       StudentListType studentList = objectFactory.createStudentListType();
       studentList.getTeachingGroupStudent().addAll(students);
-      target.setStudentList(objectFactory.createTeachingGroupTypeStudentList(studentList));
+      if (students != null && !students.isEmpty()) {
+        target.setStudentList(objectFactory.createTeachingGroupTypeStudentList(studentList));
+      }
 
       List<TeachingGroupTeacherType> teachers = teachingGroupTeacherConverter.toSifModelList(source.getTeachingGroupTeachers());
       if (teachers != null && !teachers.isEmpty()) {
         TeacherListType teacherList = objectFactory.createTeacherListType();
+
         teacherList.getTeachingGroupTeacher().addAll(teachers);
         target.setTeacherList(objectFactory.createTeachingGroupTypeTeacherList(teacherList));
       }
@@ -81,29 +94,125 @@ public class TeachingGroupConverter extends HitsConverter<TeachingGroupType, Tea
       target.setLongName(getJAXBValue(source.getLongName()));
       target.setSchoolYear(getYearValue(source.getSchoolYear()));
       target.setSchoolInfo(teachingGroupSchoolInfoConverter.toHitsModel(source));
+      target.setTimeTableSubject(teachingGroupTimeTableSubjectConveter.toHitsModel(source));
 
-      target.setTeachingGroupTeachers(new HashSet<sif3.hits.domain.model.TeachingGroupTeacher>());
-      if (source.getTeacherList() != null && source.getTeacherList().getValue() != null) {
-        Collection<sif3.hits.domain.model.TeachingGroupTeacher> teachers = teachingGroupTeacherConverter.toHitsModelList(source.getTeacherList().getValue().getTeachingGroupTeacher());
-        if (teachers != null) {
-          target.setTeachingGroupTeachers(new HashSet<sif3.hits.domain.model.TeachingGroupTeacher>(teachers));
+      handleTeachers(target, source);
+      handleStudents(target, source);
+      handlePeriods(target, source);
+    }
+  }
+
+  private void handleTeachers(TeachingGroup target, TeachingGroupType source) {
+    Map<String, String> newStaffPersonals = new HashMap<>();
+    Map<String, TeachingGroupTeacher> existingStaffPersonals = new HashMap<>();
+
+    TeacherListType teacherListType = getJAXBValue(source.getTeacherList());
+    if (teacherListType != null && !teacherListType.getTeachingGroupTeacher().isEmpty()) {
+      for (TeachingGroupTeacherType teachingGroupTeacherType : teacherListType.getTeachingGroupTeacher()) {
+        String refId = getJAXBValue(teachingGroupTeacherType.getStaffPersonalRefId());
+        if (refId != null) {
+          newStaffPersonals.put(refId, teachingGroupTeacherType.getAssociation());
         }
       }
+    }
 
+    if (target.getTeachingGroupTeachers() == null) {
+      target.setTeachingGroupTeachers(new HashSet<TeachingGroupTeacher>());
+    }
+    for (TeachingGroupTeacher teachingGroupTeacher : target.getTeachingGroupTeachers()) {
+      existingStaffPersonals.put(teachingGroupTeacher.getStaffPersonal().getRefId(), teachingGroupTeacher);
+    }
+    target.getTeachingGroupTeachers().clear();
+    for (Entry<String, TeachingGroupTeacher> entry : existingStaffPersonals.entrySet()) {
+      if (newStaffPersonals.containsKey(entry.getKey())) {
+        String association = newStaffPersonals.get(entry.getKey());
+        entry.getValue().setTeacherAssociation(association);
+        target.getTeachingGroupTeachers().add(entry.getValue());
+      } else {
+//        entry.getValue().setTeachingGroup(null);
+      }
+    }
+    for (Entry<String, String> entry : newStaffPersonals.entrySet()) {
+      if (!existingStaffPersonals.containsKey(entry.getKey())) {
+        TeachingGroupTeacher teacher = new TeachingGroupTeacher();
+        teacher.setTeacherAssociation(entry.getValue());
+        StaffPersonal staffPersonal = new StaffPersonal();
+        staffPersonal.setRefId(entry.getKey());
+        teacher.setStaffPersonal(staffPersonal);
+        // Do Not Set Teaching Group Yet!
+        target.getTeachingGroupTeachers().add(teacher);
+      }
+    }
+  }
+
+  private void handleStudents(TeachingGroup target, TeachingGroupType source) {
+    Set<String> newStudentPersonals = new HashSet<>();
+    Map<String, StudentPersonal> existingStudentPersonals = new HashMap<>();
+
+    StudentListType studentListType = getJAXBValue(source.getStudentList());
+    if (studentListType != null && !studentListType.getTeachingGroupStudent().isEmpty()) {
+      for (TeachingGroupStudentType teachingGroupStudentType : studentListType.getTeachingGroupStudent()) {
+        String refId = getJAXBValue(teachingGroupStudentType.getStudentPersonalRefId());
+        if (refId != null) {
+          newStudentPersonals.add(refId);
+        }
+      }
+    }
+    if (target.getStudentPersonals() == null) {
       target.setStudentPersonals(new HashSet<StudentPersonal>());
-      if (source.getStudentList() != null && source.getStudentList().getValue() != null) {
-        Collection<StudentPersonal> studentPersonals = teachingGroupStudentConverter.toHitsModelList(source.getStudentList().getValue().getTeachingGroupStudent());
-        if (studentPersonals != null) {
-          target.setStudentPersonals(new HashSet<StudentPersonal>(studentPersonals));
+    }
+    for (StudentPersonal studentPersonal : target.getStudentPersonals()) {
+      existingStudentPersonals.put(studentPersonal.getRefId(), studentPersonal);
+    }
+    target.getStudentPersonals().clear();
+    for (Entry<String, StudentPersonal> entry : existingStudentPersonals.entrySet()) {
+      if (newStudentPersonals.contains(entry.getKey())) {
+        target.getStudentPersonals().add(entry.getValue());
+      }
+    }
+    for (String refId : newStudentPersonals) {
+      if (!existingStudentPersonals.containsKey(refId)) {
+        StudentPersonal studentPersonal = new StudentPersonal();
+        studentPersonal.setTemporary(true);
+        studentPersonal.setRefId(refId);
+        target.getStudentPersonals().add(studentPersonal);
+      }
+    }
+  }
+
+  private void handlePeriods(TeachingGroup target, TeachingGroupType source) {
+    Set<String> newPeriods = new HashSet<>();
+    Map<String, TimeTableCell> existingPeriods = new HashMap<>();
+
+    TeachingGroupPeriodListType teachingGroupPeriodListType = getJAXBValue(source.getTeachingGroupPeriodList());
+    if (teachingGroupPeriodListType != null && !teachingGroupPeriodListType.getTeachingGroupPeriod().isEmpty()) {
+      for (TeachingGroupPeriodType teachingGroupPeriodType : teachingGroupPeriodListType.getTeachingGroupPeriod()) {
+        String refId = getJAXBValue(teachingGroupPeriodType.getTimeTableCellRefId());
+        if (refId != null) {
+          newPeriods.add(refId);
         }
       }
-
+    }
+    if (target.getTimeTablePeriods() == null) {
       target.setTimeTablePeriods(new HashSet<TimeTableCell>());
-      if (source.getTeachingGroupPeriodList() != null && source.getTeachingGroupPeriodList().getValue() != null) {
-        Collection<TimeTableCell> timeTablePeriods = teachingGroupPeriodTimeTableCellConverter.toHitsModelList(source.getTeachingGroupPeriodList().getValue().getTeachingGroupPeriod());
-        if (timeTablePeriods != null) {
-          target.setTimeTablePeriods(new HashSet<TimeTableCell>(timeTablePeriods));
-        }
+    }
+    for (TimeTableCell timeTablePeriod : target.getTimeTablePeriods()) {
+      existingPeriods.put(timeTablePeriod.getRefId(), timeTablePeriod);
+    }
+    target.getTimeTablePeriods().clear();
+    for (Entry<String, TimeTableCell> entry : existingPeriods.entrySet()) {
+      if (newPeriods.contains(entry.getKey())) {
+        target.getTimeTablePeriods().add(entry.getValue());
+      } else {
+        entry.getValue().setTeachingGroup(null);
+      }
+    }
+    for (String refId : newPeriods) {
+      if (!existingPeriods.containsKey(refId)) {
+        TimeTableCell period = new TimeTableCell();
+        period.setTemporary(true);
+        period.setRefId(refId);
+        target.getTimeTablePeriods().add(period);
       }
     }
   }

@@ -1,4 +1,4 @@
-<PersonPictures xmlns="http://www.sifassociation.org/au/datamodel/3.4.1">
+<PersonPictures xmlns="http://www.sifassociation.org/au/datamodel/3.4">
 	<PersonPicture RefId="6c77bc0a-df8c-4aae-909c-6b104015a1ce">
 		<ParentObjectRefId SIF_RefObject="StudentPersonal">f7dd788e-3cef-40eb-9cb4-af90a2fa3147</ParentObjectRefId>
 		<SchoolYear>2016</SchoolYear>
