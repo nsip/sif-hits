@@ -4,7 +4,7 @@
 	<groupId>sif3</groupId>
 	<artifactId>sifhits</artifactId>
 	<name>sif-hits</name>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>18.3.0</version>
 	<packaging>war</packaging>
 
 	<properties>
@@ -13,8 +13,9 @@
 		<!-- Dependency Versions -->
 		<java.version>1.7</java.version>
 
+		<datamodel.version>3.4.2</datamodel.version>
 		<sif3.framework.version>0.12.0</sif3.framework.version>
-		<sif3.datamodel.version>au-3.4.2</sif3.datamodel.version>
+		<sif3.datamodel.version>au-${datamodel.version}</sif3.datamodel.version>
 
 		<log4j.version>1.2.14</log4j.version>
 		<slf4j.version>1.5.8</slf4j.version>
@@ -52,15 +53,8 @@
 			<artifactId>sifau-datamodel</artifactId>
 			<version>${sif3.datamodel.version}</version>
 		</dependency>
-<!-- 
-
-		<dependency>
-			<groupId>sif3.datamodel</groupId>
-			<artifactId>DataModel</artifactId>
-			<version>au-3.4-NAP-v3</version>
-		</dependency>
-
--->		
+		<!-- <dependency> <groupId>sif3.datamodel</groupId> <artifactId>DataModel</artifactId> 
+			<version>au-3.4-NAP-v3</version> </dependency> -->
 
 		<!-- logging -->
 		<dependency>
@@ -236,6 +230,12 @@
 
 	<build>
 		<finalName>SIF3InfraREST</finalName>
+		<resources>
+			<resource>
+				<directory>src/main/resources</directory>
+				<filtering>true</filtering>
+			</resource>
+		</resources>
 		<plugins>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
