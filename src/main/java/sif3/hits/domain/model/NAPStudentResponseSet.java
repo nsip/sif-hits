@@ -1,6 +1,6 @@
 package sif3.hits.domain.model;
 
-import java.util.Set;
+import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -16,8 +16,8 @@ public class NAPStudentResponseSet extends HitsEntity {
   private String refId;
   private NAPTest napTest;
   private StudentPersonal studentPersonal;
-  private Set<DomainScore> domainScores;
-  private Set<TestletResponse> testletList;
+  private List<DomainScore> domainScores;
+  private List<TestletResponse> testletList;
   private String calibrationSampleFlag;
   private String equatingSampleFlag;
   private String pathTakenForDomain;
@@ -54,20 +54,20 @@ public class NAPStudentResponseSet extends HitsEntity {
   }
 
   @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "napStudentResponseSet")
-  public Set<DomainScore> getDomainScores() {
+  public List<DomainScore> getDomainScores() {
     return domainScores;
   }
 
-  public void setDomainScores(Set<DomainScore> domainScores) {
+  public void setDomainScores(List<DomainScore> domainScores) {
     this.domainScores = domainScores;
   }
 
   @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "napStudentResponseSet")
-  public Set<TestletResponse> getTestletList() {
+  public List<TestletResponse> getTestletList() {
     return testletList;
   }
 
-  public void setTestletList(Set<TestletResponse> testletList) {
+  public void setTestletList(List<TestletResponse> testletList) {
     this.testletList = testletList;
   }
 

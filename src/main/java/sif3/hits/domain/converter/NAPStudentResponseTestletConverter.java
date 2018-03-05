@@ -21,75 +21,75 @@ import sif3.hits.domain.model.TestletResponse;
 @Component
 public class NAPStudentResponseTestletConverter extends HitsConverter<NAPTestletResponseType, TestletResponse> {
 
-  @Autowired
-  private NAPStudentResponseTestItemConverter napStudentResponseTestItemConverter;
+    @Autowired
+    private NAPStudentResponseTestItemConverter napStudentResponseTestItemConverter;
 
-  @Autowired
-  private NAPTestletDAO napTestletDAO;
+    @Autowired
+    private NAPTestletDAO napTestletDAO;
 
-  public NAPStudentResponseTestletConverter() {
-    super(NAPTestletResponseType.class, TestletResponse.class);
-  }
-
-  @Override
-  public void toSifModel(TestletResponse source, NAPTestletResponseType target) {
-    if (source != null && target != null) {
-      IObjectFactory objectFactory = getObjectFactory();
-
-      target.setTestletSubScore(getBigDecimalValue(source.getTestletScore()));
-
-      // NAP Testlet
-      NAPTestlet napTestlet = source.getTestlet();
-      if (napTestlet != null) {
-        target.setNAPTestletLocalId(napTestlet.getLocalId());
-        target.setNAPTestletRefId(objectFactory.createNAPTestletResponseTypeNAPTestletRefId(napTestlet.getRefId()));
-      }
-
-      // NAP TestItem List
-      List<TestItemResponse> testItemList = new ArrayList<TestItemResponse>(source.getItemList());
-      if (testItemList != null && !testItemList.isEmpty()) {
-        Collections.sort(testItemList, new Comparator<TestItemResponse>() {
-          public int compare(TestItemResponse left, TestItemResponse right) {
-            return new CompareToBuilder().append(left.getSequenceNumber(), right.getSequenceNumber()).append(left.getId(), right.getId()).toComparison();
-          }
-        });
-        NAPTestletItemResponseListType napTestletItemListType = objectFactory.createNAPTestletItemResponseListType();
-        napTestletItemListType.getItemResponse().addAll(napStudentResponseTestItemConverter.toSifModelList(testItemList));
-        target.setItemResponseList(napTestletItemListType);
-      }
+    public NAPStudentResponseTestletConverter() {
+        super(NAPTestletResponseType.class, TestletResponse.class);
     }
-  }
 
-  @Override
-  public void toHitsModel(NAPTestletResponseType source, TestletResponse target) {
-    if (source != null && target != null) {
-      target.setTestletScore(getBigDecimalValue(source.getTestletSubScore()));
+    @Override
+    public void toSifModel(TestletResponse source, NAPTestletResponseType target) {
+        if (source != null && target != null) {
+            IObjectFactory objectFactory = getObjectFactory();
 
-      // NAPTestlet
-      String testletRefId = getJAXBValue(source.getNAPTestletRefId());
-      String testletLocalId = source.getNAPTestletLocalId();
-      NAPTestlet napTestlet = napTestletDAO.findOne(testletRefId);
-      if (napTestlet == null) {
-        List<NAPTestlet> napTestlets = napTestletDAO.findWithLocalId(testletLocalId);
-        if (!napTestlets.isEmpty()) {
-          napTestlet = napTestlets.get(0);
+            target.setTestletSubScore(objectFactory.createNAPTestletResponseTypeTestletSubScore(getBigDecimalValue(source.getTestletScore())));
+
+            // NAP Testlet
+            NAPTestlet napTestlet = source.getTestlet();
+            if (napTestlet != null) {
+                target.setNAPTestletLocalId(napTestlet.getLocalId());
+                target.setNAPTestletRefId(objectFactory.createNAPTestletResponseTypeNAPTestletRefId(napTestlet.getRefId()));
+            }
+
+            // NAP TestItem List
+            List<TestItemResponse> testItemList = new ArrayList<TestItemResponse>(source.getItemList());
+            if (testItemList != null && !testItemList.isEmpty()) {
+                Collections.sort(testItemList, new Comparator<TestItemResponse>() {
+                    public int compare(TestItemResponse left, TestItemResponse right) {
+                        return new CompareToBuilder().append(left.getSequenceNumber(), right.getSequenceNumber()).append(left.getId(), right.getId()).toComparison();
+                    }
+                });
+                NAPTestletItemResponseListType napTestletItemListType = objectFactory.createNAPTestletItemResponseListType();
+                napTestletItemListType.getItemResponse().addAll(napStudentResponseTestItemConverter.toSifModelList(testItemList));
+                target.setItemResponseList(napTestletItemListType);
+            }
         }
-      }
-      target.setTestlet(napTestlet);
-
-      // NAPTestItem List
-      if (target.getItemList() == null) {
-        target.setItemList(new HashSet<TestItemResponse>());
-      }
-      target.getItemList().clear();
-      NAPTestletItemResponseListType napTestletItemListType = source.getItemResponseList();
-      if (napTestletItemListType != null) {
-        target.getItemList().addAll(napStudentResponseTestItemConverter.toHitsModelList(napTestletItemListType.getItemResponse()));
-        for (TestItemResponse testItemResponse : target.getItemList()) {
-          testItemResponse.setTestletResponse(target);
-        }
-      }
     }
-  }
+
+    @Override
+    public void toHitsModel(NAPTestletResponseType source, TestletResponse target) {
+        if (source != null && target != null) {
+            target.setTestletScore(getBigDecimalValue(getJAXBValue(source.getTestletSubScore())));
+
+            // NAPTestlet
+            String testletRefId = getJAXBValue(source.getNAPTestletRefId());
+            String testletLocalId = source.getNAPTestletLocalId();
+            NAPTestlet napTestlet = napTestletDAO.findOne(testletRefId);
+            if (napTestlet == null) {
+                List<NAPTestlet> napTestlets = napTestletDAO.findWithLocalId(testletLocalId);
+                if (!napTestlets.isEmpty()) {
+                    napTestlet = napTestlets.get(0);
+                }
+            }
+            target.setTestlet(napTestlet);
+
+            // NAPTestItem List
+            if (target.getItemList() == null) {
+                target.setItemList(new HashSet<TestItemResponse>());
+            }
+            target.getItemList().clear();
+            NAPTestletItemResponseListType napTestletItemListType = source.getItemResponseList();
+            if (napTestletItemListType != null) {
+                target.getItemList().addAll(napStudentResponseTestItemConverter.toHitsModelList(napTestletItemListType.getItemResponse()));
+                for (TestItemResponse testItemResponse : target.getItemList()) {
+                    testItemResponse.setTestletResponse(target);
+                }
+            }
+        }
+    }
 
 }

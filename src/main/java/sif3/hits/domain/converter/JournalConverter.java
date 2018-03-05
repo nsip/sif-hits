@@ -27,7 +27,7 @@ public class JournalConverter extends HitsConverter<JournalType, Journal>impleme
       if (StringUtils.isNotBlank(source.getAmount())) {
         MonetaryAmountType monetaryAmount = objectFactory.createMonetaryAmountType();
         monetaryAmount.setCurrency(DEFAULT_CURRENCY_ENUM);
-        monetaryAmount.setValue(getBigDecimalValue(source.getAmount()));
+        monetaryAmount.setValue(source.getAmount());
         target.setAmount(monetaryAmount);
       }
       target.setApprovedBy(objectFactory.createJournalTypeApprovedBy(source.getApprovedBy()));
@@ -55,7 +55,7 @@ public class JournalConverter extends HitsConverter<JournalType, Journal>impleme
       target.setRefId(source.getRefId());
 
       if (source.getAmount() != null) {
-        target.setAmount(getBigDecimalValue(source.getAmount().getValue()));
+        target.setAmount(source.getAmount().getValue());
       }
       target.setApprovedBy(getJAXBValue(source.getApprovedBy()));
       target.setApprovedDate(getDateValue(getJAXBValue(source.getApprovedDate())));

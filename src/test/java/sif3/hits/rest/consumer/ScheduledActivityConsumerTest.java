@@ -75,7 +75,7 @@ public class ScheduledActivityConsumerTest extends BaseTest {
     scheduledActivity.setYearLevels(objectFactory.createScheduledActivityTypeYearLevels(yearLevelsType));
 
     ScheduledActivityOverrideType override = new ScheduledActivityOverrideType();
-    override.setValue(AUCodeSetsYesOrNoCategoryType.Y);
+    override.setValue(AUCodeSetsYesOrNoCategoryType.Y.name());
     override.setDateOfOverride(getDate("2014-09-02"));
     scheduledActivity.setOverride(objectFactory.createScheduledActivityTypeOverride(override));
 

@@ -64,10 +64,10 @@ public class TimeTableCellFilterDAOImpl extends BaseFilterableRepository<TimeTab
                     criteria.add(Restrictions.eq("timeTable.localId", input.getTimeTableLocalId().getValue()));
                 }
             }
-            if (needsFilter(input.getSubjectLocalId()) || StringUtils.isNotBlank(input.getTimeTableSubjectRefId())) {
+            if (needsFilter(input.getSubjectLocalId(), input.getTimeTableSubjectRefId())) {
                 criteria.createAlias("timeTableSubject", "subject");
-                if (StringUtils.isNotBlank(input.getTimeTableSubjectRefId())) {
-                    criteria.add(Restrictions.eq("subject.refId", input.getTimeTableSubjectRefId()));
+                if (needsFilter(input.getTimeTableSubjectRefId())) {
+                    criteria.add(Restrictions.eq("subject.refId", input.getTimeTableSubjectRefId().getValue()));
                 }
                 if (needsFilter(input.getSubjectLocalId())) {
                     criteria.add(Restrictions.eq("subject.subjectLocalId", input.getSubjectLocalId().getValue()));

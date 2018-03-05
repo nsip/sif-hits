@@ -31,7 +31,7 @@ public class CalendarDateConverter extends HitsConverter<CalendarDateType, Calen
     if (source != null && target != null) {
       IObjectFactory objectFactory = getObjectFactory();
 
-      target.setCalendarSummaryRefId(source.getCalendarSummaryRefId());
+      target.setCalendarSummaryRefId(objectFactory.createCalendarDateTypeCalendarSummaryRefId(source.getCalendarSummaryRefId()));
       target.setDate(getDateValue(source.getCalendarDate()));
       target.setCalendarDateRefId(source.getRefId());
       target.setSchoolInfoRefId(source.getSchoolInfoRefId());
@@ -62,7 +62,7 @@ public class CalendarDateConverter extends HitsConverter<CalendarDateType, Calen
   @Override
   public void toHitsModel(CalendarDateType source, CalendarDate target) {
     if (source != null && target != null) {
-      target.setCalendarSummaryRefId(source.getCalendarSummaryRefId());
+      target.setCalendarSummaryRefId(getJAXBValue(source.getCalendarSummaryRefId()));
       target.setCalendarDate(getDateValue(source.getDate()));
       target.setRefId(source.getCalendarDateRefId());
       target.setSchoolInfoRefId(source.getSchoolInfoRefId());

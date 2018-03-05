@@ -9,24 +9,24 @@ import sif3.hits.domain.model.TimeTableSubject;
 @Component
 public class TimeTableCellTimeTableSubjectConverter extends HitsConverter<TimeTableCellType, TimeTableSubject> {
 
-  public TimeTableCellTimeTableSubjectConverter() {
-    super(null, TimeTableSubject.class);
-  }
-
-  @Override
-  public void toSifModel(TimeTableSubject source, TimeTableCellType target) {
-    if (source != null && target != null) {
-      IObjectFactory objectFactory = getObjectFactory();
-      target.setTimeTableSubjectRefId(source.getRefId());
-      target.setSubjectLocalId(objectFactory.createTimeTableCellTypeSubjectLocalId(source.getSubjectLocalId()));
+    public TimeTableCellTimeTableSubjectConverter() {
+        super(null, TimeTableSubject.class);
     }
-  }
 
-  @Override
-  public void toHitsModel(TimeTableCellType source, TimeTableSubject target) {
-    if (source != null && target != null) {
-      target.setRefId(source.getTimeTableSubjectRefId());
-      target.setSubjectLocalId(getJAXBValue(source.getSubjectLocalId()));
+    @Override
+    public void toSifModel(TimeTableSubject source, TimeTableCellType target) {
+        if (source != null && target != null) {
+            IObjectFactory objectFactory = getObjectFactory();
+            target.setTimeTableSubjectRefId(objectFactory.createTimeTableCellTypeTimeTableSubjectRefId(source.getRefId()));
+            target.setSubjectLocalId(objectFactory.createTimeTableCellTypeSubjectLocalId(source.getSubjectLocalId()));
+        }
     }
-  }
+
+    @Override
+    public void toHitsModel(TimeTableCellType source, TimeTableSubject target) {
+        if (source != null && target != null) {
+            target.setRefId(getJAXBValue(source.getTimeTableSubjectRefId()));
+            target.setSubjectLocalId(getJAXBValue(source.getSubjectLocalId()));
+        }
+    }
 }
