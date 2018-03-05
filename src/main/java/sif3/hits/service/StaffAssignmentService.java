@@ -47,7 +47,7 @@ public class StaffAssignmentService extends BaseService<StaffAssignmentType, Sta
   }
 
   @Override
-  protected FilterableRepository<StaffAssignment> getFilterableDAO() {
+  protected FilterableRepository<StaffAssignment,StaffAssignmentType> getFilterableDAO() {
     return staffAssignmentFilterDAO;
   }
 }

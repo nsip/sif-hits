@@ -47,7 +47,7 @@ public class StudentContactRelationshipService extends BaseService<StudentContac
   }
 
   @Override
-  protected FilterableRepository<StudentContactRelationship> getFilterableDAO() {
+  protected FilterableRepository<StudentContactRelationship,StudentContactRelationshipType> getFilterableDAO() {
     return studentContactRelationshipFilterDAO;
   }
 }

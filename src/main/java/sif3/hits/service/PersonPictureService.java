@@ -47,7 +47,7 @@ public class PersonPictureService extends BaseService<PersonPictureType, PersonP
   }
 
   @Override
-  protected FilterableRepository<PersonPicture> getFilterableDAO() {
+  protected FilterableRepository<PersonPicture,PersonPictureType> getFilterableDAO() {
     return personPictureFilterDAO;
   }
 }

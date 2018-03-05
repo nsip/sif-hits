@@ -47,7 +47,7 @@ public class PaymentReceiptService extends BaseService<PaymentReceiptType, Payme
   }
 
   @Override
-  protected FilterableRepository<PaymentReceipt> getFilterableDAO() {
+  protected FilterableRepository<PaymentReceipt,PaymentReceiptType> getFilterableDAO() {
     return paymentReceiptFilterDAO;
   }
 }

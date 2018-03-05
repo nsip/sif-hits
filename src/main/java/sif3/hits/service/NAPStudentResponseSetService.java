@@ -46,7 +46,7 @@ public class NAPStudentResponseSetService extends BaseService<NAPStudentResponse
   }
 
   @Override
-  protected FilterableRepository<NAPStudentResponseSet> getFilterableDAO() {
+  protected FilterableRepository<NAPStudentResponseSet,NAPStudentResponseSetType> getFilterableDAO() {
     return napStudentResponseSetFilterDAO;
   }
 }

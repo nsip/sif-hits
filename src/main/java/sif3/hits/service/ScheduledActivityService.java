@@ -47,7 +47,7 @@ public class ScheduledActivityService extends BaseService<ScheduledActivityType,
   }
 
   @Override
-  protected FilterableRepository<ScheduledActivity> getFilterableDAO() {
+  protected FilterableRepository<ScheduledActivity,ScheduledActivityType> getFilterableDAO() {
     return scheduledActivityFilterDAO;
   }
 }

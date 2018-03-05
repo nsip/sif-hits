@@ -56,7 +56,7 @@ public class GradingAssignmentScoreService extends BaseService<GradingAssignment
   }
 
   @Override
-  protected FilterableRepository<GradingAssignmentScore> getFilterableDAO() {
+  protected FilterableRepository<GradingAssignmentScore,GradingAssignmentScoreType> getFilterableDAO() {
     return gradingAssignmentScoreFilterDAO;
   }
   

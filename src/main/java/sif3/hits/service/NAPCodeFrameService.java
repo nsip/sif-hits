@@ -47,7 +47,7 @@ public class NAPCodeFrameService extends BaseService<NAPCodeFrameType, NAPCodeFr
   }
 
   @Override
-  protected FilterableRepository<NAPCodeFrame> getFilterableDAO() {
+  protected FilterableRepository<NAPCodeFrame,NAPCodeFrameType> getFilterableDAO() {
     return napCodeFrameFilterDAO;
   }
 

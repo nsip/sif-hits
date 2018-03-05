@@ -46,7 +46,7 @@ public class NAPEventStudentLinkService extends BaseService<NAPEventStudentLinkT
   }
 
   @Override
-  protected FilterableRepository<NAPEventStudentLink> getFilterableDAO() {
+  protected FilterableRepository<NAPEventStudentLink,NAPEventStudentLinkType> getFilterableDAO() {
     return napEventStudentLinkFilterDAO;
   }
 }

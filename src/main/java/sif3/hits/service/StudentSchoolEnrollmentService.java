@@ -47,7 +47,7 @@ public class StudentSchoolEnrollmentService extends BaseService<StudentSchoolEnr
   }
 
   @Override
-  protected FilterableRepository<StudentSchoolEnrollment> getFilterableDAO() {
+  protected FilterableRepository<StudentSchoolEnrollment,StudentSchoolEnrollmentType> getFilterableDAO() {
     return studentSchoolEnrollmentFilterDAO;
   }
 }

@@ -47,7 +47,7 @@ public class SchoolInfoService extends BaseService<SchoolInfoType, SchoolInfoCol
   }
 
   @Override
-  protected FilterableRepository<SchoolInfo> getFilterableDAO() {
+  protected FilterableRepository<SchoolInfo,SchoolInfoType> getFilterableDAO() {
     return schoolInfoFilterDAO;
   }
 }

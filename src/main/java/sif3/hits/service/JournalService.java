@@ -47,7 +47,7 @@ public class JournalService extends BaseService<JournalType, JournalCollectionTy
   }
 
   @Override
-  protected FilterableRepository<Journal> getFilterableDAO() {
+  protected FilterableRepository<Journal,JournalType> getFilterableDAO() {
     return journalFilterDAO;
   }
 

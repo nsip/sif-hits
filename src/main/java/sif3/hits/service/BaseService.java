@@ -46,7 +46,7 @@ public abstract class BaseService<S, SC, H> {
 
   protected abstract JpaRepository<H, String> getDAO();
 
-  protected abstract FilterableRepository<H> getFilterableDAO();
+  protected abstract FilterableRepository<H,S> getFilterableDAO();
 
   @Autowired
   private ApplicationKeyUrlService applicationKeyUrlService;
@@ -162,11 +162,11 @@ public abstract class BaseService<S, SC, H> {
   }
 
   protected Page<H> findByExample(S example, String zoneId, PageRequest pageRequest) throws UnsupportedQueryException {
-    FilterableRepository<H> filterableRepository = getFilterableDAO();
+    FilterableRepository<H,S> filterableRepository = getFilterableDAO();
     if (filterableRepository != null) {
       H exampleModel = getConverter().toHitsModel(example);
       if (StringUtils.isNotBlank(zoneId)) {
-        return filterableRepository.findAllWithExample(exampleModel, zoneId, pageRequest);
+        return filterableRepository.findAllWithExample(exampleModel, example, zoneId, pageRequest);
       }
     }
     throw new UnsupportedQueryException("Query by example not supported for this object.");
@@ -197,7 +197,7 @@ public abstract class BaseService<S, SC, H> {
   }
 
   protected Page<H> findByServicePath(List<KeyValuePair> filters, String zoneId, PageRequest pageRequest) throws UnsupportedQueryException {
-    FilterableRepository<H> filterableRepository = getFilterableDAO();
+    FilterableRepository<H,S> filterableRepository = getFilterableDAO();
     if (filterableRepository != null) {
       if (StringUtils.isNotBlank(zoneId)) {
         return filterableRepository.findAllWithServicePaths(filters, zoneId, pageRequest);

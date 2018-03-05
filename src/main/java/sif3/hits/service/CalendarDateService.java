@@ -55,7 +55,7 @@ public class CalendarDateService extends BaseService<CalendarDateType, CalendarD
   }
 
   @Override
-  protected FilterableRepository<CalendarDate> getFilterableDAO() {
+  protected FilterableRepository<CalendarDate,CalendarDateType> getFilterableDAO() {
     return calendarDateFilterDAO;
   }
 

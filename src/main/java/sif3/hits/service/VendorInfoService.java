@@ -47,7 +47,7 @@ public class VendorInfoService extends BaseService<VendorInfoType, VendorInfoCol
   }
 
   @Override
-  protected FilterableRepository<VendorInfo> getFilterableDAO() {
+  protected FilterableRepository<VendorInfo,VendorInfoType> getFilterableDAO() {
     return vendorInfoFilterDAO;
   }
 }

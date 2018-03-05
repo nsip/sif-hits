@@ -47,7 +47,7 @@ public class InvoiceService extends BaseService<InvoiceType, InvoiceCollectionTy
   }
   
   @Override
-  protected FilterableRepository<Invoice> getFilterableDAO() {
+  protected FilterableRepository<Invoice,InvoiceType> getFilterableDAO() {
     return invoiceFilterDAO;
   }
 }

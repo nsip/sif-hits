@@ -47,7 +47,7 @@ public class SessionInfoService extends BaseService<SessionInfoType, SessionInfo
   }
 
   @Override
-  protected FilterableRepository<SessionInfo> getFilterableDAO() {
+  protected FilterableRepository<SessionInfo,SessionInfoType> getFilterableDAO() {
     return sessionInfoFilterDAO;
   }
 }

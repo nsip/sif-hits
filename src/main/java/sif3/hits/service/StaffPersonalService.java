@@ -55,7 +55,7 @@ public class StaffPersonalService extends BaseService<StaffPersonalType, StaffPe
   }
 
   @Override
-  protected FilterableRepository<StaffPersonal> getFilterableDAO() {
+  protected FilterableRepository<StaffPersonal,StaffPersonalType> getFilterableDAO() {
     return staffPersonalFilterDAO;
   }
 

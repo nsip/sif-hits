@@ -60,7 +60,7 @@ public class TimeTableSubjectService extends BaseService<TimeTableSubjectType, T
   }
 
   @Override
-  protected FilterableRepository<TimeTableSubject> getFilterableDAO() {
+  protected FilterableRepository<TimeTableSubject,TimeTableSubjectType> getFilterableDAO() {
     return timeTableSubjectFilterDAO;
   }
 

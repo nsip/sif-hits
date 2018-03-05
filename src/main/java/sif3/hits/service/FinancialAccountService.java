@@ -47,7 +47,7 @@ public class FinancialAccountService extends BaseService<FinancialAccountType, F
   }
 
   @Override
-  protected FilterableRepository<FinancialAccount> getFilterableDAO() {
+  protected FilterableRepository<FinancialAccount,FinancialAccountType> getFilterableDAO() {
     return financialAccountFilterDAO;
   }
 

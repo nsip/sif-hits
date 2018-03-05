@@ -47,7 +47,7 @@ public class CalendarSummaryService extends BaseService<CalendarSummaryType, Cal
   }
 
   @Override
-  protected FilterableRepository<CalendarSummary> getFilterableDAO() {
+  protected FilterableRepository<CalendarSummary,CalendarSummaryType> getFilterableDAO() {
     return calendarSummaryFilterDAO;
   }
 }

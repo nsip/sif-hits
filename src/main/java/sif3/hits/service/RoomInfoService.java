@@ -47,7 +47,7 @@ public class RoomInfoService extends BaseService<RoomInfoType, RoomInfoCollectio
   }
   
   @Override
-  protected FilterableRepository<RoomInfo> getFilterableDAO() {
+  protected FilterableRepository<RoomInfo,RoomInfoType> getFilterableDAO() {
     return roomInfoFilterDAO;
   }
 

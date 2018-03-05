@@ -1,9 +1,7 @@
 package sif3.hits.service;
 
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -14,7 +12,6 @@ import sif.dd.au30.model.TeachingGroupType;
 import sif3.hits.domain.converter.HitsConverter;
 import sif3.hits.domain.converter.TeachingGroupConverter;
 import sif3.hits.domain.dao.TeachingGroupDAO;
-import sif3.hits.domain.dao.TeachingGroupTeacherDAO;
 import sif3.hits.domain.dao.filter.FilterableRepository;
 import sif3.hits.domain.dao.filter.SchoolInfoFilterDAO;
 import sif3.hits.domain.dao.filter.StaffPersonalFilterDAO;
@@ -58,9 +55,6 @@ public class TeachingGroupService extends BaseService<TeachingGroupType, Teachin
   @Autowired
   private StaffPersonalFilterDAO staffPersonalFilterDAO;
 
-  @Autowired
-  private TeachingGroupTeacherDAO teachingGroupTeacherDAO;
-
   @Override
   protected TeachingGroupCollectionType getCollection(List<TeachingGroupType> items) {
     TeachingGroupCollectionType result = new TeachingGroupCollectionType();
@@ -81,7 +75,7 @@ public class TeachingGroupService extends BaseService<TeachingGroupType, Teachin
   }
 
   @Override
-  protected FilterableRepository<TeachingGroup> getFilterableDAO() {
+  protected FilterableRepository<TeachingGroup,TeachingGroupType> getFilterableDAO() {
     return teachingGroupFilterDAO;
   }
 

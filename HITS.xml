@@ -1,0 +1,592 @@
+<environment xmlns="http://www.sifassociation.org/infrastructure/3.2.1" type="DIRECT">
+  <sessionToken></sessionToken>
+  <solutionId>HITS</solutionId>
+  <defaultZone id="HITS">
+    <description>HITS Zone Template</description>
+  </defaultZone>
+  <authenticationMethod>Basic</authenticationMethod>
+  <consumerName></consumerName>
+  <infrastructureServices>
+    <infrastructureService name="environment">environments/</infrastructureService>
+    <infrastructureService name="requestsConnector">requests</infrastructureService>
+    <infrastructureService name="provisionRequests">provision</infrastructureService>
+    <infrastructureService name="eventsConnector">eventsConnector</infrastructureService>
+    <infrastructureService name="queues">/queues</infrastructureService>
+    <infrastructureService name="subscriptions">/subscriptions/</infrastructureService>
+  </infrastructureServices>
+  <provisionedZones>
+    <provisionedZone id="HITS">
+      <services>
+        <service name="CalendarDates" contextId="DEFAULT" type="OBJECT">
+          <rights>
+            <right type="QUERY">APPROVED</right>
+            <right type="CREATE">APPROVED</right>
+            <right type="UPDATE">APPROVED</right>
+            <right type="DELETE">APPROVED</right>
+          </rights>
+        </service>
+        <service name="CalendarSummarys" contextId="DEFAULT" type="OBJECT">
+          <rights>
+            <right type="QUERY">APPROVED</right>
+            <right type="CREATE">APPROVED</right>
+            <right type="UPDATE">APPROVED</right>
+            <right type="DELETE">APPROVED</right>
+          </rights>
+        </service>
+        <service name="ChargedLocationInfos" contextId="DEFAULT" type="OBJECT">
+          <rights>
+            <right type="QUERY">APPROVED</right>
+            <right type="CREATE">APPROVED</right>
+            <right type="UPDATE">APPROVED</right>
+            <right type="DELETE">APPROVED</right>
+          </rights>
+        </service>
+        <service name="SchoolInfos/{}/ChargedLocationInfos" contextId="DEFAULT" type="OBJECT">
+          <rights>
+            <right type="QUERY">APPROVED</right>
+          </rights>
+        </service>
+        <service name="Debtors" contextId="DEFAULT" type="OBJECT">
+          <rights>
+            <right type="QUERY">APPROVED</right>
+            <right type="CREATE">APPROVED</right>
+            <right type="UPDATE">APPROVED</right>
+            <right type="DELETE">APPROVED</right>
+          </rights>
+        </service>
+        <service name="StaffPersonals/{}/Debtors" contextId="DEFAULT" type="OBJECT">
+          <rights>
+            <right type="QUERY">APPROVED</right>
+          </rights>
+        </service>
+        <service name="StudentContactPersonals/{}/Debtors" contextId="DEFAULT" type="OBJECT">
+          <rights>
+            <right type="QUERY">APPROVED</right>
+          </rights>
+        </service>
+        <service name="StudentPersonals/{}/Debtors" contextId="DEFAULT" type="OBJECT">
+          <rights>
+            <right type="QUERY">APPROVED</right>
+          </rights>
+        </service>
+        <service name="VendorInfos/{}/Debtors" contextId="DEFAULT" type="OBJECT">
+          <rights>
+            <right type="QUERY">APPROVED</right>
+          </rights>
+        </service>
+        <service name="FinancialAccounts" contextId="DEFAULT" type="OBJECT">
+          <rights>
+            <right type="QUERY">APPROVED</right>
+            <right type="CREATE">APPROVED</right>
+            <right type="UPDATE">APPROVED</right>
+            <right type="DELETE">APPROVED</right>
+          </rights>
+        </service>
+        <service name="ChargedLocationInfos/{}/FinancialAccounts" contextId="DEFAULT" type="OBJECT">
+          <rights>
+            <right type="QUERY">APPROVED</right>
+          </rights>
+        </service>
+        <service name="SchoolInfos/{}/FinancialAccounts" contextId="DEFAULT" type="OBJECT">
+          <rights>
+            <right type="QUERY">APPROVED</right>
+          </rights>
+        </service>
+        <service name="GradingAssignments" contextId="DEFAULT" type="OBJECT">
+          <rights>
+            <right type="QUERY">APPROVED</right>
+            <right type="CREATE">APPROVED</right>
+            <right type="UPDATE">APPROVED</right>
+            <right type="DELETE">APPROVED</right>
+          </rights>
+        </service>
+        <service name="SchoolInfos/{}/GradingAssignments" contextId="DEFAULT" type="OBJECT">
+          <rights>
+            <right type="QUERY">APPROVED</right>
+          </rights>
+        </service>
+        <service name="TeachingGroups/{}/GradingAssignments" contextId="DEFAULT" type="OBJECT">
+          <rights>
+            <right type="QUERY">APPROVED</right>
+          </rights>
+        </service>
+        <service name="GradingAssignmentScores" contextId="DEFAULT" type="OBJECT">
+          <rights>
+            <right type="QUERY">APPROVED</right>
+            <right type="CREATE">APPROVED</right>
+            <right type="UPDATE">APPROVED</right>
+            <right type="DELETE">APPROVED</right>
+          </rights>
+        </service>
+        <service name="GradingAssignments/{}/GradingAssignmentScores" contextId="DEFAULT" type="OBJECT">
+          <rights>
+            <right type="QUERY">APPROVED</right>
+          </rights>
+        </service>
+        <service name="StudentPersonals/{}/GradingAssignmentScores" contextId="DEFAULT" type="OBJECT">
+          <rights>
+            <right type="QUERY">APPROVED</right>
+          </rights>
+        </service>
+        <service name="Invoices" contextId="DEFAULT" type="OBJECT">
+          <rights>
+            <right type="QUERY">APPROVED</right>
+            <right type="CREATE">APPROVED</right>
+            <right type="UPDATE">APPROVED</right>
+            <right type="DELETE">APPROVED</right>
+          </rights>
+        </service>
+        <service name="PurchaseOrders/{}/Invoices" contextId="DEFAULT" type="OBJECT">
+          <rights>
+            <right type="QUERY">APPROVED</right>
+          </rights>
+        </service>
+        <service name="SchoolInfos/{}/Invoices" contextId="DEFAULT" type="OBJECT">
+          <rights>
+            <right type="QUERY">APPROVED</right>
+          </rights>
+        </service>
+        <service name="Journals" contextId="DEFAULT" type="OBJECT">
+          <rights>
+            <right type="QUERY">APPROVED</right>
+            <right type="CREATE">APPROVED</right>
+            <right type="UPDATE">APPROVED</right>
+            <right type="DELETE">APPROVED</right>
+          </rights>
+        </service>
+        <service name="NAPCodeFrames" contextId="DEFAULT" type="OBJECT">
+          <rights>
+            <right type="QUERY">APPROVED</right>
+            <right type="CREATE">APPROVED</right>
+            <right type="UPDATE">APPROVED</right>
+            <right type="DELETE">APPROVED</right>
+          </rights>
+        </service>
+        <service name="SchoolInfos/{}/NAPEventStudentLink" contextId="DEFAULT" type="OBJECT">
+          <rights>
+            <right type="QUERY">APPROVED</right>
+          </rights>
+        </service>
+        <service name="StudentPersonals/{}/NAPEventStudentLink" contextId="DEFAULT" type="OBJECT">
+          <rights>
+            <right type="QUERY">APPROVED</right>
+          </rights>
+        </service>
+        <service name="NAPEventStudentLinks" contextId="DEFAULT" type="OBJECT">
+          <rights>
+            <right type="QUERY">APPROVED</right>
+            <right type="CREATE">APPROVED</right>
+            <right type="UPDATE">APPROVED</right>
+            <right type="DELETE">APPROVED</right>
+          </rights>
+        </service>
+        <service name="NAPStudentResponseSets" contextId="DEFAULT" type="OBJECT">
+          <rights>
+            <right type="QUERY">APPROVED</right>
+            <right type="CREATE">APPROVED</right>
+            <right type="UPDATE">APPROVED</right>
+            <right type="DELETE">APPROVED</right>
+          </rights>
+        </service>
+        <service name="SchoolInfos/{}/NAPStudentResponseSets" contextId="DEFAULT" type="OBJECT">
+          <rights>
+            <right type="QUERY">APPROVED</right>
+          </rights>
+        </service>
+        <service name="StudentPersonals/{}/NAPStudentResponseSets" contextId="DEFAULT" type="OBJECT">
+          <rights>
+            <right type="QUERY">APPROVED</right>
+          </rights>
+        </service>
+        <service name="NAPTestItems" contextId="DEFAULT" type="OBJECT">
+          <rights>
+            <right type="QUERY">APPROVED</right>
+            <right type="CREATE">APPROVED</right>
+            <right type="UPDATE">APPROVED</right>
+            <right type="DELETE">APPROVED</right>
+          </rights>
+        </service>
+        <service name="NAPTests/{}/NAPTestItems" contextId="DEFAULT" type="OBJECT">
+          <rights>
+            <right type="QUERY">APPROVED</right>
+          </rights>
+        </service>
+        <service name="NAPTestlets" contextId="DEFAULT" type="OBJECT">
+          <rights>
+            <right type="QUERY">APPROVED</right>
+            <right type="CREATE">APPROVED</right>
+            <right type="UPDATE">APPROVED</right>
+            <right type="DELETE">APPROVED</right>
+          </rights>
+        </service>
+        <service name="NAPTests/{}/NAPTestlets" contextId="DEFAULT" type="OBJECT">
+          <rights>
+            <right type="QUERY">APPROVED</right>
+          </rights>
+        </service>
+        <service name="NAPTests" contextId="DEFAULT" type="OBJECT">
+          <rights>
+            <right type="QUERY">APPROVED</right>
+            <right type="CREATE">APPROVED</right>
+            <right type="UPDATE">APPROVED</right>
+            <right type="DELETE">APPROVED</right>
+          </rights>
+        </service>
+        <service name="NAPTestScoreSummarys" contextId="DEFAULT" type="OBJECT">
+          <rights>
+            <right type="QUERY">APPROVED</right>
+            <right type="CREATE">APPROVED</right>
+            <right type="UPDATE">APPROVED</right>
+            <right type="DELETE">APPROVED</right>
+          </rights>
+        </service>
+        <service name="SchoolInfos/{}/NAPTestScoreSummarys" contextId="DEFAULT" type="OBJECT">
+          <rights>
+            <right type="QUERY">APPROVED</right>
+          </rights>
+        </service>
+        <service name="PaymentReceipts" contextId="DEFAULT" type="OBJECT">
+          <rights>
+            <right type="QUERY">APPROVED</right>
+            <right type="CREATE">APPROVED</right>
+            <right type="UPDATE">APPROVED</right>
+            <right type="DELETE">APPROVED</right>
+          </rights>
+        </service>
+        <service name="Invoices/{}/PaymentReceipts" contextId="DEFAULT" type="OBJECT">
+          <rights>
+            <right type="QUERY">APPROVED</right>
+          </rights>
+        </service>
+        <service name="SchoolInfos/{}/PaymentReceipts" contextId="DEFAULT" type="OBJECT">
+          <rights>
+            <right type="QUERY">APPROVED</right>
+          </rights>
+        </service>
+        <service name="PersonPictures" contextId="DEFAULT" type="OBJECT">
+          <rights>
+            <right type="QUERY">APPROVED</right>
+            <right type="CREATE">APPROVED</right>
+            <right type="UPDATE">APPROVED</right>
+            <right type="DELETE">APPROVED</right>
+          </rights>
+        </service>
+        <service name="SchoolInfos/{}/PurchaseOrder" contextId="DEFAULT" type="OBJECT">
+          <rights>
+            <right type="QUERY">APPROVED</right>
+          </rights>
+        </service>
+        <service name="PurchaseOrders" contextId="DEFAULT" type="OBJECT">
+          <rights>
+            <right type="QUERY">APPROVED</right>
+            <right type="CREATE">APPROVED</right>
+            <right type="UPDATE">APPROVED</right>
+            <right type="DELETE">APPROVED</right>
+          </rights>
+        </service>
+        <service name="RoomInfos" contextId="DEFAULT" type="OBJECT">
+          <rights>
+            <right type="QUERY">APPROVED</right>
+            <right type="CREATE">APPROVED</right>
+            <right type="UPDATE">APPROVED</right>
+            <right type="DELETE">APPROVED</right>
+          </rights>
+        </service>
+        <service name="ScheduledActivitys" contextId="DEFAULT" type="OBJECT">
+          <rights>
+            <right type="QUERY">APPROVED</right>
+            <right type="CREATE">APPROVED</right>
+            <right type="UPDATE">APPROVED</right>
+            <right type="DELETE">APPROVED</right>
+          </rights>
+        </service>
+        <service name="StaffPersonals/{}/ScheduledActivitys" contextId="DEFAULT" type="OBJECT">
+          <rights>
+            <right type="QUERY">APPROVED</right>
+          </rights>
+        </service>
+        <service name="StudentPersonals/{}/ScheduledActivitys" contextId="DEFAULT" type="OBJECT">
+          <rights>
+            <right type="QUERY">APPROVED</right>
+          </rights>
+        </service>
+        <service name="TeachingGroups/{}/ScheduledActivitys" contextId="DEFAULT" type="OBJECT">
+          <rights>
+            <right type="QUERY">APPROVED</right>
+          </rights>
+        </service>
+        <service name="SchoolInfos" contextId="DEFAULT" type="OBJECT">
+          <rights>
+            <right type="QUERY">APPROVED</right>
+            <right type="CREATE">APPROVED</right>
+            <right type="UPDATE">APPROVED</right>
+            <right type="DELETE">APPROVED</right>
+          </rights>
+        </service>
+        <service name="StaffPersonals/{}/SchoolInfos" contextId="DEFAULT" type="OBJECT">
+          <rights>
+            <right type="QUERY">APPROVED</right>
+          </rights>
+        </service>
+        <service name="SessionInfos" contextId="DEFAULT" type="OBJECT">
+          <rights>
+            <right type="QUERY">APPROVED</right>
+            <right type="CREATE">APPROVED</right>
+            <right type="UPDATE">APPROVED</right>
+            <right type="DELETE">APPROVED</right>
+          </rights>
+        </service>
+        <service name="StaffAssignments" contextId="DEFAULT" type="OBJECT">
+          <rights>
+            <right type="QUERY">APPROVED</right>
+            <right type="CREATE">APPROVED</right>
+            <right type="UPDATE">APPROVED</right>
+            <right type="DELETE">APPROVED</right>
+          </rights>
+        </service>
+        <service name="SchoolInfos/{}/StaffAssignments" contextId="DEFAULT" type="OBJECT">
+          <rights>
+            <right type="QUERY">APPROVED</right>
+          </rights>
+        </service>
+        <service name="StaffPersonals/{}/StaffAssignments" contextId="DEFAULT" type="OBJECT">
+          <rights>
+            <right type="QUERY">APPROVED</right>
+          </rights>
+        </service>
+        <service name="StaffPersonals" contextId="DEFAULT" type="OBJECT">
+          <rights>
+            <right type="QUERY">APPROVED</right>
+            <right type="CREATE">APPROVED</right>
+            <right type="UPDATE">APPROVED</right>
+            <right type="DELETE">APPROVED</right>
+          </rights>
+        </service>
+        <service name="SchoolInfos/{}/StaffPersonals" contextId="DEFAULT" type="OBJECT">
+          <rights>
+            <right type="QUERY">APPROVED</right>
+          </rights>
+        </service>
+        <service name="TeachingGroups/{}/StaffPersonals" contextId="DEFAULT" type="OBJECT">
+          <rights>
+            <right type="QUERY">APPROVED</right>
+          </rights>
+        </service>
+        <service name="StudentAttendanceSummarys" contextId="DEFAULT" type="OBJECT">
+          <rights>
+            <right type="QUERY">APPROVED</right>
+            <right type="CREATE">APPROVED</right>
+            <right type="UPDATE">APPROVED</right>
+            <right type="DELETE">APPROVED</right>
+          </rights>
+        </service>
+        <service name="StudentPersonals/{}/StudentAttendanceSummarys" contextId="DEFAULT" type="OBJECT">
+          <rights>
+            <right type="QUERY">APPROVED</right>
+          </rights>
+        </service>
+        <service name="StudentAttendanceTimeLists" contextId="DEFAULT" type="OBJECT">
+          <rights>
+            <right type="QUERY">APPROVED</right>
+            <right type="CREATE">APPROVED</right>
+            <right type="UPDATE">APPROVED</right>
+            <right type="DELETE">APPROVED</right>
+          </rights>
+        </service>
+        <service name="StudentPersonals/{}/StudentAttendanceTimeLists" contextId="DEFAULT" type="OBJECT">
+          <rights>
+            <right type="QUERY">APPROVED</right>
+          </rights>
+        </service>
+        <service name="StudentContactPersonals" contextId="DEFAULT" type="OBJECT">
+          <rights>
+            <right type="QUERY">APPROVED</right>
+            <right type="CREATE">APPROVED</right>
+            <right type="UPDATE">APPROVED</right>
+            <right type="DELETE">APPROVED</right>
+          </rights>
+        </service>
+        <service name="SchoolInfos/{}/StudentContactPersonals" contextId="DEFAULT" type="OBJECT">
+          <rights>
+            <right type="QUERY">APPROVED</right>
+          </rights>
+        </service>
+        <service name="SchoolInfos/{}/StudentPersonals/{}/StudentContactPersonals" contextId="DEFAULT" type="OBJECT">
+          <rights>
+            <right type="QUERY">APPROVED</right>
+          </rights>
+        </service>
+        <service name="StudentPersonals/{}/StudentContactPersonals" contextId="DEFAULT" type="OBJECT">
+          <rights>
+            <right type="QUERY">APPROVED</right>
+          </rights>
+        </service>
+        <service name="StudentContactRelationships" contextId="DEFAULT" type="OBJECT">
+          <rights>
+            <right type="QUERY">APPROVED</right>
+            <right type="CREATE">APPROVED</right>
+            <right type="UPDATE">APPROVED</right>
+            <right type="DELETE">APPROVED</right>
+          </rights>
+        </service>
+        <service name="SchoolInfos/{}/StudentContactRelationships" contextId="DEFAULT" type="OBJECT">
+          <rights>
+            <right type="QUERY">APPROVED</right>
+          </rights>
+        </service>
+        <service name="StudentPersonals/{}/StudentContactRelationships" contextId="DEFAULT" type="OBJECT">
+          <rights>
+            <right type="QUERY">APPROVED</right>
+          </rights>
+        </service>
+        <service name="StudentDailyAttendances" contextId="DEFAULT" type="OBJECT">
+          <rights>
+            <right type="QUERY">APPROVED</right>
+            <right type="CREATE">APPROVED</right>
+            <right type="UPDATE">APPROVED</right>
+            <right type="DELETE">APPROVED</right>
+          </rights>
+        </service>
+        <service name="SchoolInfos/{}/StudentDailyAttendances" contextId="DEFAULT" type="OBJECT">
+          <rights>
+            <right type="QUERY">APPROVED</right>
+          </rights>
+        </service>
+        <service name="SchoolInfos/{}/StudentPersonals/{}/StudentDailyAttendances" contextId="DEFAULT" type="OBJECT">
+          <rights>
+            <right type="QUERY">APPROVED</right>
+          </rights>
+        </service>
+        <service name="StudentPersonals/{}/SchoolInfos/{}/StudentDailyAttendances" contextId="DEFAULT" type="OBJECT">
+          <rights>
+            <right type="QUERY">APPROVED</right>
+          </rights>
+        </service>
+        <service name="StudentPersonals/{}/StudentDailyAttendances" contextId="DEFAULT" type="OBJECT">
+          <rights>
+            <right type="QUERY">APPROVED</right>
+          </rights>
+        </service>
+        <service name="StudentPeriodAttendances" contextId="DEFAULT" type="OBJECT">
+          <rights>
+            <right type="QUERY">APPROVED</right>
+            <right type="CREATE">APPROVED</right>
+            <right type="UPDATE">APPROVED</right>
+            <right type="DELETE">APPROVED</right>
+          </rights>
+        </service>
+        <service name="StudentPersonals" contextId="DEFAULT" type="OBJECT">
+          <rights>
+            <right type="QUERY">APPROVED</right>
+            <right type="CREATE">APPROVED</right>
+            <right type="UPDATE">APPROVED</right>
+            <right type="DELETE">APPROVED</right>
+          </rights>
+        </service>
+        <service name="SchoolInfos/{}/StudentPersonals" contextId="DEFAULT" type="OBJECT">
+          <rights>
+            <right type="QUERY">APPROVED</right>
+          </rights>
+        </service>
+        <service name="TeachingGroups/{}/StudentPersonals" contextId="DEFAULT" type="OBJECT">
+          <rights>
+            <right type="QUERY">APPROVED</right>
+          </rights>
+        </service>
+        <service name="StudentSchoolEnrollments" contextId="DEFAULT" type="OBJECT">
+          <rights>
+            <right type="QUERY">APPROVED</right>
+            <right type="CREATE">APPROVED</right>
+            <right type="UPDATE">APPROVED</right>
+            <right type="DELETE">APPROVED</right>
+          </rights>
+        </service>
+        <service name="SchoolInfos/{}/StudentSchoolEnrollments" contextId="DEFAULT" type="OBJECT">
+          <rights>
+            <right type="QUERY">APPROVED</right>
+          </rights>
+        </service>
+        <service name="TeachingGroups" contextId="DEFAULT" type="OBJECT">
+          <rights>
+            <right type="QUERY">APPROVED</right>
+            <right type="CREATE">APPROVED</right>
+            <right type="UPDATE">APPROVED</right>
+            <right type="DELETE">APPROVED</right>
+          </rights>
+        </service>
+        <service name="SchoolInfos/{}/StaffPersonals/{}/TeachingGroups" contextId="DEFAULT" type="OBJECT">
+          <rights>
+            <right type="QUERY">APPROVED</right>
+          </rights>
+        </service>
+        <service name="SchoolInfos/{}/TeachingGroups" contextId="DEFAULT" type="OBJECT">
+          <rights>
+            <right type="QUERY">APPROVED</right>
+          </rights>
+        </service>
+        <service name="StaffPersonals/{}/TeachingGroups" contextId="DEFAULT" type="OBJECT">
+          <rights>
+            <right type="QUERY">APPROVED</right>
+          </rights>
+        </service>
+        <service name="StudentPersonals/{}/TeachingGroups" contextId="DEFAULT" type="OBJECT">
+          <rights>
+            <right type="QUERY">APPROVED</right>
+          </rights>
+        </service>
+        <service name="TimeTableSubjects/{}/TeachingGroups" contextId="DEFAULT" type="OBJECT">
+          <rights>
+            <right type="QUERY">APPROVED</right>
+          </rights>
+        </service>
+        <service name="TimeTableCells" contextId="DEFAULT" type="OBJECT">
+          <rights>
+            <right type="QUERY">APPROVED</right>
+            <right type="CREATE">APPROVED</right>
+            <right type="UPDATE">APPROVED</right>
+            <right type="DELETE">APPROVED</right>
+          </rights>
+        </service>
+        <service name="SchoolInfos/{}/TimeTableCells" contextId="DEFAULT" type="OBJECT">
+          <rights>
+            <right type="QUERY">APPROVED</right>
+          </rights>
+        </service>
+        <service name="TimeTables" contextId="DEFAULT" type="OBJECT">
+          <rights>
+            <right type="QUERY">APPROVED</right>
+            <right type="CREATE">APPROVED</right>
+            <right type="UPDATE">APPROVED</right>
+            <right type="DELETE">APPROVED</right>
+          </rights>
+        </service>
+        <service name="SchoolInfos/{}/TimeTables" contextId="DEFAULT" type="OBJECT">
+          <rights>
+            <right type="QUERY">APPROVED</right>
+          </rights>
+        </service>
+        <service name="TimeTableSubjects" contextId="DEFAULT" type="OBJECT">
+          <rights>
+            <right type="QUERY">APPROVED</right>
+            <right type="CREATE">APPROVED</right>
+            <right type="UPDATE">APPROVED</right>
+            <right type="DELETE">APPROVED</right>
+          </rights>
+        </service>
+        <service name="SchoolInfos/{}/TimeTableSubjects" contextId="DEFAULT" type="OBJECT">
+          <rights>
+            <right type="QUERY">APPROVED</right>
+          </rights>
+        </service>
+        <service name="VendorInfos" contextId="DEFAULT" type="OBJECT">
+          <rights>
+            <right type="QUERY">APPROVED</right>
+            <right type="CREATE">APPROVED</right>
+            <right type="UPDATE">APPROVED</right>
+            <right type="DELETE">APPROVED</right>
+          </rights>
+        </service>
+      </services>
+    </provisionedZone>
+  </provisionedZones>
+</environment>

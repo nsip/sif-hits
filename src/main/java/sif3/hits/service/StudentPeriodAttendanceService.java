@@ -47,7 +47,7 @@ public class StudentPeriodAttendanceService extends BaseService<StudentPeriodAtt
   }
 
   @Override
-  protected FilterableRepository<StudentPeriodAttendance> getFilterableDAO() {
+  protected FilterableRepository<StudentPeriodAttendance,StudentPeriodAttendanceType> getFilterableDAO() {
     return studentPeriodAttendanceFilterDAO;
   }
 

@@ -47,7 +47,7 @@ public class PurchaseOrderService extends BaseService<PurchaseOrderType, Purchas
   }
 
   @Override
-  protected FilterableRepository<PurchaseOrder> getFilterableDAO() {
+  protected FilterableRepository<PurchaseOrder,PurchaseOrderType> getFilterableDAO() {
     return purchaseOrderFilterDAO;
   }
 

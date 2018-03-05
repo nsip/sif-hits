@@ -46,7 +46,7 @@ public class NAPTestScoreSummaryService extends BaseService<NAPTestScoreSummaryT
   }
 
   @Override
-  protected FilterableRepository<NAPTestScoreSummary> getFilterableDAO() {
+  protected FilterableRepository<NAPTestScoreSummary,NAPTestScoreSummaryType> getFilterableDAO() {
     return napTestScoreSummaryFilterDAO;
   }
 }

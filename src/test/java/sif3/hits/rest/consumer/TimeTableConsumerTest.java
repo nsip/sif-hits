@@ -87,7 +87,7 @@ public class TimeTableConsumerTest extends BaseTest {
 
     timeTableDayList.getTimeTableDay().add(timeTableDay);
     timeTable.setTimeTableDayList(timeTableDayList);
-    List<Response> responses = timeTableTester.doCreateOne(timeTable);
+    timeTableTester.doCreateOne(timeTable);
     String xmlExpectedTo = timeTableTester.getXML(timeTable);
 
     timeTable.setRefId("52d3f540-b619-41a4-961c-27ab156c89dd");

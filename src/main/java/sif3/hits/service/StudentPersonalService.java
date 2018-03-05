@@ -58,7 +58,7 @@ public class StudentPersonalService extends BaseService<StudentPersonalType, Stu
   }
 
   @Override
-  protected FilterableRepository<StudentPersonal> getFilterableDAO() {
+  protected FilterableRepository<StudentPersonal,StudentPersonalType> getFilterableDAO() {
     return studentPersonalFilterDAO;
   }
 

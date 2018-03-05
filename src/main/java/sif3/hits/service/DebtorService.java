@@ -47,7 +47,7 @@ public class DebtorService extends BaseService<DebtorType, DebtorCollectionType,
   }
 
   @Override
-  protected FilterableRepository<Debtor> getFilterableDAO() {
+  protected FilterableRepository<Debtor,DebtorType> getFilterableDAO() {
     return debtorFilterDAO;
   }
 }

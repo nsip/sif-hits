@@ -18,37 +18,37 @@ import sif3.hits.domain.model.LocationInfo;
 @Service
 public class LocationInfoService extends BaseService<ChargedLocationInfoType, ChargedLocationInfoCollectionType, LocationInfo> {
 
-  @Autowired
-  private LocationInfoConverter locationInfoConverter;
+    @Autowired
+    private LocationInfoConverter locationInfoConverter;
 
-  @Autowired
-  private LocationInfoDAO locationInfoDAO;
+    @Autowired
+    private LocationInfoDAO locationInfoDAO;
 
-  @Autowired
-  private LocationInfoFilterDAO locationInfoFilterDAO;
+    @Autowired
+    private LocationInfoFilterDAO locationInfoFilterDAO;
 
-  @Override
-  protected ChargedLocationInfoCollectionType getCollection(List<ChargedLocationInfoType> items) {
-    ChargedLocationInfoCollectionType result = new ChargedLocationInfoCollectionType();
-    if (items != null) {
-      result.getChargedLocationInfo().addAll(items);
+    @Override
+    protected ChargedLocationInfoCollectionType getCollection(List<ChargedLocationInfoType> items) {
+        ChargedLocationInfoCollectionType result = new ChargedLocationInfoCollectionType();
+        if (items != null) {
+            result.getChargedLocationInfo().addAll(items);
+        }
+        return result;
     }
-    return result;
-  }
 
-  @Override
-  protected HitsConverter<ChargedLocationInfoType, LocationInfo> getConverter() {
-    return locationInfoConverter;
-  }
+    @Override
+    protected HitsConverter<ChargedLocationInfoType, LocationInfo> getConverter() {
+        return locationInfoConverter;
+    }
 
-  @Override
-  protected JpaRepository<LocationInfo, String> getDAO() {
-    return locationInfoDAO;
-  }
+    @Override
+    protected JpaRepository<LocationInfo, String> getDAO() {
+        return locationInfoDAO;
+    }
 
-  @Override
-  protected FilterableRepository<LocationInfo> getFilterableDAO() {
-    return locationInfoFilterDAO;
-  }
+    @Override
+    protected FilterableRepository<LocationInfo, ChargedLocationInfoType> getFilterableDAO() {
+        return locationInfoFilterDAO;
+    }
 
 }

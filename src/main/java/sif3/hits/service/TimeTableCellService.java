@@ -73,7 +73,7 @@ public class TimeTableCellService extends BaseService<TimeTableCellType, TimeTab
   }
 
   @Override
-  protected FilterableRepository<TimeTableCell> getFilterableDAO() {
+  protected FilterableRepository<TimeTableCell,TimeTableCellType> getFilterableDAO() {
     return timeTableCellFilterDAO;
   }
 

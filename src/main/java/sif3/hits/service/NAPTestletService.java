@@ -46,7 +46,7 @@ public class NAPTestletService extends BaseService<NAPTestletType, NAPTestletCol
   }
 
   @Override
-  protected FilterableRepository<NAPTestlet> getFilterableDAO() {
+  protected FilterableRepository<NAPTestlet,NAPTestletType> getFilterableDAO() {
     return napTestletFilterDAO;
   }
 }
