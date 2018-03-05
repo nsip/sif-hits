@@ -63,6 +63,7 @@ public class InvoiceConverter extends HitsConverter<InvoiceType, Invoice> implem
       target.setAccountingPeriod(objectFactory.createInvoiceTypeAccountingPeriod(source.getAccountingPeriod()));
       target.setRelatedPurchaseOrderRefId(objectFactory.createInvoiceTypeRelatedPurchaseOrderRefId(source.getRelatedPurchaseOrderRefId()));
       target.setVoluntary(objectFactory.createInvoiceTypeVoluntary(getEnumValue(source.getVoluntary(), AUCodeSetsYesOrNoCategoryType.class)));
+      target.setFormNumber(objectFactory.createInvoiceTypeFormNumber(source.getFormNumber()));
 
       if (source.getFinancialAccountRefIds() != null && !source.getFinancialAccountRefIds().isEmpty()) {
         FinancialAccountRefIdListType financialAccountRefIdList = objectFactory.createFinancialAccountRefIdListType();
@@ -104,6 +105,7 @@ public class InvoiceConverter extends HitsConverter<InvoiceType, Invoice> implem
       target.setAccountingPeriod(getJAXBValue(source.getAccountingPeriod()));
       target.setRelatedPurchaseOrderRefId(getJAXBValue(source.getRelatedPurchaseOrderRefId()));
       target.setVoluntary(getJAXBEnumValue(source.getVoluntary()));
+      target.setFormNumber(getJAXBValue(source.getFormNumber()));
 
       FinancialAccountRefIdListType financialAccountRefIdList = getJAXBValue(source.getFinancialAccountRefIdList());
       if (financialAccountRefIdList != null && financialAccountRefIdList.getFinancialAccountRefId() != null
