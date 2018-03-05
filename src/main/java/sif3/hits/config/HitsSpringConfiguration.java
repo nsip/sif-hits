@@ -20,9 +20,9 @@ import sif3.hits.dto.Version;
 public class HitsSpringConfiguration {
 
     @Value("${sifServer.version}")
-    private String sifServer = "18.3.0";
+    private String sifServer;
     @Value("${sifDatamodel.version}")
-    private String sifDatamodel = "3.4.2";
+    private String sifDatamodel;
 
     @Bean
     public PersistenceExceptionTranslationPostProcessor exceptionTranslation() {
