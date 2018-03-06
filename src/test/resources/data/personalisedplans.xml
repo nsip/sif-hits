@@ -1,0 +1,56 @@
+<PersonalisedPlans  xmlns="http://www.sifassociation.org/datamodel/au/3.4">
+<PersonalisedPlan RefId="b8f042fc-5470-44bc-ab84-ccf2746feed3">
+    <StudentPersonalRefId>f7dd788e-3cef-40eb-9cb4-af90a2fa3147</StudentPersonalRefId>
+    <SchoolInfoRefId>6dafb630-c439-41e3-9aa0-81f4dbd909ab</SchoolInfoRefId>
+    <PersonalisedPlanCategory>Ac</PersonalisedPlanCategory>
+    <PersonalisedPlanStartDate>2018-03-01</PersonalisedPlanStartDate>
+    <PersonalisedPlanReviewDate>2018-04-03</PersonalisedPlanReviewDate>
+    <PersonalisedPlanNotes>Notes Notes Notes</PersonalisedPlanNotes>
+    <DocumentList>
+        <Document>
+            <Location>\\secure-share\plan-documents\st1234568\plan.doc</Location>
+            <Sensitivity>SENSITIVE</Sensitivity>
+            <URL>http://secure-document-server.edu/plan-documents/st12345678/plan.doc</URL>
+            <DocumentType>Plan</DocumentType>
+            <DocumentReviewDate>2018-04-03</DocumentReviewDate>
+            <DocumentDescription>Plan document for student 12345678.</DocumentDescription>
+        </Document>
+        <Document>
+            <Location>\\secure-share\plan-documents\st1234568\plan2.doc</Location>
+            <Sensitivity>SENSITIVE</Sensitivity>
+            <URL>http://secure-document-server.edu/plan-documents/st12345678/plan2.doc</URL>
+            <DocumentType>Plan</DocumentType>
+            <DocumentReviewDate>2018-04-05</DocumentReviewDate>
+            <DocumentDescription>Plan 2 document for student 12345678.</DocumentDescription>
+        </Document>
+    </DocumentList>
+    <AssociatedAttachment>Attachment.doc</AssociatedAttachment>
+</PersonalisedPlan>
+<PersonalisedPlan RefId="6c6ec4e7-855c-4e5c-b5b2-f3c89b7c4ae3">
+    <StudentPersonalRefId>f7dd788e-3cef-40eb-9cb4-af90a2fa3147</StudentPersonalRefId>
+    <SchoolInfoRefId>6dafb630-c439-41e3-9aa0-81f4dbd909ab</SchoolInfoRefId>
+    <PersonalisedPlanCategory>Ac</PersonalisedPlanCategory>
+    <PersonalisedPlanStartDate>2018-03-01</PersonalisedPlanStartDate>
+    <PersonalisedPlanReviewDate>2018-04-03</PersonalisedPlanReviewDate>
+    <PersonalisedPlanNotes>Notes Notes Notes</PersonalisedPlanNotes>
+    <DocumentList>
+        <Document>
+            <Location>\\secure-share\plan-documents\st1234568\plan.doc</Location>
+            <Sensitivity>SENSITIVE</Sensitivity>
+            <URL>http://secure-document-server.edu/plan-documents/st12345678/plan.doc</URL>
+            <DocumentType>Plan</DocumentType>
+            <DocumentReviewDate>2018-04-03</DocumentReviewDate>
+            <DocumentDescription>Plan document for student 12345678.</DocumentDescription>
+        </Document>
+        <Document>
+            <Location>\\secure-share\plan-documents\st1234568\plan2.doc</Location>
+            <Sensitivity>SENSITIVE</Sensitivity>
+            <URL>http://secure-document-server.edu/plan-documents/st12345678/plan2.doc</URL>
+            <DocumentType>Plan</DocumentType>
+            <DocumentReviewDate>2018-04-05</DocumentReviewDate>
+            <DocumentDescription>Plan 2 document for student 12345678.</DocumentDescription>
+        </Document>
+    </DocumentList>
+    <AssociatedAttachment>Attachment.doc</AssociatedAttachment>
+</PersonalisedPlan>
+</PersonalisedPlans>

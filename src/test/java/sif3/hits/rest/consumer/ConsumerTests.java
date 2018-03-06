@@ -43,7 +43,8 @@ import org.junit.runners.Suite.SuiteClasses;
   NAPTestletConsumerTest.class,
   NAPTestItemConsumerTest.class,
   NAPStudentResponseSetConsumerTest.class,
-  NAPCodeFrameConsumerTest.class
+  NAPCodeFrameConsumerTest.class,
+  PersonalisedPlanConsumerTest.class
 })
 public class ConsumerTests {
 /*
@@ -54,6 +55,8 @@ public class ConsumerTests {
  * <pre>
 delete from hits_sif3_infra.SIF3_SESSION;
 
+delete from PersonalisedPlan_Document;
+delete from PersonalisedPlan;
 delete from NAPCodeFrame;
 delete from NAPStudentResponseSet_Testlet_TestItem_Subscore;
 delete from NAPStudentResponseSet_Testlet_TestItem;
