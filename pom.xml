@@ -13,7 +13,7 @@
 		<!-- Dependency Versions -->
 		<java.version>1.7</java.version>
 
-		<datamodel.version>3.4.2</datamodel.version>
+		<datamodel.version>3.4.3</datamodel.version>
 		<sif3.framework.version>0.12.0</sif3.framework.version>
 		<sif3.datamodel.version>au-${datamodel.version}</sif3.datamodel.version>
 

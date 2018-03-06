@@ -174,30 +174,6 @@ public interface IObjectFactory {
     LearningResourceType createLearningResourceType();
 
     /**
-     * Create an instance of {@link LearningStandardItemType }
-     * 
-     */
-    LearningStandardItemType createLearningStandardItemType();
-
-    /**
-     * Create an instance of {@link LearningStandardItemType.RelatedLearningStandardItems }
-     * 
-     */
-    LearningStandardItemType.RelatedLearningStandardItems createLearningStandardItemTypeRelatedLearningStandardItems();
-
-    /**
-     * Create an instance of {@link LearningStandardItemType.StandardIdentifier }
-     * 
-     */
-    LearningStandardItemType.StandardIdentifier createLearningStandardItemTypeStandardIdentifier();
-
-    /**
-     * Create an instance of {@link LearningStandardDocumentType }
-     * 
-     */
-    LearningStandardDocumentType createLearningStandardDocumentType();
-
-    /**
      * Create an instance of {@link PersonPictureType }
      * 
      */
@@ -492,10 +468,22 @@ public interface IObjectFactory {
     SessionInfoCollectionType createSessionInfoCollectionType();
 
     /**
+     * Create an instance of {@link LearningStandardDocumentType }
+     * 
+     */
+    LearningStandardDocumentType createLearningStandardDocumentType();
+
+    /**
      * Create an instance of {@link LearningStandardDocumentCollectionType }
      * 
      */
     LearningStandardDocumentCollectionType createLearningStandardDocumentCollectionType();
+
+    /**
+     * Create an instance of {@link LearningStandardItemType }
+     * 
+     */
+    LearningStandardItemType createLearningStandardItemType();
 
     /**
      * Create an instance of {@link LearningStandardItemCollectionType }
@@ -828,6 +816,30 @@ public interface IObjectFactory {
     GradingAssignmentScoreCollectionType createGradingAssignmentScoreCollectionType();
 
     /**
+     * Create an instance of {@link MarkValueInfoType }
+     * 
+     */
+    MarkValueInfoType createMarkValueInfoType();
+
+    /**
+     * Create an instance of {@link MarkValueInfoCollectionType }
+     * 
+     */
+    MarkValueInfoCollectionType createMarkValueInfoCollectionType();
+
+    /**
+     * Create an instance of {@link StudentGradeType }
+     * 
+     */
+    StudentGradeType createStudentGradeType();
+
+    /**
+     * Create an instance of {@link StudentGradeCollectionType }
+     * 
+     */
+    StudentGradeCollectionType createStudentGradeCollectionType();
+
+    /**
      * Create an instance of {@link NAPEventStudentLinkType }
      * 
      */
@@ -982,6 +994,114 @@ public interface IObjectFactory {
      * 
      */
     WellbeingCharacteristicCollectionType createWellbeingCharacteristicCollectionType();
+
+    /**
+     * Create an instance of {@link CopyRightContainerType }
+     * 
+     */
+    CopyRightContainerType createCopyRightContainerType();
+
+    /**
+     * Create an instance of {@link StandardsSettingBodyType }
+     * 
+     */
+    StandardsSettingBodyType createStandardsSettingBodyType();
+
+    /**
+     * Create an instance of {@link StandardHierarchyLevelType }
+     * 
+     */
+    StandardHierarchyLevelType createStandardHierarchyLevelType();
+
+    /**
+     * Create an instance of {@link StandardIdentifierType }
+     * 
+     */
+    StandardIdentifierType createStandardIdentifierType();
+
+    /**
+     * Create an instance of {@link AlternateIdentificationCodeListType }
+     * 
+     */
+    AlternateIdentificationCodeListType createAlternateIdentificationCodeListType();
+
+    /**
+     * Create an instance of {@link RelatedLearningStandardItemRefIdListType }
+     * 
+     */
+    RelatedLearningStandardItemRefIdListType createRelatedLearningStandardItemRefIdListType();
+
+    /**
+     * Create an instance of {@link RelatedLearningStandardItemRefIdType }
+     * 
+     */
+    RelatedLearningStandardItemRefIdType createRelatedLearningStandardItemRefIdType();
+
+    /**
+     * Create an instance of {@link ValidLetterMarkListType }
+     * 
+     */
+    ValidLetterMarkListType createValidLetterMarkListType();
+
+    /**
+     * Create an instance of {@link ValidLetterMarkType }
+     * 
+     */
+    ValidLetterMarkType createValidLetterMarkType();
+
+    /**
+     * Create an instance of {@link StudentGradeMarkersListType }
+     * 
+     */
+    StudentGradeMarkersListType createStudentGradeMarkersListType();
+
+    /**
+     * Create an instance of {@link MarkerType }
+     * 
+     */
+    MarkerType createMarkerType();
+
+    /**
+     * Create an instance of {@link GradingScoreListType }
+     * 
+     */
+    GradingScoreListType createGradingScoreListType();
+
+    /**
+     * Create an instance of {@link AssignmentScoreType }
+     * 
+     */
+    AssignmentScoreType createAssignmentScoreType();
+
+    /**
+     * Create an instance of {@link GradeType }
+     * 
+     */
+    GradeType createGradeType();
+
+    /**
+     * Create an instance of {@link LearningStandardListType }
+     * 
+     */
+    LearningStandardListType createLearningStandardListType();
+
+    /**
+     * Create an instance of {@link LearningStandardType }
+     * 
+     */
+    LearningStandardType createLearningStandardType();
+
+    /**
+     * Create an instance of {@link AssignmentListType }
+     * 
+     */
+    AssignmentListType createAssignmentListType();
+
+    /**
+     * Create an instance of {@link GenericRubricType }
+     * 
+     */
+    GenericRubricType createGenericRubricType();
 
     /**
      * Create an instance of {@link MedicationListType }
@@ -2436,36 +2556,6 @@ public interface IObjectFactory {
     LearningResourceType.Location createLearningResourceTypeLocation();
 
     /**
-     * Create an instance of {@link LearningStandardItemType.StandardSettingBody }
-     * 
-     */
-    LearningStandardItemType.StandardSettingBody createLearningStandardItemTypeStandardSettingBody();
-
-    /**
-     * Create an instance of {@link LearningStandardItemType.StandardHierarchyLevel }
-     * 
-     */
-    LearningStandardItemType.StandardHierarchyLevel createLearningStandardItemTypeStandardHierarchyLevel();
-
-    /**
-     * Create an instance of {@link LearningStandardItemType.RelatedLearningStandardItems.LearningStandardItemRefId }
-     * 
-     */
-    LearningStandardItemType.RelatedLearningStandardItems.LearningStandardItemRefId createLearningStandardItemTypeRelatedLearningStandardItemsLearningStandardItemRefId();
-
-    /**
-     * Create an instance of {@link LearningStandardItemType.StandardIdentifier.AlternateIdentificationCodes }
-     * 
-     */
-    LearningStandardItemType.StandardIdentifier.AlternateIdentificationCodes createLearningStandardItemTypeStandardIdentifierAlternateIdentificationCodes();
-
-    /**
-     * Create an instance of {@link LearningStandardDocumentType.Copyright }
-     * 
-     */
-    LearningStandardDocumentType.Copyright createLearningStandardDocumentTypeCopyright();
-
-    /**
      * Create an instance of {@link PersonPictureType.ParentObjectRefId }
      * 
      */
@@ -3184,6 +3274,30 @@ public interface IObjectFactory {
      * 
      */
     JAXBElement<GradingAssignmentScoreCollectionType> createGradingAssignmentScores(GradingAssignmentScoreCollectionType value);
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link MarkValueInfoType }{@code >}}
+     * 
+     */
+    JAXBElement<MarkValueInfoType> createMarkValueInfo(MarkValueInfoType value);
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link MarkValueInfoCollectionType }{@code >}}
+     * 
+     */
+    JAXBElement<MarkValueInfoCollectionType> createMarkValueInfos(MarkValueInfoCollectionType value);
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link StudentGradeType }{@code >}}
+     * 
+     */
+    JAXBElement<StudentGradeType> createStudentGrade(StudentGradeType value);
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link StudentGradeCollectionType }{@code >}}
+     * 
+     */
+    JAXBElement<StudentGradeCollectionType> createStudentGrades(StudentGradeCollectionType value);
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link NAPEventStudentLinkType }{@code >}}
@@ -5341,6 +5455,12 @@ public interface IObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
      * 
      */
+    JAXBElement<String> createMedicationTypeMedicationName(String value);
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+     * 
+     */
     JAXBElement<String> createMedicationTypeDosage(String value);
 
     /**
@@ -5360,6 +5480,145 @@ public interface IObjectFactory {
      * 
      */
     JAXBElement<String> createMedicationTypeMethod(String value);
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+     * 
+     */
+    JAXBElement<String> createGenericRubricTypeDescriptor(String value);
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+     * 
+     */
+    JAXBElement<String> createLearningStandardTypeLearningStandardURL(String value);
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+     * 
+     */
+    JAXBElement<String> createLearningStandardTypeLearningStandardLocalId(String value);
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link BigDecimal }{@code >}}
+     * 
+     */
+    JAXBElement<BigDecimal> createGradeTypePercentage(BigDecimal value);
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link BigDecimal }{@code >}}
+     * 
+     */
+    JAXBElement<BigDecimal> createGradeTypeNumeric(BigDecimal value);
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+     * 
+     */
+    JAXBElement<String> createGradeTypeLetter(String value);
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+     * 
+     */
+    JAXBElement<String> createGradeTypeNarrative(String value);
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+     * 
+     */
+    JAXBElement<String> createGradeTypeMarkInfoRefId(String value);
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+     * 
+     */
+    JAXBElement<String> createAssignmentScoreTypeGradingAssignmentScoreRefId(String value);
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link BigDecimal }{@code >}}
+     * 
+     */
+    JAXBElement<BigDecimal> createAssignmentScoreTypeWeight(BigDecimal value);
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+     * 
+     */
+    JAXBElement<String> createMarkerTypeStaffPersonalRefId(String value);
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+     * 
+     */
+    JAXBElement<String> createMarkerTypeRole(String value);
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link BigDecimal }{@code >}}
+     * 
+     */
+    JAXBElement<BigDecimal> createValidLetterMarkTypeNumericEquivalent(BigDecimal value);
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+     * 
+     */
+    JAXBElement<String> createValidLetterMarkTypeDescription(String value);
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+     * 
+     */
+    JAXBElement<String> createStandardIdentifierTypeBenchmark(String value);
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link YearLevelType }{@code >}}
+     * 
+     */
+    JAXBElement<YearLevelType> createStandardIdentifierTypeYearLevel(YearLevelType value);
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+     * 
+     */
+    JAXBElement<String> createStandardIdentifierTypeIndicatorNumber(String value);
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link AlternateIdentificationCodeListType }{@code >}}
+     * 
+     */
+    JAXBElement<AlternateIdentificationCodeListType> createStandardIdentifierTypeAlternateIdentificationCodes(AlternateIdentificationCodeListType value);
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link AUCodeSetsStandardAustralianClassificationOfCountriesSACCType }{@code >}}
+     * 
+     */
+    JAXBElement<AUCodeSetsStandardAustralianClassificationOfCountriesSACCType> createStandardsSettingBodyTypeCountry(
+            AUCodeSetsStandardAustralianClassificationOfCountriesSACCType value);
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+     * 
+     */
+    JAXBElement<String> createStandardsSettingBodyTypeStateProvince(String value);
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+     * 
+     */
+    JAXBElement<String> createStandardsSettingBodyTypeSettingBodyName(String value);
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link XMLGregorianCalendar }{@code >}}
+     * 
+     */
+    JAXBElement<XMLGregorianCalendar> createCopyRightContainerTypeDate(XMLGregorianCalendar value);
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+     * 
+     */
+    JAXBElement<String> createCopyRightContainerTypeHolder(String value);
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
@@ -6080,6 +6339,180 @@ public interface IObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
      * 
      */
+    JAXBElement<String> createStudentGradeTypeHomegroup(String value);
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link YearLevelType }{@code >}}
+     * 
+     */
+    JAXBElement<YearLevelType> createStudentGradeTypeYearLevel(YearLevelType value);
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+     * 
+     */
+    JAXBElement<String> createStudentGradeTypeTeachingGroupShortName(String value);
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+     * 
+     */
+    JAXBElement<String> createStudentGradeTypeTeachingGroupRefId(String value);
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+     * 
+     */
+    JAXBElement<String> createStudentGradeTypeStaffPersonalRefId(String value);
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link StudentGradeMarkersListType }{@code >}}
+     * 
+     */
+    JAXBElement<StudentGradeMarkersListType> createStudentGradeTypeMarkers(StudentGradeMarkersListType value);
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+     * 
+     */
+    JAXBElement<String> createStudentGradeTypeSchoolInfoRefId(String value);
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+     * 
+     */
+    JAXBElement<String> createStudentGradeTypeTermInfoRefId(String value);
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+     * 
+     */
+    JAXBElement<String> createStudentGradeTypeDescription(String value);
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link ACStrandSubjectAreaType }{@code >}}
+     * 
+     */
+    JAXBElement<ACStrandSubjectAreaType> createStudentGradeTypeLearningArea(ACStrandSubjectAreaType value);
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link LearningStandardListType }{@code >}}
+     * 
+     */
+    JAXBElement<LearningStandardListType> createStudentGradeTypeLearningStandardList(LearningStandardListType value);
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link GradingScoreListType }{@code >}}
+     * 
+     */
+    JAXBElement<GradingScoreListType> createStudentGradeTypeGradingScoreList(GradingScoreListType value);
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link GradeType }{@code >}}
+     * 
+     */
+    JAXBElement<GradeType> createStudentGradeTypeGrade(GradeType value);
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+     * 
+     */
+    JAXBElement<String> createStudentGradeTypeTeacherJudgement(String value);
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link SIFMetadataType }{@code >}}
+     * 
+     */
+    JAXBElement<SIFMetadataType> createStudentGradeTypeSIFMetadata(SIFMetadataType value);
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link SIFExtendedElementsType }{@code >}}
+     * 
+     */
+    JAXBElement<SIFExtendedElementsType> createStudentGradeTypeSIFExtendedElements(SIFExtendedElementsType value);
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link YearLevelsType }{@code >}}
+     * 
+     */
+    JAXBElement<YearLevelsType> createMarkValueInfoTypeYearLevels(YearLevelsType value);
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link BigDecimal }{@code >}}
+     * 
+     */
+    JAXBElement<BigDecimal> createMarkValueInfoTypePercentageMinimum(BigDecimal value);
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link BigDecimal }{@code >}}
+     * 
+     */
+    JAXBElement<BigDecimal> createMarkValueInfoTypePercentageMaximum(BigDecimal value);
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link BigDecimal }{@code >}}
+     * 
+     */
+    JAXBElement<BigDecimal> createMarkValueInfoTypePercentagePassingGrade(BigDecimal value);
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link Long }{@code >}}
+     * 
+     */
+    JAXBElement<Long> createMarkValueInfoTypeNumericPrecision(Long value);
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link Long }{@code >}}
+     * 
+     */
+    JAXBElement<Long> createMarkValueInfoTypeNumericScale(Long value);
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link BigDecimal }{@code >}}
+     * 
+     */
+    JAXBElement<BigDecimal> createMarkValueInfoTypeNumericLow(BigDecimal value);
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link BigDecimal }{@code >}}
+     * 
+     */
+    JAXBElement<BigDecimal> createMarkValueInfoTypeNumericHigh(BigDecimal value);
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link BigDecimal }{@code >}}
+     * 
+     */
+    JAXBElement<BigDecimal> createMarkValueInfoTypeNumericPassingGrade(BigDecimal value);
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link ValidLetterMarkListType }{@code >}}
+     * 
+     */
+    JAXBElement<ValidLetterMarkListType> createMarkValueInfoTypeValidLetterMarkList(ValidLetterMarkListType value);
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link Long }{@code >}}
+     * 
+     */
+    JAXBElement<Long> createMarkValueInfoTypeNarrativeMaximumSize(Long value);
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link SIFMetadataType }{@code >}}
+     * 
+     */
+    JAXBElement<SIFMetadataType> createMarkValueInfoTypeSIFMetadata(SIFMetadataType value);
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link SIFExtendedElementsType }{@code >}}
+     * 
+     */
+    JAXBElement<SIFExtendedElementsType> createMarkValueInfoTypeSIFExtendedElements(SIFExtendedElementsType value);
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+     * 
+     */
     JAXBElement<String> createGradingAssignmentScoreTypeStudentPersonalRefId(String value);
 
     /**
@@ -6093,6 +6526,24 @@ public interface IObjectFactory {
      * 
      */
     JAXBElement<String> createGradingAssignmentScoreTypeSchoolInfoRefId(String value);
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+     * 
+     */
+    JAXBElement<String> createGradingAssignmentScoreTypeStaffPersonalRefId(String value);
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link XMLGregorianCalendar }{@code >}}
+     * 
+     */
+    JAXBElement<XMLGregorianCalendar> createGradingAssignmentScoreTypeDateGraded(XMLGregorianCalendar value);
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link Boolean }{@code >}}
+     * 
+     */
+    JAXBElement<Boolean> createGradingAssignmentScoreTypeExpectedScore(Boolean value);
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link Long }{@code >}}
@@ -6119,6 +6570,30 @@ public interface IObjectFactory {
     JAXBElement<String> createGradingAssignmentScoreTypeScoreDescription(String value);
 
     /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link NAPSubscoreListType }{@code >}}
+     * 
+     */
+    JAXBElement<NAPSubscoreListType> createGradingAssignmentScoreTypeSubscoreList(NAPSubscoreListType value);
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+     * 
+     */
+    JAXBElement<String> createGradingAssignmentScoreTypeTeacherJudgement(String value);
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+     * 
+     */
+    JAXBElement<String> createGradingAssignmentScoreTypeMarkInfoRefId(String value);
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+     * 
+     */
+    JAXBElement<String> createGradingAssignmentScoreTypeAssignmentScoreIteration(String value);
+
+    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link SIFMetadataType }{@code >}}
      * 
      */
@@ -6135,6 +6610,12 @@ public interface IObjectFactory {
      * 
      */
     JAXBElement<String> createGradingAssignmentTypeTeachingGroupRefId(String value);
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link StudentsType }{@code >}}
+     * 
+     */
+    JAXBElement<StudentsType> createGradingAssignmentTypeStudentPersonalRefIdList(StudentsType value);
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
@@ -6183,6 +6664,48 @@ public interface IObjectFactory {
      * 
      */
     JAXBElement<byte[]> createGradingAssignmentTypeDetailedDescriptionBinary(byte[] value);
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+     * 
+     */
+    JAXBElement<String> createGradingAssignmentTypeAssessmentType(String value);
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+     * 
+     */
+    JAXBElement<String> createGradingAssignmentTypeLevelAssessed(String value);
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+     * 
+     */
+    JAXBElement<String> createGradingAssignmentTypeAssignmentPurpose(String value);
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link AssignmentListType }{@code >}}
+     * 
+     */
+    JAXBElement<AssignmentListType> createGradingAssignmentTypeSubAssignmentList(AssignmentListType value);
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link GenericRubricType }{@code >}}
+     * 
+     */
+    JAXBElement<GenericRubricType> createGradingAssignmentTypeRubricScoringGuide(GenericRubricType value);
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link PrerequisitesType }{@code >}}
+     * 
+     */
+    JAXBElement<PrerequisitesType> createGradingAssignmentTypePrerequisiteList(PrerequisitesType value);
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link LearningStandardListType }{@code >}}
+     * 
+     */
+    JAXBElement<LearningStandardListType> createGradingAssignmentTypeLearningStandardList(LearningStandardListType value);
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link SIFMetadataType }{@code >}}
@@ -8027,10 +8550,10 @@ public interface IObjectFactory {
     JAXBElement<LResourcesType> createLearningStandardItemTypeResources(LResourcesType value);
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link LearningStandardItemType.StandardSettingBody }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link StandardsSettingBodyType }{@code >}}
      * 
      */
-    JAXBElement<LearningStandardItemType.StandardSettingBody> createLearningStandardItemTypeStandardSettingBody(LearningStandardItemType.StandardSettingBody value);
+    JAXBElement<StandardsSettingBodyType> createLearningStandardItemTypeStandardSettingBody(StandardsSettingBodyType value);
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link LearningStandardsType }{@code >}}
@@ -8057,17 +8580,16 @@ public interface IObjectFactory {
     JAXBElement<ACStrandSubjectAreaType> createLearningStandardItemTypeACStrandSubjectArea(ACStrandSubjectAreaType value);
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link LearningStandardItemType.StandardIdentifier }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link StandardIdentifierType }{@code >}}
      * 
      */
-    JAXBElement<LearningStandardItemType.StandardIdentifier> createLearningStandardItemTypeStandardIdentifier(LearningStandardItemType.StandardIdentifier value);
+    JAXBElement<StandardIdentifierType> createLearningStandardItemTypeStandardIdentifier(StandardIdentifierType value);
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link LearningStandardItemType.RelatedLearningStandardItems }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link RelatedLearningStandardItemRefIdListType }{@code >}}
      * 
      */
-    JAXBElement<LearningStandardItemType.RelatedLearningStandardItems> createLearningStandardItemTypeRelatedLearningStandardItems(
-            LearningStandardItemType.RelatedLearningStandardItems value);
+    JAXBElement<RelatedLearningStandardItemRefIdListType> createLearningStandardItemTypeRelatedLearningStandardItems(RelatedLearningStandardItemRefIdListType value);
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
@@ -8092,43 +8614,6 @@ public interface IObjectFactory {
      * 
      */
     JAXBElement<SIFExtendedElementsType> createLearningStandardItemTypeSIFExtendedElements(SIFExtendedElementsType value);
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
-     * 
-     */
-    JAXBElement<String> createLearningStandardItemTypeStandardIdentifierBenchmark(String value);
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link YearLevelType }{@code >}}
-     * 
-     */
-    JAXBElement<YearLevelType> createLearningStandardItemTypeStandardIdentifierYearLevel(YearLevelType value);
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
-     * 
-     */
-    JAXBElement<String> createLearningStandardItemTypeStandardIdentifierIndicatorNumber(String value);
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link LearningStandardItemType.StandardIdentifier.AlternateIdentificationCodes }{@code >}}
-     * 
-     */
-    JAXBElement<LearningStandardItemType.StandardIdentifier.AlternateIdentificationCodes> createLearningStandardItemTypeStandardIdentifierAlternateIdentificationCodes(
-            LearningStandardItemType.StandardIdentifier.AlternateIdentificationCodes value);
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
-     * 
-     */
-    JAXBElement<String> createLearningStandardItemTypeStandardSettingBodyStateProvince(String value);
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
-     * 
-     */
-    JAXBElement<String> createLearningStandardItemTypeStandardSettingBodySettingBodyName(String value);
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
@@ -8179,10 +8664,10 @@ public interface IObjectFactory {
     JAXBElement<XMLGregorianCalendar> createLearningStandardDocumentTypeEndOfLifeDate(XMLGregorianCalendar value);
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link LearningStandardDocumentType.Copyright }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link CopyRightContainerType }{@code >}}
      * 
      */
-    JAXBElement<LearningStandardDocumentType.Copyright> createLearningStandardDocumentTypeCopyright(LearningStandardDocumentType.Copyright value);
+    JAXBElement<CopyRightContainerType> createLearningStandardDocumentTypeCopyright(CopyRightContainerType value);
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link YearLevelsType }{@code >}}
@@ -8213,18 +8698,6 @@ public interface IObjectFactory {
      * 
      */
     JAXBElement<SIFExtendedElementsType> createLearningStandardDocumentTypeSIFExtendedElements(SIFExtendedElementsType value);
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link XMLGregorianCalendar }{@code >}}
-     * 
-     */
-    JAXBElement<XMLGregorianCalendar> createLearningStandardDocumentTypeCopyrightDate(XMLGregorianCalendar value);
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
-     * 
-     */
-    JAXBElement<String> createLearningStandardDocumentTypeCopyrightHolder(String value);
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
