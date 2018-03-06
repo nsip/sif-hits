@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import sif.dd.au30.model.TimeTableCellType;
+import sif3.hits.domain.converter.factory.IObjectFactory;
 import sif3.hits.domain.model.TimeTableCell;
 
 @Component
@@ -31,10 +32,12 @@ public class TimeTableCellConverter extends HitsConverter<TimeTableCellType, Tim
   @Override
   public void toSifModel(TimeTableCell source, TimeTableCellType target) {
     if (source != null && target != null) {
+        IObjectFactory objectFactory = getObjectFactory();
       target.setCellType(source.getCellType());
       target.setDayId(source.getDayId());
       target.setPeriodId(source.getPeriodId());
       target.setRefId(source.getRefId());
+      target.setSchoolLocalId(objectFactory.createTimeTableCellTypeSchoolLocalId(source.getSchoolInfoLocalId()));
       timeTableCellStaffPersonalConverter.toSifModel(source.getStaffPersonal(), target);
       timeTableCellTimeTableConverter.toSifModel(source.getTimeTable(), target);
       timeTableCellRoomInfoConverter.toSifModel(source.getRoomInfo(), target);
@@ -50,6 +53,7 @@ public class TimeTableCellConverter extends HitsConverter<TimeTableCellType, Tim
       target.setDayId(source.getDayId());
       target.setPeriodId(source.getPeriodId());
       target.setRefId(source.getRefId());
+      target.setSchoolInfoLocalId(getJAXBValue(source.getSchoolLocalId()));
       target.setStaffPersonal(timeTableCellStaffPersonalConverter.toHitsModel(source));
       target.setTimeTable(timeTableCellTimeTableConverter.toHitsModel(source));
       target.setRoomInfo(timeTableCellRoomInfoConverter.toHitsModel(source));

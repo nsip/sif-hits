@@ -18,7 +18,6 @@ public class TimeTableCellSchoolInfoConverter extends HitsConverter<TimeTableCel
     if (source != null && target != null) {
       IObjectFactory objectFactory = getObjectFactory();
       target.setSchoolInfoRefId(objectFactory.createTimeTableCellTypeSchoolInfoRefId(source.getRefId()));
-      target.setSchoolLocalId(objectFactory.createTimeTableCellTypeSchoolLocalId(source.getLocalId()));
     }
   }
 
@@ -26,7 +25,6 @@ public class TimeTableCellSchoolInfoConverter extends HitsConverter<TimeTableCel
   public void toHitsModel(TimeTableCellType source, SchoolInfo target) {
     if (source != null && target != null) {
       target.setRefId(getJAXBValue(source.getSchoolInfoRefId()));
-      target.setLocalId(getJAXBValue(source.getSchoolLocalId()));
     }
   }
 }
