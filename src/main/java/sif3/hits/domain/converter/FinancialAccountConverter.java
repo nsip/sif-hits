@@ -25,6 +25,7 @@ public class FinancialAccountConverter extends HitsConverter<FinancialAccountTyp
       target.setCreationTime(getTimeValue(source.getCreationTime()));
       target.setDescription(objectFactory.createFinancialAccountTypeDescription(source.getDescription()));
       target.setName(source.getName());
+      target.setClassType(source.getClassType());
       target.setParentAccountRefId(objectFactory.createFinancialAccountTypeParentAccountRefId(source.getSubAccountRefId()));
     }
   }
@@ -39,6 +40,7 @@ public class FinancialAccountConverter extends HitsConverter<FinancialAccountTyp
       target.setCreationTime(getTimeValue(source.getCreationTime()));
       target.setDescription(getJAXBValue(source.getDescription()));
       target.setName(source.getName());
+      target.setClassType(source.getClassType());
       target.setSubAccountRefId(getJAXBValue(source.getParentAccountRefId()));
     }
   }

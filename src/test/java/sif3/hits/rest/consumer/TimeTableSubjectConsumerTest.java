@@ -18,6 +18,7 @@ import sif.dd.au30.model.OtherCodeListType.OtherCode;
 import sif.dd.au30.model.TimeTableSubjectCollectionType;
 import sif.dd.au30.model.TimeTableSubjectType;
 import sif.dd.au30.model.YearLevelType;
+import sif.dd.au30.model.YearRangeType;
 import sif3.common.model.QueryCriteria;
 import sif3.common.model.QueryOperator;
 import sif3.common.model.QueryPredicate;
@@ -85,13 +86,31 @@ public class TimeTableSubjectConsumerTest extends BaseTest {
     timeTableSubjectTester.doUpdateOne(timeTableSubject, timeTableSubject.getRefId());
 
     timeTableSubject.setRefId("c3401c3b-994f-4d10-b3d0-6423556b6f39");
+    timeTableSubject.setAcademicYear(null);
+    YearRangeType yearRange = new YearRangeType();
+    YearLevelType startYear = new YearLevelType();
+    startYear.setCode(AUCodeSetsYearLevelCodeType.fromValue("K4"));
+    YearLevelType endYear = new YearLevelType();
+    endYear.setCode(AUCodeSetsYearLevelCodeType.fromValue("6"));
+    yearRange.setStart(startYear);
+    yearRange.setEnd(endYear);
+    timeTableSubject.setAcademicYearRange(objectFactory.createTimeTableSubjectTypeAcademicYearRange(yearRange));
+    String xmlExpectedToRange = timeTableSubjectTester.getXML(timeTableSubject);
     timeTableSubjectTester.doCreateOne(timeTableSubject);
+    timeTableSubjectTester.doUpdateOne(timeTableSubject, timeTableSubject.getRefId());
 
     TimeTableSubjectType getResult = timeTableSubjectTester.doGetOne(REF_ID);
     String xmlExpectedFrom = timeTableSubjectTester.getXML(getResult);
     boolean semiEquals = semiEquals(xmlExpectedFrom, xmlExpectedTo);
     if (!semiEquals) {
       Assert.assertEquals("XML Differs", xmlExpectedFrom, xmlExpectedTo);
+    }
+    
+    getResult = timeTableSubjectTester.doGetOne("c3401c3b-994f-4d10-b3d0-6423556b6f39");
+    String xmlExpectedFromRange = timeTableSubjectTester.getXML(getResult);
+    boolean semiEqualsRange = semiEquals(xmlExpectedFromRange, xmlExpectedToRange);
+    if (!semiEqualsRange) {
+      Assert.assertEquals("XML Differs", xmlExpectedFromRange, xmlExpectedToRange);
     }
   }
   

@@ -1,5 +1,6 @@
 package sif3.hits.domain.dao.filter.impl;
 
+import org.apache.commons.lang3.StringUtils;
 import org.hibernate.Criteria;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
@@ -21,9 +22,14 @@ public class GradingAssignmentScoreFilterDAOImpl extends BaseFilterableRepositor
                 criteria.createAlias("teachingGroup", "tg");
                 criteria.add(Restrictions.eq("tg.refId", input.getTeachingGroupRefId().getValue()));
             }
-            if (needsFilter(input.getStudentPersonalRefId())) {
+            if (needsFilter(input.getStudentPersonalRefId()) || StringUtils.isNotBlank(input.getStudentPersonalLocalId())) {
                 criteria.createAlias("studentPersonal", "student");
-                criteria.add(Restrictions.eq("student.refId", input.getStudentPersonalRefId().getValue()));
+                if (needsFilter(input.getStudentPersonalRefId())) {
+                    criteria.add(Restrictions.eq("student.refId", input.getStudentPersonalRefId().getValue()));
+                }
+                if (StringUtils.isNotBlank(input.getStudentPersonalLocalId())) {
+                    criteria.add(Restrictions.eq("student.localId", input.getStudentPersonalLocalId()));
+                }
             }
         }
     }

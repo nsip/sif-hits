@@ -19,6 +19,7 @@ public class TimeTableCell extends HitsEntity {
   private String periodId;
   private String dayId;
   private StaffPersonal staffPersonal;
+  
   private boolean temporary = false;
 
   @Id
