@@ -16,87 +16,87 @@ import sif3.infra.rest.consumer.AbstractConsumer;
 
 public class TestConsumer<S, M> extends AbstractConsumer {
 
-  private final Class<S> SINGLE_CLASS;
-  private final Class<M> MULTI_CLASS;
-  private final String SINGLE_NAME;
-  private final String MULTI_NAME;
-  
-  private MarshalFactory MARSHALLER;
-  private UnmarshalFactory UNMARSHALLER;
+    private final Class<S> SINGLE_CLASS;
+    private final Class<M> MULTI_CLASS;
+    private final String SINGLE_NAME;
+    private final String MULTI_NAME;
 
-  /**
-   * @param consumerID
-   * @param marshaller
-   * @param unmarshaller
-   */
-  public TestConsumer(Class<S> singleClass, String singleName, Class<M> multiClass, String multiName) {
-    this.SINGLE_CLASS = singleClass;
-    this.SINGLE_NAME = singleName;
-    this.MULTI_CLASS = multiClass;
-    this.MULTI_NAME = multiName;
-    this.MARSHALLER = new DataModelMarshalFactory();
-    this.UNMARSHALLER = new DataModelUnmarshalFactory();
-  }
+    private MarshalFactory MARSHALLER;
+    private UnmarshalFactory UNMARSHALLER;
 
-  @Override
-  public ModelObjectInfo getSingleObjectClassInfo() {
-    return new ModelObjectInfo(SINGLE_NAME, SINGLE_CLASS);
-  }
-
-  @Override
-  public ModelObjectInfo getMultiObjectClassInfo() {
-    return new ModelObjectInfo(MULTI_NAME, MULTI_CLASS);
-  }
-  
-  @Override
-  public MarshalFactory getMarshaller() {
-    if (MARSHALLER == null) {
-      MARSHALLER = new DataModelMarshalFactory();
-    }
-    return MARSHALLER;
-  }
-  
-  @Override
-  public UnmarshalFactory getUnmarshaller() {
-    if (UNMARSHALLER == null) {
-      UNMARSHALLER = new DataModelUnmarshalFactory();
+    /**
+     * @param consumerID
+     * @param marshaller
+     * @param unmarshaller
+     */
+    public TestConsumer(Class<S> singleClass, String singleName, Class<M> multiClass, String multiName) {
+        this.SINGLE_CLASS = singleClass;
+        this.SINGLE_NAME = singleName;
+        this.MULTI_CLASS = multiClass;
+        this.MULTI_NAME = multiName;
+        this.MARSHALLER = new DataModelMarshalFactory();
+        this.UNMARSHALLER = new DataModelUnmarshalFactory();
     }
 
-    return UNMARSHALLER;
-  }
-  
-  @Override
-  public void shutdown() {
-    // Nothing to do at this stage
-  }
+    @Override
+    public ModelObjectInfo getSingleObjectClassInfo() {
+        return new ModelObjectInfo(SINGLE_NAME, SINGLE_CLASS);
+    }
 
-  @Override
-  public void processDelayedCreateMany(MultiOperationStatusList<CreateOperationStatus> arg0, DelayedResponseReceipt arg1) {
-    
-  }
+    @Override
+    public ModelObjectInfo getMultiObjectClassInfo() {
+        return new ModelObjectInfo(MULTI_NAME, MULTI_CLASS);
+    }
 
-  @Override
-  public void processDelayedDeleteMany(MultiOperationStatusList<OperationStatus> arg0, DelayedResponseReceipt arg1) {
-    
-  }
+    @Override
+    public MarshalFactory getMarshaller() {
+        if (MARSHALLER == null) {
+            MARSHALLER = new DataModelMarshalFactory();
+        }
+        return MARSHALLER;
+    }
 
-  @Override
-  public void processDelayedError(ErrorDetails arg0, DelayedResponseReceipt arg1) {
-    
-  }
+    @Override
+    public UnmarshalFactory getUnmarshaller() {
+        if (UNMARSHALLER == null) {
+            UNMARSHALLER = new DataModelUnmarshalFactory();
+        }
 
-  @Override
-  public void processDelayedQuery(Object arg0, PagingInfo arg1, DelayedResponseReceipt arg2) {
-    
-  }
+        return UNMARSHALLER;
+    }
 
-  @Override
-  public void processDelayedServicePath(Object arg0, QueryCriteria arg1, PagingInfo arg2, DelayedResponseReceipt arg3) {
-    
-  }
+    @Override
+    public void shutdown() {
+        // Nothing to do at this stage
+    }
 
-  @Override
-  public void processDelayedUpdateMany(MultiOperationStatusList<OperationStatus> arg0, DelayedResponseReceipt arg1) {
-    
-  }
+    @Override
+    public void processDelayedCreateMany(MultiOperationStatusList<CreateOperationStatus> arg0, DelayedResponseReceipt arg1) {
+
+    }
+
+    @Override
+    public void processDelayedDeleteMany(MultiOperationStatusList<OperationStatus> arg0, DelayedResponseReceipt arg1) {
+
+    }
+
+    @Override
+    public void processDelayedError(ErrorDetails arg0, DelayedResponseReceipt arg1) {
+
+    }
+
+    @Override
+    public void processDelayedQuery(Object arg0, PagingInfo arg1, DelayedResponseReceipt arg2) {
+
+    }
+
+    @Override
+    public void processDelayedServicePath(Object arg0, QueryCriteria arg1, PagingInfo arg2, DelayedResponseReceipt arg3) {
+
+    }
+
+    @Override
+    public void processDelayedUpdateMany(MultiOperationStatusList<OperationStatus> arg0, DelayedResponseReceipt arg1) {
+
+    }
 }

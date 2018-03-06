@@ -8,6 +8,7 @@ import java.util.List;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.experimental.categories.Category;
 import org.springframework.http.HttpStatus;
 
 import sif.dd.au30.model.AUCodeSetsNAPResponseCorrectnessType;
@@ -29,6 +30,8 @@ import sif3.hits.rest.consumer.NAPTestConsumerTest.NAPTestRefIds;
 import sif3.hits.rest.consumer.NAPTestItemConsumerTest.NAPTestItemRefIds;
 import sif3.hits.rest.consumer.NAPTestletConsumerTest.NAPTestletRefIds;
 import sif3.hits.rest.consumer.StudentPersonalConsumerTest.StudentPersonalRefIds;
+import sif3.hits.rest.consumer.category.InitialiseData;
+import sif3.hits.rest.consumer.category.IntegrationTest;
 import sif3.infra.rest.consumer.ConsumerLoader;
 
 public class NAPStudentResponseSetConsumerTest extends BaseTest {
@@ -48,6 +51,7 @@ public class NAPStudentResponseSetConsumerTest extends BaseTest {
     private final String[] REF_IDS = { REF_ID_1, REF_ID_2 };
 
     @Test
+    @Category({ IntegrationTest.class, InitialiseData.class })
     public void initialiseData() throws Exception {
         ObjectFactory objectFactory = new ObjectFactory();
 
@@ -155,6 +159,7 @@ public class NAPStudentResponseSetConsumerTest extends BaseTest {
     }
 
     @Test
+    @Category(IntegrationTest.class)
     public void testUpdateSingle() throws Exception {
         List<Response> responses = napStudentResponseSetTester.testGetSingle(NAPStudentResponseSetRefIds.REF_ID_1);
         Assert.assertNotNull(responses);
@@ -189,6 +194,7 @@ public class NAPStudentResponseSetConsumerTest extends BaseTest {
     }
 
     @Test
+    @Category(IntegrationTest.class)
     public void testGetSingle() {
         List<Response> responses = napStudentResponseSetTester.testGetSingle(NAPStudentResponseSetRefIds.REF_ID_1);
         Assert.assertNotNull(responses);
@@ -200,6 +206,7 @@ public class NAPStudentResponseSetConsumerTest extends BaseTest {
     }
 
     @Test
+    @Category(IntegrationTest.class)
     public void testGetMany() {
         List<Response> responses = napStudentResponseSetTester.testGetMany(5, 0);
         Assert.assertNotNull(responses);
@@ -212,6 +219,7 @@ public class NAPStudentResponseSetConsumerTest extends BaseTest {
     }
 
     @Test
+    @Category(IntegrationTest.class)
     public void testCreateDelete() {
         List<Response> createResponses = napStudentResponseSetTester.testCreateOne("napstudentresponseset.xml");
         Assert.assertNotNull(createResponses);
@@ -230,6 +238,7 @@ public class NAPStudentResponseSetConsumerTest extends BaseTest {
     }
 
     @Test
+    @Category(IntegrationTest.class)
     public void testCreateDeleteMany() {
         final List<String> REF_ID_LIST = Arrays.asList(REF_IDS);
 

@@ -6,6 +6,7 @@ import java.util.List;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.experimental.categories.Category;
 import org.springframework.http.HttpStatus;
 
 import sif.dd.au30.model.FinancialAccountCollectionType;
@@ -16,6 +17,8 @@ import sif3.common.ws.CreateOperationStatus;
 import sif3.common.ws.OperationStatus;
 import sif3.common.ws.Response;
 import sif3.hits.rest.consumer.LocationInfoConsumerTest.LocationInfoRefIds;
+import sif3.hits.rest.consumer.category.InitialiseData;
+import sif3.hits.rest.consumer.category.IntegrationTest;
 import sif3.infra.rest.consumer.ConsumerLoader;
 
 public class FinancialAccountConsumerTest extends BaseTest {
@@ -34,6 +37,7 @@ public class FinancialAccountConsumerTest extends BaseTest {
     private final String[] REF_IDS = { REF_ID_1, REF_ID_2 };
 
     @Test
+    @Category({ IntegrationTest.class, InitialiseData.class })
     public void initialiseData() throws Exception {
         ObjectFactory objectFactory = new ObjectFactory();
         FinancialAccountType financialAccount = new FinancialAccountType();
@@ -79,6 +83,7 @@ public class FinancialAccountConsumerTest extends BaseTest {
     }
 
     @Test
+    @Category(IntegrationTest.class)
     public void testUpdateSingle() throws Exception {
         List<Response> responses = financialTester.testGetSingle(FinancialAccountRefIds.REF_ID_1);
         Assert.assertNotNull(responses);
@@ -113,6 +118,7 @@ public class FinancialAccountConsumerTest extends BaseTest {
     }
 
     @Test
+    @Category(IntegrationTest.class)
     public void testGetSingle() {
         List<Response> responses = financialTester.testGetSingle(FinancialAccountRefIds.REF_ID_1);
         Assert.assertNotNull(responses);
@@ -124,6 +130,7 @@ public class FinancialAccountConsumerTest extends BaseTest {
     }
 
     @Test
+    @Category(IntegrationTest.class)
     public void testQBEClassType() {
         FinancialAccountType financialAccount = new FinancialAccountType();
         financialAccount.setClassType("Expense");
@@ -140,6 +147,7 @@ public class FinancialAccountConsumerTest extends BaseTest {
     }
 
     @Test
+    @Category(IntegrationTest.class)
     public void testGetMany() {
         List<Response> responses = financialTester.testGetMany(5, 0);
         Assert.assertNotNull(responses);
@@ -152,6 +160,7 @@ public class FinancialAccountConsumerTest extends BaseTest {
     }
 
     @Test
+    @Category(IntegrationTest.class)
     public void testCreateDelete() {
         List<Response> createResponses = financialTester.testCreateOne("financialaccount.xml");
         Assert.assertNotNull(createResponses);
@@ -170,6 +179,7 @@ public class FinancialAccountConsumerTest extends BaseTest {
     }
 
     @Test
+    @Category(IntegrationTest.class)
     public void testCreateDeleteMany() {
         final List<String> REF_ID_LIST = Arrays.asList(REF_IDS);
 

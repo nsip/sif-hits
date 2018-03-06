@@ -8,6 +8,7 @@ import org.apache.commons.lang3.StringUtils;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.experimental.categories.Category;
 import org.springframework.http.HttpStatus;
 
 import sif.dd.au30.model.AUCodeSetsAddressRoleType;
@@ -56,470 +57,487 @@ import sif3.common.ws.BulkOperationResponse;
 import sif3.common.ws.CreateOperationStatus;
 import sif3.common.ws.OperationStatus;
 import sif3.common.ws.Response;
+import sif3.hits.rest.consumer.category.InitialiseData;
+import sif3.hits.rest.consumer.category.IntegrationTest;
 import sif3.hits.service.PersonalStudentIdService;
 import sif3.infra.rest.consumer.ConsumerLoader;
 
 public class StudentPersonalConsumerTest extends BaseTest {
-  private ConsumerTest<StudentPersonalType, StudentPersonalCollectionType> studentTester = null;
+    private ConsumerTest<StudentPersonalType, StudentPersonalCollectionType> studentTester = null;
 
-  public static class StudentPersonalRefIds {
-    public static String REF_ID_1 = "f7dd788e-3cef-40eb-9cb4-af90a2fa3147";
-    public static String REF_ID_2 = "125db961-4475-4820-b9a3-8ce90e37c006";
-    public static String REF_ID_3 = "b3270c8a-7a1e-4360-9336-8733728bab44";
-    public static String REF_ID_4 = "17998aa6-3a07-4763-a2c5-1fabbd966039";
-    public static String REF_ID_5 = "1f631f1d-8832-4775-b199-5eb9650e8ebb";
+    public static class StudentPersonalRefIds {
+        public static String REF_ID_1 = "f7dd788e-3cef-40eb-9cb4-af90a2fa3147";
+        public static String REF_ID_2 = "125db961-4475-4820-b9a3-8ce90e37c006";
+        public static String REF_ID_3 = "b3270c8a-7a1e-4360-9336-8733728bab44";
+        public static String REF_ID_4 = "17998aa6-3a07-4763-a2c5-1fabbd966039";
+        public static String REF_ID_5 = "1f631f1d-8832-4775-b199-5eb9650e8ebb";
 
-    public static String LOCAL_ID = "s0004432";
-    
-    public static final String PSI_ID_1 = "R100000001E";
-    public static final String PSI_ID_2 = "R100000002D";
-    public static final String PSI_ID_3 = "R100000003S";
-    public static final String PSI_ID_4 = "R100000004R";
-    public static final String PSI_ID_5 = "R100000005G";
+        public static String LOCAL_ID = "s0004432";
 
-    public static NameOfRecordType getNameOfRecord(ObjectFactory objectFactory) {
-      NameOfRecordType nameOfRecordType = new NameOfRecordType();
-      nameOfRecordType.setType("LGL");
-      nameOfRecordType.setFamilyName(objectFactory.createBaseNameTypeFamilyName("Tester"));
-      nameOfRecordType.setPreferredFamilyName(objectFactory.createBaseNameTypePreferredFamilyName("PTester"));
-      nameOfRecordType.setGivenName(objectFactory.createBaseNameTypeGivenName("Gavin"));
-      nameOfRecordType.setPreferredGivenName(objectFactory.createBaseNameTypePreferredGivenName("PGavin"));
-      nameOfRecordType.setMiddleName(objectFactory.createBaseNameTypeMiddleName("Middle"));
-      nameOfRecordType.setFullName(objectFactory.createBaseNameTypeFullName("Mr Full Name Gavin Tester"));
-      return nameOfRecordType;
+        public static final String PSI_ID_1 = "R100000001E";
+        public static final String PSI_ID_2 = "R100000002D";
+        public static final String PSI_ID_3 = "R100000003S";
+        public static final String PSI_ID_4 = "R100000004R";
+        public static final String PSI_ID_5 = "R100000005G";
+
+        public static NameOfRecordType getNameOfRecord(ObjectFactory objectFactory) {
+            NameOfRecordType nameOfRecordType = new NameOfRecordType();
+            nameOfRecordType.setType("LGL");
+            nameOfRecordType.setFamilyName(objectFactory.createBaseNameTypeFamilyName("Tester"));
+            nameOfRecordType.setPreferredFamilyName(objectFactory.createBaseNameTypePreferredFamilyName("PTester"));
+            nameOfRecordType.setGivenName(objectFactory.createBaseNameTypeGivenName("Gavin"));
+            nameOfRecordType.setPreferredGivenName(objectFactory.createBaseNameTypePreferredGivenName("PGavin"));
+            nameOfRecordType.setMiddleName(objectFactory.createBaseNameTypeMiddleName("Middle"));
+            nameOfRecordType.setFullName(objectFactory.createBaseNameTypeFullName("Mr Full Name Gavin Tester"));
+            return nameOfRecordType;
+        }
+
+        public static AddressType getAddress(ObjectFactory objectFactory, String addressLineOne, String addressLineTwo) {
+            AddressType address = new AddressType();
+            getAddress(objectFactory, address, addressLineOne, addressLineTwo);
+            return address;
+        }
+
+        public static AddressType getAddressType(ObjectFactory objectFactory, String addressLineOne, String addressLineTwo) {
+            AddressType address = new AddressType();
+            getAddress(objectFactory, address, addressLineOne, addressLineTwo);
+            return address;
+        }
+
+        public static void getAddress(ObjectFactory objectFactory, AddressType address, String addressLineOne, String addressLineTwo) {
+            address.setCity("Perth");
+            address.setStateProvince(objectFactory.createAddressTypeStateProvince("WA"));
+            address.setType(AUCodeSetsAddressTypeType.fromValue("0123"));
+            address.setRole(AUCodeSetsAddressRoleType.fromValue("012B"));
+            address.setPostalCode("6000");
+
+            AddressStreetType street = objectFactory.createAddressStreetType();
+            street.setLine1(addressLineOne);
+            if (StringUtils.isNotBlank(addressLineTwo)) {
+                street.setLine2(objectFactory.createAddressStreetTypeLine2(addressLineTwo));
+            }
+            address.setStreet(street);
+
+            GridLocationType gridLocation = objectFactory.createGridLocationType();
+            gridLocation.setLatitude(new BigDecimal("-31.952693"));
+            gridLocation.setLongitude(new BigDecimal("115.871971"));
+            address.setGridLocation(objectFactory.createAddressTypeGridLocation(gridLocation));
+        }
     }
 
-    public static AddressType getAddress(ObjectFactory objectFactory, String addressLineOne, String addressLineTwo) {
-      AddressType address = new AddressType();
-      getAddress(objectFactory, address, addressLineOne, addressLineTwo);
-      return address;
+    private final String REF_ID_1 = "6bb0c404-c029-49bd-9956-d6be93b7b128";
+    private final String REF_ID_2 = "6bb0c404-c029-49bd-9956-d6be93b7b124";
+    private final String[] REF_IDS = { REF_ID_1, REF_ID_2 };
+
+    @Test
+    @Category({ IntegrationTest.class, InitialiseData.class })
+    public void initialiseData() throws Exception {
+        ObjectFactory objectFactory = new ObjectFactory();
+        StudentPersonalType studentPersonalType = new StudentPersonalType();
+        studentPersonalType.setRefId(StudentPersonalRefIds.REF_ID_1);
+        studentPersonalType.setLocalId(StudentPersonalRefIds.LOCAL_ID);
+
+        StudentMostRecentContainerType mostRecent = new StudentMostRecentContainerType();
+        YearLevelType yearLevel = new YearLevelType();
+        yearLevel.setCode(AUCodeSetsYearLevelCodeType.fromValue("3"));
+        mostRecent.setYearLevel(objectFactory.createStudentMostRecentContainerTypeYearLevel(yearLevel));
+        mostRecent.setParent1Language(
+                objectFactory.createStudentMostRecentContainerTypeParent1Language(AUCodeSetsAustralianStandardClassificationOfLanguagesASCLType.fromValue("1201")));
+        mostRecent.setParent2Language(
+                objectFactory.createStudentMostRecentContainerTypeParent2Language(AUCodeSetsAustralianStandardClassificationOfLanguagesASCLType.fromValue("2303")));
+        mostRecent.setParent1SchoolEducationLevel(
+                objectFactory.createStudentMostRecentContainerTypeParent1SchoolEducationLevel(AUCodeSetsSchoolEducationLevelTypeType.fromValue("4")));
+        mostRecent.setParent2SchoolEducationLevel(
+                objectFactory.createStudentMostRecentContainerTypeParent2SchoolEducationLevel(AUCodeSetsSchoolEducationLevelTypeType.fromValue("0")));
+        mostRecent.setParent1NonSchoolEducation(objectFactory.createStudentMostRecentContainerTypeParent1NonSchoolEducation(AUCodeSetsNonSchoolEducationType.fromValue("7")));
+        mostRecent.setParent2NonSchoolEducation(objectFactory.createStudentMostRecentContainerTypeParent2NonSchoolEducation(AUCodeSetsNonSchoolEducationType.fromValue("0")));
+        mostRecent.setParent1EmploymentType(objectFactory.createStudentMostRecentContainerTypeParent1EmploymentType(AUCodeSetsEmploymentTypeType.fromValue("1")));
+        mostRecent.setParent2EmploymentType(objectFactory.createStudentMostRecentContainerTypeParent2EmploymentType(AUCodeSetsEmploymentTypeType.fromValue("2")));
+        mostRecent.setFFPOS(objectFactory.createStudentMostRecentContainerTypeFFPOS(AUCodeSetsFFPOSStatusCodeType.fromValue("2")));
+        mostRecent.setTestLevel(objectFactory.createStudentMostRecentContainerTypeTestLevel(yearLevel));
+        studentPersonalType.setMostRecent(objectFactory.createStudentPersonalTypeMostRecent(mostRecent));
+
+        PersonInfoType personInfo = new PersonInfoType();
+        NameOfRecordType nameOfRecordType = StudentPersonalRefIds.getNameOfRecord(objectFactory);
+        personInfo.setName(nameOfRecordType);
+
+        DemographicsType demographics = new DemographicsType();
+        demographics.setSex(objectFactory.createDemographicsTypeSex(AUCodeSetsSexCodeType.fromValue("1")));
+        demographics.setBirthDate(objectFactory.createDemographicsTypeBirthDate(getDate("1984-12-20")));
+        demographics.setIndigenousStatus(objectFactory.createDemographicsTypeIndigenousStatus(AUCodeSetsIndigenousStatusType.fromValue("9")));
+        demographics.setCountryOfBirth(objectFactory.createDemographicsTypeCountryOfBirth(AUCodeSetsStandardAustralianClassificationOfCountriesSACCType.fromValue("1101")));
+
+        LanguageListType languageListType = new LanguageListType();
+        LanguageBaseType languageBaseType = new LanguageBaseType();
+        languageBaseType.setCode(AUCodeSetsAustralianStandardClassificationOfLanguagesASCLType.fromValue("1201"));
+        languageBaseType.setLanguageType(objectFactory.createLanguageBaseTypeLanguageType(AUCodeSetsLanguageTypeType.fromValue("1")));
+        languageBaseType.setDialect(objectFactory.createLanguageBaseTypeDialect("West Australian"));
+        languageListType.getLanguage().add(languageBaseType);
+        demographics.setLanguageList(objectFactory.createDemographicsTypeLanguageList(languageListType));
+
+        ReligionType religion = new ReligionType();
+        religion.setCode(AUCodeSetsAustralianStandardClassificationOfReligiousGroupsASCRGType.fromValue("0001"));
+        demographics.setReligion(objectFactory.createDemographicsTypeReligion(religion));
+        personInfo.setDemographics(objectFactory.createPersonInfoTypeDemographics(demographics));
+
+        PhoneNumberListType phoneNumberList = new PhoneNumberListType();
+        PhoneNumberType phoneNumber = new PhoneNumberType();
+        phoneNumber.setType(AUCodeSetsTelephoneNumberTypeType.fromValue("0096"));
+        phoneNumber.setNumber("+61400000000");
+        phoneNumberList.getPhoneNumber().add(phoneNumber);
+        personInfo.setPhoneNumberList(objectFactory.createPersonInfoTypePhoneNumberList(phoneNumberList));
+
+        EmailListType emailList = new EmailListType();
+        EmailType email = new EmailType();
+        email.setType(AUCodeSetsEmailTypeType.fromValue("06")); // AUCodeSetsEmailTypeType.WORK
+        email.setValue("the.email@not.a.real.domain");
+        emailList.getEmail().add(email);
+        personInfo.setEmailList(objectFactory.createPersonInfoTypeEmailList(emailList));
+
+        AddressListType addresses = objectFactory.createAddressListType();
+        addresses.getAddress().add(StudentPersonalRefIds.getAddress(objectFactory, "123 Address Line One", "Address Line Two"));
+        addresses.getAddress().add(StudentPersonalRefIds.getAddress(objectFactory, "234 Address Line One", null));
+        personInfo.setAddressList(objectFactory.createPersonInfoTypeAddressList(addresses));
+        studentPersonalType.setPersonInfo(personInfo);
+        studentPersonalType.setStateProvinceId(objectFactory.createStudentPersonalTypeStateProvinceId("W123456789"));
+
+        OtherIdListType otherIdList = new OtherIdListType();
+        OtherIdType otherId = new OtherIdType();
+        otherId.setType("0004");
+        otherId.setValue("identifier");
+        otherIdList.getOtherId().add(otherId);
+        otherId = new OtherIdType();
+        otherId.setType("0003");
+        otherId.setValue("otherid");
+        otherIdList.getOtherId().add(otherId);
+        otherId = new OtherIdType();
+        otherId.setType(PersonalStudentIdService.PERSONAL_STUDENT_IDENTIFIER_TYPE);
+        otherId.setValue(StudentPersonalRefIds.PSI_ID_1);
+        otherIdList.getOtherId().add(otherId);
+        studentPersonalType.setOtherIdList(objectFactory.createStudentPersonalTypeOtherIdList(otherIdList));
+
+        studentTester.doCreateOne(studentPersonalType);
+        studentTester.doUpdateOne(studentPersonalType, studentPersonalType.getRefId());
+        String xmlExpectedTo = studentTester.getXML(studentPersonalType);
+
+        studentPersonalType.setRefId(StudentPersonalRefIds.REF_ID_2);
+        otherId.setValue(StudentPersonalRefIds.PSI_ID_2);
+        studentTester.doCreateOne(studentPersonalType);
+        studentTester.doUpdateOne(studentPersonalType, studentPersonalType.getRefId());
+
+        studentPersonalType.setRefId(StudentPersonalRefIds.REF_ID_3);
+        otherId.setValue(StudentPersonalRefIds.PSI_ID_3);
+        studentTester.doCreateOne(studentPersonalType);
+        studentTester.doUpdateOne(studentPersonalType, studentPersonalType.getRefId());
+
+        studentPersonalType.setRefId(StudentPersonalRefIds.REF_ID_4);
+        otherId.setValue(StudentPersonalRefIds.PSI_ID_4);
+        studentTester.doCreateOne(studentPersonalType);
+        studentTester.doUpdateOne(studentPersonalType, studentPersonalType.getRefId());
+
+        studentPersonalType.setRefId(StudentPersonalRefIds.REF_ID_5);
+        otherId.setValue(StudentPersonalRefIds.PSI_ID_5);
+        studentTester.doCreateOne(studentPersonalType);
+        studentTester.doUpdateOne(studentPersonalType, studentPersonalType.getRefId());
+
+        StudentPersonalType getResult = studentTester.doGetOne(StudentPersonalRefIds.REF_ID_1);
+        String xmlExpectedFrom = studentTester.getXML(getResult);
+        Assert.assertNotNull("XML Expected From isNull", xmlExpectedFrom);
+        Assert.assertNotNull("XML Expected To isNull", xmlExpectedTo);
+        boolean semiEquals = semiEquals(xmlExpectedFrom, xmlExpectedTo);
+        if (!semiEquals) {
+            Assert.assertEquals("XML Differs", xmlExpectedFrom, xmlExpectedTo);
+        }
     }
 
-    public static AddressType getAddressType(ObjectFactory objectFactory, String addressLineOne, String addressLineTwo) {
-      AddressType address = new AddressType();
-      getAddress(objectFactory, address, addressLineOne, addressLineTwo);
-      return address;
+    @Before
+    public void setup() {
+        ConsumerLoader.initialise("TestConsumer");
+        studentTester = new ConsumerTest<StudentPersonalType, StudentPersonalCollectionType>(StudentPersonalType.class, "StudentPersonal", StudentPersonalCollectionType.class,
+                "StudentPersonals");
+        studentTester.testDeleteMany(REF_IDS);
     }
 
-    public static void getAddress(ObjectFactory objectFactory, AddressType address, String addressLineOne, String addressLineTwo) {
-      address.setCity("Perth");
-      address.setStateProvince(objectFactory.createAddressTypeStateProvince("WA"));
-      address.setType(AUCodeSetsAddressTypeType.fromValue("0123"));
-      address.setRole(AUCodeSetsAddressRoleType.fromValue("012B"));
-      address.setPostalCode("6000");
+    @Test
+    @Category(IntegrationTest.class)
+    public void testUpdateSingle() throws Exception {
+        List<Response> responses = studentTester.testGetSingle(StudentPersonalRefIds.REF_ID_1);
+        Assert.assertNotNull(responses);
+        Assert.assertEquals(1, responses.size());
+        Response response = responses.get(0);
+        Assert.assertNotNull(response.getDataObject());
+        StudentPersonalType studentPersonal = (StudentPersonalType) response.getDataObject();
+        Assert.assertEquals(StudentPersonalRefIds.REF_ID_1, studentPersonal.getRefId());
 
-      AddressStreetType street = objectFactory.createAddressStreetType();
-      street.setLine1(addressLineOne);
-      if (StringUtils.isNotBlank(addressLineTwo)) {
-        street.setLine2(objectFactory.createAddressStreetTypeLine2(addressLineTwo));
-      }
-      address.setStreet(street);
+        String xmlExpectedFrom = studentTester.getXML(studentPersonal);
 
-      GridLocationType gridLocation = objectFactory.createGridLocationType();
-      gridLocation.setLatitude(new BigDecimal("-31.952693"));
-      gridLocation.setLongitude(new BigDecimal("115.871971"));
-      address.setGridLocation(objectFactory.createAddressTypeGridLocation(gridLocation));
-    }
-  }
+        List<Response> updateResponses = studentTester.doUpdateOne(studentPersonal, StudentPersonalRefIds.REF_ID_1);
+        Assert.assertNotNull(updateResponses);
+        Assert.assertEquals(1, updateResponses.size());
+        Assert.assertEquals(updateResponses.get(0).getStatus(), HttpStatus.NO_CONTENT.value());
 
-  private final String REF_ID_1 = "6bb0c404-c029-49bd-9956-d6be93b7b128";
-  private final String REF_ID_2 = "6bb0c404-c029-49bd-9956-d6be93b7b124";
-  private final String[] REF_IDS = { REF_ID_1, REF_ID_2 };
+        List<Response> getResponses = studentTester.testGetSingle(StudentPersonalRefIds.REF_ID_1);
+        Assert.assertNotNull(getResponses);
+        Assert.assertEquals(1, getResponses.size());
+        Response getResponse = getResponses.get(0);
+        Assert.assertNotNull(getResponse.getDataObject());
+        StudentPersonalType comparisonTo = (StudentPersonalType) getResponse.getDataObject();
+        Assert.assertEquals(StudentPersonalRefIds.REF_ID_1, comparisonTo.getRefId());
+        String xmlExpectedTo = studentTester.getXML(comparisonTo);
 
-  @Test
-  public void initialiseData() throws Exception {
-    ObjectFactory objectFactory = new ObjectFactory();
-    StudentPersonalType studentPersonalType = new StudentPersonalType();
-    studentPersonalType.setRefId(StudentPersonalRefIds.REF_ID_1);
-    studentPersonalType.setLocalId(StudentPersonalRefIds.LOCAL_ID);
-    
-
-    StudentMostRecentContainerType mostRecent = new StudentMostRecentContainerType();
-    YearLevelType yearLevel = new YearLevelType();
-    yearLevel.setCode(AUCodeSetsYearLevelCodeType.fromValue("3"));
-    mostRecent.setYearLevel(objectFactory.createStudentMostRecentContainerTypeYearLevel(yearLevel));
-    mostRecent.setParent1Language(objectFactory.createStudentMostRecentContainerTypeParent1Language(AUCodeSetsAustralianStandardClassificationOfLanguagesASCLType.fromValue("1201")));
-    mostRecent.setParent2Language(objectFactory.createStudentMostRecentContainerTypeParent2Language(AUCodeSetsAustralianStandardClassificationOfLanguagesASCLType.fromValue("2303")));
-    mostRecent.setParent1SchoolEducationLevel(objectFactory.createStudentMostRecentContainerTypeParent1SchoolEducationLevel(AUCodeSetsSchoolEducationLevelTypeType.fromValue("4")));
-    mostRecent.setParent2SchoolEducationLevel(objectFactory.createStudentMostRecentContainerTypeParent2SchoolEducationLevel(AUCodeSetsSchoolEducationLevelTypeType.fromValue("0")));
-    mostRecent.setParent1NonSchoolEducation(objectFactory.createStudentMostRecentContainerTypeParent1NonSchoolEducation(AUCodeSetsNonSchoolEducationType.fromValue("7")));
-    mostRecent.setParent2NonSchoolEducation(objectFactory.createStudentMostRecentContainerTypeParent2NonSchoolEducation(AUCodeSetsNonSchoolEducationType.fromValue("0")));
-    mostRecent.setParent1EmploymentType(objectFactory.createStudentMostRecentContainerTypeParent1EmploymentType(AUCodeSetsEmploymentTypeType.fromValue("1")));
-    mostRecent.setParent2EmploymentType(objectFactory.createStudentMostRecentContainerTypeParent2EmploymentType(AUCodeSetsEmploymentTypeType.fromValue("2")));
-    mostRecent.setFFPOS(objectFactory.createStudentMostRecentContainerTypeFFPOS(AUCodeSetsFFPOSStatusCodeType.fromValue("2")));
-    mostRecent.setTestLevel(objectFactory.createStudentMostRecentContainerTypeTestLevel(yearLevel));
-    studentPersonalType.setMostRecent(objectFactory.createStudentPersonalTypeMostRecent(mostRecent));
-
-    PersonInfoType personInfo = new PersonInfoType();
-    NameOfRecordType nameOfRecordType = StudentPersonalRefIds.getNameOfRecord(objectFactory);
-    personInfo.setName(nameOfRecordType);
-
-    DemographicsType demographics = new DemographicsType();
-    demographics.setSex(objectFactory.createDemographicsTypeSex(AUCodeSetsSexCodeType.fromValue("1")));
-    demographics.setBirthDate(objectFactory.createDemographicsTypeBirthDate(getDate("1984-12-20")));
-    demographics.setIndigenousStatus(objectFactory.createDemographicsTypeIndigenousStatus(AUCodeSetsIndigenousStatusType.fromValue("9")));
-    demographics.setCountryOfBirth(objectFactory.createDemographicsTypeCountryOfBirth(AUCodeSetsStandardAustralianClassificationOfCountriesSACCType.fromValue("1101")));
-    
-    
-    LanguageListType languageListType = new LanguageListType();
-    LanguageBaseType languageBaseType = new LanguageBaseType();
-    languageBaseType.setCode(AUCodeSetsAustralianStandardClassificationOfLanguagesASCLType.fromValue("1201"));
-    languageBaseType.setLanguageType(objectFactory.createLanguageBaseTypeLanguageType(AUCodeSetsLanguageTypeType.fromValue("1")));
-    languageBaseType.setDialect(objectFactory.createLanguageBaseTypeDialect("West Australian"));
-    languageListType.getLanguage().add(languageBaseType);
-    demographics.setLanguageList(objectFactory.createDemographicsTypeLanguageList(languageListType));
-
-    ReligionType religion = new ReligionType();
-    religion.setCode(AUCodeSetsAustralianStandardClassificationOfReligiousGroupsASCRGType.fromValue("0001"));
-    demographics.setReligion(objectFactory.createDemographicsTypeReligion(religion));
-    personInfo.setDemographics(objectFactory.createPersonInfoTypeDemographics(demographics));
-
-    PhoneNumberListType phoneNumberList = new PhoneNumberListType();
-    PhoneNumberType phoneNumber = new PhoneNumberType();
-    phoneNumber.setType(AUCodeSetsTelephoneNumberTypeType.fromValue("0096"));
-    phoneNumber.setNumber("+61400000000");
-    phoneNumberList.getPhoneNumber().add(phoneNumber);
-    personInfo.setPhoneNumberList(objectFactory.createPersonInfoTypePhoneNumberList(phoneNumberList));
-
-    EmailListType emailList = new EmailListType();
-    EmailType email = new EmailType();
-    email.setType(AUCodeSetsEmailTypeType.fromValue("06")); // AUCodeSetsEmailTypeType.WORK
-    email.setValue("the.email@not.a.real.domain");
-    emailList.getEmail().add(email);
-    personInfo.setEmailList(objectFactory.createPersonInfoTypeEmailList(emailList));
-
-    AddressListType addresses = objectFactory.createAddressListType();
-    addresses.getAddress().add(StudentPersonalRefIds.getAddress(objectFactory, "123 Address Line One", "Address Line Two"));
-    addresses.getAddress().add(StudentPersonalRefIds.getAddress(objectFactory, "234 Address Line One", null));
-    personInfo.setAddressList(objectFactory.createPersonInfoTypeAddressList(addresses));
-    studentPersonalType.setPersonInfo(personInfo);
-    studentPersonalType.setStateProvinceId(objectFactory.createStudentPersonalTypeStateProvinceId("W123456789"));
-
-    OtherIdListType otherIdList = new OtherIdListType();
-    OtherIdType otherId = new OtherIdType();
-    otherId.setType("0004");
-    otherId.setValue("identifier");
-    otherIdList.getOtherId().add(otherId);
-    otherId = new OtherIdType();
-    otherId.setType("0003");
-    otherId.setValue("otherid");
-    otherIdList.getOtherId().add(otherId);
-    otherId = new OtherIdType();
-    otherId.setType(PersonalStudentIdService.PERSONAL_STUDENT_IDENTIFIER_TYPE);
-    otherId.setValue(StudentPersonalRefIds.PSI_ID_1);
-    otherIdList.getOtherId().add(otherId);
-    studentPersonalType.setOtherIdList(objectFactory.createStudentPersonalTypeOtherIdList(otherIdList));
-
-    studentTester.doCreateOne(studentPersonalType);
-    studentTester.doUpdateOne(studentPersonalType, studentPersonalType.getRefId());
-    String xmlExpectedTo = studentTester.getXML(studentPersonalType);
-
-    studentPersonalType.setRefId(StudentPersonalRefIds.REF_ID_2);
-    otherId.setValue(StudentPersonalRefIds.PSI_ID_2);
-    studentTester.doCreateOne(studentPersonalType);
-    studentTester.doUpdateOne(studentPersonalType, studentPersonalType.getRefId());
-    
-    studentPersonalType.setRefId(StudentPersonalRefIds.REF_ID_3);
-    otherId.setValue(StudentPersonalRefIds.PSI_ID_3);
-    studentTester.doCreateOne(studentPersonalType);
-    studentTester.doUpdateOne(studentPersonalType, studentPersonalType.getRefId());
-
-    studentPersonalType.setRefId(StudentPersonalRefIds.REF_ID_4);
-    otherId.setValue(StudentPersonalRefIds.PSI_ID_4);
-    studentTester.doCreateOne(studentPersonalType);
-    studentTester.doUpdateOne(studentPersonalType, studentPersonalType.getRefId());
-
-    studentPersonalType.setRefId(StudentPersonalRefIds.REF_ID_5);
-    otherId.setValue(StudentPersonalRefIds.PSI_ID_5);
-    studentTester.doCreateOne(studentPersonalType);
-    studentTester.doUpdateOne(studentPersonalType, studentPersonalType.getRefId());
-
-    StudentPersonalType getResult = studentTester.doGetOne(StudentPersonalRefIds.REF_ID_1);
-    String xmlExpectedFrom = studentTester.getXML(getResult);
-    Assert.assertNotNull("XML Expected From isNull", xmlExpectedFrom);
-    Assert.assertNotNull("XML Expected To isNull", xmlExpectedTo);
-    boolean semiEquals = semiEquals(xmlExpectedFrom, xmlExpectedTo);
-    if (!semiEquals) {
-      Assert.assertEquals("XML Differs", xmlExpectedFrom, xmlExpectedTo);
-    }
-  }
-
-  @Before
-  public void setup() {
-    ConsumerLoader.initialise("TestConsumer");
-    studentTester = new ConsumerTest<StudentPersonalType, StudentPersonalCollectionType>(StudentPersonalType.class, "StudentPersonal", StudentPersonalCollectionType.class, "StudentPersonals");
-    studentTester.testDeleteMany(REF_IDS);
-  }
-
-  @Test
-  public void testUpdateSingle() throws Exception {
-    List<Response> responses = studentTester.testGetSingle(StudentPersonalRefIds.REF_ID_1);
-    Assert.assertNotNull(responses);
-    Assert.assertEquals(1, responses.size());
-    Response response = responses.get(0);
-    Assert.assertNotNull(response.getDataObject());
-    StudentPersonalType studentPersonal = (StudentPersonalType) response.getDataObject();
-    Assert.assertEquals(StudentPersonalRefIds.REF_ID_1, studentPersonal.getRefId());
-
-    String xmlExpectedFrom = studentTester.getXML(studentPersonal);
-
-    List<Response> updateResponses = studentTester.doUpdateOne(studentPersonal, StudentPersonalRefIds.REF_ID_1);
-    Assert.assertNotNull(updateResponses);
-    Assert.assertEquals(1, updateResponses.size());
-    Assert.assertEquals(updateResponses.get(0).getStatus(), HttpStatus.NO_CONTENT.value());
-
-    List<Response> getResponses = studentTester.testGetSingle(StudentPersonalRefIds.REF_ID_1);
-    Assert.assertNotNull(getResponses);
-    Assert.assertEquals(1, getResponses.size());
-    Response getResponse = getResponses.get(0);
-    Assert.assertNotNull(getResponse.getDataObject());
-    StudentPersonalType comparisonTo = (StudentPersonalType) getResponse.getDataObject();
-    Assert.assertEquals(StudentPersonalRefIds.REF_ID_1, comparisonTo.getRefId());
-    String xmlExpectedTo = studentTester.getXML(comparisonTo);
-
-    boolean semiEquals = semiEquals(xmlExpectedFrom, xmlExpectedTo);
-    if (!semiEquals) {
-      System.out.println("From:\n" + xmlExpectedFrom);
-      System.out.println("\nTo:\n" + xmlExpectedTo);
-      Assert.assertEquals("XML Differs", xmlExpectedFrom, xmlExpectedTo);
-    }
-  }
-
-  @Test
-  public void testGetSingle() {
-    List<Response> responses = studentTester.testGetSingle(StudentPersonalRefIds.REF_ID_1);
-    Assert.assertNotNull(responses);
-    Assert.assertEquals(1, responses.size());
-    Response response = responses.get(0);
-    Assert.assertNotNull(response.getDataObject());
-    StudentPersonalType studentPersonal = (StudentPersonalType) response.getDataObject();
-    Assert.assertEquals(StudentPersonalRefIds.REF_ID_1, studentPersonal.getRefId());
-  }
-
-  @Test
-  public void testGetMany() {
-    List<Response> responses = studentTester.testGetMany(5, 0);
-    Assert.assertNotNull(responses);
-    Assert.assertEquals(1, responses.size());
-    Response response = responses.get(0);
-    Assert.assertNotNull(response.getDataObject());
-    StudentPersonalCollectionType studentCollection = (StudentPersonalCollectionType) response.getDataObject();
-    Assert.assertNotNull(studentCollection.getStudentPersonal());
-    Assert.assertEquals(5, studentCollection.getStudentPersonal().size());
-  }
-
-  @Test
-  public void testCreateDelete() {
-    List<Response> createResponses = studentTester.testCreateOne("student.xml");
-    Assert.assertNotNull(createResponses);
-    Assert.assertEquals(1, createResponses.size());
-    Response createResponse = createResponses.get(0);
-    Assert.assertNotNull(createResponse.getDataObject());
-    StudentPersonalType studentPersonal = (StudentPersonalType) createResponse.getDataObject();
-    Assert.assertEquals(REF_ID_1, studentPersonal.getRefId());
-
-    List<Response> deleteResponses = studentTester.testDeleteOne(REF_ID_1);
-    Assert.assertNotNull(deleteResponses);
-    Assert.assertEquals(1, deleteResponses.size());
-    Response deleteResponse = deleteResponses.get(0);
-    Assert.assertNull(deleteResponse.getDataObject());
-    Assert.assertEquals(HttpStatus.NO_CONTENT.value(), deleteResponse.getStatus());
-  }
-
-  @Test
-  public void testCreatePSIWithNullList() throws UnmarshalException, UnsupportedMediaTypeExcpetion {
-    String xml = studentTester.getFileContents("student.xml");
-    StudentPersonalType studentPersonal = studentTester.fromXML(xml);
-    studentPersonal.setOtherIdList(null);
-    List<Response> createResponses = studentTester.doCreateOne(studentPersonal);
-    Assert.assertNotNull(createResponses);
-    Assert.assertEquals(1, createResponses.size());
-    Response createResponse = createResponses.get(0);
-    Assert.assertNotNull(createResponse.getDataObject());
-    StudentPersonalType studentPersonalResponse = (StudentPersonalType) createResponse.getDataObject();
-    Assert.assertEquals(REF_ID_1, studentPersonalResponse.getRefId());
-    Assert.assertFalse(PersonalStudentIdService.hasIdentifier(studentPersonal));
-    Assert.assertTrue(PersonalStudentIdService.hasIdentifier(studentPersonalResponse));
-    Assert.assertEquals(1, studentPersonalResponse.getOtherIdList().getValue().getOtherId().size());
-
-    List<Response> deleteResponses = studentTester.testDeleteOne(REF_ID_1);
-    Assert.assertNotNull(deleteResponses);
-    Assert.assertEquals(1, deleteResponses.size());
-    Response deleteResponse = deleteResponses.get(0);
-    Assert.assertNull(deleteResponse.getDataObject());
-    Assert.assertEquals(HttpStatus.NO_CONTENT.value(), deleteResponse.getStatus());
-  }
-
-  @Test
-  public void testCreatePSI() throws UnmarshalException, UnsupportedMediaTypeExcpetion {
-    String xml = studentTester.getFileContents("student.xml");
-    StudentPersonalType studentPersonal = studentTester.fromXML(xml);
-    List<Response> createResponses = studentTester.doCreateOne(studentPersonal);
-    Assert.assertNotNull(createResponses);
-    Assert.assertEquals(1, createResponses.size());
-    Response createResponse = createResponses.get(0);
-    Assert.assertNotNull(createResponse.getDataObject());
-    StudentPersonalType studentPersonalResponse = (StudentPersonalType) createResponse.getDataObject();
-    Assert.assertEquals(REF_ID_1, studentPersonalResponse.getRefId());
-    Assert.assertFalse(PersonalStudentIdService.hasIdentifier(studentPersonal));
-    Assert.assertTrue(PersonalStudentIdService.hasIdentifier(studentPersonalResponse));
-    Assert.assertEquals(studentPersonal.getOtherIdList().getValue().getOtherId().size() + 1, studentPersonalResponse.getOtherIdList().getValue().getOtherId().size());
-
-    List<Response> deleteResponses = studentTester.testDeleteOne(REF_ID_1);
-    Assert.assertNotNull(deleteResponses);
-    Assert.assertEquals(1, deleteResponses.size());
-    Response deleteResponse = deleteResponses.get(0);
-    Assert.assertNull(deleteResponse.getDataObject());
-    Assert.assertEquals(HttpStatus.NO_CONTENT.value(), deleteResponse.getStatus());
-  }
-
-  @Test
-  public void testNoCreatePSI() throws UnmarshalException, UnsupportedMediaTypeExcpetion {
-    String xml = studentTester.getFileContents("student.xml");
-    StudentPersonalType studentPersonal = studentTester.fromXML(xml);
-    OtherIdType psi = new OtherIdType();
-    psi.setType(PersonalStudentIdService.PERSONAL_STUDENT_IDENTIFIER_TYPE);
-    psi.setValue(PersonalStudentIdService.getIdentifier(6));
-    studentPersonal.getOtherIdList().getValue().getOtherId().add(psi);
-    List<Response> createResponses = studentTester.doCreateOne(studentPersonal);
-    Assert.assertNotNull(createResponses);
-    Assert.assertEquals(1, createResponses.size());
-    Response createResponse = createResponses.get(0);
-    Assert.assertNotNull(createResponse.getDataObject());
-    StudentPersonalType studentPersonalResponse = (StudentPersonalType) createResponse.getDataObject();
-    Assert.assertEquals(REF_ID_1, studentPersonalResponse.getRefId());
-    Assert.assertTrue(PersonalStudentIdService.hasIdentifier(studentPersonal));
-    Assert.assertTrue(PersonalStudentIdService.hasIdentifier(studentPersonalResponse));
-    for (OtherIdType otherId : studentPersonalResponse.getOtherIdList().getValue().getOtherId()) {
-      if (PersonalStudentIdService.PERSONAL_STUDENT_IDENTIFIER_TYPE.equals(otherId.getType())) {
-        Assert.assertEquals(psi.getValue(), otherId.getValue());
-      }
-    }
-    Assert.assertEquals(studentPersonal.getOtherIdList().getValue().getOtherId().size(), studentPersonalResponse.getOtherIdList().getValue().getOtherId().size());
-
-    List<Response> deleteResponses = studentTester.testDeleteOne(REF_ID_1);
-    Assert.assertNotNull(deleteResponses);
-    Assert.assertEquals(1, deleteResponses.size());
-    Response deleteResponse = deleteResponses.get(0);
-    Assert.assertNull(deleteResponse.getDataObject());
-    Assert.assertEquals(HttpStatus.NO_CONTENT.value(), deleteResponse.getStatus());
-  }
-
-  @Test
-  public void testCreateUpdateDelete() {
-    List<Response> createResponses = studentTester.testCreateOne("student.xml");
-    Assert.assertNotNull(createResponses);
-    Assert.assertEquals(1, createResponses.size());
-    Response createResponse = createResponses.get(0);
-    Assert.assertNotNull(createResponse.getDataObject());
-    StudentPersonalType studentPersonal = (StudentPersonalType) createResponse.getDataObject();
-    try {
-      System.out.println(studentTester.getXML(studentPersonal));
-    } catch (MarshalException | UnsupportedMediaTypeExcpetion e) {
-      // TODO Auto-generated catch block
-      e.printStackTrace();
-    }
-    Assert.assertEquals(REF_ID_1, studentPersonal.getRefId());
-    Assert.assertEquals(3, studentPersonal.getOtherIdList().getValue().getOtherId().size());
-    Assert.assertEquals(2, studentPersonal.getPersonInfo().getAddressList().getValue().getAddress().size());
-
-    studentPersonal.getPersonInfo().getAddressList().getValue().getAddress().remove(1);
-    studentPersonal.getOtherIdList().getValue().getOtherId().remove(1);
-
-    List<Response> updateResponses = studentTester.doUpdateOne(studentPersonal, REF_ID_1);
-    Assert.assertNotNull(updateResponses);
-    Assert.assertEquals(1, updateResponses.size());
-    Response updateResponse = updateResponses.get(0);
-    Assert.assertNull(updateResponse.getDataObject());
-    Assert.assertEquals(HttpStatus.NO_CONTENT.value(), updateResponse.getStatus());
-
-    // StudentSchoolEnrollmentType enrollmentType = new
-    // StudentSchoolEnrollmentType();
-    // enrollmentType.setRefId(REF_ID_2);
-    // enrollmentType.setStudentPersonalRefId(REF_ID_1);
-    // enrollmentType.setSchoolInfoRefId(SchoolInfoConsumerTest.REF_ID);
-    // studentSchoolEnrollmentTester.doCreateOne(enrollmentType);
-
-    List<Response> responses = studentTester.testGetSingle(REF_ID_1);
-    Assert.assertNotNull(responses);
-    Assert.assertEquals(1, responses.size());
-    Response response = responses.get(0);
-    Assert.assertNotNull(response.getDataObject());
-    StudentPersonalType updatedStudentPersonal = (StudentPersonalType) response.getDataObject();
-    Assert.assertEquals(REF_ID_1, updatedStudentPersonal.getRefId());
-    Assert.assertEquals(2, updatedStudentPersonal.getOtherIdList().getValue().getOtherId().size());
-    Assert.assertEquals(1, updatedStudentPersonal.getPersonInfo().getAddressList().getValue().getAddress().size());
-
-    // studentSchoolEnrollmentTester.testDeleteOne(REF_ID_2);
-    // studentTester.testDeleteOne(REF_ID_1);
-  }
-
-  @Test
-  public void testServicePathTeachingGroup() {
-    QueryCriteria queryCriteria = new QueryCriteria();
-    queryCriteria.addPredicate(new QueryPredicate("TeachingGroups", QueryOperator.EQUAL, TeachingGroupConsumerTest.REF_ID));
-
-    List<Response> responses = studentTester.testServicePath(queryCriteria, 10000, 0);
-
-    Assert.assertNotNull(responses);
-    Assert.assertEquals(1, responses.size());
-    Response response = responses.get(0);
-
-    StudentPersonalCollectionType studentPersonalCollectionType = (StudentPersonalCollectionType) response.getDataObject();
-    Assert.assertNotNull(studentPersonalCollectionType.getStudentPersonal());
-    Assert.assertFalse(studentPersonalCollectionType.getStudentPersonal().isEmpty());
-    boolean found = false;
-    for (StudentPersonalType studentPersonal : studentPersonalCollectionType.getStudentPersonal()) {
-      found = found || StudentPersonalRefIds.REF_ID_1.equals(studentPersonal.getRefId());
-    }
-    Assert.assertTrue(found);
-  }
-  
-  @Test
-  public void testServicePathSchoolInfo() {
-    QueryCriteria queryCriteria = new QueryCriteria();
-    queryCriteria.addPredicate(new QueryPredicate("SchoolInfos", QueryOperator.EQUAL, SchoolInfoConsumerTest.REF_ID));
-
-    List<Response> responses = studentTester.testServicePath(queryCriteria, 10000, 0);
-
-    Assert.assertNotNull(responses);
-    Assert.assertEquals(1, responses.size());
-    Response response = responses.get(0);
-
-    StudentPersonalCollectionType studentPersonalCollectionType = (StudentPersonalCollectionType) response.getDataObject();
-    Assert.assertNotNull(studentPersonalCollectionType.getStudentPersonal());
-    Assert.assertFalse(studentPersonalCollectionType.getStudentPersonal().isEmpty());
-    boolean found = false;
-    for (StudentPersonalType studentPersonal : studentPersonalCollectionType.getStudentPersonal()) {
-      found = found || StudentPersonalRefIds.REF_ID_1.equals(studentPersonal.getRefId());
-    }
-    Assert.assertTrue(found);
-  }
-
-  @Test
-  public void testCreateDeleteMany() {
-    final List<String> REF_ID_LIST = Arrays.asList(REF_IDS);
-
-    List<BulkOperationResponse<CreateOperationStatus>> createResponses = studentTester.testCreateMany("students.xml");
-    Assert.assertNotNull(createResponses);
-    Assert.assertEquals(1, createResponses.size());
-    BulkOperationResponse<CreateOperationStatus> createResponse = createResponses.get(0);
-    Assert.assertNotNull(createResponse.getOperationStatuses());
-    Assert.assertEquals(2, createResponse.getOperationStatuses().size());
-    for (CreateOperationStatus operationStatus : createResponse.getOperationStatuses()) {
-      Assert.assertTrue(REF_ID_LIST.contains(operationStatus.getAdvisoryID()));
-      Assert.assertEquals(HttpStatus.CREATED.value(), operationStatus.getStatus());
+        boolean semiEquals = semiEquals(xmlExpectedFrom, xmlExpectedTo);
+        if (!semiEquals) {
+            System.out.println("From:\n" + xmlExpectedFrom);
+            System.out.println("\nTo:\n" + xmlExpectedTo);
+            Assert.assertEquals("XML Differs", xmlExpectedFrom, xmlExpectedTo);
+        }
     }
 
-    List<BulkOperationResponse<OperationStatus>> deleteResponses = studentTester.testDeleteMany(REF_IDS);
-    Assert.assertNotNull(deleteResponses);
-    Assert.assertEquals(1, deleteResponses.size());
-    BulkOperationResponse<OperationStatus> deleteResponse = deleteResponses.get(0);
-    Assert.assertNotNull(deleteResponse.getOperationStatuses());
-    Assert.assertEquals(2, deleteResponse.getOperationStatuses().size());
-    for (OperationStatus operationStatus : deleteResponse.getOperationStatuses()) {
-      Assert.assertTrue(REF_ID_LIST.contains(operationStatus.getResourceID()));
-      Assert.assertEquals(HttpStatus.OK.value(), operationStatus.getStatus());
+    @Test
+    @Category(IntegrationTest.class)
+    public void testGetSingle() {
+        List<Response> responses = studentTester.testGetSingle(StudentPersonalRefIds.REF_ID_1);
+        Assert.assertNotNull(responses);
+        Assert.assertEquals(1, responses.size());
+        Response response = responses.get(0);
+        Assert.assertNotNull(response.getDataObject());
+        StudentPersonalType studentPersonal = (StudentPersonalType) response.getDataObject();
+        Assert.assertEquals(StudentPersonalRefIds.REF_ID_1, studentPersonal.getRefId());
     }
-  }
+
+    @Test
+    @Category(IntegrationTest.class)
+    public void testGetMany() {
+        List<Response> responses = studentTester.testGetMany(5, 0);
+        Assert.assertNotNull(responses);
+        Assert.assertEquals(1, responses.size());
+        Response response = responses.get(0);
+        Assert.assertNotNull(response.getDataObject());
+        StudentPersonalCollectionType studentCollection = (StudentPersonalCollectionType) response.getDataObject();
+        Assert.assertNotNull(studentCollection.getStudentPersonal());
+        Assert.assertEquals(5, studentCollection.getStudentPersonal().size());
+    }
+
+    @Test
+    @Category(IntegrationTest.class)
+    public void testCreateDelete() {
+        List<Response> createResponses = studentTester.testCreateOne("student.xml");
+        Assert.assertNotNull(createResponses);
+        Assert.assertEquals(1, createResponses.size());
+        Response createResponse = createResponses.get(0);
+        Assert.assertNotNull(createResponse.getDataObject());
+        StudentPersonalType studentPersonal = (StudentPersonalType) createResponse.getDataObject();
+        Assert.assertEquals(REF_ID_1, studentPersonal.getRefId());
+
+        List<Response> deleteResponses = studentTester.testDeleteOne(REF_ID_1);
+        Assert.assertNotNull(deleteResponses);
+        Assert.assertEquals(1, deleteResponses.size());
+        Response deleteResponse = deleteResponses.get(0);
+        Assert.assertNull(deleteResponse.getDataObject());
+        Assert.assertEquals(HttpStatus.NO_CONTENT.value(), deleteResponse.getStatus());
+    }
+
+    @Test
+    @Category(IntegrationTest.class)
+    public void testCreatePSIWithNullList() throws UnmarshalException, UnsupportedMediaTypeExcpetion {
+        String xml = studentTester.getFileContents("student.xml");
+        StudentPersonalType studentPersonal = studentTester.fromXML(xml);
+        studentPersonal.setOtherIdList(null);
+        List<Response> createResponses = studentTester.doCreateOne(studentPersonal);
+        Assert.assertNotNull(createResponses);
+        Assert.assertEquals(1, createResponses.size());
+        Response createResponse = createResponses.get(0);
+        Assert.assertNotNull(createResponse.getDataObject());
+        StudentPersonalType studentPersonalResponse = (StudentPersonalType) createResponse.getDataObject();
+        Assert.assertEquals(REF_ID_1, studentPersonalResponse.getRefId());
+        Assert.assertFalse(PersonalStudentIdService.hasIdentifier(studentPersonal));
+        Assert.assertTrue(PersonalStudentIdService.hasIdentifier(studentPersonalResponse));
+        Assert.assertEquals(1, studentPersonalResponse.getOtherIdList().getValue().getOtherId().size());
+
+        List<Response> deleteResponses = studentTester.testDeleteOne(REF_ID_1);
+        Assert.assertNotNull(deleteResponses);
+        Assert.assertEquals(1, deleteResponses.size());
+        Response deleteResponse = deleteResponses.get(0);
+        Assert.assertNull(deleteResponse.getDataObject());
+        Assert.assertEquals(HttpStatus.NO_CONTENT.value(), deleteResponse.getStatus());
+    }
+
+    @Test
+    @Category(IntegrationTest.class)
+    public void testCreatePSI() throws UnmarshalException, UnsupportedMediaTypeExcpetion {
+        String xml = studentTester.getFileContents("student.xml");
+        StudentPersonalType studentPersonal = studentTester.fromXML(xml);
+        List<Response> createResponses = studentTester.doCreateOne(studentPersonal);
+        Assert.assertNotNull(createResponses);
+        Assert.assertEquals(1, createResponses.size());
+        Response createResponse = createResponses.get(0);
+        Assert.assertNotNull(createResponse.getDataObject());
+        StudentPersonalType studentPersonalResponse = (StudentPersonalType) createResponse.getDataObject();
+        Assert.assertEquals(REF_ID_1, studentPersonalResponse.getRefId());
+        Assert.assertFalse(PersonalStudentIdService.hasIdentifier(studentPersonal));
+        Assert.assertTrue(PersonalStudentIdService.hasIdentifier(studentPersonalResponse));
+        Assert.assertEquals(studentPersonal.getOtherIdList().getValue().getOtherId().size() + 1, studentPersonalResponse.getOtherIdList().getValue().getOtherId().size());
+
+        List<Response> deleteResponses = studentTester.testDeleteOne(REF_ID_1);
+        Assert.assertNotNull(deleteResponses);
+        Assert.assertEquals(1, deleteResponses.size());
+        Response deleteResponse = deleteResponses.get(0);
+        Assert.assertNull(deleteResponse.getDataObject());
+        Assert.assertEquals(HttpStatus.NO_CONTENT.value(), deleteResponse.getStatus());
+    }
+
+    @Test
+    @Category(IntegrationTest.class)
+    public void testNoCreatePSI() throws UnmarshalException, UnsupportedMediaTypeExcpetion {
+        String xml = studentTester.getFileContents("student.xml");
+        StudentPersonalType studentPersonal = studentTester.fromXML(xml);
+        OtherIdType psi = new OtherIdType();
+        psi.setType(PersonalStudentIdService.PERSONAL_STUDENT_IDENTIFIER_TYPE);
+        psi.setValue(PersonalStudentIdService.getIdentifier(6));
+        studentPersonal.getOtherIdList().getValue().getOtherId().add(psi);
+        List<Response> createResponses = studentTester.doCreateOne(studentPersonal);
+        Assert.assertNotNull(createResponses);
+        Assert.assertEquals(1, createResponses.size());
+        Response createResponse = createResponses.get(0);
+        Assert.assertNotNull(createResponse.getDataObject());
+        StudentPersonalType studentPersonalResponse = (StudentPersonalType) createResponse.getDataObject();
+        Assert.assertEquals(REF_ID_1, studentPersonalResponse.getRefId());
+        Assert.assertTrue(PersonalStudentIdService.hasIdentifier(studentPersonal));
+        Assert.assertTrue(PersonalStudentIdService.hasIdentifier(studentPersonalResponse));
+        for (OtherIdType otherId : studentPersonalResponse.getOtherIdList().getValue().getOtherId()) {
+            if (PersonalStudentIdService.PERSONAL_STUDENT_IDENTIFIER_TYPE.equals(otherId.getType())) {
+                Assert.assertEquals(psi.getValue(), otherId.getValue());
+            }
+        }
+        Assert.assertEquals(studentPersonal.getOtherIdList().getValue().getOtherId().size(), studentPersonalResponse.getOtherIdList().getValue().getOtherId().size());
+
+        List<Response> deleteResponses = studentTester.testDeleteOne(REF_ID_1);
+        Assert.assertNotNull(deleteResponses);
+        Assert.assertEquals(1, deleteResponses.size());
+        Response deleteResponse = deleteResponses.get(0);
+        Assert.assertNull(deleteResponse.getDataObject());
+        Assert.assertEquals(HttpStatus.NO_CONTENT.value(), deleteResponse.getStatus());
+    }
+
+    @Test
+    @Category(IntegrationTest.class)
+    public void testCreateUpdateDelete() {
+        List<Response> createResponses = studentTester.testCreateOne("student.xml");
+        Assert.assertNotNull(createResponses);
+        Assert.assertEquals(1, createResponses.size());
+        Response createResponse = createResponses.get(0);
+        Assert.assertNotNull(createResponse.getDataObject());
+        StudentPersonalType studentPersonal = (StudentPersonalType) createResponse.getDataObject();
+        try {
+            System.out.println(studentTester.getXML(studentPersonal));
+        } catch (MarshalException | UnsupportedMediaTypeExcpetion e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+        Assert.assertEquals(REF_ID_1, studentPersonal.getRefId());
+        Assert.assertEquals(3, studentPersonal.getOtherIdList().getValue().getOtherId().size());
+        Assert.assertEquals(2, studentPersonal.getPersonInfo().getAddressList().getValue().getAddress().size());
+
+        studentPersonal.getPersonInfo().getAddressList().getValue().getAddress().remove(1);
+        studentPersonal.getOtherIdList().getValue().getOtherId().remove(1);
+
+        List<Response> updateResponses = studentTester.doUpdateOne(studentPersonal, REF_ID_1);
+        Assert.assertNotNull(updateResponses);
+        Assert.assertEquals(1, updateResponses.size());
+        Response updateResponse = updateResponses.get(0);
+        Assert.assertNull(updateResponse.getDataObject());
+        Assert.assertEquals(HttpStatus.NO_CONTENT.value(), updateResponse.getStatus());
+
+        // StudentSchoolEnrollmentType enrollmentType = new
+        // StudentSchoolEnrollmentType();
+        // enrollmentType.setRefId(REF_ID_2);
+        // enrollmentType.setStudentPersonalRefId(REF_ID_1);
+        // enrollmentType.setSchoolInfoRefId(SchoolInfoConsumerTest.REF_ID);
+        // studentSchoolEnrollmentTester.doCreateOne(enrollmentType);
+
+        List<Response> responses = studentTester.testGetSingle(REF_ID_1);
+        Assert.assertNotNull(responses);
+        Assert.assertEquals(1, responses.size());
+        Response response = responses.get(0);
+        Assert.assertNotNull(response.getDataObject());
+        StudentPersonalType updatedStudentPersonal = (StudentPersonalType) response.getDataObject();
+        Assert.assertEquals(REF_ID_1, updatedStudentPersonal.getRefId());
+        Assert.assertEquals(2, updatedStudentPersonal.getOtherIdList().getValue().getOtherId().size());
+        Assert.assertEquals(1, updatedStudentPersonal.getPersonInfo().getAddressList().getValue().getAddress().size());
+
+        // studentSchoolEnrollmentTester.testDeleteOne(REF_ID_2);
+        // studentTester.testDeleteOne(REF_ID_1);
+    }
+
+    @Test
+    @Category(IntegrationTest.class)
+    public void testServicePathTeachingGroup() {
+        QueryCriteria queryCriteria = new QueryCriteria();
+        queryCriteria.addPredicate(new QueryPredicate("TeachingGroups", QueryOperator.EQUAL, TeachingGroupConsumerTest.REF_ID));
+
+        List<Response> responses = studentTester.testServicePath(queryCriteria, 10000, 0);
+
+        Assert.assertNotNull(responses);
+        Assert.assertEquals(1, responses.size());
+        Response response = responses.get(0);
+
+        StudentPersonalCollectionType studentPersonalCollectionType = (StudentPersonalCollectionType) response.getDataObject();
+        Assert.assertNotNull(studentPersonalCollectionType.getStudentPersonal());
+        Assert.assertFalse(studentPersonalCollectionType.getStudentPersonal().isEmpty());
+        boolean found = false;
+        for (StudentPersonalType studentPersonal : studentPersonalCollectionType.getStudentPersonal()) {
+            found = found || StudentPersonalRefIds.REF_ID_1.equals(studentPersonal.getRefId());
+        }
+        Assert.assertTrue(found);
+    }
+
+    @Test
+    @Category(IntegrationTest.class)
+    public void testServicePathSchoolInfo() {
+        QueryCriteria queryCriteria = new QueryCriteria();
+        queryCriteria.addPredicate(new QueryPredicate("SchoolInfos", QueryOperator.EQUAL, SchoolInfoConsumerTest.REF_ID));
+
+        List<Response> responses = studentTester.testServicePath(queryCriteria, 10000, 0);
+
+        Assert.assertNotNull(responses);
+        Assert.assertEquals(1, responses.size());
+        Response response = responses.get(0);
+
+        StudentPersonalCollectionType studentPersonalCollectionType = (StudentPersonalCollectionType) response.getDataObject();
+        Assert.assertNotNull(studentPersonalCollectionType.getStudentPersonal());
+        Assert.assertFalse(studentPersonalCollectionType.getStudentPersonal().isEmpty());
+        boolean found = false;
+        for (StudentPersonalType studentPersonal : studentPersonalCollectionType.getStudentPersonal()) {
+            found = found || StudentPersonalRefIds.REF_ID_1.equals(studentPersonal.getRefId());
+        }
+        Assert.assertTrue(found);
+    }
+
+    @Test
+    @Category(IntegrationTest.class)
+    public void testCreateDeleteMany() {
+        final List<String> REF_ID_LIST = Arrays.asList(REF_IDS);
+
+        List<BulkOperationResponse<CreateOperationStatus>> createResponses = studentTester.testCreateMany("students.xml");
+        Assert.assertNotNull(createResponses);
+        Assert.assertEquals(1, createResponses.size());
+        BulkOperationResponse<CreateOperationStatus> createResponse = createResponses.get(0);
+        Assert.assertNotNull(createResponse.getOperationStatuses());
+        Assert.assertEquals(2, createResponse.getOperationStatuses().size());
+        for (CreateOperationStatus operationStatus : createResponse.getOperationStatuses()) {
+            Assert.assertTrue(REF_ID_LIST.contains(operationStatus.getAdvisoryID()));
+            Assert.assertEquals(HttpStatus.CREATED.value(), operationStatus.getStatus());
+        }
+
+        List<BulkOperationResponse<OperationStatus>> deleteResponses = studentTester.testDeleteMany(REF_IDS);
+        Assert.assertNotNull(deleteResponses);
+        Assert.assertEquals(1, deleteResponses.size());
+        BulkOperationResponse<OperationStatus> deleteResponse = deleteResponses.get(0);
+        Assert.assertNotNull(deleteResponse.getOperationStatuses());
+        Assert.assertEquals(2, deleteResponse.getOperationStatuses().size());
+        for (OperationStatus operationStatus : deleteResponse.getOperationStatuses()) {
+            Assert.assertTrue(REF_ID_LIST.contains(operationStatus.getResourceID()));
+            Assert.assertEquals(HttpStatus.OK.value(), operationStatus.getStatus());
+        }
+    }
 }

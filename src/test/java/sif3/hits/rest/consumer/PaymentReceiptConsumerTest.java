@@ -7,6 +7,7 @@ import java.util.List;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.experimental.categories.Category;
 import org.springframework.http.HttpStatus;
 
 import sif.dd.au30.model.DebitOrCreditAmountType;
@@ -24,6 +25,8 @@ import sif3.hits.rest.consumer.FinancialAccountConsumerTest.FinancialAccountRefI
 import sif3.hits.rest.consumer.InvoiceConsumerTest.InvoiceRefIds;
 import sif3.hits.rest.consumer.LocationInfoConsumerTest.LocationInfoRefIds;
 import sif3.hits.rest.consumer.VendorInfoConsumerTest.VendorInfoRefIds;
+import sif3.hits.rest.consumer.category.InitialiseData;
+import sif3.hits.rest.consumer.category.IntegrationTest;
 import sif3.hits.utils.UsesConstants;
 import sif3.infra.rest.consumer.ConsumerLoader;
 
@@ -43,6 +46,7 @@ public class PaymentReceiptConsumerTest extends BaseTest implements UsesConstant
     private final String[] REF_IDS = { REF_ID_1, REF_ID_2 };
 
     @Test
+    @Category({ IntegrationTest.class, InitialiseData.class })
     public void initialiseData() throws Exception {
         ObjectFactory objectFactory = new ObjectFactory();
         PaymentReceiptType paymentReceiptType = new PaymentReceiptType();
@@ -108,6 +112,7 @@ public class PaymentReceiptConsumerTest extends BaseTest implements UsesConstant
     }
 
     @Test
+    @Category(IntegrationTest.class)
     public void testUpdateSingle() throws Exception {
         List<Response> responses = paymentReceiptTester.testGetSingle(PaymentReceiptRefIds.REF_ID_1);
         Assert.assertNotNull(responses);
@@ -142,6 +147,7 @@ public class PaymentReceiptConsumerTest extends BaseTest implements UsesConstant
     }
 
     @Test
+    @Category(IntegrationTest.class)
     public void testGetSingle() {
         List<Response> responses = paymentReceiptTester.testGetSingle(PaymentReceiptRefIds.REF_ID_1);
         Assert.assertNotNull(responses);
@@ -153,6 +159,7 @@ public class PaymentReceiptConsumerTest extends BaseTest implements UsesConstant
     }
 
     @Test
+    @Category(IntegrationTest.class)
     public void testGetMany() {
         List<Response> responses = paymentReceiptTester.testGetMany(5, 0);
         Assert.assertNotNull(responses);
@@ -165,6 +172,7 @@ public class PaymentReceiptConsumerTest extends BaseTest implements UsesConstant
     }
 
     @Test
+    @Category(IntegrationTest.class)
     public void testCreateDelete() {
         List<Response> createResponses = paymentReceiptTester.testCreateOne("paymentreceipt.xml");
         Assert.assertNotNull(createResponses);
@@ -183,6 +191,7 @@ public class PaymentReceiptConsumerTest extends BaseTest implements UsesConstant
     }
 
     @Test
+    @Category(IntegrationTest.class)
     public void testCreateDeleteMany() {
         final List<String> REF_ID_LIST = Arrays.asList(REF_IDS);
 

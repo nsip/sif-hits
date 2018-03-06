@@ -6,6 +6,7 @@ import java.util.List;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.experimental.categories.Category;
 import org.springframework.http.HttpStatus;
 
 import sif.dd.au30.model.AUCodeSetsPersonalisedPlanType;
@@ -19,6 +20,8 @@ import sif3.common.ws.CreateOperationStatus;
 import sif3.common.ws.OperationStatus;
 import sif3.common.ws.Response;
 import sif3.hits.rest.consumer.StudentPersonalConsumerTest.StudentPersonalRefIds;
+import sif3.hits.rest.consumer.category.InitialiseData;
+import sif3.hits.rest.consumer.category.IntegrationTest;
 import sif3.hits.utils.UsesConstants;
 import sif3.infra.rest.consumer.ConsumerLoader;
 
@@ -38,9 +41,10 @@ public class PersonalisedPlanConsumerTest extends BaseTest implements UsesConsta
     private final String[] REF_IDS = { REF_ID_1, REF_ID_2 };
 
     @Test
+    @Category({ IntegrationTest.class, InitialiseData.class })
     public void initialiseData() throws Exception {
         ObjectFactory objectFactory = new ObjectFactory();
-        
+
         PersonalisedPlanType personalisedPlanType = objectFactory.createPersonalisedPlanType();
         personalisedPlanType.setRefId(PersonalisedPlanRefIds.REF_ID_1);
         personalisedPlanType.setStudentPersonalRefId(StudentPersonalRefIds.REF_ID_1);
@@ -51,7 +55,7 @@ public class PersonalisedPlanConsumerTest extends BaseTest implements UsesConsta
         personalisedPlanType.setPersonalisedPlanEndDate(objectFactory.createPersonalisedPlanTypePersonalisedPlanReviewDate(getDate("2018-04-03")));
         personalisedPlanType.setPersonalisedPlanNotes(objectFactory.createPersonalisedPlanTypePersonalisedPlanNotes("Notes Notes Notes"));
         personalisedPlanType.setAssociatedAttachment(objectFactory.createPersonalisedPlanTypeAssociatedAttachment("Attachment.doc"));
-        
+
         WellbeingDocumentType wellbeingDocument1 = objectFactory.createWellbeingDocumentType();
         wellbeingDocument1.setLocation("\\\\secure-share\\plan-documents\\st1234568\\plan.doc");
         wellbeingDocument1.setSensitivity(objectFactory.createWellbeingDocumentTypeSensitivity("SENSITIVE"));
@@ -59,7 +63,7 @@ public class PersonalisedPlanConsumerTest extends BaseTest implements UsesConsta
         wellbeingDocument1.setDocumentType(objectFactory.createWellbeingDocumentTypeDocumentType("Plan"));
         wellbeingDocument1.setDocumentReviewDate(objectFactory.createWellbeingDocumentTypeDocumentReviewDate(getDate("2018-04-03")));
         wellbeingDocument1.setDocumentDescription(objectFactory.createWellbeingDocumentTypeDocumentDescription("Plan document for student 12345678."));
- 
+
         WellbeingDocumentType wellbeingDocument2 = objectFactory.createWellbeingDocumentType();
         wellbeingDocument2.setLocation("\\\\secure-share\\plan-documents\\st1234568\\plan2.doc");
         wellbeingDocument2.setSensitivity(objectFactory.createWellbeingDocumentTypeSensitivity("SENSITIVE"));
@@ -67,7 +71,7 @@ public class PersonalisedPlanConsumerTest extends BaseTest implements UsesConsta
         wellbeingDocument2.setDocumentType(objectFactory.createWellbeingDocumentTypeDocumentType("Plan"));
         wellbeingDocument2.setDocumentReviewDate(objectFactory.createWellbeingDocumentTypeDocumentReviewDate(getDate("2018-04-05")));
         wellbeingDocument2.setDocumentDescription(objectFactory.createWellbeingDocumentTypeDocumentDescription("Plan 2 document for student 12345678."));
-        
+
         WellbeingDocumentListType wellbeingDocumentListType = objectFactory.createWellbeingDocumentListType();
         wellbeingDocumentListType.getDocument().add(wellbeingDocument1);
         wellbeingDocumentListType.getDocument().add(wellbeingDocument2);
@@ -75,7 +79,7 @@ public class PersonalisedPlanConsumerTest extends BaseTest implements UsesConsta
 
         personalisedPlanTester.doCreateOne(personalisedPlanType);
         String xmlExpectedTo = personalisedPlanTester.getXML(personalisedPlanType);
-        
+
         System.out.println(xmlExpectedTo);
 
         personalisedPlanType.setRefId(PersonalisedPlanRefIds.REF_ID_2);
@@ -104,6 +108,7 @@ public class PersonalisedPlanConsumerTest extends BaseTest implements UsesConsta
     }
 
     @Test
+    @Category(IntegrationTest.class)
     public void testUpdateSingle() throws Exception {
         List<Response> responses = personalisedPlanTester.testGetSingle(PersonalisedPlanRefIds.REF_ID_1);
         Assert.assertNotNull(responses);
@@ -138,6 +143,7 @@ public class PersonalisedPlanConsumerTest extends BaseTest implements UsesConsta
     }
 
     @Test
+    @Category(IntegrationTest.class)
     public void testGetSingle() {
         List<Response> responses = personalisedPlanTester.testGetSingle(PersonalisedPlanRefIds.REF_ID_1);
         Assert.assertNotNull(responses);
@@ -149,6 +155,7 @@ public class PersonalisedPlanConsumerTest extends BaseTest implements UsesConsta
     }
 
     @Test
+    @Category(IntegrationTest.class)
     public void testGetMany() {
         List<Response> responses = personalisedPlanTester.testGetMany(5, 0);
         Assert.assertNotNull(responses);
@@ -161,6 +168,7 @@ public class PersonalisedPlanConsumerTest extends BaseTest implements UsesConsta
     }
 
     @Test
+    @Category(IntegrationTest.class)
     public void testCreateDelete() {
         List<Response> createResponses = personalisedPlanTester.testCreateOne("personalisedplan.xml");
         Assert.assertNotNull(createResponses);
@@ -179,6 +187,7 @@ public class PersonalisedPlanConsumerTest extends BaseTest implements UsesConsta
     }
 
     @Test
+    @Category(IntegrationTest.class)
     public void testCreateDeleteMany() {
         final List<String> REF_ID_LIST = Arrays.asList(REF_IDS);
 
