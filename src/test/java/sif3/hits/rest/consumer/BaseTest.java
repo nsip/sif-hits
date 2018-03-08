@@ -1,6 +1,7 @@
 package sif3.hits.rest.consumer;
 
 import java.util.Arrays;
+import java.util.Calendar;
 import java.util.Collections;
 import java.util.List;
 import java.util.regex.Matcher;
@@ -18,6 +19,11 @@ public abstract class BaseTest {
 
     protected XMLGregorianCalendar getDate(String date) throws DatatypeConfigurationException {
         return DatatypeFactory.newInstance().newXMLGregorianCalendar(date);
+    }
+    
+    protected Calendar getCalendar(String date) throws DatatypeConfigurationException {
+        XMLGregorianCalendar xmlCal = getDate(date);
+        return xmlCal.toGregorianCalendar();
     }
 
     protected boolean semiEquals(String xmlFrom, String xmlTo) {

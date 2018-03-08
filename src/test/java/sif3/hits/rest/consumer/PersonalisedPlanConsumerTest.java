@@ -52,7 +52,7 @@ public class PersonalisedPlanConsumerTest extends BaseTest implements UsesConsta
         personalisedPlanType.setPersonalisedPlanCategory(AUCodeSetsPersonalisedPlanType.AC);
         personalisedPlanType.setPersonalisedPlanStartDate(getDate("2018-03-01"));
         personalisedPlanType.setPersonalisedPlanEndDate(objectFactory.createPersonalisedPlanTypePersonalisedPlanEndDate(getDate("2018-05-09")));
-        personalisedPlanType.setPersonalisedPlanEndDate(objectFactory.createPersonalisedPlanTypePersonalisedPlanReviewDate(getDate("2018-04-03")));
+        personalisedPlanType.setPersonalisedPlanReviewDate(objectFactory.createPersonalisedPlanTypePersonalisedPlanReviewDate(getDate("2018-04-03")));
         personalisedPlanType.setPersonalisedPlanNotes(objectFactory.createPersonalisedPlanTypePersonalisedPlanNotes("Notes Notes Notes"));
         personalisedPlanType.setAssociatedAttachment(objectFactory.createPersonalisedPlanTypeAssociatedAttachment("Attachment.doc"));
 
