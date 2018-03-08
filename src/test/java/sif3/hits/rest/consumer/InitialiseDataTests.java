@@ -50,7 +50,8 @@ import sif3.hits.rest.consumer.category.InitialiseData;
   NAPStudentResponseSetConsumerTest.class,
   NAPCodeFrameConsumerTest.class,
   PersonalisedPlanConsumerTest.class,
-  WellbeingResponseConsumerTest.class
+  WellbeingResponseConsumerTest.class,
+  WellbeingEventConsumerTest.class
 })
 public class InitialiseDataTests {
 
