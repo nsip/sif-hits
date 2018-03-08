@@ -47,7 +47,8 @@ import sif3.hits.rest.consumer.category.IntegrationTest;
   NAPTestItemConsumerTest.class,
   NAPStudentResponseSetConsumerTest.class,
   NAPCodeFrameConsumerTest.class,
-  PersonalisedPlanConsumerTest.class
+  PersonalisedPlanConsumerTest.class,
+  WellbeingResponseConsumerTest.class
 })
 public class IntegrationTests {
 
