@@ -92,7 +92,7 @@ public class WellbeingEventConverter extends HitsConverter<WellbeingEventType, W
                 if (documents != null && !documents.isEmpty()) {
                     WellbeingDocumentListType documentList = objectFactory.createWellbeingDocumentListType();
                     documentList.getDocument().addAll(documents);
-                    target.setDocumentList(objectFactory.createWellbeingResponseTypeDocumentList(documentList));
+                    target.setDocumentList(objectFactory.createWellbeingEventTypeDocumentList(documentList));
                 }
             }
             if (source.getCategories() != null && !source.getCategories().isEmpty()) {

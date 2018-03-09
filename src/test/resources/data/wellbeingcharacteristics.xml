@@ -1,0 +1,108 @@
+<WellbeingCharacteristics xmlns="http://www.sifassociation.org/datamodel/au/3.4">
+<WellbeingCharacteristic RefId="d6ceec38-0ae0-4cec-81a7-f13cd7a44491">
+    <StudentPersonalRefId>f7dd788e-3cef-40eb-9cb4-af90a2fa3147</StudentPersonalRefId>
+    <SchoolInfoRefId>6dafb630-c439-41e3-9aa0-81f4dbd909ab</SchoolInfoRefId>
+    <WellbeingCharacteristicClassification>D</WellbeingCharacteristicClassification>
+    <WellbeingCharacteristicStartDate>2018-03-23</WellbeingCharacteristicStartDate>
+    <WellbeingCharacteristicEndDate>2018-04-01</WellbeingCharacteristicEndDate>
+    <WellbeingCharacteristicReviewDate>2018-03-29</WellbeingCharacteristicReviewDate>
+    <WellbeingCharacteristicNotes>Notes go Here</WellbeingCharacteristicNotes>
+    <WellbeingCharacteristicCategory>Cat</WellbeingCharacteristicCategory>
+    <WellbeingCharacteristicSubCategory>SubCat</WellbeingCharacteristicSubCategory>
+    <LocalCharacteristicCode>LocalCode</LocalCharacteristicCode>
+    <CharacteristicSeverity>Severe</CharacteristicSeverity>
+    <DailyManagement>Y</DailyManagement>
+    <EmergencyManagement>N</EmergencyManagement>
+    <EmergencyResponsePlan>ERP</EmergencyResponsePlan>
+    <Trigger>Trigger</Trigger>
+    <ConfidentialFlag>N</ConfidentialFlag>
+    <Alert>N</Alert>
+    <MedicationList>
+        <Medication>
+            <MedicationName>SomeMeds</MedicationName>
+            <Dosage>40mg</Dosage>
+            <Frequency>Daily</Frequency>
+            <AdministrationInformation>Take some pills</AdministrationInformation>
+            <Method>Oral</Method>
+        </Medication>
+        <Medication>
+            <MedicationName>DifferentMeds</MedicationName>
+            <Dosage>10mg</Dosage>
+            <Frequency>Twice Daily</Frequency>
+            <AdministrationInformation>Take some smaller pills</AdministrationInformation>
+            <Method>Oral</Method>
+        </Medication>
+    </MedicationList>
+    <DocumentList>
+        <Document>
+            <Location>\\secure-share\plan-documents\st1234568\plan.doc</Location>
+            <Sensitivity>SENSITIVE</Sensitivity>
+            <URL>http://secure-document-server.edu/plan-documents/st12345678/plan.doc</URL>
+            <DocumentType>Plan</DocumentType>
+            <DocumentReviewDate>2018-04-03</DocumentReviewDate>
+            <DocumentDescription>Plan document for student 12345678.</DocumentDescription>
+        </Document>
+        <Document>
+            <Location>\\secure-share\plan-documents\st1234568\plan2.doc</Location>
+            <Sensitivity>SENSITIVE</Sensitivity>
+            <URL>http://secure-document-server.edu/plan-documents/st12345678/plan2.doc</URL>
+            <DocumentType>Plan</DocumentType>
+            <DocumentReviewDate>2018-04-05</DocumentReviewDate>
+            <DocumentDescription>Plan 2 document for student 12345678.</DocumentDescription>
+        </Document>
+    </DocumentList>
+</WellbeingCharacteristic>
+<WellbeingCharacteristic RefId="b15a3efa-39a2-4ed4-b2cc-373be1b79906">
+    <StudentPersonalRefId>f7dd788e-3cef-40eb-9cb4-af90a2fa3147</StudentPersonalRefId>
+    <SchoolInfoRefId>6dafb630-c439-41e3-9aa0-81f4dbd909ab</SchoolInfoRefId>
+    <WellbeingCharacteristicClassification>D</WellbeingCharacteristicClassification>
+    <WellbeingCharacteristicStartDate>2018-03-23</WellbeingCharacteristicStartDate>
+    <WellbeingCharacteristicEndDate>2018-04-01</WellbeingCharacteristicEndDate>
+    <WellbeingCharacteristicReviewDate>2018-03-29</WellbeingCharacteristicReviewDate>
+    <WellbeingCharacteristicNotes>Notes go Here</WellbeingCharacteristicNotes>
+    <WellbeingCharacteristicCategory>Cat</WellbeingCharacteristicCategory>
+    <WellbeingCharacteristicSubCategory>SubCat</WellbeingCharacteristicSubCategory>
+    <LocalCharacteristicCode>LocalCode</LocalCharacteristicCode>
+    <CharacteristicSeverity>Severe</CharacteristicSeverity>
+    <DailyManagement>Y</DailyManagement>
+    <EmergencyManagement>N</EmergencyManagement>
+    <EmergencyResponsePlan>ERP</EmergencyResponsePlan>
+    <Trigger>Trigger</Trigger>
+    <ConfidentialFlag>N</ConfidentialFlag>
+    <Alert>N</Alert>
+    <MedicationList>
+        <Medication>
+            <MedicationName>SomeMeds</MedicationName>
+            <Dosage>40mg</Dosage>
+            <Frequency>Daily</Frequency>
+            <AdministrationInformation>Take some pills</AdministrationInformation>
+            <Method>Oral</Method>
+        </Medication>
+        <Medication>
+            <MedicationName>DifferentMeds</MedicationName>
+            <Dosage>10mg</Dosage>
+            <Frequency>Twice Daily</Frequency>
+            <AdministrationInformation>Take some smaller pills</AdministrationInformation>
+            <Method>Oral</Method>
+        </Medication>
+    </MedicationList>
+    <DocumentList>
+        <Document>
+            <Location>\\secure-share\plan-documents\st1234568\plan.doc</Location>
+            <Sensitivity>SENSITIVE</Sensitivity>
+            <URL>http://secure-document-server.edu/plan-documents/st12345678/plan.doc</URL>
+            <DocumentType>Plan</DocumentType>
+            <DocumentReviewDate>2018-04-03</DocumentReviewDate>
+            <DocumentDescription>Plan document for student 12345678.</DocumentDescription>
+        </Document>
+        <Document>
+            <Location>\\secure-share\plan-documents\st1234568\plan2.doc</Location>
+            <Sensitivity>SENSITIVE</Sensitivity>
+            <URL>http://secure-document-server.edu/plan-documents/st12345678/plan2.doc</URL>
+            <DocumentType>Plan</DocumentType>
+            <DocumentReviewDate>2018-04-05</DocumentReviewDate>
+            <DocumentDescription>Plan 2 document for student 12345678.</DocumentDescription>
+        </Document>
+    </DocumentList>
+</WellbeingCharacteristic>
+</WellbeingCharacteristics>

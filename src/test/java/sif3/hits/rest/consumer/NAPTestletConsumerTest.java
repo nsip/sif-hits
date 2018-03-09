@@ -17,7 +17,6 @@ import sif.dd.au30.model.NAPTestletCollectionType;
 import sif.dd.au30.model.NAPTestletContentType;
 import sif.dd.au30.model.NAPTestletType;
 import sif.dd.au30.model.ObjectFactory;
-import sif.dd.au30.model.TeachingGroupType;
 import sif3.common.ws.BulkOperationResponse;
 import sif3.common.ws.CreateOperationStatus;
 import sif3.common.ws.OperationStatus;

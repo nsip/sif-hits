@@ -11,6 +11,52 @@ import org.junit.runners.Suite.SuiteClasses;
   IntegrationTests.class
 })
 public class ConsumerTests {
+    public static Class<?>[] CONSUMER_CLASSES = new Class<?>[] {
+        SchoolInfoConsumerTest.class,
+        RoomInfoConsumerTest.class,
+        StudentPersonalConsumerTest.class,
+        StudentSchoolEnrollmentConsumerTest.class,
+        StaffPersonalConsumerTest.class,
+        StaffAssignmentConsumerTest.class,
+        CalendarSummaryConsumerTest.class,
+        CalendarDateConsumerTest.class,
+        StudentDailyAttendanceConsumerTest.class,
+        StudentAttendanceSummaryConsumerTest.class,
+        TimeTableConsumerTest.class,
+        TimeTableSubjectConsumerTest.class,
+        TeachingGroupConsumerTest.class,
+        TimeTableCellConsumerTest.class,
+        ScheduledActivityConsumerTest.class,
+        SessionInfoConsumerTest.class,
+        StudentPeriodAttendanceConsumerTest.class,
+        StudentAttendanceTimeListConsumerTest.class,
+        StudentContactPersonalConsumerTest.class,
+        StudentContactRelationshipConsumerTest.class,
+        GradingAssignmentConsumerTest.class,
+        GradingAssignmentScoreConsumerTest.class,
+        LocationInfoConsumerTest.class,
+        FinancialAccountConsumerTest.class,
+        VendorInfoConsumerTest.class,
+        DebtorConsumerTest.class,
+        JournalConsumerTest.class,
+        PurchaseOrderConsumerTest.class,
+        InvoiceConsumerTest.class,
+        PaymentReceiptConsumerTest.class,
+        PersonPictureConsumerTest.class,
+        NAPTestConsumerTest.class,
+        NAPEventStudentLinkConsumerTest.class,
+        NAPTestScoreSummaryConsumerTest.class,
+        NAPTestletConsumerTest.class,
+        NAPTestItemConsumerTest.class,
+        NAPStudentResponseSetConsumerTest.class,
+        NAPCodeFrameConsumerTest.class,
+        PersonalisedPlanConsumerTest.class,
+        WellbeingResponseConsumerTest.class,
+        WellbeingEventConsumerTest.class,
+        WellbeingCharacteristicConsumerTest.class
+      };
+    
+    
 /* 
  * <pre>
 delete from hits_sif3_infra.SIF3_SESSION;

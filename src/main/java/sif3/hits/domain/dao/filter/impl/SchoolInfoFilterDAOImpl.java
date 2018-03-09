@@ -9,7 +9,6 @@ import org.springframework.stereotype.Repository;
 
 import sif.dd.au30.model.SchoolInfoType;
 import sif3.hits.domain.dao.filter.SchoolInfoFilterDAO;
-import sif3.hits.domain.model.LocationInfo;
 import sif3.hits.domain.model.SchoolInfo;
 import sif3.hits.domain.model.StaffAssignment;
 
