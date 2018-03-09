@@ -53,7 +53,8 @@ public class ConsumerTests {
         PersonalisedPlanConsumerTest.class,
         WellbeingResponseConsumerTest.class,
         WellbeingEventConsumerTest.class,
-        WellbeingCharacteristicConsumerTest.class
+        WellbeingCharacteristicConsumerTest.class,
+        WellbeingAppealConsumerTest.class
       };
     
     
@@ -61,6 +62,22 @@ public class ConsumerTests {
  * <pre>
 delete from hits_sif3_infra.SIF3_SESSION;
 
+delete from WellbeingAppeal_Document;
+delete from WellbeingAppeal;
+delete from WellbeingCharacteristic_Medication;
+delete from WellbeingCharacteristic_Document;
+delete from WellbeingCharacteristic;
+delete from WellbeingEvent_Subcategory;
+delete from WellbeingEvent_Category;
+delete from WellbeingEvent_FollowupAction;
+delete from WellbeingEvent_Document;
+delete from WellbeingEvent_PersonInvolvement;
+delete from WellbeingEvent;
+delete from WellbeingResponse_SuspensionContainer_WithdrawalTime;
+delete from WellbeingResponse_PlanRequiredContainer_PlanRequired;
+delete from WellbeingResponse_PersonInvolvement;
+delete from WellbeingResponse_Document;
+delete from WellbeingResponse;
 delete from PersonalisedPlan_Document;
 delete from PersonalisedPlan;
 delete from NAPCodeFrame;
