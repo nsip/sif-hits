@@ -1,0 +1,28 @@
+<WellbeingAlerts xmlns="http://www.sifassociation.org/datamodel/au/3.4">
+<WellbeingAlert RefId="faae58a3-5cc7-4867-99f8-b69f1fdb6543">
+    <StudentPersonalRefId>f7dd788e-3cef-40eb-9cb4-af90a2fa3147</StudentPersonalRefId>
+    <SchoolInfoRefId>6dafb630-c439-41e3-9aa0-81f4dbd909ab</SchoolInfoRefId>
+    <Date>2018-03-23</Date>
+    <WellbeingAlertStartDate>2018-03-24</WellbeingAlertStartDate>
+    <WellbeingAlertEndDate>2018-04-22</WellbeingAlertEndDate>
+    <WellbeingAlertCategory>D</WellbeingAlertCategory>
+    <WellbeingAlertDescription>Danger Danger</WellbeingAlertDescription>
+    <EnrolmentRestricted>N</EnrolmentRestricted>
+    <AlertAudience>People</AlertAudience>
+    <AlertSeverity>Severe</AlertSeverity>
+    <AlertKeyContact>James Smith</AlertKeyContact>
+</WellbeingAlert>
+<WellbeingAlert RefId="2c9f9e8e-6e30-4be9-a130-733ccec4e56c">
+    <StudentPersonalRefId>f7dd788e-3cef-40eb-9cb4-af90a2fa3147</StudentPersonalRefId>
+    <SchoolInfoRefId>6dafb630-c439-41e3-9aa0-81f4dbd909ab</SchoolInfoRefId>
+    <Date>2018-03-23</Date>
+    <WellbeingAlertStartDate>2018-03-24</WellbeingAlertStartDate>
+    <WellbeingAlertEndDate>2018-04-22</WellbeingAlertEndDate>
+    <WellbeingAlertCategory>D</WellbeingAlertCategory>
+    <WellbeingAlertDescription>Danger Danger</WellbeingAlertDescription>
+    <EnrolmentRestricted>N</EnrolmentRestricted>
+    <AlertAudience>People</AlertAudience>
+    <AlertSeverity>Severe</AlertSeverity>
+    <AlertKeyContact>James Smith</AlertKeyContact>
+</WellbeingAlert>
+</WellbeingAlerts>

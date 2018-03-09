@@ -54,7 +54,8 @@ public class ConsumerTests {
         WellbeingResponseConsumerTest.class,
         WellbeingEventConsumerTest.class,
         WellbeingCharacteristicConsumerTest.class,
-        WellbeingAppealConsumerTest.class
+        WellbeingAppealConsumerTest.class,
+        WellbeingAlertConsumerTest.class,
       };
     
     
@@ -62,6 +63,7 @@ public class ConsumerTests {
  * <pre>
 delete from hits_sif3_infra.SIF3_SESSION;
 
+delete from WellbeingAlert;
 delete from WellbeingAppeal_Document;
 delete from WellbeingAppeal;
 delete from WellbeingCharacteristic_Medication;
