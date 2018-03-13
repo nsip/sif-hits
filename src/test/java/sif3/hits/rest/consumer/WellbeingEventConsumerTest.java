@@ -68,7 +68,7 @@ public class WellbeingEventConsumerTest extends BaseTest implements UsesConstant
         wellbeingEventType.setWellbeingEventNotes(objectFactory.createWellbeingEventTypeWellbeingEventNotes("Notes Notes Notes"));
         wellbeingEventType.setWellbeingEventCategoryClass(AUCodeSetsWellbeingEventCategoryClassType.N);
         wellbeingEventType.setReportingStaffRefId(objectFactory.createWellbeingEventTypeReportingStaffRefId(StaffPersonalRefIds.REF_ID_4));
-        wellbeingEventType.setWellbeingEventCreationTimeStamp(objectFactory.createWellbeingEventTypeWellbeingEventCreationTimeStamp(getCalendar("2018-03-09T10:00:00")));
+        wellbeingEventType.setWellbeingEventCreationTimeStamp(objectFactory.createWellbeingEventTypeWellbeingEventCreationTimeStamp(getCalendar("2018-03-09T10:00:00Z")));
         wellbeingEventType.setWellbeingEventDate(getDate("2018-02-23"));
         wellbeingEventType.setWellbeingEventTime(objectFactory.createWellbeingEventTypeWellbeingEventTime(getDate("09:00:00")));
         wellbeingEventType.setWellbeingEventDescription(objectFactory.createWellbeingEventTypeWellbeingEventDescription("Event Description"));

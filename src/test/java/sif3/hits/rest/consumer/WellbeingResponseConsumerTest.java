@@ -125,7 +125,7 @@ public class WellbeingResponseConsumerTest extends BaseTest implements UsesConst
         suspensionType.setSuspensionCategory(AUCodeSetsSuspensionCategoryType.S);
         suspensionType.setDuration(objectFactory.createSuspensionContainerTypeDuration(BigDecimal.ONE));
         suspensionType.setAdvisementDate(objectFactory.createSuspensionContainerTypeAdvisementDate(getDate("2018-03-06")));
-        suspensionType.setResolutionMeetingTime(objectFactory.createSuspensionContainerTypeResolutionMeetingTime(getCalendar("2018-03-10T09:00:00")));
+        suspensionType.setResolutionMeetingTime(objectFactory.createSuspensionContainerTypeResolutionMeetingTime(getCalendar("2018-03-10T09:00:00Z")));
         suspensionType.setResolutionNotes(objectFactory.createSuspensionContainerTypeResolutionNotes("Suspended"));
         suspensionType.setEarlyReturnDate(objectFactory.createSuspensionContainerTypeEarlyReturnDate(getDate("2018-03-11")));
         suspensionType.setStatus(objectFactory.createSuspensionContainerTypeStatus(AUCodeSetsWellbeingStatusType.O));
