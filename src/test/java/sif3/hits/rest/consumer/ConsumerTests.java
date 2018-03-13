@@ -157,7 +157,8 @@ delete from StaffAssignment;
 delete from StaffPersonal_OtherId;
 delete from StaffPersonal;
 delete from RoomInfo;
-delete from SchoolInfo;
+delete from SchoolInfo; 
+
 </pre>
  */
 }
