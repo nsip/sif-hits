@@ -30,10 +30,9 @@ public class StudentContactPersonalFilterDAOImpl extends BaseFilterableRepositor
             DetachedCriteria enrolmentQuery = DetachedCriteria.forClass(StudentSchoolEnrollment.class);
             enrolmentQuery.add(Restrictions.eq("schoolInfoRefId", value));
             enrolmentQuery.setProjection(Projections.property("studentPersonalRefId"));
-
             DetachedCriteria studentContactRelationshipQuery = DetachedCriteria.forClass(StudentContactRelationship.class);
-            studentContactRelationshipQuery.setProjection(Projections.property("studentContactPersonalRefId"));
             studentContactRelationshipQuery.add(Subqueries.propertyIn("studentPersonalRefId", enrolmentQuery));
+            studentContactRelationshipQuery.setProjection(Projections.property("studentContactPersonalRefId"));
             criteria.add(Subqueries.propertyIn("refId", studentContactRelationshipQuery));
         } else {
             super.addServicePathCriteria(criteria, key, value);

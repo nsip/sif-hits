@@ -74,11 +74,11 @@ public class StudentPersonalConsumerTest extends BaseTest {
 
         public static String LOCAL_ID = "s0004432";
 
-        public static final String PSI_ID_1 = "R100000001E";
-        public static final String PSI_ID_2 = "R100000002D";
-        public static final String PSI_ID_3 = "R100000003S";
-        public static final String PSI_ID_4 = "R100000004R";
-        public static final String PSI_ID_5 = "R100000005G";
+        public static final String PSI_ID_1 = "R10000001E";
+        public static final String PSI_ID_2 = "R10000002D";
+        public static final String PSI_ID_3 = "R10000003S";
+        public static final String PSI_ID_4 = "R10000004R";
+        public static final String PSI_ID_5 = "R10000005G";
 
         public static NameOfRecordType getNameOfRecord(ObjectFactory objectFactory) {
             NameOfRecordType nameOfRecordType = new NameOfRecordType();
@@ -475,7 +475,7 @@ public class StudentPersonalConsumerTest extends BaseTest {
         QueryCriteria queryCriteria = new QueryCriteria();
         queryCriteria.addPredicate(new QueryPredicate("TeachingGroups", QueryOperator.EQUAL, TeachingGroupConsumerTest.REF_ID));
 
-        List<Response> responses = studentTester.testServicePath(queryCriteria, 10000, 0);
+        List<Response> responses = studentTester.testServicePath(queryCriteria, 1000, 0);
 
         Assert.assertNotNull(responses);
         Assert.assertEquals(1, responses.size());
@@ -497,7 +497,7 @@ public class StudentPersonalConsumerTest extends BaseTest {
         QueryCriteria queryCriteria = new QueryCriteria();
         queryCriteria.addPredicate(new QueryPredicate("SchoolInfos", QueryOperator.EQUAL, SchoolInfoConsumerTest.REF_ID));
 
-        List<Response> responses = studentTester.testServicePath(queryCriteria, 10000, 0);
+        List<Response> responses = studentTester.testServicePath(queryCriteria, 1000, 0);
 
         Assert.assertNotNull(responses);
         Assert.assertEquals(1, responses.size());

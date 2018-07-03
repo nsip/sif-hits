@@ -79,7 +79,7 @@ public class RoomInfoConsumerTest extends BaseTest {
     public void testQBE() {
         RoomInfoType roomInfo = new RoomInfoType();
         roomInfo.setSchoolInfoRefId(SchoolInfoConsumerTest.REF_ID);
-        List<Response> responses = roomInfoTester.testQBE(roomInfo, 10000, 0);
+        List<Response> responses = roomInfoTester.testQBE(roomInfo, 1000, 0);
         Assert.assertNotNull(responses);
         Assert.assertEquals(1, responses.size());
         Response response = responses.get(0);

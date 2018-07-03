@@ -22,6 +22,9 @@ import sif.dd.au30.model.NAPTestletItemResponseListType;
 import sif.dd.au30.model.NAPTestletResponseItemType;
 import sif.dd.au30.model.NAPTestletResponseType;
 import sif.dd.au30.model.ObjectFactory;
+import sif3.common.model.QueryCriteria;
+import sif3.common.model.QueryOperator;
+import sif3.common.model.QueryPredicate;
 import sif3.common.ws.BulkOperationResponse;
 import sif3.common.ws.CreateOperationStatus;
 import sif3.common.ws.OperationStatus;
@@ -263,5 +266,49 @@ public class NAPStudentResponseSetConsumerTest extends BaseTest {
             Assert.assertTrue(REF_ID_LIST.contains(operationStatus.getResourceID()));
             Assert.assertEquals(HttpStatus.OK.value(), operationStatus.getStatus());
         }
+    }
+    
+    @Test
+    @Category(IntegrationTest.class)
+    public void testServicePathSchoolInfo() {
+        QueryCriteria queryCriteria = new QueryCriteria();
+        queryCriteria.addPredicate(new QueryPredicate("SchoolInfos", QueryOperator.EQUAL, SchoolInfoConsumerTest.REF_ID));
+
+        List<Response> responses = napStudentResponseSetTester.testServicePath(queryCriteria, 1000, 0);
+
+        Assert.assertNotNull(responses);
+        Assert.assertEquals(1, responses.size());
+        Response response = responses.get(0);
+
+        NAPStudentResponseSetCollectionType napStudentResponseSetCollection = (NAPStudentResponseSetCollectionType) response.getDataObject();
+        Assert.assertNotNull(napStudentResponseSetCollection.getNAPStudentResponseSet());
+        Assert.assertFalse(napStudentResponseSetCollection.getNAPStudentResponseSet().isEmpty());
+        boolean found = false;
+        for (NAPStudentResponseSetType napStudentResponseSetType : napStudentResponseSetCollection.getNAPStudentResponseSet()) {
+            found = found || NAPStudentResponseSetRefIds.REF_ID_1.equals(napStudentResponseSetType.getRefId());
+        }
+        Assert.assertTrue(found);
+    }
+    
+    @Test
+    @Category(IntegrationTest.class)
+    public void testServicePathStudentPersonals() {
+        QueryCriteria queryCriteria = new QueryCriteria();
+        queryCriteria.addPredicate(new QueryPredicate("StudentPersonals", QueryOperator.EQUAL, StudentPersonalConsumerTest.StudentPersonalRefIds.REF_ID_1));
+
+        List<Response> responses = napStudentResponseSetTester.testServicePath(queryCriteria, 1000, 0);
+
+        Assert.assertNotNull(responses);
+        Assert.assertEquals(1, responses.size());
+        Response response = responses.get(0);
+
+        NAPStudentResponseSetCollectionType napStudentResponseSetCollection = (NAPStudentResponseSetCollectionType) response.getDataObject();
+        Assert.assertNotNull(napStudentResponseSetCollection.getNAPStudentResponseSet());
+        Assert.assertFalse(napStudentResponseSetCollection.getNAPStudentResponseSet().isEmpty());
+        boolean found = false;
+        for (NAPStudentResponseSetType napStudentResponseSetType : napStudentResponseSetCollection.getNAPStudentResponseSet()) {
+            found = found || NAPStudentResponseSetRefIds.REF_ID_1.equals(napStudentResponseSetType.getRefId());
+        }
+        Assert.assertTrue(found);
     }
 }

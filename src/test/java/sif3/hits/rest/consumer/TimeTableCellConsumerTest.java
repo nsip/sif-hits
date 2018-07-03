@@ -113,7 +113,7 @@ public class TimeTableCellConsumerTest extends BaseTest {
     public void testQBE() {
         TimeTableCellType timeTableCell = new TimeTableCellType();
         timeTableCell.setTimeTableRefId(TimeTableConsumerTest.REF_ID);
-        List<Response> responses = timeTableCellTester.testQBE(timeTableCell, 10000, 0);
+        List<Response> responses = timeTableCellTester.testQBE(timeTableCell, 1000, 0);
         Assert.assertNotNull(responses);
         Assert.assertEquals(1, responses.size());
         Response response = responses.get(0);
@@ -134,7 +134,7 @@ public class TimeTableCellConsumerTest extends BaseTest {
         QueryCriteria queryCriteria = new QueryCriteria();
         queryCriteria.addPredicate(new QueryPredicate("SchoolInfos", QueryOperator.EQUAL, SchoolInfoConsumerTest.REF_ID));
 
-        List<Response> responses = timeTableCellTester.testServicePath(queryCriteria, 10000, 0);
+        List<Response> responses = timeTableCellTester.testServicePath(queryCriteria, 1000, 0);
         Assert.assertNotNull(responses);
         Assert.assertEquals(1, responses.size());
         Response response = responses.get(0);

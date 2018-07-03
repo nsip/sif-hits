@@ -85,6 +85,7 @@ public class PeriodAttendanceTime {
         this.attendanceStatus = attendanceStatus;
     }
 
+    @Column(name = "date")
     public String getAttendanceDate() {
         return attendanceDate;
     }
@@ -195,7 +196,7 @@ public class PeriodAttendanceTime {
     }
 
     @ElementCollection(fetch = FetchType.LAZY)
-    @CollectionTable(name = "StudentAttendanceTimeList_PeriodAttendance_RoomInfo", joinColumns = @JoinColumn(name = "PeriodAttendance_Id"))
+    @CollectionTable(name = "StudentAttendanceTimeList_PeriodAttendance_RoomInfo", joinColumns = @JoinColumn(name = "StudentAttendanceTimeList_PeriodAttendance_Id"))
     @Column(name="RoomInfo_RefId")
     public List<String> getRoomInfos() {
         return roomInfos;

@@ -27,7 +27,7 @@ public class PeriodAttendanceOtherCode {
     }
 
     @ManyToOne(optional = false)
-    @JoinColumn(name = "PeriodAttendance_Id")
+    @JoinColumn(name = "StudentAttendanceTimeList_PeriodAttendance_Id")
     public PeriodAttendanceTime getPeriodAttendanceTime() {
         return periodAttendanceTime;
     }

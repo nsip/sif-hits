@@ -129,7 +129,7 @@ public class NAPTestConsumerTest extends BaseTest {
         napTestContent.setDomain(AUCodeSetsNAPTestDomainType.NUMERACY);
         napTest.setTestContent(napTestContent);
 
-        List<Response> responses = napTestTester.testQBE(napTest, 10000, 0);
+        List<Response> responses = napTestTester.testQBE(napTest, 1000, 0);
         Assert.assertNotNull(responses);
         Assert.assertEquals(1, responses.size());
         Response response = responses.get(0);

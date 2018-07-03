@@ -47,14 +47,15 @@ public class StudentAttendanceTimeListConverter extends HitsConverter<StudentAtt
                 AttendanceTimesType attendanceTimes = objectFactory.createAttendanceTimesType();
                 for (StudentAttendanceTime studentAttendanceTime : source.getAttendanceTimes()) {
                     AttendanceTimeType attendanceTime = objectFactory.createAttendanceTimeType();
-                    attendanceTime.setDurationValue(objectFactory.createAttendanceTimeTypeDurationValue(getBigDecimalValue(studentAttendanceTime.getAbsenceValue())));
+                    attendanceTime.setDurationValue(objectFactory.createAttendanceTimeTypeDurationValue(getBigDecimalValue(studentAttendanceTime.getDurationValue())));
                     attendanceTime.setAttendanceNote(objectFactory.createAttendanceTimeTypeAttendanceNote(studentAttendanceTime.getAttendanceNote()));
                     attendanceTime.setAttendanceStatus(getEnumValue(studentAttendanceTime.getAttendanceStatus(), AUCodeSetsAttendanceStatusType.class));
                     attendanceTime.setEndTime(getTimeValue(studentAttendanceTime.getEndTime()));
                     attendanceTime.setStartTime(getTimeValue(studentAttendanceTime.getStartTime()));
+                    attendanceTime.setTimeTableSubjectRefId(objectFactory.createAttendanceTimeTypeTimeTableSubjectRefId(studentAttendanceTime.getTimeTableSubjectRefId()));
 
                     AttendanceCodeType attendanceCodeType = new AttendanceCodeType();
-                    attendanceCodeType.setCode(getEnumValue(studentAttendanceTime.getCode(), AUCodeSetsAttendanceCodeType.class));
+                    attendanceCodeType.setCode(getEnumValue(studentAttendanceTime.getAttendanceType(), AUCodeSetsAttendanceCodeType.class));
 
                     if (studentAttendanceTime.getOtherCodes() != null && !studentAttendanceTime.getOtherCodes().isEmpty()) {
                         OtherCodeListType otherCodeList = new OtherCodeListType();
@@ -107,15 +108,16 @@ public class StudentAttendanceTimeListConverter extends HitsConverter<StudentAtt
                 for (AttendanceTimeType attendanceTime : source.getAttendanceTimes().getAttendanceTime()) {
                     StudentAttendanceTime studentAttendanceTime = new StudentAttendanceTime();
                     studentAttendanceTime.setStudentAttendanceTimeList(target);
-                    studentAttendanceTime.setAbsenceValue(getBigDecimalValue(getJAXBValue(attendanceTime.getDurationValue())));
+                    studentAttendanceTime.setDurationValue(getBigDecimalValue(getJAXBValue(attendanceTime.getDurationValue())));
                     studentAttendanceTime.setAttendanceNote(getJAXBValue(attendanceTime.getAttendanceNote()));
                     studentAttendanceTime.setAttendanceStatus(getEnumValue(attendanceTime.getAttendanceStatus()));
                     studentAttendanceTime.setStartTime(getTimeValue(attendanceTime.getStartTime()));
                     studentAttendanceTime.setEndTime(getTimeValue(attendanceTime.getEndTime()));
+                    studentAttendanceTime.setTimeTableSubjectRefId(getJAXBValue(attendanceTime.getTimeTableSubjectRefId()));
                     if (attendanceTime.getAttendanceCode() != null) {
                         AttendanceCodeType attendanceCode = attendanceTime.getAttendanceCode();
 
-                        studentAttendanceTime.setCode(getEnumValue(attendanceCode.getCode()));
+                        studentAttendanceTime.setAttendanceType(getEnumValue(attendanceCode.getCode()));
 
                         Set<StudentAttendanceTimeOtherCode> otherCodes = new HashSet<StudentAttendanceTimeOtherCode>();
                         studentAttendanceTime.setOtherCodes(otherCodes);

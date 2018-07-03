@@ -117,7 +117,7 @@ public class PersonPictureConsumerTest extends BaseTest {
         parentObjectRefId.setSIFRefObject("StudentPersonal");
         parentObjectRefId.setValue(StudentPersonalRefIds.REF_ID_1);
         personPicture.setParentObjectRefId(parentObjectRefId);
-        List<Response> responses = personPictureTester.testQBE(personPicture, 10000, 0);
+        List<Response> responses = personPictureTester.testQBE(personPicture, 1000, 0);
         Assert.assertNotNull(responses);
         Assert.assertEquals(1, responses.size());
         Response response = responses.get(0);

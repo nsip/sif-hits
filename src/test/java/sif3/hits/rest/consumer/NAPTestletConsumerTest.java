@@ -17,6 +17,9 @@ import sif.dd.au30.model.NAPTestletCollectionType;
 import sif.dd.au30.model.NAPTestletContentType;
 import sif.dd.au30.model.NAPTestletType;
 import sif.dd.au30.model.ObjectFactory;
+import sif3.common.model.QueryCriteria;
+import sif3.common.model.QueryOperator;
+import sif3.common.model.QueryPredicate;
 import sif3.common.ws.BulkOperationResponse;
 import sif3.common.ws.CreateOperationStatus;
 import sif3.common.ws.OperationStatus;
@@ -239,5 +242,27 @@ public class NAPTestletConsumerTest extends BaseTest {
             Assert.assertTrue(REF_ID_LIST.contains(operationStatus.getResourceID()));
             Assert.assertEquals(HttpStatus.OK.value(), operationStatus.getStatus());
         }
+    }
+    
+    @Test
+    @Category(IntegrationTest.class)
+    public void testServicePathNAPTest() {
+        QueryCriteria queryCriteria = new QueryCriteria();
+        queryCriteria.addPredicate(new QueryPredicate("NAPTests", QueryOperator.EQUAL, NAPTestRefIds.REF_ID_1));
+
+        List<Response> responses = napTestletTester.testServicePath(queryCriteria, 1000, 0);
+
+        Assert.assertNotNull(responses);
+        Assert.assertEquals(1, responses.size());
+        Response response = responses.get(0);
+
+        NAPTestletCollectionType napTestletCollectionType = (NAPTestletCollectionType) response.getDataObject();
+        Assert.assertNotNull(napTestletCollectionType.getNAPTestlet());
+        Assert.assertFalse(napTestletCollectionType.getNAPTestlet().isEmpty());
+        boolean found = false;
+        for (NAPTestletType napTestlet : napTestletCollectionType.getNAPTestlet()) {
+            found = found || NAPTestletRefIds.REF_ID_1.equals(napTestlet.getRefId());
+        }
+        Assert.assertTrue(found);
     }
 }

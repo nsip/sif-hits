@@ -192,4 +192,27 @@ public class DebtorConsumerTest extends BaseTest implements UsesConstants {
             Assert.assertEquals(HttpStatus.OK.value(), operationStatus.getStatus());
         }
     }
+    
+    @Test
+    @Category(IntegrationTest.class)
+    public void testQBE() {
+        ObjectFactory objectFactory = new ObjectFactory();
+        DebtorType debtorType = new DebtorType();
+        BilledEntity billedEntity = objectFactory.createDebtorTypeBilledEntity();
+        billedEntity.setSIFRefObject("VendorInfo");
+        debtorType.setBilledEntity(billedEntity);
+        List<Response> responses = debtorTester.testQBE(debtorType, 1000, 0);
+
+        Assert.assertNotNull(responses);
+        Assert.assertEquals(1, responses.size());
+        Response response = responses.get(0);
+        DebtorCollectionType debtorCollectionType = (DebtorCollectionType) response.getDataObject();
+        Assert.assertNotNull(debtorCollectionType.getDebtor());
+        Assert.assertFalse(debtorCollectionType.getDebtor().isEmpty());
+        boolean found = false;
+        for (DebtorType debtor : debtorCollectionType.getDebtor()) {
+            found = found || DebtorRefIds.REF_ID_1.equals(debtor.getRefId());
+        }
+        Assert.assertTrue(found);
+    }
 }

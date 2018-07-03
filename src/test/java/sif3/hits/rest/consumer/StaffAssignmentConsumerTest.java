@@ -15,6 +15,9 @@ import sif.dd.au30.model.ObjectFactory;
 import sif.dd.au30.model.StaffActivityExtensionType;
 import sif.dd.au30.model.StaffAssignmentCollectionType;
 import sif.dd.au30.model.StaffAssignmentType;
+import sif3.common.model.QueryCriteria;
+import sif3.common.model.QueryOperator;
+import sif3.common.model.QueryPredicate;
 import sif3.common.ws.BulkOperationResponse;
 import sif3.common.ws.CreateOperationStatus;
 import sif3.common.ws.OperationStatus;
@@ -93,7 +96,7 @@ public class StaffAssignmentConsumerTest extends BaseTest {
     public void testQBE() {
         StaffAssignmentType staffAssignment = new StaffAssignmentType();
         staffAssignment.setStaffPersonalRefId(StaffPersonalConsumerTest.StaffPersonalRefIds.REF_ID_1);
-        List<Response> responses = staffAssignmentTester.testQBE(staffAssignment, 10000, 0);
+        List<Response> responses = staffAssignmentTester.testQBE(staffAssignment, 1000, 0);
         Assert.assertNotNull(responses);
         Assert.assertEquals(1, responses.size());
         Response response = responses.get(0);
@@ -213,5 +216,27 @@ public class StaffAssignmentConsumerTest extends BaseTest {
             Assert.assertTrue(REF_ID_LIST.contains(operationStatus.getResourceID()));
             Assert.assertEquals(HttpStatus.OK.value(), operationStatus.getStatus());
         }
+    }
+    
+    @Test
+    @Category(IntegrationTest.class)
+    public void testServicePathStaffPersonal() {
+        QueryCriteria queryCriteria = new QueryCriteria();
+        queryCriteria.addPredicate(new QueryPredicate("StaffPersonals", QueryOperator.EQUAL, StaffPersonalRefIds.REF_ID_1));
+
+        List<Response> responses = staffAssignmentTester.testServicePath(queryCriteria, 1000, 0);
+
+        Assert.assertNotNull(responses);
+        Assert.assertEquals(1, responses.size());
+        Response response = responses.get(0);
+
+        StaffAssignmentCollectionType staffAssignmentCollectionType = (StaffAssignmentCollectionType) response.getDataObject();
+        Assert.assertNotNull(staffAssignmentCollectionType.getStaffAssignment());
+        Assert.assertFalse(staffAssignmentCollectionType.getStaffAssignment().isEmpty());
+        boolean found = false;
+        for (StaffAssignmentType staffAssignment : staffAssignmentCollectionType.getStaffAssignment()) {
+            found = found || REF_ID.equals(staffAssignment.getRefId());
+        }
+        Assert.assertTrue(found);
     }
 }

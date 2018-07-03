@@ -19,6 +19,9 @@ import sif.dd.au30.model.PurchaseOrderCollectionType;
 import sif.dd.au30.model.PurchaseOrderType;
 import sif.dd.au30.model.PurchasingItemType;
 import sif.dd.au30.model.PurchasingItemsType;
+import sif3.common.model.QueryCriteria;
+import sif3.common.model.QueryOperator;
+import sif3.common.model.QueryPredicate;
 import sif3.common.ws.BulkOperationResponse;
 import sif3.common.ws.CreateOperationStatus;
 import sif3.common.ws.OperationStatus;
@@ -192,6 +195,28 @@ public class PurchaseOrderConsumerTest extends BaseTest implements UsesConstants
         PurchaseOrderCollectionType purchaseOrderCollection = (PurchaseOrderCollectionType) response.getDataObject();
         Assert.assertNotNull(purchaseOrderCollection.getPurchaseOrder());
         Assert.assertEquals(5, purchaseOrderCollection.getPurchaseOrder().size());
+    }
+    
+    @Test
+    @Category(IntegrationTest.class)
+    public void testServicePathSchoolInfo() {
+        QueryCriteria queryCriteria = new QueryCriteria();
+        queryCriteria.addPredicate(new QueryPredicate("SchoolInfos", QueryOperator.EQUAL, SchoolInfoConsumerTest.REF_ID));
+
+        List<Response> responses = purchaseOrderTester.testServicePath(queryCriteria, 1000, 0);
+
+        Assert.assertNotNull(responses);
+        Assert.assertEquals(1, responses.size());
+        Response response = responses.get(0);
+
+        PurchaseOrderCollectionType purchaseOrderCollection = (PurchaseOrderCollectionType) response.getDataObject();
+        Assert.assertNotNull(purchaseOrderCollection.getPurchaseOrder());
+        Assert.assertFalse(purchaseOrderCollection.getPurchaseOrder().isEmpty());
+        boolean found = false;
+        for (PurchaseOrderType purchaseOrderType : purchaseOrderCollection.getPurchaseOrder()) {
+            found = found || PurchaseOrderRefIds.REF_ID_1.equals(purchaseOrderType.getRefId());
+        }
+        Assert.assertTrue(found);
     }
 
     @Test

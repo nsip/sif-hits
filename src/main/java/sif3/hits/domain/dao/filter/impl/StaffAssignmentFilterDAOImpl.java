@@ -17,7 +17,7 @@ public class StaffAssignmentFilterDAOImpl extends BaseFilterableRepository<Staff
     protected void addServicePathCriteria(Criteria criteria, String key, String value) {
         if ("SchoolInfos".equals(key)) {
             criteria.add(Restrictions.eq("schoolInfoRefId", value));
-        } else if ("SchoolInfos".equals(key)) {
+        } else if ("StaffPersonals".equals(key)) {
             criteria.add(Restrictions.eq("staffPersonalRefId", value));
         } else {
             super.addServicePathCriteria(criteria, key, value);

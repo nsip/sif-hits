@@ -31,10 +31,14 @@ import sif.dd.au30.model.StimulusListType;
 import sif.dd.au30.model.StimulusType;
 import sif.dd.au30.model.SubstituteItemListType;
 import sif.dd.au30.model.SubstituteItemType;
+import sif3.common.model.QueryCriteria;
+import sif3.common.model.QueryOperator;
+import sif3.common.model.QueryPredicate;
 import sif3.common.ws.BulkOperationResponse;
 import sif3.common.ws.CreateOperationStatus;
 import sif3.common.ws.OperationStatus;
 import sif3.common.ws.Response;
+import sif3.hits.rest.consumer.NAPTestConsumerTest.NAPTestRefIds;
 import sif3.hits.rest.consumer.category.InitialiseData;
 import sif3.hits.rest.consumer.category.IntegrationTest;
 import sif3.infra.rest.consumer.ConsumerLoader;
@@ -291,5 +295,27 @@ public class NAPTestItemConsumerTest extends BaseTest {
             Assert.assertTrue(REF_ID_LIST.contains(operationStatus.getResourceID()));
             Assert.assertEquals(HttpStatus.OK.value(), operationStatus.getStatus());
         }
+    }
+    
+    @Test
+    @Category(IntegrationTest.class)
+    public void testServicePathNAPTest() {
+        QueryCriteria queryCriteria = new QueryCriteria();
+        queryCriteria.addPredicate(new QueryPredicate("NAPTests", QueryOperator.EQUAL, NAPTestRefIds.REF_ID_1));
+
+        List<Response> responses = napTestItemTester.testServicePath(queryCriteria, 1000, 0);
+
+        Assert.assertNotNull(responses);
+        Assert.assertEquals(1, responses.size());
+        Response response = responses.get(0);
+
+        NAPTestItemCollectionType napTestItemCollectionType = (NAPTestItemCollectionType) response.getDataObject();
+        Assert.assertNotNull(napTestItemCollectionType.getNAPTestItem());
+        Assert.assertFalse(napTestItemCollectionType.getNAPTestItem().isEmpty());
+        boolean found = false;
+        for (NAPTestItemType napTestItem : napTestItemCollectionType.getNAPTestItem()) {
+            found = found || NAPTestItemRefIds.REF_ID_1.equals(napTestItem.getRefId());
+        }
+        Assert.assertTrue(found);
     }
 }

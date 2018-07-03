@@ -141,7 +141,7 @@ public class ScheduledActivityConsumerTest extends BaseTest {
     public void testQBE() {
         ScheduledActivityType scheduledActivity = new ScheduledActivityType();
         scheduledActivity.setSchoolInfoRefId(SchoolInfoConsumerTest.REF_ID);
-        List<Response> responses = scheduledActivityTester.testQBE(scheduledActivity, 10000, 0);
+        List<Response> responses = scheduledActivityTester.testQBE(scheduledActivity, 1000, 0);
         Assert.assertNotNull(responses);
         Assert.assertEquals(1, responses.size());
         Response response = responses.get(0);
@@ -162,7 +162,7 @@ public class ScheduledActivityConsumerTest extends BaseTest {
         QueryCriteria queryCriteria = new QueryCriteria();
         queryCriteria.addPredicate(new QueryPredicate("StaffPersonals", QueryOperator.EQUAL, StaffPersonalConsumerTest.StaffPersonalRefIds.REF_ID_1));
 
-        List<Response> responses = scheduledActivityTester.testServicePath(queryCriteria, 10000, 0);
+        List<Response> responses = scheduledActivityTester.testServicePath(queryCriteria, 1000, 0);
 
         Assert.assertNotNull(responses);
         Assert.assertEquals(1, responses.size());
@@ -193,7 +193,7 @@ public class ScheduledActivityConsumerTest extends BaseTest {
         QueryCriteria queryCriteria = new QueryCriteria();
         queryCriteria.addPredicate(new QueryPredicate("StudentPersonals", QueryOperator.EQUAL, StudentPersonalRefIds.REF_ID_1));
 
-        List<Response> responses = scheduledActivityTester.testServicePath(queryCriteria, 10000, 0);
+        List<Response> responses = scheduledActivityTester.testServicePath(queryCriteria, 1000, 0);
 
         Assert.assertNotNull(responses);
         Assert.assertEquals(1, responses.size());
@@ -219,7 +219,7 @@ public class ScheduledActivityConsumerTest extends BaseTest {
         QueryCriteria queryCriteria = new QueryCriteria();
         queryCriteria.addPredicate(new QueryPredicate("TeachingGroups", QueryOperator.EQUAL, TeachingGroupConsumerTest.REF_ID));
 
-        List<Response> responses = scheduledActivityTester.testServicePath(queryCriteria, 10000, 0);
+        List<Response> responses = scheduledActivityTester.testServicePath(queryCriteria, 1000, 0);
 
         Assert.assertNotNull(responses);
         Assert.assertEquals(1, responses.size());

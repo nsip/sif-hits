@@ -20,6 +20,9 @@ import sif.dd.au30.model.ObjectFactory;
 import sif.dd.au30.model.PNPCodeListType;
 import sif.dd.au30.model.TestDisruptionListType;
 import sif.dd.au30.model.TestDisruptionType;
+import sif3.common.model.QueryCriteria;
+import sif3.common.model.QueryOperator;
+import sif3.common.model.QueryPredicate;
 import sif3.common.ws.BulkOperationResponse;
 import sif3.common.ws.CreateOperationStatus;
 import sif3.common.ws.OperationStatus;
@@ -227,5 +230,49 @@ public class NAPEventStudentLinkConsumerTest extends BaseTest {
             Assert.assertTrue(REF_ID_LIST.contains(operationStatus.getResourceID()));
             Assert.assertEquals(HttpStatus.OK.value(), operationStatus.getStatus());
         }
+    }
+    
+    @Test
+    @Category(IntegrationTest.class)
+    public void testServicePathSchoolInfo() {
+        QueryCriteria queryCriteria = new QueryCriteria();
+        queryCriteria.addPredicate(new QueryPredicate("SchoolInfos", QueryOperator.EQUAL, SchoolInfoConsumerTest.REF_ID));
+
+        List<Response> responses = napEventStudentLinkTester.testServicePath(queryCriteria, 1000, 0);
+
+        Assert.assertNotNull(responses);
+        Assert.assertEquals(1, responses.size());
+        Response response = responses.get(0);
+
+        NAPEventStudentLinkCollectionType napEventStudentLinkCollection = (NAPEventStudentLinkCollectionType) response.getDataObject();
+        Assert.assertNotNull(napEventStudentLinkCollection.getNAPEventStudentLink());
+        Assert.assertFalse(napEventStudentLinkCollection.getNAPEventStudentLink().isEmpty());
+        boolean found = false;
+        for (NAPEventStudentLinkType napEventStudentLinkType : napEventStudentLinkCollection.getNAPEventStudentLink()) {
+            found = found || NAPEventStudentLinkRefIds.REF_ID_1.equals(napEventStudentLinkType.getRefId());
+        }
+        Assert.assertTrue(found);
+    }
+    
+    @Test
+    @Category(IntegrationTest.class)
+    public void testServicePathStudentPersonals() {
+        QueryCriteria queryCriteria = new QueryCriteria();
+        queryCriteria.addPredicate(new QueryPredicate("StudentPersonals", QueryOperator.EQUAL, StudentPersonalConsumerTest.StudentPersonalRefIds.REF_ID_1));
+
+        List<Response> responses = napEventStudentLinkTester.testServicePath(queryCriteria, 1000, 0);
+
+        Assert.assertNotNull(responses);
+        Assert.assertEquals(1, responses.size());
+        Response response = responses.get(0);
+
+        NAPEventStudentLinkCollectionType napEventStudentLinkCollection = (NAPEventStudentLinkCollectionType) response.getDataObject();
+        Assert.assertNotNull(napEventStudentLinkCollection.getNAPEventStudentLink());
+        Assert.assertFalse(napEventStudentLinkCollection.getNAPEventStudentLink().isEmpty());
+        boolean found = false;
+        for (NAPEventStudentLinkType napEventStudentLinkType : napEventStudentLinkCollection.getNAPEventStudentLink()) {
+            found = found || NAPEventStudentLinkRefIds.REF_ID_1.equals(napEventStudentLinkType.getRefId());
+        }
+        Assert.assertTrue(found);
     }
 }

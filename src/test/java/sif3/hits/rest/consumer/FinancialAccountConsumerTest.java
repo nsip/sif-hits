@@ -12,6 +12,9 @@ import org.springframework.http.HttpStatus;
 import sif.dd.au30.model.FinancialAccountCollectionType;
 import sif.dd.au30.model.FinancialAccountType;
 import sif.dd.au30.model.ObjectFactory;
+import sif3.common.model.QueryCriteria;
+import sif3.common.model.QueryOperator;
+import sif3.common.model.QueryPredicate;
 import sif3.common.ws.BulkOperationResponse;
 import sif3.common.ws.CreateOperationStatus;
 import sif3.common.ws.OperationStatus;
@@ -204,5 +207,27 @@ public class FinancialAccountConsumerTest extends BaseTest {
             Assert.assertTrue(REF_ID_LIST.contains(operationStatus.getResourceID()));
             Assert.assertEquals(HttpStatus.OK.value(), operationStatus.getStatus());
         }
+    }
+    
+    @Test
+    @Category(IntegrationTest.class)
+    public void testServicePathSchoolInfo() {
+        QueryCriteria queryCriteria = new QueryCriteria();
+        queryCriteria.addPredicate(new QueryPredicate("SchoolInfos", QueryOperator.EQUAL, SchoolInfoConsumerTest.REF_ID));
+
+        List<Response> responses = financialTester.testServicePath(queryCriteria, 1000, 0);
+
+        Assert.assertNotNull(responses);
+        Assert.assertEquals(1, responses.size());
+        Response response = responses.get(0);
+
+        FinancialAccountCollectionType financialAccountCollection = (FinancialAccountCollectionType) response.getDataObject();
+        Assert.assertNotNull(financialAccountCollection.getFinancialAccount());
+        Assert.assertFalse(financialAccountCollection.getFinancialAccount().isEmpty());
+        boolean found = false;
+        for (FinancialAccountType financialAccountType : financialAccountCollection.getFinancialAccount()) {
+            found = found || FinancialAccountRefIds.REF_ID_1.equals(financialAccountType.getRefId());
+        }
+        Assert.assertTrue(found);
     }
 }

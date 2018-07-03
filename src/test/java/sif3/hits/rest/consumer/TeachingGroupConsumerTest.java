@@ -171,7 +171,7 @@ public class TeachingGroupConsumerTest extends BaseTest {
         ObjectFactory objectFactory = new ObjectFactory();
         TeachingGroupType teachingGroup = new TeachingGroupType();
         teachingGroup.setSchoolInfoRefId(objectFactory.createTeachingGroupTypeSchoolInfoRefId(SchoolInfoConsumerTest.REF_ID));
-        List<Response> responses = teachingGroupTester.testQBE(teachingGroup, 10000, 0);
+        List<Response> responses = teachingGroupTester.testQBE(teachingGroup, 1000, 0);
         Assert.assertNotNull(responses);
         Assert.assertEquals(1, responses.size());
         Response response = responses.get(0);
@@ -193,7 +193,7 @@ public class TeachingGroupConsumerTest extends BaseTest {
         QueryCriteria queryCriteria = new QueryCriteria();
         queryCriteria.addPredicate(new QueryPredicate("StudentPersonals", QueryOperator.EQUAL, StudentPersonalRefIds.REF_ID_1));
 
-        List<Response> responses = teachingGroupTester.testServicePath(queryCriteria, 10000, 0);
+        List<Response> responses = teachingGroupTester.testServicePath(queryCriteria, 1000, 0);
 
         Assert.assertNotNull(responses);
         Assert.assertEquals(1, responses.size());
@@ -226,7 +226,7 @@ public class TeachingGroupConsumerTest extends BaseTest {
         QueryCriteria queryCriteria = new QueryCriteria();
         queryCriteria.addPredicate(new QueryPredicate("StaffPersonals", QueryOperator.EQUAL, StaffPersonalConsumerTest.StaffPersonalRefIds.REF_ID_1));
 
-        List<Response> responses = teachingGroupTester.testServicePath(queryCriteria, 10000, 0);
+        List<Response> responses = teachingGroupTester.testServicePath(queryCriteria, 1000, 0);
 
         Assert.assertNotNull(responses);
         Assert.assertEquals(1, responses.size());

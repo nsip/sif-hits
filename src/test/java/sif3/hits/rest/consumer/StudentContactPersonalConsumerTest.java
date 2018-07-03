@@ -246,7 +246,52 @@ public class StudentContactPersonalConsumerTest extends BaseTest {
         QueryCriteria queryCriteria = new QueryCriteria();
         queryCriteria.addPredicate(new QueryPredicate("StudentPersonals", QueryOperator.EQUAL, StudentPersonalRefIds.REF_ID_1));
 
-        List<Response> responses = studentTester.testServicePath(queryCriteria, 10000, 0);
+        List<Response> responses = studentTester.testServicePath(queryCriteria, 1000, 0);
+
+        Assert.assertNotNull(responses);
+        Assert.assertEquals(1, responses.size());
+        Response response = responses.get(0);
+
+        StudentContactPersonalCollectionType studentContactPersonalCollectionType = (StudentContactPersonalCollectionType) response.getDataObject();
+        Assert.assertNotNull(studentContactPersonalCollectionType.getStudentContactPersonal());
+        Assert.assertFalse(studentContactPersonalCollectionType.getStudentContactPersonal().isEmpty());
+        boolean found = false;
+        for (StudentContactPersonalType studentContactPersonal : studentContactPersonalCollectionType.getStudentContactPersonal()) {
+            found = found || StudentContactPersonalRefIds.REF_ID_1.equals(studentContactPersonal.getRefId());
+        }
+        Assert.assertTrue(found);
+    }
+    
+    @Test
+    @Category(IntegrationTest.class)
+    public void testServicePathSchoolInfo() {
+        QueryCriteria queryCriteria = new QueryCriteria();
+        queryCriteria.addPredicate(new QueryPredicate("SchoolInfos", QueryOperator.EQUAL, SchoolInfoConsumerTest.REF_ID));
+
+        List<Response> responses = studentTester.testServicePath(queryCriteria, 1000, 0);
+
+        Assert.assertNotNull(responses);
+        Assert.assertEquals(1, responses.size());
+        Response response = responses.get(0);
+
+        StudentContactPersonalCollectionType studentContactPersonalCollectionType = (StudentContactPersonalCollectionType) response.getDataObject();
+        Assert.assertNotNull(studentContactPersonalCollectionType.getStudentContactPersonal());
+        Assert.assertFalse(studentContactPersonalCollectionType.getStudentContactPersonal().isEmpty());
+        boolean found = false;
+        for (StudentContactPersonalType studentContactPersonal : studentContactPersonalCollectionType.getStudentContactPersonal()) {
+            found = found || StudentContactPersonalRefIds.REF_ID_1.equals(studentContactPersonal.getRefId());
+        }
+        Assert.assertTrue(found);
+    }
+    
+    @Test
+    @Category(IntegrationTest.class)
+    public void testServicePathSchoolInfoStudentPersonal() {
+        QueryCriteria queryCriteria = new QueryCriteria();
+        queryCriteria.addPredicate(new QueryPredicate("SchoolInfos", QueryOperator.EQUAL, SchoolInfoConsumerTest.REF_ID));
+        queryCriteria.addPredicate(new QueryPredicate("StudentPersonals", QueryOperator.EQUAL, StudentPersonalRefIds.REF_ID_1));
+
+        List<Response> responses = studentTester.testServicePath(queryCriteria, 1000, 0);
 
         Assert.assertNotNull(responses);
         Assert.assertEquals(1, responses.size());

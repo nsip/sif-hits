@@ -10,7 +10,7 @@ import org.springframework.stereotype.Repository;
 import sif.dd.au30.model.GradingAssignmentType;
 import sif3.hits.domain.dao.filter.GradingAssignmentFilterDAO;
 import sif3.hits.domain.model.GradingAssignment;
-import sif3.hits.domain.model.LocationInfo;
+import sif3.hits.domain.model.TeachingGroup;
 
 @Repository
 public class GradingAssignmentFilterDAOImpl extends BaseFilterableRepository<GradingAssignment, GradingAssignmentType> implements GradingAssignmentFilterDAO {
@@ -35,7 +35,7 @@ public class GradingAssignmentFilterDAOImpl extends BaseFilterableRepository<Gra
             criteria.add(Restrictions.eq("tg.refId", value));
         } else if ("SchoolInfos".equals(key)) {
             criteria.createAlias("teachingGroup", "tgs");
-            DetachedCriteria teachingGroupQuery = DetachedCriteria.forClass(LocationInfo.class);
+            DetachedCriteria teachingGroupQuery = DetachedCriteria.forClass(TeachingGroup.class);
             teachingGroupQuery.createAlias("schoolInfo", "school");
             teachingGroupQuery.add(Restrictions.eq("school.refId", value));
             teachingGroupQuery.setProjection(Projections.property("refId"));

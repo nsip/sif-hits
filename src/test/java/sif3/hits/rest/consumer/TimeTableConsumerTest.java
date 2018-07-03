@@ -129,7 +129,7 @@ public class TimeTableConsumerTest extends BaseTest {
         QueryCriteria queryCriteria = new QueryCriteria();
         queryCriteria.addPredicate(new QueryPredicate("SchoolInfos", QueryOperator.EQUAL, SchoolInfoConsumerTest.REF_ID));
 
-        List<Response> responses = timeTableTester.testServicePath(queryCriteria, 10000, 0);
+        List<Response> responses = timeTableTester.testServicePath(queryCriteria, 1000, 0);
         Assert.assertNotNull(responses);
         Assert.assertEquals(1, responses.size());
         Response response = responses.get(0);

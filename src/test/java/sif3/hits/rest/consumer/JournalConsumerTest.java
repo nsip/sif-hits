@@ -14,6 +14,9 @@ import sif.dd.au30.model.JournalType;
 import sif.dd.au30.model.JournalType.OriginatingTransactionRefId;
 import sif.dd.au30.model.MonetaryAmountType;
 import sif.dd.au30.model.ObjectFactory;
+import sif3.common.model.QueryCriteria;
+import sif3.common.model.QueryOperator;
+import sif3.common.model.QueryPredicate;
 import sif3.common.ws.BulkOperationResponse;
 import sif3.common.ws.CreateOperationStatus;
 import sif3.common.ws.OperationStatus;
@@ -199,5 +202,27 @@ public class JournalConsumerTest extends BaseTest implements UsesConstants {
             Assert.assertTrue(REF_ID_LIST.contains(operationStatus.getResourceID()));
             Assert.assertEquals(HttpStatus.OK.value(), operationStatus.getStatus());
         }
+    }
+    
+    @Test
+    @Category(IntegrationTest.class)
+    public void testServicePathSchoolInfo() {
+        QueryCriteria queryCriteria = new QueryCriteria();
+        queryCriteria.addPredicate(new QueryPredicate("SchoolInfos", QueryOperator.EQUAL, SchoolInfoConsumerTest.REF_ID));
+
+        List<Response> responses = journalTester.testServicePath(queryCriteria, 1000, 0);
+
+        Assert.assertNotNull(responses);
+        Assert.assertEquals(1, responses.size());
+        Response response = responses.get(0);
+
+        JournalCollectionType journalCollection = (JournalCollectionType) response.getDataObject();
+        Assert.assertNotNull(journalCollection.getJournal());
+        Assert.assertFalse(journalCollection.getJournal().isEmpty());
+        boolean found = false;
+        for (JournalType journalType : journalCollection.getJournal()) {
+            found = found || JournalRefIds.REF_ID_1.equals(journalType.getRefId());
+        }
+        Assert.assertTrue(found);
     }
 }

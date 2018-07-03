@@ -75,7 +75,7 @@ public class NAPCodeFrameConsumerTest extends BaseTest {
     public void testQBE() {
         NAPCodeFrameType codeFrame = new NAPCodeFrameType();
         codeFrame.setNAPTestRefId(NAPTestRefIds.REF_ID_1);
-        List<Response> responses = codeFrameTester.testQBE(codeFrame, 10000, 0);
+        List<Response> responses = codeFrameTester.testQBE(codeFrame, 1000, 0);
         Assert.assertNotNull(responses);
         Assert.assertEquals(1, responses.size());
 

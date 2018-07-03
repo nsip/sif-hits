@@ -4304,12 +4304,6 @@ public interface IObjectFactory {
     JAXBElement<String> createExpenseAccountTypeAccountingPeriod(String value);
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link Object }{@code >}}
-     * 
-     */
-    JAXBElement<Object> createExpenseAccountsTypeExpenseAccountType(Object value);
-
-    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
      * 
      */

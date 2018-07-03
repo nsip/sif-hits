@@ -21,6 +21,9 @@ import sif.dd.au30.model.PhoneNumberListType;
 import sif.dd.au30.model.PhoneNumberType;
 import sif.dd.au30.model.VendorInfoCollectionType;
 import sif.dd.au30.model.VendorInfoType;
+import sif3.common.model.QueryCriteria;
+import sif3.common.model.QueryOperator;
+import sif3.common.model.QueryPredicate;
 import sif3.common.ws.BulkOperationResponse;
 import sif3.common.ws.CreateOperationStatus;
 import sif3.common.ws.OperationStatus;
@@ -175,6 +178,28 @@ public class VendorInfoConsumerTest extends BaseTest implements UsesConstants {
         VendorInfoCollectionType vendorInfoCollection = (VendorInfoCollectionType) response.getDataObject();
         Assert.assertNotNull(vendorInfoCollection.getVendorInfo());
         Assert.assertEquals(5, vendorInfoCollection.getVendorInfo().size());
+    }
+    
+    @Test
+    @Category(IntegrationTest.class)
+    public void testServicePathSchoolInfo() {
+        QueryCriteria queryCriteria = new QueryCriteria();
+        queryCriteria.addPredicate(new QueryPredicate("SchoolInfos", QueryOperator.EQUAL, SchoolInfoConsumerTest.REF_ID));
+
+        List<Response> responses = vendorInfoTester.testServicePath(queryCriteria, 1000, 0);
+
+        Assert.assertNotNull(responses);
+        Assert.assertEquals(1, responses.size());
+        Response response = responses.get(0);
+        VendorInfoCollectionType vendorInfoCollection = (VendorInfoCollectionType) response.getDataObject();
+        Assert.assertNotNull(vendorInfoCollection);
+        Assert.assertNotNull(vendorInfoCollection.getVendorInfo());
+        Assert.assertFalse(vendorInfoCollection.getVendorInfo().isEmpty());
+        boolean found = false;
+        for (VendorInfoType vendorInfo : vendorInfoCollection.getVendorInfo()) {
+            found = found || VendorInfoRefIds.REF_ID_1.equals(vendorInfo.getRefId());
+        }
+        Assert.assertTrue(found);
     }
 
     @Test

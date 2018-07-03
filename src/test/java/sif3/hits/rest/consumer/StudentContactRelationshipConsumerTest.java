@@ -16,6 +16,9 @@ import sif.dd.au30.model.ObjectFactory;
 import sif.dd.au30.model.RelationshipType;
 import sif.dd.au30.model.StudentContactRelationshipCollectionType;
 import sif.dd.au30.model.StudentContactRelationshipType;
+import sif3.common.model.QueryCriteria;
+import sif3.common.model.QueryOperator;
+import sif3.common.model.QueryPredicate;
 import sif3.common.ws.BulkOperationResponse;
 import sif3.common.ws.CreateOperationStatus;
 import sif3.common.ws.OperationStatus;
@@ -214,5 +217,27 @@ public class StudentContactRelationshipConsumerTest extends BaseTest {
             Assert.assertTrue(REF_ID_LIST.contains(operationStatus.getResourceID()));
             Assert.assertEquals(HttpStatus.OK.value(), operationStatus.getStatus());
         }
+    }
+    
+    @Test
+    @Category(IntegrationTest.class)
+    public void testServicePathStudentPersonal() {
+        QueryCriteria queryCriteria = new QueryCriteria();
+        queryCriteria.addPredicate(new QueryPredicate("StudentPersonals", QueryOperator.EQUAL, StudentPersonalRefIds.REF_ID_1));
+
+        List<Response> responses = studentTester.testServicePath(queryCriteria, 1000, 0);
+
+        Assert.assertNotNull(responses);
+        Assert.assertEquals(1, responses.size());
+        Response response = responses.get(0);
+
+        StudentContactRelationshipCollectionType studentContactRelationshipCollectionType = (StudentContactRelationshipCollectionType) response.getDataObject();
+        Assert.assertNotNull(studentContactRelationshipCollectionType.getStudentContactRelationship());
+        Assert.assertFalse(studentContactRelationshipCollectionType.getStudentContactRelationship().isEmpty());
+        boolean found = false;
+        for (StudentContactRelationshipType studentContactRelationship : studentContactRelationshipCollectionType.getStudentContactRelationship()) {
+            found = found || StudentContactRelationshipRefIds.REF_ID_1.equals(studentContactRelationship.getStudentContactRelationshipRefId());
+        }
+        Assert.assertTrue(found);
     }
 }

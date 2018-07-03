@@ -4,6 +4,8 @@ import java.math.BigDecimal;
 import java.util.Arrays;
 import java.util.List;
 
+import javax.xml.datatype.DatatypeConfigurationException;
+
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -142,7 +144,7 @@ public class StudentSchoolEnrollmentConsumerTest extends BaseTest {
     public void testQBE() {
         StudentSchoolEnrollmentType studentEnrollment = new StudentSchoolEnrollmentType();
         studentEnrollment.setStudentPersonalRefId(StudentPersonalRefIds.REF_ID_1);
-        List<Response> responses = studentSchoolEnrollmentTester.testQBE(studentEnrollment, 10000, 0);
+        List<Response> responses = studentSchoolEnrollmentTester.testQBE(studentEnrollment, 1000, 0);
         Assert.assertNotNull(responses);
         Assert.assertEquals(1, responses.size());
         Response response = responses.get(0);
@@ -153,6 +155,31 @@ public class StudentSchoolEnrollmentConsumerTest extends BaseTest {
         for (StudentSchoolEnrollmentType studentSchoolEnrollmentType : studentSchoolEnrollmentCollectionType.getStudentSchoolEnrollment()) {
             found = found || REF_ID.equals(studentSchoolEnrollmentType.getRefId());
             Assert.assertEquals(StudentPersonalRefIds.REF_ID_1, studentSchoolEnrollmentType.getStudentPersonalRefId());
+        }
+        Assert.assertTrue(found);
+    }
+    
+    @Test
+    @Category(IntegrationTest.class)
+    public void testQBEYearLevel() throws DatatypeConfigurationException {
+        ObjectFactory objectFactory = new ObjectFactory();
+        StudentSchoolEnrollmentType studentEnrollment = new StudentSchoolEnrollmentType();
+        studentEnrollment.setSchoolYear(getDate("2014"));
+        YearLevelType yly = new YearLevelType();
+        yly.setCode(AUCodeSetsYearLevelCodeType.VALUE_8);
+        studentEnrollment.setYearLevel(objectFactory.createStudentSchoolEnrollmentTypeYearLevel(yly));
+        List<Response> responses = studentSchoolEnrollmentTester.testQBE(studentEnrollment, 1000, 0);
+        Assert.assertNotNull(responses);
+        Assert.assertEquals(1, responses.size());
+        Response response = responses.get(0);
+        StudentSchoolEnrollmentCollectionType studentSchoolEnrollmentCollectionType = (StudentSchoolEnrollmentCollectionType) response.getDataObject();
+        Assert.assertNotNull(studentSchoolEnrollmentCollectionType.getStudentSchoolEnrollment());
+        Assert.assertFalse(studentSchoolEnrollmentCollectionType.getStudentSchoolEnrollment().isEmpty());
+        boolean found = false;
+        for (StudentSchoolEnrollmentType studentSchoolEnrollmentType : studentSchoolEnrollmentCollectionType.getStudentSchoolEnrollment()) {
+            found = found || REF_ID.equals(studentSchoolEnrollmentType.getRefId());
+            Assert.assertEquals(2014, studentSchoolEnrollmentType.getSchoolYear().getYear());
+            Assert.assertEquals(AUCodeSetsYearLevelCodeType.VALUE_8.value(), studentSchoolEnrollmentType.getYearLevel().getValue().getCode().value());
         }
         Assert.assertTrue(found);
     }
