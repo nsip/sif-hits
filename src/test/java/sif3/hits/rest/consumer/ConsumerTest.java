@@ -3,6 +3,7 @@ package sif3.hits.rest.consumer;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -105,6 +106,10 @@ public class ConsumerTest<S, M> {
     }
 
     List<Response> testCreateOne(String filename) {
+        return testCreateOne(filename, null, null);
+    }
+    
+    List<Response> testCreateOne(String filename, String zone, String context) {
         List<Response> result = null;
         System.out.println("Start 'Create " + getSingleName() + "' in all connected environments...");
         try {
@@ -114,7 +119,11 @@ public class ConsumerTest<S, M> {
             if (SINGLE_CLASS.isAssignableFrom(object.getClass())) {
                 input = SINGLE_CLASS.cast(object);
             }
-            result = testConsumer.createSingle(input, null);
+            List<ZoneContextInfo> zones = null;
+            if (zone != null && context != null) {
+                zones = Arrays.asList(new ZoneContextInfo(zone, context));
+            }
+            result = testConsumer.createSingle(input, zones);
             System.out.println("Responses from attempt to 'Create " + getSingleName() + "':");
             printResponses(result);
         } catch (Exception ex) {
@@ -247,7 +256,7 @@ public class ConsumerTest<S, M> {
         String result = "";
         try {
             Resource resource = new ClassPathResource(FILE_PATH + "/" + filename);
-            BufferedReader br = new BufferedReader(new InputStreamReader(resource.getInputStream()), 1024);
+            BufferedReader br = new BufferedReader(new InputStreamReader(resource.getInputStream(), Charset.forName("UTF-8")), 1024);
             StringBuilder stringBuilder = new StringBuilder();
             String line;
             while ((line = br.readLine()) != null) {
@@ -326,6 +335,26 @@ public class ConsumerTest<S, M> {
         } else {
             throw new Exception("Bad result");
         }
+        return result;
+    }
+
+    public List<BulkOperationResponse<OperationStatus>> testUpdateMany(String filename) {
+        List<BulkOperationResponse<OperationStatus>> result = null;
+        System.out.println("Start 'Update Many " + getSingleName() + "' in all connected environments...");
+        try {
+            String contents = getFileContents(filename);
+            Object object = testConsumer.getUnmarshaller().unmarshalFromXML(contents, MULTI_CLASS);
+            M input = null;
+            if (MULTI_CLASS.isAssignableFrom(object.getClass())) {
+                input = MULTI_CLASS.cast(object);
+            }
+            result = testConsumer.updateMany(input, null, RequestType.IMMEDIATE);
+            System.out.println("Responses from attempt to 'Update " + getSingleName() + "':");
+            printResponses(result);
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+        System.out.println("Finished 'Update " + getSingleName() + "' in all connected environments...");
         return result;
     }
 

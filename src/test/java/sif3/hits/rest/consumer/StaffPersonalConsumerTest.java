@@ -1,5 +1,6 @@
 package sif3.hits.rest.consumer;
 
+import java.nio.charset.Charset;
 import java.util.Arrays;
 import java.util.List;
 
@@ -216,6 +217,22 @@ public class StaffPersonalConsumerTest extends BaseTest {
         Response deleteResponse = deleteResponses.get(0);
         Assert.assertNull(deleteResponse.getDataObject());
         Assert.assertEquals(HttpStatus.NO_CONTENT.value(), deleteResponse.getStatus());
+    }
+    
+    @Test
+    @Category(IntegrationTest.class)
+    public void testCreate() {
+//        String s = new String("ö");
+//        byte[] b = s.getBytes(Charset.forName("UTF-8"));
+//        for (int i = 0; i < b.length; i++) {
+//            System.out.print(b[i]  & 0xFF);
+//        }
+//        System.out.print("\n");
+//        byte[] bb = s.getBytes(Charset.forName("ISO-8859-1"));
+//        for (int i = 0; i < bb.length; i++) {
+//            System.out.print(bb[i] & 0xFF);
+//        }
+        staffTester.testUpdateMany("staffs.xml");
     }
 
     @Test
