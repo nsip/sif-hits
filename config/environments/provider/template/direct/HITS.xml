@@ -41,7 +41,7 @@
             <right type="DELETE">APPROVED</right>
           </rights>
         </service>
-        <service name="SchoolInfos/{}/ChargedLocationInfos" contextId="DEFAULT" type="OBJECT">
+        <service name="SchoolInfos/{}/ChargedLocationInfos" contextId="DEFAULT" type="SERVICEPATH">
           <rights>
             <right type="QUERY">APPROVED</right>
           </rights>
@@ -54,27 +54,27 @@
             <right type="DELETE">APPROVED</right>
           </rights>
         </service>
-        <service name="StaffPersonals/{}/Debtors" contextId="DEFAULT" type="OBJECT">
+        <service name="StaffPersonals/{}/Debtors" contextId="DEFAULT" type="SERVICEPATH">
           <rights>
             <right type="QUERY">APPROVED</right>
           </rights>
         </service>
-        <service name="StudentContactPersonals/{}/Debtors" contextId="DEFAULT" type="OBJECT">
+        <service name="StudentContactPersonals/{}/Debtors" contextId="DEFAULT" type="SERVICEPATH">
           <rights>
             <right type="QUERY">APPROVED</right>
           </rights>
         </service>
-        <service name="StudentPersonals/{}/Debtors" contextId="DEFAULT" type="OBJECT">
+        <service name="StudentPersonals/{}/Debtors" contextId="DEFAULT" type="SERVICEPATH">
           <rights>
             <right type="QUERY">APPROVED</right>
           </rights>
         </service>
-        <service name="VendorInfos/{}/Debtors" contextId="DEFAULT" type="OBJECT">
+        <service name="VendorInfos/{}/Debtors" contextId="DEFAULT" type="SERVICEPATH">
           <rights>
             <right type="QUERY">APPROVED</right>
           </rights>
         </service>
-        <service name="SchoolInfos/{}/Debtors" contextId="DEFAULT" type="OBJECT">
+        <service name="SchoolInfos/{}/Debtors" contextId="DEFAULT" type="SERVICEPATH">
           <rights>
             <right type="QUERY">APPROVED</right>
           </rights>
@@ -87,12 +87,12 @@
             <right type="DELETE">APPROVED</right>
           </rights>
         </service>
-        <service name="ChargedLocationInfos/{}/FinancialAccounts" contextId="DEFAULT" type="OBJECT">
+        <service name="ChargedLocationInfos/{}/FinancialAccounts" contextId="DEFAULT" type="SERVICEPATH">
           <rights>
             <right type="QUERY">APPROVED</right>
           </rights>
         </service>
-        <service name="SchoolInfos/{}/FinancialAccounts" contextId="DEFAULT" type="OBJECT">
+        <service name="SchoolInfos/{}/FinancialAccounts" contextId="DEFAULT" type="SERVICEPATH">
           <rights>
             <right type="QUERY">APPROVED</right>
           </rights>
@@ -105,12 +105,12 @@
             <right type="DELETE">APPROVED</right>
           </rights>
         </service>
-        <service name="SchoolInfos/{}/GradingAssignments" contextId="DEFAULT" type="OBJECT">
+        <service name="SchoolInfos/{}/GradingAssignments" contextId="DEFAULT" type="SERVICEPATH">
           <rights>
             <right type="QUERY">APPROVED</right>
           </rights>
         </service>
-        <service name="TeachingGroups/{}/GradingAssignments" contextId="DEFAULT" type="OBJECT">
+        <service name="TeachingGroups/{}/GradingAssignments" contextId="DEFAULT" type="SERVICEPATH">
           <rights>
             <right type="QUERY">APPROVED</right>
           </rights>
@@ -123,12 +123,12 @@
             <right type="DELETE">APPROVED</right>
           </rights>
         </service>
-        <service name="GradingAssignments/{}/GradingAssignmentScores" contextId="DEFAULT" type="OBJECT">
+        <service name="GradingAssignments/{}/GradingAssignmentScores" contextId="DEFAULT" type="SERVICEPATH">
           <rights>
             <right type="QUERY">APPROVED</right>
           </rights>
         </service>
-        <service name="StudentPersonals/{}/GradingAssignmentScores" contextId="DEFAULT" type="OBJECT">
+        <service name="StudentPersonals/{}/GradingAssignmentScores" contextId="DEFAULT" type="SERVICEPATH">
           <rights>
             <right type="QUERY">APPROVED</right>
           </rights>
@@ -141,12 +141,12 @@
             <right type="DELETE">APPROVED</right>
           </rights>
         </service>
-        <service name="PurchaseOrders/{}/Invoices" contextId="DEFAULT" type="OBJECT">
+        <service name="PurchaseOrders/{}/Invoices" contextId="DEFAULT" type="SERVICEPATH">
           <rights>
             <right type="QUERY">APPROVED</right>
           </rights>
         </service>
-        <service name="SchoolInfos/{}/Invoices" contextId="DEFAULT" type="OBJECT">
+        <service name="SchoolInfos/{}/Invoices" contextId="DEFAULT" type="SERVICEPATH">
           <rights>
             <right type="QUERY">APPROVED</right>
           </rights>
@@ -159,7 +159,7 @@
             <right type="DELETE">APPROVED</right>
           </rights>
         </service>
-        <service name="SchoolInfos/{}/Journals" contextId="DEFAULT" type="OBJECT">
+        <service name="SchoolInfos/{}/Journals" contextId="DEFAULT" type="SERVICEPATH">
           <rights>
             <right type="QUERY">APPROVED</right>
           </rights>
@@ -172,12 +172,12 @@
             <right type="DELETE">APPROVED</right>
           </rights>
         </service>
-        <service name="SchoolInfos/{}/NAPEventStudentLinks" contextId="DEFAULT" type="OBJECT">
+        <service name="SchoolInfos/{}/NAPEventStudentLinks" contextId="DEFAULT" type="SERVICEPATH">
           <rights>
             <right type="QUERY">APPROVED</right>
           </rights>
         </service>
-        <service name="StudentPersonals/{}/NAPEventStudentLinks" contextId="DEFAULT" type="OBJECT">
+        <service name="StudentPersonals/{}/NAPEventStudentLinks" contextId="DEFAULT" type="SERVICEPATH">
           <rights>
             <right type="QUERY">APPROVED</right>
           </rights>
@@ -198,12 +198,12 @@
             <right type="DELETE">APPROVED</right>
           </rights>
         </service>
-        <service name="SchoolInfos/{}/NAPStudentResponseSets" contextId="DEFAULT" type="OBJECT">
+        <service name="SchoolInfos/{}/NAPStudentResponseSets" contextId="DEFAULT" type="SERVICEPATH">
           <rights>
             <right type="QUERY">APPROVED</right>
           </rights>
         </service>
-        <service name="StudentPersonals/{}/NAPStudentResponseSets" contextId="DEFAULT" type="OBJECT">
+        <service name="StudentPersonals/{}/NAPStudentResponseSets" contextId="DEFAULT" type="SERVICEPATH">
           <rights>
             <right type="QUERY">APPROVED</right>
           </rights>
@@ -216,7 +216,7 @@
             <right type="DELETE">APPROVED</right>
           </rights>
         </service>
-        <service name="NAPTests/{}/NAPTestItems" contextId="DEFAULT" type="OBJECT">
+        <service name="NAPTests/{}/NAPTestItems" contextId="DEFAULT" type="SERVICEPATH">
           <rights>
             <right type="QUERY">APPROVED</right>
           </rights>
@@ -229,7 +229,7 @@
             <right type="DELETE">APPROVED</right>
           </rights>
         </service>
-        <service name="NAPTests/{}/NAPTestlets" contextId="DEFAULT" type="OBJECT">
+        <service name="NAPTests/{}/NAPTestlets" contextId="DEFAULT" type="SERVICEPATH">
           <rights>
             <right type="QUERY">APPROVED</right>
           </rights>
@@ -250,7 +250,7 @@
             <right type="DELETE">APPROVED</right>
           </rights>
         </service>
-        <service name="SchoolInfos/{}/NAPTestScoreSummarys" contextId="DEFAULT" type="OBJECT">
+        <service name="SchoolInfos/{}/NAPTestScoreSummarys" contextId="DEFAULT" type="SERVICEPATH">
           <rights>
             <right type="QUERY">APPROVED</right>
           </rights>
@@ -263,12 +263,12 @@
             <right type="DELETE">APPROVED</right>
           </rights>
         </service>
-        <service name="Invoices/{}/PaymentReceipts" contextId="DEFAULT" type="OBJECT">
+        <service name="Invoices/{}/PaymentReceipts" contextId="DEFAULT" type="SERVICEPATH">
           <rights>
             <right type="QUERY">APPROVED</right>
           </rights>
         </service>
-        <service name="SchoolInfos/{}/PaymentReceipts" contextId="DEFAULT" type="OBJECT">
+        <service name="SchoolInfos/{}/PaymentReceipts" contextId="DEFAULT" type="SERVICEPATH">
           <rights>
             <right type="QUERY">APPROVED</right>
           </rights>
@@ -289,7 +289,7 @@
             <right type="DELETE">APPROVED</right>
           </rights>
         </service>
-        <service name="SchoolInfos/{}/PurchaseOrders" contextId="DEFAULT" type="OBJECT">
+        <service name="SchoolInfos/{}/PurchaseOrders" contextId="DEFAULT" type="SERVICEPATH">
           <rights>
             <right type="QUERY">APPROVED</right>
           </rights>
@@ -318,17 +318,17 @@
             <right type="DELETE">APPROVED</right>
           </rights>
         </service>
-        <service name="StaffPersonals/{}/ScheduledActivitys" contextId="DEFAULT" type="OBJECT">
+        <service name="StaffPersonals/{}/ScheduledActivitys" contextId="DEFAULT" type="SERVICEPATH">
           <rights>
             <right type="QUERY">APPROVED</right>
           </rights>
         </service>
-        <service name="StudentPersonals/{}/ScheduledActivitys" contextId="DEFAULT" type="OBJECT">
+        <service name="StudentPersonals/{}/ScheduledActivitys" contextId="DEFAULT" type="SERVICEPATH">
           <rights>
             <right type="QUERY">APPROVED</right>
           </rights>
         </service>
-        <service name="TeachingGroups/{}/ScheduledActivitys" contextId="DEFAULT" type="OBJECT">
+        <service name="TeachingGroups/{}/ScheduledActivitys" contextId="DEFAULT" type="SERVICEPATH">
           <rights>
             <right type="QUERY">APPROVED</right>
           </rights>
@@ -341,7 +341,7 @@
             <right type="DELETE">APPROVED</right>
           </rights>
         </service>
-        <service name="StaffPersonals/{}/SchoolInfos" contextId="DEFAULT" type="OBJECT">
+        <service name="StaffPersonals/{}/SchoolInfos" contextId="DEFAULT" type="SERVICEPATH">
           <rights>
             <right type="QUERY">APPROVED</right>
           </rights>
@@ -362,12 +362,12 @@
             <right type="DELETE">APPROVED</right>
           </rights>
         </service>
-        <service name="SchoolInfos/{}/StaffAssignments" contextId="DEFAULT" type="OBJECT">
+        <service name="SchoolInfos/{}/StaffAssignments" contextId="DEFAULT" type="SERVICEPATH">
           <rights>
             <right type="QUERY">APPROVED</right>
           </rights>
         </service>
-        <service name="StaffPersonals/{}/StaffAssignments" contextId="DEFAULT" type="OBJECT">
+        <service name="StaffPersonals/{}/StaffAssignments" contextId="DEFAULT" type="SERVICEPATH">
           <rights>
             <right type="QUERY">APPROVED</right>
           </rights>
@@ -380,12 +380,12 @@
             <right type="DELETE">APPROVED</right>
           </rights>
         </service>
-        <service name="SchoolInfos/{}/StaffPersonals" contextId="DEFAULT" type="OBJECT">
+        <service name="SchoolInfos/{}/StaffPersonals" contextId="DEFAULT" type="SERVICEPATH">
           <rights>
             <right type="QUERY">APPROVED</right>
           </rights>
         </service>
-        <service name="TeachingGroups/{}/StaffPersonals" contextId="DEFAULT" type="OBJECT">
+        <service name="TeachingGroups/{}/StaffPersonals" contextId="DEFAULT" type="SERVICEPATH">
           <rights>
             <right type="QUERY">APPROVED</right>
           </rights>
@@ -398,7 +398,7 @@
             <right type="DELETE">APPROVED</right>
           </rights>
         </service>
-        <service name="StudentPersonals/{}/StudentAttendanceSummarys" contextId="DEFAULT" type="OBJECT">
+        <service name="StudentPersonals/{}/StudentAttendanceSummarys" contextId="DEFAULT" type="SERVICEPATH">
           <rights>
             <right type="QUERY">APPROVED</right>
           </rights>
@@ -411,17 +411,17 @@
             <right type="DELETE">APPROVED</right>
           </rights>
         </service>
-        <service name="StudentPersonals/{}/StudentAttendanceTimeLists" contextId="DEFAULT" type="OBJECT">
+        <service name="StudentPersonals/{}/StudentAttendanceTimeLists" contextId="DEFAULT" type="SERVICEPATH">
           <rights>
             <right type="QUERY">APPROVED</right>
           </rights>
         </service>
-        <service name="SchoolInfos/{}/StudentPersonals/{}/StudentAttendanceTimeLists" contextId="DEFAULT" type="OBJECT">
+        <service name="SchoolInfos/{}/StudentPersonals/{}/StudentAttendanceTimeLists" contextId="DEFAULT" type="SERVICEPATH">
           <rights>
             <right type="QUERY">APPROVED</right>
           </rights>
         </service>
-        <service name="SchoolInfos/{}/StudentAttendanceTimeLists" contextId="DEFAULT" type="OBJECT">
+        <service name="SchoolInfos/{}/StudentAttendanceTimeLists" contextId="DEFAULT" type="SERVICEPATH">
           <rights>
             <right type="QUERY">APPROVED</right>
           </rights>
@@ -434,17 +434,17 @@
             <right type="DELETE">APPROVED</right>
           </rights>
         </service>
-        <service name="SchoolInfos/{}/StudentContactPersonals" contextId="DEFAULT" type="OBJECT">
+        <service name="SchoolInfos/{}/StudentContactPersonals" contextId="DEFAULT" type="SERVICEPATH">
           <rights>
             <right type="QUERY">APPROVED</right>
           </rights>
         </service>
-        <service name="SchoolInfos/{}/StudentPersonals/{}/StudentContactPersonals" contextId="DEFAULT" type="OBJECT">
+        <service name="SchoolInfos/{}/StudentPersonals/{}/StudentContactPersonals" contextId="DEFAULT" type="SERVICEPATH">
           <rights>
             <right type="QUERY">APPROVED</right>
           </rights>
         </service>
-        <service name="StudentPersonals/{}/StudentContactPersonals" contextId="DEFAULT" type="OBJECT">
+        <service name="StudentPersonals/{}/StudentContactPersonals" contextId="DEFAULT" type="SERVICEPATH">
           <rights>
             <right type="QUERY">APPROVED</right>
           </rights>
@@ -457,12 +457,12 @@
             <right type="DELETE">APPROVED</right>
           </rights>
         </service>
-        <service name="SchoolInfos/{}/StudentContactRelationships" contextId="DEFAULT" type="OBJECT">
+        <service name="SchoolInfos/{}/StudentContactRelationships" contextId="DEFAULT" type="SERVICEPATH">
           <rights>
             <right type="QUERY">APPROVED</right>
           </rights>
         </service>
-        <service name="StudentPersonals/{}/StudentContactRelationships" contextId="DEFAULT" type="OBJECT">
+        <service name="StudentPersonals/{}/StudentContactRelationships" contextId="DEFAULT" type="SERVICEPATH">
           <rights>
             <right type="QUERY">APPROVED</right>
           </rights>
@@ -475,22 +475,22 @@
             <right type="DELETE">APPROVED</right>
           </rights>
         </service>
-        <service name="SchoolInfos/{}/StudentDailyAttendances" contextId="DEFAULT" type="OBJECT">
+        <service name="SchoolInfos/{}/StudentDailyAttendances" contextId="DEFAULT" type="SERVICEPATH">
           <rights>
             <right type="QUERY">APPROVED</right>
           </rights>
         </service>
-        <service name="SchoolInfos/{}/StudentPersonals/{}/StudentDailyAttendances" contextId="DEFAULT" type="OBJECT">
+        <service name="SchoolInfos/{}/StudentPersonals/{}/StudentDailyAttendances" contextId="DEFAULT" type="SERVICEPATH">
           <rights>
             <right type="QUERY">APPROVED</right>
           </rights>
         </service>
-        <service name="StudentPersonals/{}/SchoolInfos/{}/StudentDailyAttendances" contextId="DEFAULT" type="OBJECT">
+        <service name="StudentPersonals/{}/SchoolInfos/{}/StudentDailyAttendances" contextId="DEFAULT" type="SERVICEPATH">
           <rights>
             <right type="QUERY">APPROVED</right>
           </rights>
         </service>
-        <service name="StudentPersonals/{}/StudentDailyAttendances" contextId="DEFAULT" type="OBJECT">
+        <service name="StudentPersonals/{}/StudentDailyAttendances" contextId="DEFAULT" type="SERVICEPATH">
           <rights>
             <right type="QUERY">APPROVED</right>
           </rights>
@@ -511,12 +511,12 @@
             <right type="DELETE">APPROVED</right>
           </rights>
         </service>
-        <service name="SchoolInfos/{}/StudentPersonals" contextId="DEFAULT" type="OBJECT">
+        <service name="SchoolInfos/{}/StudentPersonals" contextId="DEFAULT" type="SERVICEPATH">
           <rights>
             <right type="QUERY">APPROVED</right>
           </rights>
         </service>
-        <service name="TeachingGroups/{}/StudentPersonals" contextId="DEFAULT" type="OBJECT">
+        <service name="TeachingGroups/{}/StudentPersonals" contextId="DEFAULT" type="SERVICEPATH">
           <rights>
             <right type="QUERY">APPROVED</right>
           </rights>
@@ -529,7 +529,7 @@
             <right type="DELETE">APPROVED</right>
           </rights>
         </service>
-        <service name="SchoolInfos/{}/StudentSchoolEnrollments" contextId="DEFAULT" type="OBJECT">
+        <service name="SchoolInfos/{}/StudentSchoolEnrollments" contextId="DEFAULT" type="SERVICEPATH">
           <rights>
             <right type="QUERY">APPROVED</right>
           </rights>
@@ -542,27 +542,27 @@
             <right type="DELETE">APPROVED</right>
           </rights>
         </service>
-        <service name="SchoolInfos/{}/StaffPersonals/{}/TeachingGroups" contextId="DEFAULT" type="OBJECT">
+        <service name="SchoolInfos/{}/StaffPersonals/{}/TeachingGroups" contextId="DEFAULT" type="SERVICEPATH">
           <rights>
             <right type="QUERY">APPROVED</right>
           </rights>
         </service>
-        <service name="SchoolInfos/{}/TeachingGroups" contextId="DEFAULT" type="OBJECT">
+        <service name="SchoolInfos/{}/TeachingGroups" contextId="DEFAULT" type="SERVICEPATH">
           <rights>
             <right type="QUERY">APPROVED</right>
           </rights>
         </service>
-        <service name="StaffPersonals/{}/TeachingGroups" contextId="DEFAULT" type="OBJECT">
+        <service name="StaffPersonals/{}/TeachingGroups" contextId="DEFAULT" type="SERVICEPATH">
           <rights>
             <right type="QUERY">APPROVED</right>
           </rights>
         </service>
-        <service name="StudentPersonals/{}/TeachingGroups" contextId="DEFAULT" type="OBJECT">
+        <service name="StudentPersonals/{}/TeachingGroups" contextId="DEFAULT" type="SERVICEPATH">
           <rights>
             <right type="QUERY">APPROVED</right>
           </rights>
         </service>
-        <service name="TimeTableSubjects/{}/TeachingGroups" contextId="DEFAULT" type="OBJECT">
+        <service name="TimeTableSubjects/{}/TeachingGroups" contextId="DEFAULT" type="SERVICEPATH">
           <rights>
             <right type="QUERY">APPROVED</right>
           </rights>
@@ -575,7 +575,7 @@
             <right type="DELETE">APPROVED</right>
           </rights>
         </service>
-        <service name="SchoolInfos/{}/TimeTableCells" contextId="DEFAULT" type="OBJECT">
+        <service name="SchoolInfos/{}/TimeTableCells" contextId="DEFAULT" type="SERVICEPATH">
           <rights>
             <right type="QUERY">APPROVED</right>
           </rights>
@@ -588,7 +588,7 @@
             <right type="DELETE">APPROVED</right>
           </rights>
         </service>
-        <service name="SchoolInfos/{}/TimeTables" contextId="DEFAULT" type="OBJECT">
+        <service name="SchoolInfos/{}/TimeTables" contextId="DEFAULT" type="SERVICEPATH">
           <rights>
             <right type="QUERY">APPROVED</right>
           </rights>
@@ -601,7 +601,7 @@
             <right type="DELETE">APPROVED</right>
           </rights>
         </service>
-        <service name="SchoolInfos/{}/TimeTableSubjects" contextId="DEFAULT" type="OBJECT">
+        <service name="SchoolInfos/{}/TimeTableSubjects" contextId="DEFAULT" type="SERVICEPATH">
           <rights>
             <right type="QUERY">APPROVED</right>
           </rights>
@@ -614,7 +614,7 @@
             <right type="DELETE">APPROVED</right>
           </rights>
         </service>
-        <service name="SchoolInfos/{}/VendorInfos" contextId="DEFAULT" type="OBJECT">
+        <service name="SchoolInfos/{}/VendorInfos" contextId="DEFAULT" type="SERVICEPATH">
           <rights>
             <right type="QUERY">APPROVED</right>
           </rights>
