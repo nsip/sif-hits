@@ -21,8 +21,15 @@ public class HitsSpringConfiguration {
 
     @Value("${sifServer.version}")
     private String sifServer;
+    
     @Value("${sifDatamodel.version}")
     private String sifDatamodel;
+    
+    @Value("${sifInfrastructure.version}")
+    private String sifInfrastructure;
+    
+    @Value("${sifFramework.version}")
+    private String sifFramework;
 
     @Bean
     public PersistenceExceptionTranslationPostProcessor exceptionTranslation() {
@@ -34,6 +41,8 @@ public class HitsSpringConfiguration {
         Version version = new Version();
         version.setSifDatamodel(sifDatamodel);
         version.setSifServer(sifServer);
+        version.setSifInfrastructure(sifInfrastructure);
+        version.setSifFramework(sifFramework);
         return version;
     }
 

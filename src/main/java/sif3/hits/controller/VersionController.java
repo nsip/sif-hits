@@ -18,7 +18,7 @@ public class VersionController extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         Version version = HitsSpringContext.getBean(Version.class);
         resp.setStatus(Response.Status.OK.getStatusCode());
-        resp.getOutputStream().print("{ \"version\" : { \"server\" : \"" + version.getSifServer() + "\", \"datamodel\" : \"" + version.getSifDatamodel() + "\" } }");
+        resp.getOutputStream().print("{ \"version\" : { \"server\" : \"" + version.getSifServer() + "\", \"datamodel\" : \"" + version.getSifDatamodel() + "\", \"infrastructure\" : \"" + version.getSifInfrastructure() + "\", \"framework\" : \"" + version.getSifFramework() + "\" } }");
         resp.getOutputStream().flush();
     }
 
