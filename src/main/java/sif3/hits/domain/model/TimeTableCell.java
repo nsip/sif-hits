@@ -1,10 +1,14 @@
 package sif3.hits.domain.model;
 
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Transient;
 
 @Entity
@@ -21,6 +25,7 @@ public class TimeTableCell extends HitsEntity {
     private String periodId;
     private String dayId;
     private StaffPersonal staffPersonal;
+    private List<TimeTableCellTeacherCover> teacherList;
 
     private boolean temporary = false;
 
@@ -124,5 +129,14 @@ public class TimeTableCell extends HitsEntity {
 
     public void setSchoolInfoLocalId(String schoolInfoLocalId) {
         this.schoolInfoLocalId = schoolInfoLocalId;
+    }
+    
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "timeTableCell")
+    public List<TimeTableCellTeacherCover> getTeacherList() {
+        return teacherList;
+    }
+    
+    public void setTeacherList(List<TimeTableCellTeacherCover> teacherList) {
+        this.teacherList = teacherList;
     }
 }
