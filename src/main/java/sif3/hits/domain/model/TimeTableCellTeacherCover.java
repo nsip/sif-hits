@@ -4,6 +4,7 @@ import java.io.Serializable;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -25,6 +26,7 @@ public class TimeTableCellTeacherCover implements Serializable {
     private String weighting;
 
     @Id
+    @GeneratedValue
     public Long getId() {
         return id;
     }
@@ -42,7 +44,7 @@ public class TimeTableCellTeacherCover implements Serializable {
     public void setTimeTableCell(TimeTableCell timeTableCell) {
         this.timeTableCell = timeTableCell;
     }
-    
+
     @Column(name = "StaffPersonal_RefId")
     public String getStaffPersonalRefId() {
         return staffPersonalRefId;

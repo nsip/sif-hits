@@ -171,7 +171,7 @@ public class WellbeingEventConsumerTest extends BaseTest implements UsesConstant
         wellbeingEventType.setRefId(WellbeingEventRefIds.REF_ID_3);
         wellbeingEventTester.doCreateOne(wellbeingEventType);
 
-        wellbeingEventType.setRefId(WellbeingEventRefIds.REF_ID_4);
+        wellbeingEventType.setRefId(WellbeingEventRefIds.REF_ID_4); 
         wellbeingEventTester.doCreateOne(wellbeingEventType);
 
         wellbeingEventType.setRefId(WellbeingEventRefIds.REF_ID_5);

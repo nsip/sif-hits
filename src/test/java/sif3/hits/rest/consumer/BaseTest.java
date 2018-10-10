@@ -14,13 +14,14 @@ import javax.xml.datatype.XMLGregorianCalendar;
 public abstract class BaseTest {
 
     private Pattern TAG_PATTERN = Pattern.compile("^[^\\<]*(<[^\\>]*>).*$");
+    private List<String> TIMESTAMPS = Arrays.asList("CreationDateTime", "WellbeingEventCreationTimeStamp", "ResolutionMeetingTime");
 
     public abstract void initialiseData() throws Exception;
 
     protected XMLGregorianCalendar getDate(String date) throws DatatypeConfigurationException {
         return DatatypeFactory.newInstance().newXMLGregorianCalendar(date);
     }
-    
+
     protected Calendar getCalendar(String date) throws DatatypeConfigurationException {
         XMLGregorianCalendar xmlCal = getDate(date);
         return xmlCal.toGregorianCalendar();
@@ -35,7 +36,7 @@ public abstract class BaseTest {
         for (int i = 0; i < fromElements.size(); i++) {
             String element = fromElements.get(i);
             boolean same = true;
-            if (element.contains("<CreationDateTime>")) {
+            if (isTimestamp(element)) {
                 same = simpleFrequency(fromElements, element) == simpleFrequency(toElements, element);
             } else {
                 same = Collections.frequency(fromElements, element) == Collections.frequency(toElements, element);
@@ -48,7 +49,7 @@ public abstract class BaseTest {
         for (int i = 0; i < toElements.size(); i++) {
             String element = toElements.get(i);
             boolean same = true;
-            if (element.contains("<CreationDateTime>")) {
+            if (isTimestamp(element)) {
                 same = simpleFrequency(fromElements, element) == simpleFrequency(toElements, element);
             } else {
                 same = Collections.frequency(fromElements, element) == Collections.frequency(toElements, element);
@@ -78,6 +79,14 @@ public abstract class BaseTest {
             return m.group(1);
         }
         return element;
+    }
+    
+    private boolean isTimestamp(String element) {
+        boolean result = false;
+        for (int i = 0; !result && i < TIMESTAMPS.size(); i++) {
+            result |= element.contains("<" + TIMESTAMPS.get(i) + ">");
+        }
+        return result;
     }
 
 }
