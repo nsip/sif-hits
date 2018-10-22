@@ -15,7 +15,7 @@
 
 		<!-- No way to get infrastructure version from the framework :( -->
 		<infrastructure.version>3.2.1</infrastructure.version>
-		<datamodel.version>3.4.3</datamodel.version>
+		<datamodel.version>3.4.4</datamodel.version>
 		<sif3.framework.version>0.13.0</sif3.framework.version>
 		<sif3.datamodel.version>au-${datamodel.version}</sif3.datamodel.version>
 		
@@ -172,6 +172,28 @@
 			<groupId>org.springframework.data</groupId>
 			<artifactId>spring-data-jpa</artifactId>
 			<version>${spring.data.version}</version>
+		</dependency>
+
+		<!-- JAXB -->
+		<dependency>
+			<groupId>com.sun.xml.bind</groupId>
+			<artifactId>jaxb-impl</artifactId>
+			<version>${jaxb.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>javax.xml.bind</groupId>
+			<artifactId>jaxb-api</artifactId>
+			<version>${jaxb.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>dom4j</groupId>
+			<artifactId>dom4j</artifactId>
+			<version>1.6.1</version>
+		</dependency>
+		<dependency>
+			<groupId>org.codehaus.jettison</groupId>
+			<artifactId>jettison</artifactId>
+			<version>1.3.6</version>
 		</dependency>
 
 		<!-- apache commons -->

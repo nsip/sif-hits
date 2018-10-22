@@ -61,7 +61,7 @@ public class NAPTestletConsumerTest extends BaseTest {
         napTestletType.setNAPTestLocalId(NAPTestRefIds.LOCAL_ID_1);
 
         NAPTestletContentType napTestletContent = new NAPTestletContentType();
-        napTestletContent.setTestletName("Yr3 Reading Testlet 1");
+        napTestletContent.setTestletName(objectFactory.createNAPTestletContentTypeTestletName("Yr3 Reading Testlet 1"));
         napTestletContent.setNode(objectFactory.createNAPTestletContentTypeNode("A"));
         napTestletContent.setTestletMaximumScore(new BigDecimal("32"));
         napTestletContent.setLocationInStage(objectFactory.createNAPTestletContentTypeLocationInStage(new BigInteger("1")));
@@ -81,22 +81,22 @@ public class NAPTestletConsumerTest extends BaseTest {
         napTestletTester.doUpdateOne(napTestletType, NAPTestletRefIds.REF_ID_1);
 
         napTestletType.setRefId(NAPTestletRefIds.REF_ID_2);
-        napTestletContent.setTestletName("Yr3 Reading Testlet 2");
+        napTestletContent.setTestletName(objectFactory.createNAPTestletContentTypeTestletName("Yr3 Reading Testlet 2"));
         napTestletContent.setNAPTestletLocalId(NAPTestletRefIds.LOCAL_ID_2);
         napTestletTester.doCreateOne(napTestletType);
 
         napTestletType.setRefId(NAPTestletRefIds.REF_ID_3);
-        napTestletContent.setTestletName("Yr3 Reading Testlet 3");
+        napTestletContent.setTestletName(objectFactory.createNAPTestletContentTypeTestletName("Yr3 Reading Testlet 3"));
         napTestletContent.setNAPTestletLocalId(NAPTestletRefIds.LOCAL_ID_3);
         napTestletTester.doCreateOne(napTestletType);
 
         napTestletType.setRefId(NAPTestletRefIds.REF_ID_4);
-        napTestletContent.setTestletName("Yr3 Reading Testlet 4");
+        napTestletContent.setTestletName(objectFactory.createNAPTestletContentTypeTestletName("Yr3 Reading Testlet 4"));
         napTestletContent.setNAPTestletLocalId(NAPTestletRefIds.LOCAL_ID_4);
         napTestletTester.doCreateOne(napTestletType);
 
         napTestletType.setRefId(NAPTestletRefIds.REF_ID_5);
-        napTestletContent.setTestletName("Yr3 Reading Testlet 5");
+        napTestletContent.setTestletName(objectFactory.createNAPTestletContentTypeTestletName("Yr3 Reading Testlet 5"));
         napTestletContent.setNAPTestletLocalId(NAPTestletRefIds.LOCAL_ID_5);
         napTestletTester.doCreateOne(napTestletType);
 

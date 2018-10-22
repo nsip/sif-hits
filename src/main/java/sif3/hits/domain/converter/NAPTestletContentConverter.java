@@ -19,7 +19,7 @@ public class NAPTestletContentConverter extends HitsConverter<NAPTestletContentT
       IObjectFactory objectFactory = getObjectFactory();
 
       target.setNAPTestletLocalId(source.getLocalId());
-      target.setTestletName(source.getTestletName());
+      target.setTestletName(objectFactory.createNAPTestletContentTypeTestletName(source.getTestletName()));
       target.setTestletMaximumScore(getBigDecimalValue(source.getTestletMaximumScore()));
       target.setNode(objectFactory.createNAPTestletContentTypeNode(source.getNode()));
       target.setLocationInStage(objectFactory.createNAPTestletContentTypeLocationInStage(getBigIntegerValue(source.getLocationInStage())));
@@ -30,7 +30,7 @@ public class NAPTestletContentConverter extends HitsConverter<NAPTestletContentT
   public void toHitsModel(NAPTestletContentType source, NAPTestlet target) {
     if (source != null && target != null) {
       target.setLocalId(source.getNAPTestletLocalId());
-      target.setTestletName(source.getTestletName());
+      target.setTestletName(getJAXBValue(source.getTestletName()));
       target.setTestletMaximumScore(getBigDecimalValue(source.getTestletMaximumScore()));
       target.setNode(getJAXBValue(source.getNode()));
       target.setLocationInStage(getBigIntegerValue(getJAXBValue(source.getLocationInStage())));

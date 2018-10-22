@@ -1,5 +1,6 @@
 package sif3.hits.rest.consumer;
 
+import java.math.BigDecimal;
 import java.util.Arrays;
 import java.util.List;
 
@@ -52,7 +53,7 @@ public class JournalConsumerTest extends BaseTest implements UsesConstants {
 
         MonetaryAmountType monetaryAmount = new MonetaryAmountType();
         monetaryAmount.setCurrency(DEFAULT_CURRENCY_ENUM);
-        monetaryAmount.setValue("400.00");
+        monetaryAmount.setValue(new BigDecimal("400.00"));
         journalType.setAmount(monetaryAmount);
 
         journalType.setApprovedBy(objectFactory.createJournalTypeApprovedBy("John Smith"));

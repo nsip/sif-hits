@@ -996,6 +996,90 @@ public interface IObjectFactory {
     WellbeingCharacteristicCollectionType createWellbeingCharacteristicCollectionType();
 
     /**
+     * Create an instance of {@link FQReportingType }
+     * 
+     */
+    FQReportingType createFQReportingType();
+
+    /**
+     * Create an instance of {@link FQReportingCollectionType }
+     * 
+     */
+    FQReportingCollectionType createFQReportingCollectionType();
+
+    /**
+     * Create an instance of {@link DataDomainObligationListType }
+     * 
+     */
+    DataDomainObligationListType createDataDomainObligationListType();
+
+    /**
+     * Create an instance of {@link DataDomainObligationType }
+     * 
+     */
+    DataDomainObligationType createDataDomainObligationType();
+
+    /**
+     * Create an instance of {@link ShareWithListType }
+     * 
+     */
+    ShareWithListType createShareWithListType();
+
+    /**
+     * Create an instance of {@link ShareWithType }
+     * 
+     */
+    ShareWithType createShareWithType();
+
+    /**
+     * Create an instance of {@link FQContextualQuestionListType }
+     * 
+     */
+    FQContextualQuestionListType createFQContextualQuestionListType();
+
+    /**
+     * Create an instance of {@link FQContextualQuestionType }
+     * 
+     */
+    FQContextualQuestionType createFQContextualQuestionType();
+
+    /**
+     * Create an instance of {@link FQItemListType }
+     * 
+     */
+    FQItemListType createFQItemListType();
+
+    /**
+     * Create an instance of {@link FQItemType }
+     * 
+     */
+    FQItemType createFQItemType();
+
+    /**
+     * Create an instance of {@link FQRuleListType }
+     * 
+     */
+    FQRuleListType createFQRuleListType();
+
+    /**
+     * Create an instance of {@link FQRuleType }
+     * 
+     */
+    FQRuleType createFQRuleType();
+
+    /**
+     * Create an instance of {@link SoftwareVendorInfoContainerType }
+     * 
+     */
+    SoftwareVendorInfoContainerType createSoftwareVendorInfoContainerType();
+
+    /**
+     * Create an instance of {@link EntityContactInfoType }
+     * 
+     */
+    EntityContactInfoType createEntityContactInfoType();
+
+    /**
      * Create an instance of {@link CopyRightContainerType }
      * 
      */
@@ -1750,12 +1834,6 @@ public interface IObjectFactory {
      * 
      */
     StaffListType createStaffListType();
-
-    /**
-     * Create an instance of {@link AlternateIdentificationCodesType }
-     * 
-     */
-    AlternateIdentificationCodesType createAlternateIdentificationCodesType();
 
     /**
      * Create an instance of {@link AuthorsType }
@@ -3456,6 +3534,18 @@ public interface IObjectFactory {
     JAXBElement<WellbeingCharacteristicCollectionType> createWellbeingCharacteristics(WellbeingCharacteristicCollectionType value);
 
     /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link FQReportingType }{@code >}}
+     * 
+     */
+    JAXBElement<FQReportingType> createFQReporting(FQReportingType value);
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link FQReportingCollectionType }{@code >}}
+     * 
+     */
+    JAXBElement<FQReportingCollectionType> createFQReportings(FQReportingCollectionType value);
+
+    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link SIFMetadataType.TimeElements }{@code >}}
      * 
      */
@@ -3968,6 +4058,18 @@ public interface IObjectFactory {
     JAXBElement<String> createContactInfoTypeRole(String value);
 
     /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+     * 
+     */
+    JAXBElement<String> createContactInfoTypeRegistrationDetails(String value);
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+     * 
+     */
+    JAXBElement<String> createContactInfoTypeQualifications(String value);
+
+    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link AddressType }{@code >}}
      * 
      */
@@ -4350,12 +4452,6 @@ public interface IObjectFactory {
      * 
      */
     JAXBElement<ExpenseAccountsType> createPurchasingItemTypeExpenseAccounts(ExpenseAccountsType value);
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link Object }{@code >}}
-     * 
-     */
-    JAXBElement<Object> createAlternateIdentificationCodesTypeAlternateIdentificationCodes(Object value);
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
@@ -5053,6 +5149,18 @@ public interface IObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
      * 
      */
+    JAXBElement<String> createStimulusTypeTextDescriptor(String value);
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+     * 
+     */
+    JAXBElement<String> createScoreDescriptionTypeDescriptor(String value);
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+     * 
+     */
     JAXBElement<String> createNAPWritingRubricTypeDescriptor(String value);
 
     /**
@@ -5114,6 +5222,12 @@ public interface IObjectFactory {
      * 
      */
     JAXBElement<String> createSubstituteItemTypeSubstituteItemLocalId(String value);
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+     * 
+     */
+    JAXBElement<String> createNAPTestletContentTypeTestletName(String value);
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
@@ -5613,6 +5727,210 @@ public interface IObjectFactory {
      * 
      */
     JAXBElement<String> createCopyRightContainerTypeHolder(String value);
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+     * 
+     */
+    JAXBElement<String> createEntityContactInfoTypePositionTitle(String value);
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+     * 
+     */
+    JAXBElement<String> createEntityContactInfoTypeRole(String value);
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+     * 
+     */
+    JAXBElement<String> createEntityContactInfoTypeRegistrationDetails(String value);
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+     * 
+     */
+    JAXBElement<String> createEntityContactInfoTypeQualifications(String value);
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link AddressType }{@code >}}
+     * 
+     */
+    JAXBElement<AddressType> createEntityContactInfoTypeAddress(AddressType value);
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link EmailType }{@code >}}
+     * 
+     */
+    JAXBElement<EmailType> createEntityContactInfoTypeEmail(EmailType value);
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link PhoneNumberType }{@code >}}
+     * 
+     */
+    JAXBElement<PhoneNumberType> createEntityContactInfoTypePhoneNumber(PhoneNumberType value);
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+     * 
+     */
+    JAXBElement<String> createSoftwareVendorInfoContainerTypeSoftwareProduct(String value);
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+     * 
+     */
+    JAXBElement<String> createSoftwareVendorInfoContainerTypeSoftwareVersion(String value);
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+     * 
+     */
+    JAXBElement<String> createFQRuleTypeFQRuleCode(String value);
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+     * 
+     */
+    JAXBElement<String> createFQRuleTypeFQRuleComment(String value);
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link BigDecimal }{@code >}}
+     * 
+     */
+    JAXBElement<BigDecimal> createFQItemTypeTuitionAmount(BigDecimal value);
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link BigDecimal }{@code >}}
+     * 
+     */
+    JAXBElement<BigDecimal> createFQItemTypeBoardingAmount(BigDecimal value);
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link BigDecimal }{@code >}}
+     * 
+     */
+    JAXBElement<BigDecimal> createFQItemTypeSystemAmount(BigDecimal value);
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link BigDecimal }{@code >}}
+     * 
+     */
+    JAXBElement<BigDecimal> createFQItemTypeDioceseAmount(BigDecimal value);
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link ShareWithListType }{@code >}}
+     * 
+     */
+    JAXBElement<ShareWithListType> createDataDomainObligationTypeShareWithList(ShareWithListType value);
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+     * 
+     */
+    JAXBElement<String> createFQReportingTypeReportingAuthority(String value);
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+     * 
+     */
+    JAXBElement<String> createFQReportingTypeReportingAuthoritySystem(String value);
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+     * 
+     */
+    JAXBElement<String> createFQReportingTypeReportingAuthorityCommonwealthId(String value);
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link AUCodeSetsYesOrNoCategoryType }{@code >}}
+     * 
+     */
+    JAXBElement<AUCodeSetsYesOrNoCategoryType> createFQReportingTypeSystemSubmission(AUCodeSetsYesOrNoCategoryType value);
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link SoftwareVendorInfoContainerType }{@code >}}
+     * 
+     */
+    JAXBElement<SoftwareVendorInfoContainerType> createFQReportingTypeSoftwareVendorInfo(SoftwareVendorInfoContainerType value);
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+     * 
+     */
+    JAXBElement<String> createFQReportingTypeEntityLevel(String value);
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+     * 
+     */
+    JAXBElement<String> createFQReportingTypeSchoolInfoRefId(String value);
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+     * 
+     */
+    JAXBElement<String> createFQReportingTypeLocalId(String value);
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+     * 
+     */
+    JAXBElement<String> createFQReportingTypeStateProvinceId(String value);
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+     * 
+     */
+    JAXBElement<String> createFQReportingTypeCommonwealthId(String value);
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+     * 
+     */
+    JAXBElement<String> createFQReportingTypeACARAId(String value);
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+     * 
+     */
+    JAXBElement<String> createFQReportingTypeEntityName(String value);
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link EntityContactInfoType }{@code >}}
+     * 
+     */
+    JAXBElement<EntityContactInfoType> createFQReportingTypeEntityContact(EntityContactInfoType value);
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link FQContextualQuestionListType }{@code >}}
+     * 
+     */
+    JAXBElement<FQContextualQuestionListType> createFQReportingTypeFQContextualQuestionList(FQContextualQuestionListType value);
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link FQItemListType }{@code >}}
+     * 
+     */
+    JAXBElement<FQItemListType> createFQReportingTypeFQItemList(FQItemListType value);
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link FQRuleListType }{@code >}}
+     * 
+     */
+    JAXBElement<FQRuleListType> createFQReportingTypeFQRuleList(FQRuleListType value);
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link SIFMetadataType }{@code >}}
+     * 
+     */
+    JAXBElement<SIFMetadataType> createFQReportingTypeSIFMetadata(SIFMetadataType value);
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link SIFExtendedElementsType }{@code >}}
+     * 
+     */
+    JAXBElement<SIFExtendedElementsType> createFQReportingTypeSIFExtendedElements(SIFExtendedElementsType value);
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}

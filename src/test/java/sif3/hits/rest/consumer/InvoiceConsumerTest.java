@@ -63,7 +63,7 @@ public class InvoiceConsumerTest extends BaseTest implements UsesConstants {
         invoiceType.setTransactionDescription("Textbooks");
 
         DebitOrCreditAmountType billedAmount = objectFactory.createDebitOrCreditAmountType();
-        billedAmount.setValue("320.00");
+        billedAmount.setValue(new BigDecimal("320.00"));
         billedAmount.setType("Debit");
         billedAmount.setCurrency(ISO4217CurrencyNamesAndCodeElementsType.AUD);
         invoiceType.setBilledAmount(billedAmount);
@@ -74,7 +74,7 @@ public class InvoiceConsumerTest extends BaseTest implements UsesConstants {
         invoiceType.setTaxType(objectFactory.createInvoiceTypeTaxType("GST"));
 
         MonetaryAmountType monetaryAmountType = objectFactory.createMonetaryAmountType();
-        monetaryAmountType.setValue("29.09");
+        monetaryAmountType.setValue(new BigDecimal("29.09"));
         monetaryAmountType.setCurrency(DEFAULT_CURRENCY_ENUM);
         invoiceType.setTaxAmount(objectFactory.createInvoiceTypeTaxAmount(monetaryAmountType));
 

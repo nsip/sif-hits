@@ -165,8 +165,9 @@ public class NAPTestItemConsumerTest extends BaseTest {
     }
 
     private ScoreDescriptionType getScoreDescription(int indexParent, int indexScore, int index) {
+        ObjectFactory objectFactory = new ObjectFactory();
         ScoreDescriptionType scoreDescriptionType = new ScoreDescriptionType();
-        scoreDescriptionType.setDescriptor("Descriptor " + indexParent + "-" + indexScore + "-" + index);
+        scoreDescriptionType.setDescriptor(objectFactory.createScoreDescriptionTypeDescriptor("Descriptor " + indexParent + "-" + indexScore + "-" + index));
         scoreDescriptionType.setScoreValue(new BigDecimal("1" + indexParent + "" + indexScore + "" + index));
         return scoreDescriptionType;
     }
@@ -175,7 +176,7 @@ public class NAPTestItemConsumerTest extends BaseTest {
         ObjectFactory objectFactory = new ObjectFactory();
         StimulusType stimulusType = new StimulusType();
         stimulusType.setContent("Stiumlus Content " + index);
-        stimulusType.setTextDescriptor("Stimulus Descriptor " + index);
+        stimulusType.setTextDescriptor(objectFactory.createStimulusTypeTextDescriptor("Stimulus Descriptor " + index));
         stimulusType.setStimulusLocalId("S-1-1-" + index);
         stimulusType.setTextGenre(objectFactory.createStimulusTypeTextGenre("Text Genre " + index));
         stimulusType.setTextType(objectFactory.createStimulusTypeTextType("Text Type " + index));

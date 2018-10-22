@@ -61,7 +61,7 @@ public class PurchaseOrderConsumerTest extends BaseTest implements UsesConstants
 
         MonetaryAmountType monetaryAmount = objectFactory.createMonetaryAmountType();
         monetaryAmount.setCurrency(DEFAULT_CURRENCY_ENUM);
-        monetaryAmount.setValue(amount);
+        monetaryAmount.setValue(new BigDecimal(amount));
         expenseAccount.setAmount(monetaryAmount);
 
         expenseAccount.setFinancialAccountRefId(objectFactory.createExpenseAccountTypeFinancialAccountRefId(FinancialAccountRefIds.REF_ID_1));
@@ -75,7 +75,7 @@ public class PurchaseOrderConsumerTest extends BaseTest implements UsesConstants
 
         MonetaryAmountType monetaryAmountType = new MonetaryAmountType();
         monetaryAmountType.setCurrency(DEFAULT_CURRENCY_ENUM);
-        monetaryAmountType.setValue(unitCost);
+        monetaryAmountType.setValue(new BigDecimal(unitCost));
         purchasingItem.setUnitCost(objectFactory.createPurchasingItemTypeUnitCost(monetaryAmountType));
         return purchasingItem;
     }
@@ -99,7 +99,7 @@ public class PurchaseOrderConsumerTest extends BaseTest implements UsesConstants
         purchaseOrderType.setPurchasingItems(purchasingItems);
 
         MonetaryAmountType monetaryAmountType = new MonetaryAmountType();
-        monetaryAmountType.setValue("8.00");
+        monetaryAmountType.setValue(new BigDecimal("8.00"));
         monetaryAmountType.setCurrency(DEFAULT_CURRENCY_ENUM);
         purchaseOrderType.setTaxAmount(objectFactory.createPurchaseOrderTypeTaxAmount(monetaryAmountType));
 

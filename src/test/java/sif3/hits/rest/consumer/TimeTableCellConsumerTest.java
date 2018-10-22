@@ -4,8 +4,6 @@ import java.math.BigDecimal;
 import java.util.Arrays;
 import java.util.List;
 
-import javax.xml.datatype.DatatypeConfigurationException;
-
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -19,8 +17,6 @@ import sif.dd.au30.model.ScheduledTeacherListType;
 import sif.dd.au30.model.TeacherCoverType;
 import sif.dd.au30.model.TimeTableCellCollectionType;
 import sif.dd.au30.model.TimeTableCellType;
-import sif3.common.exception.MarshalException;
-import sif3.common.exception.UnsupportedMediaTypeExcpetion;
 import sif3.common.model.QueryCriteria;
 import sif3.common.model.QueryOperator;
 import sif3.common.model.QueryPredicate;

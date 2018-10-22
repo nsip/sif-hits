@@ -38,7 +38,7 @@ public class InvoiceConverter extends HitsConverter<InvoiceType, Invoice> implem
             target.setTransactionDescription(source.getTransactionDescription());
 
             DebitOrCreditAmountType billedAmount = objectFactory.createDebitOrCreditAmountType();
-            billedAmount.setValue(source.getBilledAmount());
+            billedAmount.setValue(getBigDecimalValue(source.getBilledAmount()));
             billedAmount.setType(source.getBilledAmountType());
             billedAmount.setCurrency(DEFAULT_CURRENCY_ENUM);
             target.setBilledAmount(billedAmount);
@@ -51,7 +51,7 @@ public class InvoiceConverter extends HitsConverter<InvoiceType, Invoice> implem
 
             if (StringUtils.isNotBlank(source.getTaxAmount())) {
                 MonetaryAmountType monetaryAmountType = objectFactory.createMonetaryAmountType();
-                monetaryAmountType.setValue(source.getTaxAmount());
+                monetaryAmountType.setValue(getBigDecimalValue(source.getTaxAmount()));
                 monetaryAmountType.setCurrency(DEFAULT_CURRENCY_ENUM);
                 target.setTaxAmount(objectFactory.createInvoiceTypeTaxAmount(monetaryAmountType));
             }
@@ -85,7 +85,7 @@ public class InvoiceConverter extends HitsConverter<InvoiceType, Invoice> implem
             target.setTransactionDescription(source.getTransactionDescription());
 
             if (source.getBilledAmount() != null) {
-                target.setBilledAmount(source.getBilledAmount().getValue());
+                target.setBilledAmount(getBigDecimalValue(source.getBilledAmount().getValue()));
                 target.setBilledAmountType(source.getBilledAmount().getType());
             }
 
@@ -94,8 +94,9 @@ public class InvoiceConverter extends HitsConverter<InvoiceType, Invoice> implem
             target.setTaxRate(getBigDecimalValue(getJAXBValue(source.getTaxRate())));
             target.setTaxType(getJAXBValue(source.getTaxType()));
 
-            if (source.getTaxAmount() != null) {
-                target.setTaxAmount(getJAXBValue(source.getTaxAmount()).getValue());
+            MonetaryAmountType taxAmount = getJAXBValue(source.getTaxAmount());
+            if (taxAmount != null) {
+                target.setTaxAmount(getBigDecimalValue(taxAmount.getValue()));
             }
 
             target.setCreatedBy(getJAXBValue(source.getCreatedBy()));
