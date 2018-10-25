@@ -115,6 +115,7 @@ public class FQReporting extends HitsEntity {
         this.entityLevel = entityLevel;
     }
 
+    @Column(name = "SchoolInfo_RefId")
     public String getSchoolInfoRefId() {
         return schoolInfoRefId;
     }
