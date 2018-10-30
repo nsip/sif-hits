@@ -5,6 +5,8 @@ import java.util.ArrayList;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Component;
 
+import sif.dd.au30.model.AUCodeSetsAddressRoleType;
+import sif.dd.au30.model.AUCodeSetsAddressTypeType;
 import sif.dd.au30.model.AUCodeSetsStandardAustralianClassificationOfCountriesSACCType;
 import sif.dd.au30.model.AddressStreetType;
 import sif.dd.au30.model.AddressType;
@@ -35,7 +37,8 @@ public class FQEntityContactAddressConverter extends HitsConverter<AddressType, 
     @Override
     public void toSifModel(FQEntityContactAddress source, AddressType target) {
         IObjectFactory objectFactory = getObjectFactory();
-
+        target.setType(getEnumValue(source.getAddressType(), AUCodeSetsAddressTypeType.class));
+        target.setRole(getEnumValue(source.getAddressRole(), AUCodeSetsAddressRoleType.class));
         target.setEffectiveFromDate(objectFactory.createAddressTypeEffectiveFromDate(getDateValue(source.getEffectiveFromDate())));
         target.setEffectiveToDate(objectFactory.createAddressTypeEffectiveToDate(getDateValue(source.getEffectiveToDate())));
         if (isStreetPopulated(source)) {
@@ -59,7 +62,7 @@ public class FQEntityContactAddressConverter extends HitsConverter<AddressType, 
         target.setCity(source.getCity());
         target.setStateProvince(objectFactory.createAddressTypeStateProvince(source.getStateProvince()));
         target.setCountry(objectFactory.createAddressTypeCountry(getEnumValue(source.getCountry(), AUCodeSetsStandardAustralianClassificationOfCountriesSACCType.class)));
-
+        target.setPostalCode(source.getPostalCode());
         if (StringUtils.isNotBlank(source.getGridLocationLatitude()) || StringUtils.isNotBlank(source.getGridLocationLongitude())) {
             GridLocationType gridLocation = objectFactory.createGridLocationType();
             gridLocation.setLatitude(getBigDecimalValue(source.getGridLocationLatitude()));
@@ -68,6 +71,7 @@ public class FQEntityContactAddressConverter extends HitsConverter<AddressType, 
         }
         if (StringUtils.isNotBlank(source.getMapReferenceXCoordinate()) || StringUtils.isNotBlank(source.getMapReferenceYCoordinate())) {
             MapReferenceType mapReferenceType = objectFactory.createMapReferenceType();
+            mapReferenceType.setType(source.getMapReferenceType());
             mapReferenceType.setXCoordinate(source.getMapReferenceXCoordinate());
             mapReferenceType.setYCoordinate(source.getMapReferenceYCoordinate());
             target.setMapReference(objectFactory.createAddressTypeMapReference(mapReferenceType));
@@ -91,6 +95,8 @@ public class FQEntityContactAddressConverter extends HitsConverter<AddressType, 
 
     @Override
     public void toHitsModel(AddressType source, FQEntityContactAddress target) {
+        target.setAddressType(getEnumValue(source.getType()));
+        target.setAddressRole(getEnumValue(source.getRole()));
         target.setEffectiveFromDate(getDateValue(getJAXBValue(source.getEffectiveFromDate())));
         target.setEffectiveToDate(getDateValue(getJAXBValue(source.getEffectiveToDate())));
 
@@ -113,7 +119,8 @@ public class FQEntityContactAddressConverter extends HitsConverter<AddressType, 
         target.setCity(source.getCity());
         target.setStateProvince(getJAXBValue(source.getStateProvince()));
         target.setCountry(getJAXBEnumValue(source.getCountry()));
-
+        target.setPostalCode(source.getPostalCode());
+        
         GridLocationType gridLocation = getJAXBValue(source.getGridLocation());
         if (gridLocation != null) {
             target.setGridLocationLatitude(getBigDecimalValue(gridLocation.getLatitude()));
@@ -122,6 +129,7 @@ public class FQEntityContactAddressConverter extends HitsConverter<AddressType, 
 
         MapReferenceType mapReference = getJAXBValue(source.getMapReference());
         if (mapReference != null) {
+            target.setMapReferenceType(mapReference.getType());
             target.setMapReferenceXCoordinate(mapReference.getXCoordinate());
             target.setMapReferenceYCoordinate(mapReference.getYCoordinate());
         }

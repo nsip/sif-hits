@@ -2,6 +2,7 @@ package sif3.hits.domain.converter;
 
 import java.util.ArrayList;
 
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -13,6 +14,7 @@ import sif.dd.au30.model.FQItemType;
 import sif.dd.au30.model.FQReportingType;
 import sif.dd.au30.model.FQRuleListType;
 import sif.dd.au30.model.FQRuleType;
+import sif.dd.au30.model.SoftwareVendorInfoContainerType;
 import sif3.hits.domain.converter.factory.IObjectFactory;
 import sif3.hits.domain.model.FQContextualQuestion;
 import sif3.hits.domain.model.FQItem;
@@ -38,7 +40,7 @@ public class FQReportingConverter extends HitsConverter<FQReportingType, FQRepor
             target.setFQYear(getYearValue(source.getFqYear()));
             target.setReportingAuthority(objectFactory.createFQReportingTypeReportingAuthority(source.getReportingAuthority()));
             target.setReportingAuthoritySystem(objectFactory.createFQReportingTypeReportingAuthoritySystem(source.getReportingAuthoritySystem()));
-            target.setReportingAuthorityCommonwealthId(objectFactory.createFQReportingTypeCommonwealthId(source.getReportingAuthorityCommonwealthId()));
+            target.setReportingAuthorityCommonwealthId(objectFactory.createFQReportingTypeReportingAuthorityCommonwealthId(source.getReportingAuthorityCommonwealthId()));
             target.setSystemSubmission(objectFactory.createFQReportingTypeSystemSubmission(getEnumValue(source.getSystemSubmission(), AUCodeSetsYesOrNoCategoryType.class)));
             target.setEntityLevel(objectFactory.createFQReportingTypeEntityLevel(source.getEntityLevel()));
             target.setSchoolInfoRefId(objectFactory.createFQReportingTypeSchoolInfoRefId(source.getSchoolInfoRefId()));
@@ -48,6 +50,13 @@ public class FQReportingConverter extends HitsConverter<FQReportingType, FQRepor
             target.setACARAId(objectFactory.createFQReportingTypeACARAId(source.getAcaraId()));
             target.setEntityName(objectFactory.createFQReportingTypeEntityName(source.getEntityName()));
             target.setEntityContact(objectFactory.createFQReportingTypeEntityContact(entityContactConverter.toSifModel(source.getEntityContact())));
+            
+            if (StringUtils.isNotBlank(source.getSoftwareProduct()) || StringUtils.isNotBlank(source.getSoftwareVersion())) {
+                SoftwareVendorInfoContainerType softwareVendor = objectFactory.createSoftwareVendorInfoContainerType();
+                softwareVendor.setSoftwareProduct(objectFactory.createSoftwareVendorInfoContainerTypeSoftwareProduct(source.getSoftwareProduct()));
+                softwareVendor.setSoftwareVersion(objectFactory.createSoftwareVendorInfoContainerTypeSoftwareVersion(source.getSoftwareVersion()));
+                target.setSoftwareVendorInfo(objectFactory.createFQReportingTypeSoftwareVendorInfo(softwareVendor));
+            }
 
             if (source.getFqContextualQuestionList() != null && !source.getFqContextualQuestionList().isEmpty()) {
                 FQContextualQuestionListType fqContextualQuestionListType = objectFactory.createFQContextualQuestionListType();
@@ -104,6 +113,14 @@ public class FQReportingConverter extends HitsConverter<FQReportingType, FQRepor
             target.setCommonwealthId(getJAXBValue(source.getCommonwealthId()));
             target.setAcaraId(getJAXBValue(source.getACARAId()));
             target.setEntityName(getJAXBValue(source.getEntityName()));
+            
+            SoftwareVendorInfoContainerType softwareVendor = getJAXBValue(source.getSoftwareVendorInfo());
+            if (softwareVendor != null) {
+                target.setSoftwareProduct(getJAXBValue(softwareVendor.getSoftwareProduct()));
+                target.setSoftwareVersion(getJAXBValue(softwareVendor.getSoftwareVersion()));
+            }
+            
+            
             target.setEntityContact(entityContactConverter.toHitsModel(getJAXBValue(source.getEntityContact())));
             if (!entityContactConverter.isPopulated(target.getEntityContact())) {
                 target.setEntityContact(null);

@@ -15,8 +15,12 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "FQReporting_EntityContact_Address")
 public class FQEntityContactAddress extends HitsEntity {
+    private static final long serialVersionUID = -2625854444459437022L;
+
     private Long id;
     private FQEntityContact entityContact;
+    private String addressType;
+    private String addressRole;
     private String effectiveFromDate;
     private String effectiveToDate;
     private String streetLine1;
@@ -35,8 +39,10 @@ public class FQEntityContactAddress extends HitsEntity {
     private String city;
     private String stateProvince;
     private String country;
+    private String postalCode;
     private String gridLocationLatitude;
     private String gridLocationLongitude;
+    private String mapReferenceType;
     private String mapReferenceXCoordinate;
     private String mapReferenceYCoordinate;
     private String radioContact;
@@ -63,6 +69,22 @@ public class FQEntityContactAddress extends HitsEntity {
 
     public void setEntityContact(FQEntityContact entityContact) {
         this.entityContact = entityContact;
+    }
+
+    public String getAddressType() {
+        return addressType;
+    }
+
+    public void setAddressType(String addressType) {
+        this.addressType = addressType;
+    }
+
+    public String getAddressRole() {
+        return addressRole;
+    }
+
+    public void setAddressRole(String addressRole) {
+        this.addressRole = addressRole;
     }
 
     public String getEffectiveFromDate() {
@@ -221,6 +243,14 @@ public class FQEntityContactAddress extends HitsEntity {
     public void setCountry(String country) {
         this.country = country;
     }
+    
+    public String getPostalCode() {
+        return postalCode;
+    }
+    
+    public void setPostalCode(String postalCode) {
+        this.postalCode = postalCode;
+    }
 
     @Column(name = "GridLocation_Latitude")
     public String getGridLocationLatitude() {
@@ -238,6 +268,15 @@ public class FQEntityContactAddress extends HitsEntity {
 
     public void setGridLocationLongitude(String gridLocationLongitude) {
         this.gridLocationLongitude = gridLocationLongitude;
+    }
+
+    @Column(name = "MapReference_Type")
+    public String getMapReferenceType() {
+        return mapReferenceType;
+    }
+
+    public void setMapReferenceType(String mapReferenceType) {
+        this.mapReferenceType = mapReferenceType;
     }
 
     @Column(name = "MapReference_XCoordinate")

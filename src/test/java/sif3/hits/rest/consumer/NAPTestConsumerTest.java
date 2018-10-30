@@ -105,6 +105,7 @@ public class NAPTestConsumerTest extends BaseTest {
         napTestContent.setDomain(AUCodeSetsNAPTestDomainType.NUMERACY);
         napTestContent.setTestYear(getDate("2015"));
         napTestTester.doCreateOne(napTestType);
+        napTestTester.doUpdateOne(napTestType, napTestType.getRefId());
 
         NAPTestType getResult = napTestTester.doGetOne(NAPTestRefIds.REF_ID_1);
         String xmlExpectedFrom = napTestTester.getXML(getResult);

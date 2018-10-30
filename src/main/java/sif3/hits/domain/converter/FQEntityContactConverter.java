@@ -42,6 +42,7 @@ public class FQEntityContactConverter extends HitsConverter<EntityContactInfoTyp
         target.setName(nameConverter.toSifModel(source.getName()));
         target.setQualifications(objectFactory.createEntityContactInfoTypeQualifications(source.getQualifications()));
         target.setRole(objectFactory.createEntityContactInfoTypeRole(source.getRole()));
+        target.setPositionTitle(objectFactory.createEntityContactInfoTypePositionTitle(source.getPositionTitle()));
         target.setRegistrationDetails(objectFactory.createEntityContactInfoTypeRegistrationDetails(source.getRegistrationDetails()));
         target.setQualifications(objectFactory.createEntityContactInfoTypeQualifications(source.getQualifications()));
         target.setAddress(objectFactory.createContactInfoTypeAddress(addressConverter.toSifModel(source.getAddress())));
@@ -77,6 +78,7 @@ public class FQEntityContactConverter extends HitsConverter<EntityContactInfoTyp
         target.setRole(getJAXBValue(source.getRole()));
         target.setRegistrationDetails(getJAXBValue(source.getRegistrationDetails()));
         target.setQualifications(getJAXBValue(source.getQualifications()));
+        target.setPositionTitle(getJAXBValue(source.getPositionTitle()));
         target.setAddress(addressConverter.toHitsModel(getJAXBValue(source.getAddress())));
         if (!addressConverter.isPopulated(target.getAddress())) {
             target.setAddress(null);
