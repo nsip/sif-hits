@@ -258,7 +258,8 @@ public interface IObjectFactory {
     SystemRoleType.SystemContextList.SystemContext.RoleList.Role.RoleScopeList createSystemRoleTypeSystemContextListSystemContextRoleListRoleRoleScopeList();
 
     /**
-     * Create an instance of {@link SystemRoleType.SystemContextList.SystemContext.RoleList.Role.RoleScopeList.RoleScope }
+     * Create an instance of
+     * {@link SystemRoleType.SystemContextList.SystemContext.RoleList.Role.RoleScopeList.RoleScope }
      * 
      */
     SystemRoleType.SystemContextList.SystemContext.RoleList.Role.RoleScopeList.RoleScope createSystemRoleTypeSystemContextListSystemContextRoleListRoleRoleScopeListRoleScope();
@@ -840,6 +841,18 @@ public interface IObjectFactory {
     StudentGradeCollectionType createStudentGradeCollectionType();
 
     /**
+     * Create an instance of {@link StudentScoreJudgementAgainstStandardType }
+     * 
+     */
+    StudentScoreJudgementAgainstStandardType createStudentScoreJudgementAgainstStandardType();
+
+    /**
+     * Create an instance of {@link StudentScoreJudgementAgainstStandardCollectionType }
+     * 
+     */
+    StudentScoreJudgementAgainstStandardCollectionType createStudentScoreJudgementAgainstStandardCollectionType();
+
+    /**
      * Create an instance of {@link NAPEventStudentLinkType }
      * 
      */
@@ -996,40 +1009,76 @@ public interface IObjectFactory {
     WellbeingCharacteristicCollectionType createWellbeingCharacteristicCollectionType();
 
     /**
+     * Create an instance of {@link FinancialQuestionnaireSubmissionType }
+     * 
+     */
+    FinancialQuestionnaireSubmissionType createFinancialQuestionnaireSubmissionType();
+
+    /**
+     * Create an instance of {@link FinancialQuestionnaireSubmissionCollectionType }
+     * 
+     */
+    FinancialQuestionnaireSubmissionCollectionType createFinancialQuestionnaireSubmissionCollectionType();
+
+    /**
+     * Create an instance of {@link AGStatusReportType }
+     * 
+     */
+    AGStatusReportType createAGStatusReportType();
+
+    /**
+     * Create an instance of {@link AGStatusReportCollectionType }
+     * 
+     */
+    AGStatusReportCollectionType createAGStatusReportCollectionType();
+
+    /**
+     * Create an instance of {@link StudentGroupListType }
+     * 
+     */
+    StudentGroupListType createStudentGroupListType();
+
+    /**
+     * Create an instance of {@link StudentGroupType }
+     * 
+     */
+    StudentGroupType createStudentGroupType();
+
+    /**
+     * Create an instance of {@link PublishingPermissionListType }
+     * 
+     */
+    PublishingPermissionListType createPublishingPermissionListType();
+
+    /**
+     * Create an instance of {@link PublishingPermissionType }
+     * 
+     */
+    PublishingPermissionType createPublishingPermissionType();
+
+    /**
+     * Create an instance of {@link AGReportingObjectResponseListType }
+     * 
+     */
+    AGReportingObjectResponseListType createAGReportingObjectResponseListType();
+
+    /**
+     * Create an instance of {@link AGReportingObjectResponseType }
+     * 
+     */
+    AGReportingObjectResponseType createAGReportingObjectResponseType();
+
+    /**
+     * Create an instance of {@link FQReportingListType }
+     * 
+     */
+    FQReportingListType createFQReportingListType();
+
+    /**
      * Create an instance of {@link FQReportingType }
      * 
      */
     FQReportingType createFQReportingType();
-
-    /**
-     * Create an instance of {@link FQReportingCollectionType }
-     * 
-     */
-    FQReportingCollectionType createFQReportingCollectionType();
-
-    /**
-     * Create an instance of {@link DataDomainObligationListType }
-     * 
-     */
-    DataDomainObligationListType createDataDomainObligationListType();
-
-    /**
-     * Create an instance of {@link DataDomainObligationType }
-     * 
-     */
-    DataDomainObligationType createDataDomainObligationType();
-
-    /**
-     * Create an instance of {@link ShareWithListType }
-     * 
-     */
-    ShareWithListType createShareWithListType();
-
-    /**
-     * Create an instance of {@link ShareWithType }
-     * 
-     */
-    ShareWithType createShareWithType();
 
     /**
      * Create an instance of {@link FQContextualQuestionListType }
@@ -1056,16 +1105,16 @@ public interface IObjectFactory {
     FQItemType createFQItemType();
 
     /**
-     * Create an instance of {@link FQRuleListType }
+     * Create an instance of {@link AGRuleListType }
      * 
      */
-    FQRuleListType createFQRuleListType();
+    AGRuleListType createAGRuleListType();
 
     /**
-     * Create an instance of {@link FQRuleType }
+     * Create an instance of {@link AGRuleType }
      * 
      */
-    FQRuleType createFQRuleType();
+    AGRuleType createAGRuleType();
 
     /**
      * Create an instance of {@link SoftwareVendorInfoContainerType }
@@ -2706,7 +2755,8 @@ public interface IObjectFactory {
     SystemRoleType.SIFRefId createSystemRoleTypeSIFRefId();
 
     /**
-     * Create an instance of {@link SystemRoleType.SystemContextList.SystemContext.RoleList.Role.RoleScopeList.RoleScope.RoleScopeRefId }
+     * Create an instance of
+     * {@link SystemRoleType.SystemContextList.SystemContext.RoleList.Role.RoleScopeList.RoleScope.RoleScopeRefId }
      * 
      */
     SystemRoleType.SystemContextList.SystemContext.RoleList.Role.RoleScopeList.RoleScope.RoleScopeRefId createSystemRoleTypeSystemContextListSystemContextRoleListRoleRoleScopeListRoleScopeRoleScopeRefId();
@@ -2751,19 +2801,22 @@ public interface IObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link AggregateStatisticInfoCollectionType }{@code >}}
      * 
      */
-    JAXBElement<AggregateStatisticInfoCollectionType> createAggregateStatisticInfos(AggregateStatisticInfoCollectionType value);
+    JAXBElement<AggregateStatisticInfoCollectionType> createAggregateStatisticInfos(
+            AggregateStatisticInfoCollectionType value);
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link AggregateCharacteristicInfoType }{@code >}}
      * 
      */
-    JAXBElement<AggregateCharacteristicInfoType> createAggregateCharacteristicInfo(AggregateCharacteristicInfoType value);
+    JAXBElement<AggregateCharacteristicInfoType> createAggregateCharacteristicInfo(
+            AggregateCharacteristicInfoType value);
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link AggregateCharacteristicInfoCollectionType }{@code >}}
      * 
      */
-    JAXBElement<AggregateCharacteristicInfoCollectionType> createAggregateCharacteristicInfos(AggregateCharacteristicInfoCollectionType value);
+    JAXBElement<AggregateCharacteristicInfoCollectionType> createAggregateCharacteristicInfos(
+            AggregateCharacteristicInfoCollectionType value);
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link AggregateStatisticFactType }{@code >}}
@@ -2775,7 +2828,8 @@ public interface IObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link AggregateStatisticFactCollectionType }{@code >}}
      * 
      */
-    JAXBElement<AggregateStatisticFactCollectionType> createAggregateStatisticFacts(AggregateStatisticFactCollectionType value);
+    JAXBElement<AggregateStatisticFactCollectionType> createAggregateStatisticFacts(
+            AggregateStatisticFactCollectionType value);
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link ResourceUsageType }{@code >}}
@@ -2847,7 +2901,8 @@ public interface IObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link StudentSchoolEnrollmentCollectionType }{@code >}}
      * 
      */
-    JAXBElement<StudentSchoolEnrollmentCollectionType> createStudentSchoolEnrollments(StudentSchoolEnrollmentCollectionType value);
+    JAXBElement<StudentSchoolEnrollmentCollectionType> createStudentSchoolEnrollments(
+            StudentSchoolEnrollmentCollectionType value);
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link StudentContactPersonalType }{@code >}}
@@ -2859,7 +2914,8 @@ public interface IObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link StudentContactPersonalCollectionType }{@code >}}
      * 
      */
-    JAXBElement<StudentContactPersonalCollectionType> createStudentContactPersonals(StudentContactPersonalCollectionType value);
+    JAXBElement<StudentContactPersonalCollectionType> createStudentContactPersonals(
+            StudentContactPersonalCollectionType value);
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link StudentParticipationType }{@code >}}
@@ -2871,7 +2927,8 @@ public interface IObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link StudentParticipationCollectionType }{@code >}}
      * 
      */
-    JAXBElement<StudentParticipationCollectionType> createStudentParticipations(StudentParticipationCollectionType value);
+    JAXBElement<StudentParticipationCollectionType> createStudentParticipations(
+            StudentParticipationCollectionType value);
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link PersonPictureType }{@code >}}
@@ -2919,7 +2976,8 @@ public interface IObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link StudentAttendanceSummaryCollectionType }{@code >}}
      * 
      */
-    JAXBElement<StudentAttendanceSummaryCollectionType> createStudentAttendanceSummarys(StudentAttendanceSummaryCollectionType value);
+    JAXBElement<StudentAttendanceSummaryCollectionType> createStudentAttendanceSummarys(
+            StudentAttendanceSummaryCollectionType value);
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link StudentDailyAttendanceType }{@code >}}
@@ -2931,7 +2989,8 @@ public interface IObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link StudentDailyAttendanceCollectionType }{@code >}}
      * 
      */
-    JAXBElement<StudentDailyAttendanceCollectionType> createStudentDailyAttendances(StudentDailyAttendanceCollectionType value);
+    JAXBElement<StudentDailyAttendanceCollectionType> createStudentDailyAttendances(
+            StudentDailyAttendanceCollectionType value);
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link StudentPeriodAttendanceType }{@code >}}
@@ -2943,7 +3002,8 @@ public interface IObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link StudentPeriodAttendanceCollectionType }{@code >}}
      * 
      */
-    JAXBElement<StudentPeriodAttendanceCollectionType> createStudentPeriodAttendances(StudentPeriodAttendanceCollectionType value);
+    JAXBElement<StudentPeriodAttendanceCollectionType> createStudentPeriodAttendances(
+            StudentPeriodAttendanceCollectionType value);
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link SessionInfoType }{@code >}}
@@ -2967,7 +3027,8 @@ public interface IObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link LearningStandardDocumentCollectionType }{@code >}}
      * 
      */
-    JAXBElement<LearningStandardDocumentCollectionType> createLearningStandardDocuments(LearningStandardDocumentCollectionType value);
+    JAXBElement<LearningStandardDocumentCollectionType> createLearningStandardDocuments(
+            LearningStandardDocumentCollectionType value);
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link LearningStandardItemType }{@code >}}
@@ -2979,7 +3040,8 @@ public interface IObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link LearningStandardItemCollectionType }{@code >}}
      * 
      */
-    JAXBElement<LearningStandardItemCollectionType> createLearningStandardItems(LearningStandardItemCollectionType value);
+    JAXBElement<LearningStandardItemCollectionType> createLearningStandardItems(
+            LearningStandardItemCollectionType value);
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link LearningResourceType }{@code >}}
@@ -3003,7 +3065,8 @@ public interface IObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link LearningResourcePackageCollectionType }{@code >}}
      * 
      */
-    JAXBElement<LearningResourcePackageCollectionType> createLearningResourcePackages(LearningResourcePackageCollectionType value);
+    JAXBElement<LearningResourcePackageCollectionType> createLearningResourcePackages(
+            LearningResourcePackageCollectionType value);
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link TimeTableSubjectType }{@code >}}
@@ -3099,7 +3162,8 @@ public interface IObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link StudentContactRelationshipCollectionType }{@code >}}
      * 
      */
-    JAXBElement<StudentContactRelationshipCollectionType> createStudentContactRelationships(StudentContactRelationshipCollectionType value);
+    JAXBElement<StudentContactRelationshipCollectionType> createStudentContactRelationships(
+            StudentContactRelationshipCollectionType value);
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link StudentActivityInfoType }{@code >}}
@@ -3117,13 +3181,15 @@ public interface IObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link StudentActivityParticipationType }{@code >}}
      * 
      */
-    JAXBElement<StudentActivityParticipationType> createStudentActivityParticipation(StudentActivityParticipationType value);
+    JAXBElement<StudentActivityParticipationType> createStudentActivityParticipation(
+            StudentActivityParticipationType value);
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link StudentActivityParticipationCollectionType }{@code >}}
      * 
      */
-    JAXBElement<StudentActivityParticipationCollectionType> createStudentActivityParticipations(StudentActivityParticipationCollectionType value);
+    JAXBElement<StudentActivityParticipationCollectionType> createStudentActivityParticipations(
+            StudentActivityParticipationCollectionType value);
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link IdentityType }{@code >}}
@@ -3171,7 +3237,8 @@ public interface IObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link StudentSectionEnrollmentCollectionType }{@code >}}
      * 
      */
-    JAXBElement<StudentSectionEnrollmentCollectionType> createStudentSectionEnrollments(StudentSectionEnrollmentCollectionType value);
+    JAXBElement<StudentSectionEnrollmentCollectionType> createStudentSectionEnrollments(
+            StudentSectionEnrollmentCollectionType value);
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link ActivityType }{@code >}}
@@ -3327,7 +3394,8 @@ public interface IObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link StudentAttendanceTimeListCollectionType }{@code >}}
      * 
      */
-    JAXBElement<StudentAttendanceTimeListCollectionType> createStudentAttendanceTimeLists(StudentAttendanceTimeListCollectionType value);
+    JAXBElement<StudentAttendanceTimeListCollectionType> createStudentAttendanceTimeLists(
+            StudentAttendanceTimeListCollectionType value);
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link GradingAssignmentType }{@code >}}
@@ -3351,7 +3419,8 @@ public interface IObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link GradingAssignmentScoreCollectionType }{@code >}}
      * 
      */
-    JAXBElement<GradingAssignmentScoreCollectionType> createGradingAssignmentScores(GradingAssignmentScoreCollectionType value);
+    JAXBElement<GradingAssignmentScoreCollectionType> createGradingAssignmentScores(
+            GradingAssignmentScoreCollectionType value);
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link MarkValueInfoType }{@code >}}
@@ -3376,6 +3445,21 @@ public interface IObjectFactory {
      * 
      */
     JAXBElement<StudentGradeCollectionType> createStudentGrades(StudentGradeCollectionType value);
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link StudentScoreJudgementAgainstStandardType }{@code >}}
+     * 
+     */
+    JAXBElement<StudentScoreJudgementAgainstStandardType> createStudentScoreJudgementAgainstStandard(
+            StudentScoreJudgementAgainstStandardType value);
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link StudentScoreJudgementAgainstStandardCollectionType
+     * }{@code >}}
+     * 
+     */
+    JAXBElement<StudentScoreJudgementAgainstStandardCollectionType> createStudentScoreJudgementAgainstStandards(
+            StudentScoreJudgementAgainstStandardCollectionType value);
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link NAPEventStudentLinkType }{@code >}}
@@ -3447,7 +3531,8 @@ public interface IObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link NAPStudentResponseSetCollectionType }{@code >}}
      * 
      */
-    JAXBElement<NAPStudentResponseSetCollectionType> createNAPStudentResponseSets(NAPStudentResponseSetCollectionType value);
+    JAXBElement<NAPStudentResponseSetCollectionType> createNAPStudentResponseSets(
+            NAPStudentResponseSetCollectionType value);
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link NAPCodeFrameType }{@code >}}
@@ -3531,19 +3616,35 @@ public interface IObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link WellbeingCharacteristicCollectionType }{@code >}}
      * 
      */
-    JAXBElement<WellbeingCharacteristicCollectionType> createWellbeingCharacteristics(WellbeingCharacteristicCollectionType value);
+    JAXBElement<WellbeingCharacteristicCollectionType> createWellbeingCharacteristics(
+            WellbeingCharacteristicCollectionType value);
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link FQReportingType }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link FinancialQuestionnaireSubmissionType }{@code >}}
      * 
      */
-    JAXBElement<FQReportingType> createFQReporting(FQReportingType value);
+    JAXBElement<FinancialQuestionnaireSubmissionType> createFinancialQuestionnaireSubmission(
+            FinancialQuestionnaireSubmissionType value);
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link FQReportingCollectionType }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link FinancialQuestionnaireSubmissionCollectionType
+     * }{@code >}}
      * 
      */
-    JAXBElement<FQReportingCollectionType> createFQReportings(FQReportingCollectionType value);
+    JAXBElement<FinancialQuestionnaireSubmissionCollectionType> createFinancialQuestionnaireSubmissions(
+            FinancialQuestionnaireSubmissionCollectionType value);
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link AGStatusReportType }{@code >}}
+     * 
+     */
+    JAXBElement<AGStatusReportType> createAGStatusReport(AGStatusReportType value);
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link AGStatusReportCollectionType }{@code >}}
+     * 
+     */
+    JAXBElement<AGStatusReportCollectionType> createAGStatusReports(AGStatusReportCollectionType value);
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link SIFMetadataType.TimeElements }{@code >}}
@@ -3597,7 +3698,8 @@ public interface IObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link LifeCycleType.ModificationHistory }{@code >}}
      * 
      */
-    JAXBElement<LifeCycleType.ModificationHistory> createLifeCycleTypeModificationHistory(LifeCycleType.ModificationHistory value);
+    JAXBElement<LifeCycleType.ModificationHistory> createLifeCycleTypeModificationHistory(
+            LifeCycleType.ModificationHistory value);
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link LifeCycleType.TimeElements }{@code >}}
@@ -3615,7 +3717,8 @@ public interface IObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link LifeCycleType.Created.Creators }{@code >}}
      * 
      */
-    JAXBElement<LifeCycleType.Created.Creators> createLifeCycleTypeCreatedCreators(LifeCycleType.Created.Creators value);
+    JAXBElement<LifeCycleType.Created.Creators> createLifeCycleTypeCreatedCreators(
+            LifeCycleType.Created.Creators value);
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link java.util.Calendar }{@code >}}
@@ -3687,7 +3790,8 @@ public interface IObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link AUCodeSetsYesOrNoCategoryType }{@code >}}
      * 
      */
-    JAXBElement<AUCodeSetsYesOrNoCategoryType> createBaseNameTypePreferredFamilyNameFirst(AUCodeSetsYesOrNoCategoryType value);
+    JAXBElement<AUCodeSetsYesOrNoCategoryType> createBaseNameTypePreferredFamilyNameFirst(
+            AUCodeSetsYesOrNoCategoryType value);
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
@@ -3723,7 +3827,8 @@ public interface IObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link AUCodeSetsIndigenousStatusType }{@code >}}
      * 
      */
-    JAXBElement<AUCodeSetsIndigenousStatusType> createDemographicsTypeIndigenousStatus(AUCodeSetsIndigenousStatusType value);
+    JAXBElement<AUCodeSetsIndigenousStatusType> createDemographicsTypeIndigenousStatus(
+            AUCodeSetsIndigenousStatusType value);
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link AUCodeSetsSexCodeType }{@code >}}
@@ -3747,7 +3852,8 @@ public interface IObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link AUCodeSetsBirthdateVerificationType }{@code >}}
      * 
      */
-    JAXBElement<AUCodeSetsBirthdateVerificationType> createDemographicsTypeBirthDateVerification(AUCodeSetsBirthdateVerificationType value);
+    JAXBElement<AUCodeSetsBirthdateVerificationType> createDemographicsTypeBirthDateVerification(
+            AUCodeSetsBirthdateVerificationType value);
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
@@ -3762,7 +3868,8 @@ public interface IObjectFactory {
     JAXBElement<String> createDemographicsTypeStateOfBirth(String value);
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link AUCodeSetsStandardAustralianClassificationOfCountriesSACCType }{@code >}}
+     * Create an instance of {@link JAXBElement
+     * }{@code <}{@link AUCodeSetsStandardAustralianClassificationOfCountriesSACCType }{@code >}}
      * 
      */
     JAXBElement<AUCodeSetsStandardAustralianClassificationOfCountriesSACCType> createDemographicsTypeCountryOfBirth(
@@ -3790,7 +3897,8 @@ public interface IObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link AUCodeSetsAustralianCitizenshipStatusType }{@code >}}
      * 
      */
-    JAXBElement<AUCodeSetsAustralianCitizenshipStatusType> createDemographicsTypeAustralianCitizenshipStatus(AUCodeSetsAustralianCitizenshipStatusType value);
+    JAXBElement<AUCodeSetsAustralianCitizenshipStatusType> createDemographicsTypeAustralianCitizenshipStatus(
+            AUCodeSetsAustralianCitizenshipStatusType value);
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link EnglishProficiencyType }{@code >}}
@@ -3832,7 +3940,8 @@ public interface IObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link AUCodeSetsPermanentResidentStatusType }{@code >}}
      * 
      */
-    JAXBElement<AUCodeSetsPermanentResidentStatusType> createDemographicsTypePermanentResident(AUCodeSetsPermanentResidentStatusType value);
+    JAXBElement<AUCodeSetsPermanentResidentStatusType> createDemographicsTypePermanentResident(
+            AUCodeSetsPermanentResidentStatusType value);
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
@@ -3865,13 +3974,22 @@ public interface IObjectFactory {
     JAXBElement<AUCodeSetsYesOrNoCategoryType> createDemographicsTypeLBOTE(AUCodeSetsYesOrNoCategoryType value);
 
     /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link AUCodeSetsYesOrNoCategoryType }{@code >}}
+     * 
+     */
+    JAXBElement<AUCodeSetsYesOrNoCategoryType> createDemographicsTypeInterpreterRequired(
+            AUCodeSetsYesOrNoCategoryType value);
+
+    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link AUCodeSetsImmunisationCertificateStatusType }{@code >}}
      * 
      */
-    JAXBElement<AUCodeSetsImmunisationCertificateStatusType> createDemographicsTypeImmunisationCertificateStatus(AUCodeSetsImmunisationCertificateStatusType value);
+    JAXBElement<AUCodeSetsImmunisationCertificateStatusType> createDemographicsTypeImmunisationCertificateStatus(
+            AUCodeSetsImmunisationCertificateStatusType value);
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link AUCodeSetsAustralianStandardClassificationOfCulturalAndEthnicGroupsASCCEGType }{@code >}}
+     * Create an instance of {@link JAXBElement
+     * }{@code <}{@link AUCodeSetsAustralianStandardClassificationOfCulturalAndEthnicGroupsASCCEGType }{@code >}}
      * 
      */
     JAXBElement<AUCodeSetsAustralianStandardClassificationOfCulturalAndEthnicGroupsASCCEGType> createDemographicsTypeCulturalBackground(
@@ -3881,7 +3999,8 @@ public interface IObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link AUCodeSetsMaritalStatusAIHWType }{@code >}}
      * 
      */
-    JAXBElement<AUCodeSetsMaritalStatusAIHWType> createDemographicsTypeMaritalStatus(AUCodeSetsMaritalStatusAIHWType value);
+    JAXBElement<AUCodeSetsMaritalStatusAIHWType> createDemographicsTypeMaritalStatus(
+            AUCodeSetsMaritalStatusAIHWType value);
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
@@ -3926,10 +4045,12 @@ public interface IObjectFactory {
     JAXBElement<String> createAddressTypeStateProvince(String value);
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link AUCodeSetsStandardAustralianClassificationOfCountriesSACCType }{@code >}}
+     * Create an instance of {@link JAXBElement
+     * }{@code <}{@link AUCodeSetsStandardAustralianClassificationOfCountriesSACCType }{@code >}}
      * 
      */
-    JAXBElement<AUCodeSetsStandardAustralianClassificationOfCountriesSACCType> createAddressTypeCountry(AUCodeSetsStandardAustralianClassificationOfCountriesSACCType value);
+    JAXBElement<AUCodeSetsStandardAustralianClassificationOfCountriesSACCType> createAddressTypeCountry(
+            AUCodeSetsStandardAustralianClassificationOfCountriesSACCType value);
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link GridLocationType }{@code >}}
@@ -4091,7 +4212,8 @@ public interface IObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link AUCodeSetsYesOrNoCategoryType }{@code >}}
      * 
      */
-    JAXBElement<AUCodeSetsYesOrNoCategoryType> createSchoolContactTypePublishInDirectory(AUCodeSetsYesOrNoCategoryType value);
+    JAXBElement<AUCodeSetsYesOrNoCategoryType> createSchoolContactTypePublishInDirectory(
+            AUCodeSetsYesOrNoCategoryType value);
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
@@ -4145,7 +4267,8 @@ public interface IObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link HouseholdContactInfoListType }{@code >}}
      * 
      */
-    JAXBElement<HouseholdContactInfoListType> createPersonInfoTypeHouseholdContactInfoList(HouseholdContactInfoListType value);
+    JAXBElement<HouseholdContactInfoListType> createPersonInfoTypeHouseholdContactInfoList(
+            HouseholdContactInfoListType value);
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link OtherCodeListType }{@code >}}
@@ -4301,7 +4424,8 @@ public interface IObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link AUCodeSetsYesOrNoCategoryType }{@code >}}
      * 
      */
-    JAXBElement<AUCodeSetsYesOrNoCategoryType> createLEAContactTypePublishInDirectory(AUCodeSetsYesOrNoCategoryType value);
+    JAXBElement<AUCodeSetsYesOrNoCategoryType> createLEAContactTypePublishInDirectory(
+            AUCodeSetsYesOrNoCategoryType value);
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
@@ -4439,7 +4563,8 @@ public interface IObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link AUCodeSetsYesOrNoCategoryType }{@code >}}
      * 
      */
-    JAXBElement<AUCodeSetsYesOrNoCategoryType> createPurchasingItemTypeCancelledOrder(AUCodeSetsYesOrNoCategoryType value);
+    JAXBElement<AUCodeSetsYesOrNoCategoryType> createPurchasingItemTypeCancelledOrder(
+            AUCodeSetsYesOrNoCategoryType value);
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link BigDecimal }{@code >}}
@@ -4481,7 +4606,8 @@ public interface IObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link AUCodeSetsTeacherCoverSupervisionType }{@code >}}
      * 
      */
-    JAXBElement<AUCodeSetsTeacherCoverSupervisionType> createTeacherCoverTypeSupervision(AUCodeSetsTeacherCoverSupervisionType value);
+    JAXBElement<AUCodeSetsTeacherCoverSupervisionType> createTeacherCoverTypeSupervision(
+            AUCodeSetsTeacherCoverSupervisionType value);
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link BigDecimal }{@code >}}
@@ -4736,14 +4862,16 @@ public interface IObjectFactory {
     JAXBElement<BigDecimal> createStudentMostRecentContainerTypeFTE(BigDecimal value);
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link AUCodeSetsAustralianStandardClassificationOfLanguagesASCLType }{@code >}}
+     * Create an instance of {@link JAXBElement
+     * }{@code <}{@link AUCodeSetsAustralianStandardClassificationOfLanguagesASCLType }{@code >}}
      * 
      */
     JAXBElement<AUCodeSetsAustralianStandardClassificationOfLanguagesASCLType> createStudentMostRecentContainerTypeParent1Language(
             AUCodeSetsAustralianStandardClassificationOfLanguagesASCLType value);
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link AUCodeSetsAustralianStandardClassificationOfLanguagesASCLType }{@code >}}
+     * Create an instance of {@link JAXBElement
+     * }{@code <}{@link AUCodeSetsAustralianStandardClassificationOfLanguagesASCLType }{@code >}}
      * 
      */
     JAXBElement<AUCodeSetsAustralianStandardClassificationOfLanguagesASCLType> createStudentMostRecentContainerTypeParent2Language(
@@ -4753,37 +4881,43 @@ public interface IObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link AUCodeSetsEmploymentTypeType }{@code >}}
      * 
      */
-    JAXBElement<AUCodeSetsEmploymentTypeType> createStudentMostRecentContainerTypeParent1EmploymentType(AUCodeSetsEmploymentTypeType value);
+    JAXBElement<AUCodeSetsEmploymentTypeType> createStudentMostRecentContainerTypeParent1EmploymentType(
+            AUCodeSetsEmploymentTypeType value);
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link AUCodeSetsEmploymentTypeType }{@code >}}
      * 
      */
-    JAXBElement<AUCodeSetsEmploymentTypeType> createStudentMostRecentContainerTypeParent2EmploymentType(AUCodeSetsEmploymentTypeType value);
+    JAXBElement<AUCodeSetsEmploymentTypeType> createStudentMostRecentContainerTypeParent2EmploymentType(
+            AUCodeSetsEmploymentTypeType value);
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link AUCodeSetsSchoolEducationLevelTypeType }{@code >}}
      * 
      */
-    JAXBElement<AUCodeSetsSchoolEducationLevelTypeType> createStudentMostRecentContainerTypeParent1SchoolEducationLevel(AUCodeSetsSchoolEducationLevelTypeType value);
+    JAXBElement<AUCodeSetsSchoolEducationLevelTypeType> createStudentMostRecentContainerTypeParent1SchoolEducationLevel(
+            AUCodeSetsSchoolEducationLevelTypeType value);
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link AUCodeSetsSchoolEducationLevelTypeType }{@code >}}
      * 
      */
-    JAXBElement<AUCodeSetsSchoolEducationLevelTypeType> createStudentMostRecentContainerTypeParent2SchoolEducationLevel(AUCodeSetsSchoolEducationLevelTypeType value);
+    JAXBElement<AUCodeSetsSchoolEducationLevelTypeType> createStudentMostRecentContainerTypeParent2SchoolEducationLevel(
+            AUCodeSetsSchoolEducationLevelTypeType value);
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link AUCodeSetsNonSchoolEducationType }{@code >}}
      * 
      */
-    JAXBElement<AUCodeSetsNonSchoolEducationType> createStudentMostRecentContainerTypeParent1NonSchoolEducation(AUCodeSetsNonSchoolEducationType value);
+    JAXBElement<AUCodeSetsNonSchoolEducationType> createStudentMostRecentContainerTypeParent1NonSchoolEducation(
+            AUCodeSetsNonSchoolEducationType value);
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link AUCodeSetsNonSchoolEducationType }{@code >}}
      * 
      */
-    JAXBElement<AUCodeSetsNonSchoolEducationType> createStudentMostRecentContainerTypeParent2NonSchoolEducation(AUCodeSetsNonSchoolEducationType value);
+    JAXBElement<AUCodeSetsNonSchoolEducationType> createStudentMostRecentContainerTypeParent2NonSchoolEducation(
+            AUCodeSetsNonSchoolEducationType value);
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
@@ -4819,13 +4953,15 @@ public interface IObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link AUCodeSetsSchoolEnrollmentTypeType }{@code >}}
      * 
      */
-    JAXBElement<AUCodeSetsSchoolEnrollmentTypeType> createStudentMostRecentContainerTypeMembershipType(AUCodeSetsSchoolEnrollmentTypeType value);
+    JAXBElement<AUCodeSetsSchoolEnrollmentTypeType> createStudentMostRecentContainerTypeMembershipType(
+            AUCodeSetsSchoolEnrollmentTypeType value);
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link AUCodeSetsFFPOSStatusCodeType }{@code >}}
      * 
      */
-    JAXBElement<AUCodeSetsFFPOSStatusCodeType> createStudentMostRecentContainerTypeFFPOS(AUCodeSetsFFPOSStatusCodeType value);
+    JAXBElement<AUCodeSetsFFPOSStatusCodeType> createStudentMostRecentContainerTypeFFPOS(
+            AUCodeSetsFFPOSStatusCodeType value);
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
@@ -4897,7 +5033,8 @@ public interface IObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link AUCodeSetsYesOrNoCategoryType }{@code >}}
      * 
      */
-    JAXBElement<AUCodeSetsYesOrNoCategoryType> createContactFlagsTypeParentLegalGuardian(AUCodeSetsYesOrNoCategoryType value);
+    JAXBElement<AUCodeSetsYesOrNoCategoryType> createContactFlagsTypeParentLegalGuardian(
+            AUCodeSetsYesOrNoCategoryType value);
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link AUCodeSetsYesOrNoCategoryType }{@code >}}
@@ -4915,19 +5052,22 @@ public interface IObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link AUCodeSetsYesOrNoCategoryType }{@code >}}
      * 
      */
-    JAXBElement<AUCodeSetsYesOrNoCategoryType> createContactFlagsTypeAccessToRecords(AUCodeSetsYesOrNoCategoryType value);
+    JAXBElement<AUCodeSetsYesOrNoCategoryType> createContactFlagsTypeAccessToRecords(
+            AUCodeSetsYesOrNoCategoryType value);
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link AUCodeSetsYesOrNoCategoryType }{@code >}}
      * 
      */
-    JAXBElement<AUCodeSetsYesOrNoCategoryType> createContactFlagsTypeReceivesAssessmentReport(AUCodeSetsYesOrNoCategoryType value);
+    JAXBElement<AUCodeSetsYesOrNoCategoryType> createContactFlagsTypeReceivesAssessmentReport(
+            AUCodeSetsYesOrNoCategoryType value);
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link AUCodeSetsYesOrNoCategoryType }{@code >}}
      * 
      */
-    JAXBElement<AUCodeSetsYesOrNoCategoryType> createContactFlagsTypeEmergencyContact(AUCodeSetsYesOrNoCategoryType value);
+    JAXBElement<AUCodeSetsYesOrNoCategoryType> createContactFlagsTypeEmergencyContact(
+            AUCodeSetsYesOrNoCategoryType value);
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link AUCodeSetsYesOrNoCategoryType }{@code >}}
@@ -4939,19 +5079,22 @@ public interface IObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link AUCodeSetsYesOrNoCategoryType }{@code >}}
      * 
      */
-    JAXBElement<AUCodeSetsYesOrNoCategoryType> createContactFlagsTypeDisciplinaryContact(AUCodeSetsYesOrNoCategoryType value);
+    JAXBElement<AUCodeSetsYesOrNoCategoryType> createContactFlagsTypeDisciplinaryContact(
+            AUCodeSetsYesOrNoCategoryType value);
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link AUCodeSetsYesOrNoCategoryType }{@code >}}
      * 
      */
-    JAXBElement<AUCodeSetsYesOrNoCategoryType> createContactFlagsTypeAttendanceContact(AUCodeSetsYesOrNoCategoryType value);
+    JAXBElement<AUCodeSetsYesOrNoCategoryType> createContactFlagsTypeAttendanceContact(
+            AUCodeSetsYesOrNoCategoryType value);
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link AUCodeSetsYesOrNoCategoryType }{@code >}}
      * 
      */
-    JAXBElement<AUCodeSetsYesOrNoCategoryType> createContactFlagsTypePrimaryCareProvider(AUCodeSetsYesOrNoCategoryType value);
+    JAXBElement<AUCodeSetsYesOrNoCategoryType> createContactFlagsTypePrimaryCareProvider(
+            AUCodeSetsYesOrNoCategoryType value);
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link AUCodeSetsYesOrNoCategoryType }{@code >}}
@@ -4975,7 +5118,8 @@ public interface IObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link AUCodeSetsYesOrNoCategoryType }{@code >}}
      * 
      */
-    JAXBElement<AUCodeSetsYesOrNoCategoryType> createContactFlagsTypeInterventionOrder(AUCodeSetsYesOrNoCategoryType value);
+    JAXBElement<AUCodeSetsYesOrNoCategoryType> createContactFlagsTypeInterventionOrder(
+            AUCodeSetsYesOrNoCategoryType value);
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link OtherCodeListType }{@code >}}
@@ -5191,7 +5335,8 @@ public interface IObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link javax.xml.datatype.Duration }{@code >}}
      * 
      */
-    JAXBElement<javax.xml.datatype.Duration> createNAPTestletResponseItemTypeLapsedTimeItem(javax.xml.datatype.Duration value);
+    JAXBElement<javax.xml.datatype.Duration> createNAPTestletResponseItemTypeLapsedTimeItem(
+            javax.xml.datatype.Duration value);
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link NAPSubscoreListType }{@code >}}
@@ -5245,7 +5390,8 @@ public interface IObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link AUCodeSetsNAPWritingGenreType }{@code >}}
      * 
      */
-    JAXBElement<AUCodeSetsNAPWritingGenreType> createNAPTestItemContentTypeWritingGenre(AUCodeSetsNAPWritingGenreType value);
+    JAXBElement<AUCodeSetsNAPWritingGenreType> createNAPTestItemContentTypeWritingGenre(
+            AUCodeSetsNAPWritingGenreType value);
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link Integer }{@code >}}
@@ -5275,13 +5421,15 @@ public interface IObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link SubstituteItemListType }{@code >}}
      * 
      */
-    JAXBElement<SubstituteItemListType> createNAPTestItemContentTypeItemSubstitutedForList(SubstituteItemListType value);
+    JAXBElement<SubstituteItemListType> createNAPTestItemContentTypeItemSubstitutedForList(
+            SubstituteItemListType value);
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link ContentDescriptionListType }{@code >}}
      * 
      */
-    JAXBElement<ContentDescriptionListType> createNAPTestItemContentTypeContentDescriptionList(ContentDescriptionListType value);
+    JAXBElement<ContentDescriptionListType> createNAPTestItemContentTypeContentDescriptionList(
+            ContentDescriptionListType value);
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link StimulusListType }{@code >}}
@@ -5293,7 +5441,8 @@ public interface IObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link NAPWritingRubricListType }{@code >}}
      * 
      */
-    JAXBElement<NAPWritingRubricListType> createNAPTestItemContentTypeNAPWritingRubricList(NAPWritingRubricListType value);
+    JAXBElement<NAPWritingRubricListType> createNAPTestItemContentTypeNAPWritingRubricList(
+            NAPWritingRubricListType value);
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
@@ -5329,7 +5478,8 @@ public interface IObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link XMLGregorianCalendar }{@code >}}
      * 
      */
-    JAXBElement<XMLGregorianCalendar> createOtherWellbeingResponseContainerTypeOtherResponseDate(XMLGregorianCalendar value);
+    JAXBElement<XMLGregorianCalendar> createOtherWellbeingResponseContainerTypeOtherResponseDate(
+            XMLGregorianCalendar value);
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
@@ -5353,7 +5503,8 @@ public interface IObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link AUCodeSetsWellbeingStatusType }{@code >}}
      * 
      */
-    JAXBElement<AUCodeSetsWellbeingStatusType> createOtherWellbeingResponseContainerTypeStatus(AUCodeSetsWellbeingStatusType value);
+    JAXBElement<AUCodeSetsWellbeingStatusType> createOtherWellbeingResponseContainerTypeStatus(
+            AUCodeSetsWellbeingStatusType value);
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link XMLGregorianCalendar }{@code >}}
@@ -5407,7 +5558,8 @@ public interface IObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link AUCodeSetsWellbeingStatusType }{@code >}}
      * 
      */
-    JAXBElement<AUCodeSetsWellbeingStatusType> createPlanRequiredContainerTypeStatus(AUCodeSetsWellbeingStatusType value);
+    JAXBElement<AUCodeSetsWellbeingStatusType> createPlanRequiredContainerTypeStatus(
+            AUCodeSetsWellbeingStatusType value);
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link XMLGregorianCalendar }{@code >}}
@@ -5509,7 +5661,8 @@ public interface IObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link PersonInvolvementType.PersonRefId }{@code >}}
      * 
      */
-    JAXBElement<PersonInvolvementType.PersonRefId> createPersonInvolvementTypePersonRefId(PersonInvolvementType.PersonRefId value);
+    JAXBElement<PersonInvolvementType.PersonRefId> createPersonInvolvementTypePersonRefId(
+            PersonInvolvementType.PersonRefId value);
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
@@ -5557,7 +5710,8 @@ public interface IObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link WellbeingEventSubCategoryListType }{@code >}}
      * 
      */
-    JAXBElement<WellbeingEventSubCategoryListType> createWellbeingEventCategoryTypeWellbeingEventSubCategoryList(WellbeingEventSubCategoryListType value);
+    JAXBElement<WellbeingEventSubCategoryListType> createWellbeingEventCategoryTypeWellbeingEventSubCategoryList(
+            WellbeingEventSubCategoryListType value);
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
@@ -5594,6 +5748,12 @@ public interface IObjectFactory {
      * 
      */
     JAXBElement<String> createGenericRubricTypeDescriptor(String value);
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+     * 
+     */
+    JAXBElement<String> createLearningStandardTypeLearningStandardItemRefId(String value);
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
@@ -5695,10 +5855,12 @@ public interface IObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link AlternateIdentificationCodeListType }{@code >}}
      * 
      */
-    JAXBElement<AlternateIdentificationCodeListType> createStandardIdentifierTypeAlternateIdentificationCodes(AlternateIdentificationCodeListType value);
+    JAXBElement<AlternateIdentificationCodeListType> createStandardIdentifierTypeAlternateIdentificationCodes(
+            AlternateIdentificationCodeListType value);
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link AUCodeSetsStandardAustralianClassificationOfCountriesSACCType }{@code >}}
+     * Create an instance of {@link JAXBElement
+     * }{@code <}{@link AUCodeSetsStandardAustralianClassificationOfCountriesSACCType }{@code >}}
      * 
      */
     JAXBElement<AUCodeSetsStandardAustralianClassificationOfCountriesSACCType> createStandardsSettingBodyTypeCountry(
@@ -5774,25 +5936,25 @@ public interface IObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
      * 
      */
-    JAXBElement<String> createSoftwareVendorInfoContainerTypeSoftwareProduct(String value);
+    JAXBElement<String> createAGRuleTypeAGRuleCode(String value);
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
      * 
      */
-    JAXBElement<String> createSoftwareVendorInfoContainerTypeSoftwareVersion(String value);
+    JAXBElement<String> createAGRuleTypeAGRuleComment(String value);
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
      * 
      */
-    JAXBElement<String> createFQRuleTypeFQRuleCode(String value);
+    JAXBElement<String> createAGRuleTypeAGRuleResponse(String value);
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
      * 
      */
-    JAXBElement<String> createFQRuleTypeFQRuleComment(String value);
+    JAXBElement<String> createAGRuleTypeAGRuleStatus(String value);
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link BigDecimal }{@code >}}
@@ -5819,46 +5981,10 @@ public interface IObjectFactory {
     JAXBElement<BigDecimal> createFQItemTypeDioceseAmount(BigDecimal value);
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link ShareWithListType }{@code >}}
-     * 
-     */
-    JAXBElement<ShareWithListType> createDataDomainObligationTypeShareWithList(ShareWithListType value);
-
-    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
      * 
      */
-    JAXBElement<String> createFQReportingTypeReportingAuthority(String value);
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
-     * 
-     */
-    JAXBElement<String> createFQReportingTypeReportingAuthoritySystem(String value);
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
-     * 
-     */
-    JAXBElement<String> createFQReportingTypeReportingAuthorityCommonwealthId(String value);
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link AUCodeSetsYesOrNoCategoryType }{@code >}}
-     * 
-     */
-    JAXBElement<AUCodeSetsYesOrNoCategoryType> createFQReportingTypeSystemSubmission(AUCodeSetsYesOrNoCategoryType value);
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link SoftwareVendorInfoContainerType }{@code >}}
-     * 
-     */
-    JAXBElement<SoftwareVendorInfoContainerType> createFQReportingTypeSoftwareVendorInfo(SoftwareVendorInfoContainerType value);
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
-     * 
-     */
-    JAXBElement<String> createFQReportingTypeEntityLevel(String value);
+    JAXBElement<String> createFQReportingTypeFQRefId(String value);
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
@@ -5882,12 +6008,6 @@ public interface IObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
      * 
      */
-    JAXBElement<String> createFQReportingTypeCommonwealthId(String value);
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
-     * 
-     */
     JAXBElement<String> createFQReportingTypeACARAId(String value);
 
     /**
@@ -5897,40 +6017,159 @@ public interface IObjectFactory {
     JAXBElement<String> createFQReportingTypeEntityName(String value);
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link EntityContactInfoType }{@code >}}
-     * 
-     */
-    JAXBElement<EntityContactInfoType> createFQReportingTypeEntityContact(EntityContactInfoType value);
-
-    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link FQContextualQuestionListType }{@code >}}
      * 
      */
-    JAXBElement<FQContextualQuestionListType> createFQReportingTypeFQContextualQuestionList(FQContextualQuestionListType value);
+    JAXBElement<FQContextualQuestionListType> createFQReportingTypeFQContextualQuestionList(
+            FQContextualQuestionListType value);
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link FQItemListType }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link AGRuleListType }{@code >}}
      * 
      */
-    JAXBElement<FQItemListType> createFQReportingTypeFQItemList(FQItemListType value);
+    JAXBElement<AGRuleListType> createFQReportingTypeAGRuleList(AGRuleListType value);
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link FQRuleListType }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
      * 
      */
-    JAXBElement<FQRuleListType> createFQReportingTypeFQRuleList(FQRuleListType value);
+    JAXBElement<String> createAGReportingObjectResponseTypeSubmittedRefId(String value);
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+     * 
+     */
+    JAXBElement<String> createAGReportingObjectResponseTypeSIFRefId(String value);
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+     * 
+     */
+    JAXBElement<String> createAGReportingObjectResponseTypeHTTPStatusCode(String value);
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+     * 
+     */
+    JAXBElement<String> createAGReportingObjectResponseTypeErrorText(String value);
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+     * 
+     */
+    JAXBElement<String> createAGReportingObjectResponseTypeEntityName(String value);
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+     * 
+     */
+    JAXBElement<String> createAGReportingObjectResponseTypeAGSubmissionStatusCode(String value);
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link AGRuleListType }{@code >}}
+     * 
+     */
+    JAXBElement<AGRuleListType> createAGReportingObjectResponseTypeAGRuleList(AGRuleListType value);
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+     * 
+     */
+    JAXBElement<String> createStudentGroupTypeGroupDescription(String value);
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+     * 
+     */
+    JAXBElement<String> createAGStatusReportTypeReportingAuthoritySystem(String value);
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+     * 
+     */
+    JAXBElement<String> createAGStatusReportTypeReportingAuthorityCommonwealthId(String value);
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+     * 
+     */
+    JAXBElement<String> createAGStatusReportTypeSubmittedBy(String value);
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link java.util.Calendar }{@code >}}
+     * 
+     */
+    JAXBElement<java.util.Calendar> createAGStatusReportTypeSubmissionTimestamp(java.util.Calendar value);
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+     * 
+     */
+    JAXBElement<String> createAGStatusReportTypeAGCollection(String value);
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link AGReportingObjectResponseListType }{@code >}}
+     * 
+     */
+    JAXBElement<AGReportingObjectResponseListType> createAGStatusReportTypeAGReportingObjectResponseList(
+            AGReportingObjectResponseListType value);
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link SIFMetadataType }{@code >}}
      * 
      */
-    JAXBElement<SIFMetadataType> createFQReportingTypeSIFMetadata(SIFMetadataType value);
+    JAXBElement<SIFMetadataType> createAGStatusReportTypeSIFMetadata(SIFMetadataType value);
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link SIFExtendedElementsType }{@code >}}
      * 
      */
-    JAXBElement<SIFExtendedElementsType> createFQReportingTypeSIFExtendedElements(SIFExtendedElementsType value);
+    JAXBElement<SIFExtendedElementsType> createAGStatusReportTypeSIFExtendedElements(SIFExtendedElementsType value);
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+     * 
+     */
+    JAXBElement<String> createFinancialQuestionnaireSubmissionTypeReportingAuthority(String value);
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+     * 
+     */
+    JAXBElement<String> createFinancialQuestionnaireSubmissionTypeReportingAuthoritySystem(String value);
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link AUCodeSetsYesOrNoCategoryType }{@code >}}
+     * 
+     */
+    JAXBElement<AUCodeSetsYesOrNoCategoryType> createFinancialQuestionnaireSubmissionTypeSystemSubmission(
+            AUCodeSetsYesOrNoCategoryType value);
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+     * 
+     */
+    JAXBElement<String> createFinancialQuestionnaireSubmissionTypeFQReportComments(String value);
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link FQReportingListType }{@code >}}
+     * 
+     */
+    JAXBElement<FQReportingListType> createFinancialQuestionnaireSubmissionTypeFQReportingList(
+            FQReportingListType value);
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link SIFMetadataType }{@code >}}
+     * 
+     */
+    JAXBElement<SIFMetadataType> createFinancialQuestionnaireSubmissionTypeSIFMetadata(SIFMetadataType value);
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link SIFExtendedElementsType }{@code >}}
+     * 
+     */
+    JAXBElement<SIFExtendedElementsType> createFinancialQuestionnaireSubmissionTypeSIFExtendedElements(
+            SIFExtendedElementsType value);
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
@@ -5939,7 +6178,8 @@ public interface IObjectFactory {
     JAXBElement<String> createWellbeingCharacteristicTypeSchoolInfoRefId(String value);
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link AUCodeSetsWellbeingCharacteristicClassificationType }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link AUCodeSetsWellbeingCharacteristicClassificationType
+     * }{@code >}}
      * 
      */
     JAXBElement<AUCodeSetsWellbeingCharacteristicClassificationType> createWellbeingCharacteristicTypeWellbeingCharacteristicClassification(
@@ -5949,19 +6189,22 @@ public interface IObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link XMLGregorianCalendar }{@code >}}
      * 
      */
-    JAXBElement<XMLGregorianCalendar> createWellbeingCharacteristicTypeWellbeingCharacteristicStartDate(XMLGregorianCalendar value);
+    JAXBElement<XMLGregorianCalendar> createWellbeingCharacteristicTypeWellbeingCharacteristicStartDate(
+            XMLGregorianCalendar value);
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link XMLGregorianCalendar }{@code >}}
      * 
      */
-    JAXBElement<XMLGregorianCalendar> createWellbeingCharacteristicTypeWellbeingCharacteristicEndDate(XMLGregorianCalendar value);
+    JAXBElement<XMLGregorianCalendar> createWellbeingCharacteristicTypeWellbeingCharacteristicEndDate(
+            XMLGregorianCalendar value);
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link XMLGregorianCalendar }{@code >}}
      * 
      */
-    JAXBElement<XMLGregorianCalendar> createWellbeingCharacteristicTypeWellbeingCharacteristicReviewDate(XMLGregorianCalendar value);
+    JAXBElement<XMLGregorianCalendar> createWellbeingCharacteristicTypeWellbeingCharacteristicReviewDate(
+            XMLGregorianCalendar value);
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
@@ -6021,13 +6264,15 @@ public interface IObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link AUCodeSetsYesOrNoCategoryType }{@code >}}
      * 
      */
-    JAXBElement<AUCodeSetsYesOrNoCategoryType> createWellbeingCharacteristicTypeConfidentialFlag(AUCodeSetsYesOrNoCategoryType value);
+    JAXBElement<AUCodeSetsYesOrNoCategoryType> createWellbeingCharacteristicTypeConfidentialFlag(
+            AUCodeSetsYesOrNoCategoryType value);
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link AUCodeSetsYesOrNoCategoryType }{@code >}}
      * 
      */
-    JAXBElement<AUCodeSetsYesOrNoCategoryType> createWellbeingCharacteristicTypeAlert(AUCodeSetsYesOrNoCategoryType value);
+    JAXBElement<AUCodeSetsYesOrNoCategoryType> createWellbeingCharacteristicTypeAlert(
+            AUCodeSetsYesOrNoCategoryType value);
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link MedicationListType }{@code >}}
@@ -6039,7 +6284,8 @@ public interface IObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link WellbeingDocumentListType }{@code >}}
      * 
      */
-    JAXBElement<WellbeingDocumentListType> createWellbeingCharacteristicTypeDocumentList(WellbeingDocumentListType value);
+    JAXBElement<WellbeingDocumentListType> createWellbeingCharacteristicTypeDocumentList(
+            WellbeingDocumentListType value);
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link SIFMetadataType }{@code >}}
@@ -6051,7 +6297,8 @@ public interface IObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link SIFExtendedElementsType }{@code >}}
      * 
      */
-    JAXBElement<SIFExtendedElementsType> createWellbeingCharacteristicTypeSIFExtendedElements(SIFExtendedElementsType value);
+    JAXBElement<SIFExtendedElementsType> createWellbeingCharacteristicTypeSIFExtendedElements(
+            SIFExtendedElementsType value);
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link XMLGregorianCalendar }{@code >}}
@@ -6111,7 +6358,8 @@ public interface IObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link WellbeingEventCategoryListType }{@code >}}
      * 
      */
-    JAXBElement<WellbeingEventCategoryListType> createWellbeingEventTypeWellbeingEventCategoryList(WellbeingEventCategoryListType value);
+    JAXBElement<WellbeingEventCategoryListType> createWellbeingEventTypeWellbeingEventCategoryList(
+            WellbeingEventCategoryListType value);
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
@@ -6123,7 +6371,8 @@ public interface IObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link WellbeingEventLocationDetailsType }{@code >}}
      * 
      */
-    JAXBElement<WellbeingEventLocationDetailsType> createWellbeingEventTypeWellbeingEventLocationDetails(WellbeingEventLocationDetailsType value);
+    JAXBElement<WellbeingEventLocationDetailsType> createWellbeingEventTypeWellbeingEventLocationDetails(
+            WellbeingEventLocationDetailsType value);
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link java.util.Calendar }{@code >}}
@@ -6147,13 +6396,15 @@ public interface IObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link AUCodeSetsYesOrNoCategoryType }{@code >}}
      * 
      */
-    JAXBElement<AUCodeSetsYesOrNoCategoryType> createWellbeingEventTypeConfidentialFlag(AUCodeSetsYesOrNoCategoryType value);
+    JAXBElement<AUCodeSetsYesOrNoCategoryType> createWellbeingEventTypeConfidentialFlag(
+            AUCodeSetsYesOrNoCategoryType value);
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link PersonInvolvementListType }{@code >}}
      * 
      */
-    JAXBElement<PersonInvolvementListType> createWellbeingEventTypePersonInvolvementList(PersonInvolvementListType value);
+    JAXBElement<PersonInvolvementListType> createWellbeingEventTypePersonInvolvementList(
+            PersonInvolvementListType value);
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link FollowUpActionListType }{@code >}}
@@ -6195,7 +6446,8 @@ public interface IObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link AUCodeSetsWellbeingAppealStatusType }{@code >}}
      * 
      */
-    JAXBElement<AUCodeSetsWellbeingAppealStatusType> createWellbeingAppealTypeAppealStatusCode(AUCodeSetsWellbeingAppealStatusType value);
+    JAXBElement<AUCodeSetsWellbeingAppealStatusType> createWellbeingAppealTypeAppealStatusCode(
+            AUCodeSetsWellbeingAppealStatusType value);
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link XMLGregorianCalendar }{@code >}}
@@ -6243,7 +6495,8 @@ public interface IObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link AUCodeSetsWellbeingAlertCategoryType }{@code >}}
      * 
      */
-    JAXBElement<AUCodeSetsWellbeingAlertCategoryType> createWellbeingAlertTypeWellbeingAlertCategory(AUCodeSetsWellbeingAlertCategoryType value);
+    JAXBElement<AUCodeSetsWellbeingAlertCategoryType> createWellbeingAlertTypeWellbeingAlertCategory(
+            AUCodeSetsWellbeingAlertCategoryType value);
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
@@ -6255,7 +6508,8 @@ public interface IObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link AUCodeSetsYesOrNoCategoryType }{@code >}}
      * 
      */
-    JAXBElement<AUCodeSetsYesOrNoCategoryType> createWellbeingAlertTypeEnrolmentRestricted(AUCodeSetsYesOrNoCategoryType value);
+    JAXBElement<AUCodeSetsYesOrNoCategoryType> createWellbeingAlertTypeEnrolmentRestricted(
+            AUCodeSetsYesOrNoCategoryType value);
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
@@ -6297,7 +6551,8 @@ public interface IObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link AUCodeSetsWellbeingResponseCategoryType }{@code >}}
      * 
      */
-    JAXBElement<AUCodeSetsWellbeingResponseCategoryType> createWellbeingResponseTypeWellbeingResponseCategory(AUCodeSetsWellbeingResponseCategoryType value);
+    JAXBElement<AUCodeSetsWellbeingResponseCategoryType> createWellbeingResponseTypeWellbeingResponseCategory(
+            AUCodeSetsWellbeingResponseCategoryType value);
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
@@ -6309,7 +6564,8 @@ public interface IObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link PersonInvolvementListType }{@code >}}
      * 
      */
-    JAXBElement<PersonInvolvementListType> createWellbeingResponseTypePersonInvolvementList(PersonInvolvementListType value);
+    JAXBElement<PersonInvolvementListType> createWellbeingResponseTypePersonInvolvementList(
+            PersonInvolvementListType value);
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link SuspensionContainerType }{@code >}}
@@ -6339,7 +6595,8 @@ public interface IObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link OtherWellbeingResponseContainerType }{@code >}}
      * 
      */
-    JAXBElement<OtherWellbeingResponseContainerType> createWellbeingResponseTypeOtherResponse(OtherWellbeingResponseContainerType value);
+    JAXBElement<OtherWellbeingResponseContainerType> createWellbeingResponseTypeOtherResponse(
+            OtherWellbeingResponseContainerType value);
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link WellbeingDocumentListType }{@code >}}
@@ -6417,7 +6674,8 @@ public interface IObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link NAPStudentResponseTestletListType }{@code >}}
      * 
      */
-    JAXBElement<NAPStudentResponseTestletListType> createNAPStudentResponseSetTypeTestletList(NAPStudentResponseTestletListType value);
+    JAXBElement<NAPStudentResponseTestletListType> createNAPStudentResponseSetTypeTestletList(
+            NAPStudentResponseTestletListType value);
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link SIFMetadataType }{@code >}}
@@ -6429,7 +6687,8 @@ public interface IObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link SIFExtendedElementsType }{@code >}}
      * 
      */
-    JAXBElement<SIFExtendedElementsType> createNAPStudentResponseSetTypeSIFExtendedElements(SIFExtendedElementsType value);
+    JAXBElement<SIFExtendedElementsType> createNAPStudentResponseSetTypeSIFExtendedElements(
+            SIFExtendedElementsType value);
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link SIFMetadataType }{@code >}}
@@ -6495,7 +6754,8 @@ public interface IObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link SIFExtendedElementsType }{@code >}}
      * 
      */
-    JAXBElement<SIFExtendedElementsType> createNAPTestScoreSummaryTypeSIFExtendedElements(SIFExtendedElementsType value);
+    JAXBElement<SIFExtendedElementsType> createNAPTestScoreSummaryTypeSIFExtendedElements(
+            SIFExtendedElementsType value);
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
@@ -6555,7 +6815,8 @@ public interface IObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link AUCodeSetsSchoolLocationType }{@code >}}
      * 
      */
-    JAXBElement<AUCodeSetsSchoolLocationType> createNAPEventStudentLinkTypeSchoolGeolocation(AUCodeSetsSchoolLocationType value);
+    JAXBElement<AUCodeSetsSchoolLocationType> createNAPEventStudentLinkTypeSchoolGeolocation(
+            AUCodeSetsSchoolLocationType value);
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
@@ -6567,7 +6828,8 @@ public interface IObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link AUCodeSetsNAPJurisdictionType }{@code >}}
      * 
      */
-    JAXBElement<AUCodeSetsNAPJurisdictionType> createNAPEventStudentLinkTypeNAPJurisdiction(AUCodeSetsNAPJurisdictionType value);
+    JAXBElement<AUCodeSetsNAPJurisdictionType> createNAPEventStudentLinkTypeNAPJurisdiction(
+            AUCodeSetsNAPJurisdictionType value);
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
@@ -6591,7 +6853,8 @@ public interface IObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link javax.xml.datatype.Duration }{@code >}}
      * 
      */
-    JAXBElement<javax.xml.datatype.Duration> createNAPEventStudentLinkTypeLapsedTimeTest(javax.xml.datatype.Duration value);
+    JAXBElement<javax.xml.datatype.Duration> createNAPEventStudentLinkTypeLapsedTimeTest(
+            javax.xml.datatype.Duration value);
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
@@ -6645,7 +6908,124 @@ public interface IObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link SIFExtendedElementsType }{@code >}}
      * 
      */
-    JAXBElement<SIFExtendedElementsType> createNAPEventStudentLinkTypeSIFExtendedElements(SIFExtendedElementsType value);
+    JAXBElement<SIFExtendedElementsType> createNAPEventStudentLinkTypeSIFExtendedElements(
+            SIFExtendedElementsType value);
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+     * 
+     */
+    JAXBElement<String> createStudentScoreJudgementAgainstStandardTypeTermInfoRefId(String value);
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+     * 
+     */
+    JAXBElement<String> createStudentScoreJudgementAgainstStandardTypeLocalTermCode(String value);
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+     * 
+     */
+    JAXBElement<String> createStudentScoreJudgementAgainstStandardTypeStudentPersonalRefId(String value);
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+     * 
+     */
+    JAXBElement<String> createStudentScoreJudgementAgainstStandardTypeStudentStateProvinceId(String value);
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+     * 
+     */
+    JAXBElement<String> createStudentScoreJudgementAgainstStandardTypeStudentLocalId(String value);
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+     * 
+     */
+    JAXBElement<String> createStudentScoreJudgementAgainstStandardTypeTeachingGroupRefId(String value);
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+     * 
+     */
+    JAXBElement<String> createStudentScoreJudgementAgainstStandardTypeClassLocalId(String value);
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+     * 
+     */
+    JAXBElement<String> createStudentScoreJudgementAgainstStandardTypeStaffPersonalRefId(String value);
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+     * 
+     */
+    JAXBElement<String> createStudentScoreJudgementAgainstStandardTypeStaffLocalId(String value);
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link LearningStandardListType }{@code >}}
+     * 
+     */
+    JAXBElement<LearningStandardListType> createStudentScoreJudgementAgainstStandardTypeLearningStandardList(
+            LearningStandardListType value);
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+     * 
+     */
+    JAXBElement<String> createStudentScoreJudgementAgainstStandardTypeCurriculumCode(String value);
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+     * 
+     */
+    JAXBElement<String> createStudentScoreJudgementAgainstStandardTypeCurriculumNodeCode(String value);
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+     * 
+     */
+    JAXBElement<String> createStudentScoreJudgementAgainstStandardTypeSpecialCircumstanceLocalCode(String value);
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+     * 
+     */
+    JAXBElement<String> createStudentScoreJudgementAgainstStandardTypeManagedPathwayLocalCode(String value);
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+     * 
+     */
+    JAXBElement<String> createStudentScoreJudgementAgainstStandardTypeSchoolInfoRefId(String value);
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+     * 
+     */
+    JAXBElement<String> createStudentScoreJudgementAgainstStandardTypeSchoolLocalId(String value);
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+     * 
+     */
+    JAXBElement<String> createStudentScoreJudgementAgainstStandardTypeSchoolCommonwealthId(String value);
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link SIFMetadataType }{@code >}}
+     * 
+     */
+    JAXBElement<SIFMetadataType> createStudentScoreJudgementAgainstStandardTypeSIFMetadata(SIFMetadataType value);
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link SIFExtendedElementsType }{@code >}}
+     * 
+     */
+    JAXBElement<SIFExtendedElementsType> createStudentScoreJudgementAgainstStandardTypeSIFExtendedElements(
+            SIFExtendedElementsType value);
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
@@ -6915,7 +7295,8 @@ public interface IObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link SIFExtendedElementsType }{@code >}}
      * 
      */
-    JAXBElement<SIFExtendedElementsType> createGradingAssignmentScoreTypeSIFExtendedElements(SIFExtendedElementsType value);
+    JAXBElement<SIFExtendedElementsType> createGradingAssignmentScoreTypeSIFExtendedElements(
+            SIFExtendedElementsType value);
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
@@ -7017,7 +7398,8 @@ public interface IObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link LearningStandardListType }{@code >}}
      * 
      */
-    JAXBElement<LearningStandardListType> createGradingAssignmentTypeLearningStandardList(LearningStandardListType value);
+    JAXBElement<LearningStandardListType> createGradingAssignmentTypeLearningStandardList(
+            LearningStandardListType value);
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link SIFMetadataType }{@code >}}
@@ -7035,7 +7417,8 @@ public interface IObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link PeriodAttendancesType }{@code >}}
      * 
      */
-    JAXBElement<PeriodAttendancesType> createStudentAttendanceTimeListTypePeriodAttendances(PeriodAttendancesType value);
+    JAXBElement<PeriodAttendancesType> createStudentAttendanceTimeListTypePeriodAttendances(
+            PeriodAttendancesType value);
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link SIFMetadataType }{@code >}}
@@ -7047,7 +7430,8 @@ public interface IObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link SIFExtendedElementsType }{@code >}}
      * 
      */
-    JAXBElement<SIFExtendedElementsType> createStudentAttendanceTimeListTypeSIFExtendedElements(SIFExtendedElementsType value);
+    JAXBElement<SIFExtendedElementsType> createStudentAttendanceTimeListTypeSIFExtendedElements(
+            SIFExtendedElementsType value);
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link AddressListType }{@code >}}
@@ -7089,7 +7473,8 @@ public interface IObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link JournalType.OriginatingTransactionRefId }{@code >}}
      * 
      */
-    JAXBElement<JournalType.OriginatingTransactionRefId> createJournalTypeOriginatingTransactionRefId(JournalType.OriginatingTransactionRefId value);
+    JAXBElement<JournalType.OriginatingTransactionRefId> createJournalTypeOriginatingTransactionRefId(
+            JournalType.OriginatingTransactionRefId value);
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
@@ -7167,7 +7552,8 @@ public interface IObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link AUCodeSetsYesOrNoCategoryType }{@code >}}
      * 
      */
-    JAXBElement<AUCodeSetsYesOrNoCategoryType> createVendorInfoTypeRegisteredForGST(AUCodeSetsYesOrNoCategoryType value);
+    JAXBElement<AUCodeSetsYesOrNoCategoryType> createVendorInfoTypeRegisteredForGST(
+            AUCodeSetsYesOrNoCategoryType value);
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
@@ -7257,7 +7643,8 @@ public interface IObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link AUCodeSetsYesOrNoCategoryType }{@code >}}
      * 
      */
-    JAXBElement<AUCodeSetsYesOrNoCategoryType> createPurchaseOrderTypeFullyDelivered(AUCodeSetsYesOrNoCategoryType value);
+    JAXBElement<AUCodeSetsYesOrNoCategoryType> createPurchaseOrderTypeFullyDelivered(
+            AUCodeSetsYesOrNoCategoryType value);
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
@@ -7305,7 +7692,8 @@ public interface IObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link FinancialAccountRefIdListType }{@code >}}
      * 
      */
-    JAXBElement<FinancialAccountRefIdListType> createPaymentReceiptTypeFinancialAccountRefIdList(FinancialAccountRefIdListType value);
+    JAXBElement<FinancialAccountRefIdListType> createPaymentReceiptTypeFinancialAccountRefIdList(
+            FinancialAccountRefIdListType value);
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
@@ -7413,7 +7801,8 @@ public interface IObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link SIFExtendedElementsType }{@code >}}
      * 
      */
-    JAXBElement<SIFExtendedElementsType> createChargedLocationInfoTypeSIFExtendedElements(SIFExtendedElementsType value);
+    JAXBElement<SIFExtendedElementsType> createChargedLocationInfoTypeSIFExtendedElements(
+            SIFExtendedElementsType value);
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
@@ -7509,7 +7898,8 @@ public interface IObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link FinancialAccountRefIdListType }{@code >}}
      * 
      */
-    JAXBElement<FinancialAccountRefIdListType> createInvoiceTypeFinancialAccountRefIdList(FinancialAccountRefIdListType value);
+    JAXBElement<FinancialAccountRefIdListType> createInvoiceTypeFinancialAccountRefIdList(
+            FinancialAccountRefIdListType value);
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
@@ -7599,7 +7989,8 @@ public interface IObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link ResourceBookingType.ResourceRefId }{@code >}}
      * 
      */
-    JAXBElement<ResourceBookingType.ResourceRefId> createResourceBookingTypeResourceRefId(ResourceBookingType.ResourceRefId value);
+    JAXBElement<ResourceBookingType.ResourceRefId> createResourceBookingTypeResourceRefId(
+            ResourceBookingType.ResourceRefId value);
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
@@ -7707,7 +8098,8 @@ public interface IObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link AUCodeSetsScheduledActivityTypeType }{@code >}}
      * 
      */
-    JAXBElement<AUCodeSetsScheduledActivityTypeType> createScheduledActivityTypeActivityType(AUCodeSetsScheduledActivityTypeType value);
+    JAXBElement<AUCodeSetsScheduledActivityTypeType> createScheduledActivityTypeActivityType(
+            AUCodeSetsScheduledActivityTypeType value);
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
@@ -7779,7 +8171,8 @@ public interface IObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link SoftwareRequirementListType }{@code >}}
      * 
      */
-    JAXBElement<SoftwareRequirementListType> createActivityTypeSoftwareRequirementList(SoftwareRequirementListType value);
+    JAXBElement<SoftwareRequirementListType> createActivityTypeSoftwareRequirementList(
+            SoftwareRequirementListType value);
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link EssentialMaterialsType }{@code >}}
@@ -7905,7 +8298,8 @@ public interface IObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link SIFExtendedElementsType }{@code >}}
      * 
      */
-    JAXBElement<SIFExtendedElementsType> createStudentSectionEnrollmentTypeSIFExtendedElements(SIFExtendedElementsType value);
+    JAXBElement<SIFExtendedElementsType> createStudentSectionEnrollmentTypeSIFExtendedElements(
+            SIFExtendedElementsType value);
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
@@ -7953,7 +8347,8 @@ public interface IObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link SchoolCourseInfoOverrideType }{@code >}}
      * 
      */
-    JAXBElement<SchoolCourseInfoOverrideType> createSectionInfoTypeSchoolCourseInfoOverride(SchoolCourseInfoOverrideType value);
+    JAXBElement<SchoolCourseInfoOverrideType> createSectionInfoTypeSchoolCourseInfoOverride(
+            SchoolCourseInfoOverrideType value);
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
@@ -8085,7 +8480,8 @@ public interface IObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link SIFExtendedElementsType }{@code >}}
      * 
      */
-    JAXBElement<SIFExtendedElementsType> createStudentActivityParticipationTypeSIFExtendedElements(SIFExtendedElementsType value);
+    JAXBElement<SIFExtendedElementsType> createStudentActivityParticipationTypeSIFExtendedElements(
+            SIFExtendedElementsType value);
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
@@ -8109,7 +8505,8 @@ public interface IObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link AUCodeSetsActivityTypeType }{@code >}}
      * 
      */
-    JAXBElement<AUCodeSetsActivityTypeType> createStudentActivityInfoTypeCurricularStatus(AUCodeSetsActivityTypeType value);
+    JAXBElement<AUCodeSetsActivityTypeType> createStudentActivityInfoTypeCurricularStatus(
+            AUCodeSetsActivityTypeType value);
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link LocationType }{@code >}}
@@ -8127,7 +8524,8 @@ public interface IObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link SIFExtendedElementsType }{@code >}}
      * 
      */
-    JAXBElement<SIFExtendedElementsType> createStudentActivityInfoTypeSIFExtendedElements(SIFExtendedElementsType value);
+    JAXBElement<SIFExtendedElementsType> createStudentActivityInfoTypeSIFExtendedElements(
+            SIFExtendedElementsType value);
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
@@ -8151,7 +8549,8 @@ public interface IObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link AUCodeSetsYesOrNoCategoryType }{@code >}}
      * 
      */
-    JAXBElement<AUCodeSetsYesOrNoCategoryType> createStudentContactRelationshipTypeMainlySpeaksEnglishAtHome(AUCodeSetsYesOrNoCategoryType value);
+    JAXBElement<AUCodeSetsYesOrNoCategoryType> createStudentContactRelationshipTypeMainlySpeaksEnglishAtHome(
+            AUCodeSetsYesOrNoCategoryType value);
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link Long }{@code >}}
@@ -8163,7 +8562,8 @@ public interface IObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link AUCodeSetsSourceCodeTypeType }{@code >}}
      * 
      */
-    JAXBElement<AUCodeSetsSourceCodeTypeType> createStudentContactRelationshipTypeContactSequenceSource(AUCodeSetsSourceCodeTypeType value);
+    JAXBElement<AUCodeSetsSourceCodeTypeType> createStudentContactRelationshipTypeContactSequenceSource(
+            AUCodeSetsSourceCodeTypeType value);
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
@@ -8181,7 +8581,8 @@ public interface IObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link SIFExtendedElementsType }{@code >}}
      * 
      */
-    JAXBElement<SIFExtendedElementsType> createStudentContactRelationshipTypeSIFExtendedElements(SIFExtendedElementsType value);
+    JAXBElement<SIFExtendedElementsType> createStudentContactRelationshipTypeSIFExtendedElements(
+            SIFExtendedElementsType value);
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
@@ -8289,7 +8690,8 @@ public interface IObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link AUCodeSetsOperationalStatusType }{@code >}}
      * 
      */
-    JAXBElement<AUCodeSetsOperationalStatusType> createLEAInfoTypeOperationalStatus(AUCodeSetsOperationalStatusType value);
+    JAXBElement<AUCodeSetsOperationalStatusType> createLEAInfoTypeOperationalStatus(
+            AUCodeSetsOperationalStatusType value);
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
@@ -8298,10 +8700,12 @@ public interface IObjectFactory {
     JAXBElement<String> createLEAInfoTypeJurisdictionLowerHouse(String value);
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link AUCodeSetsAustralianStandardGeographicalClassificationASGCType }{@code >}}
+     * Create an instance of {@link JAXBElement
+     * }{@code <}{@link AUCodeSetsAustralianStandardGeographicalClassificationASGCType }{@code >}}
      * 
      */
-    JAXBElement<AUCodeSetsAustralianStandardGeographicalClassificationASGCType> createLEAInfoTypeSLA(AUCodeSetsAustralianStandardGeographicalClassificationASGCType value);
+    JAXBElement<AUCodeSetsAustralianStandardGeographicalClassificationASGCType> createLEAInfoTypeSLA(
+            AUCodeSetsAustralianStandardGeographicalClassificationASGCType value);
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link SIFMetadataType }{@code >}}
@@ -8373,13 +8777,15 @@ public interface IObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link AUCodeSetsYesOrNoCategoryType }{@code >}}
      * 
      */
-    JAXBElement<AUCodeSetsYesOrNoCategoryType> createSchoolCourseInfoTypeCoreAcademicCourse(AUCodeSetsYesOrNoCategoryType value);
+    JAXBElement<AUCodeSetsYesOrNoCategoryType> createSchoolCourseInfoTypeCoreAcademicCourse(
+            AUCodeSetsYesOrNoCategoryType value);
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link AUCodeSetsYesOrNoCategoryType }{@code >}}
      * 
      */
-    JAXBElement<AUCodeSetsYesOrNoCategoryType> createSchoolCourseInfoTypeGraduationRequirement(AUCodeSetsYesOrNoCategoryType value);
+    JAXBElement<AUCodeSetsYesOrNoCategoryType> createSchoolCourseInfoTypeGraduationRequirement(
+            AUCodeSetsYesOrNoCategoryType value);
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
@@ -8589,7 +8995,8 @@ public interface IObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link TeachingGroupPeriodListType }{@code >}}
      * 
      */
-    JAXBElement<TeachingGroupPeriodListType> createTeachingGroupTypeTeachingGroupPeriodList(TeachingGroupPeriodListType value);
+    JAXBElement<TeachingGroupPeriodListType> createTeachingGroupTypeTeachingGroupPeriodList(
+            TeachingGroupPeriodListType value);
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link SIFMetadataType }{@code >}}
@@ -8865,7 +9272,8 @@ public interface IObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link StandardsSettingBodyType }{@code >}}
      * 
      */
-    JAXBElement<StandardsSettingBodyType> createLearningStandardItemTypeStandardSettingBody(StandardsSettingBodyType value);
+    JAXBElement<StandardsSettingBodyType> createLearningStandardItemTypeStandardSettingBody(
+            StandardsSettingBodyType value);
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link LearningStandardsType }{@code >}}
@@ -8889,7 +9297,8 @@ public interface IObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link ACStrandSubjectAreaType }{@code >}}
      * 
      */
-    JAXBElement<ACStrandSubjectAreaType> createLearningStandardItemTypeACStrandSubjectArea(ACStrandSubjectAreaType value);
+    JAXBElement<ACStrandSubjectAreaType> createLearningStandardItemTypeACStrandSubjectArea(
+            ACStrandSubjectAreaType value);
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link StandardIdentifierType }{@code >}}
@@ -8901,7 +9310,8 @@ public interface IObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link RelatedLearningStandardItemRefIdListType }{@code >}}
      * 
      */
-    JAXBElement<RelatedLearningStandardItemRefIdListType> createLearningStandardItemTypeRelatedLearningStandardItems(RelatedLearningStandardItemRefIdListType value);
+    JAXBElement<RelatedLearningStandardItemRefIdListType> createLearningStandardItemTypeRelatedLearningStandardItems(
+            RelatedLearningStandardItemRefIdListType value);
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
@@ -8925,7 +9335,8 @@ public interface IObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link SIFExtendedElementsType }{@code >}}
      * 
      */
-    JAXBElement<SIFExtendedElementsType> createLearningStandardItemTypeSIFExtendedElements(SIFExtendedElementsType value);
+    JAXBElement<SIFExtendedElementsType> createLearningStandardItemTypeSIFExtendedElements(
+            SIFExtendedElementsType value);
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
@@ -8937,7 +9348,8 @@ public interface IObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link AbstractContentElementType }{@code >}}
      * 
      */
-    JAXBElement<AbstractContentElementType> createLearningStandardDocumentTypeRichDescription(AbstractContentElementType value);
+    JAXBElement<AbstractContentElementType> createLearningStandardDocumentTypeRichDescription(
+            AbstractContentElementType value);
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link AuthorsType }{@code >}}
@@ -8997,7 +9409,8 @@ public interface IObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link LearningStandardsDocumentType }{@code >}}
      * 
      */
-    JAXBElement<LearningStandardsDocumentType> createLearningStandardDocumentTypeRelatedLearningStandards(LearningStandardsDocumentType value);
+    JAXBElement<LearningStandardsDocumentType> createLearningStandardDocumentTypeRelatedLearningStandards(
+            LearningStandardsDocumentType value);
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link SIFMetadataType }{@code >}}
@@ -9009,7 +9422,8 @@ public interface IObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link SIFExtendedElementsType }{@code >}}
      * 
      */
-    JAXBElement<SIFExtendedElementsType> createLearningStandardDocumentTypeSIFExtendedElements(SIFExtendedElementsType value);
+    JAXBElement<SIFExtendedElementsType> createLearningStandardDocumentTypeSIFExtendedElements(
+            SIFExtendedElementsType value);
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
@@ -9117,7 +9531,8 @@ public interface IObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link SIFExtendedElementsType }{@code >}}
      * 
      */
-    JAXBElement<SIFExtendedElementsType> createStudentPeriodAttendanceTypeSIFExtendedElements(SIFExtendedElementsType value);
+    JAXBElement<SIFExtendedElementsType> createStudentPeriodAttendanceTypeSIFExtendedElements(
+            SIFExtendedElementsType value);
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link AUCodeSetsDayValueCodeType }{@code >}}
@@ -9159,7 +9574,8 @@ public interface IObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link SIFExtendedElementsType }{@code >}}
      * 
      */
-    JAXBElement<SIFExtendedElementsType> createStudentDailyAttendanceTypeSIFExtendedElements(SIFExtendedElementsType value);
+    JAXBElement<SIFExtendedElementsType> createStudentDailyAttendanceTypeSIFExtendedElements(
+            SIFExtendedElementsType value);
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link Long }{@code >}}
@@ -9195,7 +9611,8 @@ public interface IObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link SIFExtendedElementsType }{@code >}}
      * 
      */
-    JAXBElement<SIFExtendedElementsType> createStudentAttendanceSummaryTypeSIFExtendedElements(SIFExtendedElementsType value);
+    JAXBElement<SIFExtendedElementsType> createStudentAttendanceSummaryTypeSIFExtendedElements(
+            SIFExtendedElementsType value);
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
@@ -9312,6 +9729,13 @@ public interface IObjectFactory {
     JAXBElement<AUCodeSetsYesOrNoCategoryType> createPersonPictureTypeOKToPublish(AUCodeSetsYesOrNoCategoryType value);
 
     /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link PublishingPermissionListType }{@code >}}
+     * 
+     */
+    JAXBElement<PublishingPermissionListType> createPersonPictureTypePublishingPermissionList(
+            PublishingPermissionListType value);
+
+    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link SIFMetadataType }{@code >}}
      * 
      */
@@ -9327,13 +9751,15 @@ public interface IObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link AUCodeSetsStudentFamilyProgramTypeType }{@code >}}
      * 
      */
-    JAXBElement<AUCodeSetsStudentFamilyProgramTypeType> createStudentParticipationTypeProgramType(AUCodeSetsStudentFamilyProgramTypeType value);
+    JAXBElement<AUCodeSetsStudentFamilyProgramTypeType> createStudentParticipationTypeProgramType(
+            AUCodeSetsStudentFamilyProgramTypeType value);
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link ProgramFundingSourcesType }{@code >}}
      * 
      */
-    JAXBElement<ProgramFundingSourcesType> createStudentParticipationTypeProgramFundingSources(ProgramFundingSourcesType value);
+    JAXBElement<ProgramFundingSourcesType> createStudentParticipationTypeProgramFundingSources(
+            ProgramFundingSourcesType value);
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link XMLGregorianCalendar }{@code >}}
@@ -9357,13 +9783,15 @@ public interface IObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link AUCodeSetsYesOrNoCategoryType }{@code >}}
      * 
      */
-    JAXBElement<AUCodeSetsYesOrNoCategoryType> createStudentParticipationTypeGiftedEligibilityCriteria(AUCodeSetsYesOrNoCategoryType value);
+    JAXBElement<AUCodeSetsYesOrNoCategoryType> createStudentParticipationTypeGiftedEligibilityCriteria(
+            AUCodeSetsYesOrNoCategoryType value);
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link XMLGregorianCalendar }{@code >}}
      * 
      */
-    JAXBElement<XMLGregorianCalendar> createStudentParticipationTypeEvaluationParentalConsentDate(XMLGregorianCalendar value);
+    JAXBElement<XMLGregorianCalendar> createStudentParticipationTypeEvaluationParentalConsentDate(
+            XMLGregorianCalendar value);
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link XMLGregorianCalendar }{@code >}}
@@ -9405,7 +9833,8 @@ public interface IObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link XMLGregorianCalendar }{@code >}}
      * 
      */
-    JAXBElement<XMLGregorianCalendar> createStudentParticipationTypeProgramPlanEffectiveDate(XMLGregorianCalendar value);
+    JAXBElement<XMLGregorianCalendar> createStudentParticipationTypeProgramPlanEffectiveDate(
+            XMLGregorianCalendar value);
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link XMLGregorianCalendar }{@code >}}
@@ -9417,7 +9846,8 @@ public interface IObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link XMLGregorianCalendar }{@code >}}
      * 
      */
-    JAXBElement<XMLGregorianCalendar> createStudentParticipationTypePlacementParentalConsentDate(XMLGregorianCalendar value);
+    JAXBElement<XMLGregorianCalendar> createStudentParticipationTypePlacementParentalConsentDate(
+            XMLGregorianCalendar value);
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link XMLGregorianCalendar }{@code >}}
@@ -9441,7 +9871,8 @@ public interface IObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link ProgramAvailabilityType }{@code >}}
      * 
      */
-    JAXBElement<ProgramAvailabilityType> createStudentParticipationTypeProgramAvailability(ProgramAvailabilityType value);
+    JAXBElement<ProgramAvailabilityType> createStudentParticipationTypeProgramAvailability(
+            ProgramAvailabilityType value);
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
@@ -9471,7 +9902,8 @@ public interface IObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link SIFExtendedElementsType }{@code >}}
      * 
      */
-    JAXBElement<SIFExtendedElementsType> createStudentParticipationTypeSIFExtendedElements(SIFExtendedElementsType value);
+    JAXBElement<SIFExtendedElementsType> createStudentParticipationTypeSIFExtendedElements(
+            SIFExtendedElementsType value);
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
@@ -9489,19 +9921,22 @@ public interface IObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link AUCodeSetsEmploymentTypeType }{@code >}}
      * 
      */
-    JAXBElement<AUCodeSetsEmploymentTypeType> createStudentContactPersonalTypeEmploymentType(AUCodeSetsEmploymentTypeType value);
+    JAXBElement<AUCodeSetsEmploymentTypeType> createStudentContactPersonalTypeEmploymentType(
+            AUCodeSetsEmploymentTypeType value);
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link AUCodeSetsSchoolEducationLevelTypeType }{@code >}}
      * 
      */
-    JAXBElement<AUCodeSetsSchoolEducationLevelTypeType> createStudentContactPersonalTypeSchoolEducationalLevel(AUCodeSetsSchoolEducationLevelTypeType value);
+    JAXBElement<AUCodeSetsSchoolEducationLevelTypeType> createStudentContactPersonalTypeSchoolEducationalLevel(
+            AUCodeSetsSchoolEducationLevelTypeType value);
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link AUCodeSetsNonSchoolEducationType }{@code >}}
      * 
      */
-    JAXBElement<AUCodeSetsNonSchoolEducationType> createStudentContactPersonalTypeNonSchoolEducation(AUCodeSetsNonSchoolEducationType value);
+    JAXBElement<AUCodeSetsNonSchoolEducationType> createStudentContactPersonalTypeNonSchoolEducation(
+            AUCodeSetsNonSchoolEducationType value);
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link SIFMetadataType }{@code >}}
@@ -9513,7 +9948,8 @@ public interface IObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link SIFExtendedElementsType }{@code >}}
      * 
      */
-    JAXBElement<SIFExtendedElementsType> createStudentContactPersonalTypeSIFExtendedElements(SIFExtendedElementsType value);
+    JAXBElement<SIFExtendedElementsType> createStudentContactPersonalTypeSIFExtendedElements(
+            SIFExtendedElementsType value);
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
@@ -9537,19 +9973,22 @@ public interface IObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link StudentSchoolEnrollmentType.Homeroom }{@code >}}
      * 
      */
-    JAXBElement<StudentSchoolEnrollmentType.Homeroom> createStudentSchoolEnrollmentTypeHomeroom(StudentSchoolEnrollmentType.Homeroom value);
+    JAXBElement<StudentSchoolEnrollmentType.Homeroom> createStudentSchoolEnrollmentTypeHomeroom(
+            StudentSchoolEnrollmentType.Homeroom value);
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link StudentSchoolEnrollmentType.Advisor }{@code >}}
      * 
      */
-    JAXBElement<StudentSchoolEnrollmentType.Advisor> createStudentSchoolEnrollmentTypeAdvisor(StudentSchoolEnrollmentType.Advisor value);
+    JAXBElement<StudentSchoolEnrollmentType.Advisor> createStudentSchoolEnrollmentTypeAdvisor(
+            StudentSchoolEnrollmentType.Advisor value);
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link StudentSchoolEnrollmentType.Counselor }{@code >}}
      * 
      */
-    JAXBElement<StudentSchoolEnrollmentType.Counselor> createStudentSchoolEnrollmentTypeCounselor(StudentSchoolEnrollmentType.Counselor value);
+    JAXBElement<StudentSchoolEnrollmentType.Counselor> createStudentSchoolEnrollmentTypeCounselor(
+            StudentSchoolEnrollmentType.Counselor value);
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
@@ -9579,7 +10018,8 @@ public interface IObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link AUCodeSetsYesOrNoCategoryType }{@code >}}
      * 
      */
-    JAXBElement<AUCodeSetsYesOrNoCategoryType> createStudentSchoolEnrollmentTypeReportingSchool(AUCodeSetsYesOrNoCategoryType value);
+    JAXBElement<AUCodeSetsYesOrNoCategoryType> createStudentSchoolEnrollmentTypeReportingSchool(
+            AUCodeSetsYesOrNoCategoryType value);
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
@@ -9591,13 +10031,15 @@ public interface IObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link AUCodeSetsYesOrNoCategoryType }{@code >}}
      * 
      */
-    JAXBElement<AUCodeSetsYesOrNoCategoryType> createStudentSchoolEnrollmentTypeIndividualLearningPlan(AUCodeSetsYesOrNoCategoryType value);
+    JAXBElement<AUCodeSetsYesOrNoCategoryType> createStudentSchoolEnrollmentTypeIndividualLearningPlan(
+            AUCodeSetsYesOrNoCategoryType value);
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link StudentSchoolEnrollmentType.Calendar }{@code >}}
      * 
      */
-    JAXBElement<StudentSchoolEnrollmentType.Calendar> createStudentSchoolEnrollmentTypeCalendar(StudentSchoolEnrollmentType.Calendar value);
+    JAXBElement<StudentSchoolEnrollmentType.Calendar> createStudentSchoolEnrollmentTypeCalendar(
+            StudentSchoolEnrollmentType.Calendar value);
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link XMLGregorianCalendar }{@code >}}
@@ -9609,7 +10051,8 @@ public interface IObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link StudentExitStatusContainerType }{@code >}}
      * 
      */
-    JAXBElement<StudentExitStatusContainerType> createStudentSchoolEnrollmentTypeExitStatus(StudentExitStatusContainerType value);
+    JAXBElement<StudentExitStatusContainerType> createStudentSchoolEnrollmentTypeExitStatus(
+            StudentExitStatusContainerType value);
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link StudentExitContainerType }{@code >}}
@@ -9627,19 +10070,22 @@ public interface IObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link AUCodeSetsFTPTStatusCodeType }{@code >}}
      * 
      */
-    JAXBElement<AUCodeSetsFTPTStatusCodeType> createStudentSchoolEnrollmentTypeFTPTStatus(AUCodeSetsFTPTStatusCodeType value);
+    JAXBElement<AUCodeSetsFTPTStatusCodeType> createStudentSchoolEnrollmentTypeFTPTStatus(
+            AUCodeSetsFTPTStatusCodeType value);
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link AUCodeSetsFFPOSStatusCodeType }{@code >}}
      * 
      */
-    JAXBElement<AUCodeSetsFFPOSStatusCodeType> createStudentSchoolEnrollmentTypeFFPOS(AUCodeSetsFFPOSStatusCodeType value);
+    JAXBElement<AUCodeSetsFFPOSStatusCodeType> createStudentSchoolEnrollmentTypeFFPOS(
+            AUCodeSetsFFPOSStatusCodeType value);
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link CatchmentStatusContainerType }{@code >}}
      * 
      */
-    JAXBElement<CatchmentStatusContainerType> createStudentSchoolEnrollmentTypeCatchmentStatus(CatchmentStatusContainerType value);
+    JAXBElement<CatchmentStatusContainerType> createStudentSchoolEnrollmentTypeCatchmentStatus(
+            CatchmentStatusContainerType value);
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
@@ -9663,19 +10109,45 @@ public interface IObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
      * 
      */
+    JAXBElement<String> createStudentSchoolEnrollmentTypePreviousSchoolName(String value);
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+     * 
+     */
     JAXBElement<String> createStudentSchoolEnrollmentTypeDestinationSchool(String value);
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+     * 
+     */
+    JAXBElement<String> createStudentSchoolEnrollmentTypeDestinationSchoolName(String value);
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link StudentSubjectChoiceListType }{@code >}}
      * 
      */
-    JAXBElement<StudentSubjectChoiceListType> createStudentSchoolEnrollmentTypeStudentSubjectChoiceList(StudentSubjectChoiceListType value);
+    JAXBElement<StudentSubjectChoiceListType> createStudentSchoolEnrollmentTypeStudentSubjectChoiceList(
+            StudentSubjectChoiceListType value);
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link XMLGregorianCalendar }{@code >}}
      * 
      */
     JAXBElement<XMLGregorianCalendar> createStudentSchoolEnrollmentTypeStartedAtSchoolDate(XMLGregorianCalendar value);
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link StudentGroupListType }{@code >}}
+     * 
+     */
+    JAXBElement<StudentGroupListType> createStudentSchoolEnrollmentTypeStudentGroupList(StudentGroupListType value);
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link PublishingPermissionListType }{@code >}}
+     * 
+     */
+    JAXBElement<PublishingPermissionListType> createStudentSchoolEnrollmentTypePublishingPermissionList(
+            PublishingPermissionListType value);
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link SIFMetadataType }{@code >}}
@@ -9687,7 +10159,8 @@ public interface IObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link SIFExtendedElementsType }{@code >}}
      * 
      */
-    JAXBElement<SIFExtendedElementsType> createStudentSchoolEnrollmentTypeSIFExtendedElements(SIFExtendedElementsType value);
+    JAXBElement<SIFExtendedElementsType> createStudentSchoolEnrollmentTypeSIFExtendedElements(
+            SIFExtendedElementsType value);
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link AlertMessagesType }{@code >}}
@@ -9741,25 +10214,29 @@ public interface IObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link StudentMostRecentContainerType }{@code >}}
      * 
      */
-    JAXBElement<StudentMostRecentContainerType> createStudentPersonalTypeMostRecent(StudentMostRecentContainerType value);
+    JAXBElement<StudentMostRecentContainerType> createStudentPersonalTypeMostRecent(
+            StudentMostRecentContainerType value);
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link AUCodeSetsYesOrNoCategoryType }{@code >}}
      * 
      */
-    JAXBElement<AUCodeSetsYesOrNoCategoryType> createStudentPersonalTypeAcceptableUsePolicy(AUCodeSetsYesOrNoCategoryType value);
+    JAXBElement<AUCodeSetsYesOrNoCategoryType> createStudentPersonalTypeAcceptableUsePolicy(
+            AUCodeSetsYesOrNoCategoryType value);
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link AUCodeSetsYesOrNoCategoryType }{@code >}}
      * 
      */
-    JAXBElement<AUCodeSetsYesOrNoCategoryType> createStudentPersonalTypeGiftedTalented(AUCodeSetsYesOrNoCategoryType value);
+    JAXBElement<AUCodeSetsYesOrNoCategoryType> createStudentPersonalTypeGiftedTalented(
+            AUCodeSetsYesOrNoCategoryType value);
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link AUCodeSetsYesOrNoCategoryType }{@code >}}
      * 
      */
-    JAXBElement<AUCodeSetsYesOrNoCategoryType> createStudentPersonalTypeEconomicDisadvantage(AUCodeSetsYesOrNoCategoryType value);
+    JAXBElement<AUCodeSetsYesOrNoCategoryType> createStudentPersonalTypeEconomicDisadvantage(
+            AUCodeSetsYesOrNoCategoryType value);
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link AUCodeSetsYesOrNoCategoryType }{@code >}}
@@ -9777,7 +10254,8 @@ public interface IObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link AUCodeSetsYesOrNoCategoryType }{@code >}}
      * 
      */
-    JAXBElement<AUCodeSetsYesOrNoCategoryType> createStudentPersonalTypeYoungCarersRole(AUCodeSetsYesOrNoCategoryType value);
+    JAXBElement<AUCodeSetsYesOrNoCategoryType> createStudentPersonalTypeYoungCarersRole(
+            AUCodeSetsYesOrNoCategoryType value);
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link AUCodeSetsYesOrNoCategoryType }{@code >}}
@@ -9789,19 +10267,22 @@ public interface IObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link AUCodeSetsYesOrNoCategoryType }{@code >}}
      * 
      */
-    JAXBElement<AUCodeSetsYesOrNoCategoryType> createStudentPersonalTypeIntegrationAide(AUCodeSetsYesOrNoCategoryType value);
+    JAXBElement<AUCodeSetsYesOrNoCategoryType> createStudentPersonalTypeIntegrationAide(
+            AUCodeSetsYesOrNoCategoryType value);
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link AUCodeSetsYesOrNoCategoryType }{@code >}}
      * 
      */
-    JAXBElement<AUCodeSetsYesOrNoCategoryType> createStudentPersonalTypeEducationSupport(AUCodeSetsYesOrNoCategoryType value);
+    JAXBElement<AUCodeSetsYesOrNoCategoryType> createStudentPersonalTypeEducationSupport(
+            AUCodeSetsYesOrNoCategoryType value);
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link AUCodeSetsYesOrNoCategoryType }{@code >}}
      * 
      */
-    JAXBElement<AUCodeSetsYesOrNoCategoryType> createStudentPersonalTypeHomeSchooledStudent(AUCodeSetsYesOrNoCategoryType value);
+    JAXBElement<AUCodeSetsYesOrNoCategoryType> createStudentPersonalTypeHomeSchooledStudent(
+            AUCodeSetsYesOrNoCategoryType value);
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link AUCodeSetsYesOrNoCategoryType }{@code >}}
@@ -9813,7 +10294,14 @@ public interface IObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link AUCodeSetsYesOrNoCategoryType }{@code >}}
      * 
      */
-    JAXBElement<AUCodeSetsYesOrNoCategoryType> createStudentPersonalTypeOfflineDelivery(AUCodeSetsYesOrNoCategoryType value);
+    JAXBElement<AUCodeSetsYesOrNoCategoryType> createStudentPersonalTypeOfflineDelivery(
+            AUCodeSetsYesOrNoCategoryType value);
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link AUCodeSetsYesOrNoCategoryType }{@code >}}
+     * 
+     */
+    JAXBElement<AUCodeSetsYesOrNoCategoryType> createStudentPersonalTypeESLSupport(AUCodeSetsYesOrNoCategoryType value);
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
@@ -9951,7 +10439,8 @@ public interface IObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link AUCodeSetsYesOrNoCategoryType }{@code >}}
      * 
      */
-    JAXBElement<AUCodeSetsYesOrNoCategoryType> createStaffAssignmentTypeCasualReliefTeacher(AUCodeSetsYesOrNoCategoryType value);
+    JAXBElement<AUCodeSetsYesOrNoCategoryType> createStaffAssignmentTypeCasualReliefTeacher(
+            AUCodeSetsYesOrNoCategoryType value);
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
@@ -9970,6 +10459,12 @@ public interface IObjectFactory {
      * 
      */
     JAXBElement<CalendarSummaryListType> createStaffAssignmentTypeCalendarSummaryList(CalendarSummaryListType value);
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+     * 
+     */
+    JAXBElement<String> createStaffAssignmentTypePreviousSchoolName(String value);
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link SIFMetadataType }{@code >}}
@@ -10062,7 +10557,8 @@ public interface IObjectFactory {
     JAXBElement<SIFExtendedElementsType> createResourceUsageTypeSIFExtendedElements(SIFExtendedElementsType value);
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link ResourceUsageType.ResourceReportLineList.ResourceReportLine.SIFRefId }{@code >}}
+     * Create an instance of {@link JAXBElement
+     * }{@code <}{@link ResourceUsageType.ResourceReportLineList.ResourceReportLine.SIFRefId }{@code >}}
      * 
      */
     JAXBElement<ResourceUsageType.ResourceReportLineList.ResourceReportLine.SIFRefId> createResourceUsageTypeResourceReportLineListResourceReportLineSIFRefId(
@@ -10072,19 +10568,22 @@ public interface IObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link XMLGregorianCalendar }{@code >}}
      * 
      */
-    JAXBElement<XMLGregorianCalendar> createResourceUsageTypeResourceReportLineListResourceReportLineEndDate(XMLGregorianCalendar value);
+    JAXBElement<XMLGregorianCalendar> createResourceUsageTypeResourceReportLineListResourceReportLineEndDate(
+            XMLGregorianCalendar value);
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
      * 
      */
-    JAXBElement<String> createResourceUsageTypeResourceReportColumnListResourceReportColumnColumnDescription(String value);
+    JAXBElement<String> createResourceUsageTypeResourceReportColumnListResourceReportColumnColumnDescription(
+            String value);
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
      * 
      */
-    JAXBElement<String> createResourceUsageTypeResourceReportColumnListResourceReportColumnColumnDelimiter(String value);
+    JAXBElement<String> createResourceUsageTypeResourceReportColumnListResourceReportColumnColumnDelimiter(
+            String value);
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
@@ -10108,7 +10607,8 @@ public interface IObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link SIFExtendedElementsType }{@code >}}
      * 
      */
-    JAXBElement<SIFExtendedElementsType> createAggregateStatisticFactTypeSIFExtendedElements(SIFExtendedElementsType value);
+    JAXBElement<SIFExtendedElementsType> createAggregateStatisticFactTypeSIFExtendedElements(
+            SIFExtendedElementsType value);
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
@@ -10132,13 +10632,15 @@ public interface IObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link SIFExtendedElementsType }{@code >}}
      * 
      */
-    JAXBElement<SIFExtendedElementsType> createAggregateCharacteristicInfoTypeSIFExtendedElements(SIFExtendedElementsType value);
+    JAXBElement<SIFExtendedElementsType> createAggregateCharacteristicInfoTypeSIFExtendedElements(
+            SIFExtendedElementsType value);
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link AggregateStatisticInfoType.CalculationRule }{@code >}}
      * 
      */
-    JAXBElement<AggregateStatisticInfoType.CalculationRule> createAggregateStatisticInfoTypeCalculationRule(AggregateStatisticInfoType.CalculationRule value);
+    JAXBElement<AggregateStatisticInfoType.CalculationRule> createAggregateStatisticInfoTypeCalculationRule(
+            AggregateStatisticInfoType.CalculationRule value);
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link XMLGregorianCalendar }{@code >}}
@@ -10198,7 +10700,8 @@ public interface IObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link SIFExtendedElementsType }{@code >}}
      * 
      */
-    JAXBElement<SIFExtendedElementsType> createAggregateStatisticInfoTypeSIFExtendedElements(SIFExtendedElementsType value);
+    JAXBElement<SIFExtendedElementsType> createAggregateStatisticInfoTypeSIFExtendedElements(
+            SIFExtendedElementsType value);
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link SIFMetadataType }{@code >}}
@@ -10213,14 +10716,16 @@ public interface IObjectFactory {
     JAXBElement<SIFExtendedElementsType> createSystemRoleTypeSIFExtendedElements(SIFExtendedElementsType value);
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link SystemRoleType.SystemContextList.SystemContext.RoleList }{@code >}}
+     * Create an instance of {@link JAXBElement
+     * }{@code <}{@link SystemRoleType.SystemContextList.SystemContext.RoleList }{@code >}}
      * 
      */
     JAXBElement<SystemRoleType.SystemContextList.SystemContext.RoleList> createSystemRoleTypeSystemContextListSystemContextRoleList(
             SystemRoleType.SystemContextList.SystemContext.RoleList value);
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link SystemRoleType.SystemContextList.SystemContext.RoleList.Role.RoleScopeList }{@code >}}
+     * Create an instance of {@link JAXBElement
+     * }{@code <}{@link SystemRoleType.SystemContextList.SystemContext.RoleList.Role.RoleScopeList }{@code >}}
      * 
      */
     JAXBElement<SystemRoleType.SystemContextList.SystemContext.RoleList.Role.RoleScopeList> createSystemRoleTypeSystemContextListSystemContextRoleListRoleRoleScopeList(
@@ -10230,10 +10735,12 @@ public interface IObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
      * 
      */
-    JAXBElement<String> createSystemRoleTypeSystemContextListSystemContextRoleListRoleRoleScopeListRoleScopeRoleScopeName(String value);
+    JAXBElement<String> createSystemRoleTypeSystemContextListSystemContextRoleListRoleRoleScopeListRoleScopeRoleScopeName(
+            String value);
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link SystemRoleType.SystemContextList.SystemContext.RoleList.Role.RoleScopeList.RoleScope.RoleScopeRefId }{@code >}}
+     * Create an instance of {@link JAXBElement
+     * }{@code <}{@link SystemRoleType.SystemContextList.SystemContext.RoleList.Role.RoleScopeList.RoleScope.RoleScopeRefId }{@code >}}
      * 
      */
     JAXBElement<SystemRoleType.SystemContextList.SystemContext.RoleList.Role.RoleScopeList.RoleScope.RoleScopeRefId> createSystemRoleTypeSystemContextListSystemContextRoleListRoleRoleScopeListRoleScopeRoleScopeRefId(
@@ -10363,13 +10870,15 @@ public interface IObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link AUCodeSetsOperationalStatusType }{@code >}}
      * 
      */
-    JAXBElement<AUCodeSetsOperationalStatusType> createSchoolInfoTypeOperationalStatus(AUCodeSetsOperationalStatusType value);
+    JAXBElement<AUCodeSetsOperationalStatusType> createSchoolInfoTypeOperationalStatus(
+            AUCodeSetsOperationalStatusType value);
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link AUCodeSetsFederalElectorateType }{@code >}}
      * 
      */
-    JAXBElement<AUCodeSetsFederalElectorateType> createSchoolInfoTypeFederalElectorate(AUCodeSetsFederalElectorateType value);
+    JAXBElement<AUCodeSetsFederalElectorateType> createSchoolInfoTypeFederalElectorate(
+            AUCodeSetsFederalElectorateType value);
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link CampusContainerType }{@code >}}
@@ -10381,13 +10890,15 @@ public interface IObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link AUCodeSetsYesOrNoCategoryType }{@code >}}
      * 
      */
-    JAXBElement<AUCodeSetsYesOrNoCategoryType> createSchoolInfoTypeIndependentSchool(AUCodeSetsYesOrNoCategoryType value);
+    JAXBElement<AUCodeSetsYesOrNoCategoryType> createSchoolInfoTypeIndependentSchool(
+            AUCodeSetsYesOrNoCategoryType value);
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link AUCodeSetsSystemicStatusType }{@code >}}
      * 
      */
-    JAXBElement<AUCodeSetsSystemicStatusType> createSchoolInfoTypeNonGovSystemicStatus(AUCodeSetsSystemicStatusType value);
+    JAXBElement<AUCodeSetsSystemicStatusType> createSchoolInfoTypeNonGovSystemicStatus(
+            AUCodeSetsSystemicStatusType value);
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link AUCodeSetsSchoolSystemType }{@code >}}
@@ -10396,7 +10907,8 @@ public interface IObjectFactory {
     JAXBElement<AUCodeSetsSchoolSystemType> createSchoolInfoTypeSystem(AUCodeSetsSchoolSystemType value);
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link AUCodeSetsAustralianStandardClassificationOfReligiousGroupsASCRGType }{@code >}}
+     * Create an instance of {@link JAXBElement
+     * }{@code <}{@link AUCodeSetsAustralianStandardClassificationOfReligiousGroupsASCRGType }{@code >}}
      * 
      */
     JAXBElement<AUCodeSetsAustralianStandardClassificationOfReligiousGroupsASCRGType> createSchoolInfoTypeReligiousAffiliation(
@@ -10406,7 +10918,8 @@ public interface IObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link AUCodeSetsSchoolLocationType }{@code >}}
      * 
      */
-    JAXBElement<AUCodeSetsSchoolLocationType> createSchoolInfoTypeSchoolGeographicLocation(AUCodeSetsSchoolLocationType value);
+    JAXBElement<AUCodeSetsSchoolLocationType> createSchoolInfoTypeSchoolGeographicLocation(
+            AUCodeSetsSchoolLocationType value);
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
@@ -10421,28 +10934,33 @@ public interface IObjectFactory {
     JAXBElement<String> createSchoolInfoTypeJurisdictionLowerHouse(String value);
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link AUCodeSetsAustralianStandardGeographicalClassificationASGCType }{@code >}}
+     * Create an instance of {@link JAXBElement
+     * }{@code <}{@link AUCodeSetsAustralianStandardGeographicalClassificationASGCType }{@code >}}
      * 
      */
-    JAXBElement<AUCodeSetsAustralianStandardGeographicalClassificationASGCType> createSchoolInfoTypeSLA(AUCodeSetsAustralianStandardGeographicalClassificationASGCType value);
+    JAXBElement<AUCodeSetsAustralianStandardGeographicalClassificationASGCType> createSchoolInfoTypeSLA(
+            AUCodeSetsAustralianStandardGeographicalClassificationASGCType value);
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link AUCodeSetsSchoolCoEdStatusType }{@code >}}
      * 
      */
-    JAXBElement<AUCodeSetsSchoolCoEdStatusType> createSchoolInfoTypeSchoolCoEdStatus(AUCodeSetsSchoolCoEdStatusType value);
+    JAXBElement<AUCodeSetsSchoolCoEdStatusType> createSchoolInfoTypeSchoolCoEdStatus(
+            AUCodeSetsSchoolCoEdStatusType value);
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link AUCodeSetsYesOrNoCategoryType }{@code >}}
      * 
      */
-    JAXBElement<AUCodeSetsYesOrNoCategoryType> createSchoolInfoTypeBoardingSchoolStatus(AUCodeSetsYesOrNoCategoryType value);
+    JAXBElement<AUCodeSetsYesOrNoCategoryType> createSchoolInfoTypeBoardingSchoolStatus(
+            AUCodeSetsYesOrNoCategoryType value);
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link YearLevelEnrollmentListType }{@code >}}
      * 
      */
-    JAXBElement<YearLevelEnrollmentListType> createSchoolInfoTypeYearLevelEnrollmentList(YearLevelEnrollmentListType value);
+    JAXBElement<YearLevelEnrollmentListType> createSchoolInfoTypeYearLevelEnrollmentList(
+            YearLevelEnrollmentListType value);
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link TotalEnrollmentsType }{@code >}}
@@ -10472,7 +10990,8 @@ public interface IObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link AUCodeSetsAustralianTimeZoneType }{@code >}}
      * 
      */
-    JAXBElement<AUCodeSetsAustralianTimeZoneType> createSchoolInfoTypeSchoolTimeZone(AUCodeSetsAustralianTimeZoneType value);
+    JAXBElement<AUCodeSetsAustralianTimeZoneType> createSchoolInfoTypeSchoolTimeZone(
+            AUCodeSetsAustralianTimeZoneType value);
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link SIFMetadataType }{@code >}}
