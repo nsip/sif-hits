@@ -1,5 +1,6 @@
 .DS_Store
 sifhits.internal.database.properties
+.idea/
 .settings/
 .metadata/
 .project
