@@ -2,76 +2,51 @@ package sif3.hits.domain.model;
 
 import java.io.Serializable;
 
-import javax.persistence.EmbeddedId;
-import javax.persistence.Entity;
-import javax.persistence.Table;
-import javax.persistence.Transient;
+import javax.persistence.*;
 
 @Entity
 @Table(name = "StudentPersonal_OtherId")
 public class StudentPersonalOtherId implements Serializable {
   private static final long serialVersionUID = 603884775630519212L;
 
-  @EmbeddedId
-  private StudentPersonalOtherIdId studentPersonalOtherIdId;
+  private Long id;
+  private StudentPersonal studentPersonal;
+  private String otherId;
+  private String otherIdType;
 
-  public StudentPersonalOtherIdId getStudentPersonalOtherIdId() {
-    return studentPersonalOtherIdId;
+  @Id
+  @GeneratedValue
+  public Long getId() {
+    return id;
   }
 
-  public void setStudentPersonalOtherIdId(StudentPersonalOtherIdId studentPersonalOtherIdId) {
-    this.studentPersonalOtherIdId = studentPersonalOtherIdId;
+  public void setId(Long id) {
+    this.id = id;
   }
 
-  @Transient
+  @ManyToOne(optional = false)
+  @JoinColumn(name = "StudentPersonal_RefId", referencedColumnName = "RefId")
   public StudentPersonal getStudentPersonal() {
-    StudentPersonal result = null;
-    if (studentPersonalOtherIdId != null) {
-      result = studentPersonalOtherIdId.getStudentPersonal();
-    }
-    return result;
+    return studentPersonal;
   }
 
-  @Transient
   public void setStudentPersonal(StudentPersonal studentPersonal) {
-    if (studentPersonalOtherIdId == null) {
-      studentPersonalOtherIdId = new StudentPersonalOtherIdId();
-    }
-    this.studentPersonalOtherIdId.setStudentPersonal(studentPersonal);
+    this.studentPersonal = studentPersonal;
   }
 
-  @Transient
   public String getOtherId() {
-    String result = null;
-    if (studentPersonalOtherIdId != null) {
-      result = studentPersonalOtherIdId.getOtherId();
-    }
-    return result;
+    return otherId;
   }
 
-  @Transient
   public void setOtherId(String otherId) {
-    if (studentPersonalOtherIdId == null) {
-      studentPersonalOtherIdId = new StudentPersonalOtherIdId();
-    }
-    this.studentPersonalOtherIdId.setOtherId(otherId);
+    this.otherId = otherId;
   }
 
-  @Transient
   public String getOtherIdType() {
-    String result = null;
-    if (studentPersonalOtherIdId != null) {
-      result = studentPersonalOtherIdId.getOtherIdType();
-    }
-    return result;
+    return otherIdType;
   }
 
-  @Transient
   public void setOtherIdType(String otherIdType) {
-    if (studentPersonalOtherIdId == null) {
-      studentPersonalOtherIdId = new StudentPersonalOtherIdId();
-    }
-    this.studentPersonalOtherIdId.setOtherIdType(otherIdType);
+    this.otherIdType = otherIdType;
   }
-
 }

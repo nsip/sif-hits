@@ -1,14 +1,7 @@
 package sif3.hits.domain.model;
 
+import javax.persistence.*;
 import java.util.Set;
-
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToMany;
-import javax.persistence.Transient;
 
 @Entity
 public class StudentPersonal extends HitsEntity implements StudentPerson, AddressPerson {
@@ -43,7 +36,7 @@ public class StudentPersonal extends HitsEntity implements StudentPerson, Addres
   private Set<StudentPersonalOtherId> otherIds;
   private Set<Address> addresses;
   private Set<Language> languages;
-  
+
   private boolean temporary = false;
 
   // naplan
@@ -285,7 +278,7 @@ public class StudentPersonal extends HitsEntity implements StudentPerson, Addres
     this.religion = religion;
   }
 
-  @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "studentPersonalOtherIdId.studentPersonal")
+  @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "studentPersonal")
   public Set<StudentPersonalOtherId> getOtherIds() {
     return otherIds;
   }
@@ -469,22 +462,22 @@ public class StudentPersonal extends HitsEntity implements StudentPerson, Addres
   public void setEsl(String esl) {
     this.esl = esl;
   }
-  
+
   @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
   @JoinColumn(name="Person_RefId")
   public Set<Language> getLanguages() {
     return languages;
   }
-  
+
   public void setLanguages(Set<Language> languages) {
     this.languages = languages;
   }
-  
+
   @Transient
   public boolean isTemporary() {
     return temporary;
   }
-  
+
   @Transient
   public void setTemporary(boolean temporary) {
     this.temporary = temporary;
