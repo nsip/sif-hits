@@ -50,7 +50,7 @@ public class StudentSchoolEnrollment extends HitsEntity {
     private List<StudentSubjectChoice> studentSubjectChoices;
     private String startedAtSchoolDate;
     private List<StudentGroup> studentGroups;
-    private List<PublishingPermission> publishingPermissions;
+    private List<StudentSchoolEnrollmentPublishingPermission> publishingPermissions;
 
     @Id
     public String getRefId() {
@@ -358,11 +358,11 @@ public class StudentSchoolEnrollment extends HitsEntity {
     }
 
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "studentSchoolEnrollment")
-    public List<PublishingPermission> getPublishingPermissions() {
+    public List<StudentSchoolEnrollmentPublishingPermission> getPublishingPermissions() {
         return publishingPermissions;
     }
 
-    public void setPublishingPermissions(List<PublishingPermission> publishingPermissions) {
+    public void setPublishingPermissions(List<StudentSchoolEnrollmentPublishingPermission> publishingPermissions) {
         this.publishingPermissions = publishingPermissions;
     }
 }

@@ -5,7 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import sif.dd.au30.model.*;
 import sif3.hits.domain.converter.factory.IObjectFactory;
-import sif3.hits.domain.model.PublishingPermission;
+import sif3.hits.domain.model.StudentSchoolEnrollmentPublishingPermission;
 import sif3.hits.domain.model.StudentGroup;
 import sif3.hits.domain.model.StudentSchoolEnrollment;
 import sif3.hits.domain.model.StudentSubjectChoice;
@@ -23,7 +23,7 @@ public class StudentSchoolEnrollmentConverter
     StudentSubjectChoiceConverter studentSubjectChoiceConverter;
 
     @Autowired
-    PublishingPermissionConverter publishingPermissionConverter;
+    StudentSchoolEnrollmentPublishingPermissionConverter publishingPermissionConverter;
 
     public StudentSchoolEnrollmentConverter() {
         super(StudentSchoolEnrollmentType.class, StudentSchoolEnrollment.class);
@@ -152,7 +152,7 @@ public class StudentSchoolEnrollmentConverter
 
             if (source.getPublishingPermissions() != null && !source.getPublishingPermissions().isEmpty()) {
                 PublishingPermissionListType publishingPermissionListType = objectFactory.createPublishingPermissionListType();
-                for (PublishingPermission publishingPermission : source.getPublishingPermissions()) {
+                for (StudentSchoolEnrollmentPublishingPermission publishingPermission : source.getPublishingPermissions()) {
                     publishingPermissionListType.getPublishingPermission().add(publishingPermissionConverter.toSifModel(publishingPermission));
                 }
                 target.setPublishingPermissionList(objectFactory.createStudentSchoolEnrollmentTypePublishingPermissionList(publishingPermissionListType));
@@ -295,7 +295,7 @@ public class StudentSchoolEnrollmentConverter
             PublishingPermissionListType publishingPermissionList = getJAXBValue(source.getPublishingPermissionList());
             if (publishingPermissionList != null) {
                 for (PublishingPermissionType publishingPermissionType : publishingPermissionList.getPublishingPermission()) {
-                    PublishingPermission publishingPermission = publishingPermissionConverter.toHitsModel(publishingPermissionType);
+                    StudentSchoolEnrollmentPublishingPermission publishingPermission = publishingPermissionConverter.toHitsModel(publishingPermissionType);
                     publishingPermission.setStudentSchoolEnrollment(target);
                     target.getPublishingPermissions().add(publishingPermission);
                 }

@@ -4,7 +4,7 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "StudentSchoolEnrollment_PublishingPermission")
-public class PublishingPermission {
+public class StudentSchoolEnrollmentPublishingPermission {
     private Long id;
     private StudentSchoolEnrollment studentSchoolEnrollment;
     private String permissionCategory;
