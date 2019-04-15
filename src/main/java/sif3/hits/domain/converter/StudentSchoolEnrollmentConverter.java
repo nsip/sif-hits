@@ -39,7 +39,7 @@ public class StudentSchoolEnrollmentConverter
             target.setMembershipType(getEnumValue(source.getMembershipType(), AUCodeSetsSchoolEnrollmentTypeType.class));
             target.setLocalId(objectFactory.createStudentSchoolEnrollmentTypeLocalId(source.getLocalId()));
             target.setTimeFrame(getEnumValue(source.getTimeFrame(), AUCodeSetsEnrollmentTimeFrameType.class));
-            target.setSchoolYear(getDateValue(source.getSchoolYear()));
+            target.setSchoolYear(getYearValue(source.getSchoolYear()));
             target.setEntryDate(getDateValue(source.getEntryDate()));
             target.setHomegroup(objectFactory.createStudentSchoolEnrollmentTypeHomegroup(source.getHomegroup()));
             target.setACARASchoolId(objectFactory.createStudentSchoolEnrollmentTypeACARASchoolId(source.getAcaraSchoolId()));
@@ -169,7 +169,7 @@ public class StudentSchoolEnrollmentConverter
             target.setMembershipType(getEnumValue(source.getMembershipType()));
             target.setLocalId(getJAXBValue(source.getLocalId()));
             target.setTimeFrame(getEnumValue(source.getTimeFrame()));
-            target.setSchoolYear(getDateValue(source.getSchoolYear()));
+            target.setSchoolYear(getYearValue(source.getSchoolYear()));
             target.setEntryDate(getDateValue(source.getEntryDate()));
             target.setHomegroup(getJAXBValue(source.getHomegroup()));
             target.setAcaraSchoolId(getJAXBValue(source.getACARASchoolId()));

@@ -18,11 +18,17 @@ public abstract class BaseTest {
 
     public abstract void initialiseData() throws Exception;
 
-    protected XMLGregorianCalendar getDate(String date) throws DatatypeConfigurationException {
-        return DatatypeFactory.newInstance().newXMLGregorianCalendar(date);
+    protected XMLGregorianCalendar getDate(String date) {
+        XMLGregorianCalendar result = null;
+        try {
+            result = DatatypeFactory.newInstance().newXMLGregorianCalendar(date);
+        } catch (DatatypeConfigurationException e) {
+            e.printStackTrace();
+        }
+        return result;
     }
 
-    protected Calendar getCalendar(String date) throws DatatypeConfigurationException {
+    protected Calendar getCalendar(String date) {
         XMLGregorianCalendar xmlCal = getDate(date);
         return xmlCal.toGregorianCalendar();
     }

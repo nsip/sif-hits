@@ -1,24 +1,11 @@
 package sif3.hits.rest.consumer;
 
-import java.math.BigDecimal;
-import java.util.Arrays;
-import java.util.List;
-
-import javax.xml.datatype.DatatypeConfigurationException;
-
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.experimental.categories.Category;
 import org.springframework.http.HttpStatus;
-
-import sif.dd.au30.model.AUCodeSetsEnrollmentTimeFrameType;
-import sif.dd.au30.model.AUCodeSetsSchoolEnrollmentTypeType;
-import sif.dd.au30.model.AUCodeSetsYearLevelCodeType;
-import sif.dd.au30.model.ObjectFactory;
-import sif.dd.au30.model.StudentSchoolEnrollmentCollectionType;
-import sif.dd.au30.model.StudentSchoolEnrollmentType;
-import sif.dd.au30.model.YearLevelType;
+import sif.dd.au30.model.*;
 import sif3.common.ws.BulkOperationResponse;
 import sif3.common.ws.CreateOperationStatus;
 import sif3.common.ws.OperationStatus;
@@ -28,54 +15,172 @@ import sif3.hits.rest.consumer.category.InitialiseData;
 import sif3.hits.rest.consumer.category.IntegrationTest;
 import sif3.infra.rest.consumer.ConsumerLoader;
 
+import javax.xml.datatype.DatatypeConfigurationException;
+import java.math.BigDecimal;
+import java.util.Arrays;
+import java.util.List;
+
 public class StudentSchoolEnrollmentConsumerTest extends BaseTest {
     private ConsumerTest<StudentSchoolEnrollmentType, StudentSchoolEnrollmentCollectionType> studentSchoolEnrollmentTester = null;
 
-    private final String REF_ID = "c59fcfb8-a1f7-4c97-8f72-822e59cda292";
     private final String REF_ID_1 = "eccdbcbf-9681-4791-a825-3cdbf8cd138f";
     private final String REF_ID_2 = "dccec317-2371-465e-854a-e1af585da93a";
-    private final String[] REF_IDS = { REF_ID_1, REF_ID_2 };
+    private final String[] REF_IDS = {REF_ID_1, REF_ID_2};
+    private static ObjectFactory objectFactory = new ObjectFactory();
+
+    public static class StudentSchoolEnrollmentRefIds {
+        public static String REF_ID_1 = "cb638e09-8bcf-4792-ac53-2dc05e221418";
+        public static String REF_ID_2 = "8450bf11-cebb-41d3-8e1a-97614a880dad";
+        public static String REF_ID_3 = "b1fea68c-a917-40fb-b616-1e7a3f369238";
+        public static String REF_ID_4 = "34edd6bd-4d22-4fea-bfe3-018cfe842013";
+        public static String REF_ID_5 = "fd0b13d1-b126-41a3-b7c7-895ac39ec312";
+    }
+
+    public static class StudentSchoolEnrollmentTestData {
+        public static String YEAR_LEVEL = "6";
+        public static String SCHOOL_YEAR = "2018";
+    }
+
+    private void populateTestObject(StudentSchoolEnrollmentType target) {
+        target.setMembershipType(AUCodeSetsSchoolEnrollmentTypeType.fromValue("01"));
+        target.setLocalId(objectFactory.createStudentSchoolEnrollmentTypeLocalId("a-new-local-id"));
+        target.setTimeFrame(AUCodeSetsEnrollmentTimeFrameType.fromValue("H"));
+        target.setSchoolYear(getDate(StudentSchoolEnrollmentTestData.SCHOOL_YEAR));
+        target.setEntryDate(getDate("2018-01-01"));
+        target.setHomegroup(objectFactory.createStudentSchoolEnrollmentTypeHomegroup("home-group"));
+        target.setACARASchoolId(objectFactory.createStudentSchoolEnrollmentTypeACARASchoolId(SchoolInfoConsumerTest.ACARA_ID));
+        target.setClassCode(objectFactory.createStudentSchoolEnrollmentTypeClassCode("class-code"));
+        target.setReportingSchool(objectFactory.createStudentSchoolEnrollmentTypeReportingSchool(AUCodeSetsYesOrNoCategoryType.fromValue("Y")));
+        target.setHouse(objectFactory.createStudentSchoolEnrollmentTypeHouse("the-house"));
+        target.setIndividualLearningPlan(objectFactory.createStudentSchoolEnrollmentTypeIndividualLearningPlan(AUCodeSetsYesOrNoCategoryType.fromValue("N")));
+        target.setExitDate(objectFactory.createStudentSchoolEnrollmentTypeExitDate(getDate("2018-12-31")));
+        target.setFTE(objectFactory.createStudentSchoolEnrollmentTypeFTE(new BigDecimal("1.0")));
+        target.setFTPTStatus(objectFactory.createStudentSchoolEnrollmentTypeFTPTStatus(AUCodeSetsFTPTStatusCodeType.fromValue("01")));
+        target.setFFPOS(objectFactory.createStudentSchoolEnrollmentTypeFFPOS(AUCodeSetsFFPOSStatusCodeType.fromValue("2")));
+        target.setRecordClosureReason(objectFactory.createStudentSchoolEnrollmentTypeRecordClosureReason("end-of-year"));
+        target.setPreviousSchool(objectFactory.createStudentSchoolEnrollmentTypePreviousSchool("77b444bb-fe0a-48bb-971b-f510a4e76e48"));
+        target.setPreviousSchoolName(objectFactory.createStudentSchoolEnrollmentTypePreviousSchoolName("Previous Primary School"));
+        target.setDestinationSchool(objectFactory.createStudentSchoolEnrollmentTypeDestinationSchool("570eeaef-41a7-4686-bec4-0a87b080e2c4"));
+        target.setDestinationSchoolName(objectFactory.createStudentSchoolEnrollmentTypeDestinationSchoolName("Destination High School"));
+        target.setStartedAtSchoolDate(objectFactory.createStudentSchoolEnrollmentTypeStartedAtSchoolDate(getDate("2014-02-15")));
+
+        StudentEntryContainerType entryTypeContainer = objectFactory.createStudentEntryContainerType();
+        entryTypeContainer.setCode(AUCodeSetsEntryTypeType.fromValue("1821"));
+        target.setEntryType(objectFactory.createStudentSchoolEnrollmentTypeEntryType(entryTypeContainer));
+
+        YearLevelType yearLevelType = objectFactory.createYearLevelType();
+        yearLevelType.setCode(AUCodeSetsYearLevelCodeType.fromValue(StudentSchoolEnrollmentTestData.YEAR_LEVEL));
+        target.setYearLevel(objectFactory.createStudentSchoolEnrollmentTypeYearLevel(yearLevelType));
+
+        StudentSchoolEnrollmentType.Homeroom homeroom = objectFactory.createStudentSchoolEnrollmentTypeHomeroom();
+        homeroom.setSIFRefObject("RoomInfo");
+        homeroom.setValue(RoomInfoConsumerTest.REF_ID);
+        target.setHomeroom(objectFactory.createStudentSchoolEnrollmentTypeHomeroom(homeroom));
+
+        StudentSchoolEnrollmentType.Advisor advisor = objectFactory.createStudentSchoolEnrollmentTypeAdvisor();
+        advisor.setSIFRefObject("StaffPersonal");
+        advisor.setValue(StaffPersonalConsumerTest.StaffPersonalRefIds.REF_ID_1);
+        target.setAdvisor(objectFactory.createStudentSchoolEnrollmentTypeAdvisor(advisor));
+
+        StudentSchoolEnrollmentType.Counselor counselor = objectFactory.createStudentSchoolEnrollmentTypeCounselor();
+        counselor.setSIFRefObject("StaffPersonal");
+        counselor.setValue(StaffPersonalConsumerTest.StaffPersonalRefIds.REF_ID_4);
+        target.setCounselor(objectFactory.createStudentSchoolEnrollmentTypeCounselor(counselor));
+
+        YearLevelType testLevelType = objectFactory.createYearLevelType();
+        testLevelType.setCode(AUCodeSetsYearLevelCodeType.fromValue("6"));
+        target.setTestLevel(objectFactory.createStudentSchoolEnrollmentTypeTestLevel(testLevelType));
+
+        StudentSchoolEnrollmentType.Calendar calendar = objectFactory.createStudentSchoolEnrollmentTypeCalendar();
+        calendar.setSIFRefObject("CalendarSummary");
+        calendar.setValue(CalendarSummaryConsumerTest.REF_ID);
+        target.setCalendar(objectFactory.createStudentSchoolEnrollmentTypeCalendar(calendar));
+
+        StudentExitStatusContainerType exitStatusContainer = objectFactory.createStudentExitStatusContainerType();
+        exitStatusContainer.setCode(AUCodeSetsExitWithdrawalStatusType.fromValue("1905"));
+        target.setExitStatus(objectFactory.createStudentSchoolEnrollmentTypeExitStatus(exitStatusContainer));
+
+
+        StudentExitContainerType exitTypeContainer = objectFactory.createStudentExitContainerType();
+        exitTypeContainer.setCode(AUCodeSetsExitWithdrawalTypeType.fromValue("1907"));
+        target.setExitType(objectFactory.createStudentSchoolEnrollmentTypeExitType(exitTypeContainer));
+
+        CatchmentStatusContainerType catchmentStatusContainer = objectFactory.createCatchmentStatusContainerType();
+        catchmentStatusContainer.setCode(AUCodeSetsPublicSchoolCatchmentStatusType.fromValue("1652"));
+        target.setCatchmentStatus(objectFactory.createStudentSchoolEnrollmentTypeCatchmentStatus(catchmentStatusContainer));
+
+        PromotionInfoType promotionInfo = objectFactory.createPromotionInfoType();
+        promotionInfo.setPromotionStatus(objectFactory.createPromotionInfoTypePromotionStatus("promotion-status"));
+        target.setPromotionInfo(objectFactory.createStudentSchoolEnrollmentTypePromotionInfo(promotionInfo));
+
+        StudentSubjectChoiceListType studentSubjectChoiceListType = objectFactory.createStudentSubjectChoiceListType();
+        for (int i = 0; i < 5; i++) {
+            StudentSubjectChoiceType studentSubjectChoiceType = objectFactory.createStudentSubjectChoiceType();
+            studentSubjectChoiceType.setSubjectLocalId("subject-local-id-" + i);
+            studentSubjectChoiceType.setOtherSchoolLocalId(objectFactory.createStudentSubjectChoiceTypeOtherSchoolLocalId("other-school-id-" + i));
+            studentSubjectChoiceType.setPreferenceNumber(objectFactory.createStudentSubjectChoiceTypePreferenceNumber(Long.parseLong("" + (i + 1), 10)));
+            SubjectAreaType subjectAreaType = objectFactory.createSubjectAreaType();
+            subjectAreaType.setCode("study-description-" + i);
+            studentSubjectChoiceType.setStudyDescription(objectFactory.createStudentSubjectChoiceTypeStudyDescription(subjectAreaType));
+            studentSubjectChoiceListType.getStudentSubjectChoice().add(studentSubjectChoiceType);
+        }
+        target.setStudentSubjectChoiceList(objectFactory.createStudentSchoolEnrollmentTypeStudentSubjectChoiceList(studentSubjectChoiceListType));
+
+        StudentGroupListType studentGroupListType = objectFactory.createStudentGroupListType();
+        for (int i = 0; i < 5; i++) {
+            StudentGroupType studentGroup = objectFactory.createStudentGroupType();
+            studentGroup.setGroupLocalId("group-local-id-" + i);
+            studentGroup.setGroupCategory(AUCodeSetsGroupCategoryCodeType.fromValue("OtherGroup"));
+            studentGroup.setGroupDescription(objectFactory.createStudentGroupTypeGroupDescription("group-description-" + i));
+            studentGroupListType.getStudentGroup().add(studentGroup);
+        }
+        target.setStudentGroupList(objectFactory.createStudentSchoolEnrollmentTypeStudentGroupList(studentGroupListType));
+
+        PublishingPermissionListType publishingPermissionListType = objectFactory.createPublishingPermissionListType();
+        for (int i = 0; i < 5; i++) {
+            PublishingPermissionType publishingPermission = objectFactory.createPublishingPermissionType();
+            publishingPermission.setPermissionValue(AUCodeSetsYesOrNoCategoryType.fromValue("Y"));
+            publishingPermission.setPermissionCategory(AUCodeSetsPermissionCategoryCodeType.fromValue("OKPublishInfo"));
+            publishingPermissionListType.getPublishingPermission().add(publishingPermission);
+        }
+        target.setPublishingPermissionList(objectFactory.createStudentSchoolEnrollmentTypePublishingPermissionList(publishingPermissionListType));
+    }
 
     @Test
-    @Category({ IntegrationTest.class, InitialiseData.class })
+    @Category({IntegrationTest.class, InitialiseData.class})
     public void initialiseData() throws Exception {
-        ObjectFactory objectFactory = new ObjectFactory();
 
         StudentSchoolEnrollmentType studentEnrollment = new StudentSchoolEnrollmentType();
-        studentEnrollment.setRefId(REF_ID);
+        studentEnrollment.setRefId(StudentSchoolEnrollmentRefIds.REF_ID_1);
         studentEnrollment.setStudentPersonalRefId(StudentPersonalRefIds.REF_ID_1);
         studentEnrollment.setSchoolInfoRefId(SchoolInfoConsumerTest.REF_ID);
-        studentEnrollment.setMembershipType(AUCodeSetsSchoolEnrollmentTypeType.fromValue("01"));
-        studentEnrollment.setSchoolYear(getDate("2014"));
-        studentEnrollment.setTimeFrame(AUCodeSetsEnrollmentTimeFrameType.C);
-
-        YearLevelType yearLevel = new YearLevelType();
-        yearLevel.setCode(AUCodeSetsYearLevelCodeType.fromValue("4"));
-        studentEnrollment.setYearLevel(objectFactory.createStudentSchoolEnrollmentTypeYearLevel(yearLevel));
-        studentEnrollment.setFTE(objectFactory.createStudentSchoolEnrollmentTypeFTE(new BigDecimal("1.0")));
-        studentEnrollment.setEntryDate(getDate("2012-01-20"));
-        studentEnrollment.setExitDate(objectFactory.createStudentSchoolEnrollmentTypeExitDate(getDate("2014-12-20")));
+        populateTestObject(studentEnrollment);
 
         String xmlExpectedTo = studentSchoolEnrollmentTester.getXML(studentEnrollment);
         studentSchoolEnrollmentTester.doCreateOne(studentEnrollment);
+        studentSchoolEnrollmentTester.doUpdateOne(studentEnrollment, studentEnrollment.getRefId());
 
-        studentEnrollment.setRefId("609d6b13-73bc-44a7-b251-73d910b28b6a");
+        studentEnrollment.setRefId(StudentSchoolEnrollmentRefIds.REF_ID_2);
         studentEnrollment.setStudentPersonalRefId(StudentPersonalRefIds.REF_ID_2);
         studentSchoolEnrollmentTester.doCreateOne(studentEnrollment);
+        studentSchoolEnrollmentTester.doUpdateOne(studentEnrollment, studentEnrollment.getRefId());
 
-        studentEnrollment.setRefId("5d2eeecb-71ed-459b-a238-4b8297844693");
+        studentEnrollment.setRefId(StudentSchoolEnrollmentRefIds.REF_ID_3);
         studentEnrollment.setStudentPersonalRefId(StudentPersonalRefIds.REF_ID_3);
         studentSchoolEnrollmentTester.doCreateOne(studentEnrollment);
+        studentSchoolEnrollmentTester.doUpdateOne(studentEnrollment, studentEnrollment.getRefId());
 
-        studentEnrollment.setRefId("c45ebe7e-e3d3-43bb-90f6-6c3275a87dbc");
+        studentEnrollment.setRefId(StudentSchoolEnrollmentRefIds.REF_ID_4);
         studentEnrollment.setStudentPersonalRefId(StudentPersonalRefIds.REF_ID_4);
         studentSchoolEnrollmentTester.doCreateOne(studentEnrollment);
+        studentSchoolEnrollmentTester.doUpdateOne(studentEnrollment, studentEnrollment.getRefId());
 
-        studentEnrollment.setRefId("d81a5263-ca14-46eb-96c3-a47d37152b39");
+        studentEnrollment.setRefId(StudentSchoolEnrollmentRefIds.REF_ID_5);
         studentEnrollment.setStudentPersonalRefId(StudentPersonalRefIds.REF_ID_5);
         studentSchoolEnrollmentTester.doCreateOne(studentEnrollment);
+        studentSchoolEnrollmentTester.doUpdateOne(studentEnrollment, studentEnrollment.getRefId());
 
-        StudentSchoolEnrollmentType getResult = studentSchoolEnrollmentTester.doGetOne(REF_ID);
+        StudentSchoolEnrollmentType getResult = studentSchoolEnrollmentTester.doGetOne(StudentSchoolEnrollmentRefIds.REF_ID_1);
 
         String xmlExpectedFrom = studentSchoolEnrollmentTester.getXML(getResult);
         boolean semiEquals = semiEquals(xmlExpectedFrom, xmlExpectedTo);
@@ -95,28 +200,28 @@ public class StudentSchoolEnrollmentConsumerTest extends BaseTest {
     @Test
     @Category(IntegrationTest.class)
     public void testUpdateSingle() throws Exception {
-        List<Response> responses = studentSchoolEnrollmentTester.testGetSingle(REF_ID);
+        List<Response> responses = studentSchoolEnrollmentTester.testGetSingle(StudentSchoolEnrollmentRefIds.REF_ID_1);
         Assert.assertNotNull(responses);
         Assert.assertEquals(1, responses.size());
         Response response = responses.get(0);
         Assert.assertNotNull(response.getDataObject());
         StudentSchoolEnrollmentType studentSchoolEnrollment = (StudentSchoolEnrollmentType) response.getDataObject();
-        Assert.assertEquals(REF_ID, studentSchoolEnrollment.getRefId());
+        Assert.assertEquals(StudentSchoolEnrollmentRefIds.REF_ID_1, studentSchoolEnrollment.getRefId());
 
         String xmlExpectedFrom = studentSchoolEnrollmentTester.getXML(studentSchoolEnrollment);
 
-        List<Response> updateResponses = studentSchoolEnrollmentTester.doUpdateOne(studentSchoolEnrollment, REF_ID);
+        List<Response> updateResponses = studentSchoolEnrollmentTester.doUpdateOne(studentSchoolEnrollment, StudentSchoolEnrollmentRefIds.REF_ID_1);
         Assert.assertNotNull(updateResponses);
         Assert.assertEquals(1, updateResponses.size());
         Assert.assertEquals(updateResponses.get(0).getStatus(), HttpStatus.NO_CONTENT.value());
 
-        List<Response> getResponses = studentSchoolEnrollmentTester.testGetSingle(REF_ID);
+        List<Response> getResponses = studentSchoolEnrollmentTester.testGetSingle(StudentSchoolEnrollmentRefIds.REF_ID_1);
         Assert.assertNotNull(getResponses);
         Assert.assertEquals(1, getResponses.size());
         Response getResponse = getResponses.get(0);
         Assert.assertNotNull(getResponse.getDataObject());
         StudentSchoolEnrollmentType comparisonTo = (StudentSchoolEnrollmentType) getResponse.getDataObject();
-        Assert.assertEquals(REF_ID, comparisonTo.getRefId());
+        Assert.assertEquals(StudentSchoolEnrollmentRefIds.REF_ID_1, comparisonTo.getRefId());
         String xmlExpectedTo = studentSchoolEnrollmentTester.getXML(comparisonTo);
 
         boolean semiEquals = semiEquals(xmlExpectedFrom, xmlExpectedTo);
@@ -130,13 +235,13 @@ public class StudentSchoolEnrollmentConsumerTest extends BaseTest {
     @Test
     @Category(IntegrationTest.class)
     public void testGetSingle() {
-        List<Response> responses = studentSchoolEnrollmentTester.testGetSingle(REF_ID);
+        List<Response> responses = studentSchoolEnrollmentTester.testGetSingle(StudentSchoolEnrollmentRefIds.REF_ID_1);
         Assert.assertNotNull(responses);
         Assert.assertEquals(1, responses.size());
         Response response = responses.get(0);
         Assert.assertNotNull(response.getDataObject());
         StudentSchoolEnrollmentType studentSchoolEnrollment = (StudentSchoolEnrollmentType) response.getDataObject();
-        Assert.assertEquals(REF_ID, studentSchoolEnrollment.getRefId());
+        Assert.assertEquals(StudentSchoolEnrollmentRefIds.REF_ID_1, studentSchoolEnrollment.getRefId());
     }
 
     @Test
@@ -153,20 +258,20 @@ public class StudentSchoolEnrollmentConsumerTest extends BaseTest {
         Assert.assertFalse(studentSchoolEnrollmentCollectionType.getStudentSchoolEnrollment().isEmpty());
         boolean found = false;
         for (StudentSchoolEnrollmentType studentSchoolEnrollmentType : studentSchoolEnrollmentCollectionType.getStudentSchoolEnrollment()) {
-            found = found || REF_ID.equals(studentSchoolEnrollmentType.getRefId());
+            found = found || StudentSchoolEnrollmentRefIds.REF_ID_1.equals(studentSchoolEnrollmentType.getRefId());
             Assert.assertEquals(StudentPersonalRefIds.REF_ID_1, studentSchoolEnrollmentType.getStudentPersonalRefId());
         }
         Assert.assertTrue(found);
     }
-    
+
     @Test
     @Category(IntegrationTest.class)
     public void testQBEYearLevel() throws DatatypeConfigurationException {
         ObjectFactory objectFactory = new ObjectFactory();
         StudentSchoolEnrollmentType studentEnrollment = new StudentSchoolEnrollmentType();
-        studentEnrollment.setSchoolYear(getDate("2014"));
+        studentEnrollment.setSchoolYear(getDate(StudentSchoolEnrollmentTestData.SCHOOL_YEAR));
         YearLevelType yly = new YearLevelType();
-        yly.setCode(AUCodeSetsYearLevelCodeType.VALUE_8);
+        yly.setCode(AUCodeSetsYearLevelCodeType.fromValue(StudentSchoolEnrollmentTestData.YEAR_LEVEL));
         studentEnrollment.setYearLevel(objectFactory.createStudentSchoolEnrollmentTypeYearLevel(yly));
         List<Response> responses = studentSchoolEnrollmentTester.testQBE(studentEnrollment, 1000, 0);
         Assert.assertNotNull(responses);
@@ -177,9 +282,9 @@ public class StudentSchoolEnrollmentConsumerTest extends BaseTest {
         Assert.assertFalse(studentSchoolEnrollmentCollectionType.getStudentSchoolEnrollment().isEmpty());
         boolean found = false;
         for (StudentSchoolEnrollmentType studentSchoolEnrollmentType : studentSchoolEnrollmentCollectionType.getStudentSchoolEnrollment()) {
-            found = found || REF_ID.equals(studentSchoolEnrollmentType.getRefId());
-            Assert.assertEquals(2014, studentSchoolEnrollmentType.getSchoolYear().getYear());
-            Assert.assertEquals(AUCodeSetsYearLevelCodeType.VALUE_8.value(), studentSchoolEnrollmentType.getYearLevel().getValue().getCode().value());
+            found = found || StudentSchoolEnrollmentRefIds.REF_ID_1.equals(studentSchoolEnrollmentType.getRefId());
+            Assert.assertEquals(StudentSchoolEnrollmentTestData.SCHOOL_YEAR, studentSchoolEnrollmentType.getSchoolYear().getYear() + "");
+            Assert.assertEquals(StudentSchoolEnrollmentTestData.YEAR_LEVEL, studentSchoolEnrollmentType.getYearLevel().getValue().getCode().value());
         }
         Assert.assertTrue(found);
     }
