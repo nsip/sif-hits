@@ -140,7 +140,7 @@ public class StudentSchoolEnrollmentConsumerTest extends BaseTest {
         for (int i = 0; i < 5; i++) {
             PublishingPermissionType publishingPermission = objectFactory.createPublishingPermissionType();
             publishingPermission.setPermissionValue(AUCodeSetsYesOrNoCategoryType.fromValue("Y"));
-            publishingPermission.setPermissionCategory(AUCodeSetsPermissionCategoryCodeType.fromValue("OKPublishInfo"));
+            publishingPermission.setPermissionCategory(AUCodeSetsPermissionCategoryCodeType.values()[i]);
             publishingPermissionListType.getPublishingPermission().add(publishingPermission);
         }
         target.setPublishingPermissionList(objectFactory.createStudentSchoolEnrollmentTypePublishingPermissionList(publishingPermissionListType));

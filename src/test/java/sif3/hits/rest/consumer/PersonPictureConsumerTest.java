@@ -9,11 +9,7 @@ import org.junit.Test;
 import org.junit.experimental.categories.Category;
 import org.springframework.http.HttpStatus;
 
-import sif.dd.au30.model.AUCodeSetsPictureSourceType;
-import sif.dd.au30.model.AUCodeSetsYesOrNoCategoryType;
-import sif.dd.au30.model.ObjectFactory;
-import sif.dd.au30.model.PersonPictureCollectionType;
-import sif.dd.au30.model.PersonPictureType;
+import sif.dd.au30.model.*;
 import sif.dd.au30.model.PersonPictureType.ParentObjectRefId;
 import sif.dd.au30.model.PersonPictureType.PictureSource;
 import sif3.common.ws.BulkOperationResponse;
@@ -61,6 +57,16 @@ public class PersonPictureConsumerTest extends BaseTest {
         pictureSource.setValue("http://www.gravatar.com/avatar/HASH?d=mm");
         personPicture.setPictureSource(pictureSource);
         personPicture.setSchoolYear(getDate("2016"));
+
+        PublishingPermissionListType publishingPermissionListType = objectFactory.createPublishingPermissionListType();
+        for (int i = 0; i < 5; i++) {
+            PublishingPermissionType publishingPermission = objectFactory.createPublishingPermissionType();
+            publishingPermission.setPermissionValue(AUCodeSetsYesOrNoCategoryType.fromValue("Y"));
+            publishingPermission.setPermissionCategory(AUCodeSetsPermissionCategoryCodeType.values()[i]);
+            publishingPermissionListType.getPublishingPermission().add(publishingPermission);
+        }
+        personPicture.setPublishingPermissionList(objectFactory.createPersonPictureTypePublishingPermissionList(publishingPermissionListType));
+
         personPictureTester.doCreateOne(personPicture);
         String xmlExpectedTo = personPictureTester.getXML(personPicture);
 
