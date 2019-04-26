@@ -25,8 +25,8 @@ public class StudentAttendanceTimeOtherCode {
   }
 
   @ManyToOne(optional = false)
-  @MapsId("id")
-  @JoinColumn(name = "StudentAttendanceTimeList_AttendanceTime_id", referencedColumnName = "id")
+  @MapsId("data")
+  @JoinColumn(name = "StudentAttendanceTimeList_AttendanceTime_id", referencedColumnName = "data")
   public StudentAttendanceTime getStudentAttendanceTime() {
     return studentAttendanceTime;
   }

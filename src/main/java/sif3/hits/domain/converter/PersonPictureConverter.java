@@ -47,15 +47,14 @@ public class PersonPictureConverter extends HitsConverter<PersonPictureType, Per
                 target.setPictureSource(pictureSource);
             }
 
-            if (source.getPublishingPermissions() != null && !source.getPublishingPermissions().isEmpty()) {
-                PublishingPermissionListType publishingPermissionListType = objectFactory.createPublishingPermissionListType();
-                for (PersonPicturePublishingPermission publishingPermission : source.getPublishingPermissions()) {
-                    publishingPermissionListType.getPublishingPermission().add(publishingPermissionConverter.toSifModel(publishingPermission));
-                }
+            PublishingPermissionListType publishingPermissionListType = objectFactory.createPublishingPermissionListType();
+            publishingPermissionListType.getPublishingPermission().addAll(publishingPermissionConverter.toSifModelList(source.getPublishingPermissions()));
+            if (!publishingPermissionListType.getPublishingPermission().isEmpty()) {
                 target.setPublishingPermissionList(objectFactory.createStudentSchoolEnrollmentTypePublishingPermissionList(publishingPermissionListType));
             }
         }
     }
+
 
     @Override
     public void toHitsModel(PersonPictureType source, PersonPicture target) {

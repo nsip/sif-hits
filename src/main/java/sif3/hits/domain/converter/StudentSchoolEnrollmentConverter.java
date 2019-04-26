@@ -134,30 +134,26 @@ public class StudentSchoolEnrollmentConverter
                 target.setPromotionInfo(objectFactory.createStudentSchoolEnrollmentTypePromotionInfo(promotionInfo));
             }
 
-            if (source.getStudentSubjectChoices() != null && !source.getStudentSubjectChoices().isEmpty()) {
-                StudentSubjectChoiceListType studentSubjectChoiceListType = objectFactory.createStudentSubjectChoiceListType();
-                for (StudentSubjectChoice studentSubjectChoice : source.getStudentSubjectChoices()) {
-                    studentSubjectChoiceListType.getStudentSubjectChoice().add(studentSubjectChoiceConverter.toSifModel(studentSubjectChoice));
-                }
+            StudentSubjectChoiceListType studentSubjectChoiceListType = objectFactory.createStudentSubjectChoiceListType();
+            studentSubjectChoiceListType.getStudentSubjectChoice().addAll(studentSubjectChoiceConverter.toSifModelList(source.getStudentSubjectChoices()));
+            if (!studentSubjectChoiceListType.getStudentSubjectChoice().isEmpty()) {
                 target.setStudentSubjectChoiceList(objectFactory.createStudentSchoolEnrollmentTypeStudentSubjectChoiceList(studentSubjectChoiceListType));
+
             }
 
-            if (source.getStudentGroups() != null && !source.getStudentGroups().isEmpty()) {
-                StudentGroupListType studentGroupListType = objectFactory.createStudentGroupListType();
-                for (StudentGroup studentGroup : source.getStudentGroups()) {
-                    studentGroupListType.getStudentGroup().add(studentGroupConverter.toSifModel(studentGroup));
-                }
+            StudentGroupListType studentGroupListType = objectFactory.createStudentGroupListType();
+            studentGroupListType.getStudentGroup().addAll(studentGroupConverter.toSifModelList(source.getStudentGroups()));
+            if (!studentGroupListType.getStudentGroup().isEmpty()) {
                 target.setStudentGroupList(objectFactory.createStudentSchoolEnrollmentTypeStudentGroupList(studentGroupListType));
             }
 
-            if (source.getPublishingPermissions() != null && !source.getPublishingPermissions().isEmpty()) {
-                PublishingPermissionListType publishingPermissionListType = objectFactory.createPublishingPermissionListType();
-                for (StudentSchoolEnrollmentPublishingPermission publishingPermission : source.getPublishingPermissions()) {
-                    publishingPermissionListType.getPublishingPermission().add(publishingPermissionConverter.toSifModel(publishingPermission));
-                }
+            PublishingPermissionListType publishingPermissionListType = objectFactory.createPublishingPermissionListType();
+            publishingPermissionListType.getPublishingPermission().addAll(publishingPermissionConverter.toSifModelList(source.getPublishingPermissions()));
+            if (!publishingPermissionListType.getPublishingPermission().isEmpty()) {
                 target.setPublishingPermissionList(objectFactory.createStudentSchoolEnrollmentTypePublishingPermissionList(publishingPermissionListType));
             }
         }
+
     }
 
     @Override
