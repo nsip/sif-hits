@@ -13,7 +13,14 @@
             <ItemDifficulty>3</ItemDifficulty>
             <ItemProficiencyBand>32</ItemProficiencyBand>
             <ExemplarURL>https://www.nsip.edu.au</ExemplarURL>
-            <ItemSubstitutedForList/>
+            <ItemSubstitutedForList>
+                <SubstituteItem>
+                    <SubstituteItemRefId>93fb8237-6e27-4dd6-aed9-03d53bc87b9a</SubstituteItemRefId>
+                    <PNPCodeList>
+                        <PNPCode>AAM</PNPCode>
+                    </PNPCodeList>
+                </SubstituteItem>
+            </ItemSubstitutedForList>
             <ContentDescriptionList>
                 <ContentDescription>MNA32</ContentDescription>
                 <ContentDescription>MNA37</ContentDescription>
@@ -118,7 +125,14 @@
             <ItemDifficulty>3</ItemDifficulty>
             <ItemProficiencyBand>32</ItemProficiencyBand>
             <ExemplarURL>https://www.nsip.edu.au</ExemplarURL>
-            <ItemSubstitutedForList/>
+            <ItemSubstitutedForList>
+                <SubstituteItem>
+                    <SubstituteItemRefId>93fb8237-6e27-4dd6-aed9-03d53bc87b9a</SubstituteItemRefId>
+                    <PNPCodeList>
+                        <PNPCode>AAM</PNPCode>
+                    </PNPCodeList>
+                </SubstituteItem>
+            </ItemSubstitutedForList>
             <ContentDescriptionList>
                 <ContentDescription>MNA32</ContentDescription>
                 <ContentDescription>MNA37</ContentDescription>

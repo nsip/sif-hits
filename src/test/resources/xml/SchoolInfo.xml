@@ -8,7 +8,8 @@
     <AddressList>
         <Address Type="0123" Role="012B">
             <Street>
-                <Line1>1 School Street</Line1>
+                <StreetNumber>1</StreetNumber>
+                <StreetName>School Street</StreetName>
             </Street>
             <City>Perth</City>
             <StateProvince>WA</StateProvince>

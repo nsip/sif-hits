@@ -39,7 +39,7 @@ public class StudentContactPersonalTestData extends TestData<StudentContactPerso
                 .setSchoolEducationalLevel(objectFactory.createStudentContactPersonalTypeSchoolEducationalLevel(AUCodeSetsSchoolEducationLevelTypeType.fromValue("4")));
 
         PersonInfoType personInfo = new PersonInfoType();
-        personInfo.setName(getNameOfRecord("Ms", "Jane", "Test", "Smith"));
+        personInfo.setName(getNameOfRecord("Ms", "Jane", "Test", "Smith", false));
 
         DemographicsType demographics = new DemographicsType();
         demographics.setSex(objectFactory.createDemographicsTypeSex(AUCodeSetsSexCodeType.fromValue("2")));

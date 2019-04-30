@@ -1,5 +1,5 @@
 <StaffAssignments xmlns="http://www.sifassociation.org/datamodel/au/3.4">
-    <StaffAssignment RefId="6a05bce1-ec88-40f7-a747-3de0a1f5c99f">
+    <StaffAssignment RefId="10413493-8f28-4dec-ab20-45a84236d108">
         <SchoolInfoRefId>252159ce-e385-4dea-8440-26d300282781</SchoolInfoRefId>
         <SchoolYear>2014</SchoolYear>
         <StaffPersonalRefId>db065c11-e493-4a84-9ca6-c140b22e71f9</StaffPersonalRefId>
@@ -48,7 +48,7 @@
         </CalendarSummaryList>
         <PreviousSchoolName>Previous High School</PreviousSchoolName>
     </StaffAssignment>
-    <StaffAssignment RefId="6a05bce1-ec88-40f7-a747-3de0a1f5c99f">
+    <StaffAssignment RefId="cfb04779-4af4-4faf-be16-0cc26d3b24e3">
         <SchoolInfoRefId>252159ce-e385-4dea-8440-26d300282781</SchoolInfoRefId>
         <SchoolYear>2014</SchoolYear>
         <StaffPersonalRefId>db065c11-e493-4a84-9ca6-c140b22e71f9</StaffPersonalRefId>

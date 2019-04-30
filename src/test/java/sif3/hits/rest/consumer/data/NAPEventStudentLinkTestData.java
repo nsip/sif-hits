@@ -108,9 +108,9 @@ public class NAPEventStudentLinkTestData extends TestData<NAPEventStudentLinkTyp
     @Override
     public boolean isServicePathObject(NAPEventStudentLinkType object, int index) {
         if (index == 0) {
-            return object != null && SchoolInfoTestData.REF_ID_1.equals(object.getSchoolInfoRefId());
+            return object != null && object.getSchoolInfoRefId() != null && SchoolInfoTestData.REF_ID_1.equals(object.getSchoolInfoRefId().getValue());
         } else if (index == 1) {
-            return object != null && StudentPersonalTestData.REF_ID_1.equals(object.getStudentPersonalRefId());
+            return object != null && object.getStudentPersonalRefId() != null && StudentPersonalTestData.REF_ID_1.equals(object.getStudentPersonalRefId().getValue());
         }
         return false;
     }

@@ -86,6 +86,19 @@ public class ScheduledActivityConverter extends HitsConverter<ScheduledActivityT
             override.setValue(getEnumValue(source.getOverride(), AUCodeSetsYesOrNoCategoryType.class));
             override.setDateOfOverride(getDateValue(source.getDateOfOverride()));
             target.setOverride(objectFactory.createScheduledActivityTypeOverride(override));
+
+            if (roomList.getRoomInfoRefId().isEmpty()) {
+                target.setRoomList(null);
+            }
+            if (studentList.getStudentPersonalRefId().isEmpty()) {
+                target.setStudentList(null);
+            }
+            if (teachingGroupList.getTeachingGroupRefId().isEmpty()) {
+                target.setTeachingGroupList(null);
+            }
+            if (teacherList.getTeacherCover().isEmpty()) {
+                target.setTeacherList(null);
+            }
         }
     }
 

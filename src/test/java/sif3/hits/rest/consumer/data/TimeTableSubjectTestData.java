@@ -34,7 +34,7 @@ public class TimeTableSubjectTestData extends TestData<TimeTableSubjectType, Tim
     public TimeTableSubjectType getTestObject(String refId) {
         IObjectFactory objectFactory = getObjectFactory();
         TimeTableSubjectType timeTableSubject = new TimeTableSubjectType();
-        timeTableSubject.setRefId(TimeTableSubjectTestData.REF_ID_1);
+        timeTableSubject.setRefId(refId);
         timeTableSubject.setSchoolInfoRefId(objectFactory.createTimeTableSubjectTypeSchoolInfoRefId(SchoolInfoTestData.REF_ID_1));
         timeTableSubject.setSchoolLocalId(objectFactory.createTimeTableSubjectTypeSchoolLocalId(SchoolInfoTestData.LOCAL_ID));
         timeTableSubject.setSubjectLocalId(LOCAL_ID);

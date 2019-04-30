@@ -42,7 +42,7 @@ public class CalendarDateTestData extends TestData<CalendarDateType,CalendarDate
         CalendarDateType calendarDate = new CalendarDateType();
         calendarDate.setDate(getDate(CALENDAR_DATE));
         calendarDate.setCalendarDateRefId(refId);
-        calendarDate.setCalendarSummaryRefId(objectFactory.createCalendarDateTypeCalendarSummaryRefId(REF_ID_1));
+        calendarDate.setCalendarSummaryRefId(objectFactory.createCalendarDateTypeCalendarSummaryRefId(CalendarSummaryTestData.REF_ID_1));
         calendarDate.setSchoolInfoRefId(SchoolInfoTestData.REF_ID_1);
         calendarDate.setSchoolYear(getDate(CALENDAR_YEAR));
 

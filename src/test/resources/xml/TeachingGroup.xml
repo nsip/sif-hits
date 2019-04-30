@@ -85,14 +85,4 @@
             <Association>Class Teacher</Association>
         </TeachingGroupTeacher>
     </TeacherList>
-    <TeachingGroupPeriodList>
-        <TeachingGroupPeriod>
-            <TimeTableCellRefId>e491c1f9-cd43-46bc-9ac8-09760f8cbf18</TimeTableCellRefId>
-            <RoomNumber>R43</RoomNumber>
-            <StaffLocalId>local-id-sp</StaffLocalId>
-            <DayId>1</DayId>
-            <PeriodId>2</PeriodId>
-            <CellType>Teaching</CellType>
-        </TeachingGroupPeriod>
-    </TeachingGroupPeriodList>
 </TeachingGroup>

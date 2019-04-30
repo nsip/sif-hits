@@ -8,7 +8,6 @@
             <MiddleName>Test</MiddleName>
             <PreferredFamilyName>Smith</PreferredFamilyName>
             <PreferredGivenName>Jane</PreferredGivenName>
-            <FullName>Ms Jane Test Smith</FullName>
         </Name>
         <Demographics>
             <Sex>2</Sex>

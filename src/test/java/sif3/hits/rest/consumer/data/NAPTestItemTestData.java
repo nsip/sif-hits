@@ -100,15 +100,16 @@ public class NAPTestItemTestData extends TestData<NAPTestItemType, NAPTestItemCo
         contentDescriptionListType.getContentDescription().addAll(Arrays.asList(CONTENTS));
         napTestItemContentType.setContentDescriptionList(objectFactory.createNAPTestItemContentTypeContentDescriptionList(contentDescriptionListType));
 
-        SubstituteItemListType substituteItemListType = new SubstituteItemListType();
-        SubstituteItemType substituteItemType = new SubstituteItemType();
-        PNPCodeListType pnpCodeListType = new PNPCodeListType();
+        SubstituteItemListType substituteItemListType = objectFactory.createSubstituteItemListType();
+        SubstituteItemType substituteItemType = objectFactory.createSubstituteItemType();
+        PNPCodeListType pnpCodeListType = objectFactory.createPNPCodeListType();
         pnpCodeListType.getPNPCode().add(AUCodeSetsPNPCodeType.fromValue(PNP_CODE));
         substituteItemType.setPNPCodeList(pnpCodeListType);
         if (!REF_ID_1.equals(refId)) {
             substituteItemType.setSubstituteItemRefId(REF_ID_1);
+            substituteItemListType.getSubstituteItem().add(substituteItemType);
+            napTestItemContentType.setItemSubstitutedForList(objectFactory.createNAPTestItemContentTypeItemSubstitutedForList(substituteItemListType));
         }
-        napTestItemContentType.setItemSubstitutedForList(objectFactory.createNAPTestItemContentTypeItemSubstitutedForList(substituteItemListType));
 
         StimulusListType stimulusListType = new StimulusListType();
         stimulusListType.getStimulus().add(getStimulus(0));

@@ -66,17 +66,19 @@ public class TeachingGroupTestData extends TestData<TeachingGroupType, TeachingG
 
         teachingGroup.setStudentList(objectFactory.createTeachingGroupTypeStudentList(studentList));
 
-        // Need to add TeachingGroupPeriods!
-        TeachingGroupPeriodListType periodList = new TeachingGroupPeriodListType();
-        TeachingGroupPeriodType period = new TeachingGroupPeriodType();
-        period.setTimeTableCellRefId(objectFactory.createTeachingGroupPeriodTypeTimeTableCellRefId(TimeTableCellTestData.REF_ID_1));
-        period.setRoomNumber(objectFactory.createTeachingGroupPeriodTypeRoomNumber(RoomInfoTestData.ROOM_NUMBER));
-        period.setCellType(objectFactory.createTeachingGroupPeriodTypeCellType(TimeTableCellTestData.CELL_TYPE));
-        period.setStaffLocalId(objectFactory.createTeachingGroupPeriodTypeStaffLocalId(StaffPersonalTestData.LOCAL_ID));
-        period.setDayId(TimeTableCellTestData.DAY_ID);
-        period.setPeriodId(objectFactory.createTeachingGroupPeriodTypePeriodId(TimeTableCellTestData.PERIOD_ID));
-        periodList.getTeachingGroupPeriod().add(period);
-        teachingGroup.setTeachingGroupPeriodList(objectFactory.createTeachingGroupTypeTeachingGroupPeriodList(periodList));
+        if (!XML_REF_ID_LIST.contains(refId)) {
+            // Need to add TeachingGroupPeriods!
+            TeachingGroupPeriodListType periodList = new TeachingGroupPeriodListType();
+            TeachingGroupPeriodType period = new TeachingGroupPeriodType();
+            period.setTimeTableCellRefId(objectFactory.createTeachingGroupPeriodTypeTimeTableCellRefId(TimeTableCellTestData.REF_ID_1));
+            period.setRoomNumber(objectFactory.createTeachingGroupPeriodTypeRoomNumber(RoomInfoTestData.ROOM_NUMBER));
+            period.setCellType(objectFactory.createTeachingGroupPeriodTypeCellType(TimeTableCellTestData.CELL_TYPE));
+            period.setStaffLocalId(objectFactory.createTeachingGroupPeriodTypeStaffLocalId(StaffPersonalTestData.LOCAL_ID));
+            period.setDayId(TimeTableCellTestData.DAY_ID);
+            period.setPeriodId(objectFactory.createTeachingGroupPeriodTypePeriodId(TimeTableCellTestData.PERIOD_ID));
+            periodList.getTeachingGroupPeriod().add(period);
+            teachingGroup.setTeachingGroupPeriodList(objectFactory.createTeachingGroupTypeTeachingGroupPeriodList(periodList));
+        }
         return teachingGroup;
     }
 

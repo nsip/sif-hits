@@ -49,9 +49,9 @@ public abstract class BaseTest<T, C> {
             tester.doCreateOne(singleObject);
             tester.doUpdateOne(singleObject, getRefId(singleObject));
             if (i == TEST_INDEX || testData.verifyAllInitialObjects()) {
-                String xmlExpectedTo = getXML(singleObject);
+                String xmlExpectedFrom = getXML(singleObject);
                 T getResult = tester.doGetOne(getRefId(singleObject));
-                String xmlExpectedFrom = getXML(getResult);
+                String xmlExpectedTo = getXML(getResult);
                 sameObject(xmlExpectedFrom, xmlExpectedTo);
             }
         }
@@ -88,7 +88,8 @@ public abstract class BaseTest<T, C> {
         T createdObject = getSingleObject(getResponses);
         sameObject(initialObject, createdObject);
 
-        List<Response> updateResponse = tester.doUpdateOne(updatedObject, testRefId);
+        tester.doUpdateOne(updatedObject, testRefId);
+        List<Response> updateResponse = tester.testGetSingle(testRefId);
         T newObject = getSingleObject(updateResponse);
         sameObject(updatedObject, newObject);
 

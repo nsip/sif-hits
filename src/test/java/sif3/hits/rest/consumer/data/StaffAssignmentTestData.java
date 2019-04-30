@@ -31,7 +31,7 @@ public class StaffAssignmentTestData extends TestData<StaffAssignmentType, Staff
         ObjectFactory objectFactory = new ObjectFactory();
 
         StaffAssignmentType staffAssignment = new StaffAssignmentType();
-        staffAssignment.setRefId(REF_ID_1);
+        staffAssignment.setRefId(refId);
         staffAssignment.setStaffPersonalRefId(StaffPersonalTestData.REF_ID_1);
         staffAssignment.setSchoolInfoRefId(SchoolInfoTestData.REF_ID_1);
         staffAssignment.setSchoolYear(objectFactory.createStaffAssignmentTypeSchoolYear(getDate("2014")));

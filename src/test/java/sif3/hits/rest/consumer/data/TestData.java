@@ -1,6 +1,5 @@
 package sif3.hits.rest.consumer.data;
 
-import org.apache.commons.lang3.StringUtils;
 import sif.dd.au30.model.*;
 import sif3.common.model.QueryCriteria;
 import sif3.hits.domain.converter.factory.IObjectFactory;
@@ -109,6 +108,10 @@ public abstract class TestData<T, C> implements UsesConstants {
     }
 
     public static NameOfRecordType getNameOfRecord(String title, String firstName, String middleName, String lastName) {
+        return getNameOfRecord(title, firstName, middleName, lastName, true);
+    }
+
+    public static NameOfRecordType getNameOfRecord(String title, String firstName, String middleName, String lastName, boolean fullName) {
         IObjectFactory objectFactory = getObjectFactory();
         NameOfRecordType nameOfRecordType = new NameOfRecordType();
         nameOfRecordType.setType(DEFAULT_NAME_TYPE);
@@ -118,10 +121,12 @@ public abstract class TestData<T, C> implements UsesConstants {
         nameOfRecordType.setPreferredGivenName(objectFactory.createBaseNameTypePreferredGivenName(firstName));
         nameOfRecordType.setMiddleName(objectFactory.createBaseNameTypeMiddleName(middleName));
         nameOfRecordType.setTitle(objectFactory.createBaseNameTypeTitle(title));
-        if (title == null) {
-            nameOfRecordType.setFullName(objectFactory.createBaseNameTypeFullName(firstName + " " + middleName + " " + lastName));
-        } else {
-            nameOfRecordType.setFullName(objectFactory.createBaseNameTypeFullName(title + " " + firstName + " " + middleName + " " + lastName));
+        if (fullName) {
+            if (title == null) {
+                nameOfRecordType.setFullName(objectFactory.createBaseNameTypeFullName(firstName + " " + middleName + " " + lastName));
+            } else {
+                nameOfRecordType.setFullName(objectFactory.createBaseNameTypeFullName(title + " " + firstName + " " + middleName + " " + lastName));
+            }
         }
         return nameOfRecordType;
     }
