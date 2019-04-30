@@ -1,0 +1,37 @@
+<TimeTableCell RefId="f79621dd-76fa-4ff5-b2ca-fcaf8a360625" xmlns="http://www.sifassociation.org/datamodel/au/3.4">
+    <TimeTableRefId>41b18ab6-dd6e-436f-8f84-4e5bcd663031</TimeTableRefId>
+    <TimeTableSubjectRefId>d7e56fa7-e708-4563-9490-9d15677c6a27</TimeTableSubjectRefId>
+    <TeachingGroupRefId>8feeb970-94be-4b69-91b5-bf36188ed100</TeachingGroupRefId>
+    <RoomInfoRefId>ec19f8a1-f4f8-43b9-9640-ad8486accfbe</RoomInfoRefId>
+    <StaffPersonalRefId>db065c11-e493-4a84-9ca6-c140b22e71f9</StaffPersonalRefId>
+    <TimeTableLocalId>local-id-tt</TimeTableLocalId>
+    <SubjectLocalId>local-id-tts</SubjectLocalId>
+    <TeachingGroupLocalId>local-id-tg</TeachingGroupLocalId>
+    <RoomNumber>R43</RoomNumber>
+    <StaffLocalId>local-id-sp</StaffLocalId>
+    <DayId>4</DayId>
+    <PeriodId>2</PeriodId>
+    <CellType>Teaching</CellType>
+    <SchoolInfoRefId>252159ce-e385-4dea-8440-26d300282781</SchoolInfoRefId>
+    <SchoolLocalId>4001</SchoolLocalId>
+    <TeacherList>
+        <TeacherCover>
+            <StaffPersonalRefId>db065c11-e493-4a84-9ca6-c140b22e71f9</StaffPersonalRefId>
+            <StaffLocalId>local-id-sp</StaffLocalId>
+            <StartTime>09:00:00</StartTime>
+            <FinishTime>10:00:00</FinishTime>
+            <Credit>Casual</Credit>
+            <Supervision>Normal</Supervision>
+            <Weighting>0.5</Weighting>
+        </TeacherCover>
+        <TeacherCover>
+            <StaffPersonalRefId>e326d2e6-ef77-4540-8933-106a3aec9c63</StaffPersonalRefId>
+            <StaffLocalId>local-id-sp</StaffLocalId>
+            <StartTime>09:00:00</StartTime>
+            <FinishTime>10:00:00</FinishTime>
+            <Credit>Casual</Credit>
+            <Supervision>Normal</Supervision>
+            <Weighting>0.5</Weighting>
+        </TeacherCover>
+    </TeacherList>
+</TimeTableCell>

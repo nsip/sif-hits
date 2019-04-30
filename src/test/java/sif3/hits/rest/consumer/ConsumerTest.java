@@ -1,5 +1,17 @@
 package sif3.hits.rest.consumer;
 
+import org.springframework.core.io.ClassPathResource;
+import org.springframework.core.io.Resource;
+import sif3.common.exception.MarshalException;
+import sif3.common.exception.UnmarshalException;
+import sif3.common.exception.UnsupportedMediaTypeExcpetion;
+import sif3.common.header.HeaderValues.QueryIntention;
+import sif3.common.header.HeaderValues.RequestType;
+import sif3.common.model.PagingInfo;
+import sif3.common.model.QueryCriteria;
+import sif3.common.model.ZoneContextInfo;
+import sif3.common.ws.*;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -8,29 +20,10 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import org.springframework.core.io.ClassPathResource;
-import org.springframework.core.io.Resource;
-
-import sif3.common.exception.MarshalException;
-import sif3.common.exception.UnmarshalException;
-import sif3.common.exception.UnsupportedMediaTypeExcpetion;
-import sif3.common.header.HeaderValues.QueryIntention;
-import sif3.common.header.HeaderValues.RequestType;
-import sif3.common.model.PagingInfo;
-import sif3.common.model.QueryCriteria;
-import sif3.common.model.SIFContext;
-import sif3.common.model.SIFZone;
-import sif3.common.model.ZoneContextInfo;
-import sif3.common.ws.BaseResponse;
-import sif3.common.ws.BulkOperationResponse;
-import sif3.common.ws.CreateOperationStatus;
-import sif3.common.ws.OperationStatus;
-import sif3.common.ws.Response;
-
 public class ConsumerTest<S, M> {
 
     private final static RequestType REQUEST_TYPE = RequestType.IMMEDIATE;
-    private final static String FILE_PATH = "data";
+    private final static String FILE_PATH = "xml";
 
     private final Class<S> SINGLE_CLASS;
     private final Class<M> MULTI_CLASS;
@@ -108,7 +101,7 @@ public class ConsumerTest<S, M> {
     List<Response> testCreateOne(String filename) {
         return testCreateOne(filename, null, null);
     }
-    
+
     List<Response> testCreateOne(String filename, String zone, String context) {
         List<Response> result = null;
         System.out.println("Start 'Create " + getSingleName() + "' in all connected environments...");
@@ -165,7 +158,7 @@ public class ConsumerTest<S, M> {
         return result;
     }
 
-    String getXML(S object) throws MarshalException, UnsupportedMediaTypeExcpetion {
+    String getXML(Object object) throws MarshalException, UnsupportedMediaTypeExcpetion {
         String result = null;
         if (object != null) {
             result = testConsumer.getMarshaller().marshalToXML(object);
@@ -179,6 +172,17 @@ public class ConsumerTest<S, M> {
             Object sifObject = testConsumer.getUnmarshaller().unmarshalFromXML(xml, SINGLE_CLASS);
             if (SINGLE_CLASS.isAssignableFrom(sifObject.getClass())) {
                 result = SINGLE_CLASS.cast(sifObject);
+            }
+        }
+        return result;
+    }
+
+    M collectionFromXML(String xml) throws UnmarshalException, UnsupportedMediaTypeExcpetion {
+        M result = null;
+        if (xml != null) {
+            Object sifObject = testConsumer.getUnmarshaller().unmarshalFromXML(xml, MULTI_CLASS);
+            if (MULTI_CLASS.isAssignableFrom(sifObject.getClass())) {
+                result = MULTI_CLASS.cast(sifObject);
             }
         }
         return result;
@@ -279,8 +283,8 @@ public class ConsumerTest<S, M> {
     }
 
     private List<ZoneContextInfo> getZoneContextList() {
-        List<ZoneContextInfo> result = new ArrayList<ZoneContextInfo>();
-        result.add(new ZoneContextInfo((SIFZone) null, (SIFContext) null));
+        List<ZoneContextInfo> result = new ArrayList<>();
+        result.add(new ZoneContextInfo((String) null, (String) null));
         return result;
     }
 
@@ -299,11 +303,11 @@ public class ConsumerTest<S, M> {
                                 System.out.println("Data Object Response " + i + ": " + testConsumer.getMarshaller().marshalToXML(((Response) response).getDataObject()));
                             } else if (BulkOperationResponse.class.isAssignableFrom(response.getClass())) {
                                 System.out.println("Bulk Operation Response " + i + ":");
-                                BulkOperationResponse<?> bor = BulkOperationResponse.class.cast(response);
+                                BulkOperationResponse<?> bor = (BulkOperationResponse) response;
                                 List<?> statuss = bor.getOperationStatuses();
                                 for (Object status : statuss) {
                                     if (OperationStatus.class.isAssignableFrom(status.getClass())) {
-                                        OperationStatus operationStatus = OperationStatus.class.cast(status);
+                                        OperationStatus operationStatus = (OperationStatus) status;
                                         System.out.println(operationStatus.getResourceID() + " : " + operationStatus.getStatus());
                                     }
                                 }
@@ -326,14 +330,12 @@ public class ConsumerTest<S, M> {
     }
 
     @SuppressWarnings("unchecked")
-    public S doGetOne(String refId) throws Exception {
+    public S doGetOne(String refId) {
         S result = null;
         List<Response> responses = testGetSingle(refId);
         if (responses != null && responses.size() == 1) {
             Response response = responses.get(0);
             result = (S) response.getDataObject();
-        } else {
-            throw new Exception("Bad result");
         }
         return result;
     }

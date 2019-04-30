@@ -1,0 +1,17 @@
+<SessionInfo RefId="db37a040-770b-44f9-8ab6-2cffbd98204e" xmlns="http://www.sifassociation.org/datamodel/au/3.4">
+    <SchoolInfoRefId>252159ce-e385-4dea-8440-26d300282781</SchoolInfoRefId>
+    <TimeTableCellRefId>e491c1f9-cd43-46bc-9ac8-09760f8cbf18</TimeTableCellRefId>
+    <SchoolYear>2014</SchoolYear>
+    <LocalId>session local data</LocalId>
+    <TimeTableSubjectLocalId>local-id-tts</TimeTableSubjectLocalId>
+    <TeachingGroupLocalId>local-id-tg</TeachingGroupLocalId>
+    <SchoolLocalId>4001</SchoolLocalId>
+    <StaffPersonalLocalId>local-id-sp</StaffPersonalLocalId>
+    <RoomNumber>R43</RoomNumber>
+    <DayId>1</DayId>
+    <PeriodId>2</PeriodId>
+    <SessionDate>2014-10-22</SessionDate>
+    <StartTime>10:00:00</StartTime>
+    <FinishTime>14:00:00</FinishTime>
+    <RollMarked>Y</RollMarked>
+</SessionInfo>

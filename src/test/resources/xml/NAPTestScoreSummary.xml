@@ -1,0 +1,11 @@
+<NAPTestScoreSummary RefId="24578b97-e3b9-4829-80d7-147feacfadf8" xmlns="http://www.sifassociation.org/datamodel/au/3.4">
+    <SchoolInfoRefId>252159ce-e385-4dea-8440-26d300282781</SchoolInfoRefId>
+    <SchoolACARAId>48116</SchoolACARAId>
+    <NAPTestRefId>e425c70d-2b25-4687-988e-986cad395f9c</NAPTestRefId>
+    <NAPTestLocalId>local-id-1</NAPTestLocalId>
+    <DomainNationalAverage>60.4</DomainNationalAverage>
+    <DomainSchoolAverage>55.6</DomainSchoolAverage>
+    <DomainJurisdictionAverage>57.6</DomainJurisdictionAverage>
+    <DomainTopNational60Percent>75.2</DomainTopNational60Percent>
+    <DomainBottomNational60Percent>65.3</DomainBottomNational60Percent>
+</NAPTestScoreSummary>

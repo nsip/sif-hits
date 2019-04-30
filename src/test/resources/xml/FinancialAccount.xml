@@ -1,0 +1,9 @@
+<FinancialAccount RefId="52788794-3af4-4638-8e74-b1364c244771" xmlns="http://www.sifassociation.org/datamodel/au/3.4">
+    <ChargedLocationInfoRefId>b5918074-f965-49b7-80b9-cec3270eda48</ChargedLocationInfoRefId>
+    <AccountNumber>98765432106</AccountNumber>
+    <Name>Account Name</Name>
+    <Description>Account Description : 98765432106</Description>
+    <ClassType>Asset</ClassType>
+    <CreationDate>2015-06-21</CreationDate>
+    <CreationTime>11:32:13</CreationTime>
+</FinancialAccount>

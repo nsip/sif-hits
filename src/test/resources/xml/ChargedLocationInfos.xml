@@ -1,0 +1,58 @@
+<ChargedLocationInfos xmlns="http://www.sifassociation.org/datamodel/au/3.4">
+    <ChargedLocationInfo RefId="db4d6cdc-7e6e-403e-b501-ad02cab89d4f">
+        <LocationType>School</LocationType>
+        <SiteCategory>Campus</SiteCategory>
+        <Name>Main Campus</Name>
+        <Description>charged location description</Description>
+        <LocalId>cl-local-id</LocalId>
+        <StateProvinceId>WA</StateProvinceId>
+        <SchoolInfoRefId>252159ce-e385-4dea-8440-26d300282781</SchoolInfoRefId>
+        <AddressList>
+            <Address Type="0123" Role="012B">
+                <Street>
+                    <Line1>1 Some Street</Line1>
+                </Street>
+                <City>Perth</City>
+                <StateProvince>WA</StateProvince>
+                <PostalCode>6000</PostalCode>
+                <GridLocation>
+                    <Latitude>-31.952693</Latitude>
+                    <Longitude>115.871971</Longitude>
+                </GridLocation>
+            </Address>
+        </AddressList>
+        <PhoneNumberList>
+            <PhoneNumber Type="0096">
+                <Number>0891231234</Number>
+            </PhoneNumber>
+        </PhoneNumberList>
+    </ChargedLocationInfo>
+    <ChargedLocationInfo RefId="7f2165ba-413c-4959-85fe-6ba5fce623e5">
+        <LocationType>School</LocationType>
+        <SiteCategory>Campus</SiteCategory>
+        <Name>Main Campus</Name>
+        <Description>charged location description</Description>
+        <LocalId>cl-local-id</LocalId>
+        <StateProvinceId>WA</StateProvinceId>
+        <SchoolInfoRefId>252159ce-e385-4dea-8440-26d300282781</SchoolInfoRefId>
+        <AddressList>
+            <Address Type="0123" Role="012B">
+                <Street>
+                    <Line1>1 Some Street</Line1>
+                </Street>
+                <City>Perth</City>
+                <StateProvince>WA</StateProvince>
+                <PostalCode>6000</PostalCode>
+                <GridLocation>
+                    <Latitude>-31.952693</Latitude>
+                    <Longitude>115.871971</Longitude>
+                </GridLocation>
+            </Address>
+        </AddressList>
+        <PhoneNumberList>
+            <PhoneNumber Type="0096">
+                <Number>0891231234</Number>
+            </PhoneNumber>
+        </PhoneNumberList>
+    </ChargedLocationInfo>
+</ChargedLocationInfos>

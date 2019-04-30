@@ -1,0 +1,98 @@
+<TeachingGroup RefId="0b1ea840-8b09-4ad9-a649-cc54d945d102" xmlns="http://www.sifassociation.org/datamodel/au/3.4">
+    <SchoolYear>2014</SchoolYear>
+    <LocalId>local-id-tg</LocalId>
+    <ShortName>Short Name</ShortName>
+    <LongName>Long Name</LongName>
+    <SchoolInfoRefId>252159ce-e385-4dea-8440-26d300282781</SchoolInfoRefId>
+    <SchoolLocalId>4001</SchoolLocalId>
+    <TimeTableSubjectRefId>d7e56fa7-e708-4563-9490-9d15677c6a27</TimeTableSubjectRefId>
+    <TimeTableSubjectLocalId>local-id-tts</TimeTableSubjectLocalId>
+    <StudentList>
+        <TeachingGroupStudent>
+            <StudentPersonalRefId>c1deee9b-53ce-4c8f-9101-31bedf9c4836</StudentPersonalRefId>
+            <StudentLocalId>student-local-id</StudentLocalId>
+            <Name Type="LGL">
+                <FamilyName>Smith</FamilyName>
+                <GivenName>Jenny</GivenName>
+                <MiddleName>Test</MiddleName>
+                <PreferredFamilyName>Smith</PreferredFamilyName>
+                <PreferredGivenName>Jenny</PreferredGivenName>
+                <FullName>Jenny Test Smith</FullName>
+            </Name>
+        </TeachingGroupStudent>
+        <TeachingGroupStudent>
+            <StudentPersonalRefId>e651310e-2427-45d3-80b7-0003e36001c4</StudentPersonalRefId>
+            <StudentLocalId>student-local-id</StudentLocalId>
+            <Name Type="LGL">
+                <FamilyName>Smith</FamilyName>
+                <GivenName>Jenny</GivenName>
+                <MiddleName>Test</MiddleName>
+                <PreferredFamilyName>Smith</PreferredFamilyName>
+                <PreferredGivenName>Jenny</PreferredGivenName>
+                <FullName>Jenny Test Smith</FullName>
+            </Name>
+        </TeachingGroupStudent>
+        <TeachingGroupStudent>
+            <StudentPersonalRefId>3b7f7763-f63f-4c7d-a434-765913940a5c</StudentPersonalRefId>
+            <StudentLocalId>student-local-id</StudentLocalId>
+            <Name Type="LGL">
+                <FamilyName>Smith</FamilyName>
+                <GivenName>Jenny</GivenName>
+                <MiddleName>Test</MiddleName>
+                <PreferredFamilyName>Smith</PreferredFamilyName>
+                <PreferredGivenName>Jenny</PreferredGivenName>
+                <FullName>Jenny Test Smith</FullName>
+            </Name>
+        </TeachingGroupStudent>
+        <TeachingGroupStudent>
+            <StudentPersonalRefId>bf9ddb87-f610-4c02-94a3-1f42c1d2ce95</StudentPersonalRefId>
+            <StudentLocalId>student-local-id</StudentLocalId>
+            <Name Type="LGL">
+                <FamilyName>Smith</FamilyName>
+                <GivenName>Jenny</GivenName>
+                <MiddleName>Test</MiddleName>
+                <PreferredFamilyName>Smith</PreferredFamilyName>
+                <PreferredGivenName>Jenny</PreferredGivenName>
+                <FullName>Jenny Test Smith</FullName>
+            </Name>
+        </TeachingGroupStudent>
+        <TeachingGroupStudent>
+            <StudentPersonalRefId>a0fca96f-fb9a-4db1-8954-4a0ad0068a57</StudentPersonalRefId>
+            <StudentLocalId>student-local-id</StudentLocalId>
+            <Name Type="LGL">
+                <FamilyName>Smith</FamilyName>
+                <GivenName>Jenny</GivenName>
+                <MiddleName>Test</MiddleName>
+                <PreferredFamilyName>Smith</PreferredFamilyName>
+                <PreferredGivenName>Jenny</PreferredGivenName>
+                <FullName>Jenny Test Smith</FullName>
+            </Name>
+        </TeachingGroupStudent>
+    </StudentList>
+    <TeacherList>
+        <TeachingGroupTeacher>
+            <StaffPersonalRefId>db065c11-e493-4a84-9ca6-c140b22e71f9</StaffPersonalRefId>
+            <StaffLocalId>local-id-sp</StaffLocalId>
+            <Name Type="LGL">
+                <Title>Mr</Title>
+                <FamilyName>Smith</FamilyName>
+                <GivenName>John</GivenName>
+                <MiddleName>Test</MiddleName>
+                <PreferredFamilyName>Smith</PreferredFamilyName>
+                <PreferredGivenName>John</PreferredGivenName>
+                <FullName>Mr John Test Smith</FullName>
+            </Name>
+            <Association>Class Teacher</Association>
+        </TeachingGroupTeacher>
+    </TeacherList>
+    <TeachingGroupPeriodList>
+        <TeachingGroupPeriod>
+            <TimeTableCellRefId>e491c1f9-cd43-46bc-9ac8-09760f8cbf18</TimeTableCellRefId>
+            <RoomNumber>R43</RoomNumber>
+            <StaffLocalId>local-id-sp</StaffLocalId>
+            <DayId>1</DayId>
+            <PeriodId>2</PeriodId>
+            <CellType>Teaching</CellType>
+        </TeachingGroupPeriod>
+    </TeachingGroupPeriodList>
+</TeachingGroup>

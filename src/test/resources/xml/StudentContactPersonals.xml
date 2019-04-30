@@ -1,0 +1,112 @@
+<StudentContactPersonals xmlns="http://www.sifassociation.org/datamodel/au/3.4">
+    <StudentContactPersonal RefId="e317d9cb-e506-4b6f-8992-c046792b06c3">
+        <LocalId>local-id-scp</LocalId>
+        <PersonInfo>
+            <Name Type="LGL">
+                <Title>Ms</Title>
+                <FamilyName>Smith</FamilyName>
+                <GivenName>Jane</GivenName>
+                <MiddleName>Test</MiddleName>
+                <PreferredFamilyName>Smith</PreferredFamilyName>
+                <PreferredGivenName>Jane</PreferredGivenName>
+                <FullName>Ms Jane Test Smith</FullName>
+            </Name>
+            <Demographics>
+                <Sex>2</Sex>
+            </Demographics>
+            <AddressList>
+                <Address Type="0123" Role="012B">
+                    <Street>
+                        <Line1>123 Address Line One</Line1>
+                        <Line2>Address Line Two</Line2>
+                    </Street>
+                    <City>Perth</City>
+                    <StateProvince>WA</StateProvince>
+                    <PostalCode>6000</PostalCode>
+                    <GridLocation>
+                        <Latitude>-31.952693</Latitude>
+                        <Longitude>115.871971</Longitude>
+                    </GridLocation>
+                </Address>
+                <Address Type="0123" Role="012B">
+                    <Street>
+                        <Line1>234 Address Line One</Line1>
+                    </Street>
+                    <City>Perth</City>
+                    <StateProvince>WA</StateProvince>
+                    <PostalCode>6000</PostalCode>
+                    <GridLocation>
+                        <Latitude>-31.952693</Latitude>
+                        <Longitude>115.871971</Longitude>
+                    </GridLocation>
+                </Address>
+            </AddressList>
+            <PhoneNumberList>
+                <PhoneNumber Type="0096">
+                    <Number>+61891234321</Number>
+                </PhoneNumber>
+            </PhoneNumberList>
+            <EmailList>
+                <Email Type="06">jane.smith@not.a.real.domain</Email>
+            </EmailList>
+        </PersonInfo>
+        <EmploymentType>1</EmploymentType>
+        <SchoolEducationalLevel>4</SchoolEducationalLevel>
+        <NonSchoolEducation>7</NonSchoolEducation>
+    </StudentContactPersonal>
+    <StudentContactPersonal RefId="2405a32d-49d2-49c7-8af1-5f5b838dce35">
+        <LocalId>local-id-scp</LocalId>
+        <PersonInfo>
+            <Name Type="LGL">
+                <Title>Ms</Title>
+                <FamilyName>Smith</FamilyName>
+                <GivenName>Jane</GivenName>
+                <MiddleName>Test</MiddleName>
+                <PreferredFamilyName>Smith</PreferredFamilyName>
+                <PreferredGivenName>Jane</PreferredGivenName>
+                <FullName>Ms Jane Test Smith</FullName>
+            </Name>
+            <Demographics>
+                <Sex>2</Sex>
+            </Demographics>
+            <AddressList>
+                <Address Type="0123" Role="012B">
+                    <Street>
+                        <Line1>123 Address Line One</Line1>
+                        <Line2>Address Line Two</Line2>
+                    </Street>
+                    <City>Perth</City>
+                    <StateProvince>WA</StateProvince>
+                    <PostalCode>6000</PostalCode>
+                    <GridLocation>
+                        <Latitude>-31.952693</Latitude>
+                        <Longitude>115.871971</Longitude>
+                    </GridLocation>
+                </Address>
+                <Address Type="0123" Role="012B">
+                    <Street>
+                        <Line1>234 Address Line One</Line1>
+                    </Street>
+                    <City>Perth</City>
+                    <StateProvince>WA</StateProvince>
+                    <PostalCode>6000</PostalCode>
+                    <GridLocation>
+                        <Latitude>-31.952693</Latitude>
+                        <Longitude>115.871971</Longitude>
+                    </GridLocation>
+                </Address>
+            </AddressList>
+            <PhoneNumberList>
+                <PhoneNumber Type="0096">
+                    <Number>+61891234321</Number>
+                </PhoneNumber>
+            </PhoneNumberList>
+            <EmailList>
+                <Email Type="06">jane.smith@not.a.real.domain</Email>
+            </EmailList>
+        </PersonInfo>
+        <EmploymentType>1</EmploymentType>
+        <SchoolEducationalLevel>4</SchoolEducationalLevel>
+        <NonSchoolEducation>7</NonSchoolEducation>
+    </StudentContactPersonal>
+</StudentContactPersonals>

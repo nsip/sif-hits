@@ -1,0 +1,15 @@
+<StudentDailyAttendance RefId="d9cb006d-b219-484e-b811-754151a28f56" xmlns="http://www.sifassociation.org/datamodel/au/3.4">
+    <StudentPersonalRefId>c1deee9b-53ce-4c8f-9101-31bedf9c4836</StudentPersonalRefId>
+    <SchoolInfoRefId>252159ce-e385-4dea-8440-26d300282781</SchoolInfoRefId>
+    <Date>2014-09-04</Date>
+    <SchoolYear>2014</SchoolYear>
+    <DayValue>Full</DayValue>
+    <AttendanceCode>
+        <Code>100</Code>
+    </AttendanceCode>
+    <AttendanceStatus>NA</AttendanceStatus>
+    <TimeIn>08:30:00</TimeIn>
+    <TimeOut>15:30:00</TimeOut>
+    <AbsenceValue>0</AbsenceValue>
+    <AttendanceNote>Attendance Note</AttendanceNote>
+</StudentDailyAttendance>

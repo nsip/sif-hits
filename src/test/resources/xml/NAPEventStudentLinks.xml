@@ -1,0 +1,54 @@
+<NAPEventStudentLinks xmlns="http://www.sifassociation.org/datamodel/au/3.4">
+    <NAPEventStudentLink RefId="dfc934fa-5758-414b-bdd5-081be23ee28d">
+        <StudentPersonalRefId>a0fca96f-fb9a-4db1-8954-4a0ad0068a57</StudentPersonalRefId>
+        <PlatformStudentIdentifier>R10000005G</PlatformStudentIdentifier>
+        <SchoolInfoRefId>252159ce-e385-4dea-8440-26d300282781</SchoolInfoRefId>
+        <SchoolACARAId>48116</SchoolACARAId>
+        <NAPTestRefId>e425c70d-2b25-4687-988e-986cad395f9c</NAPTestRefId>
+        <NAPTestLocalId>local-id-1</NAPTestLocalId>
+        <SchoolSector>Gov</SchoolSector>
+        <SchoolGeolocation>2</SchoolGeolocation>
+        <ReportingSchoolName>Bens Test State High School</ReportingSchoolName>
+        <ParticipationCode>P</ParticipationCode>
+        <ParticipationText>Participated</ParticipationText>
+        <ExemptionReason>Did not attend</ExemptionReason>
+        <TestDisruptionList>
+            <TestDisruption>
+                <Event>Test centre on fire</Event>
+            </TestDisruption>
+        </TestDisruptionList>
+        <Adjustment>
+            <PNPCodeList>
+                <PNPCode>AIA</PNPCode>
+                <PNPCode>AIM</PNPCode>
+            </PNPCodeList>
+            <BookletType>Braille</BookletType>
+        </Adjustment>
+    </NAPEventStudentLink>
+    <NAPEventStudentLink RefId="18fa5add-0d35-4fdc-98de-5a23d61aa2f4">
+        <StudentPersonalRefId>a0fca96f-fb9a-4db1-8954-4a0ad0068a57</StudentPersonalRefId>
+        <PlatformStudentIdentifier>R10000005G</PlatformStudentIdentifier>
+        <SchoolInfoRefId>252159ce-e385-4dea-8440-26d300282781</SchoolInfoRefId>
+        <SchoolACARAId>48116</SchoolACARAId>
+        <NAPTestRefId>e425c70d-2b25-4687-988e-986cad395f9c</NAPTestRefId>
+        <NAPTestLocalId>local-id-1</NAPTestLocalId>
+        <SchoolSector>Gov</SchoolSector>
+        <SchoolGeolocation>2</SchoolGeolocation>
+        <ReportingSchoolName>Bens Test State High School</ReportingSchoolName>
+        <ParticipationCode>P</ParticipationCode>
+        <ParticipationText>Participated</ParticipationText>
+        <ExemptionReason>Did not attend</ExemptionReason>
+        <TestDisruptionList>
+            <TestDisruption>
+                <Event>Test centre on fire</Event>
+            </TestDisruption>
+        </TestDisruptionList>
+        <Adjustment>
+            <PNPCodeList>
+                <PNPCode>AIA</PNPCode>
+                <PNPCode>AIM</PNPCode>
+            </PNPCodeList>
+            <BookletType>Braille</BookletType>
+        </Adjustment>
+    </NAPEventStudentLink>
+</NAPEventStudentLinks>

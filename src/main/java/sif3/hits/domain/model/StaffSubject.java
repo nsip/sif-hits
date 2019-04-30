@@ -2,6 +2,8 @@ package sif3.hits.domain.model;
 
 import javax.persistence.*;
 
+@Entity
+@Table(name = "StaffAssignment_StaffSubject")
 public class StaffSubject {
     private Long id;
     private StaffAssignment staffAssignment;

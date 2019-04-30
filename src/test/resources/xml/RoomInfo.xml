@@ -1,0 +1,9 @@
+<RoomInfo RefId="bb89d236-87c6-45cd-9dd1-db1278f5fe4d" xmlns="http://www.sifassociation.org/datamodel/au/3.4">
+    <SchoolInfoRefId>252159ce-e385-4dea-8440-26d300282781</SchoolInfoRefId>
+    <LocalId>local-id-ri</LocalId>
+    <RoomNumber>R43</RoomNumber>
+    <Description>Room Description</Description>
+    <Size>29.8</Size>
+    <Capacity>20</Capacity>
+    <RoomType>C</RoomType>
+</RoomInfo>

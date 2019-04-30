@@ -1,32 +1,28 @@
 package sif3.hits.domain.model;
 
-import javax.persistence.EmbeddedId;
-import javax.persistence.Entity;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.MapsId;
-import javax.persistence.Table;
-import javax.persistence.Transient;
+import javax.persistence.*;
 
 @Entity
 @Table(name = "StudentAttendanceTimeList_AttendanceTime_OtherCode")
 public class StudentAttendanceTimeOtherCode {
 
-  private StudentAttendanceTimeOtherCodeId studentAttendanceTimeOtherCodeId;
+  private Long id;
   private StudentAttendanceTime studentAttendanceTime;
+  private String otherCode;
+  private String codeSet;
 
-  @EmbeddedId
-  public StudentAttendanceTimeOtherCodeId getStudentAttendanceTimeOtherCodeId() {
-    return studentAttendanceTimeOtherCodeId;
+  @Id
+  @GeneratedValue
+  public Long getId() {
+    return id;
   }
 
-  public void setStudentAttendanceTimeOtherCodeId(StudentAttendanceTimeOtherCodeId studentAttendanceTimeOtherCodeId) {
-    this.studentAttendanceTimeOtherCodeId = studentAttendanceTimeOtherCodeId;
+  public void setId(Long id) {
+    this.id = id;
   }
 
   @ManyToOne(optional = false)
-  @MapsId("data")
-  @JoinColumn(name = "StudentAttendanceTimeList_AttendanceTime_id", referencedColumnName = "data")
+  @JoinColumn(name = "StudentAttendanceTimeList_AttendanceTime_Id", referencedColumnName = "Id")
   public StudentAttendanceTime getStudentAttendanceTime() {
     return studentAttendanceTime;
   }
@@ -35,37 +31,20 @@ public class StudentAttendanceTimeOtherCode {
     this.studentAttendanceTime = studentAttendanceTime;
   }
 
-  @Transient
   public String getOtherCode() {
-    String result = null;
-    if (studentAttendanceTimeOtherCodeId != null) {
-      result = studentAttendanceTimeOtherCodeId.getOtherCode();
-    }
-    return result;
+    return otherCode;
   }
 
-  @Transient
   public void setOtherCode(String otherCode) {
-    if (studentAttendanceTimeOtherCodeId == null) {
-      studentAttendanceTimeOtherCodeId = new StudentAttendanceTimeOtherCodeId();
-    }
-    this.studentAttendanceTimeOtherCodeId.setOtherCode(otherCode);
+    this.otherCode = otherCode;
   }
 
-  @Transient
+  @Column(name = "OtherCode_CodeSet")
   public String getCodeSet() {
-    String result = null;
-    if (studentAttendanceTimeOtherCodeId != null) {
-      result = studentAttendanceTimeOtherCodeId.getCodeSet();
-    }
-    return result;
+    return codeSet;
   }
 
-  @Transient
   public void setCodeSet(String codeSet) {
-    if (studentAttendanceTimeOtherCodeId == null) {
-      studentAttendanceTimeOtherCodeId = new StudentAttendanceTimeOtherCodeId();
-    }
-    this.studentAttendanceTimeOtherCodeId.setCodeSet(codeSet);
+    this.codeSet = codeSet;
   }
 }

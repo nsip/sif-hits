@@ -1,0 +1,20 @@
+<StudentContactRelationship StudentContactRelationshipRefId="78043df9-3072-4b1e-a576-3ee17721c84b" xmlns="http://www.sifassociation.org/datamodel/au/3.4">
+    <StudentPersonalRefId>c1deee9b-53ce-4c8f-9101-31bedf9c4836</StudentPersonalRefId>
+    <StudentContactPersonalRefId>66d49813-1b5c-4361-bfe2-8775dfc87c3d</StudentContactPersonalRefId>
+    <Relationship>
+        <Code>01</Code>
+    </Relationship>
+    <ContactFlags>
+        <ParentLegalGuardian>Y</ParentLegalGuardian>
+        <PickupRights>N</PickupRights>
+        <LivesWith>U</LivesWith>
+        <AccessToRecords>X</AccessToRecords>
+        <EmergencyContact>Y</EmergencyContact>
+        <HasCustody>N</HasCustody>
+        <DisciplinaryContact>U</DisciplinaryContact>
+        <PrimaryCareProvider>X</PrimaryCareProvider>
+        <FeesBilling>Y</FeesBilling>
+        <FamilyMail>N</FamilyMail>
+        <InterventionOrder>U</InterventionOrder>
+    </ContactFlags>
+</StudentContactRelationship>

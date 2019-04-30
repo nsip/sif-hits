@@ -1,0 +1,94 @@
+<ScheduledActivitys xmlns="http://www.sifassociation.org/datamodel/au/3.4">
+    <ScheduledActivity RefId="77aa6df4-55c0-49e7-9ada-ab73059de532">
+        <SchoolInfoRefId>252159ce-e385-4dea-8440-26d300282781</SchoolInfoRefId>
+        <TimeTableCellRefId>e491c1f9-cd43-46bc-9ac8-09760f8cbf18</TimeTableCellRefId>
+        <DayId>1</DayId>
+        <PeriodId>2</PeriodId>
+        <TimeTableRefId>41b18ab6-dd6e-436f-8f84-4e5bcd663031</TimeTableRefId>
+        <ActivityDate>2014-09-01</ActivityDate>
+        <StartTime>09:30:00</StartTime>
+        <FinishTime>13:30:00</FinishTime>
+        <CellType>Teaching</CellType>
+        <TimeTableSubjectRefId>d7e56fa7-e708-4563-9490-9d15677c6a27</TimeTableSubjectRefId>
+        <TeacherList>
+            <TeacherCover>
+                <StaffPersonalRefId>db065c11-e493-4a84-9ca6-c140b22e71f9</StaffPersonalRefId>
+                <StaffLocalId>local-id-sp</StaffLocalId>
+                <StartTime>09:30:00</StartTime>
+                <FinishTime>13:30:00</FinishTime>
+                <Credit>Extra</Credit>
+                <Supervision>Normal</Supervision>
+                <Weighting>1.0</Weighting>
+            </TeacherCover>
+        </TeacherList>
+        <RoomList>
+            <RoomInfoRefId>ec19f8a1-f4f8-43b9-9640-ad8486accfbe</RoomInfoRefId>
+        </RoomList>
+        <Location>Location</Location>
+        <ActivityType>Exam</ActivityType>
+        <ActivityName>The Exam</ActivityName>
+        <ActivityComment>The Comment</ActivityComment>
+        <StudentList>
+            <StudentPersonalRefId>c1deee9b-53ce-4c8f-9101-31bedf9c4836</StudentPersonalRefId>
+            <StudentPersonalRefId>e651310e-2427-45d3-80b7-0003e36001c4</StudentPersonalRefId>
+            <StudentPersonalRefId>3b7f7763-f63f-4c7d-a434-765913940a5c</StudentPersonalRefId>
+            <StudentPersonalRefId>bf9ddb87-f610-4c02-94a3-1f42c1d2ce95</StudentPersonalRefId>
+            <StudentPersonalRefId>a0fca96f-fb9a-4db1-8954-4a0ad0068a57</StudentPersonalRefId>
+        </StudentList>
+        <TeachingGroupList>
+            <TeachingGroupRefId>8feeb970-94be-4b69-91b5-bf36188ed100</TeachingGroupRefId>
+        </TeachingGroupList>
+        <YearLevels>
+            <YearLevel>
+                <Code>9</Code>
+            </YearLevel>
+        </YearLevels>
+        <Override DateOfOverride="2014-09-02">Y</Override>
+    </ScheduledActivity>
+    <ScheduledActivity RefId="6446fa9b-9a56-41a7-b472-c37228e70bd3">
+        <SchoolInfoRefId>252159ce-e385-4dea-8440-26d300282781</SchoolInfoRefId>
+        <TimeTableCellRefId>e491c1f9-cd43-46bc-9ac8-09760f8cbf18</TimeTableCellRefId>
+        <DayId>1</DayId>
+        <PeriodId>2</PeriodId>
+        <TimeTableRefId>41b18ab6-dd6e-436f-8f84-4e5bcd663031</TimeTableRefId>
+        <ActivityDate>2014-09-01</ActivityDate>
+        <StartTime>09:30:00</StartTime>
+        <FinishTime>13:30:00</FinishTime>
+        <CellType>Teaching</CellType>
+        <TimeTableSubjectRefId>d7e56fa7-e708-4563-9490-9d15677c6a27</TimeTableSubjectRefId>
+        <TeacherList>
+            <TeacherCover>
+                <StaffPersonalRefId>db065c11-e493-4a84-9ca6-c140b22e71f9</StaffPersonalRefId>
+                <StaffLocalId>local-id-sp</StaffLocalId>
+                <StartTime>09:30:00</StartTime>
+                <FinishTime>13:30:00</FinishTime>
+                <Credit>Extra</Credit>
+                <Supervision>Normal</Supervision>
+                <Weighting>1.0</Weighting>
+            </TeacherCover>
+        </TeacherList>
+        <RoomList>
+            <RoomInfoRefId>ec19f8a1-f4f8-43b9-9640-ad8486accfbe</RoomInfoRefId>
+        </RoomList>
+        <Location>Location</Location>
+        <ActivityType>Exam</ActivityType>
+        <ActivityName>The Exam</ActivityName>
+        <ActivityComment>The Comment</ActivityComment>
+        <StudentList>
+            <StudentPersonalRefId>c1deee9b-53ce-4c8f-9101-31bedf9c4836</StudentPersonalRefId>
+            <StudentPersonalRefId>e651310e-2427-45d3-80b7-0003e36001c4</StudentPersonalRefId>
+            <StudentPersonalRefId>3b7f7763-f63f-4c7d-a434-765913940a5c</StudentPersonalRefId>
+            <StudentPersonalRefId>bf9ddb87-f610-4c02-94a3-1f42c1d2ce95</StudentPersonalRefId>
+            <StudentPersonalRefId>a0fca96f-fb9a-4db1-8954-4a0ad0068a57</StudentPersonalRefId>
+        </StudentList>
+        <TeachingGroupList>
+            <TeachingGroupRefId>8feeb970-94be-4b69-91b5-bf36188ed100</TeachingGroupRefId>
+        </TeachingGroupList>
+        <YearLevels>
+            <YearLevel>
+                <Code>9</Code>
+            </YearLevel>
+        </YearLevels>
+        <Override DateOfOverride="2014-09-02">Y</Override>
+    </ScheduledActivity>
+</ScheduledActivitys>

@@ -1,0 +1,38 @@
+<NAPTestlet RefId="55289a17-37ad-43f2-ab82-54ec45384a5b" xmlns="http://www.sifassociation.org/datamodel/au/3.4">
+    <NAPTestRefId>e425c70d-2b25-4687-988e-986cad395f9c</NAPTestRefId>
+    <NAPTestLocalId>local-id-1</NAPTestLocalId>
+    <TestletContent>
+        <NAPTestletLocalId>local-id-ntl</NAPTestletLocalId>
+        <TestletName>NAPLAN Testlet</TestletName>
+        <Node>A</Node>
+        <LocationInStage>1</LocationInStage>
+        <TestletMaximumScore>32</TestletMaximumScore>
+    </TestletContent>
+    <TestItemList>
+        <TestItem>
+            <TestItemRefId>93fb8237-6e27-4dd6-aed9-03d53bc87b9a</TestItemRefId>
+            <TestItemLocalId>local-id-nti-1</TestItemLocalId>
+            <SequenceNumber>0</SequenceNumber>
+        </TestItem>
+        <TestItem>
+            <TestItemRefId>826f8a2d-9d49-45f3-b5c6-7e1898ad4ea5</TestItemRefId>
+            <TestItemLocalId>local-id-nti-2</TestItemLocalId>
+            <SequenceNumber>1</SequenceNumber>
+        </TestItem>
+        <TestItem>
+            <TestItemRefId>5d8c5dff-5cfa-4d5a-bbeb-c1c6badf07cb</TestItemRefId>
+            <TestItemLocalId>local-id-nti-3</TestItemLocalId>
+            <SequenceNumber>2</SequenceNumber>
+        </TestItem>
+        <TestItem>
+            <TestItemRefId>4a7c981c-921f-410f-8535-18e484c456ec</TestItemRefId>
+            <TestItemLocalId>local-id-nti-4</TestItemLocalId>
+            <SequenceNumber>3</SequenceNumber>
+        </TestItem>
+        <TestItem>
+            <TestItemRefId>b6d7db50-7aed-411a-b7cb-b06b0e6b9caf</TestItemRefId>
+            <TestItemLocalId>local-id-nti-5</TestItemLocalId>
+            <SequenceNumber>4</SequenceNumber>
+        </TestItem>
+    </TestItemList>
+</NAPTestlet>

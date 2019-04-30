@@ -21,11 +21,14 @@ public class IdGenerator {
         System.out.println("\n\n" + refIds + "\n\n");
 
         String[] refIdRA = refIds.split("\n");
+        System.out.println("public static class RefIds {");
         System.out.println("    public static String REF_ID_1 = \"" + refIdRA[0] + "\";");
         System.out.println("    public static String REF_ID_2 = \"" + refIdRA[1] + "\";");
         System.out.println("    public static String REF_ID_3 = \"" + refIdRA[2] + "\";");
         System.out.println("    public static String REF_ID_4 = \"" + refIdRA[3] + "\";");
         System.out.println("    public static String REF_ID_5 = \"" + refIdRA[4] + "\";");
+        System.out.println("    public static String[] REF_ID_RA = { REF_ID_1, REF_ID_2, REF_ID_3, REF_ID_4, REF_ID_5 };");
+        System.out.println("    public static List<String> REF_ID_LIST = Arrays.asList(REF_ID_RA);");
         System.out.println("}\n");
         System.out.println("private final String REF_ID_1 = \"" + refIdRA[5] + "\";");
         System.out.println("private final String REF_ID_2 = \"" + refIdRA[6] + "\";");

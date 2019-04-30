@@ -1,0 +1,21 @@
+<StudentPeriodAttendance RefId="076446a2-f19b-4e08-bd37-e7dec7c8e50c" xmlns="http://www.sifassociation.org/datamodel/au/3.4">
+    <StudentPersonalRefId>c1deee9b-53ce-4c8f-9101-31bedf9c4836</StudentPersonalRefId>
+    <SchoolInfoRefId>252159ce-e385-4dea-8440-26d300282781</SchoolInfoRefId>
+    <Date>2014-11-11</Date>
+    <SessionInfoRefId>dc7e1520-f0f4-4a22-9ca8-48196a9d7c10</SessionInfoRefId>
+    <TimetablePeriod>P6</TimetablePeriod>
+    <TimeIn>09:00:00</TimeIn>
+    <TimeOut>15:30:00</TimeOut>
+    <AttendanceCode>
+        <Code>802</Code>
+    </AttendanceCode>
+    <AttendanceStatus>01</AttendanceStatus>
+    <SchoolYear>2014</SchoolYear>
+    <AuditInfo>
+        <CreationUser Type="Teacher">
+            <UserId>ez204ff0</UserId>
+        </CreationUser>
+        <CreationDateTime>2015-01-20T15:17:54.444+08:00</CreationDateTime>
+    </AuditInfo>
+    <AttendanceComment>The Comments</AttendanceComment>
+</StudentPeriodAttendance>

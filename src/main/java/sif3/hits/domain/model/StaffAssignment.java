@@ -172,7 +172,7 @@ public class StaffAssignment extends HitsEntity {
   }
 
   @ElementCollection(fetch = FetchType.LAZY)
-  @CollectionTable(name = "StaffAssignment_YearLevel", joinColumns = @JoinColumn(name = "StaffAssignment_RefId"))
+  @CollectionTable(name = "StaffAssignment_CalendarSummary", joinColumns = @JoinColumn(name = "StaffAssignment_RefId"))
   @Column(name="CalendarSummary_RefId")
   public List<String> getCalendarSummaries() {
     return calendarSummaries;

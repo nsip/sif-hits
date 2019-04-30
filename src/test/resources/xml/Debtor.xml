@@ -1,0 +1,20 @@
+<Debtor RefId="512bf740-42e5-4f32-97ac-dfb61c745ef3" xmlns="http://www.sifassociation.org/datamodel/au/3.4">
+    <BilledEntity SIF_RefObject="VendorInfo">140b8bc9-9137-4c65-b1c0-fda79796e2d9</BilledEntity>
+    <AddressList>
+        <Address Type="0123" Role="012B">
+            <Street>
+                <Line1>1 Billings Street</Line1>
+            </Street>
+            <City>Perth</City>
+            <StateProvince>WA</StateProvince>
+            <PostalCode>6000</PostalCode>
+            <GridLocation>
+                <Latitude>-31.952693</Latitude>
+                <Longitude>115.871971</Longitude>
+            </GridLocation>
+        </Address>
+    </AddressList>
+    <BillingName>Billing Name</BillingName>
+    <BillingNote>Billing Note</BillingNote>
+    <Discount>0.05</Discount>
+</Debtor>

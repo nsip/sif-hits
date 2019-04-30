@@ -30,7 +30,7 @@ public class StaffSubjectConverter extends HitsConverter<StaffSubjectType, Staff
         if (source != null && target != null) {
             target.setPreferenceNumber(getLongValue(source.getPreferenceNumber()));
             target.setSubjectLocalId(getJAXBValue(source.getSubjectLocalId()));
-            target.setTimeTableSubjectRefId(getJAXBValue(source.getSubjectLocalId()));
+            target.setTimeTableSubjectRefId(getJAXBValue(source.getTimeTableSubjectRefId()));
         }
     }
 }

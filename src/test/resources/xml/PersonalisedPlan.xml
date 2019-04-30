@@ -1,0 +1,28 @@
+<PersonalisedPlan RefId="af288cb1-ddc4-447d-8be6-40c64820c190" xmlns="http://www.sifassociation.org/datamodel/au/3.4">
+    <StudentPersonalRefId>c1deee9b-53ce-4c8f-9101-31bedf9c4836</StudentPersonalRefId>
+    <SchoolInfoRefId>252159ce-e385-4dea-8440-26d300282781</SchoolInfoRefId>
+    <PersonalisedPlanCategory>Ac</PersonalisedPlanCategory>
+    <PersonalisedPlanStartDate>2018-03-01</PersonalisedPlanStartDate>
+    <PersonalisedPlanEndDate>2018-05-09</PersonalisedPlanEndDate>
+    <PersonalisedPlanReviewDate>2018-04-03</PersonalisedPlanReviewDate>
+    <PersonalisedPlanNotes>Student plan notes are recorded here.</PersonalisedPlanNotes>
+    <DocumentList>
+        <Document>
+            <Location>\\secure-share\plan-documents\st1234568\plan-1.doc</Location>
+            <Sensitivity>SENSITIVE</Sensitivity>
+            <URL>http://secure-document-server.edu/plan-documents/st12345678/plan-1.doc</URL>
+            <DocumentType>Plan</DocumentType>
+            <DocumentReviewDate>2018-04-03</DocumentReviewDate>
+            <DocumentDescription>Plan document 1 for student 12345678.</DocumentDescription>
+        </Document>
+        <Document>
+            <Location>\\secure-share\plan-documents\st1234568\plan-2.doc</Location>
+            <Sensitivity>SENSITIVE</Sensitivity>
+            <URL>http://secure-document-server.edu/plan-documents/st12345678/plan-2.doc</URL>
+            <DocumentType>Plan</DocumentType>
+            <DocumentReviewDate>2018-04-03</DocumentReviewDate>
+            <DocumentDescription>Plan document 2 for student 12345678.</DocumentDescription>
+        </Document>
+    </DocumentList>
+    <AssociatedAttachment>attachment.docx</AssociatedAttachment>
+</PersonalisedPlan>
