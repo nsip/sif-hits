@@ -85,6 +85,7 @@
             </TestLevel>
             <FFPOS>2</FFPOS>
         </MostRecent>
+        <ESLSupport>N</ESLSupport>
     </StudentPersonal>
     <StudentPersonal RefId="d01d3ed4-7566-464c-be5f-cb0108b29680">
         <LocalId>student-local-id</LocalId>
@@ -172,5 +173,6 @@
             </TestLevel>
             <FFPOS>2</FFPOS>
         </MostRecent>
+        <ESLSupport>N</ESLSupport>
     </StudentPersonal>
 </StudentPersonals>

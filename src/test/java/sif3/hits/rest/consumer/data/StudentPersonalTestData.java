@@ -51,6 +51,7 @@ public class StudentPersonalTestData extends TestData<StudentPersonalType, Stude
         StudentPersonalType studentPersonalType = new StudentPersonalType();
         studentPersonalType.setRefId(refId);
         studentPersonalType.setLocalId(LOCAL_ID);
+        studentPersonalType.setESLSupport(objectFactory.createStudentPersonalTypeESLSupport(AUCodeSetsYesOrNoCategoryType.fromValue("N")));
 
         StudentMostRecentContainerType mostRecent = new StudentMostRecentContainerType();
         YearLevelType yearLevel = new YearLevelType();

@@ -36,6 +36,7 @@ public class StudentPersonal extends HitsEntity implements StudentPerson, Addres
   private Set<StudentPersonalOtherId> otherIds;
   private Set<Address> addresses;
   private Set<Language> languages;
+  private String eslSupport;
 
   private boolean temporary = false;
 
@@ -471,6 +472,14 @@ public class StudentPersonal extends HitsEntity implements StudentPerson, Addres
 
   public void setLanguages(Set<Language> languages) {
     this.languages = languages;
+  }
+
+  public String getESLSupport() {
+    return eslSupport;
+  }
+
+  public void setESLSupport(String eslSupport) {
+    this.eslSupport = eslSupport;
   }
 
   @Transient
