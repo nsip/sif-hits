@@ -6,6 +6,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import sif3.hits.domain.converter.factory.IObjectFactory;
 import sif3.hits.domain.converter.factory.ObjectFactory;
+import sif3.hits.utils.UsesConstants;
 
 import javax.xml.bind.JAXBElement;
 import javax.xml.datatype.DatatypeFactory;
@@ -16,7 +17,7 @@ import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.util.*;
 
-public abstract class HitsConverter<S, H> {
+public abstract class HitsConverter<S, H> implements UsesConstants {
 
     private static final Logger logger = LoggerFactory.getLogger(HitsConverter.class);
 

@@ -25,7 +25,7 @@ public abstract class BaseTest<T, C> {
     private static final int TEST_INDEX = 0;
 
     private Pattern TAG_PATTERN = Pattern.compile("^[^\\<]*(<[^\\>]*>).*$");
-    private List<String> TIMESTAMPS = Arrays.asList("CreationDateTime", "WellbeingEventCreationTimeStamp", "ResolutionMeetingTime");
+    private List<String> TIMESTAMPS = Arrays.asList("CreationDateTime", "WellbeingEventCreationTimeStamp", "ResolutionMeetingTime", "SubmissionTimestamp");
 
     public abstract TestData<T, C> getTestData();
 
