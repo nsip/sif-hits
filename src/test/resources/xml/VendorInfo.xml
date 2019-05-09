@@ -8,6 +8,8 @@
         </Name>
         <PositionTitle>Position Title</PositionTitle>
         <Role>Role</Role>
+        <RegistrationDetails>Registration Details</RegistrationDetails>
+        <Qualifications>Qualifications</Qualifications>
         <Address Type="0123" Role="012B">
             <Street>
                 <Line1>43 Some Street</Line1>

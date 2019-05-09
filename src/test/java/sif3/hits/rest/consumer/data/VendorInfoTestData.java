@@ -57,6 +57,8 @@ public class VendorInfoTestData extends TestData<VendorInfoType, VendorInfoColle
 
         contactInfoType.setPositionTitle(objectFactory.createContactInfoTypePositionTitle("Position Title"));
         contactInfoType.setRole(objectFactory.createContactInfoTypeRole("Role"));
+        contactInfoType.setQualifications(objectFactory.createContactInfoTypeQualifications("Qualifications"));
+        contactInfoType.setRegistrationDetails(objectFactory.createContactInfoTypeRegistrationDetails("Registration Details"));
         vendorInfoType.setContactInfo(objectFactory.createVendorInfoTypeContactInfo(contactInfoType));
 
         vendorInfoType.setCustomerId(objectFactory.createVendorInfoTypeCustomerId("434443L"));

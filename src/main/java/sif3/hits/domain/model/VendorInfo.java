@@ -26,6 +26,8 @@ public class VendorInfo extends HitsEntity {
   private String contactInfoRole;
   private String contactInfoEmail;
   private String contactInfoPhoneNumber;
+  private String contactInfoRegistrationDetails;
+  private String contactInfoQualifications;
   private String customerId;
   private String abn;
   private String registeredForGST;
@@ -114,6 +116,24 @@ public class VendorInfo extends HitsEntity {
 
   public void setContactInfoPhoneNumber(String contactInfoPhoneNumber) {
     this.contactInfoPhoneNumber = contactInfoPhoneNumber;
+  }
+
+  @Column(name = "ContactInfo_RegistrationDetails")
+  public String getContactInfoRegistrationDetails() {
+    return contactInfoRegistrationDetails;
+  }
+
+  public void setContactInfoRegistrationDetails(String contactInfoRegistrationDetails) {
+    this.contactInfoRegistrationDetails = contactInfoRegistrationDetails;
+  }
+
+  @Column(name = "ContactInfo_Qualifications")
+  public String getContactInfoQualifications() {
+    return contactInfoQualifications;
+  }
+
+  public void setContactInfoQualifications(String contactInfoQualifications) {
+    this.contactInfoQualifications = contactInfoQualifications;
   }
 
   public String getCustomerId() {

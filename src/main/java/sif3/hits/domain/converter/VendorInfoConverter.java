@@ -69,6 +69,8 @@ public class VendorInfoConverter extends HitsConverter<VendorInfoType, VendorInf
         }
         contactInfoType.setPositionTitle(objectFactory.createContactInfoTypePositionTitle(source.getContactInfoPositionTitle()));
         contactInfoType.setRole(objectFactory.createContactInfoTypeRole(source.getContactInfoRole()));
+        contactInfoType.setQualifications(objectFactory.createContactInfoTypeQualifications(source.getContactInfoQualifications()));
+        contactInfoType.setRegistrationDetails(objectFactory.createContactInfoTypeRegistrationDetails(source.getContactInfoRegistrationDetails()));
         target.setContactInfo(objectFactory.createVendorInfoTypeContactInfo(contactInfoType));
       }
       target.setCustomerId(objectFactory.createVendorInfoTypeCustomerId(source.getCustomerId()));
@@ -111,6 +113,8 @@ public class VendorInfoConverter extends HitsConverter<VendorInfoType, VendorInf
         }
         target.setContactInfoPositionTitle(getJAXBValue(contactInfo.getPositionTitle()));
         target.setContactInfoRole(getJAXBValue(contactInfo.getRole()));
+        target.setContactInfoQualifications(getJAXBValue(contactInfo.getQualifications()));
+        target.setContactInfoRegistrationDetails(getJAXBValue(contactInfo.getRegistrationDetails()));
       }
       target.setCustomerId(getJAXBValue(source.getCustomerId()));
       target.setName(source.getName());
