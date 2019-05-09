@@ -54,4 +54,8 @@ public interface Person {
   
   public void setLanguages(Set<Language> languages);
 
+  public String getInterpreterRequired();
+
+  public void setInterpreterRequired(String interpreterRequired);
+
 }

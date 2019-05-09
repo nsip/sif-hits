@@ -77,6 +77,7 @@ public class StudentPersonalTestData extends TestData<StudentPersonalType, Stude
         personInfo.setName(getNameOfRecord());
 
         DemographicsType demographics = new DemographicsType();
+        demographics.setInterpreterRequired(objectFactory.createDemographicsTypeInterpreterRequired(AUCodeSetsYesOrNoCategoryType.fromValue("N")));
         demographics.setSex(objectFactory.createDemographicsTypeSex(AUCodeSetsSexCodeType.fromValue("1")));
         demographics.setBirthDate(objectFactory.createDemographicsTypeBirthDate(getDate("1984-12-20")));
         demographics.setIndigenousStatus(objectFactory.createDemographicsTypeIndigenousStatus(AUCodeSetsIndigenousStatusType.fromValue("9")));

@@ -29,6 +29,7 @@ public class StudentContactPersonal extends HitsEntity implements Person, Addres
   private String schoolEducationLevel;
   private String nonSchoolEducation;
   private String employmentType;
+  private String interpreterRequired;
   private Set<Address> addresses;
   private Set<Language> languages;
 
@@ -159,6 +160,16 @@ public class StudentContactPersonal extends HitsEntity implements Person, Addres
 
   public void setEmploymentType(String employmentType) {
     this.employmentType = employmentType;
+  }
+
+  @Override
+  public String getInterpreterRequired() {
+    return interpreterRequired;
+  }
+
+  @Override
+  public void setInterpreterRequired(String interpreterRequired) {
+    this.interpreterRequired = interpreterRequired;
   }
 
   @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)

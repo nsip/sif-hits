@@ -22,6 +22,7 @@ public class StudentPersonal extends HitsEntity implements StudentPerson, Addres
   private String countryOfBirth;
   private String phoneNumber;
   private String email;
+  private String interpreterRequired;
   private String mostRecentYearLevel;
   private String mostRecentParent1Language;
   private String mostRecentParent2Language;
@@ -305,6 +306,16 @@ public class StudentPersonal extends HitsEntity implements StudentPerson, Addres
 
   public void setTitle(String title) {
 
+  }
+
+  @Override
+  public String getInterpreterRequired() {
+    return interpreterRequired;
+  }
+
+  @Override
+  public void setInterpreterRequired(String interpreterRequired) {
+    this.interpreterRequired = interpreterRequired;
   }
 
   public String getLbote() {

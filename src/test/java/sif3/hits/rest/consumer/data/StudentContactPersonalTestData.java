@@ -42,6 +42,7 @@ public class StudentContactPersonalTestData extends TestData<StudentContactPerso
         personInfo.setName(getNameOfRecord("Ms", "Jane", "Test", "Smith", false));
 
         DemographicsType demographics = new DemographicsType();
+        demographics.setInterpreterRequired(objectFactory.createDemographicsTypeInterpreterRequired(AUCodeSetsYesOrNoCategoryType.fromValue("N")));
         demographics.setSex(objectFactory.createDemographicsTypeSex(AUCodeSetsSexCodeType.fromValue("2")));
         personInfo.setDemographics(objectFactory.createPersonInfoTypeDemographics(demographics));
 
