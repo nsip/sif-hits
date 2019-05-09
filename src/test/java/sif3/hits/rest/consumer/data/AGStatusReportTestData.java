@@ -66,15 +66,7 @@ public class AGStatusReportTestData extends TestData<AGStatusReportType, AGStatu
         return objectResponseType;
     }
 
-    private AGRuleType getAGRuleType(int parent, int index) {
-        IObjectFactory objectFactory = getObjectFactory();
-        AGRuleType agRule = objectFactory.createAGRuleType();
-        agRule.setAGRuleStatus(objectFactory.createAGRuleTypeAGRuleStatus("status-" + parent + "-" + index));
-        agRule.setAGRuleResponse(objectFactory.createAGRuleTypeAGRuleResponse("response-" + parent + "-" + index));
-        agRule.setAGRuleComment(objectFactory.createAGRuleTypeAGRuleComment("comment-" + parent + "-" + index));
-        agRule.setAGRuleCode(objectFactory.createAGRuleTypeAGRuleCode("code-" + parent + "-" + index));
-        return agRule;
-    }
+
 
 
     public String getRefId(int index) {

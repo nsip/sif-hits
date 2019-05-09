@@ -107,28 +107,39 @@ public abstract class TestData<T, C> implements UsesConstants {
         address.setGridLocation(objectFactory.createAddressTypeGridLocation(gridLocation));
     }
 
+    public static NameType getName(String title, String firstName, String middleName, String lastName) {
+        NameType result = new NameType();
+        result.setType(DEFAULT_NAME_TYPE_ENUM);
+        return getName(result, title, firstName, middleName, lastName, true);
+    }
+
     public static NameOfRecordType getNameOfRecord(String title, String firstName, String middleName, String lastName) {
         return getNameOfRecord(title, firstName, middleName, lastName, true);
     }
 
     public static NameOfRecordType getNameOfRecord(String title, String firstName, String middleName, String lastName, boolean fullName) {
+        NameOfRecordType result = new NameOfRecordType();
+        result.setType(DEFAULT_NAME_TYPE);
+        return getName(result, title, firstName, middleName, lastName, fullName);
+    }
+
+
+    private static <E extends BaseNameType> E getName(E target, String title, String firstName, String middleName, String lastName, boolean fullName) {
         IObjectFactory objectFactory = getObjectFactory();
-        NameOfRecordType nameOfRecordType = new NameOfRecordType();
-        nameOfRecordType.setType(DEFAULT_NAME_TYPE);
-        nameOfRecordType.setFamilyName(objectFactory.createBaseNameTypeFamilyName(lastName));
-        nameOfRecordType.setPreferredFamilyName(objectFactory.createBaseNameTypePreferredFamilyName(lastName));
-        nameOfRecordType.setGivenName(objectFactory.createBaseNameTypeGivenName(firstName));
-        nameOfRecordType.setPreferredGivenName(objectFactory.createBaseNameTypePreferredGivenName(firstName));
-        nameOfRecordType.setMiddleName(objectFactory.createBaseNameTypeMiddleName(middleName));
-        nameOfRecordType.setTitle(objectFactory.createBaseNameTypeTitle(title));
+        target.setFamilyName(objectFactory.createBaseNameTypeFamilyName(lastName));
+        target.setPreferredFamilyName(objectFactory.createBaseNameTypePreferredFamilyName(lastName));
+        target.setGivenName(objectFactory.createBaseNameTypeGivenName(firstName));
+        target.setPreferredGivenName(objectFactory.createBaseNameTypePreferredGivenName(firstName));
+        target.setMiddleName(objectFactory.createBaseNameTypeMiddleName(middleName));
+        target.setTitle(objectFactory.createBaseNameTypeTitle(title));
         if (fullName) {
             if (title == null) {
-                nameOfRecordType.setFullName(objectFactory.createBaseNameTypeFullName(firstName + " " + middleName + " " + lastName));
+                target.setFullName(objectFactory.createBaseNameTypeFullName(firstName + " " + middleName + " " + lastName));
             } else {
-                nameOfRecordType.setFullName(objectFactory.createBaseNameTypeFullName(title + " " + firstName + " " + middleName + " " + lastName));
+                target.setFullName(objectFactory.createBaseNameTypeFullName(title + " " + firstName + " " + middleName + " " + lastName));
             }
         }
-        return nameOfRecordType;
+        return target;
     }
 
     public static PhoneNumberType getPhoneNumber(String number) {
@@ -155,6 +166,16 @@ public abstract class TestData<T, C> implements UsesConstants {
         wellbeingDocument.setDocumentReviewDate(objectFactory.createWellbeingDocumentTypeDocumentReviewDate(getDate("2018-04-03")));
         wellbeingDocument.setDocumentDescription(objectFactory.createWellbeingDocumentTypeDocumentDescription("Plan document " + index + " for student 12345678."));
         return wellbeingDocument;
+    }
+
+    public AGRuleType getAGRuleType(int parent, int index) {
+        IObjectFactory objectFactory = getObjectFactory();
+        AGRuleType agRule = objectFactory.createAGRuleType();
+        agRule.setAGRuleStatus(objectFactory.createAGRuleTypeAGRuleStatus("status-" + parent + "-" + index));
+        agRule.setAGRuleResponse(objectFactory.createAGRuleTypeAGRuleResponse("response-" + parent + "-" + index));
+        agRule.setAGRuleComment(objectFactory.createAGRuleTypeAGRuleComment("comment-" + parent + "-" + index));
+        agRule.setAGRuleCode(objectFactory.createAGRuleTypeAGRuleCode("code-" + parent + "-" + index));
+        return agRule;
     }
 
 

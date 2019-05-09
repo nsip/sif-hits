@@ -19,7 +19,7 @@ public class FQItem extends HitsEntity {
     private String boardingAmount;
     private String systemAmount;
     private String dioceseAmount;
-    private String fqComment;
+    private String fqComments;
 
     @Id
     @GeneratedValue
@@ -32,7 +32,7 @@ public class FQItem extends HitsEntity {
     }
 
     @ManyToOne
-    @JoinColumn(name = "FQReporting_RefId", referencedColumnName = "RefId")
+    @JoinColumn(name = "FQReporting_Id")
     public FQReporting getFqReporting() {
         return fqReporting;
     }
@@ -81,12 +81,12 @@ public class FQItem extends HitsEntity {
         this.dioceseAmount = dioceseAmount;
     }
 
-    public String getFqComment() {
-        return fqComment;
+    public String getFqComments() {
+        return fqComments;
     }
 
-    public void setFqComment(String fqComment) {
-        this.fqComment = fqComment;
+    public void setFqComments(String fqComments) {
+        this.fqComments = fqComments;
     }
 
 }

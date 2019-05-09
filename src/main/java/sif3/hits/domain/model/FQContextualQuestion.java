@@ -28,7 +28,7 @@ public class FQContextualQuestion extends HitsEntity {
     }
 
     @ManyToOne
-    @JoinColumn(name = "FQReporting_RefId", referencedColumnName = "RefId")
+    @JoinColumn(name = "FQReporting_Id")
     public FQReporting getFqReporting() {
         return fqReporting;
     }

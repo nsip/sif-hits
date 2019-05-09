@@ -6,30 +6,30 @@ import sif.dd.au30.model.AddressType;
 import sif.dd.au30.model.StatisticalAreaType;
 import sif.dd.au30.model.StatisticalAreasType;
 import sif3.hits.domain.converter.factory.IObjectFactory;
-import sif3.hits.domain.model.FQEntityContactAddress;
-import sif3.hits.domain.model.FQEntityContactAddressStatisticalArea;
+import sif3.hits.domain.model.FQSubmissionEntityContactAddress;
+import sif3.hits.domain.model.FQSubmissionEntityContactAddressStatisticalArea;
 
 import java.util.ArrayList;
 
 @Component
-public class FQEntityContactAddressConverter extends FQBaseEntityContactAddressConverter<FQEntityContactAddress> {
+public class FQSubmissionEntityContactAddressConverter extends FQBaseEntityContactAddressConverter<FQSubmissionEntityContactAddress> {
 
     @Autowired
-    FQEntityContactAddressStatisticalAreaConverter fqEntityContactAddressStatisticalAreaConverter;
+    FQSubmissionEntityContactAddressStatisticalAreaConverter fqSubmissionEntityContactAddressStatisticalAreaConverter;
 
-    public FQEntityContactAddressConverter() {
-        super(FQEntityContactAddress.class);
+    public FQSubmissionEntityContactAddressConverter() {
+        super(FQSubmissionEntityContactAddress.class);
     }
 
     @Override
-    public void toSifModel(FQEntityContactAddress source, AddressType target) {
+    public void toSifModel(FQSubmissionEntityContactAddress source, AddressType target) {
         if (source != null && target != null) {
             super.toSifModel(source, target);
             IObjectFactory objectFactory = getObjectFactory();
             if (source.getStatisticalAreas() != null) {
                 StatisticalAreasType statisticalAreasType = objectFactory.createStatisticalAreasType();
-                for (FQEntityContactAddressStatisticalArea statisticalArea : source.getStatisticalAreas()) {
-                    StatisticalAreaType statisticalAreaType = fqEntityContactAddressStatisticalAreaConverter.toSifModel(statisticalArea);
+                for (FQSubmissionEntityContactAddressStatisticalArea statisticalArea : source.getStatisticalAreas()) {
+                    StatisticalAreaType statisticalAreaType = fqSubmissionEntityContactAddressStatisticalAreaConverter.toSifModel(statisticalArea);
                     if (statisticalAreaType != null) {
                         statisticalAreasType.getStatisticalArea().add(statisticalAreaType);
                     }
@@ -42,18 +42,17 @@ public class FQEntityContactAddressConverter extends FQBaseEntityContactAddressC
     }
 
     @Override
-    public void toHitsModel(AddressType source, FQEntityContactAddress target) {
+    public void toHitsModel(AddressType source, FQSubmissionEntityContactAddress target) {
         if (source != null && target != null) {
             super.toHitsModel(source, target);
             if (target.getStatisticalAreas() == null) {
                 target.setStatisticalAreas(new ArrayList<>());
             }
-
-            StatisticalAreasType statisticalAreasType = getJAXBValue(source.getStatisticalAreas());
             target.getStatisticalAreas().clear();
+            StatisticalAreasType statisticalAreasType = getJAXBValue(source.getStatisticalAreas());
             if (statisticalAreasType != null) {
                 for (StatisticalAreaType statisticalAreaType : statisticalAreasType.getStatisticalArea()) {
-                    FQEntityContactAddressStatisticalArea statisticalArea = fqEntityContactAddressStatisticalAreaConverter.toHitsModel(statisticalAreaType);
+                    FQSubmissionEntityContactAddressStatisticalArea statisticalArea = fqSubmissionEntityContactAddressStatisticalAreaConverter.toHitsModel(statisticalAreaType);
                     if (statisticalArea != null) {
                         statisticalArea.setAddress(target);
                         target.getStatisticalAreas().add(statisticalArea);

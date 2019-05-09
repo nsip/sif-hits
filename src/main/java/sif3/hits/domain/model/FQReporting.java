@@ -1,32 +1,17 @@
 package sif3.hits.domain.model;
 
+import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
-
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
-import javax.persistence.Transient;
 
 @Entity
 @Table(name = "FQReporting")
 public class FQReporting extends HitsEntity {
     private static final long serialVersionUID = 2255931641297274283L;
 
-    private String refId;
-    private String fqYear;
-    private String reportingAuthority;
-    private String reportingAuthoritySystem;
-    private String reportingAuthorityCommonwealthId;
-    private String systemSubmission;
-
-    // softwareVendorInfo
-    private String softwareProduct;
-    private String softwareVersion;
-
+    private Long id;
+    private FinancialQuestionnaireSubmission fqSubmission;
+    private String fqRefId;
     private String entityLevel;
     private String schoolInfoRefId;
     private String localId;
@@ -41,70 +26,31 @@ public class FQReporting extends HitsEntity {
     private List<FQRule> fqRuleList;
 
     @Id
-    public String getRefId() {
-        return refId;
+    @GeneratedValue
+    public Long getId() {
+        return id;
     }
 
-    public void setRefId(String refId) {
-        this.refId = refId;
+    public void setId(Long id) {
+        this.id = id;
     }
 
-    public String getFqYear() {
-        return fqYear;
+    @ManyToOne
+    @JoinColumn(name = "FQSubmission_RefId")
+    public FinancialQuestionnaireSubmission getFqSubmission() {
+        return fqSubmission;
     }
 
-    public void setFqYear(String fqYear) {
-        this.fqYear = fqYear;
+    public void setFqSubmission(FinancialQuestionnaireSubmission fqSubmission) {
+        this.fqSubmission = fqSubmission;
     }
 
-    public String getReportingAuthority() {
-        return reportingAuthority;
+    public String getFqRefId() {
+        return fqRefId;
     }
 
-    public void setReportingAuthority(String reportingAuthority) {
-        this.reportingAuthority = reportingAuthority;
-    }
-
-    public String getReportingAuthoritySystem() {
-        return reportingAuthoritySystem;
-    }
-
-    public void setReportingAuthoritySystem(String reportingAuthoritySystem) {
-        this.reportingAuthoritySystem = reportingAuthoritySystem;
-    }
-
-    public String getReportingAuthorityCommonwealthId() {
-        return reportingAuthorityCommonwealthId;
-    }
-
-    public void setReportingAuthorityCommonwealthId(String reportingAuthorityCommonwealthId) {
-        this.reportingAuthorityCommonwealthId = reportingAuthorityCommonwealthId;
-    }
-
-    public String getSystemSubmission() {
-        return systemSubmission;
-    }
-
-    public void setSystemSubmission(String systemSubmission) {
-        this.systemSubmission = systemSubmission;
-    }
-
-    @Column(name = "SoftwareVendorInfo_SoftwareProduct")
-    public String getSoftwareProduct() {
-        return softwareProduct;
-    }
-
-    public void setSoftwareProduct(String softwareProduct) {
-        this.softwareProduct = softwareProduct;
-    }
-
-    @Column(name = "SoftwareVendorInfo_SoftwareVersion")
-    public String getSoftwareVersion() {
-        return softwareVersion;
-    }
-
-    public void setSoftwareVersion(String softwareVersion) {
-        this.softwareVersion = softwareVersion;
+    public void setFqRefId(String fqRefId) {
+        this.fqRefId = fqRefId;
     }
 
     public String getEntityLevel() {

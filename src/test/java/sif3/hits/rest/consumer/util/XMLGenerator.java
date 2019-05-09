@@ -55,6 +55,7 @@ public class XMLGenerator {
         generateTestXML(path, new WellbeingEventTestData(), WellbeingEventTestData.XML_REF_ID_1, WellbeingEventTestData.XML_REF_ID_2);
         generateTestXML(path, new WellbeingResponseTestData(), WellbeingResponseTestData.XML_REF_ID_1, WellbeingResponseTestData.XML_REF_ID_2);
         generateTestXML(path, new AGStatusReportTestData(), AGStatusReportTestData.XML_REF_ID_1, AGStatusReportTestData.XML_REF_ID_2);
+        generateTestXML(path, new FinancialQuestionnaireSubmissionTestData(), FinancialQuestionnaireSubmissionTestData.XML_REF_ID_1, FinancialQuestionnaireSubmissionTestData.XML_REF_ID_2);
     }
 
     public static <T,C> void generateTestXML(String path, TestData<T,C> testData, String refId1, String refId2) throws MarshalException, UnsupportedMediaTypeExcpetion {

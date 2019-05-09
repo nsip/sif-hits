@@ -9,23 +9,10 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "FQReporting_EntityContact_Address_StatisticalArea")
-public class FQEntityContactAddressStatisticalArea extends HitsEntity {
+public class FQEntityContactAddressStatisticalArea extends FQBaseEntityContactAddressStatisticalArea {
     private static final long serialVersionUID = 5495475119299160335L;
 
-    private Long id;
     private FQEntityContactAddress address;
-    private String spatialUnitType;
-    private String statisticalArea;
-
-    @Id
-    @GeneratedValue
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
 
     @ManyToOne
     @JoinColumn(name = "FQReporting_EntityContact_Address_Id", referencedColumnName = "Id")
@@ -37,19 +24,4 @@ public class FQEntityContactAddressStatisticalArea extends HitsEntity {
         this.address = address;
     }
 
-    public String getSpatialUnitType() {
-        return spatialUnitType;
-    }
-
-    public void setSpatialUnitType(String spatialUnitType) {
-        this.spatialUnitType = spatialUnitType;
-    }
-
-    public String getStatisticalArea() {
-        return statisticalArea;
-    }
-
-    public void setStatisticalArea(String statisticalArea) {
-        this.statisticalArea = statisticalArea;
-    }
 }

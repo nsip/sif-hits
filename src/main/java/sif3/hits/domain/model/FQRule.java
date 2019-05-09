@@ -8,14 +8,16 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "FQReporting_FQRule")
+@Table(name = "FQReporting_AGRule")
 public class FQRule extends HitsEntity {
     private static final long serialVersionUID = -3404658572157565366L;
 
     private Long id;
     private FQReporting fqReporting;
-    private String fqRuleCode;
-    private String fqRuleComment;
+    private String agRuleCode;
+    private String agRuleComment;
+    private String agRuleResponse;
+    private String agRuleStatus;
 
     @Id
     @GeneratedValue
@@ -28,7 +30,7 @@ public class FQRule extends HitsEntity {
     }
 
     @ManyToOne
-    @JoinColumn(name = "FQReporting_RefId", referencedColumnName = "RefId")
+    @JoinColumn(name = "FQReporting_Id")
     public FQReporting getFqReporting() {
         return fqReporting;
     }
@@ -37,20 +39,35 @@ public class FQRule extends HitsEntity {
         this.fqReporting = fqReporting;
     }
 
-    public String getFqRuleCode() {
-        return fqRuleCode;
+    public String getAgRuleCode() {
+        return agRuleCode;
     }
 
-    public void setFqRuleCode(String fqRuleCode) {
-        this.fqRuleCode = fqRuleCode;
+    public void setAgRuleCode(String agRuleCode) {
+        this.agRuleCode = agRuleCode;
     }
 
-    public String getFqRuleComment() {
-        return fqRuleComment;
+    public String getAgRuleComment() {
+        return agRuleComment;
     }
 
-    public void setFqRuleComment(String fqRuleComment) {
-        this.fqRuleComment = fqRuleComment;
+    public void setAgRuleComment(String agRuleComment) {
+        this.agRuleComment = agRuleComment;
     }
 
+    public String getAgRuleResponse() {
+        return agRuleResponse;
+    }
+
+    public void setAgRuleResponse(String agRuleResponse) {
+        this.agRuleResponse = agRuleResponse;
+    }
+
+    public String getAgRuleStatus() {
+        return agRuleStatus;
+    }
+
+    public void setAgRuleStatus(String agRuleStatus) {
+        this.agRuleStatus = agRuleStatus;
+    }
 }
