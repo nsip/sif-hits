@@ -58,8 +58,6 @@
             <artifactId>sifau-datamodel</artifactId>
             <version>${sif3.datamodel.version}</version>
         </dependency>
-        <!-- <dependency> <groupId>sif3.datamodel</groupId> <artifactId>DataModel</artifactId>
-            <version>au-3.4-NAP-v3</version> </dependency> -->
 
         <!-- logging -->
         <dependency>
@@ -174,28 +172,6 @@
             <groupId>org.springframework.data</groupId>
             <artifactId>spring-data-jpa</artifactId>
             <version>${spring.data.version}</version>
-        </dependency>
-
-        <!-- JAXB -->
-        <dependency>
-            <groupId>com.sun.xml.bind</groupId>
-            <artifactId>jaxb-impl</artifactId>
-            <version>${jaxb.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>javax.xml.bind</groupId>
-            <artifactId>jaxb-api</artifactId>
-            <version>${jaxb.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>dom4j</groupId>
-            <artifactId>dom4j</artifactId>
-            <version>1.6.1</version>
-        </dependency>
-        <dependency>
-            <groupId>org.codehaus.jettison</groupId>
-            <artifactId>jettison</artifactId>
-            <version>1.3.6</version>
         </dependency>
 
         <!-- apache commons -->
