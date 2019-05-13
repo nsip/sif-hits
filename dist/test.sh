@@ -15,12 +15,16 @@ echo "Copying resources from sif home"
 cp -R ${SIF_HOME}/*.properties ${DIR}/../src/test/resources
 cp ${SIF_HOME}/consumers/TestConsumer.properties ${DIR}/../src/test/resources/TestConsumer.properties
 cat ${SIF_HOME}/hibernate/sif3infra.hibernate.properties | grep -v c3p0 >  ${DIR}/../src/test/resources/sif3infra.hibernate.properties
-sed -i 's/^.*DEBUG.*$//' ${DIR}/../src/test/resources/log4j.properties
+sed -i 's/^log4j.appender.file.*//' ${DIR}/../src/test/resources/log4j.properties
+sed -i 's/^log4j.rootLogger.*/log4j.rootLogger=ERROR, stdout/'  ${DIR}/../src/test/resources/log4j.properties
+sed -i 's/DEBUG/ERROR/' ${DIR}/../src/test/resources/log4j.properties
+sed -i 's/INFO/ERROR/' ${DIR}/../src/test/resources/log4j.properties
+sed -i 's/WARN/ERROR/' ${DIR}/../src/test/resources/log4j.properties
 echo "Setting current environment: $1"
 sed -i "s/^env.application.key=.*/env.application.key=$1/" ${DIR}/../src/test/resources/TestConsumer.properties
 sed -i "s/^env.userToken=.*/env.userToken=$1/" ${DIR}/../src/test/resources/TestConsumer.properties
 sed -i "s/^env.pwd=.*/env.pwd=$1/" ${DIR}/../src/test/resources/TestConsumer.properties
-echo "Executing tests"
+echo "Executing tests ... Note: this will take a couple of minutes, don't panic"
 mvn -q -Dtest=ConsumerTests -DskipTests=false test
 echo "Restoring backed up test resources"
 rm -Rf ${DIR}/../src/test/resources
