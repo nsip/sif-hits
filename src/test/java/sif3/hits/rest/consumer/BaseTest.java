@@ -1,6 +1,8 @@
 package sif3.hits.rest.consumer;
 
 import org.junit.Assert;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
 import sif3.common.exception.MarshalException;
 import sif3.common.exception.UnmarshalException;
@@ -19,7 +21,8 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public abstract class BaseTest<T, C> {
-
+    private static final Logger L = LoggerFactory.getLogger(BaseTest.class);
+    
     public static final String CONSUMER = "TestConsumer";
     private static final int OBJECT_COUNT = 5;
     private static final int TEST_INDEX = 0;
@@ -240,8 +243,8 @@ public abstract class BaseTest<T, C> {
     protected void sameObject(String left, String right) {
         boolean semiEquals = semiEquals(left, right);
         if (!semiEquals) {
-            System.out.println("From:\n" + left);
-            System.out.println("\nTo:\n" + right);
+            L.debug("From:\n" + left);
+            L.debug("\nTo:\n" + right);
             Assert.assertEquals("XML Differs", left, right);
         }
     }
@@ -309,7 +312,7 @@ public abstract class BaseTest<T, C> {
                 same = Collections.frequency(fromElements, element) == Collections.frequency(toElements, element);
             }
             if (!same) {
-                System.out.println("Error:" + element);
+                L.debug("Error:" + element);
             }
             allSame &= same;
         }
@@ -322,7 +325,7 @@ public abstract class BaseTest<T, C> {
                 same = Collections.frequency(fromElements, element) == Collections.frequency(toElements, element);
             }
             if (!same) {
-                System.out.println("Error:" + element);
+                L.debug("Error:" + element);
             }
             allSame &= same;
         }

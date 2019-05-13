@@ -1,5 +1,7 @@
 package sif3.hits.rest.consumer;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.Resource;
 import sif3.common.exception.MarshalException;
@@ -21,6 +23,7 @@ import java.util.Arrays;
 import java.util.List;
 
 public class ConsumerTest<S, M> {
+    private final static Logger L = LoggerFactory.getLogger(ConsumerTest.class);
 
     private final static RequestType REQUEST_TYPE = RequestType.IMMEDIATE;
     private final static String FILE_PATH = "xml";
@@ -38,15 +41,15 @@ public class ConsumerTest<S, M> {
 
     List<Response> testGetSingle(String refId) {
         List<Response> result = null;
-        System.out.println("Start 'Get " + getSingleName() + "' in all connected environments...");
+        L.debug("Start 'Get " + getSingleName() + "' in all connected environments...");
         try {
             result = testConsumer.retrievByPrimaryKey(refId, getZoneContextList());
-            System.out.println("Responses from attempt to 'Get " + getSingleName() + "':");
+            L.debug("Responses from attempt to 'Get " + getSingleName() + "':");
             printResponses(result);
         } catch (Exception ex) {
             ex.printStackTrace();
         }
-        System.out.println("Finished 'Get " + getSingleName() + "' in all connected environments...");
+        L.debug("Finished 'Get " + getSingleName() + "' in all connected environments...");
         return result;
     }
 
@@ -54,15 +57,15 @@ public class ConsumerTest<S, M> {
         List<Response> result = null;
         if (page == 0)
             page = 1;
-        System.out.println("Start 'Get All " + getMultiName() + "' in all connected environments...");
+        L.debug("Start 'Get All " + getMultiName() + "' in all connected environments...");
         try {
             result = testConsumer.retrieve(new PagingInfo(recordsPerPage, page), getZoneContextList(), REQUEST_TYPE);
-            System.out.println("Responses from attempt to 'Get All " + getMultiName() + "':");
+            L.debug("Responses from attempt to 'Get All " + getMultiName() + "':");
             printResponses(result);
         } catch (Exception ex) {
             ex.printStackTrace();
         }
-        System.out.println("Finished 'Get All " + getMultiName() + "' in all connected environments...");
+        L.debug("Finished 'Get All " + getMultiName() + "' in all connected environments...");
         return result;
     }
 
@@ -70,15 +73,15 @@ public class ConsumerTest<S, M> {
         List<Response> result = null;
         if (page == 0)
             page = 1;
-        System.out.println("Start 'Retrieve by QBE " + getMultiName() + "' in all connected environments...");
+        L.debug("Start 'Retrieve by QBE " + getMultiName() + "' in all connected environments...");
         try {
             result = testConsumer.retrieveByQBE(example, new PagingInfo(recordsPerPage, page), getZoneContextList(), REQUEST_TYPE, QueryIntention.ONE_OFF, null);
-            System.out.println("Responses from attempt to 'Retrieve by QBE " + getMultiName() + "':");
+            L.debug("Responses from attempt to 'Retrieve by QBE " + getMultiName() + "':");
             printResponses(result);
         } catch (Exception ex) {
             ex.printStackTrace();
         }
-        System.out.println("Finished 'Retrieve by QBE  " + getMultiName() + "' in all connected environments...");
+        L.debug("Finished 'Retrieve by QBE  " + getMultiName() + "' in all connected environments...");
         return result;
     }
 
@@ -86,15 +89,15 @@ public class ConsumerTest<S, M> {
         List<Response> result = null;
         if (page == 0)
             page = 1;
-        System.out.println("Start 'Retrieve by ServicePath " + getMultiName() + "' in all connected environments...");
+        L.debug("Start 'Retrieve by ServicePath " + getMultiName() + "' in all connected environments...");
         try {
             result = testConsumer.retrieveByServicePath(queryCriteria, new PagingInfo(recordsPerPage, page), getZoneContextList(), REQUEST_TYPE);
-            System.out.println("Responses from attempt to 'Retrieve by ServicePath  " + getMultiName() + "':");
+            L.debug("Responses from attempt to 'Retrieve by ServicePath  " + getMultiName() + "':");
             printResponses(result);
         } catch (Exception ex) {
             ex.printStackTrace();
         }
-        System.out.println("Finished 'Retrieve by ServicePath  " + getMultiName() + "' in all connected environments...");
+        L.debug("Finished 'Retrieve by ServicePath  " + getMultiName() + "' in all connected environments...");
         return result;
     }
 
@@ -104,7 +107,7 @@ public class ConsumerTest<S, M> {
 
     List<Response> testCreateOne(String filename, String zone, String context) {
         List<Response> result = null;
-        System.out.println("Start 'Create " + getSingleName() + "' in all connected environments...");
+        L.debug("Start 'Create " + getSingleName() + "' in all connected environments...");
         try {
             String contents = getFileContents(filename);
             Object object = testConsumer.getUnmarshaller().unmarshalFromXML(contents, SINGLE_CLASS);
@@ -117,44 +120,44 @@ public class ConsumerTest<S, M> {
                 zones = Arrays.asList(new ZoneContextInfo(zone, context));
             }
             result = testConsumer.createSingle(input, zones);
-            System.out.println("Responses from attempt to 'Create " + getSingleName() + "':");
+            L.debug("Responses from attempt to 'Create " + getSingleName() + "':");
             printResponses(result);
         } catch (Exception ex) {
             ex.printStackTrace();
         }
-        System.out.println("Finished 'Create " + getSingleName() + "' in all connected environments...");
+        L.debug("Finished 'Create " + getSingleName() + "' in all connected environments...");
         return result;
     }
 
     List<Response> doCreateOne(S object) {
         List<Response> result = null;
-        System.out.println("Start 'Create " + getSingleName() + "' in all connected environments...");
+        L.debug("Start 'Create " + getSingleName() + "' in all connected environments...");
         try {
             if (object != null) {
                 result = testConsumer.createSingle(object, null);
-                System.out.println("Responses from attempt to 'Create " + getSingleName() + "':");
+                L.debug("Responses from attempt to 'Create " + getSingleName() + "':");
                 printResponses(result);
             }
         } catch (Exception ex) {
             ex.printStackTrace();
         }
-        System.out.println("Finished 'Create " + getSingleName() + "' in all connected environments...");
+        L.debug("Finished 'Create " + getSingleName() + "' in all connected environments...");
         return result;
     }
 
     List<Response> doUpdateOne(S object, String refId) {
         List<Response> result = null;
-        System.out.println("Start 'Update " + getSingleName() + "' in all connected environments...");
+        L.debug("Start 'Update " + getSingleName() + "' in all connected environments...");
         try {
             if (object != null) {
                 result = testConsumer.updateSingle(object, refId, null);
-                System.out.println("Responses from attempt to 'Update " + getSingleName() + "':");
+                L.debug("Responses from attempt to 'Update " + getSingleName() + "':");
                 printResponses(result);
             }
         } catch (Exception ex) {
             ex.printStackTrace();
         }
-        System.out.println("Finished 'Update " + getSingleName() + "' in all connected environments...");
+        L.debug("Finished 'Update " + getSingleName() + "' in all connected environments...");
         return result;
     }
 
@@ -190,7 +193,7 @@ public class ConsumerTest<S, M> {
 
     List<Response> testUpdateOne(String filename, String refId) {
         List<Response> result = null;
-        System.out.println("Start 'Update " + getSingleName() + "' in all connected environments...");
+        L.debug("Start 'Update " + getSingleName() + "' in all connected environments...");
         try {
             String contents = getFileContents(filename);
             Object object = testConsumer.getUnmarshaller().unmarshalFromXML(contents, SINGLE_CLASS);
@@ -199,18 +202,18 @@ public class ConsumerTest<S, M> {
                 input = SINGLE_CLASS.cast(object);
             }
             result = testConsumer.updateSingle(input, refId, null);
-            System.out.println("Responses from attempt to 'Update " + getSingleName() + "':");
+            L.debug("Responses from attempt to 'Update " + getSingleName() + "':");
             printResponses(result);
         } catch (Exception ex) {
             ex.printStackTrace();
         }
-        System.out.println("Finished 'Update " + getSingleName() + "' in all connected environments...");
+        L.debug("Finished 'Update " + getSingleName() + "' in all connected environments...");
         return result;
     }
 
     List<BulkOperationResponse<CreateOperationStatus>> testCreateMany(String filename) {
         List<BulkOperationResponse<CreateOperationStatus>> result = null;
-        System.out.println("Start 'Create " + getMultiName() + "' in all connected environments...");
+        L.debug("Start 'Create " + getMultiName() + "' in all connected environments...");
         try {
             String contents = getFileContents(filename);
             Object object = testConsumer.getUnmarshaller().unmarshalFromXML(contents, MULTI_CLASS);
@@ -220,39 +223,39 @@ public class ConsumerTest<S, M> {
             }
             result = testConsumer.createMany(input, getZoneContextList(), REQUEST_TYPE);
             printResponses(result);
-            System.out.println("Responses from attempt to 'Create " + getMultiName() + "':");
+            L.debug("Responses from attempt to 'Create " + getMultiName() + "':");
         } catch (Exception ex) {
             ex.printStackTrace();
         }
-        System.out.println("Finished 'Create " + getMultiName() + "' in all connected environments...");
+        L.debug("Finished 'Create " + getMultiName() + "' in all connected environments...");
         return result;
     }
 
     List<Response> testDeleteOne(String refId) {
         List<Response> result = null;
-        System.out.println("Start 'Remove " + getSingleName() + "' in all connected environments...");
+        L.debug("Start 'Remove " + getSingleName() + "' in all connected environments...");
         try {
             result = testConsumer.deleteSingle(refId, getZoneContextList());
-            System.out.println("Responses from attempt to 'Remove " + getSingleName() + "':" + result);
+            L.debug("Responses from attempt to 'Remove " + getSingleName() + "':" + result);
             printResponses(result);
         } catch (Exception ex) {
             ex.printStackTrace();
         }
-        System.out.println("Finished 'Remove " + getSingleName() + "' in all connected environments...");
+        L.debug("Finished 'Remove " + getSingleName() + "' in all connected environments...");
         return result;
     }
 
     List<BulkOperationResponse<OperationStatus>> testDeleteMany(String... refIds) {
         List<BulkOperationResponse<OperationStatus>> result = null;
-        System.out.println("Start 'Remove " + getMultiName() + "' in all connected environments...");
+        L.debug("Start 'Remove " + getMultiName() + "' in all connected environments...");
         try {
             result = testConsumer.deleteMany(Arrays.asList(refIds), getZoneContextList(), REQUEST_TYPE);
             printResponses(result);
-            System.out.println("Responses from attempt to 'Remove " + getMultiName() + "':" + result);
+            L.debug("Responses from attempt to 'Remove " + getMultiName() + "':" + result);
         } catch (Exception ex) {
             ex.printStackTrace();
         }
-        System.out.println("Finished 'Remove " + getMultiName() + "' in all connected environments...");
+        L.debug("Finished 'Remove " + getMultiName() + "' in all connected environments...");
         return result;
     }
 
@@ -293,36 +296,36 @@ public class ConsumerTest<S, M> {
             if (responses != null) {
                 int i = 1;
                 for (BaseResponse response : responses) {
-                    System.out.println("Response " + i + ":\n" + response);
+                    L.debug("Response " + i + ":\n" + response);
                     if (response.hasError()) {
-                        System.out.println("Error for Response " + i + ": " + response.getError());
+                        L.debug("Error for Response " + i + ": " + response.getError());
                     } else // We should have a student personal
                     {
                         if (response.getHasEntity()) {
                             if (response instanceof Response) {
-                                System.out.println("Data Object Response " + i + ": " + testConsumer.getMarshaller().marshalToXML(((Response) response).getDataObject()));
+                                L.debug("Data Object Response " + i + ": " + testConsumer.getMarshaller().marshalToXML(((Response) response).getDataObject()));
                             } else if (BulkOperationResponse.class.isAssignableFrom(response.getClass())) {
-                                System.out.println("Bulk Operation Response " + i + ":");
+                                L.debug("Bulk Operation Response " + i + ":");
                                 BulkOperationResponse<?> bor = (BulkOperationResponse) response;
                                 List<?> statuss = bor.getOperationStatuses();
                                 for (Object status : statuss) {
                                     if (OperationStatus.class.isAssignableFrom(status.getClass())) {
                                         OperationStatus operationStatus = (OperationStatus) status;
-                                        System.out.println(operationStatus.getResourceID() + " : " + operationStatus.getStatus());
+                                        L.debug(operationStatus.getResourceID() + " : " + operationStatus.getStatus());
                                     }
                                 }
                             } else {
-                                System.out.println("Response " + i + ": " + response.toString());
+                                L.debug("Response " + i + ": " + response.toString());
                             }
                         } else {
-                            System.out.println(
+                            L.debug(
                                     "Data Object Response " + i + ": No Data Returned. Respnse Status = " + response.getStatus() + " (" + response.getStatusMessage() + ")");
                         }
                     }
                     i++;
                 }
             } else {
-                System.out.println("Responses from attempt to create Student: null");
+                L.debug("Responses from attempt to create Student: null");
             }
         } catch (Exception ex) {
             ex.printStackTrace();
@@ -342,7 +345,7 @@ public class ConsumerTest<S, M> {
 
     public List<BulkOperationResponse<OperationStatus>> testUpdateMany(String filename) {
         List<BulkOperationResponse<OperationStatus>> result = null;
-        System.out.println("Start 'Update Many " + getSingleName() + "' in all connected environments...");
+        L.debug("Start 'Update Many " + getSingleName() + "' in all connected environments...");
         try {
             String contents = getFileContents(filename);
             Object object = testConsumer.getUnmarshaller().unmarshalFromXML(contents, MULTI_CLASS);
@@ -351,12 +354,12 @@ public class ConsumerTest<S, M> {
                 input = MULTI_CLASS.cast(object);
             }
             result = testConsumer.updateMany(input, null, RequestType.IMMEDIATE);
-            System.out.println("Responses from attempt to 'Update " + getSingleName() + "':");
+            L.debug("Responses from attempt to 'Update " + getSingleName() + "':");
             printResponses(result);
         } catch (Exception ex) {
             ex.printStackTrace();
         }
-        System.out.println("Finished 'Update " + getSingleName() + "' in all connected environments...");
+        L.debug("Finished 'Update " + getSingleName() + "' in all connected environments...");
         return result;
     }
 
