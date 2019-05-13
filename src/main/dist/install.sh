@@ -8,6 +8,7 @@ DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
 cd $DIR/..
 PROVIDERS=(`find src -name *Provider.java | awk -F '[/.]' '{ print $8 }'`)
 TARGET_URL=`cat ${SIF_HOME}/providers/HitsProvider.properties | grep env.connector.url.secure | grep -v '#' | awk -F '=' '{print $2}'`
+cp ${DIR}../config/environments/provider/template/direct/HITS.xml ${SIF_HOME}/environments/provider/template/direct/HITS.xml
 PROVIDER_CONFIG=""
 PROVIDER_CLASSES="provider.classes="
 for PROVIDER in "${PROVIDERS[@]}"; do

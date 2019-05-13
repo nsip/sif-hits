@@ -16,6 +16,6 @@ cat ${SIF_HOME}/hibernate/sif3infra.hibernate.properties | grep -v c3p0 >  ${DIR
 sed -i "s/^env.application.key=.*/env.application.key=$1/" ${DIR}/../src/test/resources/TestConsumer.properties
 sed -i "s/^env.userToken=.*/env.userToken=$1/" ${DIR}/../src/test/resources/TestConsumer.properties
 sed -i "s/^env.pwd=.*/env.pwd=$1/" ${DIR}/../src/test/resources/TestConsumer.properties
-mvn -Dtests=ConsumerTests -DskipTests=false test
+mvn -Dtest=ConsumerTests -DskipTests=false test
 rm -Rf ${DIR}/../src/test/resources
 mv ${DIR}/../src/test/resbak ${DIR}/../src/test/resources
