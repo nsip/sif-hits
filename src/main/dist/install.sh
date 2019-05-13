@@ -28,8 +28,8 @@ mvn -q install:install-file -Dfile=dist/sif3-infra-rest-${sif3.framework.version
 mvn -q install:install-file -Dfile=dist/sifau-datamodel-${sif3.datamodel.version}.jar
 mvn flyway:migrate -Dflyway.configFiles=/var/sif/hitsprovider/hibernate/flyway.properties
 sudo service tomcat8 stop
-cp ${TOMCAT_HOME}/webapps/${FINAL_NAME}.war ${TOMCAT_HOME}/webapps/${FINAL_NAME}.${TIMESTAMP}
-cp $DIR/dist/${RELEASE_NAME}.war ${TOMCAT_HOME}/webapps/${FINAL_NAME}.war
+sudo cp ${TOMCAT_HOME}/webapps/${FINAL_NAME}.war ${TOMCAT_HOME}/webapps/${FINAL_NAME}.${TIMESTAMP}
+sudo cp $DIR/dist/${RELEASE_NAME}.war ${TOMCAT_HOME}/webapps/${FINAL_NAME}.war
 sudo service tomcat8 start
 echo Wait 60 seconds before running tests...
 
