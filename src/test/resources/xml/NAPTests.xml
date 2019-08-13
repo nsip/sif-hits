@@ -1,0 +1,28 @@
+<NAPTests xmlns="http://www.sifassociation.org/datamodel/au/3.4">
+    <NAPTest RefId="990192cc-bc2e-47a0-8dba-2ea897757d03">
+        <TestContent>
+            <NAPTestLocalId>local-id-X</NAPTestLocalId>
+            <TestName>NAPLAN Numeracy Year 9, 2015</TestName>
+            <TestLevel>
+                <Code>9</Code>
+            </TestLevel>
+            <TestType>Normal</TestType>
+            <Domain>Numeracy</Domain>
+            <TestYear>2015</TestYear>
+            <StagesCount>0</StagesCount>
+        </TestContent>
+    </NAPTest>
+    <NAPTest RefId="c0a7feea-865c-4add-8462-a2142650b7c8">
+        <TestContent>
+            <NAPTestLocalId>local-id-X</NAPTestLocalId>
+            <TestName>NAPLAN Numeracy Year 9, 2015</TestName>
+            <TestLevel>
+                <Code>9</Code>
+            </TestLevel>
+            <TestType>Normal</TestType>
+            <Domain>Numeracy</Domain>
+            <TestYear>2015</TestYear>
+            <StagesCount>0</StagesCount>
+        </TestContent>
+    </NAPTest>
+</NAPTests>

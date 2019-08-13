@@ -109,8 +109,4 @@ public class PersonalStudentIdService {
     // We are not calculating this from the student
     return STATE_CODE;
   }
-
-  public static void main(String[] args) {
-    System.out.println(getIdentifier(5));
-  }
 }

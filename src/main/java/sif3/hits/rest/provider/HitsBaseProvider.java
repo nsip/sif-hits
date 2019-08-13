@@ -1,33 +1,15 @@
 package sif3.hits.rest.provider;
 
-import static sif3.hits.service.e.OperationStatus.CREATE_ERR_OTHER;
-import static sif3.hits.service.e.OperationStatus.DELETE_ERR_OTHER;
-import static sif3.hits.service.e.OperationStatus.UNKNOWN_ERROR;
-import static sif3.hits.service.e.OperationStatus.UPDATE_ERR_OTHER;
-
-import java.lang.reflect.Method;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
+import au.com.systemic.framework.utils.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
-
-import au.com.systemic.framework.utils.StringUtils;
 import sif3.common.conversion.ModelObjectInfo;
 import sif3.common.exception.DataTooLargeException;
 import sif3.common.exception.PersistenceException;
 import sif3.common.exception.UnsupportedQueryException;
 import sif3.common.interfaces.QueryProvider;
-import sif3.common.model.PagingInfo;
-import sif3.common.model.QueryCriteria;
-import sif3.common.model.QueryPredicate;
-import sif3.common.model.RequestMetadata;
-import sif3.common.model.ResponseParameters;
-import sif3.common.model.SIFContext;
-import sif3.common.model.SIFZone;
+import sif3.common.model.*;
 import sif3.common.ws.CreateOperationStatus;
 import sif3.common.ws.ErrorDetails;
 import sif3.common.ws.OperationStatus;
@@ -38,6 +20,14 @@ import sif3.hits.rest.dto.ResponseDTO;
 import sif3.hits.service.BaseService;
 import sif3.hits.utils.ConstraintViolationHelper;
 import sif3.hits.utils.RefIdGenerator;
+
+import java.lang.reflect.Method;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import static sif3.hits.service.e.OperationStatus.*;
 
 public abstract class HitsBaseProvider<S, SC, H, HS extends BaseService<S, SC, H>> extends AUDataModelProvider implements QueryProvider {
 
@@ -79,7 +69,7 @@ public abstract class HitsBaseProvider<S, SC, H, HS extends BaseService<S, SC, H
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see sif3.common.interfaces.Provider#retrievByPrimaryKey(java.lang.String, sif3.common.model.SIFZone, sif3.common.model.SIFContext)
      */
     @Override
@@ -110,7 +100,7 @@ public abstract class HitsBaseProvider<S, SC, H, HS extends BaseService<S, SC, H
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see sif3.common.interfaces.Provider#createSingle(java.lang.Object, sif3.common.model.SIFZone, sif3.common.model.SIFContext)
      */
     @Override
@@ -175,7 +165,7 @@ public abstract class HitsBaseProvider<S, SC, H, HS extends BaseService<S, SC, H
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see sif3.common.interfaces.Provider#updateSingle(java.lang.Object, java.lang.String, sif3.common.model.SIFZone, sif3.common.model.SIFContext)
      */
     @Override
@@ -232,7 +222,7 @@ public abstract class HitsBaseProvider<S, SC, H, HS extends BaseService<S, SC, H
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see sif3.common.interfaces.Provider#deleteSingle(java.lang.String, sif3.common.model.SIFZone, sif3.common.model.SIFContext)
      */
     @Override
@@ -281,7 +271,7 @@ public abstract class HitsBaseProvider<S, SC, H, HS extends BaseService<S, SC, H
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see sif3.common.interfaces.Provider#retrive(sif3.common.model.SIFZone, sif3.common.model.SIFContext, sif3.common.model.PagingInfo)
      */
     @Override
@@ -305,7 +295,7 @@ public abstract class HitsBaseProvider<S, SC, H, HS extends BaseService<S, SC, H
 
     @Override
     public Object retrieveByServicePath(QueryCriteria criteria, SIFZone zone, SIFContext context, PagingInfo pagingInfo, RequestMetadata metadata,
-            ResponseParameters customResponseParams) throws UnsupportedQueryException, PersistenceException, DataTooLargeException {
+                                        ResponseParameters customResponseParams) throws UnsupportedQueryException, PersistenceException, DataTooLargeException {
 
         try {
             validatePagingInfo(pagingInfo);
@@ -330,7 +320,9 @@ public abstract class HitsBaseProvider<S, SC, H, HS extends BaseService<S, SC, H
     }
 
     private void validatePagingInfo(PagingInfo pagingInfo) throws DataTooLargeException {
-        if (pagingInfo.getPageSize() > MAXIMUM_PAGE_SIZE) {
+        if (pagingInfo == null) {
+            throw new DataTooLargeException("Paging information is not set and unbound queries are not supported. The maximum page size this provider returns is: " + MAXIMUM_PAGE_SIZE);
+        } else if (pagingInfo.getPageSize() > MAXIMUM_PAGE_SIZE) {
             throw new DataTooLargeException(
                     "Page size : " + pagingInfo.getPageSize() + ", is greater than the maximum page size this provider returns (" + MAXIMUM_PAGE_SIZE + ")");
         } else if (pagingInfo.getPageSize() <= 0) {
@@ -342,11 +334,10 @@ public abstract class HitsBaseProvider<S, SC, H, HS extends BaseService<S, SC, H
     }
 
 
-
     @Override
     public Object retrieveByQBE(Object example, SIFZone zone, SIFContext context, PagingInfo pagingInfo, RequestMetadata metadata, ResponseParameters customResponseParams)
             throws PersistenceException, UnsupportedQueryException, DataTooLargeException {
-        
+
         try {
             validatePagingInfo(pagingInfo);
             setDatabaseContext(zone, context, metadata);
@@ -377,12 +368,12 @@ public abstract class HitsBaseProvider<S, SC, H, HS extends BaseService<S, SC, H
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see sif3.common.interfaces.Provider#createMany(java.lang.Object, sif3.common.model.SIFZone, sif3.common.model.SIFContext)
      */
     @Override
     public List<CreateOperationStatus> createMany(Object data, boolean useAdvisory, SIFZone zone, SIFContext context, RequestMetadata metadata,
-            ResponseParameters customResponseParams) throws IllegalArgumentException, PersistenceException {
+                                                  ResponseParameters customResponseParams) throws IllegalArgumentException, PersistenceException {
 
         try {
             setDatabaseContext(zone, context, metadata);
@@ -413,7 +404,7 @@ public abstract class HitsBaseProvider<S, SC, H, HS extends BaseService<S, SC, H
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see sif3.common.interfaces.Provider#updateMany(java.lang.Object, sif3.common.model.SIFZone, sif3.common.model.SIFContext)
      */
     @Override
@@ -459,7 +450,7 @@ public abstract class HitsBaseProvider<S, SC, H, HS extends BaseService<S, SC, H
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see sif3.common.interfaces.Provider#deleteMany(java.lang.Object, sif3.common.model.SIFZone, sif3.common.model.SIFContext)
      */
     @Override
@@ -605,7 +596,7 @@ public abstract class HitsBaseProvider<S, SC, H, HS extends BaseService<S, SC, H
 
     /**
      * Override this method if the sif object does not have a getRefId Method
-     * 
+     *
      * @param sifObject
      * @param sifClass
      * @param refId
@@ -623,7 +614,7 @@ public abstract class HitsBaseProvider<S, SC, H, HS extends BaseService<S, SC, H
 
     /**
      * Override this method if the sif object does not have a setRefId Method
-     * 
+     *
      * @param sifObject
      * @param sifClass
      * @param refId
@@ -632,7 +623,7 @@ public abstract class HitsBaseProvider<S, SC, H, HS extends BaseService<S, SC, H
      */
     protected void setRefId(S sifObject, Class<S> sifClass, String refId) throws PersistenceException {
         try {
-            sifClass.getMethod("setRefId", new Class<?>[] { String.class }).invoke(sifObject, refId);
+            sifClass.getMethod("setRefId", new Class<?>[]{String.class}).invoke(sifObject, refId);
         } catch (Exception ex) {
             L.error("Override this method setRefId not implemented on SifObject - " + SINGLE_NAME, ex);
             throw new PersistenceException(SINGLE_NAME + " - Unable to perform conversion.");
@@ -648,7 +639,7 @@ public abstract class HitsBaseProvider<S, SC, H, HS extends BaseService<S, SC, H
     private synchronized static void assignCollectionMethod(Class<?> collectionClass, String singleName) {
         if (GET_COLLECTION_METHODS.get(collectionClass) == null) {
             try {
-                Method method = collectionClass.getMethod("get" + singleName, new Class[] {});
+                Method method = collectionClass.getMethod("get" + singleName, new Class[]{});
                 GET_COLLECTION_METHODS.put(collectionClass, method);
             } catch (Exception e) {
                 L.error("Unable to determine get collection method. - get" + singleName, e);
@@ -659,7 +650,7 @@ public abstract class HitsBaseProvider<S, SC, H, HS extends BaseService<S, SC, H
     @SuppressWarnings("unchecked")
     protected List<S> getSifList(SC sifCollection) {
         try {
-            return (List<S>) GET_COLLECTION_METHODS.get(sifCollection.getClass()).invoke(sifCollection, new Object[] {});
+            return (List<S>) GET_COLLECTION_METHODS.get(sifCollection.getClass()).invoke(sifCollection, new Object[]{});
         } catch (Exception e) {
             L.error("Unable to get collection list from collection type. - " + SINGLE_NAME, e);
             // Probably need to override this method if you get this exception.

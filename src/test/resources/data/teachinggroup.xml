@@ -1,8 +1,0 @@
-<TeachingGroup RefId="1be77e87-467f-4f9d-8800-be64cb678e0e" xmlns="http://www.sifassociation.org/au/datamodel/3.4">
-	<SchoolYear>2014</SchoolYear>
-	<LocalId>Room 22</LocalId>
-	<ShortName>VIS</ShortName>
-	<LongName>Visual Design</LongName>
-	<SchoolInfoRefId>6dafb630-c439-41e3-9aa0-81f4dbd909ab</SchoolInfoRefId>
-	<SchoolLocalId>27</SchoolLocalId>
-</TeachingGroup>

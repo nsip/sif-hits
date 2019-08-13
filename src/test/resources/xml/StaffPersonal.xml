@@ -1,0 +1,32 @@
+<StaffPersonal RefId="c25f3969-7c3d-4c9c-bb07-7a8f3749c87b" xmlns="http://www.sifassociation.org/datamodel/au/3.4">
+    <LocalId>local-id-sp</LocalId>
+    <StateProvinceId>WA</StateProvinceId>
+    <OtherIdList>
+        <OtherId Type="0004">identifier</OtherId>
+        <OtherId Type="0003">otherid</OtherId>
+    </OtherIdList>
+    <PersonInfo>
+        <Name Type="LGL">
+            <Title>Mr</Title>
+            <FamilyName>Smith</FamilyName>
+            <GivenName>John</GivenName>
+            <MiddleName>Test</MiddleName>
+            <PreferredFamilyName>Smith</PreferredFamilyName>
+            <PreferredGivenName>John</PreferredGivenName>
+            <FullName>Mr John Test Smith</FullName>
+        </Name>
+        <Demographics>
+            <Sex>1</Sex>
+            <BirthDate>1984-12-20</BirthDate>
+        </Demographics>
+        <PhoneNumberList>
+            <PhoneNumber Type="0096">
+                <Number>+61891231234</Number>
+            </PhoneNumber>
+        </PhoneNumberList>
+        <EmailList>
+            <Email Type="06">john.smith@not.a.real.domain</Email>
+        </EmailList>
+    </PersonInfo>
+    <EmploymentStatus>A</EmploymentStatus>
+</StaffPersonal>

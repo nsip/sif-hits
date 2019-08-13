@@ -75,7 +75,7 @@ public abstract class BaseService<S, SC, H> {
     try {
       getDAO().delete(hitsObject);
     } catch (Exception ex) {
-      System.out.println(ex);
+      L.debug("Error deleting object", ex);
       throw ex;
     }
   }
@@ -105,7 +105,7 @@ public abstract class BaseService<S, SC, H> {
         result = new ResponseDTO<S>(dto, null, DELETE_ERR_INVALID);
       }
     } catch (Exception ex) {
-      System.out.println(ex);
+      L.debug("Error deleting object", ex);
       throw ex;
     }
     return result;

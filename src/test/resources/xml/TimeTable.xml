@@ -1,0 +1,44 @@
+<TimeTable RefId="6b6e2e71-b5c8-4877-9578-5ed1eb3bbf21" xmlns="http://www.sifassociation.org/datamodel/au/3.4">
+    <SchoolInfoRefId>252159ce-e385-4dea-8440-26d300282781</SchoolInfoRefId>
+    <SchoolYear>2014</SchoolYear>
+    <LocalId>local-id-tt</LocalId>
+    <Title>TERM 4 2014</Title>
+    <DaysPerCycle>5</DaysPerCycle>
+    <PeriodsPerDay>6</PeriodsPerDay>
+    <SchoolLocalId>4001</SchoolLocalId>
+    <SchoolName>Bens Test State High School</SchoolName>
+    <TimeTableCreationDate>2014-06-01</TimeTableCreationDate>
+    <StartDate>2014-09-01</StartDate>
+    <EndDate>2014-12-21</EndDate>
+    <TimeTableDayList>
+        <TimeTableDay>
+            <DayId>1</DayId>
+            <DayTitle>Monday</DayTitle>
+        </TimeTableDay>
+        <TimeTableDay>
+            <DayId>2</DayId>
+            <DayTitle>Tuesday</DayTitle>
+        </TimeTableDay>
+        <TimeTableDay>
+            <DayId>3</DayId>
+            <DayTitle>Wednesday</DayTitle>
+        </TimeTableDay>
+        <TimeTableDay>
+            <DayId>4</DayId>
+            <DayTitle>Thursday</DayTitle>
+        </TimeTableDay>
+        <TimeTableDay>
+            <DayId>5</DayId>
+            <DayTitle>Friday</DayTitle>
+            <TimeTablePeriodList>
+                <TimeTablePeriod>
+                    <PeriodId>1</PeriodId>
+                    <PeriodTitle>Form</PeriodTitle>
+                    <BellPeriod>1</BellPeriod>
+                    <StartTime>08:45:00</StartTime>
+                    <EndTime>09:00:00</EndTime>
+                </TimeTablePeriod>
+            </TimeTablePeriodList>
+        </TimeTableDay>
+    </TimeTableDayList>
+</TimeTable>

@@ -1,0 +1,116 @@
+<AGStatusReports xmlns="http://www.sifassociation.org/datamodel/au/3.4">
+    <AGStatusReport RefId="4d02b543-30e1-4ac5-985c-5a5f4ab22ab8">
+        <ReportingAuthority>Reporting Authority</ReportingAuthority>
+        <ReportingAuthoritySystem>Reporting Authority System</ReportingAuthoritySystem>
+        <ReportingAuthorityCommonwealthId>RACID - 1</ReportingAuthorityCommonwealthId>
+        <SubmittedBy>Submitted By</SubmittedBy>
+        <SubmissionTimestamp>2019-04-01T18:23:00Z</SubmissionTimestamp>
+        <AGCollection>Collection</AGCollection>
+        <CollectionYear>2019</CollectionYear>
+        <AGReportingObjectResponseList>
+            <AGReportingObjectResponse>
+                <SubmittedRefId>78547278-58f5-4358-95f4-d6a04951a521</SubmittedRefId>
+                <SIFRefId>4f37559c-a093-47fe-a1c6-d546e1ca8e01</SIFRefId>
+                <HTTPStatusCode>201</HTTPStatusCode>
+                <ErrorText>Error 1</ErrorText>
+                <CommonwealthId>cid-1</CommonwealthId>
+                <EntityName>Entity Name 1</EntityName>
+                <AGSubmissionStatusCode>status-1</AGSubmissionStatusCode>
+                <AGRuleList>
+                    <AGRule>
+                        <AGRuleCode>code-1-1</AGRuleCode>
+                        <AGRuleComment>comment-1-1</AGRuleComment>
+                        <AGRuleResponse>response-1-1</AGRuleResponse>
+                        <AGRuleStatus>status-1-1</AGRuleStatus>
+                    </AGRule>
+                    <AGRule>
+                        <AGRuleCode>code-1-2</AGRuleCode>
+                        <AGRuleComment>comment-1-2</AGRuleComment>
+                        <AGRuleResponse>response-1-2</AGRuleResponse>
+                        <AGRuleStatus>status-1-2</AGRuleStatus>
+                    </AGRule>
+                </AGRuleList>
+            </AGReportingObjectResponse>
+            <AGReportingObjectResponse>
+                <SubmittedRefId>78547278-58f5-4358-95f4-d6a04951a522</SubmittedRefId>
+                <SIFRefId>4f37559c-a093-47fe-a1c6-d546e1ca8e02</SIFRefId>
+                <HTTPStatusCode>202</HTTPStatusCode>
+                <ErrorText>Error 2</ErrorText>
+                <CommonwealthId>cid-2</CommonwealthId>
+                <EntityName>Entity Name 2</EntityName>
+                <AGSubmissionStatusCode>status-2</AGSubmissionStatusCode>
+                <AGRuleList>
+                    <AGRule>
+                        <AGRuleCode>code-2-1</AGRuleCode>
+                        <AGRuleComment>comment-2-1</AGRuleComment>
+                        <AGRuleResponse>response-2-1</AGRuleResponse>
+                        <AGRuleStatus>status-2-1</AGRuleStatus>
+                    </AGRule>
+                    <AGRule>
+                        <AGRuleCode>code-2-2</AGRuleCode>
+                        <AGRuleComment>comment-2-2</AGRuleComment>
+                        <AGRuleResponse>response-2-2</AGRuleResponse>
+                        <AGRuleStatus>status-2-2</AGRuleStatus>
+                    </AGRule>
+                </AGRuleList>
+            </AGReportingObjectResponse>
+        </AGReportingObjectResponseList>
+    </AGStatusReport>
+    <AGStatusReport RefId="6bc19b55-dfa0-489b-83e3-75490d4200d3">
+        <ReportingAuthority>Reporting Authority</ReportingAuthority>
+        <ReportingAuthoritySystem>Reporting Authority System</ReportingAuthoritySystem>
+        <ReportingAuthorityCommonwealthId>RACID - 1</ReportingAuthorityCommonwealthId>
+        <SubmittedBy>Submitted By</SubmittedBy>
+        <SubmissionTimestamp>2019-04-01T18:23:00Z</SubmissionTimestamp>
+        <AGCollection>Collection</AGCollection>
+        <CollectionYear>2019</CollectionYear>
+        <AGReportingObjectResponseList>
+            <AGReportingObjectResponse>
+                <SubmittedRefId>78547278-58f5-4358-95f4-d6a04951a521</SubmittedRefId>
+                <SIFRefId>4f37559c-a093-47fe-a1c6-d546e1ca8e01</SIFRefId>
+                <HTTPStatusCode>201</HTTPStatusCode>
+                <ErrorText>Error 1</ErrorText>
+                <CommonwealthId>cid-1</CommonwealthId>
+                <EntityName>Entity Name 1</EntityName>
+                <AGSubmissionStatusCode>status-1</AGSubmissionStatusCode>
+                <AGRuleList>
+                    <AGRule>
+                        <AGRuleCode>code-1-1</AGRuleCode>
+                        <AGRuleComment>comment-1-1</AGRuleComment>
+                        <AGRuleResponse>response-1-1</AGRuleResponse>
+                        <AGRuleStatus>status-1-1</AGRuleStatus>
+                    </AGRule>
+                    <AGRule>
+                        <AGRuleCode>code-1-2</AGRuleCode>
+                        <AGRuleComment>comment-1-2</AGRuleComment>
+                        <AGRuleResponse>response-1-2</AGRuleResponse>
+                        <AGRuleStatus>status-1-2</AGRuleStatus>
+                    </AGRule>
+                </AGRuleList>
+            </AGReportingObjectResponse>
+            <AGReportingObjectResponse>
+                <SubmittedRefId>78547278-58f5-4358-95f4-d6a04951a522</SubmittedRefId>
+                <SIFRefId>4f37559c-a093-47fe-a1c6-d546e1ca8e02</SIFRefId>
+                <HTTPStatusCode>202</HTTPStatusCode>
+                <ErrorText>Error 2</ErrorText>
+                <CommonwealthId>cid-2</CommonwealthId>
+                <EntityName>Entity Name 2</EntityName>
+                <AGSubmissionStatusCode>status-2</AGSubmissionStatusCode>
+                <AGRuleList>
+                    <AGRule>
+                        <AGRuleCode>code-2-1</AGRuleCode>
+                        <AGRuleComment>comment-2-1</AGRuleComment>
+                        <AGRuleResponse>response-2-1</AGRuleResponse>
+                        <AGRuleStatus>status-2-1</AGRuleStatus>
+                    </AGRule>
+                    <AGRule>
+                        <AGRuleCode>code-2-2</AGRuleCode>
+                        <AGRuleComment>comment-2-2</AGRuleComment>
+                        <AGRuleResponse>response-2-2</AGRuleResponse>
+                        <AGRuleStatus>status-2-2</AGRuleStatus>
+                    </AGRule>
+                </AGRuleList>
+            </AGReportingObjectResponse>
+        </AGReportingObjectResponseList>
+    </AGStatusReport>
+</AGStatusReports>

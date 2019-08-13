@@ -1,0 +1,26 @@
+<GradingAssignments xmlns="http://www.sifassociation.org/datamodel/au/3.4">
+    <GradingAssignment RefId="c3d5af99-a550-4e57-a3ed-8608b172bf30">
+        <TeachingGroupRefId>8feeb970-94be-4b69-91b5-bf36188ed100</TeachingGroupRefId>
+        <SchoolInfoRefId>252159ce-e385-4dea-8440-26d300282781</SchoolInfoRefId>
+        <GradingCategory>GC</GradingCategory>
+        <Description>Description</Description>
+        <PointsPossible>80</PointsPossible>
+        <CreateDate>2015-07-01</CreateDate>
+        <DueDate>2015-10-01</DueDate>
+        <Weight>75</Weight>
+        <MaxAttemptsAllowed>1</MaxAttemptsAllowed>
+        <DetailedDescriptionURL>http://www.nsip.edu.au</DetailedDescriptionURL>
+    </GradingAssignment>
+    <GradingAssignment RefId="d841dbd5-c4cc-4b20-bbaf-1cfd38b3f8e2">
+        <TeachingGroupRefId>8feeb970-94be-4b69-91b5-bf36188ed100</TeachingGroupRefId>
+        <SchoolInfoRefId>252159ce-e385-4dea-8440-26d300282781</SchoolInfoRefId>
+        <GradingCategory>GC</GradingCategory>
+        <Description>Description</Description>
+        <PointsPossible>80</PointsPossible>
+        <CreateDate>2015-07-01</CreateDate>
+        <DueDate>2015-10-01</DueDate>
+        <Weight>75</Weight>
+        <MaxAttemptsAllowed>1</MaxAttemptsAllowed>
+        <DetailedDescriptionURL>http://www.nsip.edu.au</DetailedDescriptionURL>
+    </GradingAssignment>
+</GradingAssignments>

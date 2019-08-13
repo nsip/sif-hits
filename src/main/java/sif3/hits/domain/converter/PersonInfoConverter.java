@@ -78,6 +78,7 @@ public class PersonInfoConverter extends HitsConverter<PersonInfoType, Person> i
       DemographicsType demographics = objectFactory.createDemographicsType();
       demographics.setSex(objectFactory.createDemographicsTypeSex(getEnumValue(source.getSex(), AUCodeSetsSexCodeType.class)));
       demographics.setBirthDate(objectFactory.createDemographicsTypeBirthDate(getDateValue(source.getBirthDate())));
+      demographics.setInterpreterRequired(objectFactory.createDemographicsTypeInterpreterRequired(getEnumValue(source.getInterpreterRequired(), AUCodeSetsYesOrNoCategoryType.class)));
 
       if (source instanceof StudentPerson) {
         StudentPerson studentSource = (StudentPerson) source;
@@ -155,7 +156,7 @@ public class PersonInfoConverter extends HitsConverter<PersonInfoType, Person> i
       if (demographics != null) {
         target.setSex(getJAXBEnumValue(demographics.getSex()));
         target.setBirthDate(getDateValue(getJAXBValue(demographics.getBirthDate())));
-
+        target.setInterpreterRequired(getJAXBEnumValue(demographics.getInterpreterRequired()));
         if (target.getLanguages() == null) {
           target.setLanguages(new HashSet<Language>());
         } else {

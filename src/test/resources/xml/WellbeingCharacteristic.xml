@@ -1,0 +1,53 @@
+<WellbeingCharacteristic RefId="e729ac6f-d9e1-4b53-aca4-9e871d1e16cb" xmlns="http://www.sifassociation.org/datamodel/au/3.4">
+    <StudentPersonalRefId>c1deee9b-53ce-4c8f-9101-31bedf9c4836</StudentPersonalRefId>
+    <SchoolInfoRefId>252159ce-e385-4dea-8440-26d300282781</SchoolInfoRefId>
+    <WellbeingCharacteristicClassification>D</WellbeingCharacteristicClassification>
+    <WellbeingCharacteristicStartDate>2018-03-23</WellbeingCharacteristicStartDate>
+    <WellbeingCharacteristicEndDate>2018-04-01</WellbeingCharacteristicEndDate>
+    <WellbeingCharacteristicReviewDate>2018-03-29</WellbeingCharacteristicReviewDate>
+    <WellbeingCharacteristicNotes>Notes go Here</WellbeingCharacteristicNotes>
+    <WellbeingCharacteristicCategory>Cat</WellbeingCharacteristicCategory>
+    <WellbeingCharacteristicSubCategory>SubCat</WellbeingCharacteristicSubCategory>
+    <LocalCharacteristicCode>LocalCode</LocalCharacteristicCode>
+    <CharacteristicSeverity>Severe</CharacteristicSeverity>
+    <DailyManagement>Y</DailyManagement>
+    <EmergencyManagement>N</EmergencyManagement>
+    <EmergencyResponsePlan>ERP</EmergencyResponsePlan>
+    <Trigger>Trigger</Trigger>
+    <ConfidentialFlag>N</ConfidentialFlag>
+    <Alert>N</Alert>
+    <MedicationList>
+        <Medication>
+            <MedicationName>Medication 1</MedicationName>
+            <Dosage>10mg</Dosage>
+            <Frequency>Daily</Frequency>
+            <AdministrationInformation>Take once daily.</AdministrationInformation>
+            <Method>Oral</Method>
+        </Medication>
+        <Medication>
+            <MedicationName>Medication 2</MedicationName>
+            <Dosage>20mg</Dosage>
+            <Frequency>Daily</Frequency>
+            <AdministrationInformation>Take once daily.</AdministrationInformation>
+            <Method>Oral</Method>
+        </Medication>
+    </MedicationList>
+    <DocumentList>
+        <Document>
+            <Location>\\secure-share\plan-documents\st1234568\plan-1.doc</Location>
+            <Sensitivity>SENSITIVE</Sensitivity>
+            <URL>http://secure-document-server.edu/plan-documents/st12345678/plan-1.doc</URL>
+            <DocumentType>Plan</DocumentType>
+            <DocumentReviewDate>2018-04-03</DocumentReviewDate>
+            <DocumentDescription>Plan document 1 for student 12345678.</DocumentDescription>
+        </Document>
+        <Document>
+            <Location>\\secure-share\plan-documents\st1234568\plan-2.doc</Location>
+            <Sensitivity>SENSITIVE</Sensitivity>
+            <URL>http://secure-document-server.edu/plan-documents/st12345678/plan-2.doc</URL>
+            <DocumentType>Plan</DocumentType>
+            <DocumentReviewDate>2018-04-03</DocumentReviewDate>
+            <DocumentDescription>Plan document 2 for student 12345678.</DocumentDescription>
+        </Document>
+    </DocumentList>
+</WellbeingCharacteristic>

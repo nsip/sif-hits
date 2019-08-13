@@ -1,0 +1,214 @@
+<FinancialQuestionnaireSubmission RefId="fa55d29e-b547-4c28-8c5b-91e84d1f6480" xmlns="http://www.sifassociation.org/datamodel/au/3.4">
+    <FQYear>2019</FQYear>
+    <ReportingAuthority>reporting-authority</ReportingAuthority>
+    <ReportingAuthoritySystem>authority system</ReportingAuthoritySystem>
+    <ReportingAuthorityCommonwealthId>cid-1</ReportingAuthorityCommonwealthId>
+    <SystemSubmission>Y</SystemSubmission>
+    <SoftwareVendorInfo>
+        <SoftwareProduct>HUB Integration Testing Service</SoftwareProduct>
+        <SoftwareVersion>v2.8.0</SoftwareVersion>
+    </SoftwareVendorInfo>
+    <SubmissionContact>
+        <Name Type="LGL">
+            <Title>Mr</Title>
+            <FamilyName>Contact</FamilyName>
+            <GivenName>Submission</GivenName>
+            <MiddleName>Test</MiddleName>
+            <PreferredFamilyName>Contact</PreferredFamilyName>
+            <PreferredGivenName>Submission</PreferredGivenName>
+            <FullName>Mr Submission Test Contact</FullName>
+        </Name>
+        <PositionTitle>Position</PositionTitle>
+        <Role>Role</Role>
+        <RegistrationDetails>Registration Details</RegistrationDetails>
+        <Qualifications>Qualifications</Qualifications>
+        <Address Type="0123" Role="012B">
+            <Street>
+                <Line1>c/- Submission Contact</Line1>
+                <Line2>43 My Street</Line2>
+            </Street>
+            <City>Perth</City>
+            <StateProvince>WA</StateProvince>
+            <PostalCode>6000</PostalCode>
+            <GridLocation>
+                <Latitude>-31.952693</Latitude>
+                <Longitude>115.871971</Longitude>
+            </GridLocation>
+        </Address>
+        <Email Type="06">Submission.Contact@not.a.real.domain</Email>
+        <PhoneNumber Type="0096">
+            <Number>98740123</Number>
+        </PhoneNumber>
+    </SubmissionContact>
+    <FQReportComments>report comments would be here</FQReportComments>
+    <FQReportingList>
+        <FQReporting>
+            <FQRefId>e2c655e4-12ee-4e95-ab27-4ce6b2f59d91</FQRefId>
+            <EntityLevel>1</EntityLevel>
+            <SchoolInfoRefId>252159ce-e385-4dea-8440-26d300282781</SchoolInfoRefId>
+            <LocalId>local-id-1</LocalId>
+            <StateProvinceId>sp-id-1</StateProvinceId>
+            <CommonwealthId>cw-id-1</CommonwealthId>
+            <ACARAId>12341</ACARAId>
+            <EntityName>entity name - 1</EntityName>
+            <EntityContact>
+                <Name Type="LGL">
+                    <Title>Ms</Title>
+                    <FamilyName>Contact</FamilyName>
+                    <GivenName>Entity</GivenName>
+                    <MiddleName>Test 1</MiddleName>
+                    <PreferredFamilyName>Contact</PreferredFamilyName>
+                    <PreferredGivenName>Entity</PreferredGivenName>
+                    <FullName>Ms Entity Test 1 Contact</FullName>
+                </Name>
+                <PositionTitle>Position</PositionTitle>
+                <Role>Role</Role>
+                <RegistrationDetails>Registration Details</RegistrationDetails>
+                <Qualifications>Qualifications</Qualifications>
+                <Address Type="0123" Role="012B">
+                    <Street>
+                        <Line1>c/- Entity Contact</Line1>
+                        <Line2>43 My Street</Line2>
+                    </Street>
+                    <City>Perth</City>
+                    <StateProvince>WA</StateProvince>
+                    <PostalCode>6000</PostalCode>
+                    <GridLocation>
+                        <Latitude>-31.952693</Latitude>
+                        <Longitude>115.871971</Longitude>
+                    </GridLocation>
+                </Address>
+                <Email Type="06">Entity.Contact@not.a.real.domain</Email>
+                <PhoneNumber Type="0096">
+                    <Number>98740123</Number>
+                </PhoneNumber>
+            </EntityContact>
+            <FQContextualQuestionList>
+                <FQContextualQuestion>
+                    <FQContext>context 1:1</FQContext>
+                    <FQAnswer>answer 1:1</FQAnswer>
+                </FQContextualQuestion>
+                <FQContextualQuestion>
+                    <FQContext>context 1:2</FQContext>
+                    <FQAnswer>answer 1:2</FQAnswer>
+                </FQContextualQuestion>
+            </FQContextualQuestionList>
+            <FQItemList>
+                <FQItem>
+                    <FQItemCode>item-code-1-1</FQItemCode>
+                    <TuitionAmount>111.00</TuitionAmount>
+                    <BoardingAmount>211.00</BoardingAmount>
+                    <SystemAmount>311.00</SystemAmount>
+                    <DioceseAmount>411.00</DioceseAmount>
+                    <FQComments>FQ Item Comments 1:1</FQComments>
+                </FQItem>
+                <FQItem>
+                    <FQItemCode>item-code-1-2</FQItemCode>
+                    <TuitionAmount>112.00</TuitionAmount>
+                    <BoardingAmount>212.00</BoardingAmount>
+                    <SystemAmount>312.00</SystemAmount>
+                    <DioceseAmount>412.00</DioceseAmount>
+                    <FQComments>FQ Item Comments 1:2</FQComments>
+                </FQItem>
+            </FQItemList>
+            <AGRuleList>
+                <AGRule>
+                    <AGRuleCode>code-1-1</AGRuleCode>
+                    <AGRuleComment>comment-1-1</AGRuleComment>
+                    <AGRuleResponse>response-1-1</AGRuleResponse>
+                    <AGRuleStatus>status-1-1</AGRuleStatus>
+                </AGRule>
+                <AGRule>
+                    <AGRuleCode>code-1-2</AGRuleCode>
+                    <AGRuleComment>comment-1-2</AGRuleComment>
+                    <AGRuleResponse>response-1-2</AGRuleResponse>
+                    <AGRuleStatus>status-1-2</AGRuleStatus>
+                </AGRule>
+            </AGRuleList>
+        </FQReporting>
+        <FQReporting>
+            <FQRefId>e2c655e4-12ee-4e95-ab27-4ce6b2f59d92</FQRefId>
+            <EntityLevel>2</EntityLevel>
+            <SchoolInfoRefId>252159ce-e385-4dea-8440-26d300282781</SchoolInfoRefId>
+            <LocalId>local-id-2</LocalId>
+            <StateProvinceId>sp-id-2</StateProvinceId>
+            <CommonwealthId>cw-id-2</CommonwealthId>
+            <ACARAId>12342</ACARAId>
+            <EntityName>entity name - 2</EntityName>
+            <EntityContact>
+                <Name Type="LGL">
+                    <Title>Ms</Title>
+                    <FamilyName>Contact</FamilyName>
+                    <GivenName>Entity</GivenName>
+                    <MiddleName>Test 2</MiddleName>
+                    <PreferredFamilyName>Contact</PreferredFamilyName>
+                    <PreferredGivenName>Entity</PreferredGivenName>
+                    <FullName>Ms Entity Test 2 Contact</FullName>
+                </Name>
+                <PositionTitle>Position</PositionTitle>
+                <Role>Role</Role>
+                <RegistrationDetails>Registration Details</RegistrationDetails>
+                <Qualifications>Qualifications</Qualifications>
+                <Address Type="0123" Role="012B">
+                    <Street>
+                        <Line1>c/- Entity Contact</Line1>
+                        <Line2>43 My Street</Line2>
+                    </Street>
+                    <City>Perth</City>
+                    <StateProvince>WA</StateProvince>
+                    <PostalCode>6000</PostalCode>
+                    <GridLocation>
+                        <Latitude>-31.952693</Latitude>
+                        <Longitude>115.871971</Longitude>
+                    </GridLocation>
+                </Address>
+                <Email Type="06">Entity.Contact@not.a.real.domain</Email>
+                <PhoneNumber Type="0096">
+                    <Number>98740123</Number>
+                </PhoneNumber>
+            </EntityContact>
+            <FQContextualQuestionList>
+                <FQContextualQuestion>
+                    <FQContext>context 2:1</FQContext>
+                    <FQAnswer>answer 2:1</FQAnswer>
+                </FQContextualQuestion>
+                <FQContextualQuestion>
+                    <FQContext>context 2:2</FQContext>
+                    <FQAnswer>answer 2:2</FQAnswer>
+                </FQContextualQuestion>
+            </FQContextualQuestionList>
+            <FQItemList>
+                <FQItem>
+                    <FQItemCode>item-code-2-1</FQItemCode>
+                    <TuitionAmount>121.00</TuitionAmount>
+                    <BoardingAmount>221.00</BoardingAmount>
+                    <SystemAmount>321.00</SystemAmount>
+                    <DioceseAmount>421.00</DioceseAmount>
+                    <FQComments>FQ Item Comments 2:1</FQComments>
+                </FQItem>
+                <FQItem>
+                    <FQItemCode>item-code-2-2</FQItemCode>
+                    <TuitionAmount>122.00</TuitionAmount>
+                    <BoardingAmount>222.00</BoardingAmount>
+                    <SystemAmount>322.00</SystemAmount>
+                    <DioceseAmount>422.00</DioceseAmount>
+                    <FQComments>FQ Item Comments 2:2</FQComments>
+                </FQItem>
+            </FQItemList>
+            <AGRuleList>
+                <AGRule>
+                    <AGRuleCode>code-2-1</AGRuleCode>
+                    <AGRuleComment>comment-2-1</AGRuleComment>
+                    <AGRuleResponse>response-2-1</AGRuleResponse>
+                    <AGRuleStatus>status-2-1</AGRuleStatus>
+                </AGRule>
+                <AGRule>
+                    <AGRuleCode>code-2-2</AGRuleCode>
+                    <AGRuleComment>comment-2-2</AGRuleComment>
+                    <AGRuleResponse>response-2-2</AGRuleResponse>
+                    <AGRuleStatus>status-2-2</AGRuleStatus>
+                </AGRule>
+            </AGRuleList>
+        </FQReporting>
+    </FQReportingList>
+</FinancialQuestionnaireSubmission>

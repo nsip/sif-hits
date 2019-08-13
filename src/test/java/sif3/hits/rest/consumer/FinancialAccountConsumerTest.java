@@ -1,233 +1,103 @@
 package sif3.hits.rest.consumer;
 
-import java.util.Arrays;
-import java.util.List;
-
-import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.experimental.categories.Category;
-import org.springframework.http.HttpStatus;
-
 import sif.dd.au30.model.FinancialAccountCollectionType;
 import sif.dd.au30.model.FinancialAccountType;
-import sif.dd.au30.model.ObjectFactory;
-import sif3.common.model.QueryCriteria;
-import sif3.common.model.QueryOperator;
-import sif3.common.model.QueryPredicate;
-import sif3.common.ws.BulkOperationResponse;
-import sif3.common.ws.CreateOperationStatus;
-import sif3.common.ws.OperationStatus;
-import sif3.common.ws.Response;
-import sif3.hits.rest.consumer.LocationInfoConsumerTest.LocationInfoRefIds;
 import sif3.hits.rest.consumer.category.InitialiseData;
 import sif3.hits.rest.consumer.category.IntegrationTest;
+import sif3.hits.rest.consumer.data.FinancialAccountTestData;
 import sif3.infra.rest.consumer.ConsumerLoader;
 
-public class FinancialAccountConsumerTest extends BaseTest {
-    private ConsumerTest<FinancialAccountType, FinancialAccountCollectionType> financialTester = null;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
 
-    public static class FinancialAccountRefIds {
-        public static String REF_ID_1 = "d7230685-a578-4eb5-a5e4-c19b096a3d0c";
-        public static String REF_ID_2 = "c03b27f4-b0f8-4e46-93fb-4f0dc3b930e9";
-        public static String REF_ID_3 = "6f542af3-817a-4245-a1dc-46f41dfdc8d3";
-        public static String REF_ID_4 = "37387e1d-68fa-4dbf-b77a-704edd32a53d";
-        public static String REF_ID_5 = "0cb34d33-bbf8-43b9-8383-21f2bcd06844";
-    }
+import static sif3.hits.rest.consumer.data.FinancialAccountTestData.XML_REF_ID_1;
+import static sif3.hits.rest.consumer.data.FinancialAccountTestData.XML_REF_ID_RA;
 
-    private final String REF_ID_1 = "d747f069-e911-4bf3-b899-109b053915c3";
-    private final String REF_ID_2 = "0b7127ee-9e52-4f3e-923c-f2389404e32f";
-    private final String[] REF_IDS = { REF_ID_1, REF_ID_2 };
-
-    @Test
-    @Category({ IntegrationTest.class, InitialiseData.class })
-    public void initialiseData() throws Exception {
-        ObjectFactory objectFactory = new ObjectFactory();
-        FinancialAccountType financialAccount = new FinancialAccountType();
-        financialAccount.setRefId(FinancialAccountRefIds.REF_ID_2);
-        financialAccount.setAccountNumber("43242244L");
-        financialAccount.setChargedLocationInfoRefId(objectFactory.createFinancialAccountTypeChargedLocationInfoRefId(LocationInfoRefIds.REF_ID_1));
-        financialAccount.setCreationDate(getDate("2015-06-21"));
-        financialAccount.setCreationTime(getDate("11:32:00"));
-        financialAccount.setDescription(objectFactory.createFinancialAccountTypeDescription("Account Description"));
-        financialAccount.setName("Account Name");
-        financialAccount.setClassType("Asset");
-        financialTester.doCreateOne(financialAccount);
-
-        financialAccount.setRefId(FinancialAccountRefIds.REF_ID_1);
-        financialAccount.setParentAccountRefId(objectFactory.createFinancialAccountTypeParentAccountRefId(FinancialAccountRefIds.REF_ID_2));
-        financialTester.doCreateOne(financialAccount);
-        String xmlExpectedTo = financialTester.getXML(financialAccount);
-
-        financialAccount.setRefId(FinancialAccountRefIds.REF_ID_3);
-        financialTester.doCreateOne(financialAccount);
-        financialAccount.setRefId(FinancialAccountRefIds.REF_ID_4);
-        financialTester.doCreateOne(financialAccount);
-        financialAccount.setRefId(FinancialAccountRefIds.REF_ID_5);
-        financialAccount.setClassType("Expense");
-        financialTester.doCreateOne(financialAccount);
-
-        FinancialAccountType getResult = financialTester.doGetOne(FinancialAccountRefIds.REF_ID_1);
-        String xmlExpectedFrom = financialTester.getXML(getResult);
-        Assert.assertNotNull("XML Expected From isNull", xmlExpectedFrom);
-        Assert.assertNotNull("XML Expected To isNull", xmlExpectedTo);
-        boolean semiEquals = semiEquals(xmlExpectedFrom, xmlExpectedTo);
-        if (!semiEquals) {
-            Assert.assertEquals("XML Differs", xmlExpectedFrom, xmlExpectedTo);
-        }
-    }
+public class FinancialAccountConsumerTest extends BaseTest<FinancialAccountType, FinancialAccountCollectionType> {
+    private ConsumerTest<FinancialAccountType, FinancialAccountCollectionType> financialAccountTester = null;
+    private FinancialAccountTestData testData = new FinancialAccountTestData();
 
     @Before
     public void setup() {
-        ConsumerLoader.initialise("TestConsumer");
-        financialTester = new ConsumerTest<FinancialAccountType, FinancialAccountCollectionType>(FinancialAccountType.class, "FinancialAccount",
-                FinancialAccountCollectionType.class, "FinancialAccounts");
-        financialTester.testDeleteMany(REF_IDS);
+        ConsumerLoader.initialise(CONSUMER);
+        financialAccountTester = new ConsumerTest<>(FinancialAccountType.class, "FinancialAccount", FinancialAccountCollectionType.class, "FinancialAccounts");
+        financialAccountTester.testDeleteMany(XML_REF_ID_RA);
+    }
+
+    @Override
+    public ConsumerTest<FinancialAccountType, FinancialAccountCollectionType> getTester() {
+        return financialAccountTester;
+    }
+
+    @Override
+    public FinancialAccountTestData getTestData() {
+        return testData;
+    }
+
+    @Override
+    public String getRefId(FinancialAccountType object) {
+        return object.getRefId();
+    }
+
+    @Override
+    public List<FinancialAccountType> getCollectionList(FinancialAccountCollectionType collection) {
+        return Optional.ofNullable(collection).map(FinancialAccountCollectionType::getFinancialAccount).orElse(new ArrayList<>());
+    }
+
+    @Override
+    public int getCollectionSize(FinancialAccountCollectionType collection) {
+        return Optional.ofNullable(collection).map(FinancialAccountCollectionType::getFinancialAccount).map(List::size).orElse(-1);
+    }
+
+    @Test
+    @Category({IntegrationTest.class, InitialiseData.class})
+    public void initialiseData() {
+        super.initialiseData();
     }
 
     @Test
     @Category(IntegrationTest.class)
-    public void testUpdateSingle() throws Exception {
-        List<Response> responses = financialTester.testGetSingle(FinancialAccountRefIds.REF_ID_1);
-        Assert.assertNotNull(responses);
-        Assert.assertEquals(1, responses.size());
-        Response response = responses.get(0);
-        Assert.assertNotNull(response.getDataObject());
-        FinancialAccountType financialAccount = (FinancialAccountType) response.getDataObject();
-        Assert.assertEquals(FinancialAccountRefIds.REF_ID_1, financialAccount.getRefId());
-
-        String xmlExpectedFrom = financialTester.getXML(financialAccount);
-
-        List<Response> updateResponses = financialTester.doUpdateOne(financialAccount, FinancialAccountRefIds.REF_ID_1);
-        Assert.assertNotNull(updateResponses);
-        Assert.assertEquals(1, updateResponses.size());
-        Assert.assertEquals(updateResponses.get(0).getStatus(), HttpStatus.NO_CONTENT.value());
-
-        List<Response> getResponses = financialTester.testGetSingle(FinancialAccountRefIds.REF_ID_1);
-        Assert.assertNotNull(getResponses);
-        Assert.assertEquals(1, getResponses.size());
-        Response getResponse = getResponses.get(0);
-        Assert.assertNotNull(getResponse.getDataObject());
-        FinancialAccountType financialAccountTo = (FinancialAccountType) getResponse.getDataObject();
-        Assert.assertEquals(FinancialAccountRefIds.REF_ID_1, financialAccountTo.getRefId());
-        String xmlExpectedTo = financialTester.getXML(financialAccountTo);
-
-        boolean semiEquals = semiEquals(xmlExpectedFrom, xmlExpectedTo);
-        if (!semiEquals) {
-            System.out.println("From:\n" + xmlExpectedFrom);
-            System.out.println("\nTo:\n" + xmlExpectedTo);
-            Assert.assertEquals("XML Differs", xmlExpectedFrom, xmlExpectedTo);
-        }
+    public void testUpdateSingle() {
+        super.testUpdateSingle();
     }
 
     @Test
     @Category(IntegrationTest.class)
     public void testGetSingle() {
-        List<Response> responses = financialTester.testGetSingle(FinancialAccountRefIds.REF_ID_1);
-        Assert.assertNotNull(responses);
-        Assert.assertEquals(1, responses.size());
-        Response response = responses.get(0);
-        Assert.assertNotNull(response.getDataObject());
-        FinancialAccountType financialAccount = (FinancialAccountType) response.getDataObject();
-        Assert.assertEquals(FinancialAccountRefIds.REF_ID_1, financialAccount.getRefId());
-    }
-
-    @Test
-    @Category(IntegrationTest.class)
-    public void testQBEClassType() {
-        FinancialAccountType financialAccount = new FinancialAccountType();
-        financialAccount.setClassType("Expense");
-        List<Response> responses = financialTester.testQBE(financialAccount, 10, 1);
-        Assert.assertNotNull(responses);
-        Assert.assertEquals(1, responses.size());
-        Response response = responses.get(0);
-        Assert.assertNotNull(response.getDataObject());
-        FinancialAccountCollectionType financialAccounts = (FinancialAccountCollectionType) response.getDataObject();
-        Assert.assertNotNull(financialAccounts.getFinancialAccount());
-        Assert.assertEquals(1, financialAccounts.getFinancialAccount().size());
-        FinancialAccountType financialAccountType = financialAccounts.getFinancialAccount().get(0);
-        Assert.assertEquals(FinancialAccountRefIds.REF_ID_5, financialAccountType.getRefId());
+        super.testGetSingle();
     }
 
     @Test
     @Category(IntegrationTest.class)
     public void testGetMany() {
-        List<Response> responses = financialTester.testGetMany(5, 0);
-        Assert.assertNotNull(responses);
-        Assert.assertEquals(1, responses.size());
-        Response response = responses.get(0);
-        Assert.assertNotNull(response.getDataObject());
-        FinancialAccountCollectionType studentCollection = (FinancialAccountCollectionType) response.getDataObject();
-        Assert.assertNotNull(studentCollection.getFinancialAccount());
-        Assert.assertEquals(5, studentCollection.getFinancialAccount().size());
+        super.testGetMany();
     }
 
     @Test
     @Category(IntegrationTest.class)
     public void testCreateDelete() {
-        List<Response> createResponses = financialTester.testCreateOne("financialaccount.xml");
-        Assert.assertNotNull(createResponses);
-        Assert.assertEquals(1, createResponses.size());
-        Response createResponse = createResponses.get(0);
-        Assert.assertNotNull(createResponse.getDataObject());
-        FinancialAccountType financialAccount = (FinancialAccountType) createResponse.getDataObject();
-        Assert.assertEquals(REF_ID_1, financialAccount.getRefId());
-
-        List<Response> deleteResponses = financialTester.testDeleteOne(REF_ID_1);
-        Assert.assertNotNull(deleteResponses);
-        Assert.assertEquals(1, deleteResponses.size());
-        Response deleteResponse = deleteResponses.get(0);
-        Assert.assertNull(deleteResponse.getDataObject());
-        Assert.assertEquals(HttpStatus.NO_CONTENT.value(), deleteResponse.getStatus());
+        super.testCreateDelete(XML_REF_ID_1);
     }
 
     @Test
     @Category(IntegrationTest.class)
     public void testCreateDeleteMany() {
-        final List<String> REF_ID_LIST = Arrays.asList(REF_IDS);
-
-        List<BulkOperationResponse<CreateOperationStatus>> createResponses = financialTester.testCreateMany("financialaccounts.xml");
-        Assert.assertNotNull(createResponses);
-        Assert.assertEquals(1, createResponses.size());
-        BulkOperationResponse<CreateOperationStatus> createResponse = createResponses.get(0);
-        Assert.assertNotNull(createResponse.getOperationStatuses());
-        Assert.assertEquals(2, createResponse.getOperationStatuses().size());
-        for (CreateOperationStatus operationStatus : createResponse.getOperationStatuses()) {
-            Assert.assertTrue(REF_ID_LIST.contains(operationStatus.getAdvisoryID()));
-            Assert.assertEquals(HttpStatus.CREATED.value(), operationStatus.getStatus());
-        }
-
-        List<BulkOperationResponse<OperationStatus>> deleteResponses = financialTester.testDeleteMany(REF_IDS);
-        Assert.assertNotNull(deleteResponses);
-        Assert.assertEquals(1, deleteResponses.size());
-        BulkOperationResponse<OperationStatus> deleteResponse = deleteResponses.get(0);
-        Assert.assertNotNull(deleteResponse.getOperationStatuses());
-        Assert.assertEquals(2, deleteResponse.getOperationStatuses().size());
-        for (OperationStatus operationStatus : deleteResponse.getOperationStatuses()) {
-            Assert.assertTrue(REF_ID_LIST.contains(operationStatus.getResourceID()));
-            Assert.assertEquals(HttpStatus.OK.value(), operationStatus.getStatus());
-        }
+        super.testCreateDeleteMany(XML_REF_ID_RA);
     }
-    
+
     @Test
     @Category(IntegrationTest.class)
-    public void testServicePathSchoolInfo() {
-        QueryCriteria queryCriteria = new QueryCriteria();
-        queryCriteria.addPredicate(new QueryPredicate("SchoolInfos", QueryOperator.EQUAL, SchoolInfoConsumerTest.REF_ID));
+    public void testQBES() {
+        super.testQBES();
+    }
 
-        List<Response> responses = financialTester.testServicePath(queryCriteria, 1000, 0);
-
-        Assert.assertNotNull(responses);
-        Assert.assertEquals(1, responses.size());
-        Response response = responses.get(0);
-
-        FinancialAccountCollectionType financialAccountCollection = (FinancialAccountCollectionType) response.getDataObject();
-        Assert.assertNotNull(financialAccountCollection.getFinancialAccount());
-        Assert.assertFalse(financialAccountCollection.getFinancialAccount().isEmpty());
-        boolean found = false;
-        for (FinancialAccountType financialAccountType : financialAccountCollection.getFinancialAccount()) {
-            found = found || FinancialAccountRefIds.REF_ID_1.equals(financialAccountType.getRefId());
-        }
-        Assert.assertTrue(found);
+    @Test
+    @Category(IntegrationTest.class)
+    public void testServicePaths() {
+        super.testServicePaths();
     }
 }

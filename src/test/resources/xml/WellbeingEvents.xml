@@ -1,0 +1,162 @@
+<WellbeingEvents xmlns="http://www.sifassociation.org/datamodel/au/3.4">
+    <WellbeingEvent RefId="aa963553-80fa-4228-840e-137beac0bbba">
+        <StudentPersonalRefId>c1deee9b-53ce-4c8f-9101-31bedf9c4836</StudentPersonalRefId>
+        <SchoolInfoRefId>252159ce-e385-4dea-8440-26d300282781</SchoolInfoRefId>
+        <EventId>Event Id</EventId>
+        <WellbeingEventNotes>Notes Notes Notes</WellbeingEventNotes>
+        <WellbeingEventCategoryClass>N</WellbeingEventCategoryClass>
+        <WellbeingEventCategoryList>
+            <WellbeingEventCategory>
+                <EventCategory>M8</EventCategory>
+                <WellbeingEventSubCategoryList>
+                    <WellbeingEventSubCategory>M8a</WellbeingEventSubCategory>
+                </WellbeingEventSubCategoryList>
+            </WellbeingEventCategory>
+            <WellbeingEventCategory>
+                <EventCategory>M8</EventCategory>
+            </WellbeingEventCategory>
+            <WellbeingEventCategory>
+                <EventCategory>M7</EventCategory>
+                <WellbeingEventSubCategoryList>
+                    <WellbeingEventSubCategory>M7a</WellbeingEventSubCategory>
+                    <WellbeingEventSubCategory>M7b</WellbeingEventSubCategory>
+                </WellbeingEventSubCategoryList>
+            </WellbeingEventCategory>
+        </WellbeingEventCategoryList>
+        <ReportingStaffRefId>c7e28b89-1f3b-4d89-9dab-f12b743dae6c</ReportingStaffRefId>
+        <WellbeingEventLocationDetails>
+            <EventLocation>C</EventLocation>
+            <Class>PPR01</Class>
+            <FurtherLocationNotes>Notes</FurtherLocationNotes>
+        </WellbeingEventLocationDetails>
+        <WellbeingEventCreationTimeStamp>2018-03-09T10:00:00Z</WellbeingEventCreationTimeStamp>
+        <WellbeingEventDate>2018-02-23</WellbeingEventDate>
+        <WellbeingEventTime>09:00:00</WellbeingEventTime>
+        <WellbeingEventDescription>Event Description</WellbeingEventDescription>
+        <WellbeingEventTimePeriod>B</WellbeingEventTimePeriod>
+        <ConfidentialFlag>N</ConfidentialFlag>
+        <PersonInvolvementList>
+            <PersonInvolvement>
+                <PersonRefId SIF_RefObject="StudentPersonal">e651310e-2427-45d3-80b7-0003e36001c4</PersonRefId>
+                <ShortName>John Smith Student</ShortName>
+                <HowInvolved>Instigator</HowInvolved>
+            </PersonInvolvement>
+            <PersonInvolvement>
+                <PersonRefId SIF_RefObject="StaffPersonal">e326d2e6-ef77-4540-8933-106a3aec9c63</PersonRefId>
+                <ShortName>John Smith Teacher</ShortName>
+                <HowInvolved>Teacher</HowInvolved>
+            </PersonInvolvement>
+        </PersonInvolvementList>
+        <FollowUpActionList>
+            <FollowUpAction>
+                <WellbeingResponseRefId>9e7682f7-db56-44da-a7d2-1405784a2fcd</WellbeingResponseRefId>
+                <FollowUpDetails>Follow up details - 1</FollowUpDetails>
+                <FollowUpActionCategory>Category 1</FollowUpActionCategory>
+            </FollowUpAction>
+            <FollowUpAction>
+                <WellbeingResponseRefId>0b803bdd-a61c-4551-bfa8-cf2dad823d44</WellbeingResponseRefId>
+                <FollowUpDetails>Follow up details - 2</FollowUpDetails>
+                <FollowUpActionCategory>Category 2</FollowUpActionCategory>
+            </FollowUpAction>
+        </FollowUpActionList>
+        <Status>R</Status>
+        <DocumentList>
+            <Document>
+                <Location>\\secure-share\plan-documents\st1234568\plan-1.doc</Location>
+                <Sensitivity>SENSITIVE</Sensitivity>
+                <URL>http://secure-document-server.edu/plan-documents/st12345678/plan-1.doc</URL>
+                <DocumentType>Plan</DocumentType>
+                <DocumentReviewDate>2018-04-03</DocumentReviewDate>
+                <DocumentDescription>Plan document 1 for student 12345678.</DocumentDescription>
+            </Document>
+            <Document>
+                <Location>\\secure-share\plan-documents\st1234568\plan-2.doc</Location>
+                <Sensitivity>SENSITIVE</Sensitivity>
+                <URL>http://secure-document-server.edu/plan-documents/st12345678/plan-2.doc</URL>
+                <DocumentType>Plan</DocumentType>
+                <DocumentReviewDate>2018-04-03</DocumentReviewDate>
+                <DocumentDescription>Plan document 2 for student 12345678.</DocumentDescription>
+            </Document>
+        </DocumentList>
+    </WellbeingEvent>
+    <WellbeingEvent RefId="3b795b5e-9245-4448-8f75-e60daf59677a">
+        <StudentPersonalRefId>c1deee9b-53ce-4c8f-9101-31bedf9c4836</StudentPersonalRefId>
+        <SchoolInfoRefId>252159ce-e385-4dea-8440-26d300282781</SchoolInfoRefId>
+        <EventId>Event Id</EventId>
+        <WellbeingEventNotes>Notes Notes Notes</WellbeingEventNotes>
+        <WellbeingEventCategoryClass>N</WellbeingEventCategoryClass>
+        <WellbeingEventCategoryList>
+            <WellbeingEventCategory>
+                <EventCategory>M8</EventCategory>
+                <WellbeingEventSubCategoryList>
+                    <WellbeingEventSubCategory>M8a</WellbeingEventSubCategory>
+                </WellbeingEventSubCategoryList>
+            </WellbeingEventCategory>
+            <WellbeingEventCategory>
+                <EventCategory>M8</EventCategory>
+            </WellbeingEventCategory>
+            <WellbeingEventCategory>
+                <EventCategory>M7</EventCategory>
+                <WellbeingEventSubCategoryList>
+                    <WellbeingEventSubCategory>M7a</WellbeingEventSubCategory>
+                    <WellbeingEventSubCategory>M7b</WellbeingEventSubCategory>
+                </WellbeingEventSubCategoryList>
+            </WellbeingEventCategory>
+        </WellbeingEventCategoryList>
+        <ReportingStaffRefId>c7e28b89-1f3b-4d89-9dab-f12b743dae6c</ReportingStaffRefId>
+        <WellbeingEventLocationDetails>
+            <EventLocation>C</EventLocation>
+            <Class>PPR01</Class>
+            <FurtherLocationNotes>Notes</FurtherLocationNotes>
+        </WellbeingEventLocationDetails>
+        <WellbeingEventCreationTimeStamp>2018-03-09T10:00:00Z</WellbeingEventCreationTimeStamp>
+        <WellbeingEventDate>2018-02-23</WellbeingEventDate>
+        <WellbeingEventTime>09:00:00</WellbeingEventTime>
+        <WellbeingEventDescription>Event Description</WellbeingEventDescription>
+        <WellbeingEventTimePeriod>B</WellbeingEventTimePeriod>
+        <ConfidentialFlag>N</ConfidentialFlag>
+        <PersonInvolvementList>
+            <PersonInvolvement>
+                <PersonRefId SIF_RefObject="StudentPersonal">e651310e-2427-45d3-80b7-0003e36001c4</PersonRefId>
+                <ShortName>John Smith Student</ShortName>
+                <HowInvolved>Instigator</HowInvolved>
+            </PersonInvolvement>
+            <PersonInvolvement>
+                <PersonRefId SIF_RefObject="StaffPersonal">e326d2e6-ef77-4540-8933-106a3aec9c63</PersonRefId>
+                <ShortName>John Smith Teacher</ShortName>
+                <HowInvolved>Teacher</HowInvolved>
+            </PersonInvolvement>
+        </PersonInvolvementList>
+        <FollowUpActionList>
+            <FollowUpAction>
+                <WellbeingResponseRefId>9e7682f7-db56-44da-a7d2-1405784a2fcd</WellbeingResponseRefId>
+                <FollowUpDetails>Follow up details - 1</FollowUpDetails>
+                <FollowUpActionCategory>Category 1</FollowUpActionCategory>
+            </FollowUpAction>
+            <FollowUpAction>
+                <WellbeingResponseRefId>0b803bdd-a61c-4551-bfa8-cf2dad823d44</WellbeingResponseRefId>
+                <FollowUpDetails>Follow up details - 2</FollowUpDetails>
+                <FollowUpActionCategory>Category 2</FollowUpActionCategory>
+            </FollowUpAction>
+        </FollowUpActionList>
+        <Status>R</Status>
+        <DocumentList>
+            <Document>
+                <Location>\\secure-share\plan-documents\st1234568\plan-1.doc</Location>
+                <Sensitivity>SENSITIVE</Sensitivity>
+                <URL>http://secure-document-server.edu/plan-documents/st12345678/plan-1.doc</URL>
+                <DocumentType>Plan</DocumentType>
+                <DocumentReviewDate>2018-04-03</DocumentReviewDate>
+                <DocumentDescription>Plan document 1 for student 12345678.</DocumentDescription>
+            </Document>
+            <Document>
+                <Location>\\secure-share\plan-documents\st1234568\plan-2.doc</Location>
+                <Sensitivity>SENSITIVE</Sensitivity>
+                <URL>http://secure-document-server.edu/plan-documents/st12345678/plan-2.doc</URL>
+                <DocumentType>Plan</DocumentType>
+                <DocumentReviewDate>2018-04-03</DocumentReviewDate>
+                <DocumentDescription>Plan document 2 for student 12345678.</DocumentDescription>
+            </Document>
+        </DocumentList>
+    </WellbeingEvent>
+</WellbeingEvents>

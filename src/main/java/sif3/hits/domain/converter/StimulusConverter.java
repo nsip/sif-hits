@@ -19,7 +19,7 @@ public class StimulusConverter extends HitsConverter<StimulusType, Stimulus>{
       IObjectFactory objectFactory = getObjectFactory();
       
       target.setContent(source.getContent());
-      target.setTextDescriptor(source.getDescriptor());
+      target.setTextDescriptor(objectFactory.createStimulusTypeTextDescriptor(source.getDescriptor()));
       target.setStimulusLocalId(source.getLocalId());
       target.setTextGenre(objectFactory.createStimulusTypeTextGenre(source.getTextGenre()));
       target.setTextType(objectFactory.createStimulusTypeTextType(source.getTextType()));
@@ -31,7 +31,7 @@ public class StimulusConverter extends HitsConverter<StimulusType, Stimulus>{
   public void toHitsModel(StimulusType source, Stimulus target) {
     if (source != null && target != null) {
       target.setContent(source.getContent());
-      target.setDescriptor(source.getTextDescriptor());
+      target.setDescriptor(getJAXBValue(source.getTextDescriptor()));
       target.setLocalId(source.getStimulusLocalId());
       target.setTextGenre(getJAXBValue(source.getTextGenre()));
       target.setTextType(getJAXBValue(source.getTextType()));

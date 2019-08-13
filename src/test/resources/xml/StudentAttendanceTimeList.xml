@@ -1,0 +1,41 @@
+<StudentAttendanceTimeList RefId="6aa01c63-acfc-4795-b113-a9cd4258672f" xmlns="http://www.sifassociation.org/datamodel/au/3.4">
+    <StudentPersonalRefId>c1deee9b-53ce-4c8f-9101-31bedf9c4836</StudentPersonalRefId>
+    <SchoolInfoRefId>252159ce-e385-4dea-8440-26d300282781</SchoolInfoRefId>
+    <Date>2014-11-11</Date>
+    <SchoolYear>2014</SchoolYear>
+    <AttendanceTimes>
+        <AttendanceTime>
+            <AttendanceCode>
+                <Code>100</Code>
+            </AttendanceCode>
+            <AttendanceStatus>01</AttendanceStatus>
+            <StartTime>09:00:00</StartTime>
+            <EndTime>11:00:00</EndTime>
+        </AttendanceTime>
+        <AttendanceTime>
+            <AttendanceCode>
+                <Code>200</Code>
+                <OtherCodeList>
+                    <OtherCode Codeset="Local">S</OtherCode>
+                    <OtherCode Codeset="Text">C</OtherCode>
+                </OtherCodeList>
+            </AttendanceCode>
+            <AttendanceStatus>01</AttendanceStatus>
+            <StartTime>11:00:00</StartTime>
+            <EndTime>13:00:00</EndTime>
+            <DurationValue>0.2</DurationValue>
+            <AttendanceNote>Orthodontist Appt, returned to school.</AttendanceNote>
+        </AttendanceTime>
+        <AttendanceTime>
+            <AttendanceCode>
+                <Code>100</Code>
+                <OtherCodeList>
+                    <OtherCode Codeset="Text">C</OtherCode>
+                </OtherCodeList>
+            </AttendanceCode>
+            <AttendanceStatus>01</AttendanceStatus>
+            <StartTime>13:00:00</StartTime>
+            <EndTime>15:30:00</EndTime>
+        </AttendanceTime>
+    </AttendanceTimes>
+</StudentAttendanceTimeList>

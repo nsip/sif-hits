@@ -1,0 +1,42 @@
+<TimeTableSubjects xmlns="http://www.sifassociation.org/datamodel/au/3.4">
+    <TimeTableSubject RefId="b8ab7a14-e32a-4184-8320-856110bd2fd3">
+        <SubjectLocalId>local-id-tts</SubjectLocalId>
+        <AcademicYear>
+            <Code>4</Code>
+        </AcademicYear>
+        <Faculty>Science</Faculty>
+        <SubjectShortName>Computing</SubjectShortName>
+        <SubjectLongName>Introduction to Computing</SubjectLongName>
+        <SubjectType>Elective</SubjectType>
+        <ProposedMaxClassSize>25</ProposedMaxClassSize>
+        <ProposedMinClassSize>12</ProposedMinClassSize>
+        <SchoolInfoRefId>252159ce-e385-4dea-8440-26d300282781</SchoolInfoRefId>
+        <SchoolLocalId>4001</SchoolLocalId>
+        <Semester>2</Semester>
+        <SchoolYear>2014</SchoolYear>
+        <OtherCodeList>
+            <OtherCode Codeset="Local">ITC</OtherCode>
+            <OtherCode Codeset="Local">Computing</OtherCode>
+        </OtherCodeList>
+    </TimeTableSubject>
+    <TimeTableSubject RefId="ded69aab-2bac-4102-81f0-32663c72c633">
+        <SubjectLocalId>local-id-tts</SubjectLocalId>
+        <AcademicYear>
+            <Code>4</Code>
+        </AcademicYear>
+        <Faculty>Science</Faculty>
+        <SubjectShortName>Computing</SubjectShortName>
+        <SubjectLongName>Introduction to Computing</SubjectLongName>
+        <SubjectType>Elective</SubjectType>
+        <ProposedMaxClassSize>25</ProposedMaxClassSize>
+        <ProposedMinClassSize>12</ProposedMinClassSize>
+        <SchoolInfoRefId>252159ce-e385-4dea-8440-26d300282781</SchoolInfoRefId>
+        <SchoolLocalId>4001</SchoolLocalId>
+        <Semester>2</Semester>
+        <SchoolYear>2014</SchoolYear>
+        <OtherCodeList>
+            <OtherCode Codeset="Local">ITC</OtherCode>
+            <OtherCode Codeset="Local">Computing</OtherCode>
+        </OtherCodeList>
+    </TimeTableSubject>
+</TimeTableSubjects>

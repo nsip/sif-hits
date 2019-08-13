@@ -6,22 +6,13 @@ import javax.xml.datatype.XMLGregorianCalendar;
 
 import org.springframework.stereotype.Component;
 
-import sif.dd.au30.model.AUCodeSetsOperationalStatusType;
-import sif.dd.au30.model.AUCodeSetsSchoolLevelType;
-import sif.dd.au30.model.AUCodeSetsSchoolLocationType;
-import sif.dd.au30.model.AUCodeSetsSchoolSectorCodeType;
-import sif.dd.au30.model.AUCodeSetsYesOrNoCategoryType;
-import sif.dd.au30.model.AddressListType;
-import sif.dd.au30.model.AddressStreetType;
-import sif.dd.au30.model.AddressType;
-import sif.dd.au30.model.CampusContainerType;
-import sif.dd.au30.model.GridLocationType;
-import sif.dd.au30.model.SchoolInfoType;
+import sif.dd.au30.model.*;
 import sif3.hits.domain.converter.factory.IObjectFactory;
 import sif3.hits.domain.model.SchoolInfo;
+import sif3.hits.utils.UsesConstants;
 
 @Component
-public class SchoolInfoConverter extends HitsConverter<SchoolInfoType, SchoolInfo> {
+public class SchoolInfoConverter extends HitsConverter<SchoolInfoType, SchoolInfo> implements UsesConstants {
 
   public SchoolInfoConverter() {
     super(SchoolInfoType.class, SchoolInfo.class);
@@ -49,6 +40,8 @@ public class SchoolInfoConverter extends HitsConverter<SchoolInfoType, SchoolInf
       // Address - may subtype this if needed elsewhere
       AddressListType addressList = objFactory.createAddressListType();
       AddressType address = objFactory.createAddressType();
+      address.setRole(AUCodeSetsAddressRoleType.fromValue(DEFAULT_ADDRESS_ROLE));
+      address.setType(AUCodeSetsAddressTypeType.fromValue(DEFAULT_ADDRESS_TYPE));
       address.setStateProvince(objFactory.createAddressTypeStateProvince(source.getAddressStateProvince()));
       address.setCity(source.getAddressCity());
       address.setPostalCode(source.getAddressPostalCode());

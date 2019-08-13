@@ -1,0 +1,44 @@
+<PersonPicture RefId="1ebc9ad7-2d2d-4972-9890-619c0c483fea" xmlns="http://www.sifassociation.org/datamodel/au/3.4">
+    <ParentObjectRefId SIF_RefObject="StudentPersonal">bf9ddb87-f610-4c02-94a3-1f42c1d2ce95</ParentObjectRefId>
+    <SchoolYear>2019</SchoolYear>
+    <PictureSource Type="01">http://www.gravatar.com/avatar/HASH?d=mm</PictureSource>
+    <OKToPublish>Y</OKToPublish>
+    <PublishingPermissionList>
+        <PublishingPermission>
+            <PermissionCategory>OKPrintedMaterial</PermissionCategory>
+            <PermissionValue>Y</PermissionValue>
+        </PublishingPermission>
+        <PublishingPermission>
+            <PermissionCategory>OKOnlineMaterial</PermissionCategory>
+            <PermissionValue>Y</PermissionValue>
+        </PublishingPermission>
+        <PublishingPermission>
+            <PermissionCategory>OKMediaRelease</PermissionCategory>
+            <PermissionValue>Y</PermissionValue>
+        </PublishingPermission>
+        <PublishingPermission>
+            <PermissionCategory>School/College Newsletter</PermissionCategory>
+            <PermissionValue>Y</PermissionValue>
+        </PublishingPermission>
+        <PublishingPermission>
+            <PermissionCategory>School/College Yearbook</PermissionCategory>
+            <PermissionValue>Y</PermissionValue>
+        </PublishingPermission>
+        <PublishingPermission>
+            <PermissionCategory>Jurisdiction Promotional</PermissionCategory>
+            <PermissionValue>Y</PermissionValue>
+        </PublishingPermission>
+        <PublishingPermission>
+            <PermissionCategory>Jurisdiction Educational</PermissionCategory>
+            <PermissionValue>Y</PermissionValue>
+        </PublishingPermission>
+        <PublishingPermission>
+            <PermissionCategory>OKPublishInfo</PermissionCategory>
+            <PermissionValue>Y</PermissionValue>
+        </PublishingPermission>
+        <PublishingPermission>
+            <PermissionCategory>OKOnLineServices</PermissionCategory>
+            <PermissionValue>Y</PermissionValue>
+        </PublishingPermission>
+    </PublishingPermissionList>
+</PersonPicture>

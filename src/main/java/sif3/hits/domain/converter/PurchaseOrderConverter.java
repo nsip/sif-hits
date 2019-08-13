@@ -45,7 +45,7 @@ public class PurchaseOrderConverter extends HitsConverter<PurchaseOrderType, Pur
 
             if (StringUtils.isNotBlank(source.getTaxAmount())) {
                 MonetaryAmountType monetaryAmountType = objectFactory.createMonetaryAmountType();
-                monetaryAmountType.setValue(source.getTaxAmount());
+                monetaryAmountType.setValue(getBigDecimalValue(source.getTaxAmount()));
                 monetaryAmountType.setCurrency(DEFAULT_CURRENCY_ENUM);
                 target.setTaxAmount(objectFactory.createPurchaseOrderTypeTaxAmount(monetaryAmountType));
             }
@@ -82,7 +82,7 @@ public class PurchaseOrderConverter extends HitsConverter<PurchaseOrderType, Pur
 
             MonetaryAmountType monetaryAmountType = getJAXBValue(source.getTaxAmount());
             if (monetaryAmountType != null) {
-                target.setTaxAmount(monetaryAmountType.getValue());
+                target.setTaxAmount(getBigDecimalValue(monetaryAmountType.getValue()));
             }
 
             target.setTaxRate(getBigDecimalValue(getJAXBValue(source.getTaxRate())));

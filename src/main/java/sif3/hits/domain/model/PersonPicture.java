@@ -1,8 +1,7 @@
 package sif3.hits.domain.model;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.List;
 
 @Entity
 public class PersonPicture extends HitsEntity {
@@ -15,6 +14,9 @@ public class PersonPicture extends HitsEntity {
   private String pictureSource;
   private String pictureSourceType;
   private String okToPublish;
+  private List<PersonPicturePublishingPermission> publishingPermissions;
+
+
 
   @Id
   public String getRefId() {
@@ -73,5 +75,14 @@ public class PersonPicture extends HitsEntity {
 
   public void setOkToPublish(String okToPublish) {
     this.okToPublish = okToPublish;
+  }
+
+  @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "personPicture")
+  public List<PersonPicturePublishingPermission> getPublishingPermissions() {
+    return publishingPermissions;
+  }
+
+  public void setPublishingPermissions(List<PersonPicturePublishingPermission> publishingPermissions) {
+    this.publishingPermissions = publishingPermissions;
   }
 }

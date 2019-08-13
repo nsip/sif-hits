@@ -1,0 +1,15 @@
+<StudentAttendanceSummary StudentAttendanceSummaryRefId="bd35fc2c-cee4-4568-bff7-cec73c083f21" xmlns="http://www.sifassociation.org/datamodel/au/3.4">
+    <StudentPersonalRefId>c1deee9b-53ce-4c8f-9101-31bedf9c4836</StudentPersonalRefId>
+    <SchoolInfoRefId>252159ce-e385-4dea-8440-26d300282781</SchoolInfoRefId>
+    <SchoolYear>2014</SchoolYear>
+    <StartDate>2014-09-01</StartDate>
+    <EndDate>2014-09-05</EndDate>
+    <StartDay>1</StartDay>
+    <EndDay>5</EndDay>
+    <FTE>1.0</FTE>
+    <DaysAttended>4.5</DaysAttended>
+    <ExcusedAbsences>0</ExcusedAbsences>
+    <UnexcusedAbsences>0.5</UnexcusedAbsences>
+    <DaysTardy>2</DaysTardy>
+    <DaysInMembership>5</DaysInMembership>
+</StudentAttendanceSummary>

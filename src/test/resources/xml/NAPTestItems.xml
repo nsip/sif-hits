@@ -1,0 +1,226 @@
+<NAPTestItems xmlns="http://www.sifassociation.org/datamodel/au/3.4">
+    <NAPTestItem RefId="72fbb478-2555-4d88-8e24-d9be4ee22d23">
+        <TestItemContent>
+            <NAPTestItemLocalId>local-id-nti-6</NAPTestItemLocalId>
+            <ItemType>IC</ItemType>
+            <Subdomain>1</Subdomain>
+            <WritingGenre>Narrative</WritingGenre>
+            <ItemDescriptor>Descriptor #140524360699280</ItemDescriptor>
+            <ReleasedStatus>true</ReleasedStatus>
+            <MarkingType>AS</MarkingType>
+            <CorrectAnswer>7</CorrectAnswer>
+            <MaximumScore>10</MaximumScore>
+            <ItemDifficulty>3</ItemDifficulty>
+            <ItemProficiencyBand>32</ItemProficiencyBand>
+            <ExemplarURL>https://www.nsip.edu.au</ExemplarURL>
+            <ItemSubstitutedForList>
+                <SubstituteItem>
+                    <SubstituteItemRefId>93fb8237-6e27-4dd6-aed9-03d53bc87b9a</SubstituteItemRefId>
+                    <PNPCodeList>
+                        <PNPCode>AAM</PNPCode>
+                    </PNPCodeList>
+                </SubstituteItem>
+            </ItemSubstitutedForList>
+            <ContentDescriptionList>
+                <ContentDescription>MNA32</ContentDescription>
+                <ContentDescription>MNA37</ContentDescription>
+            </ContentDescriptionList>
+            <StimulusList>
+                <Stimulus>
+                    <StimulusLocalId>Stimulus #0</StimulusLocalId>
+                    <TextGenre>Genre #0</TextGenre>
+                    <TextType>Type #0</TextType>
+                    <WordCount>1230</WordCount>
+                    <TextDescriptor>Descriptor #0</TextDescriptor>
+                    <Content>Stimulus Content #0</Content>
+                </Stimulus>
+                <Stimulus>
+                    <StimulusLocalId>Stimulus #1</StimulusLocalId>
+                    <TextGenre>Genre #1</TextGenre>
+                    <TextType>Type #1</TextType>
+                    <WordCount>1231</WordCount>
+                    <TextDescriptor>Descriptor #1</TextDescriptor>
+                    <Content>Stimulus Content #1</Content>
+                </Stimulus>
+            </StimulusList>
+            <NAPWritingRubricList>
+                <NAPWritingRubric>
+                    <RubricType>CS</RubricType>
+                    <ScoreList>
+                        <Score>
+                            <MaxScoreValue>100</MaxScoreValue>
+                            <ScoreDescriptionList>
+                                <ScoreDescription>
+                                    <ScoreValue>1000</ScoreValue>
+                                    <Descriptor>Descriptor #000</Descriptor>
+                                </ScoreDescription>
+                                <ScoreDescription>
+                                    <ScoreValue>1001</ScoreValue>
+                                    <Descriptor>Descriptor #001</Descriptor>
+                                </ScoreDescription>
+                            </ScoreDescriptionList>
+                        </Score>
+                        <Score>
+                            <MaxScoreValue>101</MaxScoreValue>
+                            <ScoreDescriptionList>
+                                <ScoreDescription>
+                                    <ScoreValue>1010</ScoreValue>
+                                    <Descriptor>Descriptor #010</Descriptor>
+                                </ScoreDescription>
+                                <ScoreDescription>
+                                    <ScoreValue>1011</ScoreValue>
+                                    <Descriptor>Descriptor #011</Descriptor>
+                                </ScoreDescription>
+                            </ScoreDescriptionList>
+                        </Score>
+                    </ScoreList>
+                    <Descriptor>Descriptor #0</Descriptor>
+                </NAPWritingRubric>
+                <NAPWritingRubric>
+                    <RubricType>CS</RubricType>
+                    <ScoreList>
+                        <Score>
+                            <MaxScoreValue>110</MaxScoreValue>
+                            <ScoreDescriptionList>
+                                <ScoreDescription>
+                                    <ScoreValue>1100</ScoreValue>
+                                    <Descriptor>Descriptor #100</Descriptor>
+                                </ScoreDescription>
+                                <ScoreDescription>
+                                    <ScoreValue>1101</ScoreValue>
+                                    <Descriptor>Descriptor #101</Descriptor>
+                                </ScoreDescription>
+                            </ScoreDescriptionList>
+                        </Score>
+                        <Score>
+                            <MaxScoreValue>111</MaxScoreValue>
+                            <ScoreDescriptionList>
+                                <ScoreDescription>
+                                    <ScoreValue>1110</ScoreValue>
+                                    <Descriptor>Descriptor #110</Descriptor>
+                                </ScoreDescription>
+                                <ScoreDescription>
+                                    <ScoreValue>1111</ScoreValue>
+                                    <Descriptor>Descriptor #111</Descriptor>
+                                </ScoreDescription>
+                            </ScoreDescriptionList>
+                        </Score>
+                    </ScoreList>
+                    <Descriptor>Descriptor #1</Descriptor>
+                </NAPWritingRubric>
+            </NAPWritingRubricList>
+        </TestItemContent>
+    </NAPTestItem>
+    <NAPTestItem RefId="24fb7e23-60b9-4bed-aa27-39e8f1fab114">
+        <TestItemContent>
+            <NAPTestItemLocalId>local-id-nti-7</NAPTestItemLocalId>
+            <ItemType>IC</ItemType>
+            <Subdomain>1</Subdomain>
+            <WritingGenre>Narrative</WritingGenre>
+            <ItemDescriptor>Descriptor #140524360699280</ItemDescriptor>
+            <ReleasedStatus>true</ReleasedStatus>
+            <MarkingType>AS</MarkingType>
+            <CorrectAnswer>7</CorrectAnswer>
+            <MaximumScore>10</MaximumScore>
+            <ItemDifficulty>3</ItemDifficulty>
+            <ItemProficiencyBand>32</ItemProficiencyBand>
+            <ExemplarURL>https://www.nsip.edu.au</ExemplarURL>
+            <ItemSubstitutedForList>
+                <SubstituteItem>
+                    <SubstituteItemRefId>93fb8237-6e27-4dd6-aed9-03d53bc87b9a</SubstituteItemRefId>
+                    <PNPCodeList>
+                        <PNPCode>AAM</PNPCode>
+                    </PNPCodeList>
+                </SubstituteItem>
+            </ItemSubstitutedForList>
+            <ContentDescriptionList>
+                <ContentDescription>MNA32</ContentDescription>
+                <ContentDescription>MNA37</ContentDescription>
+            </ContentDescriptionList>
+            <StimulusList>
+                <Stimulus>
+                    <StimulusLocalId>Stimulus #0</StimulusLocalId>
+                    <TextGenre>Genre #0</TextGenre>
+                    <TextType>Type #0</TextType>
+                    <WordCount>1230</WordCount>
+                    <TextDescriptor>Descriptor #0</TextDescriptor>
+                    <Content>Stimulus Content #0</Content>
+                </Stimulus>
+                <Stimulus>
+                    <StimulusLocalId>Stimulus #1</StimulusLocalId>
+                    <TextGenre>Genre #1</TextGenre>
+                    <TextType>Type #1</TextType>
+                    <WordCount>1231</WordCount>
+                    <TextDescriptor>Descriptor #1</TextDescriptor>
+                    <Content>Stimulus Content #1</Content>
+                </Stimulus>
+            </StimulusList>
+            <NAPWritingRubricList>
+                <NAPWritingRubric>
+                    <RubricType>CS</RubricType>
+                    <ScoreList>
+                        <Score>
+                            <MaxScoreValue>100</MaxScoreValue>
+                            <ScoreDescriptionList>
+                                <ScoreDescription>
+                                    <ScoreValue>1000</ScoreValue>
+                                    <Descriptor>Descriptor #000</Descriptor>
+                                </ScoreDescription>
+                                <ScoreDescription>
+                                    <ScoreValue>1001</ScoreValue>
+                                    <Descriptor>Descriptor #001</Descriptor>
+                                </ScoreDescription>
+                            </ScoreDescriptionList>
+                        </Score>
+                        <Score>
+                            <MaxScoreValue>101</MaxScoreValue>
+                            <ScoreDescriptionList>
+                                <ScoreDescription>
+                                    <ScoreValue>1010</ScoreValue>
+                                    <Descriptor>Descriptor #010</Descriptor>
+                                </ScoreDescription>
+                                <ScoreDescription>
+                                    <ScoreValue>1011</ScoreValue>
+                                    <Descriptor>Descriptor #011</Descriptor>
+                                </ScoreDescription>
+                            </ScoreDescriptionList>
+                        </Score>
+                    </ScoreList>
+                    <Descriptor>Descriptor #0</Descriptor>
+                </NAPWritingRubric>
+                <NAPWritingRubric>
+                    <RubricType>CS</RubricType>
+                    <ScoreList>
+                        <Score>
+                            <MaxScoreValue>110</MaxScoreValue>
+                            <ScoreDescriptionList>
+                                <ScoreDescription>
+                                    <ScoreValue>1100</ScoreValue>
+                                    <Descriptor>Descriptor #100</Descriptor>
+                                </ScoreDescription>
+                                <ScoreDescription>
+                                    <ScoreValue>1101</ScoreValue>
+                                    <Descriptor>Descriptor #101</Descriptor>
+                                </ScoreDescription>
+                            </ScoreDescriptionList>
+                        </Score>
+                        <Score>
+                            <MaxScoreValue>111</MaxScoreValue>
+                            <ScoreDescriptionList>
+                                <ScoreDescription>
+                                    <ScoreValue>1110</ScoreValue>
+                                    <Descriptor>Descriptor #110</Descriptor>
+                                </ScoreDescription>
+                                <ScoreDescription>
+                                    <ScoreValue>1111</ScoreValue>
+                                    <Descriptor>Descriptor #111</Descriptor>
+                                </ScoreDescription>
+                            </ScoreDescriptionList>
+                        </Score>
+                    </ScoreList>
+                    <Descriptor>Descriptor #1</Descriptor>
+                </NAPWritingRubric>
+            </NAPWritingRubricList>
+        </TestItemContent>
+    </NAPTestItem>
+</NAPTestItems>

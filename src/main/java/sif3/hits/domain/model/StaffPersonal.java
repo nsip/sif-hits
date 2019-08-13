@@ -33,6 +33,7 @@ public class StaffPersonal extends HitsEntity implements StaffPerson {
   private String mostRecentSchoolAcaraId;
   private String mostRecentSchoolLocalId;
   private String mostRecentLocalCampusId;
+  private String interpreterRequired;
   private Set<StaffPersonalOtherId> otherIds;
   private Set<Language> languages;
 
@@ -155,6 +156,16 @@ public class StaffPersonal extends HitsEntity implements StaffPerson {
 
   public void setBirthDate(String birthDate) {
     this.birthDate = birthDate;
+  }
+
+  @Override
+  public String getInterpreterRequired() {
+    return interpreterRequired;
+  }
+
+  @Override
+  public void setInterpreterRequired(String interpreterRequired) {
+    this.interpreterRequired = interpreterRequired;
   }
 
   @Column(name = "MostRecent_SchoolACARAId")

@@ -42,6 +42,7 @@ public class StudentPersonalConverter extends HitsConverter<StudentPersonalType,
             target.setLocalId(source.getLocalId());
             target.setPersonInfo(personInfoConverter.toSifModel(source));
             target.setStateProvinceId(objectFactory.createStudentPersonalTypeStateProvinceId(source.getStateProvinceId()));
+            target.setESLSupport(objectFactory.createStudentPersonalTypeESLSupport(getEnumValue(source.getESLSupport(), AUCodeSetsYesOrNoCategoryType.class)));
 
             StudentMostRecentContainerType mostRecent = objectFactory.createStudentMostRecentContainerType();
 
@@ -119,6 +120,7 @@ public class StudentPersonalConverter extends HitsConverter<StudentPersonalType,
             target.setRefId(source.getRefId());
             target.setLocalId(source.getLocalId());
             target.setStateProvinceId(getJAXBValue(source.getStateProvinceId()));
+            target.setESLSupport(getJAXBEnumValue(source.getESLSupport()));
             personInfoConverter.toHitsModel(source.getPersonInfo(), target);
 
             StudentMostRecentContainerType mostRecent = getJAXBValue(source.getMostRecent());

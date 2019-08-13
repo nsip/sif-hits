@@ -1,0 +1,88 @@
+<StudentPersonal RefId="f62ba997-988f-494c-a78a-4e1b2acadc5c" xmlns="http://www.sifassociation.org/datamodel/au/3.4">
+    <LocalId>student-local-id</LocalId>
+    <StateProvinceId>W123456789</StateProvinceId>
+    <OtherIdList>
+        <OtherId Type="0004">identifier</OtherId>
+        <OtherId Type="0003">otherid</OtherId>
+        <OtherId Type="NAPPlatformStudentId">R10000001E</OtherId>
+    </OtherIdList>
+    <PersonInfo>
+        <Name Type="LGL">
+            <FamilyName>Smith</FamilyName>
+            <GivenName>Jenny</GivenName>
+            <MiddleName>Test</MiddleName>
+            <PreferredFamilyName>Smith</PreferredFamilyName>
+            <PreferredGivenName>Jenny</PreferredGivenName>
+            <FullName>Jenny Test Smith</FullName>
+        </Name>
+        <Demographics>
+            <IndigenousStatus>9</IndigenousStatus>
+            <Sex>1</Sex>
+            <BirthDate>1984-12-20</BirthDate>
+            <CountryOfBirth>1101</CountryOfBirth>
+            <LanguageList>
+                <Language>
+                    <Code>1201</Code>
+                    <LanguageType>1</LanguageType>
+                    <Dialect>West Australian</Dialect>
+                </Language>
+            </LanguageList>
+            <Religion>
+                <Code>0001</Code>
+            </Religion>
+        </Demographics>
+        <AddressList>
+            <Address Type="0123" Role="012B">
+                <Street>
+                    <Line1>123 Address Line One</Line1>
+                    <Line2>Address Line Two</Line2>
+                </Street>
+                <City>Perth</City>
+                <StateProvince>WA</StateProvince>
+                <PostalCode>6000</PostalCode>
+                <GridLocation>
+                    <Latitude>-31.952693</Latitude>
+                    <Longitude>115.871971</Longitude>
+                </GridLocation>
+            </Address>
+            <Address Type="0123" Role="012B">
+                <Street>
+                    <Line1>234 Address Line One</Line1>
+                </Street>
+                <City>Perth</City>
+                <StateProvince>WA</StateProvince>
+                <PostalCode>6000</PostalCode>
+                <GridLocation>
+                    <Latitude>-31.952693</Latitude>
+                    <Longitude>115.871971</Longitude>
+                </GridLocation>
+            </Address>
+        </AddressList>
+        <PhoneNumberList>
+            <PhoneNumber Type="0096">
+                <Number>+61893215432</Number>
+            </PhoneNumber>
+        </PhoneNumberList>
+        <EmailList>
+            <Email Type="06">jenny.smith@not.a.real.domain</Email>
+        </EmailList>
+    </PersonInfo>
+    <MostRecent>
+        <YearLevel>
+            <Code>3</Code>
+        </YearLevel>
+        <Parent1Language>1201</Parent1Language>
+        <Parent2Language>2303</Parent2Language>
+        <Parent1EmploymentType>1</Parent1EmploymentType>
+        <Parent2EmploymentType>2</Parent2EmploymentType>
+        <Parent1SchoolEducationLevel>4</Parent1SchoolEducationLevel>
+        <Parent2SchoolEducationLevel>0</Parent2SchoolEducationLevel>
+        <Parent1NonSchoolEducation>7</Parent1NonSchoolEducation>
+        <Parent2NonSchoolEducation>0</Parent2NonSchoolEducation>
+        <TestLevel>
+            <Code>3</Code>
+        </TestLevel>
+        <FFPOS>2</FFPOS>
+    </MostRecent>
+    <ESLSupport>N</ESLSupport>
+</StudentPersonal>

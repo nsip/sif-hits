@@ -1,0 +1,36 @@
+<SchoolInfo RefId="19b819d8-c1a4-4d7c-92f6-58072defee14" xmlns="http://www.sifassociation.org/datamodel/au/3.4">
+    <LocalId>4001</LocalId>
+    <StateProvinceId>WA</StateProvinceId>
+    <CommonwealthId>cid</CommonwealthId>
+    <ACARAId>48116</ACARAId>
+    <SchoolName>Bens Test State High School</SchoolName>
+    <SchoolType>Sec</SchoolType>
+    <AddressList>
+        <Address Type="0123" Role="012B">
+            <Street>
+                <StreetNumber>1</StreetNumber>
+                <StreetName>School Street</StreetName>
+            </Street>
+            <City>Perth</City>
+            <StateProvince>WA</StateProvince>
+            <PostalCode>6000</PostalCode>
+            <GridLocation>
+                <Latitude>-31.952693</Latitude>
+                <Longitude>115.871971</Longitude>
+            </GridLocation>
+        </Address>
+    </AddressList>
+    <ARIA>1</ARIA>
+    <OperationalStatus>O</OperationalStatus>
+    <Campus>
+        <ParentSchoolId>4001</ParentSchoolId>
+        <SchoolCampusId>4001</SchoolCampusId>
+        <CampusType>Sec</CampusType>
+        <AdminStatus>N</AdminStatus>
+    </Campus>
+    <SchoolSector>Gov</SchoolSector>
+    <IndependentSchool>N</IndependentSchool>
+    <SchoolGeographicLocation>2</SchoolGeographicLocation>
+    <Entity_Open>1990-02-01</Entity_Open>
+    <Entity_Close>2014-12-20</Entity_Close>
+</SchoolInfo>
