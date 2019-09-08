@@ -37,14 +37,14 @@ public class SimpleConsumer {
     private static final String METHOD_HMAC = "1";
     private static final String METHOD_BASIC = "2";
     private static final String AUTHORIZATION_METHOD = "AUTHORIZATION_METHOD";
+    private static final String FORMAT_TIMESTAMP = "TIMESTAMPFORMAT";
+    private static final String FORMAT_JAVA = "1";
+    private static final String FORMAT_NET = "2";
     private static DateTimeFormatter TIMESTAMP_FORMAT = DateTimeFormatter.ISO_DATE_TIME;
+    private static DateTimeFormatter NET_TIMESTAMP_FORMAT = (new DateTimeFormatterBuilder()).append(DateTimeFormatter.ISO_LOCAL_DATE_TIME).appendLiteral("9175Z").toFormatter();
 
     private static void defaults(Map<String, String> configuration) {
-        // Setup some options here that I might want to change from time to time.
-        if (false) {
-            // extended timestamp format (.NET framework produces timestamps like this...)
-            TIMESTAMP_FORMAT = (new DateTimeFormatterBuilder()).append(DateTimeFormatter.ISO_LOCAL_DATE_TIME).appendLiteral("9175Z").toFormatter();
-        }
+    
     }
 
     public static void main(String[] args) throws IOException, URISyntaxException {
@@ -83,11 +83,21 @@ public class SimpleConsumer {
         configuration.put(SESSION_TOKEN, read("Enter session token: "));
         configuration.put(PASSWORD, read("Enter password: "));
         write("");
+        write("Timestamp Format");
+        write("---");
+        write("1. Java Framework");
+        write("2. .NET Framework");
+        write("");
+        configuration.put(FORMAT_TIMESTAMP, read("What timestamp format fo you want to use? [1]: "));
     }
 
     private static void generateAuthenticationToken(Map<String, String> configuration) {
         ZonedDateTime timestamp = ZonedDateTime.now().withZoneSameInstant(ZoneId.of("Z"));
-        configuration.put(TIMESTAMP, TIMESTAMP_FORMAT.format(timestamp));
+        if (FORMAT_NET.equals(configuration.get(FORMAT_TIMESTAMP))) {
+        	configuration.put(TIMESTAMP, NET_TIMESTAMP_FORMAT.format(timestamp));
+        } else {
+        	configuration.put(TIMESTAMP, TIMESTAMP_FORMAT.format(timestamp));
+        }
         if (METHOD_BASIC.equals(configuration.get(AUTHORIZATION_METHOD))) {
             String token = AuthenticationUtils.getBasicAuthToken(configuration.get(SESSION_TOKEN), configuration.get(PASSWORD));
             configuration.put(AUTHORIZATION_HEADER, token);
@@ -106,22 +116,11 @@ public class SimpleConsumer {
     }
 
     private static void collectEndpoint(Map<String, String> configuration) {
-        write("");
+        write("I have not implemented this yet sorry :(");
     }
 
     private static void executeCall(Map<String, String> configuration) throws URISyntaxException {
-        Client client = ClientBuilder.newClient();
-        WebTarget webTarget = client.target("https://test-eduhub.hostedzone.com/svcs/Sif3Framework/requestProvider/SchoolInfos;zoneId=018800;contextId=ALL?where=[(StateProvinceId=\"01880002\")]");
-
-        ClientRequest.Builder requestBuilder = new ClientRequest.Builder();
-        requestBuilder.accept(MediaType.APPLICATION_XML_TYPE);
-        requestBuilder.header("Timestamp", configuration.get(TIMESTAMP));
-        requestBuilder.header("Authorization", configuration.get(AUTHORIZATION_HEADER));
-        requestBuilder.header("serviceType", "OBJECT");
-        requestBuilder.header("navigationPage", "1");
-        requestBuilder.header( "navigationPageSize", "5");
-//        ClientRequest request = requestBuilder.build(new URI("), "GET");
-
+    	write("I have not implemented this yet sorry :(");
     }
 
     private static String read(String question) throws IOException {
