@@ -1,16 +1,20 @@
 package sif3.hits.rest.consumer.data;
 
-import sif.dd.au30.model.*;
+import java.math.BigDecimal;
+import java.util.Arrays;
+import java.util.List;
+
+import sif.dd.au30.model.AUCodeSetsYearLevelCodeType;
+import sif.dd.au30.model.OtherCodeListType;
+import sif.dd.au30.model.TimeTableSubjectCollectionType;
+import sif.dd.au30.model.TimeTableSubjectType;
+import sif.dd.au30.model.YearLevelType;
+import sif.dd.au30.model.YearRangeType;
 import sif3.common.model.QueryCriteria;
 import sif3.common.model.QueryOperator;
 import sif3.common.model.QueryPredicate;
 import sif3.hits.domain.converter.factory.IObjectFactory;
-import sif3.hits.rest.consumer.TimeTableSubjectConsumerTest;
 import sif3.hits.utils.RefIdGenerator;
-
-import java.math.BigDecimal;
-import java.util.Arrays;
-import java.util.List;
 
 public class TimeTableSubjectTestData extends TestData<TimeTableSubjectType, TimeTableSubjectCollectionType> {
 

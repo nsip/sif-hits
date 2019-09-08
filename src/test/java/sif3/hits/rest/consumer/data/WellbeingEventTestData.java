@@ -1,15 +1,26 @@
 package sif3.hits.rest.consumer.data;
 
-import sif.dd.au30.model.*;
-
-import sif3.hits.domain.converter.factory.IObjectFactory;
-import sif3.hits.rest.consumer.SchoolInfoConsumerTest;
-import sif3.hits.rest.consumer.WellbeingEventConsumerTest;
-import sif3.hits.rest.consumer.WellbeingResponseConsumerTest;
-import sif3.hits.utils.RefIdGenerator;
-
 import java.util.Arrays;
 import java.util.List;
+
+import sif.dd.au30.model.AUCodeSetsWellbeingEventCategoryClassType;
+import sif.dd.au30.model.AUCodeSetsWellbeingEventLocationType;
+import sif.dd.au30.model.AUCodeSetsWellbeingEventTimePeriodType;
+import sif.dd.au30.model.AUCodeSetsWellbeingStatusType;
+import sif.dd.au30.model.AUCodeSetsYesOrNoCategoryType;
+import sif.dd.au30.model.FollowUpActionListType;
+import sif.dd.au30.model.FollowUpActionType;
+import sif.dd.au30.model.PersonInvolvementListType;
+import sif.dd.au30.model.PersonInvolvementType;
+import sif.dd.au30.model.WellbeingDocumentListType;
+import sif.dd.au30.model.WellbeingEventCategoryListType;
+import sif.dd.au30.model.WellbeingEventCategoryType;
+import sif.dd.au30.model.WellbeingEventCollectionType;
+import sif.dd.au30.model.WellbeingEventLocationDetailsType;
+import sif.dd.au30.model.WellbeingEventSubCategoryListType;
+import sif.dd.au30.model.WellbeingEventType;
+import sif3.hits.domain.converter.factory.IObjectFactory;
+import sif3.hits.utils.RefIdGenerator;
 
 public class WellbeingEventTestData extends TestData<WellbeingEventType,WellbeingEventCollectionType> {
 

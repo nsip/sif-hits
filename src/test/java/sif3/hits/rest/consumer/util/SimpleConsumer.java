@@ -1,21 +1,8 @@
 package sif3.hits.rest.consumer.util;
 
-import com.sun.jersey.api.client.ClientRequest;
-import com.sun.jersey.api.client.ClientRequestAdapter;
-import com.sun.jersey.api.client.config.ClientConfig;
-import com.sun.jersey.api.client.config.DefaultClientConfig;
-import org.apache.commons.lang3.StringUtils;
-import sif3.common.CommonConstants;
-import sif3.common.utils.AuthenticationUtils;
-
-import javax.ws.rs.client.Client;
-import javax.ws.rs.client.ClientBuilder;
-import javax.ws.rs.client.WebTarget;
-import javax.ws.rs.core.MediaType;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.net.URI;
 import java.net.URISyntaxException;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
@@ -23,6 +10,11 @@ import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeFormatterBuilder;
 import java.util.HashMap;
 import java.util.Map;
+
+import org.apache.commons.lang3.StringUtils;
+
+import sif3.common.CommonConstants;
+import sif3.common.utils.AuthenticationUtils;
 
 public class SimpleConsumer {
     private static BufferedReader CONSOLE = new BufferedReader(new InputStreamReader(System.in));

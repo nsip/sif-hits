@@ -1,13 +1,23 @@
 package sif3.hits.rest.consumer.data;
 
-import sif.dd.au30.model.*;
-import sif3.hits.domain.converter.factory.IObjectFactory;
-import sif3.hits.domain.model.FQContextualQuestion;
-import sif3.hits.utils.RefIdGenerator;
-
 import java.math.BigDecimal;
 import java.util.Arrays;
 import java.util.List;
+
+import sif.dd.au30.model.AGRuleListType;
+import sif.dd.au30.model.AUCodeSetsYesOrNoCategoryType;
+import sif.dd.au30.model.EntityContactInfoType;
+import sif.dd.au30.model.FQContextualQuestionListType;
+import sif.dd.au30.model.FQContextualQuestionType;
+import sif.dd.au30.model.FQItemListType;
+import sif.dd.au30.model.FQItemType;
+import sif.dd.au30.model.FQReportingListType;
+import sif.dd.au30.model.FQReportingType;
+import sif.dd.au30.model.FinancialQuestionnaireSubmissionCollectionType;
+import sif.dd.au30.model.FinancialQuestionnaireSubmissionType;
+import sif.dd.au30.model.SoftwareVendorInfoContainerType;
+import sif3.hits.domain.converter.factory.IObjectFactory;
+import sif3.hits.utils.RefIdGenerator;
 
 public class FinancialQuestionnaireSubmissionTestData extends TestData<FinancialQuestionnaireSubmissionType, FinancialQuestionnaireSubmissionCollectionType> {
 

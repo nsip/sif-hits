@@ -1,16 +1,19 @@
 package sif3.hits.rest.consumer.data;
 
-import sif.dd.au30.model.*;
+import java.util.Arrays;
+import java.util.List;
 
+import sif.dd.au30.model.TimeTableCollectionType;
+import sif.dd.au30.model.TimeTableDayListType;
+import sif.dd.au30.model.TimeTableDayType;
+import sif.dd.au30.model.TimeTablePeriodListType;
+import sif.dd.au30.model.TimeTablePeriodType;
+import sif.dd.au30.model.TimeTableType;
 import sif3.common.model.QueryCriteria;
 import sif3.common.model.QueryOperator;
 import sif3.common.model.QueryPredicate;
 import sif3.hits.domain.converter.factory.IObjectFactory;
-import sif3.hits.rest.consumer.SchoolInfoConsumerTest;
 import sif3.hits.utils.RefIdGenerator;
-
-import java.util.Arrays;
-import java.util.List;
 
 public class TimeTableTestData extends TestData<TimeTableType,TimeTableCollectionType> {
 

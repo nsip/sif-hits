@@ -6,7 +6,9 @@ import java.util.List;
 
 @Entity
 public class FinancialQuestionnaireSubmission extends HitsEntity {
-    private String refId;
+	private static final long serialVersionUID = 2515212795726876951L;
+	
+	private String refId;
     private String fqYear;
     private String reportingAuthority;
     private String reportingAuthoritySystem;

@@ -1,14 +1,16 @@
 package sif3.hits.domain.converter;
 
 import org.apache.commons.lang3.StringUtils;
-import org.springframework.stereotype.Component;
-import sif.dd.au30.model.*;
+
+import sif.dd.au30.model.AUCodeSetsAddressRoleType;
+import sif.dd.au30.model.AUCodeSetsAddressTypeType;
+import sif.dd.au30.model.AUCodeSetsStandardAustralianClassificationOfCountriesSACCType;
+import sif.dd.au30.model.AddressStreetType;
+import sif.dd.au30.model.AddressType;
+import sif.dd.au30.model.GridLocationType;
+import sif.dd.au30.model.MapReferenceType;
 import sif3.hits.domain.converter.factory.IObjectFactory;
 import sif3.hits.domain.model.FQBaseEntityContactAddress;
-import sif3.hits.domain.model.FQEntityContactAddress;
-import sif3.hits.domain.model.FQEntityContactAddressStatisticalArea;
-
-import java.util.ArrayList;
 
 public abstract class FQBaseEntityContactAddressConverter<E extends FQBaseEntityContactAddress> extends HitsConverter<AddressType, E> {
 

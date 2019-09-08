@@ -1,17 +1,14 @@
 package sif3.hits.rest.consumer.data;
 
-import sif.dd.au30.model.AUCodeSetsWellbeingAlertCategoryType;
-import sif.dd.au30.model.AUCodeSetsYesOrNoCategoryType;
-import sif.dd.au30.model.WellbeingAlertType;
-import sif.dd.au30.model.WellbeingAlertCollectionType;
-
-import sif3.hits.domain.converter.factory.IObjectFactory;
-import sif3.hits.rest.consumer.SchoolInfoConsumerTest;
-import sif3.hits.rest.consumer.WellbeingAlertConsumerTest;
-import sif3.hits.utils.RefIdGenerator;
-
 import java.util.Arrays;
 import java.util.List;
+
+import sif.dd.au30.model.AUCodeSetsWellbeingAlertCategoryType;
+import sif.dd.au30.model.AUCodeSetsYesOrNoCategoryType;
+import sif.dd.au30.model.WellbeingAlertCollectionType;
+import sif.dd.au30.model.WellbeingAlertType;
+import sif3.hits.domain.converter.factory.IObjectFactory;
+import sif3.hits.utils.RefIdGenerator;
 
 public class WellbeingAlertTestData extends TestData<WellbeingAlertType,WellbeingAlertCollectionType> {
 

@@ -30,6 +30,7 @@
             <Religion>
                 <Code>0001</Code>
             </Religion>
+            <InterpreterRequired>N</InterpreterRequired>
         </Demographics>
         <AddressList>
             <Address Type="0123" Role="012B">

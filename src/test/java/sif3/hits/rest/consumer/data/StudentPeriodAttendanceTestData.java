@@ -1,14 +1,20 @@
 package sif3.hits.rest.consumer.data;
 
-import sif.dd.au30.model.*;
+import java.util.Arrays;
+import java.util.Calendar;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
+import sif.dd.au30.model.AUCodeSetsAttendanceCodeType;
+import sif.dd.au30.model.AUCodeSetsAttendanceStatusType;
+import sif.dd.au30.model.AttendanceCodeType;
+import sif.dd.au30.model.AuditInfoType;
+import sif.dd.au30.model.CreationUserType;
+import sif.dd.au30.model.StudentPeriodAttendanceCollectionType;
+import sif.dd.au30.model.StudentPeriodAttendanceType;
 import sif3.hits.domain.converter.factory.IObjectFactory;
-import sif3.hits.rest.consumer.SchoolInfoConsumerTest;
-import sif3.hits.rest.consumer.SessionInfoConsumerTest;
-import sif3.hits.rest.consumer.StudentPersonalConsumerTest;
 import sif3.hits.utils.RefIdGenerator;
-
-import java.util.*;
 
 public class StudentPeriodAttendanceTestData extends TestData<StudentPeriodAttendanceType,StudentPeriodAttendanceCollectionType> {
 

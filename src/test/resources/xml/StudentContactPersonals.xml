@@ -12,6 +12,7 @@
             </Name>
             <Demographics>
                 <Sex>2</Sex>
+                <InterpreterRequired>N</InterpreterRequired>
             </Demographics>
             <AddressList>
                 <Address Type="0123" Role="012B">
@@ -66,6 +67,7 @@
             </Name>
             <Demographics>
                 <Sex>2</Sex>
+                <InterpreterRequired>N</InterpreterRequired>
             </Demographics>
             <AddressList>
                 <Address Type="0123" Role="012B">

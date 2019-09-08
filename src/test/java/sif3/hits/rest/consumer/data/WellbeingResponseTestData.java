@@ -1,12 +1,29 @@
 package sif3.hits.rest.consumer.data;
 
-import sif.dd.au30.model.*;
-import sif3.hits.rest.consumer.WellbeingResponseConsumerTest;
-import sif3.hits.utils.RefIdGenerator;
-
 import java.math.BigDecimal;
 import java.util.Arrays;
 import java.util.List;
+
+import sif.dd.au30.model.AUCodeSetsDetentionCategoryType;
+import sif.dd.au30.model.AUCodeSetsSuspensionCategoryType;
+import sif.dd.au30.model.AUCodeSetsWellbeingResponseCategoryType;
+import sif.dd.au30.model.AUCodeSetsWellbeingStatusType;
+import sif.dd.au30.model.AwardContainerType;
+import sif.dd.au30.model.DetentionContainerType;
+import sif.dd.au30.model.ObjectFactory;
+import sif.dd.au30.model.OtherWellbeingResponseContainerType;
+import sif.dd.au30.model.PersonInvolvementListType;
+import sif.dd.au30.model.PersonInvolvementType;
+import sif.dd.au30.model.PlanRequiredContainerType;
+import sif.dd.au30.model.PlanRequiredListType;
+import sif.dd.au30.model.SuspensionContainerType;
+import sif.dd.au30.model.WellbeingDocumentListType;
+import sif.dd.au30.model.WellbeingPlanType;
+import sif.dd.au30.model.WellbeingResponseCollectionType;
+import sif.dd.au30.model.WellbeingResponseType;
+import sif.dd.au30.model.WithdrawalTimeListType;
+import sif.dd.au30.model.WithdrawalType;
+import sif3.hits.utils.RefIdGenerator;
 
 public class WellbeingResponseTestData extends TestData<WellbeingResponseType, WellbeingResponseCollectionType> {
 

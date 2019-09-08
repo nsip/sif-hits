@@ -9,7 +9,7 @@ import java.io.IOException;
 
 public class XMLGenerator {
     public static void main(String[] args) throws MarshalException, UnsupportedMediaTypeExcpetion {
-        String path = "/home/crub/dev/nsip/sif-hits/src/test/resources/xml";
+        String path = "/Users/ben/Development/nsip/sif-hits/src/test/resources/xml";
         generateTestXML(path, new CalendarDateTestData(), CalendarDateTestData.XML_REF_ID_1, CalendarDateTestData.XML_REF_ID_2);
         generateTestXML(path, new CalendarSummaryTestData(), CalendarSummaryTestData.XML_REF_ID_1, CalendarSummaryTestData.XML_REF_ID_2);
         generateTestXML(path, new ChargedLocationInfoTestData(), ChargedLocationInfoTestData.XML_REF_ID_1, ChargedLocationInfoTestData.XML_REF_ID_2);

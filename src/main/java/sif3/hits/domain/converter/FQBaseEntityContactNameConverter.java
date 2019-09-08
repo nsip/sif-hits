@@ -1,13 +1,12 @@
 package sif3.hits.domain.converter;
 
 import org.apache.commons.lang3.StringUtils;
-import org.springframework.stereotype.Component;
+
 import sif.dd.au30.model.AUCodeSetsNameUsageTypeType;
 import sif.dd.au30.model.AUCodeSetsYesOrNoCategoryType;
 import sif.dd.au30.model.NameType;
 import sif3.hits.domain.converter.factory.IObjectFactory;
 import sif3.hits.domain.model.FQBaseEntityContactName;
-import sif3.hits.domain.model.FQEntityContactName;
 
 public abstract class FQBaseEntityContactNameConverter<E extends FQBaseEntityContactName> extends HitsConverter<NameType, E> {
 

@@ -1,14 +1,17 @@
 package sif3.hits.rest.consumer.data;
 
-import sif.dd.au30.model.*;
-
-import sif3.hits.domain.converter.factory.IObjectFactory;
-import sif3.hits.domain.converter.factory.ObjectFactory;
-import sif3.hits.utils.RefIdGenerator;
-
 import java.math.BigDecimal;
 import java.util.Arrays;
 import java.util.List;
+
+import sif.dd.au30.model.AUCodeSetsCalendarEventType;
+import sif.dd.au30.model.AttendanceInfoType;
+import sif.dd.au30.model.CalendarDateCollectionType;
+import sif.dd.au30.model.CalendarDateInfoType;
+import sif.dd.au30.model.CalendarDateType;
+import sif.dd.au30.model.OtherCodeListType;
+import sif3.hits.domain.converter.factory.IObjectFactory;
+import sif3.hits.utils.RefIdGenerator;
 
 public class CalendarDateTestData extends TestData<CalendarDateType,CalendarDateCollectionType> {
 

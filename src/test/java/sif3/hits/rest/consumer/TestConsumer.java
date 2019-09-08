@@ -15,7 +15,6 @@ import sif3.common.ws.CreateOperationStatus;
 import sif3.common.ws.ErrorDetails;
 import sif3.common.ws.OperationStatus;
 import sif3.common.ws.model.MultiOperationStatusList;
-import sif3.infra.rest.consumer.AbstractConsumer;
 import sif3.infra.rest.consumer.AbstractEventConsumer;
 
 public class TestConsumer<S, M> extends AbstractEventConsumer<S> {

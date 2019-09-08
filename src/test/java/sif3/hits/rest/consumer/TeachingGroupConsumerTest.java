@@ -1,22 +1,22 @@
 package sif3.hits.rest.consumer;
 
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.experimental.categories.Category;
-import sif.dd.au30.model.TeachingGroupCollectionType;
-import sif.dd.au30.model.TeachingGroupType;
-import sif3.hits.rest.consumer.category.InitialiseData;
-import sif3.hits.rest.consumer.category.IntegrationTest;
-import sif3.hits.rest.consumer.data.TeachingGroupTestData;
-import sif3.hits.rest.consumer.data.TestData;
-import sif3.infra.rest.consumer.ConsumerLoader;
+import static sif3.hits.rest.consumer.data.TeachingGroupTestData.XML_REF_ID_1;
+import static sif3.hits.rest.consumer.data.TeachingGroupTestData.XML_REF_ID_RA;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-import static sif3.hits.rest.consumer.data.TeachingGroupTestData.XML_REF_ID_1;
-import static sif3.hits.rest.consumer.data.TeachingGroupTestData.XML_REF_ID_RA;
+import org.junit.Before;
+import org.junit.Test;
+import org.junit.experimental.categories.Category;
+
+import sif.dd.au30.model.TeachingGroupCollectionType;
+import sif.dd.au30.model.TeachingGroupType;
+import sif3.hits.rest.consumer.category.InitialiseData;
+import sif3.hits.rest.consumer.category.IntegrationTest;
+import sif3.hits.rest.consumer.data.TeachingGroupTestData;
+import sif3.infra.rest.consumer.ConsumerLoader;
 
 public class TeachingGroupConsumerTest extends BaseTest<TeachingGroupType, TeachingGroupCollectionType> {
     private ConsumerTest<TeachingGroupType, TeachingGroupCollectionType> teachingGroupTester = null;
@@ -58,7 +58,7 @@ public class TeachingGroupConsumerTest extends BaseTest<TeachingGroupType, Teach
     @Category({InitialiseData.class})
     public void initialInitialiseData() {
         // Teaching groups are special because of circular dependency with TimeTableCell
-        for (String refId : testData.REF_ID_LIST) {
+        for (String refId : TeachingGroupTestData.REF_ID_LIST) {
             TeachingGroupType singleObject = testData.getTestObject(refId);
             teachingGroupTester.doCreateOne(singleObject);
             teachingGroupTester.doUpdateOne(singleObject, getRefId(singleObject));
