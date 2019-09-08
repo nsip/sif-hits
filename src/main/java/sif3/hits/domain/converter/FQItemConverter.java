@@ -21,7 +21,7 @@ public class FQItemConverter extends HitsConverter<FQItemType, FQItem> {
             target.setBoardingAmount(objectFactory.createFQItemTypeBoardingAmount(getBigDecimalValue(source.getBoardingAmount())));
             target.setSystemAmount(objectFactory.createFQItemTypeSystemAmount(getBigDecimalValue(source.getSystemAmount())));
             target.setDioceseAmount(objectFactory.createFQItemTypeDioceseAmount(getBigDecimalValue(source.getDioceseAmount())));
-            target.setFQComments(source.getFqComments());
+            target.setFQComments(objectFactory.createFQItemTypeFQComments(source.getFqComments()));
         }
     }
 
@@ -33,7 +33,7 @@ public class FQItemConverter extends HitsConverter<FQItemType, FQItem> {
             target.setBoardingAmount(getBigDecimalValue(getJAXBValue(source.getBoardingAmount())));
             target.setSystemAmount(getBigDecimalValue(getJAXBValue(source.getSystemAmount())));
             target.setDioceseAmount(getBigDecimalValue(getJAXBValue(source.getDioceseAmount())));
-            target.setFqComments(source.getFQComments());
+            target.setFqComments(getJAXBValue(source.getFQComments()));
         }
     }
 }

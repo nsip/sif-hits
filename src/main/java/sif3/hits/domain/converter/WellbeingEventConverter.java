@@ -55,7 +55,7 @@ public class WellbeingEventConverter extends HitsConverter<WellbeingEventType, W
             IObjectFactory objectFactory = getObjectFactory();
 
             target.setRefId(source.getRefId());
-            target.setStudentPersonalRefId(source.getStudentPersonalRefId());
+            target.setStudentPersonalRefId(objectFactory.createWellbeingEventTypeStudentPersonalRefId(source.getStudentPersonalRefId()));
             target.setSchoolInfoRefId(source.getSchoolInfoRefId());
             target.setEventId(objectFactory.createWellbeingEventTypeEventId(source.getEventId()));
             target.setWellbeingEventNotes(objectFactory.createWellbeingEventTypeWellbeingEventNotes(source.getWellbeingEventNotes()));
@@ -119,7 +119,7 @@ public class WellbeingEventConverter extends HitsConverter<WellbeingEventType, W
         if (source != null && target != null) {
             resetModel(target);
             target.setRefId(source.getRefId());
-            target.setStudentPersonalRefId(source.getStudentPersonalRefId());
+            target.setStudentPersonalRefId(getJAXBValue(source.getStudentPersonalRefId()));
             target.setSchoolInfoRefId(source.getSchoolInfoRefId());
             target.setEventId(getJAXBValue(source.getEventId()));
             target.setWellbeingEventNotes(getJAXBValue(source.getWellbeingEventNotes()));

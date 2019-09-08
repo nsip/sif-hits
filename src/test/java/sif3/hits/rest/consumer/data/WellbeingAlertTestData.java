@@ -37,7 +37,7 @@ public class WellbeingAlertTestData extends TestData<WellbeingAlertType,Wellbein
         wellbeingAlertType.setStudentPersonalRefId(StudentPersonalTestData.REF_ID_1);
         wellbeingAlertType.setSchoolInfoRefId(SchoolInfoTestData.REF_ID_1);
         wellbeingAlertType.setDate(getDate("2018-03-23"));
-        wellbeingAlertType.setWellbeingAlertStartDate(getDate("2018-03-24"));
+        wellbeingAlertType.setWellbeingAlertStartDate(objectFactory.createWellbeingAlertTypeWellbeingAlertStartDate(getDate("2018-03-24")));
         wellbeingAlertType.setWellbeingAlertEndDate(objectFactory.createWellbeingAlertTypeWellbeingAlertEndDate(getDate("2018-04-22")));
         wellbeingAlertType.setWellbeingAlertCategory(objectFactory.createWellbeingAlertTypeWellbeingAlertCategory(AUCodeSetsWellbeingAlertCategoryType.D));
         wellbeingAlertType.setWellbeingAlertDescription(objectFactory.createWellbeingAlertTypeWellbeingAlertDescription("Danger Danger"));

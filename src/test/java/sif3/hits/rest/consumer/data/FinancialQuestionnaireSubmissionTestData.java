@@ -91,7 +91,7 @@ public class FinancialQuestionnaireSubmissionTestData extends TestData<Financial
         target.setBoardingAmount(objectFactory.createFQItemTypeBoardingAmount(new BigDecimal("2" + parentIndex + index + ".00")));
         target.setSystemAmount(objectFactory.createFQItemTypeSystemAmount(new BigDecimal("3" + parentIndex + index + ".00")));
         target.setDioceseAmount(objectFactory.createFQItemTypeDioceseAmount(new BigDecimal("4" + parentIndex + index + ".00")));
-        target.setFQComments("FQ Item Comments " + parentIndex + ":" + index);
+        target.setFQComments(objectFactory.createFQItemTypeFQComments("FQ Item Comments " + parentIndex + ":" + index));
         return target;
     }
 
@@ -111,8 +111,8 @@ public class FinancialQuestionnaireSubmissionTestData extends TestData<Financial
         target.setPositionTitle(objectFactory.createEntityContactInfoTypePositionTitle("Position"));
         target.setRegistrationDetails(objectFactory.createEntityContactInfoTypeRegistrationDetails("Registration Details"));
         target.setAddress(objectFactory.createEntityContactInfoTypeAddress(getAddress("c/- " + firstName + " " + lastName, "43 My Street")));
-        target.setEmail(objectFactory.createEntityContactInfoTypeEmail(getEmail(firstName + "." + lastName + "@not.a.real.domain")));
-        target.setPhoneNumber(objectFactory.createContactTypePhoneNumber(getPhoneNumber("98740123")));
+        target.setEmail(getEmail(firstName + "." + lastName + "@not.a.real.domain"));
+        target.setPhoneNumber(getPhoneNumber("98740123"));
         return target;
     }
 

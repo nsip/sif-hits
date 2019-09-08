@@ -32,7 +32,7 @@ public class WellbeingEventTestData extends TestData<WellbeingEventType,Wellbein
         IObjectFactory objectFactory = getObjectFactory();
         WellbeingEventType wellbeingEventType = objectFactory.createWellbeingEventType();
         wellbeingEventType.setRefId(refId);
-        wellbeingEventType.setStudentPersonalRefId(StudentPersonalTestData.REF_ID_1);
+        wellbeingEventType.setStudentPersonalRefId(objectFactory.createWellbeingEventTypeStudentPersonalRefId(StudentPersonalTestData.REF_ID_1));
         wellbeingEventType.setSchoolInfoRefId(SchoolInfoTestData.REF_ID_1);
         wellbeingEventType.setEventId(objectFactory.createWellbeingEventTypeEventId("Event Id"));
         wellbeingEventType.setWellbeingEventNotes(objectFactory.createWellbeingEventTypeWellbeingEventNotes("Notes Notes Notes"));

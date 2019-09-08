@@ -35,7 +35,7 @@ public abstract class FQBaseEntityContactAddressConverter<E extends FQBaseEntity
         target.setEffectiveToDate(objectFactory.createAddressTypeEffectiveToDate(getDateValue(source.getEffectiveToDate())));
         if (isStreetPopulated(source)) {
             AddressStreetType street = objectFactory.createAddressStreetType();
-            street.setLine1(source.getStreetLine1());
+            street.setLine1(objectFactory.createAddressStreetTypeLine1(source.getStreetLine1()));
             street.setLine2(objectFactory.createAddressStreetTypeLine2(source.getStreetLine2()));
             street.setLine3(objectFactory.createAddressStreetTypeLine3(source.getStreetLine3()));
             street.setComplex(objectFactory.createAddressStreetTypeComplex(source.getStreetComplex()));
@@ -83,7 +83,7 @@ public abstract class FQBaseEntityContactAddressConverter<E extends FQBaseEntity
 
         AddressStreetType street = source.getStreet();
         if (street != null) {
-            target.setStreetLine1(street.getLine1());
+            target.setStreetLine1(getJAXBValue(street.getLine1()));
             target.setStreetLine2(getJAXBValue(street.getLine2()));
             target.setStreetLine3(getJAXBValue(street.getLine3()));
             target.setStreetComplex(getJAXBValue(street.getComplex()));
