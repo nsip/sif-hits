@@ -67,6 +67,13 @@ public class StudentSchoolEnrollmentTestData extends TestData<StudentSchoolEnrol
         enrollment.setDestinationSchoolName(objectFactory.createStudentSchoolEnrollmentTypeDestinationSchoolName("Destination High School"));
         enrollment.setStartedAtSchoolDate(objectFactory.createStudentSchoolEnrollmentTypeStartedAtSchoolDate(getDate("2014-02-15")));
         enrollment.setInternationalStudent(objectFactory.createStudentSchoolEnrollmentTypeInternationalStudent(AUCodeSetsYesOrNoCategoryType.N));
+        
+        enrollment.setDisabilityLevelOfAdjustment(objectFactory.createStudentSchoolEnrollmentTypeDisabilityLevelOfAdjustment("QDTP"));
+        enrollment.setDisabilityCategory(objectFactory.createStudentSchoolEnrollmentTypeDisabilityCategory("Physical"));
+        enrollment.setCensusAge(objectFactory.createStudentSchoolEnrollmentTypeCensusAge(new BigDecimal("12")));
+        enrollment.setDistanceEducationStudent(objectFactory.createStudentSchoolEnrollmentTypeDistanceEducationStudent(AUCodeSetsYesOrNoCategoryType.fromValue("Y")));
+        enrollment.setBoardingStatus(objectFactory.createStudentSchoolEnrollmentTypeBoardingStatus(AUCodeSetsBoardingType.fromValue("D")));
+        
         StudentEntryContainerType entryTypeContainer = objectFactory.createStudentEntryContainerType();
         entryTypeContainer.setCode(AUCodeSetsEntryTypeType.fromValue("1821"));
         enrollment.setEntryType(objectFactory.createStudentSchoolEnrollmentTypeEntryType(entryTypeContainer));

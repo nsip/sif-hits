@@ -48,6 +48,13 @@ public class StudentSchoolEnrollment extends HitsEntity {
 	private String destinationSchool;
 	private String destinationSchoolName;
 	private String internationalStudent;
+
+	private String disabilityLevelOfAdjustment;
+	private String disabilityCategory;
+	private String censusAge;
+	private String distanceEducationStudent;
+	private String boardingStatus;
+
 	private List<StudentSubjectChoice> studentSubjectChoices;
 	private String startedAtSchoolDate;
 	private List<StudentGroup> studentGroups;
@@ -314,6 +321,46 @@ public class StudentSchoolEnrollment extends HitsEntity {
 
 	public void setPreviousSchoolName(String previousSchoolName) {
 		this.previousSchoolName = previousSchoolName;
+	}
+
+	public String getDisabilityLevelOfAdjustment() {
+		return disabilityLevelOfAdjustment;
+	}
+
+	public void setDisabilityLevelOfAdjustment(String disabilityLevelOfAdjustment) {
+		this.disabilityLevelOfAdjustment = disabilityLevelOfAdjustment;
+	}
+
+	public String getDisabilityCategory() {
+		return disabilityCategory;
+	}
+
+	public void setDisabilityCategory(String disabilityCategory) {
+		this.disabilityCategory = disabilityCategory;
+	}
+
+	public String getCensusAge() {
+		return censusAge;
+	}
+
+	public void setCensusAge(String censusAge) {
+		this.censusAge = censusAge;
+	}
+
+	public String getDistanceEducationStudent() {
+		return distanceEducationStudent;
+	}
+
+	public void setDistanceEducationStudent(String distanceEducationStudent) {
+		this.distanceEducationStudent = distanceEducationStudent;
+	}
+
+	public String getBoardingStatus() {
+		return boardingStatus;
+	}
+
+	public void setBoardingStatus(String boardingStatus) {
+		this.boardingStatus = boardingStatus;
 	}
 
 	public String getDestinationSchool() {

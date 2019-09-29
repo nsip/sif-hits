@@ -154,5 +154,10 @@
             <PermissionValue>Y</PermissionValue>
         </PublishingPermission>
     </PublishingPermissionList>
+    <DisabilityLevelOfAdjustment>QDTP</DisabilityLevelOfAdjustment>
+    <DisabilityCategory>Physical</DisabilityCategory>
+    <CensusAge>12</CensusAge>
+    <DistanceEducationStudent>Y</DistanceEducationStudent>
+    <BoardingStatus>D</BoardingStatus>
     <InternationalStudent>N</InternationalStudent>
 </StudentSchoolEnrollment>

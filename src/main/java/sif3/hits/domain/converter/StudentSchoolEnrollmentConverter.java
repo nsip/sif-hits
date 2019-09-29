@@ -58,6 +58,13 @@ public class StudentSchoolEnrollmentConverter
             target.setDestinationSchoolName(objectFactory.createStudentSchoolEnrollmentTypeDestinationSchoolName(source.getDestinationSchoolName()));
             target.setStartedAtSchoolDate(objectFactory.createStudentSchoolEnrollmentTypeStartedAtSchoolDate(getDateValue(source.getStartedAtSchoolDate())));
             target.setInternationalStudent(objectFactory.createStudentSchoolEnrollmentTypeInternationalStudent(getEnumValue(source.getInternationalStudent(), AUCodeSetsYesOrNoCategoryType.class)));
+            
+            target.setDisabilityLevelOfAdjustment(objectFactory.createStudentSchoolEnrollmentTypeDisabilityLevelOfAdjustment(source.getDisabilityLevelOfAdjustment()));
+            target.setDisabilityCategory(objectFactory.createStudentSchoolEnrollmentTypeDisabilityCategory(source.getDisabilityCategory()));
+            target.setCensusAge(objectFactory.createStudentSchoolEnrollmentTypeCensusAge(getBigDecimalValue(source.getCensusAge())));
+            target.setDistanceEducationStudent(objectFactory.createStudentSchoolEnrollmentTypeDistanceEducationStudent(getEnumValue(source.getDistanceEducationStudent(), AUCodeSetsYesOrNoCategoryType.class)));
+            target.setBoardingStatus(objectFactory.createStudentSchoolEnrollmentTypeBoardingStatus(getEnumValue(source.getBoardingStatus(), AUCodeSetsBoardingType.class)));
+            
             AUCodeSetsEntryTypeType entryType = getEnumValue(source.getEntryType(), AUCodeSetsEntryTypeType.class);
             if (entryType != null) {
                 StudentEntryContainerType entryTypeContainer = objectFactory.createStudentEntryContainerType();
@@ -184,6 +191,13 @@ public class StudentSchoolEnrollmentConverter
             target.setDestinationSchoolName(getJAXBValue(source.getDestinationSchoolName()));
             target.setStartedAtSchoolDate(getDateValue(getJAXBValue(source.getStartedAtSchoolDate())));
             target.setInternationalStudent(getJAXBEnumValue(source.getInternationalStudent()));
+            
+            target.setDisabilityLevelOfAdjustment(getJAXBValue(source.getDisabilityLevelOfAdjustment()));
+            target.setDisabilityCategory(getJAXBValue(source.getDisabilityCategory()));
+            target.setCensusAge(getBigDecimalValue(getJAXBValue(source.getCensusAge())));
+            target.setDistanceEducationStudent(getJAXBEnumValue(source.getDistanceEducationStudent()));
+            target.setBoardingStatus(getJAXBEnumValue(source.getBoardingStatus()));
+            
             StudentEntryContainerType entryTypeContainer = getJAXBValue(source.getEntryType());
             if (entryTypeContainer != null) {
                 target.setEntryType(getEnumValue(entryTypeContainer.getCode()));
