@@ -67,6 +67,7 @@ public class WellbeingEventConverter extends HitsConverter<WellbeingEventType, W
             target.setWellbeingEventTime(objectFactory.createWellbeingEventTypeWellbeingEventTime(getTimeValue(source.getWellbeingEventTime())));
             target.setWellbeingEventDescription(objectFactory.createWellbeingEventTypeWellbeingEventDescription(source.getWellbeingEventDescription()));
             target.setWellbeingEventTimePeriod(getEnumValue(source.getWellbeingEventTimePeriod(), AUCodeSetsWellbeingEventTimePeriodType.class));
+            target.setGroupIndicator(objectFactory.createWellbeingEventTypeGroupIndicator(getBooleanValue(source.getGroupIndicator())));
 
             if (hasLocationDetails(source)) {
                 WellbeingEventLocationDetailsType locationDetailsType = objectFactory.createWellbeingEventLocationDetailsType();
@@ -132,7 +133,8 @@ public class WellbeingEventConverter extends HitsConverter<WellbeingEventType, W
             target.setWellbeingEventTimePeriod(getEnumValue(source.getWellbeingEventTimePeriod()));
             target.setConfidentialFlag(getJAXBEnumValue(source.getConfidentialFlag()));
             target.setStatus(getJAXBEnumValue(source.getStatus()));
-
+            target.setGroupIndicator(getBooleanValue(getJAXBValue(source.getGroupIndicator())));
+            
             WellbeingEventLocationDetailsType wellbeingEventLocationDetailsType = getJAXBValue(source.getWellbeingEventLocationDetails());
             if (wellbeingEventLocationDetailsType != null) {
                 target.setWellbeingEventLocationDetailsEventLocation(getEnumValue(wellbeingEventLocationDetailsType.getEventLocation()));

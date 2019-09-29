@@ -1,6 +1,7 @@
 <WellbeingEvents xmlns="http://www.sifassociation.org/datamodel/au/3.4">
     <WellbeingEvent RefId="aa963553-80fa-4228-840e-137beac0bbba">
         <StudentPersonalRefId>c1deee9b-53ce-4c8f-9101-31bedf9c4836</StudentPersonalRefId>
+        <GroupIndicator>false</GroupIndicator>
         <SchoolInfoRefId>252159ce-e385-4dea-8440-26d300282781</SchoolInfoRefId>
         <EventId>Event Id</EventId>
         <WellbeingEventNotes>Notes Notes Notes</WellbeingEventNotes>
@@ -81,6 +82,7 @@
     </WellbeingEvent>
     <WellbeingEvent RefId="3b795b5e-9245-4448-8f75-e60daf59677a">
         <StudentPersonalRefId>c1deee9b-53ce-4c8f-9101-31bedf9c4836</StudentPersonalRefId>
+        <GroupIndicator>false</GroupIndicator>
         <SchoolInfoRefId>252159ce-e385-4dea-8440-26d300282781</SchoolInfoRefId>
         <EventId>Event Id</EventId>
         <WellbeingEventNotes>Notes Notes Notes</WellbeingEventNotes>

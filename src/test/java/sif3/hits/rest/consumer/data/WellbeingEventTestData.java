@@ -62,6 +62,7 @@ public class WellbeingEventTestData extends TestData<WellbeingEventType,Wellbein
         wellbeingEventType.setWellbeingEventLocationDetails(objectFactory.createWellbeingEventTypeWellbeingEventLocationDetails(locationDetailsType));
         wellbeingEventType.setConfidentialFlag(objectFactory.createWellbeingEventTypeConfidentialFlag(AUCodeSetsYesOrNoCategoryType.N));
         wellbeingEventType.setStatus(objectFactory.createWellbeingEventTypeStatus(AUCodeSetsWellbeingStatusType.R));
+        wellbeingEventType.setGroupIndicator(objectFactory.createWellbeingEventTypeGroupIndicator(Boolean.FALSE));
 
         WellbeingDocumentListType wellbeingDocumentListType = objectFactory.createWellbeingDocumentListType();
         wellbeingDocumentListType.getDocument().add(getWellbeingDocument(1));
