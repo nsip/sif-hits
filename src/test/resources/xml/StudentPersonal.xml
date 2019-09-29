@@ -86,4 +86,6 @@
         <FFPOS>2</FFPOS>
     </MostRecent>
     <ESLSupport>N</ESLSupport>
+    <PrePrimaryEducation>PrePrimaryEducation</PrePrimaryEducation>
+    <PrePrimaryEducationHours>F</PrePrimaryEducationHours>
 </StudentPersonal>

@@ -154,4 +154,5 @@
             <PermissionValue>Y</PermissionValue>
         </PublishingPermission>
     </PublishingPermissionList>
+    <InternationalStudent>N</InternationalStudent>
 </StudentSchoolEnrollment>

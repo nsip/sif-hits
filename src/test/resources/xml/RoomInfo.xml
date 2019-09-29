@@ -6,4 +6,5 @@
     <Size>29.8</Size>
     <Capacity>20</Capacity>
     <RoomType>C</RoomType>
+    <AvailableForTimetable>Y</AvailableForTimetable>
 </RoomInfo>

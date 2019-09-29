@@ -47,6 +47,7 @@
             <CalendarSummaryRefId>cd09d100-1b94-480c-905d-1d2ec95b5e87</CalendarSummaryRefId>
         </CalendarSummaryList>
         <PreviousSchoolName>Previous High School</PreviousSchoolName>
+        <AvailableForTimetable>Y</AvailableForTimetable>
     </StaffAssignment>
     <StaffAssignment RefId="cfb04779-4af4-4faf-be16-0cc26d3b24e3">
         <SchoolInfoRefId>252159ce-e385-4dea-8440-26d300282781</SchoolInfoRefId>
@@ -96,5 +97,6 @@
             <CalendarSummaryRefId>cd09d100-1b94-480c-905d-1d2ec95b5e87</CalendarSummaryRefId>
         </CalendarSummaryList>
         <PreviousSchoolName>Previous High School</PreviousSchoolName>
+        <AvailableForTimetable>Y</AvailableForTimetable>
     </StaffAssignment>
 </StaffAssignments>

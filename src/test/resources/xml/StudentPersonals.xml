@@ -87,6 +87,8 @@
             <FFPOS>2</FFPOS>
         </MostRecent>
         <ESLSupport>N</ESLSupport>
+        <PrePrimaryEducation>PrePrimaryEducation</PrePrimaryEducation>
+        <PrePrimaryEducationHours>F</PrePrimaryEducationHours>
     </StudentPersonal>
     <StudentPersonal RefId="d01d3ed4-7566-464c-be5f-cb0108b29680">
         <LocalId>student-local-id</LocalId>
@@ -176,5 +178,7 @@
             <FFPOS>2</FFPOS>
         </MostRecent>
         <ESLSupport>N</ESLSupport>
+        <PrePrimaryEducation>PrePrimaryEducation</PrePrimaryEducation>
+        <PrePrimaryEducationHours>F</PrePrimaryEducationHours>
     </StudentPersonal>
 </StudentPersonals>
