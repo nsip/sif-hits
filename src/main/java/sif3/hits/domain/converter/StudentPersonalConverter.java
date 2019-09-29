@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import sif.dd.au30.model.AUCodeSetsAustralianStandardClassificationOfLanguagesASCLType;
+import sif.dd.au30.model.AUCodeSetsBoardingType;
 import sif.dd.au30.model.AUCodeSetsEmploymentTypeType;
 import sif.dd.au30.model.AUCodeSetsFFPOSStatusCodeType;
 import sif.dd.au30.model.AUCodeSetsNonSchoolEducationType;
@@ -110,7 +111,14 @@ public class StudentPersonalConverter extends HitsConverter<StudentPersonalType,
 				testLevel.setCode(getEnumValue(source.getMostRecentTestLevel(), AUCodeSetsYearLevelCodeType.class));
 				mostRecent.setTestLevel(objectFactory.createStudentMostRecentContainerTypeTestLevel(testLevel));
 			}
-
+			
+			mostRecent.setOtherSchoolName(objectFactory.createStudentMostRecentContainerTypeOtherSchoolName(source.getMostRecentOtherSchoolName()));
+			mostRecent.setDisabilityLevelOfAdjustment(objectFactory.createStudentMostRecentContainerTypeDisabilityLevelOfAdjustment(source.getMostRecentDisabilityLevelOfAdjustment()));
+			mostRecent.setDisabilityCategory(objectFactory.createStudentMostRecentContainerTypeDisabilityCategory(source.getMostRecentDisabilityCategory()));
+			mostRecent.setCensusAge(objectFactory.createStudentMostRecentContainerTypeCensusAge(getBigDecimalValue(source.getMostRecentCensusAge())));
+			mostRecent.setDistanceEducationStudent(objectFactory.createStudentMostRecentContainerTypeDistanceEducationStudent(getEnumValue(source.getMostRecentDistanceEducationStudent(), AUCodeSetsYesOrNoCategoryType.class)));
+			mostRecent.setBoardingStatus(objectFactory.createStudentMostRecentContainerTypeBoardingStatus(getEnumValue(source.getMostRecentBoardingStatus(), AUCodeSetsBoardingType.class)));
+			
 			target.setMostRecent(objectFactory.createStudentPersonalTypeMostRecent(mostRecent));
 
 			target.setOfflineDelivery(objectFactory.createStudentPersonalTypeOfflineDelivery(
@@ -186,7 +194,14 @@ public class StudentPersonalConverter extends HitsConverter<StudentPersonalType,
 						getJAXBValue(mostRecent.getOtherEnrollmentSchoolACARAId()));
 				target.setMostRecentFFPOS(getJAXBEnumValue(mostRecent.getFFPOS()));
 				target.setMostRecentReportingSchool(getJAXBValue(mostRecent.getReportingSchoolId()));
-
+				
+				target.setMostRecentOtherSchoolName(getJAXBValue(mostRecent.getOtherSchoolName()));
+				target.setMostRecentDisabilityLevelOfAdjustment(getJAXBValue(mostRecent.getDisabilityLevelOfAdjustment()));
+				target.setMostRecentDisabilityCategory(getJAXBValue(mostRecent.getDisabilityCategory()));
+				target.setMostRecentCensusAge(getBigDecimalValue(getJAXBValue(mostRecent.getCensusAge())));
+				target.setMostRecentDistanceEducationStudent(getJAXBEnumValue(mostRecent.getDistanceEducationStudent()));
+				target.setMostRecentBoardingStatus(getJAXBEnumValue(mostRecent.getBoardingStatus()));
+				
 				YearLevelType testLevel = getJAXBValue(mostRecent.getTestLevel());
 				if (testLevel != null) {
 					target.setMostRecentTestLevel(getEnumValue(testLevel.getCode()));

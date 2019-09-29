@@ -58,6 +58,14 @@ public class StudentPersonal extends HitsEntity implements StudentPerson, Addres
 	private String mostRecentFFPOS;
 	private String mostRecentReportingSchool;
 	private String mostRecentTestLevel;
+	
+	private String mostRecentOtherSchoolName;
+	private String mostRecentDisabilityLevelOfAdjustment;
+	private String mostRecentDisabilityCategory;
+	private String mostRecentCensusAge;
+	private String mostRecentDistanceEducationStudent;
+	private String mostRecentBoardingStatus;
+	
 	private String offlineDelivery;
 	private String educationSupport;
 	private String homeSchooledStudent;
@@ -435,6 +443,60 @@ public class StudentPersonal extends HitsEntity implements StudentPerson, Addres
 
 	public void setMostRecentTestLevel(String mostRecentTestLevel) {
 		this.mostRecentTestLevel = mostRecentTestLevel;
+	}
+	
+	@Column(name = "MostRecent_OtherSchoolName")
+	public String getMostRecentOtherSchoolName() {
+		return mostRecentOtherSchoolName;
+	}
+
+	public void setMostRecentOtherSchoolName(String mostRecentOtherSchoolName) {
+		this.mostRecentOtherSchoolName = mostRecentOtherSchoolName;
+	}
+
+	@Column(name = "MostRecent_DisabilityLevelOfAdjustment")
+	public String getMostRecentDisabilityLevelOfAdjustment() {
+		return mostRecentDisabilityLevelOfAdjustment;
+	}
+
+	public void setMostRecentDisabilityLevelOfAdjustment(String mostRecentDisabilityLevelOfAdjustment) {
+		this.mostRecentDisabilityLevelOfAdjustment = mostRecentDisabilityLevelOfAdjustment;
+	}
+	
+	@Column(name = "MostRecent_DisabilityCategory")
+	public String getMostRecentDisabilityCategory() {
+		return mostRecentDisabilityCategory;
+	}
+
+	public void setMostRecentDisabilityCategory(String mostRecentDisabilityCategory) {
+		this.mostRecentDisabilityCategory = mostRecentDisabilityCategory;
+	}
+
+	@Column(name = "MostRecent_CensusAge")
+	public String getMostRecentCensusAge() {
+		return mostRecentCensusAge;
+	}
+
+	public void setMostRecentCensusAge(String mostRecentCensusAge) {
+		this.mostRecentCensusAge = mostRecentCensusAge;
+	}
+
+	@Column(name = "MostRecent_DistanceEducationStudent")
+	public String getMostRecentDistanceEducationStudent() {
+		return mostRecentDistanceEducationStudent;
+	}
+
+	public void setMostRecentDistanceEducationStudent(String mostRecentDistanceEducationStudent) {
+		this.mostRecentDistanceEducationStudent = mostRecentDistanceEducationStudent;
+	}
+
+	@Column(name = "MostRecent_BoardingStatus")
+	public String getMostRecentBoardingStatus() {
+		return mostRecentBoardingStatus;
+	}
+
+	public void setMostRecentBoardingStatus(String mostRecentBoardingStatus) {
+		this.mostRecentBoardingStatus = mostRecentBoardingStatus;
 	}
 
 	public String getOfflineDelivery() {

@@ -7,6 +7,7 @@ import sif3.common.model.QueryPredicate;
 import sif3.hits.service.PersonalStudentIdService;
 import sif3.hits.utils.RefIdGenerator;
 
+import java.math.BigDecimal;
 import java.util.*;
 
 public class StudentPersonalTestData extends TestData<StudentPersonalType, StudentPersonalCollectionType> {
@@ -71,6 +72,14 @@ public class StudentPersonalTestData extends TestData<StudentPersonalType, Stude
         mostRecent.setParent2EmploymentType(objectFactory.createStudentMostRecentContainerTypeParent2EmploymentType(AUCodeSetsEmploymentTypeType.fromValue("2")));
         mostRecent.setFFPOS(objectFactory.createStudentMostRecentContainerTypeFFPOS(AUCodeSetsFFPOSStatusCodeType.fromValue("2")));
         mostRecent.setTestLevel(objectFactory.createStudentMostRecentContainerTypeTestLevel(yearLevel));
+        
+		mostRecent.setOtherSchoolName(objectFactory.createStudentMostRecentContainerTypeOtherSchoolName("Other School Name"));
+		mostRecent.setDisabilityLevelOfAdjustment(objectFactory.createStudentMostRecentContainerTypeDisabilityLevelOfAdjustment("Supplementary"));
+		mostRecent.setDisabilityCategory(objectFactory.createStudentMostRecentContainerTypeDisabilityCategory("Sensory"));
+		mostRecent.setCensusAge(objectFactory.createStudentMostRecentContainerTypeCensusAge(new BigDecimal("10")));
+		mostRecent.setDistanceEducationStudent(objectFactory.createStudentMostRecentContainerTypeDistanceEducationStudent(AUCodeSetsYesOrNoCategoryType.fromValue("Y")));
+		mostRecent.setBoardingStatus(objectFactory.createStudentMostRecentContainerTypeBoardingStatus(AUCodeSetsBoardingType.fromValue("D")));
+        
         studentPersonalType.setMostRecent(objectFactory.createStudentPersonalTypeMostRecent(mostRecent));
 
         PersonInfoType personInfo = new PersonInfoType();

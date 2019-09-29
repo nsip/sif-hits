@@ -84,6 +84,12 @@
             <Code>3</Code>
         </TestLevel>
         <FFPOS>2</FFPOS>
+        <OtherSchoolName>Other School Name</OtherSchoolName>
+        <DisabilityLevelOfAdjustment>Supplementary</DisabilityLevelOfAdjustment>
+        <DisabilityCategory>Sensory</DisabilityCategory>
+        <CensusAge>10</CensusAge>
+        <DistanceEducationStudent>Y</DistanceEducationStudent>
+        <BoardingStatus>D</BoardingStatus>
     </MostRecent>
     <ESLSupport>N</ESLSupport>
     <PrePrimaryEducation>PrePrimaryEducation</PrePrimaryEducation>
