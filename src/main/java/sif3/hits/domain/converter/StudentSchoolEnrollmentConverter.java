@@ -57,7 +57,7 @@ public class StudentSchoolEnrollmentConverter
             target.setDestinationSchool(objectFactory.createStudentSchoolEnrollmentTypeDestinationSchool(source.getDestinationSchool()));
             target.setDestinationSchoolName(objectFactory.createStudentSchoolEnrollmentTypeDestinationSchoolName(source.getDestinationSchoolName()));
             target.setStartedAtSchoolDate(objectFactory.createStudentSchoolEnrollmentTypeStartedAtSchoolDate(getDateValue(source.getStartedAtSchoolDate())));
-
+            target.setInternationalStudent(objectFactory.createStudentSchoolEnrollmentTypeInternationalStudent(getEnumValue(source.getInternationalStudent(), AUCodeSetsYesOrNoCategoryType.class)));
             AUCodeSetsEntryTypeType entryType = getEnumValue(source.getEntryType(), AUCodeSetsEntryTypeType.class);
             if (entryType != null) {
                 StudentEntryContainerType entryTypeContainer = objectFactory.createStudentEntryContainerType();
@@ -183,7 +183,7 @@ public class StudentSchoolEnrollmentConverter
             target.setDestinationSchool(getJAXBValue(source.getDestinationSchool()));
             target.setDestinationSchoolName(getJAXBValue(source.getDestinationSchoolName()));
             target.setStartedAtSchoolDate(getDateValue(getJAXBValue(source.getStartedAtSchoolDate())));
-
+            target.setInternationalStudent(getJAXBEnumValue(source.getInternationalStudent()));
             StudentEntryContainerType entryTypeContainer = getJAXBValue(source.getEntryType());
             if (entryTypeContainer != null) {
                 target.setEntryType(getEnumValue(entryTypeContainer.getCode()));

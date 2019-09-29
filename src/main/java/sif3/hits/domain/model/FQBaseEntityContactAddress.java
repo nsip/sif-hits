@@ -34,6 +34,7 @@ public abstract class FQBaseEntityContactAddress extends HitsEntity {
     private String mapReferenceType;
     private String mapReferenceXCoordinate;
     private String mapReferenceYCoordinate;
+    private String mapReferenceMapNumber;
     private String radioContact;
     private String community;
     private String localId;
@@ -274,7 +275,16 @@ public abstract class FQBaseEntityContactAddress extends HitsEntity {
     public void setMapReferenceYCoordinate(String mapReferenceYCoordinate) {
         this.mapReferenceYCoordinate = mapReferenceYCoordinate;
     }
+    
+    @Column(name = "MapReference_MapNumber")
+    public String getMapReferenceMapNumber() {
+        return mapReferenceMapNumber;
+    }
 
+    public void setMapReferenceMapNumber(String mapReferenceMapNumber) {
+        this.mapReferenceMapNumber = mapReferenceMapNumber;
+    }
+    
     public String getRadioContact() {
         return radioContact;
     }

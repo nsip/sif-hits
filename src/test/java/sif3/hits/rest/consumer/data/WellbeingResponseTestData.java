@@ -91,6 +91,7 @@ public class WellbeingResponseTestData extends TestData<WellbeingResponseType, W
             suspensionType.setResolutionNotes(objectFactory.createSuspensionContainerTypeResolutionNotes("Suspended"));
             suspensionType.setEarlyReturnDate(objectFactory.createSuspensionContainerTypeEarlyReturnDate(getDate("2018-03-11")));
             suspensionType.setStatus(objectFactory.createSuspensionContainerTypeStatus(AUCodeSetsWellbeingStatusType.O));
+            suspensionType.setSuspensionNotes(objectFactory.createSuspensionContainerTypeSuspensionNotes("Notes regarding the suspension"));
 
             WithdrawalType withdrawalType1 = objectFactory.createWithdrawalType();
             withdrawalType1.setScheduledActivityRefId(objectFactory.createWithdrawalTypeScheduledActivityRefId(ScheduledActivityTestData.REF_ID_1));

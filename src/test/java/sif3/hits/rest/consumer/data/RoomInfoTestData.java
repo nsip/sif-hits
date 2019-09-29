@@ -1,5 +1,6 @@
 package sif3.hits.rest.consumer.data;
 
+import sif.dd.au30.model.AUCodeSetsYesOrNoCategoryType;
 import sif.dd.au30.model.RoomInfoCollectionType;
 import sif.dd.au30.model.RoomInfoType;
 import sif3.hits.domain.converter.factory.IObjectFactory;
@@ -45,6 +46,7 @@ public class RoomInfoTestData extends TestData<RoomInfoType, RoomInfoCollectionT
         roomInfo.setSize(objectFactory.createRoomInfoTypeSize(new BigDecimal(SIZE)));
         roomInfo.setRoomType(objectFactory.createRoomInfoTypeRoomType(TYPE));
         roomInfo.setLocalId(objectFactory.createRoomInfoTypeLocalId(LOCAL_ID));
+        roomInfo.setAvailableForTimetable(objectFactory.createRoomInfoTypeAvailableForTimetable(AUCodeSetsYesOrNoCategoryType.Y));
         return roomInfo;
     }
 

@@ -2,6 +2,7 @@ package sif3.hits.domain.converter;
 
 import org.springframework.stereotype.Component;
 
+import sif.dd.au30.model.AUCodeSetsYesOrNoCategoryType;
 import sif.dd.au30.model.RoomInfoType;
 import sif3.hits.domain.converter.factory.IObjectFactory;
 import sif3.hits.domain.model.RoomInfo;
@@ -25,6 +26,7 @@ public class RoomInfoConverter extends HitsConverter<RoomInfoType, RoomInfo> {
       target.setCapacity(objectFactory.createRoomInfoTypeCapacity(getLongValue(source.getCapacity())));
       target.setSize(objectFactory.createRoomInfoTypeSize(getBigDecimalValue(source.getRoomSize())));
       target.setRoomType(objectFactory.createRoomInfoTypeRoomType(source.getRoomType()));
+      target.setAvailableForTimetable(objectFactory.createRoomInfoTypeAvailableForTimetable(getEnumValue(source.getAvailableForTimetable(), AUCodeSetsYesOrNoCategoryType.class)));
     }
   }
 
@@ -39,6 +41,7 @@ public class RoomInfoConverter extends HitsConverter<RoomInfoType, RoomInfo> {
       target.setRoomSize(getBigDecimalValue(getJAXBValue(source.getSize())));
       target.setRoomType(getJAXBValue(source.getRoomType()));
       target.setSchoolInfoRefId(source.getSchoolInfoRefId());
+      target.setAvailableForTimetable(getJAXBEnumValue(source.getAvailableForTimetable()));
     }
   }
 }

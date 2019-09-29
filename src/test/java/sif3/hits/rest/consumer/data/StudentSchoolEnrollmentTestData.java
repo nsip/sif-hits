@@ -66,7 +66,7 @@ public class StudentSchoolEnrollmentTestData extends TestData<StudentSchoolEnrol
         enrollment.setDestinationSchool(objectFactory.createStudentSchoolEnrollmentTypeDestinationSchool("570eeaef-41a7-4686-bec4-0a87b080e2c4"));
         enrollment.setDestinationSchoolName(objectFactory.createStudentSchoolEnrollmentTypeDestinationSchoolName("Destination High School"));
         enrollment.setStartedAtSchoolDate(objectFactory.createStudentSchoolEnrollmentTypeStartedAtSchoolDate(getDate("2014-02-15")));
-
+        enrollment.setInternationalStudent(objectFactory.createStudentSchoolEnrollmentTypeInternationalStudent(AUCodeSetsYesOrNoCategoryType.N));
         StudentEntryContainerType entryTypeContainer = objectFactory.createStudentEntryContainerType();
         entryTypeContainer.setCode(AUCodeSetsEntryTypeType.fromValue("1821"));
         enrollment.setEntryType(objectFactory.createStudentSchoolEnrollmentTypeEntryType(entryTypeContainer));

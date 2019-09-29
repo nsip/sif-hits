@@ -34,7 +34,7 @@ public class WellbeingEvent extends HitsEntity {
     private List<WellbeingEventCategory> categories;
     private List<WellbeingEventPersonInvolvement> personInvolvements;
     private List<WellbeingEventFollowUpAction> followUpActions;
-
+    
     @Id
     public String getRefId() {
         return refId;

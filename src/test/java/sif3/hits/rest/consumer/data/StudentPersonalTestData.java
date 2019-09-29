@@ -110,6 +110,9 @@ public class StudentPersonalTestData extends TestData<StudentPersonalType, Stude
         personInfo.setAddressList(objectFactory.createPersonInfoTypeAddressList(addresses));
         studentPersonalType.setPersonInfo(personInfo);
         studentPersonalType.setStateProvinceId(objectFactory.createStudentPersonalTypeStateProvinceId("W123456789"));
+        
+        studentPersonalType.setPrePrimaryEducation(objectFactory.createStudentPersonalTypePrePrimaryEducation("PrePrimaryEducation"));
+        studentPersonalType.setPrePrimaryEducationHours(objectFactory.createStudentPersonalTypePrePrimaryEducationHours(AUCodeSetsPrePrimaryHoursType.F));
 
         OtherIdListType otherIdList = new OtherIdListType();
         OtherIdType otherId = new OtherIdType();

@@ -46,7 +46,8 @@ public class StaffAssignmentTestData extends TestData<StaffAssignmentType, Staff
         staffAssignment.setHomegroup(objectFactory.createStaffAssignmentTypeHomegroup("Home Group"));
         staffAssignment.setHouse(objectFactory.createStaffAssignmentTypeHouse("House"));
         staffAssignment.setPreviousSchoolName(objectFactory.createStaffAssignmentTypePreviousSchoolName("Previous High School"));
-
+        staffAssignment.setAvailableForTimetable(objectFactory.createStaffAssignmentTypeAvailableForTimetable(AUCodeSetsYesOrNoCategoryType.Y));
+        
         if (REF_ID_5.equals(refId)) {
             staffAssignment.setStaffPersonalRefId(StaffPersonalTestData.REF_ID_5);
         }

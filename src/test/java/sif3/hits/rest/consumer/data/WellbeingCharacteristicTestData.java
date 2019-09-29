@@ -46,6 +46,17 @@ public class WellbeingCharacteristicTestData extends TestData<WellbeingCharacter
         wellbeingCharacteristicType.setConfidentialFlag(objectFactory.createWellbeingCharacteristicTypeConfidentialFlag(AUCodeSetsYesOrNoCategoryType.N));
         wellbeingCharacteristicType.setAlert(objectFactory.createWellbeingCharacteristicTypeAlert(AUCodeSetsYesOrNoCategoryType.N));
 
+        int symptomCount = 1;
+        int refIdListIndex = REF_ID_LIST.indexOf(refId);
+        int xmlRefIdListIndex = XML_REF_ID_LIST.indexOf(refId);
+        int listIndex = Math.max(refIdListIndex, xmlRefIdListIndex);
+        if (listIndex >= 0) symptomCount = listIndex;
+        SymptomListType symptomList = objectFactory.createSymptomListType();
+        for (int i = 0; i < symptomCount; i++) {
+        	wellbeingCharacteristicType.setSymptomList(objectFactory.createWellbeingCharacteristicTypeSymptomList(symptomList));
+        	symptomList.getSymptom().add("Symptom " + i);
+        }
+        
         WellbeingDocumentListType wellbeingDocumentListType = objectFactory.createWellbeingDocumentListType();
         wellbeingCharacteristicType.setDocumentList(objectFactory.createWellbeingCharacteristicTypeDocumentList(wellbeingDocumentListType));
         MedicationListType medicationListType = objectFactory.createMedicationListType();

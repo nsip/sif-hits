@@ -75,6 +75,7 @@ public class WellbeingResponseConverter extends HitsConverter<WellbeingResponseT
                 suspensionType.setResolutionNotes(objectFactory.createSuspensionContainerTypeResolutionNotes(source.getSuspensionResolutionNotes()));
                 suspensionType.setEarlyReturnDate(objectFactory.createSuspensionContainerTypeEarlyReturnDate(getDateValue(source.getSuspensionEarlyReturnDate())));
                 suspensionType.setStatus(objectFactory.createSuspensionContainerTypeStatus(getEnumValue(source.getSuspensionStatus(), AUCodeSetsWellbeingStatusType.class)));
+                suspensionType.setSuspensionNotes(objectFactory.createSuspensionContainerTypeSuspensionNotes(source.getSuspensionNotes()));
 
                 if (source.getSuspensionWithdawalTimes() != null && !source.getSuspensionWithdawalTimes().isEmpty()) {
                     List<WithdrawalType> withdrawalTimes = suspensionWithdrawalTimeConverter.toSifModelList(source.getSuspensionWithdawalTimes());
@@ -168,6 +169,7 @@ public class WellbeingResponseConverter extends HitsConverter<WellbeingResponseT
                 target.setSuspensionResolutionNotes(getJAXBValue(suspensionType.getResolutionNotes()));
                 target.setSuspensionEarlyReturnDate(getDateValue(getJAXBValue(suspensionType.getEarlyReturnDate())));
                 target.setSuspensionStatus(getJAXBEnumValue(suspensionType.getStatus()));
+                target.setSuspensionNotes(getJAXBValue(suspensionType.getSuspensionNotes()));
 
                 WithdrawalTimeListType withdrawalTimeList = getJAXBValue(suspensionType.getWithdrawalTimeList());
                 if (withdrawalTimeList != null && !withdrawalTimeList.getWithdrawal().isEmpty()) {
@@ -314,7 +316,7 @@ public class WellbeingResponseConverter extends HitsConverter<WellbeingResponseT
         return source != null && (StringUtils.isNotBlank(source.getSuspensionCategory()) || StringUtils.isNotBlank(source.getSuspensionDuration())
                 || StringUtils.isNotBlank(source.getSuspensionAdvisementDate()) || StringUtils.isNotBlank(source.getSuspensionResolutionMeetingTime())
                 || StringUtils.isNotBlank(source.getSuspensionResolutionNotes()) || StringUtils.isNotBlank(source.getSuspensionEarlyReturnDate())
-                || StringUtils.isNotBlank(source.getSuspensionStatus()) || StringUtils.isNotBlank(source.getSuspensionAdvisementDate())
+                || StringUtils.isNotBlank(source.getSuspensionStatus()) || StringUtils.isNotBlank(source.getSuspensionAdvisementDate()) || StringUtils.isNotBlank(source.getSuspensionNotes())
                 || (source.getSuspensionWithdawalTimes() != null && !source.getSuspensionWithdawalTimes().isEmpty()));
     }
 }
