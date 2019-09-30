@@ -16,11 +16,13 @@ PROVIDER_CLASSES="provider.classes="
 for PROVIDER in "${PROVIDERS[@]}"; do
    if [ -z "$PROVIDER_CONFIG" ]; then
       PROVIDER_CONFIG="$PROVIDER_CLASSES"
-   else
+   elsif [ ! -z "${PROVIDER}" ]; then
       PROVIDER_CONFIG="${PROVIDER_CONFIG},"
    fi
-   if [ "$PROVIDER" != "HitsBaseProvider" ] && [ "$PROVIDER" != "AUDataModelProvider" ]; then
+   if [ "$PROVIDER" != "HitsBaseProvider" ] && [ "$PROVIDER" != "AUDataModelProvider" ] && [ ! -z "${PROVIDER}" ]; then
       PROVIDER_CONFIG="${PROVIDER_CONFIG}${PROVIDER}"
+   else
+      PROVIDER=""
    fi
 done
 sed -i 's/^provider.classes=.*//' ${SIF_HOME}/providers/HitsProvider.properties
