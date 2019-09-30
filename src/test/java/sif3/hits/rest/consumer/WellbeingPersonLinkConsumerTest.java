@@ -1,21 +1,22 @@
 package sif3.hits.rest.consumer;
 
+import static sif3.hits.rest.consumer.data.WellbeingPersonLinkTestData.XML_REF_ID_1;
+import static sif3.hits.rest.consumer.data.WellbeingPersonLinkTestData.XML_REF_ID_RA;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
+
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.experimental.categories.Category;
+
 import sif.dd.au30.model.WellbeingPersonLinkCollectionType;
 import sif.dd.au30.model.WellbeingPersonLinkType;
 import sif3.hits.rest.consumer.category.InitialiseData;
 import sif3.hits.rest.consumer.category.IntegrationTest;
 import sif3.hits.rest.consumer.data.WellbeingPersonLinkTestData;
 import sif3.infra.rest.consumer.ConsumerLoader;
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
-
-import static sif3.hits.rest.consumer.data.WellbeingPersonLinkTestData.XML_REF_ID_1;
-import static sif3.hits.rest.consumer.data.WellbeingPersonLinkTestData.XML_REF_ID_RA;
 
 public class WellbeingPersonLinkConsumerTest extends BaseTest<WellbeingPersonLinkType, WellbeingPersonLinkCollectionType> {
     private ConsumerTest<WellbeingPersonLinkType, WellbeingPersonLinkCollectionType> wellbeingPersonLinkTester = null;
@@ -81,6 +82,12 @@ public class WellbeingPersonLinkConsumerTest extends BaseTest<WellbeingPersonLin
     @Category(IntegrationTest.class)
     public void testCreateDelete() {
         super.testCreateDelete(XML_REF_ID_1);
+    }
+    
+    @Test
+    @Category(IntegrationTest.class)
+    public void testCreateDeleteMany() {
+        super.testCreateDeleteMany(XML_REF_ID_RA);
     }
 
     @Test

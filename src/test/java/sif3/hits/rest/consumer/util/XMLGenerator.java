@@ -55,6 +55,7 @@ public class XMLGenerator {
         generateTestXML(path, new WellbeingPersonLinkTestData(), WellbeingPersonLinkTestData.XML_REF_ID_1, WellbeingPersonLinkTestData.XML_REF_ID_2);
         generateTestXML(path, new WellbeingResponseTestData(), WellbeingResponseTestData.XML_REF_ID_1, WellbeingResponseTestData.XML_REF_ID_2);
         generateTestXML(path, new AGStatusReportTestData(), AGStatusReportTestData.XML_REF_ID_1, AGStatusReportTestData.XML_REF_ID_2);
+        generateTestXML(path, new AGAddressCollectionSubmissionTestData(), AGAddressCollectionSubmissionTestData.XML_REF_ID_1, AGAddressCollectionSubmissionTestData.XML_REF_ID_2);
         generateTestXML(path, new FinancialQuestionnaireSubmissionTestData(), FinancialQuestionnaireSubmissionTestData.XML_REF_ID_1, FinancialQuestionnaireSubmissionTestData.XML_REF_ID_2);
     }
 
