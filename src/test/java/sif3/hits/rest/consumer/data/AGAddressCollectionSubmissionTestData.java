@@ -55,7 +55,7 @@ public class AGAddressCollectionSubmissionTestData
 
 		AddressCollectionReportingListType addressCollectionReportingListType = objectFactory
 				.createAddressCollectionReportingListType();
-		for (int i = 0; i < 5; i++) {
+		for (int i = 0; i < 2; i++) {
 			addressCollectionReportingListType.getAddressCollectionReporting()
 					.add(getAddressCollectionReporting(i, refId));
 		}
@@ -96,7 +96,7 @@ public class AGAddressCollectionSubmissionTestData
 
 		AddressCollectionStudentListType addressCollectionStudentListType = objectFactory
 				.createAddressCollectionStudentListType();
-		for (int i = 0; i < 5; i++) {
+		for (int i = 0; i < 2; i++) {
 			addressCollectionStudentListType.getAddressCollectionStudent().add(getAddressCollectionStudent(index, i));
 		}
 		addressCollectionReportingType.setAddressCollectionStudentList(objectFactory
