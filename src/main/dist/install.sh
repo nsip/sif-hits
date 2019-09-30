@@ -25,7 +25,7 @@ for PROVIDER in "${PROVIDERS[@]}"; do
 done
 sed -i 's/^provider.classes=.*//' ${SIF_HOME}/providers/HitsProvider.properties
 echo "${PROVIDER_CONFIG}" >> ${SIF_HOME}/providers/HitsProvider.properties
-echo Installing maven dependencies (required for testing)
+echo "Installing maven dependencies (required for testing)"
 mvn -q install:install-file -Dfile=dist/sif3-common-${sif3.framework.version}.jar
 mvn -q install:install-file -Dfile=dist/sif3-infra-common-${sif3.framework.version}.jar
 mvn -q install:install-file -Dfile=dist/sif3-infra-model-${sif3.framework.version}.jar
