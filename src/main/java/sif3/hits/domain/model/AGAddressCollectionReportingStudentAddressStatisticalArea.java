@@ -13,7 +13,7 @@ public class AGAddressCollectionReportingStudentAddressStatisticalArea extends F
     private AGAddressCollectionReportingStudentAddress address;
 
     @ManyToOne(optional = false)
-    @JoinColumn(name = "AGAddressCS_Student_Address_Id", referencedColumnName = "Id")
+    @JoinColumn(name = "AGAddressCR_Student_Address_Id", referencedColumnName = "Id")
     public AGAddressCollectionReportingStudentAddress getAddress() {
         return address;
     }

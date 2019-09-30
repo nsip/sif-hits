@@ -42,7 +42,7 @@ public class AGAddressCollectionReporting extends HitsEntity {
     }
 
 	@ManyToOne
-	@JoinColumn(name = "AGAddressCollectionSubmission_RefId")
+	@JoinColumn(name = "AGAddressCS_RefId")
 	public AGAddressCollectionSubmission getAgAddressCollectionSubmission() {
 		return agAddressCollectionSubmission;
 	}

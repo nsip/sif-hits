@@ -12,7 +12,7 @@ public class AGAddressCollectionReportingEntityContactAddress extends FQBaseEnti
     private List<AGAddressCollectionReportingEntityContactAddressStatisticalArea> statisticalAreas;
 
     @ManyToOne(optional = false)
-    @JoinColumn(name = "AGAddressCS_EntityContact_Id", referencedColumnName = "Id")
+    @JoinColumn(name = "AGAddressCR_EntityContact_Id", referencedColumnName = "Id")
     public AGAddressCollectionReportingEntityContact getEntityContact() {
         return entityContact;
     }

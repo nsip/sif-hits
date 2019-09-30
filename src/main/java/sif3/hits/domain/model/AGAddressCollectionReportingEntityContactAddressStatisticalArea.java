@@ -13,7 +13,7 @@ public class AGAddressCollectionReportingEntityContactAddressStatisticalArea ext
     private AGAddressCollectionReportingEntityContactAddress address;
 
     @ManyToOne(optional = false)
-    @JoinColumn(name = "AGAddressCS_EntityContact_Address_Id", referencedColumnName = "Id")
+    @JoinColumn(name = "AGAddressCR_EntityContact_Address_Id", referencedColumnName = "Id")
     public AGAddressCollectionReportingEntityContactAddress getAddress() {
         return address;
     }

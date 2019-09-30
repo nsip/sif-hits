@@ -1,5 +1,6 @@
 package sif3.hits.domain.converter;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -77,8 +78,14 @@ public class AGAddressCollectionReportingConverter
 			if (addressCollectionReportingEntityContact != null) {
 				addressCollectionReportingEntityContact.setAgAddressCollectionReporting(target);
 				target.setEntityContact(addressCollectionReportingEntityContact);
+			} else {
+				target.setEntityContact(null);
 			}
 
+			if (target.getAddressCollectionStudentList() == null) {
+				target.setAddressCollectionStudentList(new ArrayList<AGAddressCollectionReportingStudent>());
+			}
+			target.getAddressCollectionStudentList().clear();
 			AddressCollectionStudentListType addressCollectionStudentListType = getJAXBValue(
 					source.getAddressCollectionStudentList());
 			if (addressCollectionStudentListType != null) {

@@ -11,7 +11,7 @@ public class AGAddressCollectionReportingEntityContactName extends FQBaseEntityC
     private AGAddressCollectionReportingEntityContact entityContact;
 
     @ManyToOne(optional = false)
-    @JoinColumn(name = "AGAddressCS_EntityContact_Id", referencedColumnName = "Id")
+    @JoinColumn(name = "AGAddressCR_EntityContact_Id", referencedColumnName = "Id")
     public AGAddressCollectionReportingEntityContact getEntityContact() {
         return entityContact;
     }

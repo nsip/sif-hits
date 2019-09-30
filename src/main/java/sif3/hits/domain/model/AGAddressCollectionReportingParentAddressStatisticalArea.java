@@ -13,7 +13,7 @@ public class AGAddressCollectionReportingParentAddressStatisticalArea extends FQ
     private AGAddressCollectionReportingParentAddress address;
 
     @ManyToOne(optional = false)
-    @JoinColumn(name = "AGAddressCS_Parent_Address_Id", referencedColumnName = "Id")
+    @JoinColumn(name = "AGAddressCR_Parent_Address_Id", referencedColumnName = "Id")
     public AGAddressCollectionReportingParentAddress getAddress() {
         return address;
     }
