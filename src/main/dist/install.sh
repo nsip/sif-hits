@@ -21,7 +21,7 @@ for PROVIDER in "${PROVIDERS[@]}"; do
    if [ "$PROVIDER" != "HitsBaseProvider" ] && [ "$PROVIDER" != "AUDataModelProvider" ]; then
       PROVIDER_CONFIG="${PROVIDER_CONFIG}${PREFIX}${PROVIDER}"
       PREFIX=","
-   fi
+/va   fi
 done
 sed -i 's/^provider.classes=.*//' ${SIF_HOME}/providers/HitsProvider.properties
 echo "${PROVIDER_CONFIG}" >> ${SIF_HOME}/providers/HitsProvider.properties

@@ -12,7 +12,8 @@ cd $DIR/..
 echo "Backing up test resources"
 cp -R ${DIR}/../src/test/resources ${DIR}/../src/test/resbak
 echo "Copying resources from sif home"
-cp -R ${SIF_HOME}/*.properties ${DIR}/../src/test/resources
+cp -R ${SIF_HOME}/environment.properties ${DIR}/../src/test/resources/
+cp -R ${SIF_HOME}/log4j.properties ${DIR}/../src/test/resources/
 cp ${SIF_HOME}/consumers/TestConsumer.properties ${DIR}/../src/test/resources/TestConsumer.properties
 cat ${SIF_HOME}/hibernate/sif3infra.hibernate.properties | grep -v c3p0 >  ${DIR}/../src/test/resources/sif3infra.hibernate.properties
 sed -i 's/^log4j.appender.file.*//' ${DIR}/../src/test/resources/log4j.properties
