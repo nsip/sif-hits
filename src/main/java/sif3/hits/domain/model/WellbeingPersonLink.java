@@ -119,7 +119,7 @@ public class WellbeingPersonLink extends HitsEntity {
 		this.personRole = personRole;
 	}
 
-	@OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "wellbeingEvent")
+	@OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "wellbeingPersonLink")
 	public List<WellbeingPersonLinkFollowUpAction> getFollowUpActions() {
 		return followUpActions;
 	}

@@ -106,7 +106,7 @@ public class AGAddressCollectionReportingStudent extends HitsEntity {
 		return parents;
 	}
 
-	public void setParentes(List<AGAddressCollectionReportingParent> parents) {
+	public void setParents(List<AGAddressCollectionReportingParent> parents) {
 		this.parents = parents;
 	}
 

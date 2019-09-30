@@ -7,6 +7,8 @@ import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Transient;
@@ -17,6 +19,7 @@ public class AGAddressCollectionReportingParent extends HitsEntity {
 	private static final long serialVersionUID = -5885672220749833387L;
 
 	private Long id;
+	private AGAddressCollectionReportingStudent student;
 	private Integer parentNumber;
 	private String addressSameAsStudent;
 
@@ -31,6 +34,16 @@ public class AGAddressCollectionReportingParent extends HitsEntity {
 
 	public void setId(Long id) {
 		this.id = id;
+	}
+	
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "AGAddressCR_Student_Id", referencedColumnName = "Id")
+	public AGAddressCollectionReportingStudent getStudent() {
+		return student;
+	}
+	
+	public void setStudent(AGAddressCollectionReportingStudent student) {
+		this.student = student;
 	}
 
 	public Integer getParentNumber() {

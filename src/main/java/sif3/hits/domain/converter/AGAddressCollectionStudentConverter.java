@@ -9,7 +9,9 @@ import sif.dd.au30.model.AUCodeSetsEducationLevelType;
 import sif.dd.au30.model.AddressCollectionStudentType;
 import sif.dd.au30.model.AddressType;
 import sif3.hits.domain.converter.factory.IObjectFactory;
+import sif3.hits.domain.model.AGAddressCollectionReportingParent;
 import sif3.hits.domain.model.AGAddressCollectionReportingStudent;
+import sif3.hits.domain.model.AGAddressCollectionReportingStudentAddress;
 import sif3.hits.utils.UsesConstants;
 
 @Component
@@ -59,9 +61,28 @@ public class AGAddressCollectionStudentConverter extends
 			target.setLocalId(source.getLocalId());
 			target.setEducationLevel(getEnumValue(source.getEducationLevel()));
 			target.setBoardingStatus(getJAXBEnumValue(source.getBoardingStatus()));
-			target.setAddress(addressConverter.toHitsModel(source.getStudentAddress()));
-			target.setParent1(parentConverter.toHitsModel(source.getParent1()));
-			target.setParent2(parentConverter.toHitsModel(getJAXBValue(source.getParent2())));
+			AGAddressCollectionReportingStudentAddress address = addressConverter
+					.toHitsModel(source.getStudentAddress());
+			if (address != null) {
+				address.setStudent(target);
+				target.setAddress(address);
+			} else {
+				target.setAddress(null);
+			}
+			AGAddressCollectionReportingParent parent1 = parentConverter.toHitsModel(source.getParent1());
+			if (parent1 != null) {
+				parent1.setStudent(target);
+				target.setParent1(parent1);
+			} else {
+				target.setParent1(null);
+			}
+			AGAddressCollectionReportingParent parent2 = parentConverter.toHitsModel(getJAXBValue(source.getParent2()));
+			if (parent2 != null) {
+				parent2.setStudent(target);
+				target.setParent2(parent2);
+			} else {
+				target.setParent2(null);
+			}
 		}
 	}
 

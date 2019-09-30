@@ -3,6 +3,7 @@ package sif3.hits.domain.converter;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import sif.dd.au30.model.AddressCollectionReportingType;
 import sif.dd.au30.model.AddressCollectionStudentListType;
@@ -13,6 +14,7 @@ import sif3.hits.domain.model.AGAddressCollectionReportingEntityContact;
 import sif3.hits.domain.model.AGAddressCollectionReportingStudent;
 import sif3.hits.utils.UsesConstants;
 
+@Component
 public class AGAddressCollectionReportingConverter
 		extends HitsConverter<AddressCollectionReportingType, AGAddressCollectionReporting> implements UsesConstants {
 
