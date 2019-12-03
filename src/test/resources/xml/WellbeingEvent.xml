@@ -1,5 +1,6 @@
 <WellbeingEvent RefId="aa963553-80fa-4228-840e-137beac0bbba" xmlns="http://www.sifassociation.org/datamodel/au/3.4">
     <StudentPersonalRefId>c1deee9b-53ce-4c8f-9101-31bedf9c4836</StudentPersonalRefId>
+    <GroupIndicator>false</GroupIndicator>
     <SchoolInfoRefId>252159ce-e385-4dea-8440-26d300282781</SchoolInfoRefId>
     <EventId>Event Id</EventId>
     <WellbeingEventNotes>Notes Notes Notes</WellbeingEventNotes>

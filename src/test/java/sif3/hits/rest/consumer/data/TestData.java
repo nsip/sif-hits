@@ -96,7 +96,7 @@ public abstract class TestData<T, C> implements UsesConstants {
             street.setStreetNumber(objectFactory.createAddressStreetTypeStreetNumber(inputOne));
             street.setStreetName(objectFactory.createAddressStreetTypeStreetName(inputTwo));
         } else {
-            street.setLine1(inputOne);
+            street.setLine1(objectFactory.createAddressStreetTypeLine1(inputOne));
             street.setLine2(objectFactory.createAddressStreetTypeLine2(inputTwo));
         }
         address.setStreet(street);
@@ -181,5 +181,13 @@ public abstract class TestData<T, C> implements UsesConstants {
 
     protected static IObjectFactory getObjectFactory() {
         return ObjectFactory.getInstance();
+    }
+
+    public <E> E getValue(E[] values, int index) {
+        E result = null;
+        if (values != null && values.length > 0) {
+            result = values[index % values.length];
+        }
+        return result;
     }
 }

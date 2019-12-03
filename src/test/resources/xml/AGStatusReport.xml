@@ -14,7 +14,7 @@
             <ErrorText>Error 1</ErrorText>
             <CommonwealthId>cid-1</CommonwealthId>
             <EntityName>Entity Name 1</EntityName>
-            <AGSubmissionStatusCode>status-1</AGSubmissionStatusCode>
+            <AGSubmissionStatusCode>In Progress</AGSubmissionStatusCode>
             <AGRuleList>
                 <AGRule>
                     <AGRuleCode>code-1-1</AGRuleCode>
@@ -37,7 +37,7 @@
             <ErrorText>Error 2</ErrorText>
             <CommonwealthId>cid-2</CommonwealthId>
             <EntityName>Entity Name 2</EntityName>
-            <AGSubmissionStatusCode>status-2</AGSubmissionStatusCode>
+            <AGSubmissionStatusCode>Declaration Pending</AGSubmissionStatusCode>
             <AGRuleList>
                 <AGRule>
                     <AGRuleCode>code-2-1</AGRuleCode>

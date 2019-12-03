@@ -1,18 +1,21 @@
 package sif3.hits.domain.converter;
 
+import java.util.ArrayList;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import sif.dd.au30.model.*;
+import sif.dd.au30.model.AUCodeSetsPictureSourceType;
+import sif.dd.au30.model.AUCodeSetsYesOrNoCategoryType;
+import sif.dd.au30.model.PersonPictureType;
 import sif.dd.au30.model.PersonPictureType.ParentObjectRefId;
 import sif.dd.au30.model.PersonPictureType.PictureSource;
+import sif.dd.au30.model.PublishingPermissionListType;
+import sif.dd.au30.model.PublishingPermissionType;
 import sif3.hits.domain.converter.factory.IObjectFactory;
 import sif3.hits.domain.model.PersonPicture;
 import sif3.hits.domain.model.PersonPicturePublishingPermission;
-import sif3.hits.domain.model.StudentSchoolEnrollmentPublishingPermission;
 import sif3.hits.utils.UsesConstants;
-
-import java.util.ArrayList;
 
 @Component
 public class PersonPictureConverter extends HitsConverter<PersonPictureType, PersonPicture> implements UsesConstants {

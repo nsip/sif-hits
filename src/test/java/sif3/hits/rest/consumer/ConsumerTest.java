@@ -306,7 +306,7 @@ public class ConsumerTest<S, M> {
                                 L.debug("Data Object Response " + i + ": " + testConsumer.getMarshaller().marshalToXML(((Response) response).getDataObject()));
                             } else if (BulkOperationResponse.class.isAssignableFrom(response.getClass())) {
                                 L.debug("Bulk Operation Response " + i + ":");
-                                BulkOperationResponse<?> bor = (BulkOperationResponse) response;
+                                BulkOperationResponse<?> bor = (BulkOperationResponse<?>) response;
                                 List<?> statuss = bor.getOperationStatuses();
                                 for (Object status : statuss) {
                                     if (OperationStatus.class.isAssignableFrom(status.getClass())) {

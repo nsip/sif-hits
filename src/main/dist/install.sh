@@ -12,20 +12,20 @@ echo Updating Provider environment template
 cp ${DIR}/../config/environments/provider/template/direct/HITS.xml ${SIF_HOME}/environments/provider/template/direct/HITS.xml
 echo Updating Provider properties
 PROVIDER_CONFIG=""
+PREFIX=""
 PROVIDER_CLASSES="provider.classes="
 for PROVIDER in "${PROVIDERS[@]}"; do
    if [ -z "$PROVIDER_CONFIG" ]; then
       PROVIDER_CONFIG="$PROVIDER_CLASSES"
-   else
-      PROVIDER_CONFIG="${PROVIDER_CONFIG},"
    fi
    if [ "$PROVIDER" != "HitsBaseProvider" ] && [ "$PROVIDER" != "AUDataModelProvider" ]; then
-      PROVIDER_CONFIG="${PROVIDER_CONFIG}${PROVIDER}"
+      PROVIDER_CONFIG="${PROVIDER_CONFIG}${PREFIX}${PROVIDER}"
+      PREFIX=","
    fi
 done
 sed -i 's/^provider.classes=.*//' ${SIF_HOME}/providers/HitsProvider.properties
 echo "${PROVIDER_CONFIG}" >> ${SIF_HOME}/providers/HitsProvider.properties
-echo Installing maven dependencies (required for testing)
+echo "Installing maven dependencies (required for testing)"
 mvn -q install:install-file -Dfile=dist/sif3-common-${sif3.framework.version}.jar
 mvn -q install:install-file -Dfile=dist/sif3-infra-common-${sif3.framework.version}.jar
 mvn -q install:install-file -Dfile=dist/sif3-infra-model-${sif3.framework.version}.jar

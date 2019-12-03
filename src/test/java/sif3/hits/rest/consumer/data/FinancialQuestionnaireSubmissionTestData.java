@@ -1,13 +1,23 @@
 package sif3.hits.rest.consumer.data;
 
-import sif.dd.au30.model.*;
-import sif3.hits.domain.converter.factory.IObjectFactory;
-import sif3.hits.domain.model.FQContextualQuestion;
-import sif3.hits.utils.RefIdGenerator;
-
 import java.math.BigDecimal;
 import java.util.Arrays;
 import java.util.List;
+
+import sif.dd.au30.model.AGRuleListType;
+import sif.dd.au30.model.AUCodeSetsYesOrNoCategoryType;
+import sif.dd.au30.model.EntityContactInfoType;
+import sif.dd.au30.model.FQContextualQuestionListType;
+import sif.dd.au30.model.FQContextualQuestionType;
+import sif.dd.au30.model.FQItemListType;
+import sif.dd.au30.model.FQItemType;
+import sif.dd.au30.model.FQReportingListType;
+import sif.dd.au30.model.FQReportingType;
+import sif.dd.au30.model.FinancialQuestionnaireSubmissionCollectionType;
+import sif.dd.au30.model.FinancialQuestionnaireSubmissionType;
+import sif.dd.au30.model.SoftwareVendorInfoContainerType;
+import sif3.hits.domain.converter.factory.IObjectFactory;
+import sif3.hits.utils.RefIdGenerator;
 
 public class FinancialQuestionnaireSubmissionTestData extends TestData<FinancialQuestionnaireSubmissionType, FinancialQuestionnaireSubmissionCollectionType> {
 
@@ -91,7 +101,7 @@ public class FinancialQuestionnaireSubmissionTestData extends TestData<Financial
         target.setBoardingAmount(objectFactory.createFQItemTypeBoardingAmount(new BigDecimal("2" + parentIndex + index + ".00")));
         target.setSystemAmount(objectFactory.createFQItemTypeSystemAmount(new BigDecimal("3" + parentIndex + index + ".00")));
         target.setDioceseAmount(objectFactory.createFQItemTypeDioceseAmount(new BigDecimal("4" + parentIndex + index + ".00")));
-        target.setFQComments("FQ Item Comments " + parentIndex + ":" + index);
+        target.setFQComments(objectFactory.createFQItemTypeFQComments("FQ Item Comments " + parentIndex + ":" + index));
         return target;
     }
 
@@ -111,8 +121,8 @@ public class FinancialQuestionnaireSubmissionTestData extends TestData<Financial
         target.setPositionTitle(objectFactory.createEntityContactInfoTypePositionTitle("Position"));
         target.setRegistrationDetails(objectFactory.createEntityContactInfoTypeRegistrationDetails("Registration Details"));
         target.setAddress(objectFactory.createEntityContactInfoTypeAddress(getAddress("c/- " + firstName + " " + lastName, "43 My Street")));
-        target.setEmail(objectFactory.createEntityContactInfoTypeEmail(getEmail(firstName + "." + lastName + "@not.a.real.domain")));
-        target.setPhoneNumber(objectFactory.createContactTypePhoneNumber(getPhoneNumber("98740123")));
+        target.setEmail(getEmail(firstName + "." + lastName + "@not.a.real.domain"));
+        target.setPhoneNumber(getPhoneNumber("98740123"));
         return target;
     }
 

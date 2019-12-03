@@ -25,7 +25,7 @@ public class WellbeingAlertConverter extends HitsConverter<WellbeingAlertType, W
             target.setStudentPersonalRefId(source.getStudentPersonalRefId());
             target.setSchoolInfoRefId(source.getSchoolInfoRefId());
             target.setDate(getDateValue(source.getAlertDate()));
-            target.setWellbeingAlertStartDate(getDateValue(source.getStartDate()));
+            target.setWellbeingAlertStartDate(objectFactory.createWellbeingAlertTypeWellbeingAlertStartDate(getDateValue(source.getStartDate())));
             target.setWellbeingAlertEndDate(objectFactory.createWellbeingAlertTypeWellbeingAlertEndDate(getDateValue(source.getEndDate())));
             target.setWellbeingAlertCategory(
                     objectFactory.createWellbeingAlertTypeWellbeingAlertCategory(getEnumValue(source.getCategory(), AUCodeSetsWellbeingAlertCategoryType.class)));
@@ -45,7 +45,7 @@ public class WellbeingAlertConverter extends HitsConverter<WellbeingAlertType, W
             target.setStudentPersonalRefId(source.getStudentPersonalRefId());
             target.setSchoolInfoRefId(source.getSchoolInfoRefId());
             target.setAlertDate(getDateValue(source.getDate()));
-            target.setStartDate(getDateValue(source.getWellbeingAlertStartDate()));
+            target.setStartDate(getDateValue(getJAXBValue(source.getWellbeingAlertStartDate())));
             target.setEndDate(getDateValue(getJAXBValue(source.getWellbeingAlertEndDate())));
             target.setCategory(getJAXBEnumValue(source.getWellbeingAlertCategory()));
             target.setDescription(getJAXBValue(source.getWellbeingAlertDescription()));

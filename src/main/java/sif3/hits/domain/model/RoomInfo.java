@@ -6,80 +6,89 @@ import javax.persistence.Id;
 
 @Entity
 public class RoomInfo extends HitsEntity {
-  private static final long serialVersionUID = 2358081905724634269L;
+	private static final long serialVersionUID = 2358081905724634269L;
 
-  private String refId;
-  private String localId;
-  private String schoolInfoRefId;
-  private String roomNumber;
-  private String description;
-  private String capacity;
-  private String roomSize;
-  private String roomType;
+	private String refId;
+	private String localId;
+	private String schoolInfoRefId;
+	private String roomNumber;
+	private String description;
+	private String capacity;
+	private String roomSize;
+	private String roomType;
+	private String availableForTimetable;
 
-  @Id
-  public String getRefId() {
-    return refId;
-  }
+	@Id
+	public String getRefId() {
+		return refId;
+	}
 
-  public void setRefId(String refId) {
-    this.refId = refId;
-  }
+	public void setRefId(String refId) {
+		this.refId = refId;
+	}
 
-  public String getLocalId() {
-    return localId;
-  }
+	public String getLocalId() {
+		return localId;
+	}
 
-  public void setLocalId(String localId) {
-    this.localId = localId;
-  }
+	public void setLocalId(String localId) {
+		this.localId = localId;
+	}
 
-  @Column(name = "SchoolInfo_RefId")
-  public String getSchoolInfoRefId() {
-    return schoolInfoRefId;
-  }
+	@Column(name = "SchoolInfo_RefId")
+	public String getSchoolInfoRefId() {
+		return schoolInfoRefId;
+	}
 
-  public void setSchoolInfoRefId(String schoolInfoRefId) {
-    this.schoolInfoRefId = schoolInfoRefId;
-  }
+	public void setSchoolInfoRefId(String schoolInfoRefId) {
+		this.schoolInfoRefId = schoolInfoRefId;
+	}
 
-  public String getRoomNumber() {
-    return roomNumber;
-  }
+	public String getRoomNumber() {
+		return roomNumber;
+	}
 
-  public void setRoomNumber(String roomNumber) {
-    this.roomNumber = roomNumber;
-  }
+	public void setRoomNumber(String roomNumber) {
+		this.roomNumber = roomNumber;
+	}
 
-  public String getDescription() {
-    return description;
-  }
+	public String getDescription() {
+		return description;
+	}
 
-  public void setDescription(String description) {
-    this.description = description;
-  }
+	public void setDescription(String description) {
+		this.description = description;
+	}
 
-  public String getCapacity() {
-    return capacity;
-  }
+	public String getCapacity() {
+		return capacity;
+	}
 
-  public void setCapacity(String capacity) {
-    this.capacity = capacity;
-  }
+	public void setCapacity(String capacity) {
+		this.capacity = capacity;
+	}
 
-  public String getRoomSize() {
-    return roomSize;
-  }
+	public String getRoomSize() {
+		return roomSize;
+	}
 
-  public void setRoomSize(String roomSize) {
-    this.roomSize = roomSize;
-  }
+	public void setRoomSize(String roomSize) {
+		this.roomSize = roomSize;
+	}
 
-  public String getRoomType() {
-    return roomType;
-  }
+	public String getRoomType() {
+		return roomType;
+	}
 
-  public void setRoomType(String roomType) {
-    this.roomType = roomType;
-  }
+	public void setRoomType(String roomType) {
+		this.roomType = roomType;
+	}
+
+	public String getAvailableForTimetable() {
+		return availableForTimetable;
+	}
+
+	public void setAvailableForTimetable(String availableForTimetable) {
+		this.availableForTimetable = availableForTimetable;
+	}
 }

@@ -30,6 +30,7 @@
             <Religion>
                 <Code>0001</Code>
             </Religion>
+            <InterpreterRequired>N</InterpreterRequired>
         </Demographics>
         <AddressList>
             <Address Type="0123" Role="012B">
@@ -83,6 +84,14 @@
             <Code>3</Code>
         </TestLevel>
         <FFPOS>2</FFPOS>
+        <OtherSchoolName>Other School Name</OtherSchoolName>
+        <DisabilityLevelOfAdjustment>Supplementary</DisabilityLevelOfAdjustment>
+        <DisabilityCategory>Sensory</DisabilityCategory>
+        <CensusAge>10</CensusAge>
+        <DistanceEducationStudent>Y</DistanceEducationStudent>
+        <BoardingStatus>D</BoardingStatus>
     </MostRecent>
     <ESLSupport>N</ESLSupport>
+    <PrePrimaryEducation>PrePrimaryEducation</PrePrimaryEducation>
+    <PrePrimaryEducationHours>F</PrePrimaryEducationHours>
 </StudentPersonal>

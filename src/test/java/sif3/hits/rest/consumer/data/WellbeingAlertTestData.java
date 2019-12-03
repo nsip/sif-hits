@@ -1,17 +1,14 @@
 package sif3.hits.rest.consumer.data;
 
-import sif.dd.au30.model.AUCodeSetsWellbeingAlertCategoryType;
-import sif.dd.au30.model.AUCodeSetsYesOrNoCategoryType;
-import sif.dd.au30.model.WellbeingAlertType;
-import sif.dd.au30.model.WellbeingAlertCollectionType;
-
-import sif3.hits.domain.converter.factory.IObjectFactory;
-import sif3.hits.rest.consumer.SchoolInfoConsumerTest;
-import sif3.hits.rest.consumer.WellbeingAlertConsumerTest;
-import sif3.hits.utils.RefIdGenerator;
-
 import java.util.Arrays;
 import java.util.List;
+
+import sif.dd.au30.model.AUCodeSetsWellbeingAlertCategoryType;
+import sif.dd.au30.model.AUCodeSetsYesOrNoCategoryType;
+import sif.dd.au30.model.WellbeingAlertCollectionType;
+import sif.dd.au30.model.WellbeingAlertType;
+import sif3.hits.domain.converter.factory.IObjectFactory;
+import sif3.hits.utils.RefIdGenerator;
 
 public class WellbeingAlertTestData extends TestData<WellbeingAlertType,WellbeingAlertCollectionType> {
 
@@ -37,7 +34,7 @@ public class WellbeingAlertTestData extends TestData<WellbeingAlertType,Wellbein
         wellbeingAlertType.setStudentPersonalRefId(StudentPersonalTestData.REF_ID_1);
         wellbeingAlertType.setSchoolInfoRefId(SchoolInfoTestData.REF_ID_1);
         wellbeingAlertType.setDate(getDate("2018-03-23"));
-        wellbeingAlertType.setWellbeingAlertStartDate(getDate("2018-03-24"));
+        wellbeingAlertType.setWellbeingAlertStartDate(objectFactory.createWellbeingAlertTypeWellbeingAlertStartDate(getDate("2018-03-24")));
         wellbeingAlertType.setWellbeingAlertEndDate(objectFactory.createWellbeingAlertTypeWellbeingAlertEndDate(getDate("2018-04-22")));
         wellbeingAlertType.setWellbeingAlertCategory(objectFactory.createWellbeingAlertTypeWellbeingAlertCategory(AUCodeSetsWellbeingAlertCategoryType.D));
         wellbeingAlertType.setWellbeingAlertDescription(objectFactory.createWellbeingAlertTypeWellbeingAlertDescription("Danger Danger"));

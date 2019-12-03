@@ -36,7 +36,7 @@ public abstract class FQBaseEntityContactConverter<E extends FQBaseEntityContact
                 EmailType emailType = objectFactory.createEmailType();
                 emailType.setType(getEnumValue(source.getEmailType(), AUCodeSetsEmailTypeType.class));
                 emailType.setValue(source.getEmail());
-                target.setEmail(objectFactory.createEntityContactInfoTypeEmail(emailType));
+                target.setEmail(emailType);
             }
             if (StringUtils.isNotBlank(source.getPhoneNumber()) || StringUtils.isNotBlank(source.getPhoneNumberType()) || StringUtils.isNotBlank(source.getPhoneNumberExtension())
                     || StringUtils.isNotBlank(source.getPhoneNumberListedStatus()) || StringUtils.isNotBlank(source.getPhoneNumberPreference())) {
@@ -47,7 +47,7 @@ public abstract class FQBaseEntityContactConverter<E extends FQBaseEntityContact
                 phoneNumberType
                         .setListedStatus(objectFactory.createPhoneNumberTypeListedStatus(getEnumValue(source.getPhoneNumberListedStatus(), AUCodeSetsYesOrNoCategoryType.class)));
                 phoneNumberType.setPreference(objectFactory.createPhoneNumberTypePreference(getLongValue(source.getPhoneNumberPreference())));
-                target.setPhoneNumber(objectFactory.createContactTypePhoneNumber(phoneNumberType));
+                target.setPhoneNumber(phoneNumberType);
             }
         }
     }
@@ -60,13 +60,13 @@ public abstract class FQBaseEntityContactConverter<E extends FQBaseEntityContact
         target.setQualifications(getJAXBValue(source.getQualifications()));
         target.setPositionTitle(getJAXBValue(source.getPositionTitle()));
 
-        EmailType emailType = getJAXBValue(source.getEmail());
+        EmailType emailType =source.getEmail();
         if (emailType != null) {
             target.setEmail(emailType.getValue());
             target.setEmailType(getEnumValue(emailType.getType()));
         }
 
-        PhoneNumberType phoneNumberType = getJAXBValue(source.getPhoneNumber());
+        PhoneNumberType phoneNumberType = source.getPhoneNumber();
         if (phoneNumberType != null) {
             target.setPhoneNumber(phoneNumberType.getNumber());
             target.setPhoneNumberExtension(getJAXBValue(phoneNumberType.getExtension()));

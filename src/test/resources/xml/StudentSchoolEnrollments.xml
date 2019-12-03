@@ -155,6 +155,12 @@
                 <PermissionValue>Y</PermissionValue>
             </PublishingPermission>
         </PublishingPermissionList>
+        <DisabilityLevelOfAdjustment>QDTP</DisabilityLevelOfAdjustment>
+        <DisabilityCategory>Physical</DisabilityCategory>
+        <CensusAge>12</CensusAge>
+        <DistanceEducationStudent>Y</DistanceEducationStudent>
+        <BoardingStatus>D</BoardingStatus>
+        <InternationalStudent>N</InternationalStudent>
     </StudentSchoolEnrollment>
     <StudentSchoolEnrollment RefId="49c9c9bf-57db-4ff8-b13c-a93f40b9fa11">
         <StudentPersonalRefId>e651310e-2427-45d3-80b7-0003e36001c4</StudentPersonalRefId>
@@ -312,5 +318,11 @@
                 <PermissionValue>Y</PermissionValue>
             </PublishingPermission>
         </PublishingPermissionList>
+        <DisabilityLevelOfAdjustment>QDTP</DisabilityLevelOfAdjustment>
+        <DisabilityCategory>Physical</DisabilityCategory>
+        <CensusAge>12</CensusAge>
+        <DistanceEducationStudent>Y</DistanceEducationStudent>
+        <BoardingStatus>D</BoardingStatus>
+        <InternationalStudent>N</InternationalStudent>
     </StudentSchoolEnrollment>
 </StudentSchoolEnrollments>

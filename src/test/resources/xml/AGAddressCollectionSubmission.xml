@@ -1,0 +1,381 @@
+<AGAddressCollectionSubmission RefId="a43e5136-1acd-4f7a-88c5-d5f85ec7d07d" xmlns="http://www.sifassociation.org/datamodel/au/3.4">
+    <AddressCollectionYear>2019</AddressCollectionYear>
+    <ReportingAuthority>ReportingAuthority</ReportingAuthority>
+    <ReportingAuthoritySystem>ReportingSystem</ReportingAuthoritySystem>
+    <ReportingAuthorityCommonwealthId>CommonwealthId</ReportingAuthorityCommonwealthId>
+    <SystemSubmission>Y</SystemSubmission>
+    <SoftwareVendorInfo>
+        <SoftwareProduct>HITS</SoftwareProduct>
+        <SoftwareVersion>v2.9.0</SoftwareVersion>
+    </SoftwareVendorInfo>
+    <SubmissionContact>
+        <Name Type="LGL">
+            <Title>Mr</Title>
+            <FamilyName>Submission</FamilyName>
+            <GivenName>Address</GivenName>
+            <MiddleName>Collection</MiddleName>
+            <PreferredFamilyName>Submission</PreferredFamilyName>
+            <PreferredGivenName>Address</PreferredGivenName>
+            <FullName>Mr Address Collection Submission</FullName>
+        </Name>
+        <PositionTitle>Position</PositionTitle>
+        <Role>Role</Role>
+        <RegistrationDetails>Registration Details</RegistrationDetails>
+        <Qualifications>Qualifications</Qualifications>
+        <Address Type="0123" Role="012B">
+            <Street>
+                <Line1>c/- Address Submission</Line1>
+                <Line2>43 My Street</Line2>
+            </Street>
+            <City>Perth</City>
+            <StateProvince>WA</StateProvince>
+            <PostalCode>6000</PostalCode>
+            <GridLocation>
+                <Latitude>-31.952693</Latitude>
+                <Longitude>115.871971</Longitude>
+            </GridLocation>
+        </Address>
+        <Email Type="06">Address.Submission@not.a.real.domain</Email>
+        <PhoneNumber Type="0096">
+            <Number>98740123</Number>
+        </PhoneNumber>
+    </SubmissionContact>
+    <AddressCollectionComments>Address Collection Comments</AddressCollectionComments>
+    <AddressCollectionReportingList>
+        <AddressCollectionReporting>
+            <AddressCollectionRefId>a43e5136-1acd-5f7a-88c5-d5f85ec7d07d</AddressCollectionRefId>
+            <EntityLevel>Entity Level 0</EntityLevel>
+            <SchoolInfoRefId>252159ce-e385-4dea-8440-26d300282781</SchoolInfoRefId>
+            <LocalId>Local Id 0</LocalId>
+            <StateProvinceId>State Id 0</StateProvinceId>
+            <CommonwealthId>Commonwealth Id 0</CommonwealthId>
+            <ACARAId>ACARA Id 0</ACARAId>
+            <EntityName>Entity Name 0</EntityName>
+            <EntityContact>
+                <Name Type="LGL">
+                    <Title>Ms</Title>
+                    <FamilyName>Reporting</FamilyName>
+                    <GivenName>Address</GivenName>
+                    <MiddleName>Collection 0</MiddleName>
+                    <PreferredFamilyName>Reporting</PreferredFamilyName>
+                    <PreferredGivenName>Address</PreferredGivenName>
+                    <FullName>Ms Address Collection 0 Reporting</FullName>
+                </Name>
+                <PositionTitle>Position</PositionTitle>
+                <Role>Role</Role>
+                <RegistrationDetails>Registration Details</RegistrationDetails>
+                <Qualifications>Qualifications</Qualifications>
+                <Address Type="0123" Role="012B">
+                    <Street>
+                        <Line1>c/- Address Reporting</Line1>
+                        <Line2>43 My Street</Line2>
+                    </Street>
+                    <City>Perth</City>
+                    <StateProvince>WA</StateProvince>
+                    <PostalCode>6000</PostalCode>
+                    <GridLocation>
+                        <Latitude>-31.952693</Latitude>
+                        <Longitude>115.871971</Longitude>
+                    </GridLocation>
+                </Address>
+                <Email Type="06">Address.Reporting@not.a.real.domain</Email>
+                <PhoneNumber Type="0096">
+                    <Number>98740123</Number>
+                </PhoneNumber>
+            </EntityContact>
+            <AddressCollectionStudentList>
+                <AddressCollectionStudent>
+                    <LocalId>Local Id - 0 - 0</LocalId>
+                    <EducationLevel>Primary</EducationLevel>
+                    <BoardingStatus>D</BoardingStatus>
+                    <StudentAddress Type="0123" Role="012B">
+                        <Street>
+                            <Line1>100 Some St</Line1>
+                            <Line2>Some Suburb</Line2>
+                        </Street>
+                        <City>Perth</City>
+                        <StateProvince>WA</StateProvince>
+                        <PostalCode>6000</PostalCode>
+                        <GridLocation>
+                            <Latitude>-31.952693</Latitude>
+                            <Longitude>115.871971</Longitude>
+                        </GridLocation>
+                    </StudentAddress>
+                    <Parent1>
+                        <ParentName Type="LGL">
+                            <Title>Ms</Title>
+                            <FamilyName>Smith</FamilyName>
+                            <GivenName>Parent</GivenName>
+                            <MiddleName>Number 001</MiddleName>
+                            <PreferredFamilyName>Smith</PreferredFamilyName>
+                            <PreferredGivenName>Parent</PreferredGivenName>
+                            <FullName>Ms Parent Number 001 Smith</FullName>
+                        </ParentName>
+                        <AddressSameAsStudent>N</AddressSameAsStudent>
+                        <ParentAddress Type="0123" Role="012B">
+                            <Street>
+                                <Line1>1001 Some St</Line1>
+                                <Line2>Some Suburb</Line2>
+                            </Street>
+                            <City>Perth</City>
+                            <StateProvince>WA</StateProvince>
+                            <PostalCode>6000</PostalCode>
+                            <GridLocation>
+                                <Latitude>-31.952693</Latitude>
+                                <Longitude>115.871971</Longitude>
+                            </GridLocation>
+                        </ParentAddress>
+                    </Parent1>
+                    <Parent2>
+                        <ParentName Type="LGL">
+                            <Title>Mr</Title>
+                            <FamilyName>Smith</FamilyName>
+                            <GivenName>Parent</GivenName>
+                            <MiddleName>Number 002</MiddleName>
+                            <PreferredFamilyName>Smith</PreferredFamilyName>
+                            <PreferredGivenName>Parent</PreferredGivenName>
+                            <FullName>Mr Parent Number 002 Smith</FullName>
+                        </ParentName>
+                        <AddressSameAsStudent>N</AddressSameAsStudent>
+                        <ParentAddress Type="0123" Role="012B">
+                            <Street>
+                                <Line1>1002 Some St</Line1>
+                                <Line2>Some Suburb</Line2>
+                            </Street>
+                            <City>Perth</City>
+                            <StateProvince>WA</StateProvince>
+                            <PostalCode>6000</PostalCode>
+                            <GridLocation>
+                                <Latitude>-31.952693</Latitude>
+                                <Longitude>115.871971</Longitude>
+                            </GridLocation>
+                        </ParentAddress>
+                    </Parent2>
+                </AddressCollectionStudent>
+                <AddressCollectionStudent>
+                    <LocalId>Local Id - 0 - 1</LocalId>
+                    <EducationLevel>Primary</EducationLevel>
+                    <BoardingStatus>D</BoardingStatus>
+                    <StudentAddress Type="0123" Role="012B">
+                        <Street>
+                            <Line1>101 Some St</Line1>
+                            <Line2>Some Suburb</Line2>
+                        </Street>
+                        <City>Perth</City>
+                        <StateProvince>WA</StateProvince>
+                        <PostalCode>6000</PostalCode>
+                        <GridLocation>
+                            <Latitude>-31.952693</Latitude>
+                            <Longitude>115.871971</Longitude>
+                        </GridLocation>
+                    </StudentAddress>
+                    <Parent1>
+                        <ParentName Type="LGL">
+                            <Title>Ms</Title>
+                            <FamilyName>Smith</FamilyName>
+                            <GivenName>Parent</GivenName>
+                            <MiddleName>Number 011</MiddleName>
+                            <PreferredFamilyName>Smith</PreferredFamilyName>
+                            <PreferredGivenName>Parent</PreferredGivenName>
+                            <FullName>Ms Parent Number 011 Smith</FullName>
+                        </ParentName>
+                        <AddressSameAsStudent>N</AddressSameAsStudent>
+                        <ParentAddress Type="0123" Role="012B">
+                            <Street>
+                                <Line1>1011 Some St</Line1>
+                                <Line2>Some Suburb</Line2>
+                            </Street>
+                            <City>Perth</City>
+                            <StateProvince>WA</StateProvince>
+                            <PostalCode>6000</PostalCode>
+                            <GridLocation>
+                                <Latitude>-31.952693</Latitude>
+                                <Longitude>115.871971</Longitude>
+                            </GridLocation>
+                        </ParentAddress>
+                    </Parent1>
+                    <Parent2>
+                        <ParentName Type="LGL">
+                            <Title>Mr</Title>
+                            <FamilyName>Smith</FamilyName>
+                            <GivenName>Parent</GivenName>
+                            <MiddleName>Number 012</MiddleName>
+                            <PreferredFamilyName>Smith</PreferredFamilyName>
+                            <PreferredGivenName>Parent</PreferredGivenName>
+                            <FullName>Mr Parent Number 012 Smith</FullName>
+                        </ParentName>
+                        <AddressSameAsStudent>N</AddressSameAsStudent>
+                        <ParentAddress Type="0123" Role="012B">
+                            <Street>
+                                <Line1>1012 Some St</Line1>
+                                <Line2>Some Suburb</Line2>
+                            </Street>
+                            <City>Perth</City>
+                            <StateProvince>WA</StateProvince>
+                            <PostalCode>6000</PostalCode>
+                            <GridLocation>
+                                <Latitude>-31.952693</Latitude>
+                                <Longitude>115.871971</Longitude>
+                            </GridLocation>
+                        </ParentAddress>
+                    </Parent2>
+                </AddressCollectionStudent>
+            </AddressCollectionStudentList>
+        </AddressCollectionReporting>
+        <AddressCollectionReporting>
+            <AddressCollectionRefId>a43e5136-1acd-6f7a-88c5-d5f85ec7d07d</AddressCollectionRefId>
+            <EntityLevel>Entity Level 1</EntityLevel>
+            <SchoolInfoRefId>252159ce-e385-4dea-8440-26d300282781</SchoolInfoRefId>
+            <LocalId>Local Id 1</LocalId>
+            <StateProvinceId>State Id 1</StateProvinceId>
+            <CommonwealthId>Commonwealth Id 1</CommonwealthId>
+            <ACARAId>ACARA Id 1</ACARAId>
+            <EntityName>Entity Name 1</EntityName>
+            <EntityContact>
+                <Name Type="LGL">
+                    <Title>Ms</Title>
+                    <FamilyName>Reporting</FamilyName>
+                    <GivenName>Address</GivenName>
+                    <MiddleName>Collection 1</MiddleName>
+                    <PreferredFamilyName>Reporting</PreferredFamilyName>
+                    <PreferredGivenName>Address</PreferredGivenName>
+                    <FullName>Ms Address Collection 1 Reporting</FullName>
+                </Name>
+                <PositionTitle>Position</PositionTitle>
+                <Role>Role</Role>
+                <RegistrationDetails>Registration Details</RegistrationDetails>
+                <Qualifications>Qualifications</Qualifications>
+                <Address Type="0123" Role="012B">
+                    <Street>
+                        <Line1>c/- Address Reporting</Line1>
+                        <Line2>43 My Street</Line2>
+                    </Street>
+                    <City>Perth</City>
+                    <StateProvince>WA</StateProvince>
+                    <PostalCode>6000</PostalCode>
+                    <GridLocation>
+                        <Latitude>-31.952693</Latitude>
+                        <Longitude>115.871971</Longitude>
+                    </GridLocation>
+                </Address>
+                <Email Type="06">Address.Reporting@not.a.real.domain</Email>
+                <PhoneNumber Type="0096">
+                    <Number>98740123</Number>
+                </PhoneNumber>
+            </EntityContact>
+            <AddressCollectionStudentList>
+                <AddressCollectionStudent>
+                    <LocalId>Local Id - 1 - 0</LocalId>
+                    <EducationLevel>Primary</EducationLevel>
+                    <BoardingStatus>D</BoardingStatus>
+                    <StudentAddress Type="0123" Role="012B">
+                        <Street>
+                            <Line1>110 Some St</Line1>
+                            <Line2>Some Suburb</Line2>
+                        </Street>
+                        <City>Perth</City>
+                        <StateProvince>WA</StateProvince>
+                        <PostalCode>6000</PostalCode>
+                        <GridLocation>
+                            <Latitude>-31.952693</Latitude>
+                            <Longitude>115.871971</Longitude>
+                        </GridLocation>
+                    </StudentAddress>
+                    <Parent1>
+                        <ParentName Type="LGL">
+                            <Title>Ms</Title>
+                            <FamilyName>Smith</FamilyName>
+                            <GivenName>Parent</GivenName>
+                            <MiddleName>Number 101</MiddleName>
+                            <PreferredFamilyName>Smith</PreferredFamilyName>
+                            <PreferredGivenName>Parent</PreferredGivenName>
+                            <FullName>Ms Parent Number 101 Smith</FullName>
+                        </ParentName>
+                        <AddressSameAsStudent>N</AddressSameAsStudent>
+                        <ParentAddress Type="0123" Role="012B">
+                            <Street>
+                                <Line1>1101 Some St</Line1>
+                                <Line2>Some Suburb</Line2>
+                            </Street>
+                            <City>Perth</City>
+                            <StateProvince>WA</StateProvince>
+                            <PostalCode>6000</PostalCode>
+                            <GridLocation>
+                                <Latitude>-31.952693</Latitude>
+                                <Longitude>115.871971</Longitude>
+                            </GridLocation>
+                        </ParentAddress>
+                    </Parent1>
+                    <Parent2>
+                        <ParentName Type="LGL">
+                            <Title>Mr</Title>
+                            <FamilyName>Smith</FamilyName>
+                            <GivenName>Parent</GivenName>
+                            <MiddleName>Number 102</MiddleName>
+                            <PreferredFamilyName>Smith</PreferredFamilyName>
+                            <PreferredGivenName>Parent</PreferredGivenName>
+                            <FullName>Mr Parent Number 102 Smith</FullName>
+                        </ParentName>
+                        <AddressSameAsStudent>N</AddressSameAsStudent>
+                        <ParentAddress Type="0123" Role="012B">
+                            <Street>
+                                <Line1>1102 Some St</Line1>
+                                <Line2>Some Suburb</Line2>
+                            </Street>
+                            <City>Perth</City>
+                            <StateProvince>WA</StateProvince>
+                            <PostalCode>6000</PostalCode>
+                            <GridLocation>
+                                <Latitude>-31.952693</Latitude>
+                                <Longitude>115.871971</Longitude>
+                            </GridLocation>
+                        </ParentAddress>
+                    </Parent2>
+                </AddressCollectionStudent>
+                <AddressCollectionStudent>
+                    <LocalId>Local Id - 1 - 1</LocalId>
+                    <EducationLevel>Primary</EducationLevel>
+                    <BoardingStatus>D</BoardingStatus>
+                    <StudentAddress Type="0123" Role="012B">
+                        <Street>
+                            <Line1>111 Some St</Line1>
+                            <Line2>Some Suburb</Line2>
+                        </Street>
+                        <City>Perth</City>
+                        <StateProvince>WA</StateProvince>
+                        <PostalCode>6000</PostalCode>
+                        <GridLocation>
+                            <Latitude>-31.952693</Latitude>
+                            <Longitude>115.871971</Longitude>
+                        </GridLocation>
+                    </StudentAddress>
+                    <Parent1>
+                        <ParentName Type="LGL">
+                            <Title>Ms</Title>
+                            <FamilyName>Smith</FamilyName>
+                            <GivenName>Parent</GivenName>
+                            <MiddleName>Number 111</MiddleName>
+                            <PreferredFamilyName>Smith</PreferredFamilyName>
+                            <PreferredGivenName>Parent</PreferredGivenName>
+                            <FullName>Ms Parent Number 111 Smith</FullName>
+                        </ParentName>
+                        <AddressSameAsStudent>N</AddressSameAsStudent>
+                        <ParentAddress Type="0123" Role="012B">
+                            <Street>
+                                <Line1>1111 Some St</Line1>
+                                <Line2>Some Suburb</Line2>
+                            </Street>
+                            <City>Perth</City>
+                            <StateProvince>WA</StateProvince>
+                            <PostalCode>6000</PostalCode>
+                            <GridLocation>
+                                <Latitude>-31.952693</Latitude>
+                                <Longitude>115.871971</Longitude>
+                            </GridLocation>
+                        </ParentAddress>
+                    </Parent1>
+                </AddressCollectionStudent>
+            </AddressCollectionStudentList>
+        </AddressCollectionReporting>
+    </AddressCollectionReportingList>
+</AGAddressCollectionSubmission>

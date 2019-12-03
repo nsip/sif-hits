@@ -1,0 +1,14 @@
+package sif3.hits.domain.converter;
+
+import org.springframework.stereotype.Component;
+import sif3.hits.domain.model.AGAddressCollectionReportingEntityContactAddressStatisticalArea;
+
+@Component
+public class AGAddressCollectionReportingEntityContactAddressStatisticalAreaConverter extends
+		FQBaseEntityContactAddressStatisticalAreaConverter<AGAddressCollectionReportingEntityContactAddressStatisticalArea> {
+
+	public AGAddressCollectionReportingEntityContactAddressStatisticalAreaConverter() {
+		super(AGAddressCollectionReportingEntityContactAddressStatisticalArea.class);
+	}
+
+}

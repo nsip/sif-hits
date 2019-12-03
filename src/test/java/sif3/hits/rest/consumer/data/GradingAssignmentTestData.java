@@ -1,16 +1,14 @@
 package sif3.hits.rest.consumer.data;
 
-import sif.dd.au30.model.GradingAssignmentType;
-import sif.dd.au30.model.GradingAssignmentCollectionType;
-
-import sif3.hits.domain.converter.factory.IObjectFactory;
-import sif3.hits.utils.RefIdGenerator;
-
-import javax.xml.datatype.DatatypeFactory;
 import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.util.Arrays;
 import java.util.List;
+
+import sif.dd.au30.model.GradingAssignmentCollectionType;
+import sif.dd.au30.model.GradingAssignmentType;
+import sif3.hits.domain.converter.factory.IObjectFactory;
+import sif3.hits.utils.RefIdGenerator;
 
 public class GradingAssignmentTestData extends TestData<GradingAssignmentType,GradingAssignmentCollectionType> {
 

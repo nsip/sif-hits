@@ -7,6 +7,7 @@
         <Size>29.8</Size>
         <Capacity>20</Capacity>
         <RoomType>C</RoomType>
+        <AvailableForTimetable>Y</AvailableForTimetable>
     </RoomInfo>
     <RoomInfo RefId="ae006427-d7bd-4f8e-9564-24b93787e7eb">
         <SchoolInfoRefId>252159ce-e385-4dea-8440-26d300282781</SchoolInfoRefId>
@@ -16,5 +17,6 @@
         <Size>29.8</Size>
         <Capacity>20</Capacity>
         <RoomType>C</RoomType>
+        <AvailableForTimetable>Y</AvailableForTimetable>
     </RoomInfo>
 </RoomInfos>

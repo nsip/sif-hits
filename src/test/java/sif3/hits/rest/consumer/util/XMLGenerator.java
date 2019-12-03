@@ -9,7 +9,7 @@ import java.io.IOException;
 
 public class XMLGenerator {
     public static void main(String[] args) throws MarshalException, UnsupportedMediaTypeExcpetion {
-        String path = "/home/crub/dev/nsip/sif-hits/src/test/resources/xml";
+        String path = "/Users/ben/Development/nsip/sif-hits/src/test/resources/xml";
         generateTestXML(path, new CalendarDateTestData(), CalendarDateTestData.XML_REF_ID_1, CalendarDateTestData.XML_REF_ID_2);
         generateTestXML(path, new CalendarSummaryTestData(), CalendarSummaryTestData.XML_REF_ID_1, CalendarSummaryTestData.XML_REF_ID_2);
         generateTestXML(path, new ChargedLocationInfoTestData(), ChargedLocationInfoTestData.XML_REF_ID_1, ChargedLocationInfoTestData.XML_REF_ID_2);
@@ -19,7 +19,6 @@ public class XMLGenerator {
         generateTestXML(path, new GradingAssignmentScoreTestData(), GradingAssignmentScoreTestData.XML_REF_ID_1, GradingAssignmentScoreTestData.XML_REF_ID_2);
         generateTestXML(path, new InvoiceTestData(), InvoiceTestData.XML_REF_ID_1, InvoiceTestData.XML_REF_ID_2);
         generateTestXML(path, new JournalTestData(), JournalTestData.XML_REF_ID_1, JournalTestData.XML_REF_ID_2);
-//        generateTestXML(path, new NAPCodeFrameTestData(), NAPCodeFrameTestData.XML_REF_ID_1, NAPCodeFrameTestData.XML_REF_ID_2); No point in generating this!
         generateTestXML(path, new NAPEventStudentLinkTestData(), NAPEventStudentLinkTestData.XML_REF_ID_1, NAPEventStudentLinkTestData.XML_REF_ID_2);
         generateTestXML(path, new NAPStudentResponseSetTestData(), NAPStudentResponseSetTestData.XML_REF_ID_1, NAPStudentResponseSetTestData.XML_REF_ID_2);
         generateTestXML(path, new NAPTestTestData(), NAPTestTestData.XML_REF_ID_1, NAPTestTestData.XML_REF_ID_2);
@@ -53,8 +52,10 @@ public class XMLGenerator {
         generateTestXML(path, new WellbeingAppealTestData(), WellbeingAppealTestData.XML_REF_ID_1, WellbeingAppealTestData.XML_REF_ID_2);
         generateTestXML(path, new WellbeingCharacteristicTestData(), WellbeingCharacteristicTestData.XML_REF_ID_1, WellbeingCharacteristicTestData.XML_REF_ID_2);
         generateTestXML(path, new WellbeingEventTestData(), WellbeingEventTestData.XML_REF_ID_1, WellbeingEventTestData.XML_REF_ID_2);
+        generateTestXML(path, new WellbeingPersonLinkTestData(), WellbeingPersonLinkTestData.XML_REF_ID_1, WellbeingPersonLinkTestData.XML_REF_ID_2);
         generateTestXML(path, new WellbeingResponseTestData(), WellbeingResponseTestData.XML_REF_ID_1, WellbeingResponseTestData.XML_REF_ID_2);
         generateTestXML(path, new AGStatusReportTestData(), AGStatusReportTestData.XML_REF_ID_1, AGStatusReportTestData.XML_REF_ID_2);
+        generateTestXML(path, new AGAddressCollectionSubmissionTestData(), AGAddressCollectionSubmissionTestData.XML_REF_ID_1, AGAddressCollectionSubmissionTestData.XML_REF_ID_2);
         generateTestXML(path, new FinancialQuestionnaireSubmissionTestData(), FinancialQuestionnaireSubmissionTestData.XML_REF_ID_1, FinancialQuestionnaireSubmissionTestData.XML_REF_ID_2);
     }
 

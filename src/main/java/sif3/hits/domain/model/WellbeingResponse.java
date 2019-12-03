@@ -27,6 +27,7 @@ public class WellbeingResponse extends HitsEntity {
     private String suspensionResolutionNotes;
     private String suspensionEarlyReturnDate;
     private String suspensionStatus;
+    private String suspensionNotes;
     private String detentionCategory;
     private String detentionDate;
     private String detentionLocation;
@@ -182,6 +183,15 @@ public class WellbeingResponse extends HitsEntity {
 
     public void setSuspensionStatus(String suspensionStatus) {
         this.suspensionStatus = suspensionStatus;
+    }
+    
+    @Column(name = "SuspensionContainer_SuspensionNotes")
+    public String getSuspensionNotes() {
+        return suspensionNotes;
+    }
+
+    public void setSuspensionNotes(String suspensionNotes) {
+        this.suspensionNotes = suspensionNotes;
     }
 
     @Column(name = "DetentionContainer_DetentionCategory")

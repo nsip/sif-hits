@@ -1,15 +1,14 @@
 package sif3.hits.rest.consumer.data;
 
-import sif.dd.au30.model.*;
-
-import sif3.hits.domain.converter.factory.IObjectFactory;
-import sif3.hits.rest.consumer.SchoolInfoConsumerTest;
-import sif3.hits.rest.consumer.WellbeingAppealConsumerTest;
-import sif3.hits.rest.consumer.WellbeingResponseConsumerTest;
-import sif3.hits.utils.RefIdGenerator;
-
 import java.util.Arrays;
 import java.util.List;
+
+import sif.dd.au30.model.AUCodeSetsWellbeingAppealStatusType;
+import sif.dd.au30.model.WellbeingAppealCollectionType;
+import sif.dd.au30.model.WellbeingAppealType;
+import sif.dd.au30.model.WellbeingDocumentListType;
+import sif3.hits.domain.converter.factory.IObjectFactory;
+import sif3.hits.utils.RefIdGenerator;
 
 public class WellbeingAppealTestData extends TestData<WellbeingAppealType,WellbeingAppealCollectionType> {
 

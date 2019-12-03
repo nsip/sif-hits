@@ -5,6 +5,7 @@ import org.springframework.stereotype.Component;
 import sif.dd.au30.model.AGReportingObjectResponseType;
 import sif.dd.au30.model.AGRuleListType;
 import sif.dd.au30.model.AGRuleType;
+import sif.dd.au30.model.AUCodeSetsAGSubmissionStatusType;
 import sif3.hits.domain.converter.factory.IObjectFactory;
 import sif3.hits.domain.model.AGReportingObjectResponse;
 import sif3.hits.domain.model.AGRule;
@@ -29,7 +30,7 @@ public class AGReportingObjectResponseConverter extends HitsConverter<AGReportin
 
             target.setCommonwealthId(source.getCommonwealthId());
             target.setEntityName(objectFactory.createAGReportingObjectResponseTypeEntityName(source.getEntityName()));
-            target.setAGSubmissionStatusCode(objectFactory.createAGReportingObjectResponseTypeAGSubmissionStatusCode(source.getAgSubmissionStatusCode()));
+            target.setAGSubmissionStatusCode(getEnumValue(source.getAgSubmissionStatusCode(), AUCodeSetsAGSubmissionStatusType.class));
             target.setErrorText(objectFactory.createAGReportingObjectResponseTypeErrorText(source.getErrorText()));
             target.setHTTPStatusCode(objectFactory.createAGReportingObjectResponseTypeHTTPStatusCode(source.getHttpStatusCode()));
             target.setSIFRefId(objectFactory.createAGReportingObjectResponseTypeSIFRefId(source.getSifRefId()));
@@ -49,7 +50,7 @@ public class AGReportingObjectResponseConverter extends HitsConverter<AGReportin
         if (source != null && target != null) {
             target.setCommonwealthId(source.getCommonwealthId());
             target.setEntityName(getJAXBValue(source.getEntityName()));
-            target.setAgSubmissionStatusCode(getJAXBValue(source.getAGSubmissionStatusCode()));
+            target.setAgSubmissionStatusCode(getEnumValue(source.getAGSubmissionStatusCode()));
             target.setErrorText(getJAXBValue(source.getErrorText()));
             target.setHttpStatusCode(getJAXBValue(source.getHTTPStatusCode()));
             target.setSifRefId(getJAXBValue(source.getSIFRefId()));

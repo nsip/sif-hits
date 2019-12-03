@@ -46,4 +46,5 @@
         <CalendarSummaryRefId>cd09d100-1b94-480c-905d-1d2ec95b5e87</CalendarSummaryRefId>
     </CalendarSummaryList>
     <PreviousSchoolName>Previous High School</PreviousSchoolName>
+    <AvailableForTimetable>Y</AvailableForTimetable>
 </StaffAssignment>

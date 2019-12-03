@@ -3,9 +3,13 @@ package sif3.hits.domain.model;
 import java.util.List;
 
 import javax.persistence.CascadeType;
+import javax.persistence.CollectionTable;
 import javax.persistence.Column;
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 
 @Entity
@@ -31,6 +35,7 @@ public class WellbeingCharacteristic extends HitsEntity {
     private String confidentialFlag;
     private String alert;
 
+    private List<String> symptoms;
     private List<WellbeingCharacteristicDocument> documents;
     private List<WellbeingCharacteristicMedication> medication;
 
@@ -213,4 +218,15 @@ public class WellbeingCharacteristic extends HitsEntity {
     public void setMedication(List<WellbeingCharacteristicMedication> medication) {
         this.medication = medication;
     }
+    
+    @ElementCollection(fetch = FetchType.LAZY)
+    @CollectionTable(name = "WellbeingCharacteristic_Symptom", joinColumns = @JoinColumn(name = "WellbeingCharacteristic_RefId"))
+    @Column(name="Symptom")
+    public List<String> getSymptoms() {
+		return symptoms;
+	}
+    
+    public void setSymptoms(List<String> symptoms) {
+		this.symptoms = symptoms;
+	}
 }

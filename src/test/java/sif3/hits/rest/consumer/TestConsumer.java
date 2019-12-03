@@ -5,16 +5,19 @@ import sif.dd.au30.conversion.DataModelUnmarshalFactory;
 import sif3.common.conversion.MarshalFactory;
 import sif3.common.conversion.ModelObjectInfo;
 import sif3.common.conversion.UnmarshalFactory;
+import sif3.common.header.HeaderValues;
+import sif3.common.model.EventMetadata;
 import sif3.common.model.PagingInfo;
 import sif3.common.model.QueryCriteria;
+import sif3.common.model.SIFEvent;
 import sif3.common.model.delayed.DelayedResponseReceipt;
 import sif3.common.ws.CreateOperationStatus;
 import sif3.common.ws.ErrorDetails;
 import sif3.common.ws.OperationStatus;
 import sif3.common.ws.model.MultiOperationStatusList;
-import sif3.infra.rest.consumer.AbstractConsumer;
+import sif3.infra.rest.consumer.AbstractEventConsumer;
 
-public class TestConsumer<S, M> extends AbstractConsumer {
+public class TestConsumer<S, M> extends AbstractEventConsumer<S> {
 
     private final Class<S> SINGLE_CLASS;
     private final Class<M> MULTI_CLASS;
@@ -23,6 +26,11 @@ public class TestConsumer<S, M> extends AbstractConsumer {
 
     private MarshalFactory MARSHALLER;
     private UnmarshalFactory UNMARSHALLER;
+
+    @Override
+    public SIFEvent<S> createEventObject(Object sifObjectList, HeaderValues.EventAction eventAction, HeaderValues.UpdateType updateType) {
+        return null;
+    }
 
     /**
      * @param consumerID
@@ -97,6 +105,11 @@ public class TestConsumer<S, M> extends AbstractConsumer {
 
     @Override
     public void processDelayedUpdateMany(MultiOperationStatusList<OperationStatus> arg0, DelayedResponseReceipt arg1) {
+
+    }
+
+    @Override
+    public void processEvent(SIFEvent<S> sifEvent, EventMetadata metadata, String msgReadID, String consumerID) {
 
     }
 }

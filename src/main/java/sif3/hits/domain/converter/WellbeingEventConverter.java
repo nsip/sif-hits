@@ -55,7 +55,7 @@ public class WellbeingEventConverter extends HitsConverter<WellbeingEventType, W
             IObjectFactory objectFactory = getObjectFactory();
 
             target.setRefId(source.getRefId());
-            target.setStudentPersonalRefId(source.getStudentPersonalRefId());
+            target.setStudentPersonalRefId(objectFactory.createWellbeingEventTypeStudentPersonalRefId(source.getStudentPersonalRefId()));
             target.setSchoolInfoRefId(source.getSchoolInfoRefId());
             target.setEventId(objectFactory.createWellbeingEventTypeEventId(source.getEventId()));
             target.setWellbeingEventNotes(objectFactory.createWellbeingEventTypeWellbeingEventNotes(source.getWellbeingEventNotes()));
@@ -67,6 +67,7 @@ public class WellbeingEventConverter extends HitsConverter<WellbeingEventType, W
             target.setWellbeingEventTime(objectFactory.createWellbeingEventTypeWellbeingEventTime(getTimeValue(source.getWellbeingEventTime())));
             target.setWellbeingEventDescription(objectFactory.createWellbeingEventTypeWellbeingEventDescription(source.getWellbeingEventDescription()));
             target.setWellbeingEventTimePeriod(getEnumValue(source.getWellbeingEventTimePeriod(), AUCodeSetsWellbeingEventTimePeriodType.class));
+            target.setGroupIndicator(objectFactory.createWellbeingEventTypeGroupIndicator(getBooleanValue(source.getGroupIndicator())));
 
             if (hasLocationDetails(source)) {
                 WellbeingEventLocationDetailsType locationDetailsType = objectFactory.createWellbeingEventLocationDetailsType();
@@ -119,7 +120,7 @@ public class WellbeingEventConverter extends HitsConverter<WellbeingEventType, W
         if (source != null && target != null) {
             resetModel(target);
             target.setRefId(source.getRefId());
-            target.setStudentPersonalRefId(source.getStudentPersonalRefId());
+            target.setStudentPersonalRefId(getJAXBValue(source.getStudentPersonalRefId()));
             target.setSchoolInfoRefId(source.getSchoolInfoRefId());
             target.setEventId(getJAXBValue(source.getEventId()));
             target.setWellbeingEventNotes(getJAXBValue(source.getWellbeingEventNotes()));
@@ -132,7 +133,8 @@ public class WellbeingEventConverter extends HitsConverter<WellbeingEventType, W
             target.setWellbeingEventTimePeriod(getEnumValue(source.getWellbeingEventTimePeriod()));
             target.setConfidentialFlag(getJAXBEnumValue(source.getConfidentialFlag()));
             target.setStatus(getJAXBEnumValue(source.getStatus()));
-
+            target.setGroupIndicator(getBooleanValue(getJAXBValue(source.getGroupIndicator())));
+            
             WellbeingEventLocationDetailsType wellbeingEventLocationDetailsType = getJAXBValue(source.getWellbeingEventLocationDetails());
             if (wellbeingEventLocationDetailsType != null) {
                 target.setWellbeingEventLocationDetailsEventLocation(getEnumValue(wellbeingEventLocationDetailsType.getEventLocation()));

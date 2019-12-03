@@ -1,0 +1,23 @@
+<WellbeingPersonLink RefId="87cfdd54-f9f5-42d7-bca6-6c2bf6c120d5" xmlns="http://www.sifassociation.org/datamodel/au/3.4">
+    <WellbeingEventRefId>c19f7155-1dd6-416d-850c-111f46257418</WellbeingEventRefId>
+    <WellbeingResponseRefId>9e7682f7-db56-44da-a7d2-1405784a2fcd</WellbeingResponseRefId>
+    <GroupId>Group Id</GroupId>
+    <PersonRefId SIF_RefObject="StudentPersonal">c1deee9b-53ce-4c8f-9101-31bedf9c4836</PersonRefId>
+    <ShortName>Short Name</ShortName>
+    <HowInvolved>How Involved</HowInvolved>
+    <OtherPersonId>personId</OtherPersonId>
+    <OtherPersonContactDetails>person contact</OtherPersonContactDetails>
+    <PersonRole>Parent</PersonRole>
+    <FollowUpActionList>
+        <FollowUpAction>
+            <WellbeingResponseRefId>9e7682f7-db56-44da-a7d2-1405784a2fcd</WellbeingResponseRefId>
+            <FollowUpDetails>Follow up details - 1</FollowUpDetails>
+            <FollowUpActionCategory>Category 1</FollowUpActionCategory>
+        </FollowUpAction>
+        <FollowUpAction>
+            <WellbeingResponseRefId>0b803bdd-a61c-4551-bfa8-cf2dad823d44</WellbeingResponseRefId>
+            <FollowUpDetails>Follow up details - 2</FollowUpDetails>
+            <FollowUpActionCategory>Category 2</FollowUpActionCategory>
+        </FollowUpAction>
+    </FollowUpActionList>
+</WellbeingPersonLink>

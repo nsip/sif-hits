@@ -18,6 +18,7 @@
         <Demographics>
             <Sex>1</Sex>
             <BirthDate>1984-12-20</BirthDate>
+            <InterpreterRequired>N</InterpreterRequired>
         </Demographics>
         <PhoneNumberList>
             <PhoneNumber Type="0096">

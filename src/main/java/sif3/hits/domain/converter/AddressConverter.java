@@ -29,7 +29,7 @@ public class AddressConverter extends HitsConverter<AddressType, Address> {
       target.setPostalCode(source.getPostalCode());
 
       AddressStreetType street = objectFactory.createAddressStreetType();
-      street.setLine1(source.getLineOne());
+      street.setLine1(objectFactory.createAddressStreetTypeLine1(source.getLineOne()));
       street.setLine2(objectFactory.createAddressStreetTypeLine2(source.getLineTwo()));
       target.setStreet(street);
 
@@ -54,7 +54,7 @@ public class AddressConverter extends HitsConverter<AddressType, Address> {
 
       AddressStreetType street = source.getStreet();
       if (street != null) {
-        target.setLineOne(street.getLine1());
+        target.setLineOne(getJAXBValue(street.getLine1()));
         target.setLineTwo(getJAXBValue(street.getLine2()));
       }
 

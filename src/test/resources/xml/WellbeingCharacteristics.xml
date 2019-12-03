@@ -64,6 +64,9 @@
         <WellbeingCharacteristicSubCategory>SubCat</WellbeingCharacteristicSubCategory>
         <LocalCharacteristicCode>LocalCode</LocalCharacteristicCode>
         <CharacteristicSeverity>Severe</CharacteristicSeverity>
+        <SymptomList>
+            <Symptom>Symptom 0</Symptom>
+        </SymptomList>
         <DailyManagement>Y</DailyManagement>
         <EmergencyManagement>N</EmergencyManagement>
         <EmergencyResponsePlan>ERP</EmergencyResponsePlan>

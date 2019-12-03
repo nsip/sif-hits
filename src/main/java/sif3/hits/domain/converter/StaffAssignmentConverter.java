@@ -41,6 +41,7 @@ public class StaffAssignmentConverter extends HitsConverter<StaffAssignmentType,
             target.setHomegroup(objectFactory.createStaffAssignmentTypeHomegroup(source.getHomegroup()));
             target.setHouse(objectFactory.createStaffAssignmentTypeHouse(source.getHouse()));
             target.setPreviousSchoolName(objectFactory.createStaffAssignmentTypePreviousSchoolName(source.getPreviousSchoolName()));
+            target.setAvailableForTimetable(objectFactory.createStaffAssignmentTypeAvailableForTimetable(getEnumValue(source.getAvailableForTimetable(), AUCodeSetsYesOrNoCategoryType.class)));
 
             if (StringUtils.isNotBlank(source.getStaffActivityCode())) {
                 StaffActivityExtensionType staffActivity = objectFactory.createStaffActivityExtensionType();
@@ -98,7 +99,8 @@ public class StaffAssignmentConverter extends HitsConverter<StaffAssignmentType,
             target.setHomegroup(getJAXBValue(source.getHomegroup()));
             target.setHouse(getJAXBValue(source.getHouse()));
             target.setPreviousSchoolName(getJAXBValue(source.getPreviousSchoolName()));
-
+            target.setAvailableForTimetable(getJAXBEnumValue(source.getAvailableForTimetable()));
+            
             StaffActivityExtensionType staffActivity = getJAXBValue(source.getStaffActivity());
             if (staffActivity != null) {
                 target.setStaffActivityCode(getEnumValue(staffActivity.getCode()));

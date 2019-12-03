@@ -52,7 +52,7 @@ public class AGStatusReportTestData extends TestData<AGStatusReportType, AGStatu
         AGReportingObjectResponseType objectResponseType = objectFactory.createAGReportingObjectResponseType();
         objectResponseType.setCommonwealthId("cid-" + index);
         objectResponseType.setEntityName(objectFactory.createAGReportingObjectResponseTypeEntityName("Entity Name " + index));
-        objectResponseType.setAGSubmissionStatusCode(objectFactory.createAGReportingObjectResponseTypeAGSubmissionStatusCode("status-" + index));
+        objectResponseType.setAGSubmissionStatusCode(getValue(AUCodeSetsAGSubmissionStatusType.values(), index));
         objectResponseType.setErrorText(objectFactory.createAGReportingObjectResponseTypeErrorText("Error " + index));
         objectResponseType.setHTTPStatusCode(objectFactory.createAGReportingObjectResponseTypeHTTPStatusCode("20" + index));
         objectResponseType.setSIFRefId(objectFactory.createAGReportingObjectResponseTypeSIFRefId(ASR_ROR_SIF_REFID + index));

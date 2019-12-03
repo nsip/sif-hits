@@ -29,12 +29,14 @@ public class WellbeingEvent extends HitsEntity {
     private String wellbeingEventLocationDetailsFurtherLocationNotes;
     private String confidentialFlag;
     private String status;
+    
+    private String groupIndicator;
 
     private List<WellbeingEventDocument> documents;
     private List<WellbeingEventCategory> categories;
     private List<WellbeingEventPersonInvolvement> personInvolvements;
     private List<WellbeingEventFollowUpAction> followUpActions;
-
+    
     @Id
     public String getRefId() {
         return refId;
@@ -176,6 +178,14 @@ public class WellbeingEvent extends HitsEntity {
     public void setStatus(String status) {
         this.status = status;
     }
+    
+    public String getGroupIndicator() {
+		return groupIndicator;
+	}
+    
+    public void setGroupIndicator(String groupIndicator) {
+		this.groupIndicator = groupIndicator;
+	}
 
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "wellbeingEvent")
     public List<WellbeingEventDocument> getDocuments() {
