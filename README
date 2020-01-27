@@ -20,3 +20,31 @@
 
 This is an implementation of the SIF3 Java Framework, designed to be used for the HITS 
 Project.
+
+
+WAR file in dist/
+
+Rename = SIF3InfraREST.war
+
+
+1. in /etc/tomcat8/catalina.properties
+Find the line 
+shared.loader=${catalina.base}/shared/classes,..... etc.
+And prepend the sif configuration folders
+shared.loader=/var/sif/hitsprovider,/var/sif/hitsprovider/hibernate,/var/sif/hitsprovider/providers,${catalina.base}/shared/classes,.....
+
+2. in /etc/tomcat8/server.xml
+Enable the AJP connector which by default is commented out (just need to remove xml comment tags):
+    <!-- Define an AJP 1.3 Connector on port 8009 -->
+    <Connector port="8009" protocol="AJP/1.3" redirectPort="8443" />
+This port is also used in the apache config make sure it matches.
+
+3. restart tomcat
+sudo service tomcat8 restart
+
+4. copy across WAR files from the old tomcat7 install.
+cp /var/lib/tomcat7/webapps/*.war /var/lib/tomcat8/webapps
+
+5. wait for applications to deploy (30 seconds or so)
+
+6. test using the javascript client through the dashboard.
