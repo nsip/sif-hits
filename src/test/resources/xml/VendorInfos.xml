@@ -1,5 +1,6 @@
 <VendorInfos xmlns="http://www.sifassociation.org/datamodel/au/3.4">
     <VendorInfo RefId="33e3843b-7693-47ac-92c3-574b62a9245b">
+        <LocalId>local-id</LocalId>
         <Name>Vendor Inc Pty Ltd</Name>
         <ContactInfo>
             <Name Type="LGL">
@@ -42,6 +43,7 @@
         <AccountName>John Smith</AccountName>
     </VendorInfo>
     <VendorInfo RefId="6fc24394-c842-4bba-9e79-107d391999d3">
+        <LocalId>local-id</LocalId>
         <Name>Vendor Inc Pty Ltd</Name>
         <ContactInfo>
             <Name Type="LGL">
