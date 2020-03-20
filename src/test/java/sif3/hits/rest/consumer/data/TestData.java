@@ -167,16 +167,16 @@ public abstract class TestData<T, C> implements UsesConstants {
         wellbeingDocument.setDocumentDescription(objectFactory.createWellbeingDocumentTypeDocumentDescription("Plan document " + index + " for student 12345678."));
         return wellbeingDocument;
     }
-
-    public AGRuleType getAGRuleType(int parent, int index) {
-        IObjectFactory objectFactory = getObjectFactory();
-        AGRuleType agRule = objectFactory.createAGRuleType();
-        agRule.setAGRuleStatus(objectFactory.createAGRuleTypeAGRuleStatus("status-" + parent + "-" + index));
-        agRule.setAGRuleResponse(objectFactory.createAGRuleTypeAGRuleResponse("response-" + parent + "-" + index));
-        agRule.setAGRuleComment(objectFactory.createAGRuleTypeAGRuleComment("comment-" + parent + "-" + index));
-        agRule.setAGRuleCode(objectFactory.createAGRuleTypeAGRuleCode("code-" + parent + "-" + index));
-        return agRule;
-    }
+//
+//    public AGRuleType getAGRuleType(int parent, int index) {
+//        IObjectFactory objectFactory = getObjectFactory();
+//        AGRuleType agRule = objectFactory.createAGRuleType();
+//        agRule.setAGRuleStatus(objectFactory.createAGRuleTypeAGRuleStatus("status-" + parent + "-" + index));
+//        agRule.setAGRuleResponse(objectFactory.createAGRuleTypeAGRuleResponse("response-" + parent + "-" + index));
+//        agRule.setAGRuleComment(objectFactory.createAGRuleTypeAGRuleComment("comment-" + parent + "-" + index));
+//        agRule.setAGRuleCode(objectFactory.createAGRuleTypeAGRuleCode("code-" + parent + "-" + index));
+//        return agRule;
+//    }
 
 
     protected static IObjectFactory getObjectFactory() {

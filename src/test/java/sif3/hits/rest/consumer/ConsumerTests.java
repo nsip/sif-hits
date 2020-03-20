@@ -56,10 +56,10 @@ public class ConsumerTests {
             WellbeingCharacteristicConsumerTest.class,
             WellbeingAppealConsumerTest.class,
             WellbeingAlertConsumerTest.class,
-            AGStatusReportConsumerTest.class,
-            FinancialQuestionnaireSubmissionConsumerTest.class,
-            WellbeingPersonLinkConsumerTest.class,
-            AGAddressCollectionSubmissionConsumerTest.class
+//            AGStatusReportConsumerTest.class,
+//            FinancialQuestionnaireSubmissionConsumerTest.class,
+            WellbeingPersonLinkConsumerTest.class
+//            AGAddressCollectionSubmissionConsumerTest.class
     };
     
     
