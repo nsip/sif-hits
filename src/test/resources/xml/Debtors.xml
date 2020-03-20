@@ -1,5 +1,6 @@
 <Debtors xmlns="http://www.sifassociation.org/datamodel/au/3.4">
     <Debtor RefId="512bf740-42e5-4f32-97ac-dfb61c745ef3">
+        <LocalId>local-id</LocalId>
         <BilledEntity SIF_RefObject="VendorInfo">140b8bc9-9137-4c65-b1c0-fda79796e2d9</BilledEntity>
         <AddressList>
             <Address Type="0123" Role="012B">
@@ -20,6 +21,7 @@
         <Discount>0.05</Discount>
     </Debtor>
     <Debtor RefId="84267dc1-223c-491d-90c4-b6954f079631">
+        <LocalId>local-id</LocalId>
         <BilledEntity SIF_RefObject="VendorInfo">140b8bc9-9137-4c65-b1c0-fda79796e2d9</BilledEntity>
         <AddressList>
             <Address Type="0123" Role="012B">
