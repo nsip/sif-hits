@@ -10,6 +10,7 @@ import java.util.Set;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import sif.dd.au30.model.AUCodeSetsACStrandType;
 import sif.dd.au30.model.StudentListType;
 import sif.dd.au30.model.TeacherListType;
 import sif.dd.au30.model.TeachingGroupPeriodListType;
@@ -80,6 +81,8 @@ public class TeachingGroupConverter extends HitsConverter<TeachingGroupType, Tea
       }
 
       teachingGroupSchoolInfoConverter.toSifModel(source.getSchoolInfo(), target);
+      
+      target.setKeyLearningArea(objectFactory.createTeachingGroupTypeKeyLearningArea(getEnumValue(source.getKeyLearningArea(), AUCodeSetsACStrandType.class)));
 
       target.setSchoolYear(getYearValue(source.getSchoolYear()));
     }
@@ -95,6 +98,7 @@ public class TeachingGroupConverter extends HitsConverter<TeachingGroupType, Tea
       target.setSchoolYear(getYearValue(source.getSchoolYear()));
       target.setSchoolInfo(teachingGroupSchoolInfoConverter.toHitsModel(source));
       target.setTimeTableSubject(teachingGroupTimeTableSubjectConveter.toHitsModel(source));
+      target.setKeyLearningArea(getJAXBEnumValue(source.getKeyLearningArea()));
 
       handleTeachers(target, source);
       handleStudents(target, source);
