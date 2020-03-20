@@ -1,7 +1,6 @@
 package sif3.hits.domain.model;
 
 import java.util.List;
-import java.util.Set;
 
 import javax.persistence.CollectionTable;
 import javax.persistence.Column;
