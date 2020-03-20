@@ -5,7 +5,7 @@
     <groupId>sif3</groupId>
     <artifactId>sifhits</artifactId>
     <name>sif-hits</name>
-    <version>2.9.0</version>
+    <version>2.9.1</version>
     <packaging>war</packaging>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -17,7 +17,7 @@
 
         <!-- No way to get infrastructure version from the framework :( -->
         <infrastructure.version>3.3</infrastructure.version>
-        <datamodel.version>3.4.5</datamodel.version>
+        <datamodel.version>3.4.6</datamodel.version>
         <sif3.framework.version>0.14.1</sif3.framework.version>
         <sif3.datamodel.version>au-${datamodel.version}</sif3.datamodel.version>
 
