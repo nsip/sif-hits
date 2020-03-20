@@ -34,8 +34,8 @@ public class JournalConverter extends HitsConverter<JournalType, Journal>impleme
       target.setApprovedDate(objectFactory.createJournalTypeApprovedDate(getDateValue(source.getApprovedDate())));
       target.setCreatedBy(objectFactory.createJournalTypeCreatedBy(source.getCreatedBy()));
       target.setCreatedDate(objectFactory.createJournalTypeCreatedDate(getDateValue(source.getCreatedDate())));
-      target.setCreditFinancialAccountRefId(source.getCreditFinancialAccountRefId());
-      target.setDebitFinancialAccountRefId(source.getDebitFinancialAccountRefId());
+      target.setCreditFinancialAccountRefId(objectFactory.createJournalTypeCreditFinancialAccountRefId(source.getCreditFinancialAccountRefId()));
+      target.setDebitFinancialAccountRefId(objectFactory.createJournalTypeDebitFinancialAccountRefId(source.getDebitFinancialAccountRefId()));
       target.setGSTCodeOriginal(objectFactory.createJournalTypeGSTCodeOriginal(source.getGSTCodeOriginal()));
       target.setGSTCodeReplacement(objectFactory.createJournalTypeGSTCodeReplacement(source.getGSTCodeReplacement()));
       target.setNote(objectFactory.createJournalTypeNote(source.getNote()));
@@ -61,8 +61,8 @@ public class JournalConverter extends HitsConverter<JournalType, Journal>impleme
       target.setApprovedDate(getDateValue(getJAXBValue(source.getApprovedDate())));
       target.setCreatedBy(getJAXBValue(source.getCreatedBy()));
       target.setCreatedDate(getDateValue(getJAXBValue(source.getCreatedDate())));
-      target.setCreditFinancialAccountRefId(source.getCreditFinancialAccountRefId());
-      target.setDebitFinancialAccountRefId(source.getDebitFinancialAccountRefId());
+      target.setCreditFinancialAccountRefId(getJAXBValue(source.getCreditFinancialAccountRefId()));
+      target.setDebitFinancialAccountRefId(getJAXBValue(source.getDebitFinancialAccountRefId()));
       target.setGSTCodeOriginal(getJAXBValue(source.getGSTCodeOriginal()));
       target.setGSTCodeReplacement(getJAXBValue(source.getGSTCodeReplacement()));
       target.setNote(getJAXBValue(source.getNote()));

@@ -54,8 +54,8 @@ public class JournalTestData extends TestData<JournalType, JournalCollectionType
         journalType.setApprovedDate(objectFactory.createJournalTypeApprovedDate(getDate(APPROVED_DATE)));
         journalType.setCreatedBy(objectFactory.createJournalTypeCreatedBy(CREATED_BY));
         journalType.setCreatedDate(objectFactory.createJournalTypeCreatedDate(getDate(CREATED_DATE)));
-        journalType.setCreditFinancialAccountRefId(FinancialAccountTestData.REF_ID_1);
-        journalType.setDebitFinancialAccountRefId(FinancialAccountTestData.REF_ID_2);
+        journalType.setCreditFinancialAccountRefId(objectFactory.createJournalTypeCreditFinancialAccountRefId(FinancialAccountTestData.REF_ID_1));
+        journalType.setDebitFinancialAccountRefId(objectFactory.createJournalTypeDebitFinancialAccountRefId(FinancialAccountTestData.REF_ID_2));
         journalType.setGSTCodeOriginal(objectFactory.createJournalTypeGSTCodeOriginal(GST_CODE));
         journalType.setGSTCodeReplacement(objectFactory.createJournalTypeGSTCodeReplacement(GST_CODE));
         journalType.setNote(objectFactory.createJournalTypeNote(NOTE));
