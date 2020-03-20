@@ -27,6 +27,7 @@ public class StudentAttendanceTimeListTestData extends TestData<StudentAttendanc
     public static final List<String> XML_REF_ID_LIST = Arrays.asList(XML_REF_ID_RA);
 
     public StudentAttendanceTimeListType getTestObject(String refId) {
+    	IObjectFactory objectFactory = getObjectFactory();
         StudentAttendanceTimeListType studentAttendanceTimeList = new StudentAttendanceTimeListType();
         studentAttendanceTimeList.setRefId(refId);
         studentAttendanceTimeList.setStudentPersonalRefId(StudentPersonalTestData.REF_ID_1);
@@ -35,7 +36,7 @@ public class StudentAttendanceTimeListTestData extends TestData<StudentAttendanc
         studentAttendanceTimeList.setSchoolYear(getDate("2014"));
 
         AttendanceTimesType attendanceTimes = new AttendanceTimesType();
-        studentAttendanceTimeList.setAttendanceTimes(attendanceTimes);
+        studentAttendanceTimeList.setAttendanceTimes(objectFactory.createStudentAttendanceTimeListTypeAttendanceTimes(attendanceTimes));
         attendanceTimes.getAttendanceTime().add(getAttendanceTime("09:00:00", "11:00:00", "01", null, null, "100"));
         attendanceTimes.getAttendanceTime().add(getAttendanceTime("11:00:00", "13:00:00", "01", "0.2", "Orthodontist Appt, returned to school.", "200", "S", "Local", "C", "Text"));
         attendanceTimes.getAttendanceTime().add(getAttendanceTime("13:00:00", "15:30:00", "01", null, null, "100", "C", "Text"));
