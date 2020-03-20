@@ -10,119 +10,128 @@ import javax.persistence.OneToMany;
 
 @Entity
 public class PurchaseOrder extends HitsEntity {
-  private static final long serialVersionUID = -5805105881955500974L;
+	private static final long serialVersionUID = -5805105881955500974L;
 
-  private String refId;
-  private String formNumber;
-  private String vendorInfoRefId;
-  private String locationInfoRefId;
-  private String employeePersonalRefId;
-  private String creationDate;
-  private String taxRate;
-  private String taxAmount;
-  private String amountDelivered;
-  private String updateDate;
-  private String fullyDelivered;
-  private Set<PurchasingItem> purchasingItems;
+	private String refId;
+	private String localId;
+	private String formNumber;
+	private String vendorInfoRefId;
+	private String locationInfoRefId;
+	private String employeePersonalRefId;
+	private String creationDate;
+	private String taxRate;
+	private String taxAmount;
+	private String amountDelivered;
+	private String updateDate;
+	private String fullyDelivered;
+	private Set<PurchasingItem> purchasingItems;
 
-  @Id
-  public String getRefId() {
-    return refId;
-  }
+	@Id
+	public String getRefId() {
+		return refId;
+	}
 
-  public void setRefId(String refId) {
-    this.refId = refId;
-  }
+	public void setRefId(String refId) {
+		this.refId = refId;
+	}
 
-  public String getFormNumber() {
-    return formNumber;
-  }
+	public String getLocalId() {
+		return localId;
+	}
 
-  public void setFormNumber(String formNumber) {
-    this.formNumber = formNumber;
-  }
+	public void setLocalId(String localId) {
+		this.localId = localId;
+	}
 
-  @Column(name = "VendorInfo_RefId")
-  public String getVendorInfoRefId() {
-    return vendorInfoRefId;
-  }
+	public String getFormNumber() {
+		return formNumber;
+	}
 
-  public void setVendorInfoRefId(String vendorInfoRefId) {
-    this.vendorInfoRefId = vendorInfoRefId;
-  }
+	public void setFormNumber(String formNumber) {
+		this.formNumber = formNumber;
+	}
 
-  @Column(name = "LocationInfo_RefId")
-  public String getLocationInfoRefId() {
-    return locationInfoRefId;
-  }
+	@Column(name = "VendorInfo_RefId")
+	public String getVendorInfoRefId() {
+		return vendorInfoRefId;
+	}
 
-  public void setLocationInfoRefId(String locationInfoRefId) {
-    this.locationInfoRefId = locationInfoRefId;
-  }
+	public void setVendorInfoRefId(String vendorInfoRefId) {
+		this.vendorInfoRefId = vendorInfoRefId;
+	}
 
-  @Column(name = "EmployeePersonal_RefId")
-  public String getEmployeePersonalRefId() {
-    return employeePersonalRefId;
-  }
+	@Column(name = "LocationInfo_RefId")
+	public String getLocationInfoRefId() {
+		return locationInfoRefId;
+	}
 
-  public void setEmployeePersonalRefId(String employeePersonalRefId) {
-    this.employeePersonalRefId = employeePersonalRefId;
-  }
+	public void setLocationInfoRefId(String locationInfoRefId) {
+		this.locationInfoRefId = locationInfoRefId;
+	}
 
-  public String getCreationDate() {
-    return creationDate;
-  }
+	@Column(name = "EmployeePersonal_RefId")
+	public String getEmployeePersonalRefId() {
+		return employeePersonalRefId;
+	}
 
-  public void setCreationDate(String creationDate) {
-    this.creationDate = creationDate;
-  }
+	public void setEmployeePersonalRefId(String employeePersonalRefId) {
+		this.employeePersonalRefId = employeePersonalRefId;
+	}
 
-  public String getTaxRate() {
-    return taxRate;
-  }
+	public String getCreationDate() {
+		return creationDate;
+	}
 
-  public void setTaxRate(String taxRate) {
-    this.taxRate = taxRate;
-  }
+	public void setCreationDate(String creationDate) {
+		this.creationDate = creationDate;
+	}
 
-  public String getTaxAmount() {
-    return taxAmount;
-  }
+	public String getTaxRate() {
+		return taxRate;
+	}
 
-  public void setTaxAmount(String taxAmount) {
-    this.taxAmount = taxAmount;
-  }
+	public void setTaxRate(String taxRate) {
+		this.taxRate = taxRate;
+	}
 
-  public String getAmountDelivered() {
-    return amountDelivered;
-  }
+	public String getTaxAmount() {
+		return taxAmount;
+	}
 
-  public void setAmountDelivered(String amountDelivered) {
-    this.amountDelivered = amountDelivered;
-  }
+	public void setTaxAmount(String taxAmount) {
+		this.taxAmount = taxAmount;
+	}
 
-  public String getUpdateDate() {
-    return updateDate;
-  }
+	public String getAmountDelivered() {
+		return amountDelivered;
+	}
 
-  public void setUpdateDate(String updateDate) {
-    this.updateDate = updateDate;
-  }
+	public void setAmountDelivered(String amountDelivered) {
+		this.amountDelivered = amountDelivered;
+	}
 
-  public String getFullyDelivered() {
-    return fullyDelivered;
-  }
+	public String getUpdateDate() {
+		return updateDate;
+	}
 
-  public void setFullyDelivered(String fullyDelivered) {
-    this.fullyDelivered = fullyDelivered;
-  }
+	public void setUpdateDate(String updateDate) {
+		this.updateDate = updateDate;
+	}
 
-  @OneToMany(mappedBy = "purchaseOrder", orphanRemoval = true, cascade = CascadeType.ALL)
-  public Set<PurchasingItem> getPurchasingItems() {
-    return purchasingItems;
-  }
+	public String getFullyDelivered() {
+		return fullyDelivered;
+	}
 
-  public void setPurchasingItems(Set<PurchasingItem> purchasingItems) {
-    this.purchasingItems = purchasingItems;
-  }
+	public void setFullyDelivered(String fullyDelivered) {
+		this.fullyDelivered = fullyDelivered;
+	}
+
+	@OneToMany(mappedBy = "purchaseOrder", orphanRemoval = true, cascade = CascadeType.ALL)
+	public Set<PurchasingItem> getPurchasingItems() {
+		return purchasingItems;
+	}
+
+	public void setPurchasingItems(Set<PurchasingItem> purchasingItems) {
+		this.purchasingItems = purchasingItems;
+	}
 }

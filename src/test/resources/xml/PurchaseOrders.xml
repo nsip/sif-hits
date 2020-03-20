@@ -1,5 +1,6 @@
 <PurchaseOrders xmlns="http://www.sifassociation.org/datamodel/au/3.4">
     <PurchaseOrder RefId="14ef0b45-037a-4135-9977-d4aab5422ce5">
+        <LocalId>local-id</LocalId>
         <FormNumber>3</FormNumber>
         <VendorInfoRefId>140b8bc9-9137-4c65-b1c0-fda79796e2d9</VendorInfoRefId>
         <ChargedLocationInfoRefId>b5918074-f965-49b7-80b9-cec3270eda48</ChargedLocationInfoRefId>
@@ -43,6 +44,7 @@
         <FullyDelivered>Y</FullyDelivered>
     </PurchaseOrder>
     <PurchaseOrder RefId="33da4bbf-32fe-4743-8d6c-f0be61d1c7c1">
+        <LocalId>local-id</LocalId>
         <FormNumber>3</FormNumber>
         <VendorInfoRefId>140b8bc9-9137-4c65-b1c0-fda79796e2d9</VendorInfoRefId>
         <ChargedLocationInfoRefId>b5918074-f965-49b7-80b9-cec3270eda48</ChargedLocationInfoRefId>
