@@ -31,6 +31,7 @@ public class WellbeingAppealTestData extends TestData<WellbeingAppealType,Wellbe
         IObjectFactory objectFactory = getObjectFactory();
         WellbeingAppealType wellbeingAppealType = objectFactory.createWellbeingAppealType();
         wellbeingAppealType.setRefId(refId);
+        wellbeingAppealType.setLocalId(objectFactory.createWellbeingAlertTypeLocalId("local-id"));
         wellbeingAppealType.setStudentPersonalRefId(StudentPersonalTestData.REF_ID_1);
         wellbeingAppealType.setSchoolInfoRefId(SchoolInfoTestData.REF_ID_1);
         wellbeingAppealType.setWellbeingResponseRefId(WellbeingResponseTestData.REF_ID_1);
