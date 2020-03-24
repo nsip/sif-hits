@@ -1,5 +1,6 @@
 <PersonalisedPlans xmlns="http://www.sifassociation.org/datamodel/au/3.4">
     <PersonalisedPlan RefId="af288cb1-ddc4-447d-8be6-40c64820c190">
+        <LocalId>local-id</LocalId>
         <StudentPersonalRefId>c1deee9b-53ce-4c8f-9101-31bedf9c4836</StudentPersonalRefId>
         <SchoolInfoRefId>252159ce-e385-4dea-8440-26d300282781</SchoolInfoRefId>
         <PersonalisedPlanCategory>Ac</PersonalisedPlanCategory>
@@ -28,6 +29,7 @@
         <AssociatedAttachment>attachment.docx</AssociatedAttachment>
     </PersonalisedPlan>
     <PersonalisedPlan RefId="7915f8ed-618c-48f9-8348-c14ecbcf2e67">
+        <LocalId>local-id</LocalId>
         <StudentPersonalRefId>c1deee9b-53ce-4c8f-9101-31bedf9c4836</StudentPersonalRefId>
         <SchoolInfoRefId>252159ce-e385-4dea-8440-26d300282781</SchoolInfoRefId>
         <PersonalisedPlanCategory>Ac</PersonalisedPlanCategory>

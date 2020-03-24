@@ -10,100 +10,109 @@ import javax.persistence.OneToMany;
 
 @Entity
 public class PersonalisedPlan extends HitsEntity {
-    private static final long serialVersionUID = 3263887960265363721L;
+	private static final long serialVersionUID = 3263887960265363721L;
 
-    private String refId;
-    private String studentPersonalRefId;
-    private String schoolInfoRefId;
-    private String personalisedPlanCategory;
-    private String personalisedPlanStartDate;
-    private String personalisedPlanEndDate;
-    private String personalisedPlanReviewDate;
-    private String personalisedPlanNotes;
-    private String associatedAttachment;
-    private List<PersonalisedPlanDocument> documents;
+	private String refId;
+	private String localId;
+	private String studentPersonalRefId;
+	private String schoolInfoRefId;
+	private String personalisedPlanCategory;
+	private String personalisedPlanStartDate;
+	private String personalisedPlanEndDate;
+	private String personalisedPlanReviewDate;
+	private String personalisedPlanNotes;
+	private String associatedAttachment;
+	private List<PersonalisedPlanDocument> documents;
 
-    @Id
-    public String getRefId() {
-        return refId;
-    }
+	@Id
+	public String getRefId() {
+		return refId;
+	}
 
-    public void setRefId(String refId) {
-        this.refId = refId;
-    }
+	public void setRefId(String refId) {
+		this.refId = refId;
+	}
 
-    @Column(name = "StudentPersonal_RefId")
-    public String getStudentPersonalRefId() {
-        return studentPersonalRefId;
-    }
+	public String getLocalId() {
+		return localId;
+	}
 
-    public void setStudentPersonalRefId(String studentPersonalRefId) {
-        this.studentPersonalRefId = studentPersonalRefId;
-    }
+	public void setLocalId(String localId) {
+		this.localId = localId;
+	}
 
-    @Column(name = "SchoolInfo_RefId")
-    public String getSchoolInfoRefId() {
-        return schoolInfoRefId;
-    }
+	@Column(name = "StudentPersonal_RefId")
+	public String getStudentPersonalRefId() {
+		return studentPersonalRefId;
+	}
 
-    public void setSchoolInfoRefId(String schoolInfoRefId) {
-        this.schoolInfoRefId = schoolInfoRefId;
-    }
+	public void setStudentPersonalRefId(String studentPersonalRefId) {
+		this.studentPersonalRefId = studentPersonalRefId;
+	}
 
-    public String getPersonalisedPlanCategory() {
-        return personalisedPlanCategory;
-    }
+	@Column(name = "SchoolInfo_RefId")
+	public String getSchoolInfoRefId() {
+		return schoolInfoRefId;
+	}
 
-    public void setPersonalisedPlanCategory(String personalisedPlanCategory) {
-        this.personalisedPlanCategory = personalisedPlanCategory;
-    }
+	public void setSchoolInfoRefId(String schoolInfoRefId) {
+		this.schoolInfoRefId = schoolInfoRefId;
+	}
 
-    public String getPersonalisedPlanStartDate() {
-        return personalisedPlanStartDate;
-    }
+	public String getPersonalisedPlanCategory() {
+		return personalisedPlanCategory;
+	}
 
-    public void setPersonalisedPlanStartDate(String personalisedPlanStartDate) {
-        this.personalisedPlanStartDate = personalisedPlanStartDate;
-    }
+	public void setPersonalisedPlanCategory(String personalisedPlanCategory) {
+		this.personalisedPlanCategory = personalisedPlanCategory;
+	}
 
-    public String getPersonalisedPlanEndDate() {
-        return personalisedPlanEndDate;
-    }
+	public String getPersonalisedPlanStartDate() {
+		return personalisedPlanStartDate;
+	}
 
-    public void setPersonalisedPlanEndDate(String personalisedPlanEndDate) {
-        this.personalisedPlanEndDate = personalisedPlanEndDate;
-    }
+	public void setPersonalisedPlanStartDate(String personalisedPlanStartDate) {
+		this.personalisedPlanStartDate = personalisedPlanStartDate;
+	}
 
-    public String getPersonalisedPlanReviewDate() {
-        return personalisedPlanReviewDate;
-    }
+	public String getPersonalisedPlanEndDate() {
+		return personalisedPlanEndDate;
+	}
 
-    public void setPersonalisedPlanReviewDate(String personalisedPlanReviewDate) {
-        this.personalisedPlanReviewDate = personalisedPlanReviewDate;
-    }
+	public void setPersonalisedPlanEndDate(String personalisedPlanEndDate) {
+		this.personalisedPlanEndDate = personalisedPlanEndDate;
+	}
 
-    public String getPersonalisedPlanNotes() {
-        return personalisedPlanNotes;
-    }
+	public String getPersonalisedPlanReviewDate() {
+		return personalisedPlanReviewDate;
+	}
 
-    public void setPersonalisedPlanNotes(String personalisedPlanNotes) {
-        this.personalisedPlanNotes = personalisedPlanNotes;
-    }
+	public void setPersonalisedPlanReviewDate(String personalisedPlanReviewDate) {
+		this.personalisedPlanReviewDate = personalisedPlanReviewDate;
+	}
 
-    public String getAssociatedAttachment() {
-        return associatedAttachment;
-    }
+	public String getPersonalisedPlanNotes() {
+		return personalisedPlanNotes;
+	}
 
-    public void setAssociatedAttachment(String associatedAttachment) {
-        this.associatedAttachment = associatedAttachment;
-    }
+	public void setPersonalisedPlanNotes(String personalisedPlanNotes) {
+		this.personalisedPlanNotes = personalisedPlanNotes;
+	}
 
-    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "personalisedPlan")
-    public List<PersonalisedPlanDocument> getDocuments() {
-        return documents;
-    }
+	public String getAssociatedAttachment() {
+		return associatedAttachment;
+	}
 
-    public void setDocuments(List<PersonalisedPlanDocument> documents) {
-        this.documents = documents;
-    }
+	public void setAssociatedAttachment(String associatedAttachment) {
+		this.associatedAttachment = associatedAttachment;
+	}
+
+	@OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "personalisedPlan")
+	public List<PersonalisedPlanDocument> getDocuments() {
+		return documents;
+	}
+
+	public void setDocuments(List<PersonalisedPlanDocument> documents) {
+		this.documents = documents;
+	}
 }
