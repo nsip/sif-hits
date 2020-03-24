@@ -1,6 +1,6 @@
 #!/bin/bash
 SIF_HOME=/var/sif/hitsprovider
-RELEASE_NAME=sifhits-2.9.0
+RELEASE_NAME=sifhits-2.9.1
 FINAL_NAME=SIF3InfraREST
 TOMCAT_HOME=/var/lib/tomcat8
 TIMESTAMP=`date +%Y%m%dT%H%M%S`
@@ -30,7 +30,7 @@ mvn -q install:install-file -Dfile=dist/sif3-common-0.14.1.jar
 mvn -q install:install-file -Dfile=dist/sif3-infra-common-0.14.1.jar
 mvn -q install:install-file -Dfile=dist/sif3-infra-model-0.14.1.jar
 mvn -q install:install-file -Dfile=dist/sif3-infra-rest-0.14.1.jar
-mvn -q install:install-file -Dfile=dist/sifau-datamodel-au-3.4.5.jar
+mvn -q install:install-file -Dfile=dist/sifau-datamodel-au-3.4.6.jar
 echo Running required migrations on sif3_infra database schema
 mvn -q flyway:migrate -Dflyway.configFiles=/var/sif/hitsprovider/hibernate/flyway.properties
 echo Deploying latest version to tomcat
