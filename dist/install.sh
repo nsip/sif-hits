@@ -1,6 +1,6 @@
 #!/bin/bash
 SIF_HOME=/var/sif/hitsprovider
-RELEASE_NAME=sifhits-2.9.1
+RELEASE_NAME=sifhits-2.10.0
 FINAL_NAME=SIF3InfraREST
 TOMCAT_HOME=/var/lib/tomcat8
 TIMESTAMP=`date +%Y%m%dT%H%M%S`
