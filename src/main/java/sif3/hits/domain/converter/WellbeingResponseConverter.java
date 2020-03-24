@@ -57,6 +57,7 @@ public class WellbeingResponseConverter extends HitsConverter<WellbeingResponseT
         if (source != null && target != null) {
             IObjectFactory objectFactory = getObjectFactory();
             target.setRefId(source.getRefId());
+            target.setLocalId(objectFactory.createWellbeingResponseTypeLocalId(source.getLocalId()));
             target.setStudentPersonalRefId(source.getStudentPersonalRefId());
             target.setSchoolInfoRefId(source.getSchoolInfoRefId());
             target.setDate(getDateValue(source.getDate()));
@@ -150,6 +151,7 @@ public class WellbeingResponseConverter extends HitsConverter<WellbeingResponseT
     public void toHitsModel(WellbeingResponseType source, WellbeingResponse target) {
         if (source != null && target != null) {
             target.setRefId(source.getRefId());
+            target.setLocalId(getJAXBValue(source.getLocalId()));
             target.setStudentPersonalRefId(source.getStudentPersonalRefId());
             target.setSchoolInfoRefId(source.getSchoolInfoRefId());
             target.setDate(getDateValue(source.getDate()));

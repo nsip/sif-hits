@@ -48,6 +48,7 @@ public class WellbeingResponseTestData extends TestData<WellbeingResponseType, W
 
         WellbeingResponseType wellbeingResponseType = objectFactory.createWellbeingResponseType();
         wellbeingResponseType.setRefId(refId);
+        wellbeingResponseType.setLocalId(objectFactory.createWellbeingResponseTypeLocalId("local-id"));
         wellbeingResponseType.setStudentPersonalRefId(StudentPersonalTestData.REF_ID_1);
         wellbeingResponseType.setSchoolInfoRefId(SchoolInfoTestData.REF_ID_1);
         wellbeingResponseType.setDate(getDate("2018-03-06"));
