@@ -40,6 +40,7 @@ public class WellbeingCharacteristicConverter
 			IObjectFactory objectFactory = getObjectFactory();
 
 			target.setRefId(source.getRefId());
+			target.setLocalId(objectFactory.createWellbeingCharacteristicTypeLocalId(source.getLocalId()));
 			target.setStudentPersonalRefId(source.getStudentPersonalRefId());
 			target.setSchoolInfoRefId(
 					objectFactory.createWellbeingCharacteristicTypeSchoolInfoRefId(source.getSchoolInfoRefId()));
@@ -109,6 +110,7 @@ public class WellbeingCharacteristicConverter
 			resetModel(target);
 
 			target.setRefId(source.getRefId());
+			target.setLocalId(getJAXBValue(source.getLocalId()));
 			target.setStudentPersonalRefId(source.getStudentPersonalRefId());
 			target.setSchoolInfoRefId(getJAXBValue(source.getSchoolInfoRefId()));
 			target.setClassification(getJAXBEnumValue(source.getWellbeingCharacteristicClassification()));

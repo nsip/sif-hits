@@ -1,4 +1,5 @@
 <WellbeingCharacteristic RefId="e729ac6f-d9e1-4b53-aca4-9e871d1e16cb" xmlns="http://www.sifassociation.org/datamodel/au/3.4">
+    <LocalId>local-id</LocalId>
     <StudentPersonalRefId>c1deee9b-53ce-4c8f-9101-31bedf9c4836</StudentPersonalRefId>
     <SchoolInfoRefId>252159ce-e385-4dea-8440-26d300282781</SchoolInfoRefId>
     <WellbeingCharacteristicClassification>D</WellbeingCharacteristicClassification>
