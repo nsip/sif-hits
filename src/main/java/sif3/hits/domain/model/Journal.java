@@ -1,133 +1,177 @@
 package sif3.hits.domain.model;
 
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Journal extends HitsEntity {
-  private static final long serialVersionUID = 990143218242128343L;
+	private static final long serialVersionUID = 990143218242128343L;
 
-  private String refId;
-  private String debitFinancialAccountRefId;
-  private String creditFinancialAccountRefId;
-  private String originatingTransactionRefId;
-  private String originationTransactionSIFRefObject;
-  private String amount;
-  private String gstCodeOriginal;
-  private String gstCodeReplacement;
-  private String note;
-  private String createdDate;
-  private String approvedDate;
-  private String createdBy;
-  private String approvedBy;
+	private String refId;
+	private String localId;
+	private String debitFinancialAccountRefId;
+	private String debitAccountCode;
+	private String creditFinancialAccountRefId;
+	private String creditAccountCode;
+	private String originatingTransactionRefId;
+	private String originationTransactionSIFRefObject;
+	private String amount;
+	private String gstCodeOriginal;
+	private String gstCodeReplacement;
+	private String note;
+	private String createdDate;
+	private String approvedDate;
+	private String createdBy;
+	private String approvedBy;
 
-  @Id
-  public String getRefId() {
-    return refId;
-  }
+	private List<JournalAdjustment> journalAdjustments;
 
-  public void setRefId(String refId) {
-    this.refId = refId;
-  }
+	@Id
+	public String getRefId() {
+		return refId;
+	}
 
-  @Column(name = "Debit_FinancialAccount_RefId")
-  public String getDebitFinancialAccountRefId() {
-    return debitFinancialAccountRefId;
-  }
+	public void setRefId(String refId) {
+		this.refId = refId;
+	}
 
-  public void setDebitFinancialAccountRefId(String debitFinancialAccountRefId) {
-    this.debitFinancialAccountRefId = debitFinancialAccountRefId;
-  }
+	public String getLocalId() {
+		return localId;
+	}
 
-  @Column(name = "Credit_FinancialAccount_RefId")
-  public String getCreditFinancialAccountRefId() {
-    return creditFinancialAccountRefId;
-  }
+	public void setLocalId(String localId) {
+		this.localId = localId;
+	}
 
-  public void setCreditFinancialAccountRefId(String creditFinancialAccountRefId) {
-    this.creditFinancialAccountRefId = creditFinancialAccountRefId;
-  }
+	@Column(name = "Debit_FinancialAccount_RefId")
+	public String getDebitFinancialAccountRefId() {
+		return debitFinancialAccountRefId;
+	}
 
-  @Column(name = "OriginatingTransaction_RefId")
-  public String getOriginatingTransactionRefId() {
-    return originatingTransactionRefId;
-  }
+	public void setDebitFinancialAccountRefId(String debitFinancialAccountRefId) {
+		this.debitFinancialAccountRefId = debitFinancialAccountRefId;
+	}
 
-  public void setOriginatingTransactionRefId(String originatingTransactionRefId) {
-    this.originatingTransactionRefId = originatingTransactionRefId;
-  }
+	@Column(name = "Debit_AccountCode")
+	public String getDebitAccountCode() {
+		return debitAccountCode;
+	}
 
-  @Column(name = "OriginatingTransaction_RefId_SIFRefObject")
-  public String getOriginationTransactionSIFRefObject() {
-    return originationTransactionSIFRefObject;
-  }
+	public void setDebitAccountCode(String debitAccountCode) {
+		this.debitAccountCode = debitAccountCode;
+	}
 
-  public void setOriginationTransactionSIFRefObject(String originationTransactionSIFRefObject) {
-    this.originationTransactionSIFRefObject = originationTransactionSIFRefObject;
-  }
+	@Column(name = "Credit_FinancialAccount_RefId")
+	public String getCreditFinancialAccountRefId() {
+		return creditFinancialAccountRefId;
+	}
 
-  public String getAmount() {
-    return amount;
-  }
+	public void setCreditFinancialAccountRefId(String creditFinancialAccountRefId) {
+		this.creditFinancialAccountRefId = creditFinancialAccountRefId;
+	}
 
-  public void setAmount(String amount) {
-    this.amount = amount;
-  }
+	@Column(name = "Credit_AccountCode")
+	public String getCreditAccountCode() {
+		return creditAccountCode;
+	}
 
-  public String getGSTCodeOriginal() {
-    return gstCodeOriginal;
-  }
+	public void setCreditAccountCode(String creditAccountCode) {
+		this.creditAccountCode = creditAccountCode;
+	}
 
-  public void setGSTCodeOriginal(String gstCodeOriginal) {
-    this.gstCodeOriginal = gstCodeOriginal;
-  }
+	@Column(name = "OriginatingTransaction_RefId")
+	public String getOriginatingTransactionRefId() {
+		return originatingTransactionRefId;
+	}
 
-  public String getGSTCodeReplacement() {
-    return gstCodeReplacement;
-  }
+	public void setOriginatingTransactionRefId(String originatingTransactionRefId) {
+		this.originatingTransactionRefId = originatingTransactionRefId;
+	}
 
-  public void setGSTCodeReplacement(String gstCodeReplacement) {
-    this.gstCodeReplacement = gstCodeReplacement;
-  }
+	@Column(name = "OriginatingTransaction_RefId_SIFRefObject")
+	public String getOriginationTransactionSIFRefObject() {
+		return originationTransactionSIFRefObject;
+	}
 
-  public String getNote() {
-    return note;
-  }
+	public void setOriginationTransactionSIFRefObject(String originationTransactionSIFRefObject) {
+		this.originationTransactionSIFRefObject = originationTransactionSIFRefObject;
+	}
 
-  public void setNote(String note) {
-    this.note = note;
-  }
+	public String getAmount() {
+		return amount;
+	}
 
-  public String getCreatedDate() {
-    return createdDate;
-  }
+	public void setAmount(String amount) {
+		this.amount = amount;
+	}
 
-  public void setCreatedDate(String createdDate) {
-    this.createdDate = createdDate;
-  }
+	public String getGSTCodeOriginal() {
+		return gstCodeOriginal;
+	}
 
-  public String getApprovedDate() {
-    return approvedDate;
-  }
+	public void setGSTCodeOriginal(String gstCodeOriginal) {
+		this.gstCodeOriginal = gstCodeOriginal;
+	}
 
-  public void setApprovedDate(String approvedDate) {
-    this.approvedDate = approvedDate;
-  }
+	public String getGSTCodeReplacement() {
+		return gstCodeReplacement;
+	}
 
-  public String getCreatedBy() {
-    return createdBy;
-  }
+	public void setGSTCodeReplacement(String gstCodeReplacement) {
+		this.gstCodeReplacement = gstCodeReplacement;
+	}
 
-  public void setCreatedBy(String createdBy) {
-    this.createdBy = createdBy;
-  }
+	public String getNote() {
+		return note;
+	}
 
-  public String getApprovedBy() {
-    return approvedBy;
-  }
+	public void setNote(String note) {
+		this.note = note;
+	}
 
-  public void setApprovedBy(String approvedBy) {
-    this.approvedBy = approvedBy;
-  }
+	public String getCreatedDate() {
+		return createdDate;
+	}
+
+	public void setCreatedDate(String createdDate) {
+		this.createdDate = createdDate;
+	}
+
+	public String getApprovedDate() {
+		return approvedDate;
+	}
+
+	public void setApprovedDate(String approvedDate) {
+		this.approvedDate = approvedDate;
+	}
+
+	public String getCreatedBy() {
+		return createdBy;
+	}
+
+	public void setCreatedBy(String createdBy) {
+		this.createdBy = createdBy;
+	}
+
+	public String getApprovedBy() {
+		return approvedBy;
+	}
+
+	public void setApprovedBy(String approvedBy) {
+		this.approvedBy = approvedBy;
+	}
+
+	@OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "journal")
+	public List<JournalAdjustment> getJournalAdjustments() {
+		return journalAdjustments;
+	}
+
+	public void setJournalAdjustments(List<JournalAdjustment> journalAdjustments) {
+		this.journalAdjustments = journalAdjustments;
+	}
 }
