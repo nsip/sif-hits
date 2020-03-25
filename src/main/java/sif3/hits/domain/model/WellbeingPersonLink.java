@@ -13,6 +13,7 @@ public class WellbeingPersonLink extends HitsEntity {
 	private static final long serialVersionUID = 5693245628526263891L;
 
 	private String refId;
+	private String localId;
 	private String wellbeingEventRefId;
 	private String wellbeingResponseRefId;
 	private String groupId;
@@ -33,6 +34,14 @@ public class WellbeingPersonLink extends HitsEntity {
 
 	public void setRefId(String refId) {
 		this.refId = refId;
+	}
+
+	public String getLocalId() {
+		return localId;
+	}
+
+	public void setLocalId(String localId) {
+		this.localId = localId;
 	}
 
 	@Column(name = "WellbeingEvent_RefId")
