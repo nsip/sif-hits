@@ -26,6 +26,8 @@ public class PurchasingItemsConverter extends HitsConverter<PurchasingItemType, 
     public void toSifModel(PurchasingItem source, PurchasingItemType target) {
         if (source != null && target != null) {
             IObjectFactory objectFactory = getObjectFactory();
+            
+            target.setLocalItemId(objectFactory.createPurchasingItemTypeLocalItemId(source.getLocalItemId()));
 
             if (source.getExpenseAccount() != null) {
                 ExpenseAccountsType expenseAccounts = objectFactory.createExpenseAccountsType();
@@ -51,6 +53,8 @@ public class PurchasingItemsConverter extends HitsConverter<PurchasingItemType, 
     @Override
     public void toHitsModel(PurchasingItemType source, PurchasingItem target) {
         if (source != null && target != null) {
+        	target.setLocalItemId(getJAXBValue(source.getLocalItemId()));
+        	
             ExpenseAccountsType expenseAccounts = getJAXBValue(source.getExpenseAccounts());
             ExpenseAccountType expenseAccount = null;
             if (expenseAccounts != null && !expenseAccounts.getExpenseAccount().isEmpty()) {

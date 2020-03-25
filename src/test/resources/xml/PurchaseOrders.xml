@@ -9,6 +9,7 @@
             <PurchasingItem>
                 <ItemNumber>123456</ItemNumber>
                 <ItemDescription>Description #1</ItemDescription>
+                <LocalItemId>local-id-1</LocalItemId>
                 <Quantity>1</Quantity>
                 <UnitCost Currency="AUD">10.00</UnitCost>
                 <QuantityDelivered>1</QuantityDelivered>
@@ -24,6 +25,7 @@
             <PurchasingItem>
                 <ItemNumber>246912</ItemNumber>
                 <ItemDescription>Description #2</ItemDescription>
+                <LocalItemId>local-id-2</LocalItemId>
                 <Quantity>2</Quantity>
                 <UnitCost Currency="AUD">10.00</UnitCost>
                 <QuantityDelivered>2</QuantityDelivered>
@@ -53,6 +55,7 @@
             <PurchasingItem>
                 <ItemNumber>123456</ItemNumber>
                 <ItemDescription>Description #1</ItemDescription>
+                <LocalItemId>local-id-1</LocalItemId>
                 <Quantity>1</Quantity>
                 <UnitCost Currency="AUD">10.00</UnitCost>
                 <QuantityDelivered>1</QuantityDelivered>
@@ -68,6 +71,7 @@
             <PurchasingItem>
                 <ItemNumber>246912</ItemNumber>
                 <ItemDescription>Description #2</ItemDescription>
+                <LocalItemId>local-id-2</LocalItemId>
                 <Quantity>2</Quantity>
                 <UnitCost Currency="AUD">10.00</UnitCost>
                 <QuantityDelivered>2</QuantityDelivered>

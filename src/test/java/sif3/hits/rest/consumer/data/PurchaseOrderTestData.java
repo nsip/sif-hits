@@ -84,6 +84,8 @@ public class PurchaseOrderTestData extends TestData<PurchaseOrderType, PurchaseO
 		IObjectFactory objectFactory = getObjectFactory();
 		PurchasingItemType purchasingItem = new PurchasingItemType();
 
+		purchasingItem.setLocalItemId(objectFactory.createPurchasingItemTypeLocalItemId("local-id-" + index));
+
 		String strIndex = "" + index;
 		BigInteger intIndex = new BigInteger(strIndex, 10);
 		BigDecimal decIndex = new BigDecimal(strIndex);
