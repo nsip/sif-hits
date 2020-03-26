@@ -23,7 +23,6 @@ public class TeachingGroup extends HitsEntity {
 	private String longName;
 	private String localId;
 	private String schoolYear;
-	private String kla;
 	private SchoolInfo schoolInfo;
 	private List<String> studentPersonalRefIds;
 	private List<TeachingGroupTeacher> teachingGroupTeachers;
@@ -70,15 +69,6 @@ public class TeachingGroup extends HitsEntity {
 
 	public void setSchoolYear(String schoolYear) {
 		this.schoolYear = schoolYear;
-	}
-
-	@Column(name = "KLA")
-	public String getKla() {
-		return kla;
-	}
-
-	public void setKla(String kla) {
-		this.kla = kla;
 	}
 
 	@ManyToOne
