@@ -1,14 +1,16 @@
 package sif3.hits.domain.model;
 
+import java.util.List;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
+import javax.persistence.CollectionTable;
 import javax.persistence.Column;
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
@@ -23,8 +25,8 @@ public class TeachingGroup extends HitsEntity {
 	private String schoolYear;
 	private String kla;
 	private SchoolInfo schoolInfo;
-	private Set<StudentPersonal> studentPersonals;
-	private Set<TeachingGroupTeacher> teachingGroupTeachers;
+	private List<String> studentPersonalRefIds;
+	private List<TeachingGroupTeacher> teachingGroupTeachers;
 	private Set<TimeTableCell> timeTablePeriods;
 	private TimeTableSubject timeTableSubject;
 	private String keyLearningArea;
@@ -89,24 +91,23 @@ public class TeachingGroup extends HitsEntity {
 		this.schoolInfo = schoolInfo;
 	}
 
-	@ManyToMany
-	@JoinTable(name = "TeachingGroup_Student", joinColumns = {
-			@JoinColumn(name = "TeachingGroup_RefId", referencedColumnName = "RefId") }, inverseJoinColumns = {
-					@JoinColumn(name = "StudentPersonal_RefId", referencedColumnName = "RefId") })
-	public Set<StudentPersonal> getStudentPersonals() {
-		return studentPersonals;
+	@ElementCollection(fetch = FetchType.LAZY)
+	@CollectionTable(name = "TeachingGroup_Student", joinColumns = @JoinColumn(name = "TeachingGroup_RefId"))
+	@Column(name = "StudentPersonal_RefId")
+	public List<String> getStudentPersonalRefIds() {
+		return studentPersonalRefIds;
 	}
 
-	public void setStudentPersonals(Set<StudentPersonal> studentPersonals) {
-		this.studentPersonals = studentPersonals;
+	public void setStudentPersonalRefIds(List<String> studentPersonalRefIds) {
+		this.studentPersonalRefIds = studentPersonalRefIds;
 	}
 
 	@OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "teachingGroupTeacherId.teachingGroup")
-	public Set<TeachingGroupTeacher> getTeachingGroupTeachers() {
+	public List<TeachingGroupTeacher> getTeachingGroupTeachers() {
 		return teachingGroupTeachers;
 	}
 
-	public void setTeachingGroupTeachers(Set<TeachingGroupTeacher> teachingGroupTeachers) {
+	public void setTeachingGroupTeachers(List<TeachingGroupTeacher> teachingGroupTeachers) {
 		this.teachingGroupTeachers = teachingGroupTeachers;
 	}
 
@@ -130,6 +131,7 @@ public class TeachingGroup extends HitsEntity {
 		this.timeTableSubject = timeTableSubject;
 	}
 
+	@Column(name = "KLA")
 	public String getKeyLearningArea() {
 		return keyLearningArea;
 	}

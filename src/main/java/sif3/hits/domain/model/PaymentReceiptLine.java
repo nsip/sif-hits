@@ -6,8 +6,10 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 
 @Entity
+@Table(name = "PaymentReceipt_PaymentReceiptLine")
 public class PaymentReceiptLine {
 	private Long id;
 	private PaymentReceipt paymentReceipt;

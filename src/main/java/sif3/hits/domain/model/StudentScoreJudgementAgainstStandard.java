@@ -135,7 +135,7 @@ public class StudentScoreJudgementAgainstStandard extends HitsEntity {
 		this.staffLocalId = staffLocalId;
 	}
 
-	@OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "studentScoreJudgmentAgainstStandard")
+	@OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "studentScoreJudgementAgainstStandard")
 	public List<LearningStandard> getLearningStandardList() {
 		return learningStandardList;
 	}

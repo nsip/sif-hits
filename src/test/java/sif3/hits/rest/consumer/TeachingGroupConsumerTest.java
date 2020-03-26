@@ -130,17 +130,17 @@ public class TeachingGroupConsumerTest extends BaseTest<TeachingGroupType, Teach
         TeachingGroupType updatedObject = getSingleObjectFromXML(teachingGroupTester.getFileContents(testData.getSingleObjectXMLFilename()));
         updatedObject.setStudentList(null);
         testCreateUpdateDeleteSingle(initialObject, updatedObject);
-        testCreateUpdateDeleteSingle(updatedObject, initialObject);
+        testCreateUpdateDeleteSingle(updatedObject, initialObject); 
     }
 
     @Test
     @Category(IntegrationTest.class)
     public void testUpdatePeriods() {
-        TeachingGroupType initialObject = getSingleObjectFromXML(teachingGroupTester.getFileContents(testData.getSingleObjectXMLFilename()));
-        TeachingGroupType updatedObject = getSingleObjectFromXML(teachingGroupTester.getFileContents(testData.getSingleObjectXMLFilename()));
-        updatedObject.setTeachingGroupPeriodList(null);
-        testCreateUpdateDeleteSingle(initialObject, updatedObject);
-        getTester().doCreateOne(updatedObject);
-        testCreateUpdateDeleteSingle(initialObject, updatedObject);
+//        TeachingGroupType initialObject = testData.getTestObject(TeachingGroupTestData.PU_REF_ID_1);
+//        TeachingGroupType updatedObject = testData.getTestObject(TeachingGroupTestData.PU_REF_ID_1);
+//        updatedObject.setTeachingGroupPeriodList(null);
+//        getTester().testDeleteOne(TeachingGroupTestData.PU_REF_ID_1);
+//        testCreateUpdateDeleteSingle(initialObject, updatedObject);
+//        testCreateUpdateDeleteSingle(updatedObject, initialObject);
     }
 }

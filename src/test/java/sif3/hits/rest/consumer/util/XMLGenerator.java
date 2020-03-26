@@ -1,11 +1,56 @@
 package sif3.hits.rest.consumer.util;
 
+import java.io.IOException;
+
 import sif.dd.au30.conversion.DataModelMarshalFactory;
 import sif3.common.exception.MarshalException;
 import sif3.common.exception.UnsupportedMediaTypeExcpetion;
-import sif3.hits.rest.consumer.data.*;
-
-import java.io.IOException;
+import sif3.hits.rest.consumer.data.CalendarDateTestData;
+import sif3.hits.rest.consumer.data.CalendarSummaryTestData;
+import sif3.hits.rest.consumer.data.ChargedLocationInfoTestData;
+import sif3.hits.rest.consumer.data.DebtorTestData;
+import sif3.hits.rest.consumer.data.FinancialAccountTestData;
+import sif3.hits.rest.consumer.data.GradingAssignmentScoreTestData;
+import sif3.hits.rest.consumer.data.GradingAssignmentTestData;
+import sif3.hits.rest.consumer.data.InvoiceTestData;
+import sif3.hits.rest.consumer.data.JournalTestData;
+import sif3.hits.rest.consumer.data.NAPEventStudentLinkTestData;
+import sif3.hits.rest.consumer.data.NAPStudentResponseSetTestData;
+import sif3.hits.rest.consumer.data.NAPTestItemTestData;
+import sif3.hits.rest.consumer.data.NAPTestScoreSummaryTestData;
+import sif3.hits.rest.consumer.data.NAPTestTestData;
+import sif3.hits.rest.consumer.data.NAPTestletTestData;
+import sif3.hits.rest.consumer.data.PaymentReceiptTestData;
+import sif3.hits.rest.consumer.data.PersonPictureTestData;
+import sif3.hits.rest.consumer.data.PersonalisedPlanTestData;
+import sif3.hits.rest.consumer.data.PurchaseOrderTestData;
+import sif3.hits.rest.consumer.data.RoomInfoTestData;
+import sif3.hits.rest.consumer.data.ScheduledActivityTestData;
+import sif3.hits.rest.consumer.data.SchoolInfoTestData;
+import sif3.hits.rest.consumer.data.SessionInfoTestData;
+import sif3.hits.rest.consumer.data.StaffAssignmentTestData;
+import sif3.hits.rest.consumer.data.StaffPersonalTestData;
+import sif3.hits.rest.consumer.data.StudentAttendanceSummaryTestData;
+import sif3.hits.rest.consumer.data.StudentAttendanceTimeListTestData;
+import sif3.hits.rest.consumer.data.StudentContactPersonalTestData;
+import sif3.hits.rest.consumer.data.StudentContactRelationshipTestData;
+import sif3.hits.rest.consumer.data.StudentDailyAttendanceTestData;
+import sif3.hits.rest.consumer.data.StudentPeriodAttendanceTestData;
+import sif3.hits.rest.consumer.data.StudentPersonalTestData;
+import sif3.hits.rest.consumer.data.StudentSchoolEnrollmentTestData;
+import sif3.hits.rest.consumer.data.StudentScoreJudgementAgainstStandardTestData;
+import sif3.hits.rest.consumer.data.TeachingGroupTestData;
+import sif3.hits.rest.consumer.data.TestData;
+import sif3.hits.rest.consumer.data.TimeTableCellTestData;
+import sif3.hits.rest.consumer.data.TimeTableSubjectTestData;
+import sif3.hits.rest.consumer.data.TimeTableTestData;
+import sif3.hits.rest.consumer.data.VendorInfoTestData;
+import sif3.hits.rest.consumer.data.WellbeingAlertTestData;
+import sif3.hits.rest.consumer.data.WellbeingAppealTestData;
+import sif3.hits.rest.consumer.data.WellbeingCharacteristicTestData;
+import sif3.hits.rest.consumer.data.WellbeingEventTestData;
+import sif3.hits.rest.consumer.data.WellbeingPersonLinkTestData;
+import sif3.hits.rest.consumer.data.WellbeingResponseTestData;
 
 public class XMLGenerator {
     public static void main(String[] args) throws MarshalException, UnsupportedMediaTypeExcpetion {
@@ -54,6 +99,7 @@ public class XMLGenerator {
         generateTestXML(path, new WellbeingEventTestData(), WellbeingEventTestData.XML_REF_ID_1, WellbeingEventTestData.XML_REF_ID_2);
         generateTestXML(path, new WellbeingPersonLinkTestData(), WellbeingPersonLinkTestData.XML_REF_ID_1, WellbeingPersonLinkTestData.XML_REF_ID_2);
         generateTestXML(path, new WellbeingResponseTestData(), WellbeingResponseTestData.XML_REF_ID_1, WellbeingResponseTestData.XML_REF_ID_2);
+        generateTestXML(path, new StudentScoreJudgementAgainstStandardTestData(), StudentScoreJudgementAgainstStandardTestData.XML_REF_ID_1, StudentScoreJudgementAgainstStandardTestData.XML_REF_ID_2);
 //        generateTestXML(path, new AGStatusReportTestData(), AGStatusReportTestData.XML_REF_ID_1, AGStatusReportTestData.XML_REF_ID_2);
 //        generateTestXML(path, new AGAddressCollectionSubmissionTestData(), AGAddressCollectionSubmissionTestData.XML_REF_ID_1, AGAddressCollectionSubmissionTestData.XML_REF_ID_2);
 //        generateTestXML(path, new FinancialQuestionnaireSubmissionTestData(), FinancialQuestionnaireSubmissionTestData.XML_REF_ID_1, FinancialQuestionnaireSubmissionTestData.XML_REF_ID_2);

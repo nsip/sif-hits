@@ -1,9 +1,12 @@
 package sif3.hits.domain.converter;
 
+import org.springframework.stereotype.Component;
+
 import sif.dd.au30.model.LearningStandardType;
 import sif3.hits.domain.converter.factory.IObjectFactory;
 import sif3.hits.domain.model.LearningStandard;
 
+@Component
 public class LearningStandardConverter extends HitsConverter<LearningStandardType, LearningStandard> {
 
 	public LearningStandardConverter() {

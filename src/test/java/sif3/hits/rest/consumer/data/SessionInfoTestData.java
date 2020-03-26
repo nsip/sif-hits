@@ -39,7 +39,7 @@ public class SessionInfoTestData extends TestData<SessionInfoType,SessionInfoCol
         sessionInfo.setSchoolLocalId(objectFactory.createSessionInfoTypeSchoolLocalId(SchoolInfoTestData.LOCAL_ID));
         sessionInfo.setStaffPersonalLocalId(objectFactory.createSessionInfoTypeStaffPersonalLocalId(StaffPersonalTestData.LOCAL_ID));
         sessionInfo.setRoomNumber(objectFactory.createSessionInfoTypeRoomNumber(RoomInfoTestData.ROOM_NUMBER));
-        sessionInfo.setDayId(TimeTableCellTestData.DAY_ID);
+        sessionInfo.setDayId(TimeTableCellTestData.DAY_ID_MAP.get(TimeTableCellTestData.REF_ID_1));
         sessionInfo.setPeriodId(TimeTableCellTestData.PERIOD_ID);
         sessionInfo.setSessionDate(getDate("2014-10-22"));
         sessionInfo.setStartTime(objectFactory.createSessionInfoTypeStartTime(getDate("10:00:00")));

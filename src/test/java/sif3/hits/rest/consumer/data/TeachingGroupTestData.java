@@ -31,6 +31,8 @@ public class TeachingGroupTestData extends TestData<TeachingGroupType, TeachingG
 	public static final String REF_ID_3 = "e2394da1-cfaa-4b01-b75e-48e3a500039e";
 	public static final String REF_ID_4 = "3f437191-ddf2-4874-a13c-231d1b8825cd";
 	public static final String REF_ID_5 = "ddca0ff3-11b6-4175-b54b-4ac6e71d5b78";
+	
+    public static final String PU_REF_ID_1 = "132e7dc4-de18-46e9-8cac-0f80c2c66c13";
 
 	public static final String[] REF_ID_RA = { REF_ID_1, REF_ID_2, REF_ID_3, REF_ID_4, REF_ID_5 };
 	public static final List<String> REF_ID_LIST = Arrays.asList(REF_ID_RA);
@@ -89,17 +91,21 @@ public class TeachingGroupTestData extends TestData<TeachingGroupType, TeachingG
 
 		teachingGroup.setStudentList(objectFactory.createTeachingGroupTypeStudentList(studentList));
 
+		String timeTableCellRefId = TimeTableCellTestData.REF_ID_1;
+		if (PU_REF_ID_1.equals(refId)) {
+			timeTableCellRefId = TimeTableCellTestData.REF_ID_5;
+		}
 		if (!XML_REF_ID_LIST.contains(refId)) {
 			// Need to add TeachingGroupPeriods!
 			TeachingGroupPeriodListType periodList = new TeachingGroupPeriodListType();
 			TeachingGroupPeriodType period = new TeachingGroupPeriodType();
 			period.setTimeTableCellRefId(
-					objectFactory.createTeachingGroupPeriodTypeTimeTableCellRefId(TimeTableCellTestData.REF_ID_1));
+					objectFactory.createTeachingGroupPeriodTypeTimeTableCellRefId(timeTableCellRefId));
 			period.setRoomNumber(objectFactory.createTeachingGroupPeriodTypeRoomNumber(RoomInfoTestData.ROOM_NUMBER));
 			period.setCellType(objectFactory.createTeachingGroupPeriodTypeCellType(TimeTableCellTestData.CELL_TYPE));
 			period.setStaffLocalId(
 					objectFactory.createTeachingGroupPeriodTypeStaffLocalId(StaffPersonalTestData.LOCAL_ID));
-			period.setDayId(TimeTableCellTestData.DAY_ID);
+			period.setDayId(TimeTableCellTestData.DAY_ID_MAP.get(timeTableCellRefId));
 			period.setPeriodId(objectFactory.createTeachingGroupPeriodTypePeriodId(TimeTableCellTestData.PERIOD_ID));
 			periodList.getTeachingGroupPeriod().add(period);
 			teachingGroup.setTeachingGroupPeriodList(

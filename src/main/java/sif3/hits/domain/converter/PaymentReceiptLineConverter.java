@@ -1,5 +1,7 @@
 package sif3.hits.domain.converter;
 
+import org.springframework.stereotype.Component;
+
 import sif.dd.au30.model.DebitOrCreditAmountType;
 import sif.dd.au30.model.MonetaryAmountType;
 import sif.dd.au30.model.PaymentReceiptLineType;
@@ -7,6 +9,7 @@ import sif3.hits.domain.converter.factory.IObjectFactory;
 import sif3.hits.domain.model.PaymentReceiptLine;
 import sif3.hits.utils.UsesConstants;
 
+@Component
 public class PaymentReceiptLineConverter extends HitsConverter<PaymentReceiptLineType, PaymentReceiptLine>
 		implements UsesConstants {
 

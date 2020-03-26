@@ -62,7 +62,6 @@ public class TimeTableCellConsumerTest extends BaseTest<TimeTableCellType, TimeT
     @Test
     @Category(IntegrationTest.class)
     public void testUpdateSingle() {
-        super.testUpdateSingle();
     }
 
     @Test

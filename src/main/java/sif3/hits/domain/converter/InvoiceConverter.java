@@ -82,11 +82,9 @@ public class InvoiceConverter extends HitsConverter<InvoiceType, Invoice> implem
 			}
 
 			if (source.getAccountCodes() != null && !source.getAccountCodes().isEmpty()) {
-				FinancialAccountRefIdListType financialAccountRefIdList = objectFactory
-						.createFinancialAccountRefIdListType();
-				financialAccountRefIdList.getFinancialAccountRefId().addAll(source.getFinancialAccountRefIds());
-				target.setFinancialAccountRefIdList(
-						objectFactory.createInvoiceTypeFinancialAccountRefIdList(financialAccountRefIdList));
+				AccountCodeListType accountCodeListType = objectFactory.createAccountCodeListType();
+				accountCodeListType.getAccountCode().addAll(source.getAccountCodes());
+				target.setAccountCodeList(objectFactory.createInvoiceTypeAccountCodeList(accountCodeListType));
 			}
 		}
 	}
