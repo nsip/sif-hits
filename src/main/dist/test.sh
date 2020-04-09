@@ -6,6 +6,7 @@ if [ -z "$1" ]; then
 	echo "   ./dist/test.sh 90c59ecb9bb84db19d52500bcd02ae5c"
 	exit 0
 fi
+echo ${DIR}
 SIF_HOME=/var/sif/hitsprovider
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
 cd $DIR/..
