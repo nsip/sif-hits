@@ -8,7 +8,7 @@ TIMESTAMP=`date +%Y%m%dT%H%M%S`
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
 cd ${DIR}/..
 PROVIDERS=(`find src -name *Provider.java | awk -F '[/.]' '{ print $8 }'`)
-echo Updating Provider environment template (${SITE})
+echo Updating Provider environment template ${SITE}
 cp ${DIR}/../config/environments/provider/template/direct/HITS.xml ${SIF_HOME}/environments/provider/template/direct/HITS.xml
 echo Updating Provider properties
 PROVIDER_CONFIG=""
