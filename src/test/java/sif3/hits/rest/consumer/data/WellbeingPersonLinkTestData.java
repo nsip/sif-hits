@@ -32,6 +32,7 @@ public class WellbeingPersonLinkTestData extends TestData<WellbeingPersonLinkTyp
 		IObjectFactory objectFactory = getObjectFactory();
 		WellbeingPersonLinkType wellbeingPersonLinkType = objectFactory.createWellbeingPersonLinkType();
 		wellbeingPersonLinkType.setRefId(refId);
+		wellbeingPersonLinkType.setLocalId(objectFactory.createWellbeingPersonLinkTypeLocalId("local-id"));
 
 		wellbeingPersonLinkType.setWellbeingEventRefId(WellbeingEventTestData.REF_ID_1);
 		wellbeingPersonLinkType.setWellbeingResponseRefId(

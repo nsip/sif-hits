@@ -1,7 +1,32 @@
 <PaymentReceipts xmlns="http://www.sifassociation.org/datamodel/au/3.4">
     <PaymentReceipt RefId="8ed689a8-1915-48b5-8abb-ba4d43941257">
+        <LocalId>local-id</LocalId>
         <TransactionType>Creditor Payment</TransactionType>
         <InvoiceRefId>d21c2326-c868-47eb-8b0a-d19b74c0a5b9</InvoiceRefId>
+        <PaymentReceiptLineList>
+            <PaymentReceiptLine>
+                <InvoiceRefId>d21c2326-c868-47eb-8b0a-d19b74c0a5b9</InvoiceRefId>
+                <LocalId>local-id-8ed689a8-0</LocalId>
+                <LocalPaymentReceiptLineId>local-prl-id-8ed689a8-0</LocalPaymentReceiptLineId>
+                <TransactionAmount Type="Debit" Currency="AUD">11.00</TransactionAmount>
+                <FinancialAccountRefId>14db367d-cf52-4e87-b6d8-cab692c5c319</FinancialAccountRefId>
+                <AccountCode>account-code-8ed689a8-0</AccountCode>
+                <TransactionDescription>transaction description 8ed689a8-0 : 8ed689a8-1915-48b5-8abb-ba4d43941257 0</TransactionDescription>
+                <TaxRate>0.10</TaxRate>
+                <TaxAmount Currency="AUD">1.00</TaxAmount>
+            </PaymentReceiptLine>
+            <PaymentReceiptLine>
+                <InvoiceRefId>d21c2326-c868-47eb-8b0a-d19b74c0a5b9</InvoiceRefId>
+                <LocalId>local-id-8ed689a8-1</LocalId>
+                <LocalPaymentReceiptLineId>local-prl-id-8ed689a8-1</LocalPaymentReceiptLineId>
+                <TransactionAmount Type="Debit" Currency="AUD">11.00</TransactionAmount>
+                <FinancialAccountRefId>14db367d-cf52-4e87-b6d8-cab692c5c319</FinancialAccountRefId>
+                <AccountCode>account-code-8ed689a8-1</AccountCode>
+                <TransactionDescription>transaction description 8ed689a8-1 : 8ed689a8-1915-48b5-8abb-ba4d43941257 1</TransactionDescription>
+                <TaxRate>0.10</TaxRate>
+                <TaxAmount Currency="AUD">1.00</TaxAmount>
+            </PaymentReceiptLine>
+        </PaymentReceiptLineList>
         <VendorInfoRefId>140b8bc9-9137-4c65-b1c0-fda79796e2d9</VendorInfoRefId>
         <DebtorRefId>6aef3adf-18e3-4ee0-823f-a39aa60bd19b</DebtorRefId>
         <ChargedLocationInfoRefId>b5918074-f965-49b7-80b9-cec3270eda48</ChargedLocationInfoRefId>
@@ -12,6 +37,10 @@
             <FinancialAccountRefId>14db367d-cf52-4e87-b6d8-cab692c5c319</FinancialAccountRefId>
             <FinancialAccountRefId>b1970375-c24b-452f-b0c4-4cd0869fd389</FinancialAccountRefId>
         </FinancialAccountRefIdList>
+        <AccountCodeList>
+            <AccountCode>account-code-1</AccountCode>
+            <AccountCode>account-code-2</AccountCode>
+        </AccountCodeList>
         <TransactionDescription>Transaction Description</TransactionDescription>
         <TaxRate>0.10</TaxRate>
         <TaxAmount Currency="AUD">3.00</TaxAmount>
@@ -21,6 +50,7 @@
         <AccountingPeriod>2015Q3</AccountingPeriod>
     </PaymentReceipt>
     <PaymentReceipt RefId="02e0b66b-2ef4-4fd6-97df-b274d9372445">
+        <LocalId>local-id</LocalId>
         <TransactionType>Creditor Payment</TransactionType>
         <InvoiceRefId>d21c2326-c868-47eb-8b0a-d19b74c0a5b9</InvoiceRefId>
         <VendorInfoRefId>140b8bc9-9137-4c65-b1c0-fda79796e2d9</VendorInfoRefId>
@@ -33,6 +63,10 @@
             <FinancialAccountRefId>14db367d-cf52-4e87-b6d8-cab692c5c319</FinancialAccountRefId>
             <FinancialAccountRefId>b1970375-c24b-452f-b0c4-4cd0869fd389</FinancialAccountRefId>
         </FinancialAccountRefIdList>
+        <AccountCodeList>
+            <AccountCode>account-code-1</AccountCode>
+            <AccountCode>account-code-2</AccountCode>
+        </AccountCodeList>
         <TransactionDescription>Transaction Description</TransactionDescription>
         <TaxRate>0.10</TaxRate>
         <TaxAmount Currency="AUD">3.00</TaxAmount>

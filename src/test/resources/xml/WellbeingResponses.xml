@@ -1,5 +1,6 @@
 <WellbeingResponses xmlns="http://www.sifassociation.org/datamodel/au/3.4">
     <WellbeingResponse RefId="362c7bf6-1be9-413b-9912-819e293d47cb">
+        <LocalId>local-id</LocalId>
         <StudentPersonalRefId>c1deee9b-53ce-4c8f-9101-31bedf9c4836</StudentPersonalRefId>
         <SchoolInfoRefId>252159ce-e385-4dea-8440-26d300282781</SchoolInfoRefId>
         <Date>2018-03-06</Date>
@@ -38,6 +39,7 @@
         </DocumentList>
     </WellbeingResponse>
     <WellbeingResponse RefId="533e442b-7c0b-43ac-b253-0a6dc649ec96">
+        <LocalId>local-id</LocalId>
         <StudentPersonalRefId>c1deee9b-53ce-4c8f-9101-31bedf9c4836</StudentPersonalRefId>
         <SchoolInfoRefId>252159ce-e385-4dea-8440-26d300282781</SchoolInfoRefId>
         <Date>2018-03-06</Date>

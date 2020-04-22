@@ -9,6 +9,7 @@ public class FinancialAccount extends HitsEntity {
     private static final long serialVersionUID = -3798203576566110357L;
 
     private String refId;
+    private String localId;
     private String subAccountRefId;
     private String locationInfoRefId;
     private String accountNumber;
@@ -17,6 +18,7 @@ public class FinancialAccount extends HitsEntity {
     private String creationDate;
     private String creationTime;
     private String classType;
+    private String accountCode;
 
     @Id
     public String getRefId() {
@@ -26,6 +28,14 @@ public class FinancialAccount extends HitsEntity {
     public void setRefId(String refId) {
         this.refId = refId;
     }
+    
+    public String getLocalId() {
+		return localId;
+	}
+    
+    public void setLocalId(String localId) {
+		this.localId = localId;
+	}
 
     @Column(name = "SubAccount_RefId")
     public String getSubAccountRefId() {
@@ -92,4 +102,12 @@ public class FinancialAccount extends HitsEntity {
     public void setClassType(String classType) {
         this.classType = classType;
     }
+    
+    public String getAccountCode() {
+		return accountCode;
+	}
+    
+    public void setAccountCode(String accountCode) {
+		this.accountCode = accountCode;
+	}
 }

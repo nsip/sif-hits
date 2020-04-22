@@ -1,5 +1,6 @@
 <Invoices xmlns="http://www.sifassociation.org/datamodel/au/3.4">
     <Invoice RefId="3d283211-c59f-4b42-827e-12a8c7707d58">
+        <LocalId>local-id</LocalId>
         <InvoicedEntity SIF_RefObject="Debtor">6aef3adf-18e3-4ee0-823f-a39aa60bd19b</InvoicedEntity>
         <FormNumber>1234</FormNumber>
         <BillingDate>2015-07-01</BillingDate>
@@ -18,11 +19,16 @@
             <FinancialAccountRefId>14db367d-cf52-4e87-b6d8-cab692c5c319</FinancialAccountRefId>
             <FinancialAccountRefId>b1970375-c24b-452f-b0c4-4cd0869fd389</FinancialAccountRefId>
         </FinancialAccountRefIdList>
+        <AccountCodeList>
+            <AccountCode>account-code-1</AccountCode>
+            <AccountCode>account-code-2</AccountCode>
+        </AccountCodeList>
         <AccountingPeriod>2015Q3</AccountingPeriod>
         <RelatedPurchaseOrderRefId>190d0be2-5944-4453-8005-3bf91cd79a55</RelatedPurchaseOrderRefId>
         <Voluntary>N</Voluntary>
     </Invoice>
     <Invoice RefId="d89a3506-890e-449d-8558-4772164560ea">
+        <LocalId>local-id</LocalId>
         <InvoicedEntity SIF_RefObject="Debtor">6aef3adf-18e3-4ee0-823f-a39aa60bd19b</InvoicedEntity>
         <FormNumber>1234</FormNumber>
         <BillingDate>2015-07-01</BillingDate>

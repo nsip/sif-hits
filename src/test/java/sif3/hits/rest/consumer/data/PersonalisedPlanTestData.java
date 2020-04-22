@@ -36,6 +36,7 @@ public class PersonalisedPlanTestData extends TestData<PersonalisedPlanType, Per
 
         PersonalisedPlanType personalisedPlanType = objectFactory.createPersonalisedPlanType();
         personalisedPlanType.setRefId(refId);
+        personalisedPlanType.setLocalId(objectFactory.createPersonalisedPlanTypeLocalId("local-id"));
         personalisedPlanType.setStudentPersonalRefId(StudentPersonalTestData.REF_ID_1);
         personalisedPlanType.setSchoolInfoRefId(SchoolInfoTestData.REF_ID_1);
         personalisedPlanType.setPersonalisedPlanCategory(AUCodeSetsPersonalisedPlanType.fromValue(PLAN_TYPE));

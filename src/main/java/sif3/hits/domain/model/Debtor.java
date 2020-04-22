@@ -11,73 +11,82 @@ import javax.persistence.OneToMany;
 
 @Entity
 public class Debtor extends HitsEntity {
-  private static final long serialVersionUID = 2696182984778247619L;
+	private static final long serialVersionUID = 2696182984778247619L;
 
-  private String refId;
-  private String billedEntity;
-  private String billedEntitySIFRefObject;
-  private String billingName;
-  private String billingNote;
-  private String discount;
-  private Set<Address> addresses;
+	private String refId;
+	private String localId;
+	private String billedEntity;
+	private String billedEntitySIFRefObject;
+	private String billingName;
+	private String billingNote;
+	private String discount;
+	private Set<Address> addresses;
 
-  @Id
-  public String getRefId() {
-    return refId;
-  }
+	@Id
+	public String getRefId() {
+		return refId;
+	}
 
-  public void setRefId(String refId) {
-    this.refId = refId;
-  }
+	public void setRefId(String refId) {
+		this.refId = refId;
+	}
 
-  public String getBilledEntity() {
-    return billedEntity;
-  }
+	public String getLocalId() {
+		return localId;
+	}
 
-  public void setBilledEntity(String billedEntity) {
-    this.billedEntity = billedEntity;
-  }
+	public void setLocalId(String localId) {
+		this.localId = localId;
+	}
 
-  @Column(name = "BilledEntity_SIFRefObject")
-  public String getBilledEntitySIFRefObject() {
-    return billedEntitySIFRefObject;
-  }
+	public String getBilledEntity() {
+		return billedEntity;
+	}
 
-  public void setBilledEntitySIFRefObject(String billedEntitySIFRefObject) {
-    this.billedEntitySIFRefObject = billedEntitySIFRefObject;
-  }
+	public void setBilledEntity(String billedEntity) {
+		this.billedEntity = billedEntity;
+	}
 
-  public String getBillingName() {
-    return billingName;
-  }
+	@Column(name = "BilledEntity_SIFRefObject")
+	public String getBilledEntitySIFRefObject() {
+		return billedEntitySIFRefObject;
+	}
 
-  public void setBillingName(String billingName) {
-    this.billingName = billingName;
-  }
+	public void setBilledEntitySIFRefObject(String billedEntitySIFRefObject) {
+		this.billedEntitySIFRefObject = billedEntitySIFRefObject;
+	}
 
-  public String getBillingNote() {
-    return billingNote;
-  }
+	public String getBillingName() {
+		return billingName;
+	}
 
-  public void setBillingNote(String billingNote) {
-    this.billingNote = billingNote;
-  }
+	public void setBillingName(String billingName) {
+		this.billingName = billingName;
+	}
 
-  public String getDiscount() {
-    return discount;
-  }
+	public String getBillingNote() {
+		return billingNote;
+	}
 
-  public void setDiscount(String discount) {
-    this.discount = discount;
-  }
+	public void setBillingNote(String billingNote) {
+		this.billingNote = billingNote;
+	}
 
-  @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
-  @JoinColumn(name = "Person_RefId")
-  public Set<Address> getAddresses() {
-    return addresses;
-  }
+	public String getDiscount() {
+		return discount;
+	}
 
-  public void setAddresses(Set<Address> addresses) {
-    this.addresses = addresses;
-  }
+	public void setDiscount(String discount) {
+		this.discount = discount;
+	}
+
+	@OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+	@JoinColumn(name = "Person_RefId")
+	public Set<Address> getAddresses() {
+		return addresses;
+	}
+
+	public void setAddresses(Set<Address> addresses) {
+		this.addresses = addresses;
+	}
 }

@@ -33,6 +33,8 @@ public class WellbeingPersonLinkConverter extends HitsConverter<WellbeingPersonL
 			IObjectFactory objectFactory = getObjectFactory();
 
 			target.setRefId(source.getRefId());
+			target.setLocalId(objectFactory.createWellbeingPersonLinkTypeLocalId(source.getLocalId()));
+
 			target.setWellbeingEventRefId(source.getWellbeingEventRefId());
 			target.setWellbeingResponseRefId(objectFactory
 					.createWellbeingPersonLinkTypeWellbeingResponseRefId(source.getWellbeingResponseRefId()));
@@ -69,6 +71,7 @@ public class WellbeingPersonLinkConverter extends HitsConverter<WellbeingPersonL
 	public void toHitsModel(WellbeingPersonLinkType source, WellbeingPersonLink target) {
 		if (source != null && target != null) {
 			target.setRefId(source.getRefId());
+			target.setLocalId(getJAXBValue(source.getLocalId()));
 			target.setWellbeingEventRefId(source.getWellbeingEventRefId());
 			target.setWellbeingResponseRefId(getJAXBValue(source.getWellbeingResponseRefId()));
 			target.setGroupId(source.getGroupId());

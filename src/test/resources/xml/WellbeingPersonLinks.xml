@@ -1,5 +1,6 @@
 <WellbeingPersonLinks xmlns="http://www.sifassociation.org/datamodel/au/3.4">
     <WellbeingPersonLink RefId="87cfdd54-f9f5-42d7-bca6-6c2bf6c120d5">
+        <LocalId>local-id</LocalId>
         <WellbeingEventRefId>c19f7155-1dd6-416d-850c-111f46257418</WellbeingEventRefId>
         <WellbeingResponseRefId>9e7682f7-db56-44da-a7d2-1405784a2fcd</WellbeingResponseRefId>
         <GroupId>Group Id</GroupId>
@@ -23,6 +24,7 @@
         </FollowUpActionList>
     </WellbeingPersonLink>
     <WellbeingPersonLink RefId="f09c8316-021f-44a0-86e4-6e70bb7479ff">
+        <LocalId>local-id</LocalId>
         <WellbeingEventRefId>c19f7155-1dd6-416d-850c-111f46257418</WellbeingEventRefId>
         <WellbeingResponseRefId>9e7682f7-db56-44da-a7d2-1405784a2fcd</WellbeingResponseRefId>
         <GroupId>Group Id</GroupId>

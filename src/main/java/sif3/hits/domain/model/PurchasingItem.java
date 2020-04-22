@@ -13,85 +13,94 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "PurchaseOrder_PurchasingItems")
 public class PurchasingItem extends HitsEntity {
-  private static final long serialVersionUID = 2728138509709013437L;
+	private static final long serialVersionUID = 2728138509709013437L;
 
-  private Integer id;
-  private PurchaseOrder purchaseOrder;
-  private String itemNumber;
-  private String itemDescription;
-  private String quantity;
-  private String unitCost;
-  private String quantityDelivered;
-  private ExpenseAccount expenseAccount;
+	private Integer id;
+	private PurchaseOrder purchaseOrder;
+	private String localItemId;
+	private String itemNumber;
+	private String itemDescription;
+	private String quantity;
+	private String unitCost;
+	private String quantityDelivered;
+	private ExpenseAccount expenseAccount;
 
-  @Id
-  @GeneratedValue
-  public Integer getId() {
-    return id;
-  }
+	@Id
+	@GeneratedValue
+	public Integer getId() {
+		return id;
+	}
 
-  public void setId(Integer id) {
-    this.id = id;
-  }
+	public void setId(Integer id) {
+		this.id = id;
+	}
 
-  @ManyToOne
-  @JoinColumn(name = "PurchaseOrder_RefId")
-  public PurchaseOrder getPurchaseOrder() {
-    return purchaseOrder;
-  }
+	@ManyToOne
+	@JoinColumn(name = "PurchaseOrder_RefId")
+	public PurchaseOrder getPurchaseOrder() {
+		return purchaseOrder;
+	}
 
-  public void setPurchaseOrder(PurchaseOrder purchaseOrder) {
-    this.purchaseOrder = purchaseOrder;
-  }
+	public void setPurchaseOrder(PurchaseOrder purchaseOrder) {
+		this.purchaseOrder = purchaseOrder;
+	}
 
-  public String getItemNumber() {
-    return itemNumber;
-  }
+	public String getLocalItemId() {
+		return localItemId;
+	}
 
-  public void setItemNumber(String itemNumber) {
-    this.itemNumber = itemNumber;
-  }
+	public void setLocalItemId(String localItemId) {
+		this.localItemId = localItemId;
+	}
 
-  public String getItemDescription() {
-    return itemDescription;
-  }
+	public String getItemNumber() {
+		return itemNumber;
+	}
 
-  public void setItemDescription(String itemDescription) {
-    this.itemDescription = itemDescription;
-  }
+	public void setItemNumber(String itemNumber) {
+		this.itemNumber = itemNumber;
+	}
 
-  public String getQuantity() {
-    return quantity;
-  }
+	public String getItemDescription() {
+		return itemDescription;
+	}
 
-  public void setQuantity(String quantity) {
-    this.quantity = quantity;
-  }
+	public void setItemDescription(String itemDescription) {
+		this.itemDescription = itemDescription;
+	}
 
-  public String getUnitCost() {
-    return unitCost;
-  }
+	public String getQuantity() {
+		return quantity;
+	}
 
-  public void setUnitCost(String unitCost) {
-    this.unitCost = unitCost;
-  }
+	public void setQuantity(String quantity) {
+		this.quantity = quantity;
+	}
 
-  public String getQuantityDelivered() {
-    return quantityDelivered;
-  }
+	public String getUnitCost() {
+		return unitCost;
+	}
 
-  public void setQuantityDelivered(String quantityDelivered) {
-    this.quantityDelivered = quantityDelivered;
-  }
+	public void setUnitCost(String unitCost) {
+		this.unitCost = unitCost;
+	}
 
-  @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
-  @PrimaryKeyJoinColumn
-  public ExpenseAccount getExpenseAccount() {
-    return expenseAccount;
-  }
+	public String getQuantityDelivered() {
+		return quantityDelivered;
+	}
 
-  public void setExpenseAccount(ExpenseAccount expenseAccount) {
-    this.expenseAccount = expenseAccount;
-  }
+	public void setQuantityDelivered(String quantityDelivered) {
+		this.quantityDelivered = quantityDelivered;
+	}
+
+	@OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
+	@PrimaryKeyJoinColumn
+	public ExpenseAccount getExpenseAccount() {
+		return expenseAccount;
+	}
+
+	public void setExpenseAccount(ExpenseAccount expenseAccount) {
+		this.expenseAccount = expenseAccount;
+	}
 
 }

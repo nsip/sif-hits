@@ -6,53 +6,60 @@ import java.util.Properties;
 
 import javax.sql.DataSource;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.jdbc.datasource.lookup.DataSourceLookup;
 import org.springframework.jdbc.datasource.lookup.DataSourceLookupFailureException;
 
 import com.mchange.v2.c3p0.ComboPooledDataSource;
 
+import sif3.hits.service.BaseService;
+
 public class HitsDataSourceLookup implements DataSourceLookup {
 
-  private boolean shared = false;
+	private static final Logger L = LoggerFactory.getLogger(HitsDataSourceLookup.class);
 
-  public HitsDataSourceLookup(Properties databaseProperties, boolean shared) {
-    this.databaseProperties = databaseProperties;
-    this.shared = shared;
-  }
+	private boolean shared = false;
 
-  private Properties databaseProperties;
+	public HitsDataSourceLookup(Properties databaseProperties, boolean shared) {
+		this.databaseProperties = databaseProperties;
+		this.shared = shared;
+	}
 
-  @Override
-  public DataSource getDataSource(String dataSourceName) throws DataSourceLookupFailureException {
-    ComboPooledDataSource cpds = new ComboPooledDataSource();
-    String format = databaseProperties.getProperty("hits.connection.format");
-    if (!shared && dataSourceName != null && format != null) {
-      cpds.setJdbcUrl(MessageFormat.format(format, dataSourceName));
-    } else if (!shared && dataSourceName != null) {
-      cpds.setJdbcUrl(dataSourceName);
-    } else {
-      cpds.setJdbcUrl(databaseProperties.getProperty("hits.connection.url"));
-    }
-    cpds.setUser(databaseProperties.getProperty("hits.connection.username"));
-    cpds.setPassword(databaseProperties.getProperty("hits.connection.password"));
-    try {
-      cpds.setDriverClass(databaseProperties.getProperty("hibernate.connection.driver_class"));
-    } catch (PropertyVetoException e) {
-      e.printStackTrace();
-    }
+	private Properties databaseProperties;
 
-    cpds.setInitialPoolSize(getIntegerProperty("hits.c3p0.acquire_increment"));
-    cpds.setAcquireIncrement(getIntegerProperty("hits.c3p0.acquire_increment"));
-    cpds.setMaxPoolSize(getIntegerProperty("hits.c3p0.max_size"));
-    cpds.setMinPoolSize(getIntegerProperty("hits.c3p0.min_size"));
-    cpds.setMaxStatements(getIntegerProperty("hits.c3p0.max_statements"));
+	@Override
+	public DataSource getDataSource(String dataSourceName) throws DataSourceLookupFailureException {
+		ComboPooledDataSource cpds = new ComboPooledDataSource();
+		String format = databaseProperties.getProperty("hits.connection.format");
+		if (!shared && dataSourceName != null && format != null) {
+			cpds.setJdbcUrl(MessageFormat.format(format, dataSourceName));
+		} else if (!shared && dataSourceName != null) {
+			cpds.setJdbcUrl(dataSourceName);
+		} else {
+			cpds.setJdbcUrl(databaseProperties.getProperty("hits.connection.url"));
+		}
+		L.debug("DataSource: " + dataSourceName + " => " + cpds.getJdbcUrl());
+		cpds.setUser(databaseProperties.getProperty("hits.connection.username"));
+		cpds.setPassword(databaseProperties.getProperty("hits.connection.password"));
+		try {
+			cpds.setDriverClass(databaseProperties.getProperty("hibernate.connection.driver_class"));
+		} catch (PropertyVetoException e) {
+			e.printStackTrace();
+		}
 
-    return cpds;
-  }
+		cpds.setInitialPoolSize(getIntegerProperty("hits.c3p0.acquire_increment"));
+		cpds.setAcquireIncrement(getIntegerProperty("hits.c3p0.acquire_increment"));
+		cpds.setMaxPoolSize(getIntegerProperty("hits.c3p0.max_size"));
+		cpds.setMinPoolSize(getIntegerProperty("hits.c3p0.min_size"));
+		cpds.setMaxStatements(getIntegerProperty("hits.c3p0.max_statements"));
 
-  private Integer getIntegerProperty(String property) {
-    String value = databaseProperties.getProperty(property);
-    return Integer.parseInt(value, 10);
-  }
+		return cpds;
+	}
+
+	private Integer getIntegerProperty(String property) {
+		String value = databaseProperties.getProperty(property);
+		return Integer.parseInt(value, 10);
+	}
 
 }

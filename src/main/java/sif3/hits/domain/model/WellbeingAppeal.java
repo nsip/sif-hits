@@ -10,104 +10,113 @@ import javax.persistence.OneToMany;
 
 @Entity
 public class WellbeingAppeal extends HitsEntity {
-    private static final long serialVersionUID = -2218730268570380002L;
+	private static final long serialVersionUID = -2218730268570380002L;
 
-    private String refId;
-    private String studentPersonalRefId;
-    private String schoolInfoRefId;
-    private String wellbeingResponseRefId;
-    private String localAppealId;
-    private String appealStatusCode;
-    private String appealDate;
-    private String appealNotes;
-    private String appealOutcome;
+	private String refId;
+	private String localId;
+	private String studentPersonalRefId;
+	private String schoolInfoRefId;
+	private String wellbeingResponseRefId;
+	private String localAppealId;
+	private String appealStatusCode;
+	private String appealDate;
+	private String appealNotes;
+	private String appealOutcome;
 
-    private List<WellbeingAppealDocument> documents;
+	private List<WellbeingAppealDocument> documents;
 
-    @Id
-    public String getRefId() {
-        return refId;
-    }
+	@Id
+	public String getRefId() {
+		return refId;
+	}
 
-    public void setRefId(String refId) {
-        this.refId = refId;
-    }
+	public void setRefId(String refId) {
+		this.refId = refId;
+	}
 
-    @Column(name = "StudentPersonal_RefId")
-    public String getStudentPersonalRefId() {
-        return studentPersonalRefId;
-    }
+	public String getLocalId() {
+		return localId;
+	}
 
-    public void setStudentPersonalRefId(String studentPersonalRefId) {
-        this.studentPersonalRefId = studentPersonalRefId;
-    }
+	public void setLocalId(String localId) {
+		this.localId = localId;
+	}
 
-    @Column(name = "SchoolInfo_RefId")
-    public String getSchoolInfoRefId() {
-        return schoolInfoRefId;
-    }
+	@Column(name = "StudentPersonal_RefId")
+	public String getStudentPersonalRefId() {
+		return studentPersonalRefId;
+	}
 
-    public void setSchoolInfoRefId(String schoolInfoRefId) {
-        this.schoolInfoRefId = schoolInfoRefId;
-    }
+	public void setStudentPersonalRefId(String studentPersonalRefId) {
+		this.studentPersonalRefId = studentPersonalRefId;
+	}
 
-    @Column(name = "WellbeingResponse_RefId")
-    public String getWellbeingResponseRefId() {
-        return wellbeingResponseRefId;
-    }
+	@Column(name = "SchoolInfo_RefId")
+	public String getSchoolInfoRefId() {
+		return schoolInfoRefId;
+	}
 
-    public void setWellbeingResponseRefId(String wellbeingResponseRefId) {
-        this.wellbeingResponseRefId = wellbeingResponseRefId;
-    }
+	public void setSchoolInfoRefId(String schoolInfoRefId) {
+		this.schoolInfoRefId = schoolInfoRefId;
+	}
 
-    public String getLocalAppealId() {
-        return localAppealId;
-    }
+	@Column(name = "WellbeingResponse_RefId")
+	public String getWellbeingResponseRefId() {
+		return wellbeingResponseRefId;
+	}
 
-    public void setLocalAppealId(String localAppealId) {
-        this.localAppealId = localAppealId;
-    }
+	public void setWellbeingResponseRefId(String wellbeingResponseRefId) {
+		this.wellbeingResponseRefId = wellbeingResponseRefId;
+	}
 
-    public String getAppealStatusCode() {
-        return appealStatusCode;
-    }
+	public String getLocalAppealId() {
+		return localAppealId;
+	}
 
-    public void setAppealStatusCode(String appealStatusCode) {
-        this.appealStatusCode = appealStatusCode;
-    }
+	public void setLocalAppealId(String localAppealId) {
+		this.localAppealId = localAppealId;
+	}
 
-    @Column(name = "date")
-    public String getAppealDate() {
-        return appealDate;
-    }
+	public String getAppealStatusCode() {
+		return appealStatusCode;
+	}
 
-    public void setAppealDate(String appealDate) {
-        this.appealDate = appealDate;
-    }
+	public void setAppealStatusCode(String appealStatusCode) {
+		this.appealStatusCode = appealStatusCode;
+	}
 
-    public String getAppealNotes() {
-        return appealNotes;
-    }
+	@Column(name = "date")
+	public String getAppealDate() {
+		return appealDate;
+	}
 
-    public void setAppealNotes(String appealNotes) {
-        this.appealNotes = appealNotes;
-    }
+	public void setAppealDate(String appealDate) {
+		this.appealDate = appealDate;
+	}
 
-    public String getAppealOutcome() {
-        return appealOutcome;
-    }
+	public String getAppealNotes() {
+		return appealNotes;
+	}
 
-    public void setAppealOutcome(String appealOutcome) {
-        this.appealOutcome = appealOutcome;
-    }
+	public void setAppealNotes(String appealNotes) {
+		this.appealNotes = appealNotes;
+	}
 
-    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "wellbeingAppeal")
-    public List<WellbeingAppealDocument> getDocuments() {
-        return documents;
-    }
+	public String getAppealOutcome() {
+		return appealOutcome;
+	}
 
-    public void setDocuments(List<WellbeingAppealDocument> documents) {
-        this.documents = documents;
-    }
+	public void setAppealOutcome(String appealOutcome) {
+		this.appealOutcome = appealOutcome;
+	}
+
+	@OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "wellbeingAppeal")
+	public List<WellbeingAppealDocument> getDocuments() {
+		return documents;
+	}
+
+	public void setDocuments(List<WellbeingAppealDocument> documents) {
+		this.documents = documents;
+	}
 
 }

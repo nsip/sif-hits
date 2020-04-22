@@ -33,284 +33,305 @@ import sif3.hits.rest.dto.KeyValuePair;
 import sif3.hits.rest.dto.RequestDTO;
 import sif3.hits.rest.dto.ResponseDTO;
 
-@Transactional(value = "transactionManager", rollbackForClassName = { "RuntimeException", "PersistenceException", "UnsupportedQueryException" })
+@Transactional(value = "transactionManager", rollbackForClassName = { "RuntimeException", "PersistenceException",
+		"UnsupportedQueryException" })
 public abstract class BaseService<S, SC, H> {
 
-  private static final Logger L = LoggerFactory.getLogger(BaseService.class);
+	private static final Logger L = LoggerFactory.getLogger(BaseService.class);
 
-  private final ThreadLocal<ApplicationKeyUrl> currentApplicationKeyUrl = new ThreadLocal<ApplicationKeyUrl>();
+	private final ThreadLocal<ApplicationKeyUrl> currentApplicationKeyUrl = new ThreadLocal<ApplicationKeyUrl>();
 
-  protected abstract SC getCollection(List<S> items);
+	protected abstract SC getCollection(List<S> items);
 
-  protected abstract HitsConverter<S, H> getConverter();
+	protected abstract HitsConverter<S, H> getConverter();
 
-  protected abstract JpaRepository<H, String> getDAO();
+	protected abstract JpaRepository<H, String> getDAO();
 
-  protected abstract FilterableRepository<H,S> getFilterableDAO();
+	protected abstract FilterableRepository<H, S> getFilterableDAO();
 
-  @Autowired
-  private ApplicationKeyUrlService applicationKeyUrlService;
+	@Autowired
+	private ApplicationKeyUrlService applicationKeyUrlService;
 
-  // Create
-  public ResponseDTO<S> createSingle(RequestDTO<S> dto, String zoneId) {
-    ResponseDTO<S> result = null;
-    if (!StringUtils.isEmpty(dto.getRefId())) {
-      H checkExists = getDAO().findOne(dto.getRefId());
-      if (checkExists == null) {
-        H hitsObject = getConverter().toHitsModel(dto.getSifObject());
-        H savedHitsObject = save(hitsObject, dto, zoneId, true);
-        S resultObject = getConverter().toSifModel(savedHitsObject);
-        result = new ResponseDTO<S>(dto, resultObject, CREATE_OK);
-      } else {
-        result = new ResponseDTO<S>(dto, null, CREATE_ERR_EXISTS);
-      }
-    } else {
-      result = new ResponseDTO<S>(dto, null, CREATE_ERR_NO_ADVISORY);
-    }
-    return result;
-  }
+	// Create
+	public ResponseDTO<S> createSingle(RequestDTO<S> dto, String zoneId) {
+		ResponseDTO<S> result = null;
+		if (!StringUtils.isEmpty(dto.getRefId())) {
+			H checkExists = getDAO().findOne(dto.getRefId());
+			if (checkExists == null) {
+				H hitsObject = getConverter().toHitsModel(dto.getSifObject());
+				H savedHitsObject = save(hitsObject, dto, zoneId, true);
+				S resultObject = getConverter().toSifModel(savedHitsObject);
+				postConversion(resultObject, zoneId);
+				result = new ResponseDTO<S>(dto, resultObject, CREATE_OK);
+			} else {
+				result = new ResponseDTO<S>(dto, null, CREATE_ERR_EXISTS);
+			}
+		} else {
+			result = new ResponseDTO<S>(dto, null, CREATE_ERR_NO_ADVISORY);
+		}
+		return result;
+	}
 
-  private void delete(H hitsObject, RequestDTO<S> dto) {
-    deleteChildObjects(hitsObject);
-    try {
-      getDAO().delete(hitsObject);
-    } catch (Exception ex) {
-      L.debug("Error deleting object", ex);
-      throw ex;
-    }
-  }
+	protected void postConversion(S resultObject, String zoneId) {
+		// override to implement
+	}
 
-  /**
-   * Override this in services that need child objects managed
-   * 
-   * @param hitsObject
-   */
-  protected void deleteChildObjects(H hitsObject) {
-    // do nothing
-  }
+	private void delete(H hitsObject, RequestDTO<S> dto) {
+		deleteChildObjects(hitsObject);
+		try {
+			getDAO().delete(hitsObject);
+		} catch (Exception ex) {
+			L.debug("Error deleting object", ex);
+			throw ex;
+		}
+	}
 
-  // Delete
-  public ResponseDTO<S> deleteSingle(RequestDTO<S> dto, String zoneId) {
-    ResponseDTO<S> result = null;
-    try {
-      if (!StringUtils.isEmpty(dto.getRefId())) {
-        H hitsObject = getDAO().findOne(dto.getRefId());
-        if (hitsObject != null) {
-          delete(hitsObject, dto);
-          result = new ResponseDTO<S>(dto, null, DELETE_OK);
-        } else {
-          result = new ResponseDTO<S>(dto, null, DELETE_ERR_NO_OBJECT);
-        }
-      } else {
-        result = new ResponseDTO<S>(dto, null, DELETE_ERR_INVALID);
-      }
-    } catch (Exception ex) {
-      L.debug("Error deleting object", ex);
-      throw ex;
-    }
-    return result;
-  }
+	/**
+	 * Override this in services that need child objects managed
+	 * 
+	 * @param hitsObject
+	 */
+	protected void deleteChildObjects(H hitsObject) {
+		// do nothing
+	}
 
-  /**
-   * Read All
-   * 
-   * @param zoneId
-   * @param pagingInfo
-   * @return
-   */
-  public SC findAll(String zoneId, PagingInfo pagingInfo) {
-    SC result = null;
-    if (pagingInfo != null) {
-      PageRequest pageRequest = getPageRequest(pagingInfo);
-      Page<H> results = findAll(zoneId, pageRequest);
-      if (results != null) {
-        List<S> sifResultObjects = getConverter().toSifModelList(results.getContent());
-        result = getCollectionResult(sifResultObjects);
-      }
-    }
-    return result;
-  }
+	// Delete
+	public ResponseDTO<S> deleteSingle(RequestDTO<S> dto, String zoneId) {
+		ResponseDTO<S> result = null;
+		try {
+			if (!StringUtils.isEmpty(dto.getRefId())) {
+				H hitsObject = getDAO().findOne(dto.getRefId());
+				if (hitsObject != null) {
+					delete(hitsObject, dto);
+					result = new ResponseDTO<S>(dto, null, DELETE_OK);
+				} else {
+					result = new ResponseDTO<S>(dto, null, DELETE_ERR_NO_OBJECT);
+				}
+			} else {
+				result = new ResponseDTO<S>(dto, null, DELETE_ERR_INVALID);
+			}
+		} catch (Exception ex) {
+			L.debug("Error deleting object", ex);
+			throw ex;
+		}
+		return result;
+	}
 
-  private Page<H> findAll(String zoneId, PageRequest pageRequest) {
-    Page<H> result = null;
-    if (StringUtils.isNotBlank(zoneId)) {
-      result = getFilterableDAO().findAllWithZone(zoneId, pageRequest);
-    }
-    return result;
-  }
+	/**
+	 * Read All
+	 * 
+	 * @param zoneId
+	 * @param pagingInfo
+	 * @return
+	 */
+	public SC findAll(String zoneId, PagingInfo pagingInfo) {
+		SC result = null;
+		if (pagingInfo != null) {
+			PageRequest pageRequest = getPageRequest(pagingInfo);
+			Page<H> results = findAll(zoneId, pageRequest);
+			if (results != null) {
+				List<S> sifResultObjects = getConverter().toSifModelList(results.getContent());
+				for (S resultObject : sifResultObjects) {
+					postConversion(resultObject, zoneId);
+				}
+				result = getCollectionResult(sifResultObjects);
+			}
+		}
+		return result;
+	}
 
-  /**
-   * Query by Example
-   * 
-   * @param example
-   * @param zoneId
-   * @param pagingInfo
-   * @return
-   * @throws UnsupportedQueryException
-   */
-  public SC findByExample(S example, String zoneId, PagingInfo pagingInfo) throws UnsupportedQueryException {
-    SC result = null;
-    if (pagingInfo != null) {
-      PageRequest pageRequest = getPageRequest(pagingInfo);
-      Page<H> results = findByExample(example, zoneId, pageRequest);
-      if (results != null) {
-        List<S> sifResultObjects = getConverter().toSifModelList(results.getContent());
-        result = getCollectionResult(sifResultObjects);
-      }
-    }
-    return result;
-  }
+	private Page<H> findAll(String zoneId, PageRequest pageRequest) {
+		Page<H> result = null;
+		if (StringUtils.isNotBlank(zoneId)) {
+			result = getFilterableDAO().findAllWithZone(zoneId, pageRequest);
+		}
+		return result;
+	}
 
-  protected Page<H> findByExample(S example, String zoneId, PageRequest pageRequest) throws UnsupportedQueryException {
-    FilterableRepository<H,S> filterableRepository = getFilterableDAO();
-    if (filterableRepository != null) {
-      H exampleModel = getConverter().toHitsModel(example);
-      if (StringUtils.isNotBlank(zoneId)) {
-        return filterableRepository.findAllWithExample(exampleModel, example, zoneId, pageRequest);
-      }
-    }
-    throw new UnsupportedQueryException("Query by example not supported for this object.");
-  }
+	/**
+	 * Query by Example
+	 * 
+	 * @param example
+	 * @param zoneId
+	 * @param pagingInfo
+	 * @return
+	 * @throws UnsupportedQueryException
+	 */
+	public SC findByExample(S example, String zoneId, PagingInfo pagingInfo) throws UnsupportedQueryException {
+		SC result = null;
+		if (pagingInfo != null) {
+			PageRequest pageRequest = getPageRequest(pagingInfo);
+			Page<H> results = findByExample(example, zoneId, pageRequest);
+			if (results != null) {
+				List<S> sifResultObjects = getConverter().toSifModelList(results.getContent());
+				for (S resultObject : sifResultObjects) {
+					postConversion(resultObject, zoneId);
+				}
+				result = getCollectionResult(sifResultObjects);
+			}
+		}
+		return result;
+	}
 
-  /**
-   * Service Path Query
-   * 
-   * @param filters
-   * @param pagingInfo
-   * @param zoneId
-   * @return
-   * @throws UnsupportedQueryException
-   */
-  public SC findByServicePath(List<KeyValuePair> filters, PagingInfo pagingInfo, String zoneId) throws UnsupportedQueryException {
-    SC result = null;
-    if (pagingInfo != null) {
-      PageRequest pageRequest = getPageRequest(pagingInfo);
-      if (StringUtils.isNotBlank(zoneId)) {
-        Page<H> results = findByServicePath(filters, zoneId, pageRequest);
-        if (results != null) {
-          List<S> sifResultObjects = getConverter().toSifModelList(results.getContent());
-          result = getCollectionResult(sifResultObjects);
-        }
-      }
-    }
-    return result;
-  }
+	protected Page<H> findByExample(S example, String zoneId, PageRequest pageRequest)
+			throws UnsupportedQueryException {
+		FilterableRepository<H, S> filterableRepository = getFilterableDAO();
+		if (filterableRepository != null) {
+			H exampleModel = getConverter().toHitsModel(example);
+			if (StringUtils.isNotBlank(zoneId)) {
+				return filterableRepository.findAllWithExample(exampleModel, example, zoneId, pageRequest);
+			}
+		}
+		throw new UnsupportedQueryException("Query by example not supported for this object.");
+	}
 
-  protected Page<H> findByServicePath(List<KeyValuePair> filters, String zoneId, PageRequest pageRequest) throws UnsupportedQueryException {
-    FilterableRepository<H,S> filterableRepository = getFilterableDAO();
-    if (filterableRepository != null) {
-      if (StringUtils.isNotBlank(zoneId)) {
-        return filterableRepository.findAllWithServicePaths(filters, zoneId, pageRequest);
-      }
-    }
-    throw new UnsupportedQueryException("Service path filter not supported for this service path.");
-  }
+	/**
+	 * Service Path Query
+	 * 
+	 * @param filters
+	 * @param pagingInfo
+	 * @param zoneId
+	 * @return
+	 * @throws UnsupportedQueryException
+	 */
+	public SC findByServicePath(List<KeyValuePair> filters, PagingInfo pagingInfo, String zoneId)
+			throws UnsupportedQueryException {
+		SC result = null;
+		if (pagingInfo != null) {
+			PageRequest pageRequest = getPageRequest(pagingInfo);
+			if (StringUtils.isNotBlank(zoneId)) {
+				Page<H> results = findByServicePath(filters, zoneId, pageRequest);
+				if (results != null) {
+					List<S> sifResultObjects = getConverter().toSifModelList(results.getContent());
+					for (S resultObject : sifResultObjects) {
+						postConversion(resultObject, zoneId);
+					}
+					result = getCollectionResult(sifResultObjects);
+				}
+			}
+		}
+		return result;
+	}
 
-  // Read
-  public S get(String refId, String zoneId) {
-    L.error(refId + " : " + zoneId);
-    S result = null;
+	protected Page<H> findByServicePath(List<KeyValuePair> filters, String zoneId, PageRequest pageRequest)
+			throws UnsupportedQueryException {
+		FilterableRepository<H, S> filterableRepository = getFilterableDAO();
+		if (filterableRepository != null) {
+			if (StringUtils.isNotBlank(zoneId)) {
+				return filterableRepository.findAllWithServicePaths(filters, zoneId, pageRequest);
+			}
+		}
+		throw new UnsupportedQueryException("Service path filter not supported for this service path.");
+	}
 
-    if (!StringUtils.isEmpty(refId)) {
-      H hitsObject = getFilterableDAO().findOneWithZone(refId, zoneId);
-      result = getConverter().toSifModel(hitsObject);
-    }
-    return result;
-  }
+	// Read
+	public S get(String refId, String zoneId) {
+		L.error(refId + " : " + zoneId);
+		S result = null;
 
-  /**
-   * Override this in objects that need child objects populated!
-   * 
-   * @param hitsObject
-   * @param dto
-   * @param zoneId
-   * @throws PersistenceException
-   */
-  public H save(H hitsObject, RequestDTO<S> dto, String zoneId, boolean create) {
-    H result = preSave(hitsObject, dto, zoneId, create);
-    if (!create) {
-      deleteChildObjects(hitsObject);
-    }
-    if (hasChildObjects(hitsObject)) {
-      result = saveWithChildObjects(hitsObject, dto, zoneId, create);
-    } else {
-      result = getDAO().save(hitsObject);
-    }
-    return result;
-  }
+		if (!StringUtils.isEmpty(refId)) {
+			H hitsObject = getFilterableDAO().findOneWithZone(refId, zoneId);
+			result = getConverter().toSifModel(hitsObject);
+			postConversion(result, zoneId);
 
-  /**
-   * Override this to implement pre-save actions.
-   * 
-   * @param hitsObject
-   */
-  protected H preSave(H hitsObject, RequestDTO<S> dto, String zoneId, boolean create) {
-    return null;
-  }
+		}
+		return result;
+	}
 
-  /**
-   * Override this for objects that need child objects managed
-   * 
-   * @param hitsObject
-   * @return
-   */
-  protected boolean hasChildObjects(H hitsObject) {
-    return false;
-  }
+	/**
+	 * Override this in objects that need child objects populated!
+	 * 
+	 * @param hitsObject
+	 * @param dto
+	 * @param zoneId
+	 * @throws PersistenceException
+	 */
+	public H save(H hitsObject, RequestDTO<S> dto, String zoneId, boolean create) {
+		H result = preSave(hitsObject, dto, zoneId, create);
+		if (!create) {
+			deleteChildObjects(hitsObject);
+		}
+		if (hasChildObjects(hitsObject)) {
+			result = saveWithChildObjects(hitsObject, dto, zoneId, create);
+		} else {
+			result = getDAO().save(hitsObject);
+		}
+		return result;
+	}
 
-  /**
-   * Override this for objects that need child objects managed
-   * 
-   * @param hitsObject
-   * @param dto
-   * @param zoneId
-   * @param create
-   * @return
-   */
-  protected H saveWithChildObjects(H hitsObject, RequestDTO<S> dto, String zoneId, boolean create) {
-    return getDAO().save(hitsObject);
-  }
+	/**
+	 * Override this to implement pre-save actions.
+	 * 
+	 * @param hitsObject
+	 */
+	protected H preSave(H hitsObject, RequestDTO<S> dto, String zoneId, boolean create) {
+		return null;
+	}
 
-  public void setDatabaseContext(String applicationKey) {
-    HitsDatabaseContext.clearDatabase();
-    ApplicationKeyUrl applicationKeyUrl = applicationKeyUrlService.getApplicationKeyUrl(applicationKey);
-    currentApplicationKeyUrl.set(applicationKeyUrl);
-    L.info("Setting current database : " + applicationKeyUrl.getDatabaseUrl());
-    HitsDatabaseContext.setDatabase(applicationKeyUrl.getDatabaseUrl());
-  }
+	/**
+	 * Override this for objects that need child objects managed
+	 * 
+	 * @param hitsObject
+	 * @return
+	 */
+	protected boolean hasChildObjects(H hitsObject) {
+		return false;
+	}
 
-  // Update
-  public ResponseDTO<S> updateSingle(RequestDTO<S> dto, String zoneId) {
-    ResponseDTO<S> result = null;
-    if (StringUtils.isEmpty(dto.getAdvisoryId()) || StringUtils.equals(dto.getAdvisoryId(), dto.getRefId())) {
-      if (!StringUtils.isEmpty(dto.getRefId())) {
-        H hitsObject = getDAO().findOne(dto.getRefId());
-        if (hitsObject != null) {
-          getConverter().toHitsModel(dto.getSifObject(), hitsObject);
-          H savedHitsObject = save(hitsObject, dto, zoneId, false);
-          S resultObject = getConverter().toSifModel(savedHitsObject);
-          result = new ResponseDTO<S>(dto, resultObject, UPDATE_OK);
-        } else {
-          result = new ResponseDTO<S>(dto, null, UPDATE_ERR_NO_OBJECT);
-        }
-      } else {
-        result = new ResponseDTO<S>(dto, null, UPDATE_ERR_NO_OBJECT);
-      }
-    } else {
-      result = new ResponseDTO<S>(dto, null, UPDATE_ERR_REFID_MISMATCH);
-    }
-    return result;
-  }
+	/**
+	 * Override this for objects that need child objects managed
+	 * 
+	 * @param hitsObject
+	 * @param dto
+	 * @param zoneId
+	 * @param create
+	 * @return
+	 */
+	protected H saveWithChildObjects(H hitsObject, RequestDTO<S> dto, String zoneId, boolean create) {
+		return getDAO().save(hitsObject);
+	}
 
-  private PageRequest getPageRequest(PagingInfo pagingInfo) {
-    return new PageRequest(pagingInfo.getCurrentPageNo() - CommonConstants.FIRST_PAGE, pagingInfo.getPageSize());
-  }
+	public void setDatabaseContext(String applicationKey) {
+		HitsDatabaseContext.clearDatabase();
+		ApplicationKeyUrl applicationKeyUrl = applicationKeyUrlService.getApplicationKeyUrl(applicationKey);
+		currentApplicationKeyUrl.set(applicationKeyUrl);
+		L.info("Setting current database : " + applicationKeyUrl.getDatabaseUrl());
+		HitsDatabaseContext.setDatabase(applicationKeyUrl.getDatabaseUrl());
+	}
 
-  private SC getCollectionResult(List<S> items) {
-    if (items == null || items.isEmpty()) {
-      return null;
-    } else {
-      return getCollection(items);
-    }
-  }
+	// Update
+	public ResponseDTO<S> updateSingle(RequestDTO<S> dto, String zoneId) {
+		ResponseDTO<S> result = null;
+		if (StringUtils.isEmpty(dto.getAdvisoryId()) || StringUtils.equals(dto.getAdvisoryId(), dto.getRefId())) {
+			if (!StringUtils.isEmpty(dto.getRefId())) {
+				H hitsObject = getDAO().findOne(dto.getRefId());
+				if (hitsObject != null) {
+					getConverter().toHitsModel(dto.getSifObject(), hitsObject);
+					H savedHitsObject = save(hitsObject, dto, zoneId, false);
+					S resultObject = getConverter().toSifModel(savedHitsObject);
+					postConversion(resultObject, zoneId);
+					result = new ResponseDTO<S>(dto, resultObject, UPDATE_OK);
+				} else {
+					result = new ResponseDTO<S>(dto, null, UPDATE_ERR_NO_OBJECT);
+				}
+			} else {
+				result = new ResponseDTO<S>(dto, null, UPDATE_ERR_NO_OBJECT);
+			}
+		} else {
+			result = new ResponseDTO<S>(dto, null, UPDATE_ERR_REFID_MISMATCH);
+		}
+		return result;
+	}
+
+	private PageRequest getPageRequest(PagingInfo pagingInfo) {
+		return new PageRequest(pagingInfo.getCurrentPageNo() - CommonConstants.FIRST_PAGE, pagingInfo.getPageSize());
+	}
+
+	private SC getCollectionResult(List<S> items) {
+		if (items == null || items.isEmpty()) {
+			return null;
+		} else {
+			return getCollection(items);
+		}
+	}
 }

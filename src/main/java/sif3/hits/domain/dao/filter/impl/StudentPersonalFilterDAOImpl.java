@@ -5,6 +5,7 @@ import org.hibernate.criterion.DetachedCriteria;
 import org.hibernate.criterion.Projections;
 import org.hibernate.criterion.Restrictions;
 import org.hibernate.criterion.Subqueries;
+import org.hibernate.persister.collection.CollectionPropertyNames;
 import org.springframework.stereotype.Repository;
 
 import sif.dd.au30.model.StudentPersonalType;
@@ -22,9 +23,9 @@ public class StudentPersonalFilterDAOImpl extends BaseFilterableRepository<Stude
     protected void addServicePathCriteria(Criteria criteria, String key, String value) {
         if ("TeachingGroups".equals(key)) {
             DetachedCriteria teachingGroupQuery = DetachedCriteria.forClass(TeachingGroup.class);
-            teachingGroupQuery.createAlias("studentPersonals", "s");
+            teachingGroupQuery.createAlias("studentPersonalRefIds", "student");
             teachingGroupQuery.add(Restrictions.eq("refId", value));
-            teachingGroupQuery.setProjection(Projections.property("s.refId"));
+            teachingGroupQuery.setProjection(Projections.property("student." + CollectionPropertyNames.COLLECTION_ELEMENTS));
             criteria.add(Subqueries.propertyIn("refId", teachingGroupQuery));
         } else if ("SchoolInfos".equals(key)) {
             DetachedCriteria enrolmentQuery = DetachedCriteria.forClass(StudentSchoolEnrollment.class);

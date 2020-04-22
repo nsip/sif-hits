@@ -8,6 +8,7 @@
         <SchoolLocalId>4001</SchoolLocalId>
         <TimeTableSubjectRefId>d7e56fa7-e708-4563-9490-9d15677c6a27</TimeTableSubjectRefId>
         <TimeTableSubjectLocalId>local-id-tts</TimeTableSubjectLocalId>
+        <KeyLearningArea>A</KeyLearningArea>
         <StudentList>
             <TeachingGroupStudent>
                 <StudentPersonalRefId>c1deee9b-53ce-4c8f-9101-31bedf9c4836</StudentPersonalRefId>
@@ -96,6 +97,7 @@
         <SchoolLocalId>4001</SchoolLocalId>
         <TimeTableSubjectRefId>d7e56fa7-e708-4563-9490-9d15677c6a27</TimeTableSubjectRefId>
         <TimeTableSubjectLocalId>local-id-tts</TimeTableSubjectLocalId>
+        <KeyLearningArea>A</KeyLearningArea>
         <StudentList>
             <TeachingGroupStudent>
                 <StudentPersonalRefId>c1deee9b-53ce-4c8f-9101-31bedf9c4836</StudentPersonalRefId>

@@ -28,6 +28,7 @@ public class WellbeingCharacteristicTestData extends TestData<WellbeingCharacter
         IObjectFactory objectFactory = getObjectFactory();
         WellbeingCharacteristicType wellbeingCharacteristicType = objectFactory.createWellbeingCharacteristicType();
         wellbeingCharacteristicType.setRefId(refId);
+        wellbeingCharacteristicType.setLocalId(objectFactory.createWellbeingCharacteristicTypeLocalId("local-id"));
         wellbeingCharacteristicType.setStudentPersonalRefId(StudentPersonalTestData.REF_ID_1);
         wellbeingCharacteristicType.setSchoolInfoRefId(objectFactory.createWellbeingCharacteristicTypeSchoolInfoRefId(SchoolInfoTestData.REF_ID_1));
         wellbeingCharacteristicType.setWellbeingCharacteristicClassification(objectFactory.createWellbeingCharacteristicTypeWellbeingCharacteristicClassification(AUCodeSetsWellbeingCharacteristicClassificationType.D));

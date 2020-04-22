@@ -31,6 +31,7 @@ public class PurchaseOrderConverter extends HitsConverter<PurchaseOrderType, Pur
             IObjectFactory objectFactory = getObjectFactory();
 
             target.setRefId(source.getRefId());
+            target.setLocalId(objectFactory.createPurchaseOrderTypeLocalId(source.getLocalId()));
             target.setChargedLocationInfoRefId(objectFactory.createPurchaseOrderTypeChargedLocationInfoRefId(source.getLocationInfoRefId()));
             target.setCreationDate(objectFactory.createPurchaseOrderTypeCreationDate(getDateValue(source.getCreationDate())));
             target.setEmployeePersonalRefId(objectFactory.createPurchaseOrderTypeEmployeePersonalRefId(source.getEmployeePersonalRefId()));
@@ -60,6 +61,7 @@ public class PurchaseOrderConverter extends HitsConverter<PurchaseOrderType, Pur
     public void toHitsModel(PurchaseOrderType source, PurchaseOrder target) {
         if (source != null && target != null) {
             target.setRefId(source.getRefId());
+            target.setLocalId(getJAXBValue(source.getLocalId()));
             target.setLocationInfoRefId(getJAXBValue(source.getChargedLocationInfoRefId()));
             target.setCreationDate(getDateValue(getJAXBValue(source.getCreationDate())));
             target.setEmployeePersonalRefId(getJAXBValue(source.getEmployeePersonalRefId()));

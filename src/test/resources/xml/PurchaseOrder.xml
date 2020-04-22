@@ -1,4 +1,5 @@
 <PurchaseOrder RefId="14ef0b45-037a-4135-9977-d4aab5422ce5" xmlns="http://www.sifassociation.org/datamodel/au/3.4">
+    <LocalId>local-id</LocalId>
     <FormNumber>3</FormNumber>
     <VendorInfoRefId>140b8bc9-9137-4c65-b1c0-fda79796e2d9</VendorInfoRefId>
     <ChargedLocationInfoRefId>b5918074-f965-49b7-80b9-cec3270eda48</ChargedLocationInfoRefId>
@@ -7,6 +8,7 @@
         <PurchasingItem>
             <ItemNumber>123456</ItemNumber>
             <ItemDescription>Description #1</ItemDescription>
+            <LocalItemId>local-id-1</LocalItemId>
             <Quantity>1</Quantity>
             <UnitCost Currency="AUD">10.00</UnitCost>
             <QuantityDelivered>1</QuantityDelivered>
@@ -22,6 +24,7 @@
         <PurchasingItem>
             <ItemNumber>246912</ItemNumber>
             <ItemDescription>Description #2</ItemDescription>
+            <LocalItemId>local-id-2</LocalItemId>
             <Quantity>2</Quantity>
             <UnitCost Currency="AUD">10.00</UnitCost>
             <QuantityDelivered>2</QuantityDelivered>
