@@ -48,6 +48,7 @@ import sif3.hits.rest.consumer.data.StudentPersonalTestData;
 import sif3.hits.rest.consumer.data.StudentSchoolEnrollmentTestData;
 import sif3.hits.rest.consumer.data.StudentScoreJudgementAgainstStandardTestData;
 import sif3.hits.rest.consumer.data.TeachingGroupTestData;
+import sif3.hits.rest.consumer.data.TermInfoTestData;
 import sif3.hits.rest.consumer.data.TestData;
 import sif3.hits.rest.consumer.data.TimeTableCellTestData;
 import sif3.hits.rest.consumer.data.TimeTableSubjectTestData;
@@ -178,9 +179,7 @@ public class XMLGenerator {
 		generateTestXML(path, new StudentScoreJudgementAgainstStandardTestData(),
 				StudentScoreJudgementAgainstStandardTestData.XML_REF_ID_1,
 				StudentScoreJudgementAgainstStandardTestData.XML_REF_ID_2);
-//        generateTestXML(path, new AGStatusReportTestData(), AGStatusReportTestData.XML_REF_ID_1, AGStatusReportTestData.XML_REF_ID_2);
-//        generateTestXML(path, new AGAddressCollectionSubmissionTestData(), AGAddressCollectionSubmissionTestData.XML_REF_ID_1, AGAddressCollectionSubmissionTestData.XML_REF_ID_2);
-//        generateTestXML(path, new FinancialQuestionnaireSubmissionTestData(), FinancialQuestionnaireSubmissionTestData.XML_REF_ID_1, FinancialQuestionnaireSubmissionTestData.XML_REF_ID_2);		
+		generateTestXML(path, new TermInfoTestData(), TermInfoTestData.XML_REF_ID_1, TermInfoTestData.XML_REF_ID_2);
 	}
 
 	public static <T, C> void generateTestXML(String path, TestData<T, C> testData, String refId1, String refId2)

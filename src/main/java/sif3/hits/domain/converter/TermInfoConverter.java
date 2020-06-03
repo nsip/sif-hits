@@ -19,6 +19,7 @@ public class TermInfoConverter extends HitsConverter<TermInfoType, TermInfo> {
 	public void toSifModel(TermInfo source, TermInfoType target) {
 		if (source != null && target != null) {
 			IObjectFactory objectFactory = getObjectFactory();
+			target.setRefId(source.getRefId());
 			target.setSchoolInfoRefId(source.getSchoolInfoRefId());
 			target.setSchoolYear(getYearValue(source.getSchoolYear()));
 			target.setStartDate(getDateValue(source.getStartDate()));
@@ -42,6 +43,7 @@ public class TermInfoConverter extends HitsConverter<TermInfoType, TermInfo> {
 	@Override
 	public void toHitsModel(TermInfoType source, TermInfo target) {
 		if (source != null && target != null) {
+			target.setRefId(source.getRefId());
 			target.setSchoolInfoRefId(source.getSchoolInfoRefId());
 			target.setSchoolYear(getYearValue(source.getSchoolYear()));
 			target.setStartDate(getDateValue(source.getStartDate()));

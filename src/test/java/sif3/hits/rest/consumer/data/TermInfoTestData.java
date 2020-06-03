@@ -1,8 +1,11 @@
 package sif3.hits.rest.consumer.data;
 
+import java.math.BigDecimal;
 import java.util.Arrays;
 import java.util.List;
 
+import sif.dd.au30.model.AUCodeSetsSessionTypeType;
+import sif.dd.au30.model.AUCodeSetsYesOrNoCategoryType;
 import sif.dd.au30.model.TermInfoCollectionType;
 import sif.dd.au30.model.TermInfoType;
 import sif3.hits.domain.converter.factory.IObjectFactory;
@@ -25,12 +28,27 @@ public class TermInfoTestData extends TestData<TermInfoType, TermInfoCollectionT
 	public static final String[] XML_REF_ID_RA = { XML_REF_ID_1, XML_REF_ID_2 };
 	public static final List<String> XML_REF_ID_LIST = Arrays.asList(XML_REF_ID_RA);
 
+	private static final String QUARTER = "0830";
+
 	@Override
 	public TermInfoType getTestObject(String refId) {
 		IObjectFactory objectFactory = getObjectFactory();
 
 		TermInfoType termInfoType = objectFactory.createTermInfoType();
-		// TODO: Not Yet Implemented
+		termInfoType.setRefId(refId);
+		termInfoType.setSchoolInfoRefId(SchoolInfoTestData.REF_ID_1);
+		termInfoType.setSchoolYear(getDate("2020"));
+		termInfoType.setStartDate(getDate("2020-04-01"));
+		termInfoType.setEndDate(getDate("2020-06-30"));
+		termInfoType.setDescription(objectFactory.createTermInfoTypeDescription("TermInfo Description"));
+		termInfoType.setRelativeDuration(objectFactory.createTermInfoTypeRelativeDuration(new BigDecimal("1.0")));
+		termInfoType.setTermCode(objectFactory.createTermInfoTypeTermCode("TermInfo Code"));
+		termInfoType.setTrack(objectFactory.createTermInfoTypeTrack("TermInfo Track"));
+		termInfoType
+				.setTermSpan(objectFactory.createTermInfoTypeTermSpan(AUCodeSetsSessionTypeType.fromValue(QUARTER)));
+		termInfoType.setMarkingTerm(objectFactory.createTermInfoTypeMarkingTerm(AUCodeSetsYesOrNoCategoryType.Y));
+		termInfoType.setSchedulingTerm(objectFactory.createTermInfoTypeSchedulingTerm(AUCodeSetsYesOrNoCategoryType.Y));
+		termInfoType.setAttendanceTerm(objectFactory.createTermInfoTypeAttendanceTerm(AUCodeSetsYesOrNoCategoryType.Y));
 		return termInfoType;
 	}
 
