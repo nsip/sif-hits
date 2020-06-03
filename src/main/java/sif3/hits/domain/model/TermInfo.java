@@ -3,6 +3,8 @@ package sif3.hits.domain.model;
 import javax.persistence.Id;
 
 public class TermInfo extends HitsEntity {
+	private static final long serialVersionUID = -428078099998185241L;
+
 	private String refId;
 	private String schoolInfoRefId;
 	private String schoolYear;
