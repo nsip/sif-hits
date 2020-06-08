@@ -3,9 +3,12 @@ package sif3.hits.domain.model;
 import java.util.List;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
+@Entity
 public class SchoolCourseInfo extends HitsEntity {
 	private static final long serialVersionUID = 7547665692985438945L;
 
@@ -36,6 +39,7 @@ public class SchoolCourseInfo extends HitsEntity {
 		this.refId = refId;
 	}
 
+	@Column(name = "SchoolInfo_RefId")
 	public String getSchoolInfoRefId() {
 		return schoolInfoRefId;
 	}
@@ -60,6 +64,7 @@ public class SchoolCourseInfo extends HitsEntity {
 		this.schoolYear = schoolYear;
 	}
 
+	@Column(name = "TermInfo_RefId")
 	public String getTermInfoRefId() {
 		return termInfoRefId;
 	}

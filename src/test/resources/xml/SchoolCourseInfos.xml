@@ -1,0 +1,88 @@
+<SchoolCourseInfos xmlns="http://www.sifassociation.org/datamodel/au/3.4">
+    <SchoolCourseInfo RefId="362a9ccf-642a-4e8a-93b0-08a16f415c61">
+        <SchoolInfoRefId>252159ce-e385-4dea-8440-26d300282781</SchoolInfoRefId>
+        <SchoolLocalId>4001</SchoolLocalId>
+        <SchoolYear>2020</SchoolYear>
+        <TermInfoRefId>0bee8b07-f190-43f4-918c-a37ac9fd3db0</TermInfoRefId>
+        <CourseCode>CourseCode</CourseCode>
+        <StateCourseCode>StateCourseCode</StateCourseCode>
+        <DistrictCourseCode>DistrictCourseCode</DistrictCourseCode>
+        <SubjectAreaList>
+            <SubjectArea>
+                <Code>Subject Area 1</Code>
+                <OtherCodeList>
+                    <OtherCode Codeset="Codeset 1 1">Value 1 1</OtherCode>
+                    <OtherCode Codeset="Codeset 1 2">Value 1 2</OtherCode>
+                    <OtherCode Codeset="Codeset 1 3">Value 1 3</OtherCode>
+                </OtherCodeList>
+            </SubjectArea>
+            <SubjectArea>
+                <Code>Subject Area 2</Code>
+                <OtherCodeList>
+                    <OtherCode Codeset="Codeset 2 1">Value 2 1</OtherCode>
+                    <OtherCode Codeset="Codeset 2 2">Value 2 2</OtherCode>
+                    <OtherCode Codeset="Codeset 2 3">Value 2 3</OtherCode>
+                </OtherCodeList>
+            </SubjectArea>
+            <SubjectArea>
+                <Code>Subject Area 3</Code>
+                <OtherCodeList>
+                    <OtherCode Codeset="Codeset 3 1">Value 3 1</OtherCode>
+                    <OtherCode Codeset="Codeset 3 2">Value 3 2</OtherCode>
+                    <OtherCode Codeset="Codeset 3 3">Value 3 3</OtherCode>
+                </OtherCodeList>
+            </SubjectArea>
+        </SubjectAreaList>
+        <CourseTitle>Course Title</CourseTitle>
+        <Description>Course Description</Description>
+        <InstructionalLevel>Instructional Level</InstructionalLevel>
+        <CourseCredits>CourseCredits</CourseCredits>
+        <CoreAcademicCourse>Y</CoreAcademicCourse>
+        <GraduationRequirement>Y</GraduationRequirement>
+        <Department>Department</Department>
+        <CourseContent>Course Content</CourseContent>
+    </SchoolCourseInfo>
+    <SchoolCourseInfo RefId="182df6dc-0037-4096-be81-c9b83c351427">
+        <SchoolInfoRefId>252159ce-e385-4dea-8440-26d300282781</SchoolInfoRefId>
+        <SchoolLocalId>4001</SchoolLocalId>
+        <SchoolYear>2020</SchoolYear>
+        <TermInfoRefId>0bee8b07-f190-43f4-918c-a37ac9fd3db0</TermInfoRefId>
+        <CourseCode>CourseCode</CourseCode>
+        <StateCourseCode>StateCourseCode</StateCourseCode>
+        <DistrictCourseCode>DistrictCourseCode</DistrictCourseCode>
+        <SubjectAreaList>
+            <SubjectArea>
+                <Code>Subject Area 1</Code>
+                <OtherCodeList>
+                    <OtherCode Codeset="Codeset 1 1">Value 1 1</OtherCode>
+                    <OtherCode Codeset="Codeset 1 2">Value 1 2</OtherCode>
+                    <OtherCode Codeset="Codeset 1 3">Value 1 3</OtherCode>
+                </OtherCodeList>
+            </SubjectArea>
+            <SubjectArea>
+                <Code>Subject Area 2</Code>
+                <OtherCodeList>
+                    <OtherCode Codeset="Codeset 2 1">Value 2 1</OtherCode>
+                    <OtherCode Codeset="Codeset 2 2">Value 2 2</OtherCode>
+                    <OtherCode Codeset="Codeset 2 3">Value 2 3</OtherCode>
+                </OtherCodeList>
+            </SubjectArea>
+            <SubjectArea>
+                <Code>Subject Area 3</Code>
+                <OtherCodeList>
+                    <OtherCode Codeset="Codeset 3 1">Value 3 1</OtherCode>
+                    <OtherCode Codeset="Codeset 3 2">Value 3 2</OtherCode>
+                    <OtherCode Codeset="Codeset 3 3">Value 3 3</OtherCode>
+                </OtherCodeList>
+            </SubjectArea>
+        </SubjectAreaList>
+        <CourseTitle>Course Title</CourseTitle>
+        <Description>Course Description</Description>
+        <InstructionalLevel>Instructional Level</InstructionalLevel>
+        <CourseCredits>CourseCredits</CourseCredits>
+        <CoreAcademicCourse>Y</CoreAcademicCourse>
+        <GraduationRequirement>Y</GraduationRequirement>
+        <Department>Department</Department>
+        <CourseContent>Course Content</CourseContent>
+    </SchoolCourseInfo>
+</SchoolCourseInfos>

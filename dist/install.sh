@@ -3,7 +3,7 @@
 # env vars
 SIF_HOME=/var/sif/hitsprovider
 SITE=`cat ${SIF_HOME}/instance`
-RELEASE_NAME=sifhits-2.10.0
+RELEASE_NAME=sifhits-2.11.0
 FINAL_NAME=SIF3InfraREST
 TOMCAT_HOME=/var/lib/tomcat8
 TIMESTAMP=`date +%Y%m%dT%H%M%S`

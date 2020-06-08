@@ -1,14 +1,24 @@
 package sif3.hits.domain.converter;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import sif.dd.au30.model.AUCodeSetsYesOrNoCategoryType;
 import sif.dd.au30.model.SchoolCourseInfoType;
+import sif.dd.au30.model.SubjectAreaListType;
+import sif.dd.au30.model.SubjectAreaType;
 import sif3.hits.domain.converter.factory.IObjectFactory;
 import sif3.hits.domain.model.SchoolCourseInfo;
+import sif3.hits.domain.model.SubjectArea;
 
 @Component
 public class SchoolCourseInfoConverter extends HitsConverter<SchoolCourseInfoType, SchoolCourseInfo> {
+
+	@Autowired
+	SubjectAreaConverter subjectAreaConverter;
 
 	public SchoolCourseInfoConverter() {
 		super(SchoolCourseInfoType.class, SchoolCourseInfo.class);
@@ -40,6 +50,14 @@ public class SchoolCourseInfoConverter extends HitsConverter<SchoolCourseInfoTyp
 					getEnumValue(source.getGraduationRequirement(), AUCodeSetsYesOrNoCategoryType.class)));
 			target.setDepartment(objectFactory.createSchoolCourseInfoTypeDepartment(source.getDepartment()));
 			target.setCourseContent(objectFactory.createSchoolCourseInfoTypeCourseContent(source.getCourseContent()));
+
+			List<SubjectAreaType> subjectAreas = subjectAreaConverter.toSifModelList(source.getSubjectAreas());
+			if (!subjectAreas.isEmpty()) {
+				SubjectAreaListType subjectAreaList = objectFactory.createSubjectAreaListType();
+				subjectAreaList.getSubjectArea().addAll(subjectAreas);
+				target.setSubjectAreaList(objectFactory.createSchoolCourseInfoTypeSubjectAreaList(subjectAreaList));
+			}
+			
 		}
 	}
 
@@ -62,6 +80,19 @@ public class SchoolCourseInfoConverter extends HitsConverter<SchoolCourseInfoTyp
 			target.setGraduationRequirement(getJAXBEnumValue(source.getGraduationRequirement()));
 			target.setDepartment(getJAXBValue(source.getDepartment()));
 			target.setCourseContent(getJAXBValue(source.getCourseContent()));
+
+			if (target.getSubjectAreas() == null) {
+				target.setSubjectAreas(new ArrayList<>());
+			}
+			target.getSubjectAreas().clear();
+			SubjectAreaListType subjectAreaList = getJAXBValue(source.getSubjectAreaList());
+			if (subjectAreaList != null) {
+				List<SubjectArea> subjectAreas = subjectAreaConverter.toHitsModelList(subjectAreaList.getSubjectArea());
+				for (SubjectArea subjectArea : subjectAreas) {
+					subjectArea.setSchoolCourseInfo(target);
+				}
+				target.getSubjectAreas().addAll(subjectAreas);
+			}
 		}
 	}
 }

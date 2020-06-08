@@ -34,6 +34,7 @@ import sif3.hits.rest.consumer.data.PersonalisedPlanTestData;
 import sif3.hits.rest.consumer.data.PurchaseOrderTestData;
 import sif3.hits.rest.consumer.data.RoomInfoTestData;
 import sif3.hits.rest.consumer.data.ScheduledActivityTestData;
+import sif3.hits.rest.consumer.data.SchoolCourseInfoTestData;
 import sif3.hits.rest.consumer.data.SchoolInfoTestData;
 import sif3.hits.rest.consumer.data.SessionInfoTestData;
 import sif3.hits.rest.consumer.data.StaffAssignmentTestData;
@@ -180,6 +181,8 @@ public class XMLGenerator {
 				StudentScoreJudgementAgainstStandardTestData.XML_REF_ID_1,
 				StudentScoreJudgementAgainstStandardTestData.XML_REF_ID_2);
 		generateTestXML(path, new TermInfoTestData(), TermInfoTestData.XML_REF_ID_1, TermInfoTestData.XML_REF_ID_2);
+		generateTestXML(path, new SchoolCourseInfoTestData(), SchoolCourseInfoTestData.XML_REF_ID_1,
+				SchoolCourseInfoTestData.XML_REF_ID_2);
 	}
 
 	public static <T, C> void generateTestXML(String path, TestData<T, C> testData, String refId1, String refId2)

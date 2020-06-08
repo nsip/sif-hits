@@ -1,7 +1,10 @@
 package sif3.hits.domain.model;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
 import javax.persistence.Id;
 
+@Entity
 public class TermInfo extends HitsEntity {
 	private static final long serialVersionUID = -428078099998185241L;
 
@@ -28,6 +31,7 @@ public class TermInfo extends HitsEntity {
 		this.refId = refId;
 	}
 
+	@Column(name = "SchoolInfo_RefId")
 	public String getSchoolInfoRefId() {
 		return schoolInfoRefId;
 	}
