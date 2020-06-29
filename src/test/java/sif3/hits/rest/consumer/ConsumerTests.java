@@ -60,7 +60,9 @@ public class ConsumerTests {
 //            FinancialQuestionnaireSubmissionConsumerTest.class,
             WellbeingPersonLinkConsumerTest.class,
 //            AGAddressCollectionSubmissionConsumerTest.class,
-            StudentScoreJudgementAgainstStandardTest.class
+            StudentScoreJudgementAgainstStandardConsumerTest.class,
+            TermInfoConsumerTest.class,
+            SchoolCourseInfoConsumerTest.class
     };
     
     

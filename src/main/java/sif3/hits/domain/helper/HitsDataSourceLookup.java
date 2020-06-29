@@ -13,8 +13,6 @@ import org.springframework.jdbc.datasource.lookup.DataSourceLookupFailureExcepti
 
 import com.mchange.v2.c3p0.ComboPooledDataSource;
 
-import sif3.hits.service.BaseService;
-
 public class HitsDataSourceLookup implements DataSourceLookup {
 
 	private static final Logger L = LoggerFactory.getLogger(HitsDataSourceLookup.class);
@@ -48,18 +46,23 @@ public class HitsDataSourceLookup implements DataSourceLookup {
 			e.printStackTrace();
 		}
 
-		cpds.setInitialPoolSize(getIntegerProperty("hits.c3p0.acquire_increment"));
-		cpds.setAcquireIncrement(getIntegerProperty("hits.c3p0.acquire_increment"));
-		cpds.setMaxPoolSize(getIntegerProperty("hits.c3p0.max_size"));
-		cpds.setMinPoolSize(getIntegerProperty("hits.c3p0.min_size"));
-		cpds.setMaxStatements(getIntegerProperty("hits.c3p0.max_statements"));
-
+		cpds.setInitialPoolSize(getIntegerProperty("hits.c3p0.acquire_increment", 1));
+		cpds.setAcquireIncrement(getIntegerProperty("hits.c3p0.acquire_increment", 1));
+		cpds.setMaxPoolSize(getIntegerProperty("hits.c3p0.max_size", 5));
+		cpds.setMinPoolSize(getIntegerProperty("hits.c3p0.min_size", 0));
+		cpds.setMaxStatements(getIntegerProperty("hits.c3p0.max_statements", 500));
+		cpds.setIdleConnectionTestPeriod(getIntegerProperty("hits.c3p0.idle_test_period", 120));
+		cpds.setPreferredTestQuery(databaseProperties.getProperty("hits.c3p0.test_statement", "select 1"));
 		return cpds;
 	}
 
-	private Integer getIntegerProperty(String property) {
+	private Integer getIntegerProperty(String property, Integer defaultValue) {
+		Integer result = defaultValue;
 		String value = databaseProperties.getProperty(property);
-		return Integer.parseInt(value, 10);
+		if (value != null) {
+			Integer.parseInt(value, 10);
+		}
+		return result;
 	}
 
 }

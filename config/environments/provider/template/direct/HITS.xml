@@ -675,6 +675,22 @@
             <right type="DELETE">APPROVED</right>
           </rights>
         </service>
+        <service name="TermInfos" contextId="DEFAULT" type="OBJECT">
+          <rights>
+            <right type="QUERY">APPROVED</right>
+            <right type="CREATE">APPROVED</right>
+            <right type="UPDATE">APPROVED</right>
+            <right type="DELETE">APPROVED</right>
+          </rights>
+        </service>
+        <service name="SchoolCourseInfos" contextId="DEFAULT" type="OBJECT">
+          <rights>
+            <right type="QUERY">APPROVED</right>
+            <right type="CREATE">APPROVED</right>
+            <right type="UPDATE">APPROVED</right>
+            <right type="DELETE">APPROVED</right>
+          </rights>
+        </service>
       </services>
     </provisionedZone>
   </provisionedZones>

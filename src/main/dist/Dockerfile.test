@@ -1,0 +1,22 @@
+FROM maven:3-openjdk-8
+
+RUN mkdir -p /srv/dist && mkdir -p /srv/src && mkdir -p /srv/deps
+COPY pom.xml /srv/deps/
+COPY dist/sif3-common-${sif3.framework.version}.jar /srv/dist
+COPY dist/sif3-infra-common-${sif3.framework.version}.jar /srv/dist
+COPY dist/sif3-infra-model-${sif3.framework.version}.jar /srv/dist
+COPY dist/sif3-infra-rest-${sif3.framework.version}.jar /srv/dist
+COPY dist/sifau-datamodel-${sif3.datamodel.version}.jar /srv/dist
+
+WORKDIR /srv/deps
+RUN mvn install:install-file -Dfile=/srv/dist/sif3-common-${sif3.framework.version}.jar -DgroupId=sif3.framework -DartifactId=sif3-common -Dversion=${sif3.framework.version} && \
+    mvn install:install-file -Dfile=/srv/dist/sif3-infra-common-${sif3.framework.version}.jar -DgroupId=sif3.framework -DartifactId=sif3-infra-common -Dversion=${sif3.framework.version} && \
+    mvn install:install-file -Dfile=/srv/dist/sif3-infra-model-${sif3.framework.version}.jar -DgroupId=sif3.framework -DartifactId=sif3-infra-model -Dversion=${sif3.framework.version} && \
+    mvn install:install-file -Dfile=/srv/dist/sif3-infra-rest-${sif3.framework.version}.jar -DgroupId=sif3.framework -DartifactId=sif3-infra-rest -Dversion=${sif3.framework.version} && \
+    mvn install:install-file -Dfile=/srv/dist/sifau-datamodel-${sif3.datamodel.version}.jar -DgroupId=sif3.datamodel -DartifactId=sifau-datamodel -Dversion=${sif3.datamodel.version} && \
+    mvn dependency:go-offline
+    
+WORKDIR /srv/src
+
+CMD []
+ENTRYPOINT []

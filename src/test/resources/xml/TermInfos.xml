@@ -1,0 +1,30 @@
+<TermInfos xmlns="http://www.sifassociation.org/datamodel/au/3.4">
+    <TermInfo RefId="041a790e-bf57-4cbb-825c-dd48923769a7">
+        <SchoolInfoRefId>252159ce-e385-4dea-8440-26d300282781</SchoolInfoRefId>
+        <SchoolYear>2020</SchoolYear>
+        <StartDate>2020-04-01</StartDate>
+        <EndDate>2020-06-30</EndDate>
+        <Description>TermInfo Description</Description>
+        <RelativeDuration>1.0</RelativeDuration>
+        <TermCode>TermInfo Code</TermCode>
+        <Track>TermInfo Track</Track>
+        <TermSpan>0830</TermSpan>
+        <MarkingTerm>Y</MarkingTerm>
+        <SchedulingTerm>Y</SchedulingTerm>
+        <AttendanceTerm>Y</AttendanceTerm>
+    </TermInfo>
+    <TermInfo RefId="3479e2fc-46e6-49e2-a044-8b37e19c28b1">
+        <SchoolInfoRefId>252159ce-e385-4dea-8440-26d300282781</SchoolInfoRefId>
+        <SchoolYear>2020</SchoolYear>
+        <StartDate>2020-04-01</StartDate>
+        <EndDate>2020-06-30</EndDate>
+        <Description>TermInfo Description</Description>
+        <RelativeDuration>1.0</RelativeDuration>
+        <TermCode>TermInfo Code</TermCode>
+        <Track>TermInfo Track</Track>
+        <TermSpan>0830</TermSpan>
+        <MarkingTerm>Y</MarkingTerm>
+        <SchedulingTerm>Y</SchedulingTerm>
+        <AttendanceTerm>Y</AttendanceTerm>
+    </TermInfo>
+</TermInfos>
