@@ -582,6 +582,18 @@ public interface IObjectFactory {
 	TimeTableContainerCollectionType createTimeTableContainerCollectionType();
 
 	/**
+	 * Create an instance of {@link LibraryPatronStatusType }
+	 * 
+	 */
+	LibraryPatronStatusType createLibraryPatronStatusType();
+
+	/**
+	 * Create an instance of {@link LibraryPatronStatusCollectionType }
+	 * 
+	 */
+	LibraryPatronStatusCollectionType createLibraryPatronStatusCollectionType();
+
+	/**
 	 * Create an instance of {@link InvoiceCollectionType }
 	 * 
 	 */
@@ -1020,6 +1032,78 @@ public interface IObjectFactory {
 	WellbeingPersonLinkCollectionType createWellbeingPersonLinkCollectionType();
 
 	/**
+	 * Create an instance of {@link FinancialQuestionnaireCollectionType }
+	 * 
+	 */
+	FinancialQuestionnaireCollectionType createFinancialQuestionnaireCollectionType();
+
+	/**
+	 * Create an instance of {@link FinancialQuestionnaireCollectionCollectionType }
+	 * 
+	 */
+	FinancialQuestionnaireCollectionCollectionType createFinancialQuestionnaireCollectionCollectionType();
+
+	/**
+	 * Create an instance of {@link CollectionStatusType }
+	 * 
+	 */
+	CollectionStatusType createCollectionStatusType();
+
+	/**
+	 * Create an instance of {@link CollectionStatusCollectionType }
+	 * 
+	 */
+	CollectionStatusCollectionType createCollectionStatusCollectionType();
+
+	/**
+	 * Create an instance of {@link AddressCollectionType }
+	 * 
+	 */
+	AddressCollectionType createAddressCollectionType();
+
+	/**
+	 * Create an instance of {@link AddressCollectionCollectionType }
+	 * 
+	 */
+	AddressCollectionCollectionType createAddressCollectionCollectionType();
+
+	/**
+	 * Create an instance of {@link StudentAttendanceCollectionType }
+	 * 
+	 */
+	StudentAttendanceCollectionType createStudentAttendanceCollectionType();
+
+	/**
+	 * Create an instance of {@link StudentAttendanceCollectionCollectionType }
+	 * 
+	 */
+	StudentAttendanceCollectionCollectionType createStudentAttendanceCollectionCollectionType();
+
+	/**
+	 * Create an instance of {@link CensusCollectionType }
+	 * 
+	 */
+	CensusCollectionType createCensusCollectionType();
+
+	/**
+	 * Create an instance of {@link CensusCollectionCollectionType }
+	 * 
+	 */
+	CensusCollectionCollectionType createCensusCollectionCollectionType();
+
+	/**
+	 * Create an instance of {@link CollectionRoundType }
+	 * 
+	 */
+	CollectionRoundType createCollectionRoundType();
+
+	/**
+	 * Create an instance of {@link CollectionRoundCollectionType }
+	 * 
+	 */
+	CollectionRoundCollectionType createCollectionRoundCollectionType();
+
+	/**
 	 * Create an instance of {@link SystemRoleCollectionType }
 	 * 
 	 */
@@ -1030,6 +1114,264 @@ public interface IObjectFactory {
 	 * 
 	 */
 	ResourceUsageCollectionType createResourceUsageCollectionType();
+
+	/**
+	 * Create an instance of {@link LibraryTransactionListType }
+	 * 
+	 */
+	LibraryTransactionListType createLibraryTransactionListType();
+
+	/**
+	 * Create an instance of {@link LibraryTransactionType }
+	 * 
+	 */
+	LibraryTransactionType createLibraryTransactionType();
+
+	/**
+	 * Create an instance of {@link LibraryItemInfoType }
+	 * 
+	 */
+	LibraryItemInfoType createLibraryItemInfoType();
+
+	/**
+	 * Create an instance of {@link CheckoutInfoType }
+	 * 
+	 */
+	CheckoutInfoType createCheckoutInfoType();
+
+	/**
+	 * Create an instance of {@link FineInfoListType }
+	 * 
+	 */
+	FineInfoListType createFineInfoListType();
+
+	/**
+	 * Create an instance of {@link FineInfoType }
+	 * 
+	 */
+	FineInfoType createFineInfoType();
+
+	/**
+	 * Create an instance of {@link HoldInfoListType }
+	 * 
+	 */
+	HoldInfoListType createHoldInfoListType();
+
+	/**
+	 * Create an instance of {@link HoldInfoType }
+	 * 
+	 */
+	HoldInfoType createHoldInfoType();
+
+	/**
+	 * Create an instance of {@link LibraryMessageListType }
+	 * 
+	 */
+	LibraryMessageListType createLibraryMessageListType();
+
+	/**
+	 * Create an instance of {@link LibraryMessageType }
+	 * 
+	 */
+	LibraryMessageType createLibraryMessageType();
+
+	/**
+	 * Create an instance of {@link StudentAttendanceCollectionReportingListType }
+	 * 
+	 */
+	StudentAttendanceCollectionReportingListType createStudentAttendanceCollectionReportingListType();
+
+	/**
+	 * Create an instance of {@link StudentAttendanceCollectionReportingType }
+	 * 
+	 */
+	StudentAttendanceCollectionReportingType createStudentAttendanceCollectionReportingType();
+
+	/**
+	 * Create an instance of {@link StatsCohortYearLevelListType }
+	 * 
+	 */
+	StatsCohortYearLevelListType createStatsCohortYearLevelListType();
+
+	/**
+	 * Create an instance of {@link StatsCohortYearLevelType }
+	 * 
+	 */
+	StatsCohortYearLevelType createStatsCohortYearLevelType();
+
+	/**
+	 * Create an instance of {@link StatsCohortListType }
+	 * 
+	 */
+	StatsCohortListType createStatsCohortListType();
+
+	/**
+	 * Create an instance of {@link StatsCohortType }
+	 * 
+	 */
+	StatsCohortType createStatsCohortType();
+
+	/**
+	 * Create an instance of {@link AddressCollectionReportingListType }
+	 * 
+	 */
+	AddressCollectionReportingListType createAddressCollectionReportingListType();
+
+	/**
+	 * Create an instance of {@link AddressCollectionReportingType }
+	 * 
+	 */
+	AddressCollectionReportingType createAddressCollectionReportingType();
+
+	/**
+	 * Create an instance of {@link AddressCollectionStudentListType }
+	 * 
+	 */
+	AddressCollectionStudentListType createAddressCollectionStudentListType();
+
+	/**
+	 * Create an instance of {@link AddressCollectionStudentType }
+	 * 
+	 */
+	AddressCollectionStudentType createAddressCollectionStudentType();
+
+	/**
+	 * Create an instance of {@link AGParentType }
+	 * 
+	 */
+	AGParentType createAGParentType();
+
+	/**
+	 * Create an instance of {@link AGRoundListType }
+	 * 
+	 */
+	AGRoundListType createAGRoundListType();
+
+	/**
+	 * Create an instance of {@link AGRoundType }
+	 * 
+	 */
+	AGRoundType createAGRoundType();
+
+	/**
+	 * Create an instance of {@link AGContextualQuestionListType }
+	 * 
+	 */
+	AGContextualQuestionListType createAGContextualQuestionListType();
+
+	/**
+	 * Create an instance of {@link AGContextualQuestionType }
+	 * 
+	 */
+	AGContextualQuestionType createAGContextualQuestionType();
+
+	/**
+	 * Create an instance of {@link CensusReportingListType }
+	 * 
+	 */
+	CensusReportingListType createCensusReportingListType();
+
+	/**
+	 * Create an instance of {@link CensusReportingType }
+	 * 
+	 */
+	CensusReportingType createCensusReportingType();
+
+	/**
+	 * Create an instance of {@link CensusStaffListType }
+	 * 
+	 */
+	CensusStaffListType createCensusStaffListType();
+
+	/**
+	 * Create an instance of {@link CensusStaffType }
+	 * 
+	 */
+	CensusStaffType createCensusStaffType();
+
+	/**
+	 * Create an instance of {@link StaffAssignmentMostRecentContainerType }
+	 * 
+	 */
+	StaffAssignmentMostRecentContainerType createStaffAssignmentMostRecentContainerType();
+
+	/**
+	 * Create an instance of {@link CensusStudentListType }
+	 * 
+	 */
+	CensusStudentListType createCensusStudentListType();
+
+	/**
+	 * Create an instance of {@link CensusStudentType }
+	 * 
+	 */
+	CensusStudentType createCensusStudentType();
+
+	/**
+	 * Create an instance of {@link AGReportingObjectResponseListType }
+	 * 
+	 */
+	AGReportingObjectResponseListType createAGReportingObjectResponseListType();
+
+	/**
+	 * Create an instance of {@link AGReportingObjectResponseType }
+	 * 
+	 */
+	AGReportingObjectResponseType createAGReportingObjectResponseType();
+
+	/**
+	 * Create an instance of {@link FQReportingListType }
+	 * 
+	 */
+	FQReportingListType createFQReportingListType();
+
+	/**
+	 * Create an instance of {@link FQReportingType }
+	 * 
+	 */
+	FQReportingType createFQReportingType();
+
+	/**
+	 * Create an instance of {@link FQContextualQuestionListType }
+	 * 
+	 */
+	FQContextualQuestionListType createFQContextualQuestionListType();
+
+	/**
+	 * Create an instance of {@link FQContextualQuestionType }
+	 * 
+	 */
+	FQContextualQuestionType createFQContextualQuestionType();
+
+	/**
+	 * Create an instance of {@link FQItemListType }
+	 * 
+	 */
+	FQItemListType createFQItemListType();
+
+	/**
+	 * Create an instance of {@link FQItemType }
+	 * 
+	 */
+	FQItemType createFQItemType();
+
+	/**
+	 * Create an instance of {@link AGRuleListType }
+	 * 
+	 */
+	AGRuleListType createAGRuleListType();
+
+	/**
+	 * Create an instance of {@link AGRuleType }
+	 * 
+	 */
+	AGRuleType createAGRuleType();
+
+	/**
+	 * Create an instance of {@link SoftwareVendorInfoContainerType }
+	 * 
+	 */
+	SoftwareVendorInfoContainerType createSoftwareVendorInfoContainerType();
 
 	/**
 	 * Create an instance of {@link TimeTableScheduleType }
@@ -1060,18 +1402,6 @@ public interface IObjectFactory {
 	 * 
 	 */
 	TeachingGroupScheduleType createTeachingGroupScheduleType();
-
-	/**
-	 * Create an instance of {@link ApplicableLawListType }
-	 * 
-	 */
-	ApplicableLawListType createApplicableLawListType();
-
-	/**
-	 * Create an instance of {@link ApplicableLawType }
-	 * 
-	 */
-	ApplicableLawType createApplicableLawType();
 
 	/**
 	 * Create an instance of {@link LocalCodeListType }
@@ -3167,6 +3497,18 @@ public interface IObjectFactory {
 	JAXBElement<TimeTableContainerCollectionType> createTimeTableContainers(TimeTableContainerCollectionType value);
 
 	/**
+	 * Create an instance of {@link JAXBElement }{@code <}{@link LibraryPatronStatusType }{@code >}}
+	 * 
+	 */
+	JAXBElement<LibraryPatronStatusType> createLibraryPatronStatus(LibraryPatronStatusType value);
+
+	/**
+	 * Create an instance of {@link JAXBElement }{@code <}{@link LibraryPatronStatusCollectionType }{@code >}}
+	 * 
+	 */
+	JAXBElement<LibraryPatronStatusCollectionType> createLibraryPatronStatuss(LibraryPatronStatusCollectionType value);
+
+	/**
 	 * Create an instance of {@link JAXBElement }{@code <}{@link InvoiceType }{@code >}}
 	 * 
 	 */
@@ -3645,6 +3987,82 @@ public interface IObjectFactory {
 	 * 
 	 */
 	JAXBElement<WellbeingPersonLinkCollectionType> createWellbeingPersonLinks(WellbeingPersonLinkCollectionType value);
+
+	/**
+	 * Create an instance of {@link JAXBElement }{@code <}{@link FinancialQuestionnaireCollectionType }{@code >}}
+	 * 
+	 */
+	JAXBElement<FinancialQuestionnaireCollectionType> createFinancialQuestionnaireCollection(
+			FinancialQuestionnaireCollectionType value);
+
+	/**
+	 * Create an instance of {@link JAXBElement }{@code <}{@link FinancialQuestionnaireCollectionCollectionType }{@code >}}
+	 * 
+	 */
+	JAXBElement<FinancialQuestionnaireCollectionCollectionType> createFinancialQuestionnaireCollections(
+			FinancialQuestionnaireCollectionCollectionType value);
+
+	/**
+	 * Create an instance of {@link JAXBElement }{@code <}{@link CollectionStatusType }{@code >}}
+	 * 
+	 */
+	JAXBElement<CollectionStatusType> createCollectionStatus(CollectionStatusType value);
+
+	/**
+	 * Create an instance of {@link JAXBElement }{@code <}{@link CollectionStatusCollectionType }{@code >}}
+	 * 
+	 */
+	JAXBElement<CollectionStatusCollectionType> createCollectionStatuss(CollectionStatusCollectionType value);
+
+	/**
+	 * Create an instance of {@link JAXBElement }{@code <}{@link AddressCollectionType }{@code >}}
+	 * 
+	 */
+	JAXBElement<AddressCollectionType> createAddressCollection(AddressCollectionType value);
+
+	/**
+	 * Create an instance of {@link JAXBElement }{@code <}{@link AddressCollectionCollectionType }{@code >}}
+	 * 
+	 */
+	JAXBElement<AddressCollectionCollectionType> createAddressCollections(AddressCollectionCollectionType value);
+
+	/**
+	 * Create an instance of {@link JAXBElement }{@code <}{@link StudentAttendanceCollectionType }{@code >}}
+	 * 
+	 */
+	JAXBElement<StudentAttendanceCollectionType> createStudentAttendanceCollection(
+			StudentAttendanceCollectionType value);
+
+	/**
+	 * Create an instance of {@link JAXBElement }{@code <}{@link StudentAttendanceCollectionCollectionType }{@code >}}
+	 * 
+	 */
+	JAXBElement<StudentAttendanceCollectionCollectionType> createStudentAttendanceCollections(
+			StudentAttendanceCollectionCollectionType value);
+
+	/**
+	 * Create an instance of {@link JAXBElement }{@code <}{@link CensusCollectionType }{@code >}}
+	 * 
+	 */
+	JAXBElement<CensusCollectionType> createCensusCollection(CensusCollectionType value);
+
+	/**
+	 * Create an instance of {@link JAXBElement }{@code <}{@link CensusCollectionCollectionType }{@code >}}
+	 * 
+	 */
+	JAXBElement<CensusCollectionCollectionType> createCensusCollections(CensusCollectionCollectionType value);
+
+	/**
+	 * Create an instance of {@link JAXBElement }{@code <}{@link CollectionRoundType }{@code >}}
+	 * 
+	 */
+	JAXBElement<CollectionRoundType> createCollectionRound(CollectionRoundType value);
+
+	/**
+	 * Create an instance of {@link JAXBElement }{@code <}{@link CollectionRoundCollectionType }{@code >}}
+	 * 
+	 */
+	JAXBElement<CollectionRoundCollectionType> createCollectionRounds(CollectionRoundCollectionType value);
 
 	/**
 	 * Create an instance of {@link JAXBElement }{@code <}{@link SystemRoleType }{@code >}}
@@ -5121,10 +5539,10 @@ public interface IObjectFactory {
 	JAXBElement<String> createStudentMostRecentContainerTypeDisabilityCategory(String value);
 
 	/**
-	 * Create an instance of {@link JAXBElement }{@code <}{@link BigDecimal }{@code >}}
+	 * Create an instance of {@link JAXBElement }{@code <}{@link BigInteger }{@code >}}
 	 * 
 	 */
-	JAXBElement<BigDecimal> createStudentMostRecentContainerTypeCensusAge(BigDecimal value);
+	JAXBElement<BigInteger> createStudentMostRecentContainerTypeCensusAge(BigInteger value);
 
 	/**
 	 * Create an instance of {@link JAXBElement }{@code <}{@link AUCodeSetsYesOrNoCategoryType }{@code >}}
@@ -6118,12 +6536,6 @@ public interface IObjectFactory {
 	 * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
 	 * 
 	 */
-	JAXBElement<String> createApplicableLawTypeApplicableLawURL(String value);
-
-	/**
-	 * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
-	 * 
-	 */
 	JAXBElement<String> createTeachingGroupScheduleTypeLongName(String value);
 
 	/**
@@ -6344,6 +6756,406 @@ public interface IObjectFactory {
 	JAXBElement<XMLGregorianCalendar> createTimeTableScheduleTypeEndDate(XMLGregorianCalendar value);
 
 	/**
+	 * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+	 * 
+	 */
+	JAXBElement<String> createAGRuleTypeAGRuleCode(String value);
+
+	/**
+	 * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+	 * 
+	 */
+	JAXBElement<String> createAGRuleTypeAGRuleComment(String value);
+
+	/**
+	 * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+	 * 
+	 */
+	JAXBElement<String> createAGRuleTypeAGRuleResponse(String value);
+
+	/**
+	 * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+	 * 
+	 */
+	JAXBElement<String> createAGRuleTypeAGRuleStatus(String value);
+
+	/**
+	 * Create an instance of {@link JAXBElement }{@code <}{@link BigDecimal }{@code >}}
+	 * 
+	 */
+	JAXBElement<BigDecimal> createFQItemTypeTuitionAmount(BigDecimal value);
+
+	/**
+	 * Create an instance of {@link JAXBElement }{@code <}{@link BigDecimal }{@code >}}
+	 * 
+	 */
+	JAXBElement<BigDecimal> createFQItemTypeBoardingAmount(BigDecimal value);
+
+	/**
+	 * Create an instance of {@link JAXBElement }{@code <}{@link BigDecimal }{@code >}}
+	 * 
+	 */
+	JAXBElement<BigDecimal> createFQItemTypeSystemAmount(BigDecimal value);
+
+	/**
+	 * Create an instance of {@link JAXBElement }{@code <}{@link BigDecimal }{@code >}}
+	 * 
+	 */
+	JAXBElement<BigDecimal> createFQItemTypeDioceseAmount(BigDecimal value);
+
+	/**
+	 * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+	 * 
+	 */
+	JAXBElement<String> createFQItemTypeFQComments(String value);
+
+	/**
+	 * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+	 * 
+	 */
+	JAXBElement<String> createFQReportingTypeSchoolInfoRefId(String value);
+
+	/**
+	 * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+	 * 
+	 */
+	JAXBElement<String> createFQReportingTypeLocalId(String value);
+
+	/**
+	 * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+	 * 
+	 */
+	JAXBElement<String> createFQReportingTypeStateProvinceId(String value);
+
+	/**
+	 * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+	 * 
+	 */
+	JAXBElement<String> createFQReportingTypeACARAId(String value);
+
+	/**
+	 * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+	 * 
+	 */
+	JAXBElement<String> createFQReportingTypeEntityName(String value);
+
+	/**
+	 * Create an instance of {@link JAXBElement }{@code <}{@link FQContextualQuestionListType }{@code >}}
+	 * 
+	 */
+	JAXBElement<FQContextualQuestionListType> createFQReportingTypeFQContextualQuestionList(
+			FQContextualQuestionListType value);
+
+	/**
+	 * Create an instance of {@link JAXBElement }{@code <}{@link AGRuleListType }{@code >}}
+	 * 
+	 */
+	JAXBElement<AGRuleListType> createFQReportingTypeAGRuleList(AGRuleListType value);
+
+	/**
+	 * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+	 * 
+	 */
+	JAXBElement<String> createAGReportingObjectResponseTypeSubmittedRefId(String value);
+
+	/**
+	 * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+	 * 
+	 */
+	JAXBElement<String> createAGReportingObjectResponseTypeSIFRefId(String value);
+
+	/**
+	 * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+	 * 
+	 */
+	JAXBElement<String> createAGReportingObjectResponseTypeHTTPStatusCode(String value);
+
+	/**
+	 * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+	 * 
+	 */
+	JAXBElement<String> createAGReportingObjectResponseTypeErrorText(String value);
+
+	/**
+	 * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+	 * 
+	 */
+	JAXBElement<String> createAGReportingObjectResponseTypeEntityName(String value);
+
+	/**
+	 * Create an instance of {@link JAXBElement }{@code <}{@link AGRuleListType }{@code >}}
+	 * 
+	 */
+	JAXBElement<AGRuleListType> createAGReportingObjectResponseTypeAGRuleList(AGRuleListType value);
+
+	/**
+	 * Create an instance of {@link JAXBElement }{@code <}{@link BigDecimal }{@code >}}
+	 * 
+	 */
+	JAXBElement<BigDecimal> createStaffAssignmentMostRecentContainerTypePrimaryFTE(BigDecimal value);
+
+	/**
+	 * Create an instance of {@link JAXBElement }{@code <}{@link BigDecimal }{@code >}}
+	 * 
+	 */
+	JAXBElement<BigDecimal> createStaffAssignmentMostRecentContainerTypeSecondaryFTE(BigDecimal value);
+
+	/**
+	 * Create an instance of {@link JAXBElement }{@code <}{@link BigDecimal }{@code >}}
+	 * 
+	 */
+	JAXBElement<BigDecimal> createCensusStaffTypePrimaryFTE(BigDecimal value);
+
+	/**
+	 * Create an instance of {@link JAXBElement }{@code <}{@link BigDecimal }{@code >}}
+	 * 
+	 */
+	JAXBElement<BigDecimal> createCensusStaffTypeSecondaryFTE(BigDecimal value);
+
+	/**
+	 * Create an instance of {@link JAXBElement }{@code <}{@link BigDecimal }{@code >}}
+	 * 
+	 */
+	JAXBElement<BigDecimal> createCensusStaffTypeJobFTE(BigDecimal value);
+
+	/**
+	 * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+	 * 
+	 */
+	JAXBElement<String> createCensusReportingTypeEntityLevel(String value);
+
+	/**
+	 * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+	 * 
+	 */
+	JAXBElement<String> createCensusReportingTypeEntityName(String value);
+
+	/**
+	 * Create an instance of {@link JAXBElement }{@code <}{@link CensusStaffListType }{@code >}}
+	 * 
+	 */
+	JAXBElement<CensusStaffListType> createCensusReportingTypeCensusStaffList(CensusStaffListType value);
+
+	/**
+	 * Create an instance of {@link JAXBElement }{@code <}{@link CensusStudentListType }{@code >}}
+	 * 
+	 */
+	JAXBElement<CensusStudentListType> createCensusReportingTypeCensusStudentList(CensusStudentListType value);
+
+	/**
+	 * Create an instance of {@link JAXBElement }{@code <}{@link AUCodeSetsBoardingType }{@code >}}
+	 * 
+	 */
+	JAXBElement<AUCodeSetsBoardingType> createAddressCollectionStudentTypeBoardingStatus(AUCodeSetsBoardingType value);
+
+	/**
+	 * Create an instance of {@link JAXBElement }{@code <}{@link AGParentType }{@code >}}
+	 * 
+	 */
+	JAXBElement<AGParentType> createAddressCollectionStudentTypeParent2(AGParentType value);
+
+	/**
+	 * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+	 * 
+	 */
+	JAXBElement<String> createAddressCollectionReportingTypeEntityLevel(String value);
+
+	/**
+	 * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+	 * 
+	 */
+	JAXBElement<String> createAddressCollectionReportingTypeSchoolInfoRefId(String value);
+
+	/**
+	 * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+	 * 
+	 */
+	JAXBElement<String> createAddressCollectionReportingTypeLocalId(String value);
+
+	/**
+	 * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+	 * 
+	 */
+	JAXBElement<String> createAddressCollectionReportingTypeStateProvinceId(String value);
+
+	/**
+	 * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+	 * 
+	 */
+	JAXBElement<String> createAddressCollectionReportingTypeACARAId(String value);
+
+	/**
+	 * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+	 * 
+	 */
+	JAXBElement<String> createAddressCollectionReportingTypeEntityName(String value);
+
+	/**
+	 * Create an instance of {@link JAXBElement }{@code <}{@link AGContextualQuestionListType }{@code >}}
+	 * 
+	 */
+	JAXBElement<AGContextualQuestionListType> createAddressCollectionReportingTypeAGContextualQuestionList(
+			AGContextualQuestionListType value);
+
+	/**
+	 * Create an instance of {@link JAXBElement }{@code <}{@link AddressCollectionStudentListType }{@code >}}
+	 * 
+	 */
+	JAXBElement<AddressCollectionStudentListType> createAddressCollectionReportingTypeAddressCollectionStudentList(
+			AddressCollectionStudentListType value);
+
+	/**
+	 * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+	 * 
+	 */
+	JAXBElement<String> createStudentAttendanceCollectionReportingTypeEntityLevel(String value);
+
+	/**
+	 * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+	 * 
+	 */
+	JAXBElement<String> createStudentAttendanceCollectionReportingTypeSchoolInfoRefId(String value);
+
+	/**
+	 * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+	 * 
+	 */
+	JAXBElement<String> createStudentAttendanceCollectionReportingTypeLocalId(String value);
+
+	/**
+	 * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+	 * 
+	 */
+	JAXBElement<String> createStudentAttendanceCollectionReportingTypeStateProvinceId(String value);
+
+	/**
+	 * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+	 * 
+	 */
+	JAXBElement<String> createStudentAttendanceCollectionReportingTypeACARAId(String value);
+
+	/**
+	 * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+	 * 
+	 */
+	JAXBElement<String> createStudentAttendanceCollectionReportingTypeEntityName(String value);
+
+	/**
+	 * Create an instance of {@link JAXBElement }{@code <}{@link StatsCohortYearLevelListType }{@code >}}
+	 * 
+	 */
+	JAXBElement<StatsCohortYearLevelListType> createStudentAttendanceCollectionReportingTypeStatsCohortYearLevelList(
+			StatsCohortYearLevelListType value);
+
+	/**
+	 * Create an instance of {@link JAXBElement }{@code <}{@link java.util.Calendar }{@code >}}
+	 * 
+	 */
+	JAXBElement<java.util.Calendar> createLibraryMessageTypeSent(java.util.Calendar value);
+
+	/**
+	 * Create an instance of {@link JAXBElement }{@code <}{@link XMLGregorianCalendar }{@code >}}
+	 * 
+	 */
+	JAXBElement<XMLGregorianCalendar> createHoldInfoTypeDateNeeded(XMLGregorianCalendar value);
+
+	/**
+	 * Create an instance of {@link JAXBElement }{@code <}{@link XMLGregorianCalendar }{@code >}}
+	 * 
+	 */
+	JAXBElement<XMLGregorianCalendar> createHoldInfoTypeReservationExpiry(XMLGregorianCalendar value);
+
+	/**
+	 * Create an instance of {@link JAXBElement }{@code <}{@link XMLGregorianCalendar }{@code >}}
+	 * 
+	 */
+	JAXBElement<XMLGregorianCalendar> createHoldInfoTypeMadeAvailable(XMLGregorianCalendar value);
+
+	/**
+	 * Create an instance of {@link JAXBElement }{@code <}{@link XMLGregorianCalendar }{@code >}}
+	 * 
+	 */
+	JAXBElement<XMLGregorianCalendar> createHoldInfoTypeExpires(XMLGregorianCalendar value);
+
+	/**
+	 * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+	 * 
+	 */
+	JAXBElement<String> createFineInfoTypeDescription(String value);
+
+	/**
+	 * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+	 * 
+	 */
+	JAXBElement<String> createFineInfoTypeReference(String value);
+
+	/**
+	 * Create an instance of {@link JAXBElement }{@code <}{@link Long }{@code >}}
+	 * 
+	 */
+	JAXBElement<Long> createCheckoutInfoTypeRenewalCount(Long value);
+
+	/**
+	 * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+	 * 
+	 */
+	JAXBElement<String> createLibraryItemInfoTypeAuthor(String value);
+
+	/**
+	 * Create an instance of {@link JAXBElement }{@code <}{@link ElectronicIdType }{@code >}}
+	 * 
+	 */
+	JAXBElement<ElectronicIdType> createLibraryItemInfoTypeElectronicId(ElectronicIdType value);
+
+	/**
+	 * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+	 * 
+	 */
+	JAXBElement<String> createLibraryItemInfoTypeCallNumber(String value);
+
+	/**
+	 * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+	 * 
+	 */
+	JAXBElement<String> createLibraryItemInfoTypeISBN(String value);
+
+	/**
+	 * Create an instance of {@link JAXBElement }{@code <}{@link MonetaryAmountType }{@code >}}
+	 * 
+	 */
+	JAXBElement<MonetaryAmountType> createLibraryItemInfoTypeCost(MonetaryAmountType value);
+
+	/**
+	 * Create an instance of {@link JAXBElement }{@code <}{@link MonetaryAmountType }{@code >}}
+	 * 
+	 */
+	JAXBElement<MonetaryAmountType> createLibraryItemInfoTypeReplacementCost(MonetaryAmountType value);
+
+	/**
+	 * Create an instance of {@link JAXBElement }{@code <}{@link LibraryItemInfoType }{@code >}}
+	 * 
+	 */
+	JAXBElement<LibraryItemInfoType> createLibraryTransactionTypeItemInfo(LibraryItemInfoType value);
+
+	/**
+	 * Create an instance of {@link JAXBElement }{@code <}{@link CheckoutInfoType }{@code >}}
+	 * 
+	 */
+	JAXBElement<CheckoutInfoType> createLibraryTransactionTypeCheckoutInfo(CheckoutInfoType value);
+
+	/**
+	 * Create an instance of {@link JAXBElement }{@code <}{@link FineInfoListType }{@code >}}
+	 * 
+	 */
+	JAXBElement<FineInfoListType> createLibraryTransactionTypeFineInfoList(FineInfoListType value);
+
+	/**
+	 * Create an instance of {@link JAXBElement }{@code <}{@link HoldInfoListType }{@code >}}
+	 * 
+	 */
+	JAXBElement<HoldInfoListType> createLibraryTransactionTypeHoldInfoList(HoldInfoListType value);
+
+	/**
 	 * Create an instance of {@link JAXBElement }{@code <}{@link LocalCodeListType }{@code >}}
 	 * 
 	 */
@@ -6440,6 +7252,219 @@ public interface IObjectFactory {
 	 */
 	JAXBElement<SystemRoleType.SystemContextList.SystemContext.RoleList.Role.RoleScopeList.RoleScope.RoleScopeRefId> createSystemRoleTypeSystemContextListSystemContextRoleListRoleRoleScopeListRoleScopeRoleScopeRefId(
 			SystemRoleType.SystemContextList.SystemContext.RoleList.Role.RoleScopeList.RoleScope.RoleScopeRefId value);
+
+	/**
+	 * Create an instance of {@link JAXBElement }{@code <}{@link AUCodeSetsAGCollectionType }{@code >}}
+	 * 
+	 */
+	JAXBElement<AUCodeSetsAGCollectionType> createCollectionRoundTypeAGCollection(AUCodeSetsAGCollectionType value);
+
+	/**
+	 * Create an instance of {@link JAXBElement }{@code <}{@link LocalCodeListType }{@code >}}
+	 * 
+	 */
+	JAXBElement<LocalCodeListType> createCollectionRoundTypeLocalCodeList(LocalCodeListType value);
+
+	/**
+	 * Create an instance of {@link JAXBElement }{@code <}{@link SIFMetadataType }{@code >}}
+	 * 
+	 */
+	JAXBElement<SIFMetadataType> createCollectionRoundTypeSIFMetadata(SIFMetadataType value);
+
+	/**
+	 * Create an instance of {@link JAXBElement }{@code <}{@link SIFExtendedElementsType }{@code >}}
+	 * 
+	 */
+	JAXBElement<SIFExtendedElementsType> createCollectionRoundTypeSIFExtendedElements(SIFExtendedElementsType value);
+
+	/**
+	 * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+	 * 
+	 */
+	JAXBElement<String> createCensusCollectionTypeReportingAuthorityCommonwealthId(String value);
+
+	/**
+	 * Create an instance of {@link JAXBElement }{@code <}{@link SoftwareVendorInfoContainerType }{@code >}}
+	 * 
+	 */
+	JAXBElement<SoftwareVendorInfoContainerType> createCensusCollectionTypeSoftwareVendorInfo(
+			SoftwareVendorInfoContainerType value);
+
+	/**
+	 * Create an instance of {@link JAXBElement }{@code <}{@link CensusReportingListType }{@code >}}
+	 * 
+	 */
+	JAXBElement<CensusReportingListType> createCensusCollectionTypeCensusReportingList(CensusReportingListType value);
+
+	/**
+	 * Create an instance of {@link JAXBElement }{@code <}{@link SIFMetadataType }{@code >}}
+	 * 
+	 */
+	JAXBElement<SIFMetadataType> createCensusCollectionTypeSIFMetadata(SIFMetadataType value);
+
+	/**
+	 * Create an instance of {@link JAXBElement }{@code <}{@link SIFExtendedElementsType }{@code >}}
+	 * 
+	 */
+	JAXBElement<SIFExtendedElementsType> createCensusCollectionTypeSIFExtendedElements(SIFExtendedElementsType value);
+
+	/**
+	 * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+	 * 
+	 */
+	JAXBElement<String> createStudentAttendanceCollectionTypeReportingAuthorityCommonwealthId(String value);
+
+	/**
+	 * Create an instance of {@link JAXBElement }{@code <}{@link SoftwareVendorInfoContainerType }{@code >}}
+	 * 
+	 */
+	JAXBElement<SoftwareVendorInfoContainerType> createStudentAttendanceCollectionTypeSoftwareVendorInfo(
+			SoftwareVendorInfoContainerType value);
+
+	/**
+	 * Create an instance of {@link JAXBElement }{@code <}{@link StudentAttendanceCollectionReportingListType }{@code >}}
+	 * 
+	 */
+	JAXBElement<StudentAttendanceCollectionReportingListType> createStudentAttendanceCollectionTypeStudentAttendanceCollectionReportingList(
+			StudentAttendanceCollectionReportingListType value);
+
+	/**
+	 * Create an instance of {@link JAXBElement }{@code <}{@link LocalCodeListType }{@code >}}
+	 * 
+	 */
+	JAXBElement<LocalCodeListType> createStudentAttendanceCollectionTypeLocalCodeList(LocalCodeListType value);
+
+	/**
+	 * Create an instance of {@link JAXBElement }{@code <}{@link SIFMetadataType }{@code >}}
+	 * 
+	 */
+	JAXBElement<SIFMetadataType> createStudentAttendanceCollectionTypeSIFMetadata(SIFMetadataType value);
+
+	/**
+	 * Create an instance of {@link JAXBElement }{@code <}{@link SIFExtendedElementsType }{@code >}}
+	 * 
+	 */
+	JAXBElement<SIFExtendedElementsType> createStudentAttendanceCollectionTypeSIFExtendedElements(
+			SIFExtendedElementsType value);
+
+	/**
+	 * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+	 * 
+	 */
+	JAXBElement<String> createAddressCollectionTypeReportingAuthorityCommonwealthId(String value);
+
+	/**
+	 * Create an instance of {@link JAXBElement }{@code <}{@link SoftwareVendorInfoContainerType }{@code >}}
+	 * 
+	 */
+	JAXBElement<SoftwareVendorInfoContainerType> createAddressCollectionTypeSoftwareVendorInfo(
+			SoftwareVendorInfoContainerType value);
+
+	/**
+	 * Create an instance of {@link JAXBElement }{@code <}{@link AddressCollectionReportingListType }{@code >}}
+	 * 
+	 */
+	JAXBElement<AddressCollectionReportingListType> createAddressCollectionTypeAddressCollectionReportingList(
+			AddressCollectionReportingListType value);
+
+	/**
+	 * Create an instance of {@link JAXBElement }{@code <}{@link LocalCodeListType }{@code >}}
+	 * 
+	 */
+	JAXBElement<LocalCodeListType> createAddressCollectionTypeLocalCodeList(LocalCodeListType value);
+
+	/**
+	 * Create an instance of {@link JAXBElement }{@code <}{@link SIFMetadataType }{@code >}}
+	 * 
+	 */
+	JAXBElement<SIFMetadataType> createAddressCollectionTypeSIFMetadata(SIFMetadataType value);
+
+	/**
+	 * Create an instance of {@link JAXBElement }{@code <}{@link SIFExtendedElementsType }{@code >}}
+	 * 
+	 */
+	JAXBElement<SIFExtendedElementsType> createAddressCollectionTypeSIFExtendedElements(SIFExtendedElementsType value);
+
+	/**
+	 * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+	 * 
+	 */
+	JAXBElement<String> createCollectionStatusTypeReportingAuthoritySystem(String value);
+
+	/**
+	 * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+	 * 
+	 */
+	JAXBElement<String> createCollectionStatusTypeReportingAuthorityCommonwealthId(String value);
+
+	/**
+	 * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+	 * 
+	 */
+	JAXBElement<String> createCollectionStatusTypeSubmittedBy(String value);
+
+	/**
+	 * Create an instance of {@link JAXBElement }{@code <}{@link java.util.Calendar }{@code >}}
+	 * 
+	 */
+	JAXBElement<java.util.Calendar> createCollectionStatusTypeSubmissionTimestamp(java.util.Calendar value);
+
+	/**
+	 * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+	 * 
+	 */
+	JAXBElement<String> createCollectionStatusTypeAGCollection(String value);
+
+	/**
+	 * Create an instance of {@link JAXBElement }{@code <}{@link AGReportingObjectResponseListType }{@code >}}
+	 * 
+	 */
+	JAXBElement<AGReportingObjectResponseListType> createCollectionStatusTypeAGReportingObjectResponseList(
+			AGReportingObjectResponseListType value);
+
+	/**
+	 * Create an instance of {@link JAXBElement }{@code <}{@link LocalCodeListType }{@code >}}
+	 * 
+	 */
+	JAXBElement<LocalCodeListType> createCollectionStatusTypeLocalCodeList(LocalCodeListType value);
+
+	/**
+	 * Create an instance of {@link JAXBElement }{@code <}{@link SIFMetadataType }{@code >}}
+	 * 
+	 */
+	JAXBElement<SIFMetadataType> createCollectionStatusTypeSIFMetadata(SIFMetadataType value);
+
+	/**
+	 * Create an instance of {@link JAXBElement }{@code <}{@link SIFExtendedElementsType }{@code >}}
+	 * 
+	 */
+	JAXBElement<SIFExtendedElementsType> createCollectionStatusTypeSIFExtendedElements(SIFExtendedElementsType value);
+
+	/**
+	 * Create an instance of {@link JAXBElement }{@code <}{@link FQReportingListType }{@code >}}
+	 * 
+	 */
+	JAXBElement<FQReportingListType> createFinancialQuestionnaireCollectionTypeFQReportingList(
+			FQReportingListType value);
+
+	/**
+	 * Create an instance of {@link JAXBElement }{@code <}{@link LocalCodeListType }{@code >}}
+	 * 
+	 */
+	JAXBElement<LocalCodeListType> createFinancialQuestionnaireCollectionTypeLocalCodeList(LocalCodeListType value);
+
+	/**
+	 * Create an instance of {@link JAXBElement }{@code <}{@link SIFMetadataType }{@code >}}
+	 * 
+	 */
+	JAXBElement<SIFMetadataType> createFinancialQuestionnaireCollectionTypeSIFMetadata(SIFMetadataType value);
+
+	/**
+	 * Create an instance of {@link JAXBElement }{@code <}{@link SIFExtendedElementsType }{@code >}}
+	 * 
+	 */
+	JAXBElement<SIFExtendedElementsType> createFinancialQuestionnaireCollectionTypeSIFExtendedElements(
+			SIFExtendedElementsType value);
 
 	/**
 	 * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
@@ -9276,6 +10301,98 @@ public interface IObjectFactory {
 	JAXBElement<SIFExtendedElementsType> createInvoiceTypeSIFExtendedElements(SIFExtendedElementsType value);
 
 	/**
+	 * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+	 * 
+	 */
+	JAXBElement<String> createLibraryPatronStatusTypePatronRefId(String value);
+
+	/**
+	 * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+	 * 
+	 */
+	JAXBElement<String> createLibraryPatronStatusTypePatronLocalId(String value);
+
+	/**
+	 * Create an instance of {@link JAXBElement }{@code <}{@link NameOfRecordType }{@code >}}
+	 * 
+	 */
+	JAXBElement<NameOfRecordType> createLibraryPatronStatusTypePatronName(NameOfRecordType value);
+
+	/**
+	 * Create an instance of {@link JAXBElement }{@code <}{@link ElectronicIdListType }{@code >}}
+	 * 
+	 */
+	JAXBElement<ElectronicIdListType> createLibraryPatronStatusTypeElectronicIdList(ElectronicIdListType value);
+
+	/**
+	 * Create an instance of {@link JAXBElement }{@code <}{@link LibraryTransactionListType }{@code >}}
+	 * 
+	 */
+	JAXBElement<LibraryTransactionListType> createLibraryPatronStatusTypeTransactionList(
+			LibraryTransactionListType value);
+
+	/**
+	 * Create an instance of {@link JAXBElement }{@code <}{@link LibraryMessageListType }{@code >}}
+	 * 
+	 */
+	JAXBElement<LibraryMessageListType> createLibraryPatronStatusTypeMessageList(LibraryMessageListType value);
+
+	/**
+	 * Create an instance of {@link JAXBElement }{@code <}{@link Long }{@code >}}
+	 * 
+	 */
+	JAXBElement<Long> createLibraryPatronStatusTypeNumberOfHoldItems(Long value);
+
+	/**
+	 * Create an instance of {@link JAXBElement }{@code <}{@link Long }{@code >}}
+	 * 
+	 */
+	JAXBElement<Long> createLibraryPatronStatusTypeNumberOfOverdues(Long value);
+
+	/**
+	 * Create an instance of {@link JAXBElement }{@code <}{@link Long }{@code >}}
+	 * 
+	 */
+	JAXBElement<Long> createLibraryPatronStatusTypeNumberOfFines(Long value);
+
+	/**
+	 * Create an instance of {@link JAXBElement }{@code <}{@link MonetaryAmountType }{@code >}}
+	 * 
+	 */
+	JAXBElement<MonetaryAmountType> createLibraryPatronStatusTypeFineAmount(MonetaryAmountType value);
+
+	/**
+	 * Create an instance of {@link JAXBElement }{@code <}{@link Long }{@code >}}
+	 * 
+	 */
+	JAXBElement<Long> createLibraryPatronStatusTypeNumberOfRefunds(Long value);
+
+	/**
+	 * Create an instance of {@link JAXBElement }{@code <}{@link MonetaryAmountType }{@code >}}
+	 * 
+	 */
+	JAXBElement<MonetaryAmountType> createLibraryPatronStatusTypeRefundAmount(MonetaryAmountType value);
+
+	/**
+	 * Create an instance of {@link JAXBElement }{@code <}{@link LocalCodeListType }{@code >}}
+	 * 
+	 */
+	JAXBElement<LocalCodeListType> createLibraryPatronStatusTypeLocalCodeList(LocalCodeListType value);
+
+	/**
+	 * Create an instance of {@link JAXBElement }{@code <}{@link SIFMetadataType }{@code >}}
+	 * 
+	 */
+	JAXBElement<SIFMetadataType> createLibraryPatronStatusTypeSIFMetadata(SIFMetadataType value);
+
+	/**
+	 * Create an instance of {@link JAXBElement }{@code <}{@link SIFExtendedElementsType }{@code >}}
+	 * 
+	 */
+	JAXBElement<SIFExtendedElementsType> createLibraryPatronStatusTypeSIFExtendedElements(
+			SIFExtendedElementsType value);
+
+	/**
 	 * Create an instance of {@link JAXBElement }{@code <}{@link TimeTableScheduleType }{@code >}}
 	 * 
 	 */
@@ -11910,4 +13027,5 @@ public interface IObjectFactory {
 	 * 
 	 */
 	JAXBElement<SIFExtendedElementsType> createSchoolInfoTypeSIFExtendedElements(SIFExtendedElementsType value);
+
 }

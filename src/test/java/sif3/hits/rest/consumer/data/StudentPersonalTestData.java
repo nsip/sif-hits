@@ -8,6 +8,7 @@ import sif3.hits.service.PersonalStudentIdService;
 import sif3.hits.utils.RefIdGenerator;
 
 import java.math.BigDecimal;
+import java.math.BigInteger;
 import java.util.*;
 
 public class StudentPersonalTestData extends TestData<StudentPersonalType, StudentPersonalCollectionType> {
@@ -76,7 +77,7 @@ public class StudentPersonalTestData extends TestData<StudentPersonalType, Stude
 		mostRecent.setOtherSchoolName(objectFactory.createStudentMostRecentContainerTypeOtherSchoolName("Other School Name"));
 		mostRecent.setDisabilityLevelOfAdjustment(objectFactory.createStudentMostRecentContainerTypeDisabilityLevelOfAdjustment("Supplementary"));
 		mostRecent.setDisabilityCategory(objectFactory.createStudentMostRecentContainerTypeDisabilityCategory("Sensory"));
-		mostRecent.setCensusAge(objectFactory.createStudentMostRecentContainerTypeCensusAge(new BigDecimal("10")));
+		mostRecent.setCensusAge(objectFactory.createStudentMostRecentContainerTypeCensusAge(new BigInteger("10")));
 		mostRecent.setDistanceEducationStudent(objectFactory.createStudentMostRecentContainerTypeDistanceEducationStudent(AUCodeSetsYesOrNoCategoryType.fromValue("Y")));
 		mostRecent.setBoardingStatus(objectFactory.createStudentMostRecentContainerTypeBoardingStatus(AUCodeSetsBoardingType.fromValue("D")));
         

@@ -18,7 +18,7 @@
 
         <!-- No way to get infrastructure version from the framework :( -->
         <infrastructure.version>3.2.1</infrastructure.version>
-        <datamodel.version>3.4.6</datamodel.version>
+        <datamodel.version>3.4.7</datamodel.version>
         <sif3.framework.version>0.14.1</sif3.framework.version>
         <sif3.datamodel.version>au-${datamodel.version}</sif3.datamodel.version>
 
