@@ -6,7 +6,19 @@ import javax.xml.datatype.XMLGregorianCalendar;
 
 import org.springframework.stereotype.Component;
 
-import sif.dd.au30.model.*;
+import sif.dd.au30.model.AUCodeSetsAddressRoleType;
+import sif.dd.au30.model.AUCodeSetsAddressTypeType;
+import sif.dd.au30.model.AUCodeSetsOperationalStatusType;
+import sif.dd.au30.model.AUCodeSetsSchoolLevelType;
+import sif.dd.au30.model.AUCodeSetsSchoolLocationType;
+import sif.dd.au30.model.AUCodeSetsSchoolSectorCodeType;
+import sif.dd.au30.model.AUCodeSetsYesOrNoCategoryType;
+import sif.dd.au30.model.AddressListType;
+import sif.dd.au30.model.AddressStreetType;
+import sif.dd.au30.model.AddressType;
+import sif.dd.au30.model.CampusContainerType;
+import sif.dd.au30.model.GridLocationType;
+import sif.dd.au30.model.SchoolInfoType;
 import sif3.hits.domain.converter.factory.IObjectFactory;
 import sif3.hits.domain.model.SchoolInfo;
 import sif3.hits.utils.UsesConstants;

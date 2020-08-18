@@ -1,14 +1,25 @@
 package sif3.hits.domain.converter;
 
+import java.util.ArrayList;
+
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import sif.dd.au30.model.*;
+
+import sif.dd.au30.model.AUCodeSetsStaffActivityType;
+import sif.dd.au30.model.AUCodeSetsStaffStatusType;
+import sif.dd.au30.model.AUCodeSetsYearLevelCodeType;
+import sif.dd.au30.model.AUCodeSetsYesOrNoCategoryType;
+import sif.dd.au30.model.CalendarSummaryListType;
+import sif.dd.au30.model.StaffActivityExtensionType;
+import sif.dd.au30.model.StaffAssignmentType;
+import sif.dd.au30.model.StaffSubjectListType;
+import sif.dd.au30.model.StaffSubjectType;
+import sif.dd.au30.model.YearLevelType;
+import sif.dd.au30.model.YearLevelsType;
 import sif3.hits.domain.converter.factory.IObjectFactory;
 import sif3.hits.domain.model.StaffAssignment;
 import sif3.hits.domain.model.StaffSubject;
-
-import java.util.ArrayList;
 
 @Component
 public class StaffAssignmentConverter extends HitsConverter<StaffAssignmentType, StaffAssignment> {

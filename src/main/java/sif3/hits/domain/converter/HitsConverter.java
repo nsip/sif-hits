@@ -1,21 +1,28 @@
 package sif3.hits.domain.converter;
 
-import org.apache.commons.codec.binary.Base64;
-import org.apache.commons.lang3.time.FastDateFormat;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import sif3.hits.domain.converter.factory.IObjectFactory;
-import sif3.hits.domain.converter.factory.ObjectFactory;
-import sif3.hits.utils.UsesConstants;
+import java.lang.reflect.Method;
+import java.math.BigDecimal;
+import java.math.BigInteger;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 import javax.xml.bind.JAXBElement;
 import javax.xml.datatype.DatatypeFactory;
 import javax.xml.datatype.Duration;
 import javax.xml.datatype.XMLGregorianCalendar;
-import java.lang.reflect.Method;
-import java.math.BigDecimal;
-import java.math.BigInteger;
-import java.util.*;
+
+import org.apache.commons.codec.binary.Base64;
+import org.apache.commons.lang3.time.FastDateFormat;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import sif3.hits.domain.converter.factory.IObjectFactory;
+import sif3.hits.domain.converter.factory.ObjectFactory;
+import sif3.hits.utils.UsesConstants;
 
 public abstract class HitsConverter<S, H> implements UsesConstants {
 

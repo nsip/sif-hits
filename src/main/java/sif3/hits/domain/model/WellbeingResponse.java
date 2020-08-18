@@ -8,8 +8,6 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
-import org.springframework.scheduling.concurrent.ScheduledExecutorTask;
-
 @Entity
 public class WellbeingResponse extends HitsEntity {
 	private static final long serialVersionUID = 6356711970474556930L;

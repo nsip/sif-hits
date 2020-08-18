@@ -1,16 +1,40 @@
 package sif3.hits.domain.converter;
 
+import java.util.ArrayList;
+
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import sif.dd.au30.model.*;
+
+import sif.dd.au30.model.AUCodeSetsBoardingType;
+import sif.dd.au30.model.AUCodeSetsEnrollmentTimeFrameType;
+import sif.dd.au30.model.AUCodeSetsEntryTypeType;
+import sif.dd.au30.model.AUCodeSetsExitWithdrawalStatusType;
+import sif.dd.au30.model.AUCodeSetsExitWithdrawalTypeType;
+import sif.dd.au30.model.AUCodeSetsFFPOSStatusCodeType;
+import sif.dd.au30.model.AUCodeSetsFTPTStatusCodeType;
+import sif.dd.au30.model.AUCodeSetsPublicSchoolCatchmentStatusType;
+import sif.dd.au30.model.AUCodeSetsSchoolEnrollmentTypeType;
+import sif.dd.au30.model.AUCodeSetsYearLevelCodeType;
+import sif.dd.au30.model.AUCodeSetsYesOrNoCategoryType;
+import sif.dd.au30.model.CatchmentStatusContainerType;
+import sif.dd.au30.model.PromotionInfoType;
+import sif.dd.au30.model.PublishingPermissionListType;
+import sif.dd.au30.model.PublishingPermissionType;
+import sif.dd.au30.model.StudentEntryContainerType;
+import sif.dd.au30.model.StudentExitContainerType;
+import sif.dd.au30.model.StudentExitStatusContainerType;
+import sif.dd.au30.model.StudentGroupListType;
+import sif.dd.au30.model.StudentGroupType;
+import sif.dd.au30.model.StudentSchoolEnrollmentType;
+import sif.dd.au30.model.StudentSubjectChoiceListType;
+import sif.dd.au30.model.StudentSubjectChoiceType;
+import sif.dd.au30.model.YearLevelType;
 import sif3.hits.domain.converter.factory.IObjectFactory;
-import sif3.hits.domain.model.StudentSchoolEnrollmentPublishingPermission;
 import sif3.hits.domain.model.StudentGroup;
 import sif3.hits.domain.model.StudentSchoolEnrollment;
+import sif3.hits.domain.model.StudentSchoolEnrollmentPublishingPermission;
 import sif3.hits.domain.model.StudentSubjectChoice;
-
-import java.util.ArrayList;
 
 @Component
 public class StudentSchoolEnrollmentConverter
