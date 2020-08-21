@@ -3,7 +3,6 @@ package sif3.hits.domain.converter;
 import org.springframework.stereotype.Component;
 
 import sif.dd.au30.model.AGRoundType;
-import sif3.hits.domain.converter.factory.IObjectFactory;
 import sif3.hits.domain.model.AGRound;
 import sif3.hits.utils.UsesConstants;
 

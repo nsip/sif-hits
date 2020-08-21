@@ -9,6 +9,8 @@ import javax.persistence.OneToMany;
 
 @Entity
 public class CollectionRound extends HitsEntity {
+	private static final long serialVersionUID = 1568297021274861399L;
+
 	private String refId;
 	private String agCollection;
 	private String collectionYear;
