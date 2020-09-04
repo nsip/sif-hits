@@ -16,10 +16,12 @@ import javax.xml.datatype.Duration;
 import javax.xml.datatype.XMLGregorianCalendar;
 
 import org.apache.commons.codec.binary.Base64;
+import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.time.FastDateFormat;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import sif.dd.au30.model.SoftwareVendorInfoContainerType;
 import sif3.hits.domain.converter.factory.IObjectFactory;
 import sif3.hits.domain.converter.factory.ObjectFactory;
 import sif3.hits.utils.UsesConstants;
@@ -537,5 +539,32 @@ public abstract class HitsConverter<S, H> implements UsesConstants {
         }
         return result;
     }
+    
+    protected SoftwareVendorInfoContainerType getSoftwareVendorInfo(String softwareProduct, String softwareVersion) {
+    	SoftwareVendorInfoContainerType result = null;
+    	if (StringUtils.isNotBlank(softwareVersion) || StringUtils.isNoneBlank(softwareProduct)) {
+    		result = getObjectFactory().createSoftwareVendorInfoContainerType();
+    		result.setSoftwareProduct(softwareProduct);
+    		result.setSoftwareVersion(softwareVersion);
+    	}
+    	return result;
+    }
+    
+    protected SoftwareVendorInfoContainerType getSoftwareVendorInfo(SoftwareVendorInfoContainerType softwareVendorInfo) {
+    	SoftwareVendorInfoContainerType result = softwareVendorInfo;
+    	if (result == null) {
+    		result = new SoftwareVendorInfoContainerType();
+    	}
+    	return result;
+    }
+
+    protected SoftwareVendorInfoContainerType getSoftwareVendorInfo(JAXBElement<SoftwareVendorInfoContainerType> softwareVendorInfo) {
+    	SoftwareVendorInfoContainerType result = getJAXBValue(softwareVendorInfo);
+    	if (result == null) {
+    		result = new SoftwareVendorInfoContainerType();
+    	}
+    	return result;
+    }
+    
 
 }

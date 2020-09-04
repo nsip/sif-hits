@@ -57,6 +57,7 @@ public class AddressCollectionReportingEntityContact extends BaseEntityContact {
 		names.clear();
 		if (name != null) {
 			names.add(name);
+			name.setEntityContact(this);
 		}
 	}
 
@@ -87,6 +88,7 @@ public class AddressCollectionReportingEntityContact extends BaseEntityContact {
 		addresses.clear();
 		if (address != null) {
 			addresses.add(address);
+			address.setEntityContact(this);
 		}
 	}
 }

@@ -3,7 +3,6 @@ package sif3.hits.domain.converter;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -38,27 +37,20 @@ public class CensusCollectionConverter extends HitsConverter<CensusCollectionTyp
 					objectFactory.createAddressCollectionTypeReportingAuthorityCommonwealthId(
 							source.getReportingAuthorityCommonwealthId()));
 
-			if (hasSoftwareVendorInfo(source)) {
-				SoftwareVendorInfoContainerType softwareVendorInfoContainerType = objectFactory
-						.createSoftwareVendorInfoContainerType();
-				softwareVendorInfoContainerType.setSoftwareProduct(source.getSoftwareProduct());
-				softwareVendorInfoContainerType.setSoftwareVersion(source.getSoftwareVersion());
-				target.setSoftwareVendorInfo(
-						objectFactory.createCensusCollectionTypeSoftwareVendorInfo(softwareVendorInfoContainerType));
-			} else {
-				target.setSoftwareVendorInfo(null);
-			}
+			SoftwareVendorInfoContainerType softwareVendorInfoContainerType = getSoftwareVendorInfo(
+					source.getSoftwareProduct(), source.getSoftwareVersion());
+			target.setSoftwareVendorInfo(
+					objectFactory.createCensusCollectionTypeSoftwareVendorInfo(softwareVendorInfoContainerType));
 
 			List<CensusReportingType> censusReportingTypes = censusReportingConverter
 					.toSifModelList(source.getCensusReportingList());
+			CensusReportingListType censusReportingListType = null;
 			if (!censusReportingTypes.isEmpty()) {
-				CensusReportingListType censusReportingListType = objectFactory.createCensusReportingListType();
+				censusReportingListType = objectFactory.createCensusReportingListType();
 				censusReportingListType.getCensusReporting().addAll(censusReportingTypes);
-				target.setCensusReportingList(
-						objectFactory.createCensusCollectionTypeCensusReportingList(censusReportingListType));
-			} else {
-				target.setCensusReportingList(null);
 			}
+			target.setCensusReportingList(
+					objectFactory.createCensusCollectionTypeCensusReportingList(censusReportingListType));
 		}
 	}
 
@@ -70,15 +62,10 @@ public class CensusCollectionConverter extends HitsConverter<CensusCollectionTyp
 			target.setRoundCode(source.getRoundCode());
 			target.setReportingAuthorityCommonwealthId(getJAXBValue(source.getReportingAuthorityCommonwealthId()));
 
-			SoftwareVendorInfoContainerType softwareVendorInfoContainerType = getJAXBValue(
+			SoftwareVendorInfoContainerType softwareVendorInfoContainerType = getSoftwareVendorInfo(
 					source.getSoftwareVendorInfo());
-			if (softwareVendorInfoContainerType != null) {
-				target.setSoftwareProduct(softwareVendorInfoContainerType.getSoftwareProduct());
-				target.setSoftwareVersion(softwareVendorInfoContainerType.getSoftwareVersion());
-			} else {
-				target.setSoftwareProduct(null);
-				target.setSoftwareVersion(null);
-			}
+			target.setSoftwareProduct(softwareVendorInfoContainerType.getSoftwareProduct());
+			target.setSoftwareVersion(softwareVendorInfoContainerType.getSoftwareVersion());
 
 			if (target.getCensusReportingList() == null) {
 				target.setCensusReportingList(new ArrayList<>());
@@ -94,10 +81,5 @@ public class CensusCollectionConverter extends HitsConverter<CensusCollectionTyp
 				}
 			}
 		}
-	}
-
-	private boolean hasSoftwareVendorInfo(CensusCollection source) {
-		return StringUtils.isNotBlank(source.getSoftwareProduct())
-				|| StringUtils.isNotBlank(source.getSoftwareVersion());
 	}
 }

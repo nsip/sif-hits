@@ -50,26 +50,23 @@ public class CollectionStatusConverter extends HitsConverter<CollectionStatusTyp
 
 			List<LocalCodeType> collectionStatusLocalCodeTypes = collectionStatusLocalCodeConverter
 					.toSifModelList(source.getLocalCodeList());
+			LocalCodeListType collectionStatusLocalCodeListType = null;
 			if (!collectionStatusLocalCodeTypes.isEmpty()) {
-				LocalCodeListType collectionStatusLocalCodeListType = objectFactory.createLocalCodeListType();
+				collectionStatusLocalCodeListType = objectFactory.createLocalCodeListType();
 				collectionStatusLocalCodeListType.getLocalCode().addAll(collectionStatusLocalCodeTypes);
-				target.setLocalCodeList(
-						objectFactory.createCollectionStatusTypeLocalCodeList(collectionStatusLocalCodeListType));
-			} else {
-				target.setLocalCodeList(null);
 			}
+			target.setLocalCodeList(
+					objectFactory.createCollectionStatusTypeLocalCodeList(collectionStatusLocalCodeListType));
 
 			List<AGReportingObjectResponseType> agReportingObjectResponseTypes = agReportingObjectResponseConverter
 					.toSifModelList(source.getAgReportingObjectResponseList());
+			AGReportingObjectResponseListType agReportingObjectResponseListType = null;
 			if (!agReportingObjectResponseTypes.isEmpty()) {
-				AGReportingObjectResponseListType agReportingObjectResponseListType = objectFactory
-						.createAGReportingObjectResponseListType();
+				agReportingObjectResponseListType = objectFactory.createAGReportingObjectResponseListType();
 				agReportingObjectResponseListType.getAGReportingObjectResponse().addAll(agReportingObjectResponseTypes);
-				target.setAGReportingObjectResponseList(objectFactory
-						.createCollectionStatusTypeAGReportingObjectResponseList(agReportingObjectResponseListType));
-			} else {
-				target.setAGReportingObjectResponseList(null);
 			}
+			target.setAGReportingObjectResponseList(objectFactory
+					.createCollectionStatusTypeAGReportingObjectResponseList(agReportingObjectResponseListType));
 		}
 	}
 
@@ -100,20 +97,20 @@ public class CollectionStatusConverter extends HitsConverter<CollectionStatusTyp
 				}
 			}
 
-			if (target.getAgReportingObjectResponseList() == null)
+			if (target.getAgReportingObjectResponseList() == null) {
 				target.setAgReportingObjectResponseList(new ArrayList<>());
-		}
-		target.getAgReportingObjectResponseList().clear();
-		AGReportingObjectResponseListType agReportingObjectResponseListType = getJAXBValue(
-				source.getAGReportingObjectResponseList());
-		if (agReportingObjectResponseListType != null) {
-			List<AGReportingObjectResponse> agReportingObjectResponses = agReportingObjectResponseConverter
-					.toHitsModelList(agReportingObjectResponseListType.getAGReportingObjectResponse());
-			for (AGReportingObjectResponse agReportingObjectResponse : agReportingObjectResponses) {
-				target.getAgReportingObjectResponseList().add(agReportingObjectResponse);
-				agReportingObjectResponse.setCollectionStatus(target);
+			}
+			target.getAgReportingObjectResponseList().clear();
+			AGReportingObjectResponseListType agReportingObjectResponseListType = getJAXBValue(
+					source.getAGReportingObjectResponseList());
+			if (agReportingObjectResponseListType != null) {
+				List<AGReportingObjectResponse> agReportingObjectResponses = agReportingObjectResponseConverter
+						.toHitsModelList(agReportingObjectResponseListType.getAGReportingObjectResponse());
+				for (AGReportingObjectResponse agReportingObjectResponse : agReportingObjectResponses) {
+					target.getAgReportingObjectResponseList().add(agReportingObjectResponse);
+					agReportingObjectResponse.setCollectionStatus(target);
+				}
 			}
 		}
-
 	}
 }

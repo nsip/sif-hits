@@ -12,14 +12,14 @@ import sif.dd.au30.model.AGRuleType;
 import sif.dd.au30.model.AUCodeSetsAGSubmissionStatusType;
 import sif3.hits.domain.converter.factory.IObjectFactory;
 import sif3.hits.domain.model.AGReportingObjectResponse;
-import sif3.hits.domain.model.AGRule;
+import sif3.hits.domain.model.CollectionStatusReponseAGRule;
 
 @Component
 public class AGReportingObjectResponseConverter
 		extends HitsConverter<AGReportingObjectResponseType, AGReportingObjectResponse> {
 
 	@Autowired
-	HitsConverter<AGRuleType, AGRule> agRuleConverter;
+	HitsConverter<AGRuleType, CollectionStatusReponseAGRule> agRuleConverter;
 
 	AGReportingObjectResponseConverter() {
 		super(AGReportingObjectResponseType.class, AGReportingObjectResponse.class);
@@ -42,11 +42,12 @@ public class AGReportingObjectResponseConverter
 					getEnumValue(source.getAgSubmissionStatusCode(), AUCodeSetsAGSubmissionStatusType.class));
 
 			List<AGRuleType> agRuleTypes = agRuleConverter.toSifModelList(source.getAgRuleList());
-			if (agRuleTypes != null && !agRuleTypes.isEmpty()) {
-				AGRuleListType agRuleListType = objectFactory.createAGRuleListType();
+			AGRuleListType agRuleListType = null;
+			if (!agRuleTypes.isEmpty()) {
+				agRuleListType = objectFactory.createAGRuleListType();
 				agRuleListType.getAGRule().addAll(agRuleTypes);
-				target.setAGRuleList(objectFactory.createAGReportingObjectResponseTypeAGRuleList(agRuleListType));
 			}
+			target.setAGRuleList(objectFactory.createAGReportingObjectResponseTypeAGRuleList(agRuleListType));
 		}
 	}
 
@@ -68,7 +69,7 @@ public class AGReportingObjectResponseConverter
 			AGRuleListType agRuleListType = getJAXBValue(source.getAGRuleList());
 			if (agRuleListType != null) {
 				for (AGRuleType agRuleType : agRuleListType.getAGRule()) {
-					AGRule agRule = agRuleConverter.toHitsModel(agRuleType);
+					CollectionStatusReponseAGRule agRule = agRuleConverter.toHitsModel(agRuleType);
 					if (agRule != null) {
 						agRule.setAgReportingObjectResponse(target);
 						target.getAgRuleList().add(agRule);

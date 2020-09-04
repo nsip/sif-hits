@@ -12,7 +12,7 @@ import sif.dd.au30.model.AddressCollectionReportingType;
 import sif.dd.au30.model.AddressCollectionStudentListType;
 import sif.dd.au30.model.AddressCollectionStudentType;
 import sif3.hits.domain.converter.factory.IObjectFactory;
-import sif3.hits.domain.model.AGContextualQuestion;
+import sif3.hits.domain.model.AddressAGContextualQuestion;
 import sif3.hits.domain.model.AddressCollectionReporting;
 import sif3.hits.domain.model.AddressCollectionReportingStudent;
 import sif3.hits.utils.UsesConstants;
@@ -52,31 +52,26 @@ public class AddressCollectionReportingConverter
 
 			target.setEntityContact(entityContactConverter.toSifModel(source.getEntityContact()));
 
-			if (source.getAGContextualQuestions() != null && !source.getAGContextualQuestions().isEmpty()) {
-				List<AGContextualQuestionType> agContextualQuestionTypes = agContextualQuestionConverter
-						.toSifModelList(source.getAGContextualQuestions());
-				AGContextualQuestionListType agContextualQuestionListType = objectFactory
-						.createAGContextualQuestionListType();
+			AGContextualQuestionListType agContextualQuestionListType = null;
+			List<AGContextualQuestionType> agContextualQuestionTypes = agContextualQuestionConverter
+					.toSifModelList(source.getAGContextualQuestions());
+			if (!agContextualQuestionTypes.isEmpty()) {
+				agContextualQuestionListType = objectFactory.createAGContextualQuestionListType();
 				agContextualQuestionListType.getAGContextualQuestion().addAll(agContextualQuestionTypes);
-				target.setAGContextualQuestionList(objectFactory
-						.createAddressCollectionReportingTypeAGContextualQuestionList(agContextualQuestionListType));
-			} else {
-				target.setAGContextualQuestionList(null);
 			}
+			target.setAGContextualQuestionList(objectFactory
+					.createAddressCollectionReportingTypeAGContextualQuestionList(agContextualQuestionListType));
 
-			if (source.getAddressCollectionReportingStudents() != null
-					&& !source.getAddressCollectionReportingStudents().isEmpty()) {
-				List<AddressCollectionStudentType> addressCollectionStudentTypes = addressCollectionStudentConverter
-						.toSifModelList(source.getAddressCollectionReportingStudents());
-				AddressCollectionStudentListType addressCollectionStudentListType = objectFactory
-						.createAddressCollectionStudentListType();
+			List<AddressCollectionStudentType> addressCollectionStudentTypes = addressCollectionStudentConverter
+					.toSifModelList(source.getAddressCollectionReportingStudents());
+			AddressCollectionStudentListType addressCollectionStudentListType = null;
+			if (!addressCollectionStudentTypes.isEmpty()) {
+				addressCollectionStudentListType = objectFactory.createAddressCollectionStudentListType();
 				addressCollectionStudentListType.getAddressCollectionStudent().addAll(addressCollectionStudentTypes);
-				target.setAddressCollectionStudentList(
-						objectFactory.createAddressCollectionReportingTypeAddressCollectionStudentList(
-								addressCollectionStudentListType));
-			} else {
-				target.setAddressCollectionStudentList(null);
 			}
+			target.setAddressCollectionStudentList(
+					objectFactory.createAddressCollectionReportingTypeAddressCollectionStudentList(
+							addressCollectionStudentListType));
 		}
 	}
 
@@ -90,32 +85,32 @@ public class AddressCollectionReportingConverter
 			target.setCommonwealthId(source.getCommonwealthId());
 			target.setAcaraId(getJAXBValue(source.getACARAId()));
 			target.setEntityName(getJAXBValue(source.getEntityName()));
-
 			target.setEntityContact(entityContactConverter.toHitsModel(source.getEntityContact()));
-			if (target.getEntityContact() != null) {
-				target.getEntityContact().setAddressCollectionReporting(target);
-			}
-			
+
 			if (target.getAGContextualQuestions() == null) {
 				target.setAGContextualQuestions(new ArrayList<>());
 			}
 			target.getAGContextualQuestions().clear();
-			AGContextualQuestionListType agContextualQuestionListType = getJAXBValue(source.getAGContextualQuestionList());
+			AGContextualQuestionListType agContextualQuestionListType = getJAXBValue(
+					source.getAGContextualQuestionList());
 			if (agContextualQuestionListType != null) {
-				List<AGContextualQuestion> agContextualQuestions = agContextualQuestionConverter.toHitsModelList(agContextualQuestionListType.getAGContextualQuestion());
-				for (AGContextualQuestion agContextualQuestion : agContextualQuestions) {
+				List<AddressAGContextualQuestion> agContextualQuestions = agContextualQuestionConverter
+						.toHitsModelList(agContextualQuestionListType.getAGContextualQuestion());
+				for (AddressAGContextualQuestion agContextualQuestion : agContextualQuestions) {
 					target.getAGContextualQuestions().add(agContextualQuestion);
 					agContextualQuestion.setAddressCollectionReporting(target);
 				}
 			}
-			
+
 			if (target.getAddressCollectionReportingStudents() == null) {
 				target.setAddressCollectionReportingStudents(new ArrayList<>());
 			}
 			target.getAddressCollectionReportingStudents().clear();
-			AddressCollectionStudentListType addressCollectionStudentListType = getJAXBValue(source.getAddressCollectionStudentList());
+			AddressCollectionStudentListType addressCollectionStudentListType = getJAXBValue(
+					source.getAddressCollectionStudentList());
 			if (addressCollectionStudentListType != null) {
-				List<AddressCollectionReportingStudent> addressCollectionStudents = addressCollectionStudentConverter.toHitsModelList(addressCollectionStudentListType.getAddressCollectionStudent());
+				List<AddressCollectionReportingStudent> addressCollectionStudents = addressCollectionStudentConverter
+						.toHitsModelList(addressCollectionStudentListType.getAddressCollectionStudent());
 				for (AddressCollectionReportingStudent addressCollectionStudent : addressCollectionStudents) {
 					target.getAddressCollectionReportingStudents().add(addressCollectionStudent);
 					addressCollectionStudent.setAddressCollectionReporting(target);

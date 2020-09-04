@@ -58,6 +58,7 @@ public class CensusReportingEntityContact extends BaseEntityContact {
 		censusReportingEntityContactNameList.clear();
 		if (name != null) {
 			censusReportingEntityContactNameList.add(name);
+			name.setEntityContact(this);
 		}
 	}
 
@@ -82,13 +83,14 @@ public class CensusReportingEntityContact extends BaseEntityContact {
 	}
 
 	@Transient
-	public void setAddress(CensusReportingEntityContactAddress name) {
+	public void setAddress(CensusReportingEntityContactAddress address) {
 		if (censusReportingEntityContactAddressList == null) {
 			censusReportingEntityContactAddressList = new ArrayList<>();
 		}
 		censusReportingEntityContactAddressList.clear();
-		if (name != null) {
-			censusReportingEntityContactAddressList.add(name);
+		if (address != null) {
+			censusReportingEntityContactAddressList.add(address);
+			address.setEntityContact(this);
 		}
 	}
 

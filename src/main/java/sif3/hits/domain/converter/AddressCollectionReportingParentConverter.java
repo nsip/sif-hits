@@ -37,13 +37,6 @@ public class AddressCollectionReportingParentConverter
 			target.setParentName(nameConverter.toHitsModel(source.getParentName()));
 			target.setParentAddress(addressConverter.toHitsModel(source.getParentAddress()));
 			target.setAddressSameAsStudent(getEnumValue(source.getAddressSameAsStudent()));
-
-			if (target.getParentName() != null) {
-				target.getParentName().setParent(target);
-			}
-			if (target.getParentAddress() != null) {
-				target.getParentAddress().setParent(target);
-			}
 		}
 	}
 }

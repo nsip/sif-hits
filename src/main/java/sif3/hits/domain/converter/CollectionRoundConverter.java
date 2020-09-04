@@ -51,14 +51,13 @@ public class CollectionRoundConverter extends HitsConverter<CollectionRoundType,
 
 			List<LocalCodeType> collectionRoundLocalCodeTypes = collectionRoundLocalCodeConverter
 					.toSifModelList(source.getLocalCodeList());
+			LocalCodeListType collectionRoundLocalCodeListType = null;
 			if (!collectionRoundLocalCodeTypes.isEmpty()) {
-				LocalCodeListType collectionRoundLocalCodeListType = objectFactory.createLocalCodeListType();
+				collectionRoundLocalCodeListType = objectFactory.createLocalCodeListType();
 				collectionRoundLocalCodeListType.getLocalCode().addAll(collectionRoundLocalCodeTypes);
-				target.setLocalCodeList(
-						objectFactory.createCollectionRoundTypeLocalCodeList(collectionRoundLocalCodeListType));
-			} else {
-				target.setLocalCodeList(null);
 			}
+			target.setLocalCodeList(
+					objectFactory.createCollectionRoundTypeLocalCodeList(collectionRoundLocalCodeListType));
 		}
 	}
 

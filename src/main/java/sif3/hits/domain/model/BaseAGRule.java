@@ -1,17 +1,14 @@
 package sif3.hits.domain.model;
 
-import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
+import javax.persistence.MappedSuperclass;
 
-@Entity
-@Table(name = "CollectionStatus_AGROResponse_AGRule")
-public class AGRule {
+@MappedSuperclass
+public abstract class BaseAGRule extends HitsEntity {
+	private static final long serialVersionUID = -7092820753430253047L;
+
 	private Long id;
-	private AGReportingObjectResponse agReportingObjectResponse;
 	private String agRuleCode;
 	private String agRuleComment;
 	private String agRuleResponse;
@@ -25,16 +22,6 @@ public class AGRule {
 
 	public void setId(Long id) {
 		this.id = id;
-	}
-
-	@ManyToOne(optional = false)
-	@JoinColumn(name = "AGReportingObjectResponse_Id")
-	public AGReportingObjectResponse getAgReportingObjectResponse() {
-		return agReportingObjectResponse;
-	}
-
-	public void setAgReportingObjectResponse(AGReportingObjectResponse agReportingObjectResponse) {
-		this.agReportingObjectResponse = agReportingObjectResponse;
 	}
 
 	public String getAgRuleCode() {

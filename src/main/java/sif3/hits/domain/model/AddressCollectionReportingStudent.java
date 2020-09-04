@@ -106,6 +106,7 @@ public class AddressCollectionReportingStudent extends HitsEntity {
 		addresses.clear();
 		if (address != null) {
 			addresses.add(address);
+			address.setStudent(this);
 		}
 	}
 
@@ -144,6 +145,7 @@ public class AddressCollectionReportingStudent extends HitsEntity {
 		if (parent1 != null) {
 			parent1.setParentNumber(1);
 			parents.add(parent1);
+			parent1.setStudent(this);
 		}
 	}
 
@@ -172,6 +174,7 @@ public class AddressCollectionReportingStudent extends HitsEntity {
 		if (parent2 != null) {
 			parent2.setParentNumber(2);
 			parents.add(parent2);
+			parent2.setStudent(this);
 		}
 	}
 

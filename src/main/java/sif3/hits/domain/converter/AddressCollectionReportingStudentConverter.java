@@ -58,16 +58,6 @@ public class AddressCollectionReportingStudentConverter extends
 			
 			target.setParent1(parentConverter.toHitsModel(source.getParent1()));
 			target.setParent2(parentConverter.toHitsModel(getJAXBValue(source.getParent2())));
-			
-			if (target.getStudentAddress() != null) {
-				target.getStudentAddress().setStudent(target);
-			}
-			if (target.getParent1() != null) {
-				target.getParent1().setStudent(target);
-			}
-			if (target.getParent2() != null) {
-				target.getParent2().setStudent(target);
-			}
 		}
 	}
 }

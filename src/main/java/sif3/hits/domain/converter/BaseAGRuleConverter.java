@@ -4,17 +4,17 @@ import org.springframework.stereotype.Component;
 
 import sif.dd.au30.model.AGRuleType;
 import sif3.hits.domain.converter.factory.IObjectFactory;
-import sif3.hits.domain.model.AGRule;
+import sif3.hits.domain.model.BaseAGRule;
 
 @Component
-public class AGRuleConverter extends HitsConverter<AGRuleType, AGRule> {
+public class BaseAGRuleConverter<H extends BaseAGRule> extends HitsConverter<AGRuleType, H> {
 
-	AGRuleConverter() {
-		super(AGRuleType.class, AGRule.class);
+	BaseAGRuleConverter(Class<H> hitsClass) {
+		super(AGRuleType.class, hitsClass);
 	}
 
 	@Override
-	public void toSifModel(AGRule source, AGRuleType target) {
+	public void toSifModel(BaseAGRule source, AGRuleType target) {
 		if (source != null && target != null) {
 			IObjectFactory objectFactory = getObjectFactory();
 			target.setAGRuleCode(objectFactory.createAGRuleTypeAGRuleCode(source.getAgRuleCode()));
@@ -25,7 +25,7 @@ public class AGRuleConverter extends HitsConverter<AGRuleType, AGRule> {
 	}
 
 	@Override
-	public void toHitsModel(AGRuleType source, AGRule target) {
+	public void toHitsModel(AGRuleType source, BaseAGRule target) {
 		if (source != null && target != null) {
 			target.setAgRuleCode(getJAXBValue(source.getAGRuleCode()));
 			target.setAgRuleComment(getJAXBValue(source.getAGRuleComment()));

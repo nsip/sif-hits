@@ -25,7 +25,7 @@ public class AGReportingObjectResponse extends HitsEntity {
 	private String commonwealthId;
 	private String entityName;
 	private String agSubmissionStatusCode;
-	private List<AGRule> agRuleList;
+	private List<CollectionStatusReponseAGRule> agRuleList;
 
 	@Id
 	@GeneratedValue
@@ -104,11 +104,11 @@ public class AGReportingObjectResponse extends HitsEntity {
 	}
 
 	@OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "agReportingObjectResponse")
-	public List<AGRule> getAgRuleList() {
+	public List<CollectionStatusReponseAGRule> getAgRuleList() {
 		return agRuleList;
 	}
 
-	public void setAgRuleList(List<AGRule> agRuleList) {
+	public void setAgRuleList(List<CollectionStatusReponseAGRule> agRuleList) {
 		this.agRuleList = agRuleList;
 	}
 

@@ -42,8 +42,9 @@ public class CensusReportingStaffConverter extends HitsConverter<CensusStaffType
 
 			List<OtherCode> otherCodeList = otherCodeConverter
 					.toSifModelList(source.getCensusReportingStaffActivityOtherCodeList());
+			StaffActivityExtensionType staffActivity = null;
 			if (StringUtils.isNotEmpty(source.getStaffActivity()) || !otherCodeList.isEmpty()) {
-				StaffActivityExtensionType staffActivity = objectFactory.createStaffActivityExtensionType();
+				staffActivity = objectFactory.createStaffActivityExtensionType();
 				staffActivity.setCode(getEnumValue(source.getStaffActivity(), AUCodeSetsStaffActivityType.class));
 				if (!otherCodeList.isEmpty()) {
 					OtherCodeListType otherCodeListType = objectFactory.createOtherCodeListType();
@@ -51,10 +52,8 @@ public class CensusReportingStaffConverter extends HitsConverter<CensusStaffType
 					staffActivity.setOtherCodeList(
 							objectFactory.createStaffActivityExtensionTypeOtherCodeList(otherCodeListType));
 				}
-				target.setStaffActivity(staffActivity);
-			} else {
-				target.setStaffActivity(null);
 			}
+			target.setStaffActivity(staffActivity);
 		}
 	}
 

@@ -38,16 +38,8 @@ public class CensusReportingEntityContactConverter extends BaseEntityContactConv
     public void toHitsModel(EntityContactInfoType source, CensusReportingEntityContact target) {
         if (source != null && target != null) {
             super.toHitsModel(source, target);
-            CensusReportingEntityContactName name = nameConverter.toHitsModel(source.getName());
-            if (name != null) {
-                name.setEntityContact(target);
-            }
-            target.setName(name);
-            CensusReportingEntityContactAddress address = addressConverter.toHitsModel(getJAXBValue(source.getAddress()));
-            if (address != null) {
-                address.setEntityContact(target);
-            }
-            target.setAddress(address);
+            target.setName(nameConverter.toHitsModel(source.getName()));
+            target.setAddress(addressConverter.toHitsModel(getJAXBValue(source.getAddress())));
         }
     }
 }

@@ -4,30 +4,29 @@ import org.springframework.stereotype.Component;
 
 import sif.dd.au30.model.AGContextualQuestionType;
 import sif.dd.au30.model.AUCodeSetsAGContextQuestionType;
-import sif3.hits.domain.model.AGContextualQuestion;
-import sif3.hits.utils.UsesConstants;
+import sif3.hits.domain.model.AddressAGContextualQuestion;
 
 @Component
 public class AddressCollectionReportingAGContextualQuestionConverter
-		extends HitsConverter<AGContextualQuestionType, AGContextualQuestion> implements UsesConstants {
+		extends HitsConverter<AGContextualQuestionType, AddressAGContextualQuestion> {
 
 	public AddressCollectionReportingAGContextualQuestionConverter() {
-		super(AGContextualQuestionType.class, AGContextualQuestion.class);
+		super(AGContextualQuestionType.class, AddressAGContextualQuestion.class);
 	}
-
+	
 	@Override
-	public void toSifModel(AGContextualQuestion source, AGContextualQuestionType target) {
+	public void toSifModel(AddressAGContextualQuestion source, AGContextualQuestionType target) {
 		if (source != null && target != null) {
-			target.setAGContextCode(getEnumValue(source.getAgContextCode(), AUCodeSetsAGContextQuestionType.class));
-			target.setAGAnswer(source.getAgAnswer());
+			target.setAGContextCode(getEnumValue(source.getContext(), AUCodeSetsAGContextQuestionType.class));
+			target.setAGAnswer(source.getAnswer());			
 		}
 	}
-
+	
 	@Override
-	public void toHitsModel(AGContextualQuestionType source, AGContextualQuestion target) {
+	public void toHitsModel(AGContextualQuestionType source, AddressAGContextualQuestion target) {
 		if (source != null && target != null) {
-			target.setAgContextCode(getEnumValue(source.getAGContextCode()));
-			target.setAgAnswer(source.getAGAnswer());
+			target.setContext(getEnumValue(source.getAGContextCode()));
+			target.setAnswer(source.getAGAnswer());
 		}
 	}
 }

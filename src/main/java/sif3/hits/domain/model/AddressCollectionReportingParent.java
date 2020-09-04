@@ -89,6 +89,7 @@ public class AddressCollectionReportingParent extends HitsEntity {
 		names.clear();
 		if (name != null) {
 			names.add(name);
+			name.setParent(this);
 		}
 	}
 
@@ -119,6 +120,7 @@ public class AddressCollectionReportingParent extends HitsEntity {
 		addresses.clear();
 		if (address != null) {
 			addresses.add(address);
+			address.setParent(this);
 		}
 	}
 

@@ -25,10 +25,10 @@ public class CensusReportingConverter extends HitsConverter<CensusReportingType,
 
 	@Autowired
 	HitsConverter<EntityContactInfoType, CensusReportingEntityContact> censusReportingEntityContactConverter;
-	
+
 	@Autowired
 	HitsConverter<CensusStaffType, CensusReportingStaff> censusReportingStaffConverter;
-	
+
 	@Autowired
 	HitsConverter<CensusStudentType, CensusReportingStudent> censusReportingStudentConverter;
 
@@ -40,25 +40,30 @@ public class CensusReportingConverter extends HitsConverter<CensusReportingType,
 	public void toSifModel(CensusReporting source, CensusReportingType target) {
 		if (source != null && target != null) {
 			IObjectFactory objectFactory = getObjectFactory();
-			
+
 			target.setEntityLevel(objectFactory.createCensusReportingTypeEntityLevel(source.getEntityLevel()));
 			target.setCommonwealthId(source.getCommonwealthId());
 			target.setEntityName(objectFactory.createCensusReportingTypeEntityName(source.getEntityName()));
 			target.setEntityContact(censusReportingEntityContactConverter.toSifModel(source.getEntityContact()));
-			
-			List<CensusStaffType> censusStaffTypeList = censusReportingStaffConverter.toSifModelList(source.getCensusStaffList());
+
+			List<CensusStaffType> censusStaffTypeList = censusReportingStaffConverter
+					.toSifModelList(source.getCensusStaffList());
+			CensusStaffListType censusStaffListType = null;
 			if (!censusStaffTypeList.isEmpty()) {
-				CensusStaffListType censusStaffListType = objectFactory.createCensusStaffListType();
+				censusStaffListType = objectFactory.createCensusStaffListType();
 				censusStaffListType.getCensusStaff().addAll(censusStaffTypeList);
-				target.setCensusStaffList(objectFactory.createCensusReportingTypeCensusStaffList(censusStaffListType));
 			}
-			
-			List<CensusStudentType> censusStudentTypeList = censusReportingStudentConverter.toSifModelList(source.getCensusStudentList());
+			target.setCensusStaffList(objectFactory.createCensusReportingTypeCensusStaffList(censusStaffListType));
+
+			List<CensusStudentType> censusStudentTypeList = censusReportingStudentConverter
+					.toSifModelList(source.getCensusStudentList());
+			CensusStudentListType censusStudentListType = null;
 			if (!censusStudentTypeList.isEmpty()) {
-				CensusStudentListType censusStudentListType = objectFactory.createCensusStudentListType();
+				censusStudentListType = objectFactory.createCensusStudentListType();
 				censusStudentListType.getCensusStudent().addAll(censusStudentTypeList);
-				target.setCensusStudentList(objectFactory.createCensusReportingTypeCensusStudentList(censusStudentListType));
 			}
+			target.setCensusStudentList(
+					objectFactory.createCensusReportingTypeCensusStudentList(censusStudentListType));
 		}
 	}
 
@@ -69,28 +74,30 @@ public class CensusReportingConverter extends HitsConverter<CensusReportingType,
 			target.setCommonwealthId(source.getCommonwealthId());
 			target.setEntityName(getJAXBValue(source.getEntityName()));
 			target.setEntityContact(censusReportingEntityContactConverter.toHitsModel(source.getEntityContact()));
-			
+
 			if (target.getCensusStaffList() == null) {
 				target.setCensusStaffList(new ArrayList<>());
 			}
 			target.getCensusStaffList().clear();
 			CensusStaffListType censusStaffListType = getJAXBValue(source.getCensusStaffList());
 			if (censusStaffListType != null) {
-				List<CensusReportingStaff> censusReportingStaffList = censusReportingStaffConverter.toHitsModelList(censusStaffListType.getCensusStaff());
-				for (CensusReportingStaff censusReportingStaff : censusReportingStaffList ) {
+				List<CensusReportingStaff> censusReportingStaffList = censusReportingStaffConverter
+						.toHitsModelList(censusStaffListType.getCensusStaff());
+				for (CensusReportingStaff censusReportingStaff : censusReportingStaffList) {
 					target.getCensusStaffList().add(censusReportingStaff);
 					censusReportingStaff.setCensusReporting(target);
 				}
 			}
-			
+
 			if (target.getCensusStudentList() == null) {
 				target.setCensusStudentList(new ArrayList<>());
 			}
 			target.getCensusStudentList().clear();
 			CensusStudentListType censusStudentListType = getJAXBValue(source.getCensusStudentList());
 			if (censusStudentListType != null) {
-				List<CensusReportingStudent> censusReportingStudentList = censusReportingStudentConverter.toHitsModelList(censusStudentListType.getCensusStudent());
-				for (CensusReportingStudent censusReportingStudent : censusReportingStudentList ) {
+				List<CensusReportingStudent> censusReportingStudentList = censusReportingStudentConverter
+						.toHitsModelList(censusStudentListType.getCensusStudent());
+				for (CensusReportingStudent censusReportingStudent : censusReportingStudentList) {
 					target.getCensusStudentList().add(censusReportingStudent);
 					censusReportingStudent.setCensusReporting(target);
 				}

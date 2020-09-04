@@ -26,7 +26,7 @@ public class AddressCollectionReporting extends HitsEntity {
 	private String acaraId;
 	private String entityName;
 	private List<AddressCollectionReportingEntityContact> entityContacts;
-	private List<AGContextualQuestion> agContextualQuestions;
+	private List<AddressAGContextualQuestion> agContextualQuestions;
 	private List<AddressCollectionReportingStudent> addressCollectionReportingStudents;
 
 	@Id
@@ -132,6 +132,7 @@ public class AddressCollectionReporting extends HitsEntity {
 		entityContacts.clear();
 		if (entityContact != null) {
 			entityContacts.add(entityContact);
+			entityContact.setAddressCollectionReporting(this);
 		}
 	}
 
@@ -146,11 +147,11 @@ public class AddressCollectionReporting extends HitsEntity {
 	}
 
 	@OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "addressCollectionReporting")
-	public List<AGContextualQuestion> getAGContextualQuestions() {
+	public List<AddressAGContextualQuestion> getAGContextualQuestions() {
 		return agContextualQuestions;
 	}
 
-	public void setAGContextualQuestions(List<AGContextualQuestion> agContextualQuestions) {
+	public void setAGContextualQuestions(List<AddressAGContextualQuestion> agContextualQuestions) {
 		this.agContextualQuestions = agContextualQuestions;
 	}
 }
