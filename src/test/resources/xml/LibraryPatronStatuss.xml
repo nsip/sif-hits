@@ -1,0 +1,8 @@
+<LibraryPatronStatuss xmlns="http://www.sifassociation.org/datamodel/au/3.4">
+    <LibraryPatronStatus>
+        <NumberOfCheckouts>0</NumberOfCheckouts>
+    </LibraryPatronStatus>
+    <LibraryPatronStatus>
+        <NumberOfCheckouts>0</NumberOfCheckouts>
+    </LibraryPatronStatus>
+</LibraryPatronStatuss>
