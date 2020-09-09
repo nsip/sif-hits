@@ -21,7 +21,11 @@ import org.apache.commons.lang3.time.FastDateFormat;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import sif.dd.au30.model.AUCodeSetsElectronicIdTypeType;
 import sif.dd.au30.model.AUCodeSetsYearLevelCodeType;
+import sif.dd.au30.model.ElectronicIdType;
+import sif.dd.au30.model.ISO4217CurrencyNamesAndCodeElementsType;
+import sif.dd.au30.model.MonetaryAmountType;
 import sif.dd.au30.model.SoftwareVendorInfoContainerType;
 import sif.dd.au30.model.YearLevelType;
 import sif3.hits.domain.converter.factory.IObjectFactory;
@@ -545,7 +549,7 @@ public abstract class HitsConverter<S, H> implements UsesConstants {
 
 	protected SoftwareVendorInfoContainerType getSoftwareVendorInfo(String softwareProduct, String softwareVersion) {
 		SoftwareVendorInfoContainerType result = null;
-		if (StringUtils.isNotBlank(softwareVersion) || StringUtils.isNoneBlank(softwareProduct)) {
+		if (StringUtils.isNotBlank(softwareVersion) || StringUtils.isNotBlank(softwareProduct)) {
 			result = getObjectFactory().createSoftwareVendorInfoContainerType();
 			result.setSoftwareProduct(softwareProduct);
 			result.setSoftwareVersion(softwareVersion);
@@ -557,7 +561,7 @@ public abstract class HitsConverter<S, H> implements UsesConstants {
 			SoftwareVendorInfoContainerType softwareVendorInfo) {
 		SoftwareVendorInfoContainerType result = softwareVendorInfo;
 		if (result == null) {
-			result = new SoftwareVendorInfoContainerType();
+			result = getObjectFactory().createSoftwareVendorInfoContainerType();
 		}
 		return result;
 	}
@@ -586,6 +590,50 @@ public abstract class HitsConverter<S, H> implements UsesConstants {
 
 	protected String getYearLevelType(JAXBElement<YearLevelType> yearLevelType) {
 		return getYearLevelType(getJAXBValue(yearLevelType));
+	}
+
+	protected MonetaryAmountType getMonetaryAmount(String amount, String currency) {
+		MonetaryAmountType result = null;
+		if (StringUtils.isNotBlank(amount) || StringUtils.isNotBlank(currency)) {
+			result = getObjectFactory().createMonetaryAmountType();
+			result.setValue(getBigDecimalValue(amount));
+			result.setCurrency(getEnumValue(currency, ISO4217CurrencyNamesAndCodeElementsType.class));
+		}
+		return result;
+	}
+
+	protected MonetaryAmountType getMonetaryAmount(MonetaryAmountType monetaryAmount) {
+		MonetaryAmountType result = monetaryAmount;
+		if (result == null) {
+			result = getObjectFactory().createMonetaryAmountType();
+		}
+		return result;
+	}
+
+	protected MonetaryAmountType getMonetaryAmount(JAXBElement<MonetaryAmountType> monetaryAmount) {
+		return getMonetaryAmount(getJAXBValue(monetaryAmount));
+	}
+
+	protected ElectronicIdType getElectronicId(String electronicId, String electronicIdType) {
+		ElectronicIdType result = null;
+		if (StringUtils.isNotBlank(electronicId) || StringUtils.isNotBlank(electronicIdType)) {
+			result = getObjectFactory().createElectronicIdType();
+			result.setValue(electronicId);
+			result.setType(getEnumValue(electronicIdType, AUCodeSetsElectronicIdTypeType.class));
+		}
+		return result;
+	}
+
+	protected ElectronicIdType getElectronicId(ElectronicIdType electronicId) {
+		ElectronicIdType result = electronicId;
+		if (result == null) {
+			result = getObjectFactory().createElectronicIdType();
+		}
+		return result;
+	}
+
+	protected ElectronicIdType getElectronicId(JAXBElement<ElectronicIdType> electronicId) {
+		return getElectronicId(getJAXBValue(electronicId));
 	}
 
 }
