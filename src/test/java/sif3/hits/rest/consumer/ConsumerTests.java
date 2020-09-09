@@ -56,13 +56,17 @@ public class ConsumerTests {
             WellbeingCharacteristicConsumerTest.class,
             WellbeingAppealConsumerTest.class,
             WellbeingAlertConsumerTest.class,
-//            AGStatusReportConsumerTest.class,
-//            FinancialQuestionnaireSubmissionConsumerTest.class,
             WellbeingPersonLinkConsumerTest.class,
-//            AGAddressCollectionSubmissionConsumerTest.class,
             StudentScoreJudgementAgainstStandardConsumerTest.class,
             TermInfoConsumerTest.class,
-            SchoolCourseInfoConsumerTest.class
+            SchoolCourseInfoConsumerTest.class,
+            AddressCollectionConsumerTest.class,
+            CensusCollectionConsumerTest.class,
+            CollectionRoundConsumerTest.class,
+            CollectionStatusConsumerTest.class,
+            FinancialQuestionnaireCollectionConsumerTest.class,
+            StudentAttendanceCollectionConsumerTest.class,
+            LibraryPatronStatusConsumerTest.class
     };
     
     
