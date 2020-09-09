@@ -45,7 +45,7 @@ public class LibraryPatronTransaction {
 	}
 
 	// Actually One-To-One but easier to manage this way
-	@OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "libraryPatronTransaction")
+	@OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "transaction")
 	public List<LibraryTransactionItem> getItemList() {
 		return itemList;
 	}
@@ -76,7 +76,7 @@ public class LibraryPatronTransaction {
 	}
 
 	// Actually One-To-One but easier to manage this way
-	@OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "libraryPatronTransaction")
+	@OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "transaction")
 	public List<LibraryTransactionCheckout> getCheckoutList() {
 		return checkoutList;
 	}
@@ -107,7 +107,7 @@ public class LibraryPatronTransaction {
 	}
 
 
-	@OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "libraryPatronTransaction")
+	@OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "transaction")
 	public List<LibraryTransactionHold> getHoldList() {
 		return holdList;
 	}
@@ -116,7 +116,7 @@ public class LibraryPatronTransaction {
 		this.holdList = holdList;
 	}
 
-	@OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "libraryPatronTransaction")
+	@OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "transaction")
 	public List<LibraryTransactionFine> getFineList() {
 		return fineList;
 	}

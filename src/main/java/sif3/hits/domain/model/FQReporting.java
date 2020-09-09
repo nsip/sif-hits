@@ -5,6 +5,10 @@ import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Transient;
 
@@ -24,6 +28,8 @@ public class FQReporting {
 	private List<FQItem> fqItemList;
 	private List<FQReportingAGRule> agRuleList;
 
+	@Id
+	@GeneratedValue
 	public Long getId() {
 		return id;
 	}
@@ -32,6 +38,8 @@ public class FQReporting {
 		this.id = id;
 	}
 
+	@ManyToOne
+	@JoinColumn(name = "FQCollection_RefId")
 	public FinancialQuestionnaireCollection getFqCollection() {
 		return fqCollection;
 	}
@@ -123,7 +131,7 @@ public class FQReporting {
 		entityContacts.clear();
 		if (entityContact != null) {
 			entityContacts.add(entityContact);
-			entityContact.setFQReporting(this);
+			entityContact.setFqReporting(this);
 		}
 	}
 

@@ -30,7 +30,8 @@ public class CensusCollectionTestData extends TestData<CensusCollectionType,Cens
         IObjectFactory objectFactory = getObjectFactory();
 
         CensusCollectionType censusCollection = new CensusCollectionType();
-
+        censusCollection.setRefId(refId);
+        
         return censusCollection;
     }
 

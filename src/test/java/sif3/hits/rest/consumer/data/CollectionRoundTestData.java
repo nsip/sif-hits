@@ -30,7 +30,8 @@ public class CollectionRoundTestData extends TestData<CollectionRoundType,Collec
         IObjectFactory objectFactory = getObjectFactory();
 
         CollectionRoundType collectionRound = new CollectionRoundType();
-
+        collectionRound.setRefId(refId);
+        
         return collectionRound;
     }
 

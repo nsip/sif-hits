@@ -29,6 +29,7 @@ public class AddressCollectionTestData extends TestData<AddressCollectionType, A
 		IObjectFactory objectFactory = getObjectFactory();
 
 		AddressCollectionType addressCollection = new AddressCollectionType();
+		addressCollection.setRefId(refId);
 
 		return addressCollection;
 	}

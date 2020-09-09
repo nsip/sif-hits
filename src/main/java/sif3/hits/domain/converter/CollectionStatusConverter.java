@@ -35,6 +35,7 @@ public class CollectionStatusConverter extends HitsConverter<CollectionStatusTyp
 	public void toSifModel(CollectionStatus source, CollectionStatusType target) {
 		if (source != null && target != null) {
 			IObjectFactory objectFactory = getObjectFactory();
+			target.setRefId(source.getRefId());
 			target.setReportingAuthority(source.getReportingAuthority());
 			target.setReportingAuthoritySystem(objectFactory
 					.createCollectionStatusTypeReportingAuthoritySystem(source.getReportingAuthoritySystem()));
@@ -73,6 +74,7 @@ public class CollectionStatusConverter extends HitsConverter<CollectionStatusTyp
 	@Override
 	public void toHitsModel(CollectionStatusType source, CollectionStatus target) {
 		if (source != null && target != null) {
+			target.setRefId(source.getRefId());
 			target.setReportingAuthority(source.getReportingAuthority());
 			target.setReportingAuthority(source.getReportingAuthority());
 			target.setReportingAuthoritySystem(getJAXBValue(source.getReportingAuthoritySystem()));

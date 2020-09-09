@@ -29,6 +29,7 @@ public class StudentAttendanceCollectionTestData extends TestData<StudentAttenda
     public StudentAttendanceCollectionType getTestObject(String refId) {
         IObjectFactory objectFactory = getObjectFactory();
         StudentAttendanceCollectionType studentAttendanceCollection = new StudentAttendanceCollectionType();
+        studentAttendanceCollection.setRefId(refId);
         
         return studentAttendanceCollection;
     }

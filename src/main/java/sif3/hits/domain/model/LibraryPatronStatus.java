@@ -8,6 +8,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.Transient;
 
 @Entity
 public class LibraryPatronStatus extends HitsEntity {
@@ -161,6 +162,7 @@ public class LibraryPatronStatus extends HitsEntity {
 		this.patronNames = patronNames;
 	}
 
+	@Transient
 	public LibraryPatronName getPatronName() {
 		LibraryPatronName result = null;
 		if (this.patronNames != null && !this.patronNames.isEmpty()) {
@@ -169,6 +171,7 @@ public class LibraryPatronStatus extends HitsEntity {
 		return result;
 	}
 
+	@Transient
 	public void setPatronName(LibraryPatronName patronName) {
 		if (this.patronNames == null) {
 			this.patronNames = new ArrayList<>();

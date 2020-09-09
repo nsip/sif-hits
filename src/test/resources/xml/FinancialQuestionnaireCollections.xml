@@ -1,4 +1,4 @@
 <FinancialQuestionnaireCollections xmlns="http://www.sifassociation.org/datamodel/au/3.4">
-    <FinancialQuestionnaireCollection/>
-    <FinancialQuestionnaireCollection/>
+    <FinancialQuestionnaireCollection RefId="d9743b6b-881b-4441-b82e-65b55b1ac3be"/>
+    <FinancialQuestionnaireCollection RefId="de60e300-7259-4909-bd69-a3bcee3c7159"/>
 </FinancialQuestionnaireCollections>

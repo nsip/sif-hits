@@ -1,8 +1,8 @@
 <LibraryPatronStatuss xmlns="http://www.sifassociation.org/datamodel/au/3.4">
-    <LibraryPatronStatus>
+    <LibraryPatronStatus RefId="40b1fe54-2587-4556-9222-91579eca1584">
         <NumberOfCheckouts>0</NumberOfCheckouts>
     </LibraryPatronStatus>
-    <LibraryPatronStatus>
+    <LibraryPatronStatus RefId="09fa1978-0cb8-48a5-afc1-1151eda2df21">
         <NumberOfCheckouts>0</NumberOfCheckouts>
     </LibraryPatronStatus>
 </LibraryPatronStatuss>

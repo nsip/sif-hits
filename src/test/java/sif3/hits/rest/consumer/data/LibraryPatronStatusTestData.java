@@ -29,6 +29,7 @@ public class LibraryPatronStatusTestData extends TestData<LibraryPatronStatusTyp
     public LibraryPatronStatusType getTestObject(String refId) {
         IObjectFactory objectFactory = getObjectFactory();
         LibraryPatronStatusType libraryPatronStatus = new LibraryPatronStatusType();
+        libraryPatronStatus.setRefId(refId);
         
         return libraryPatronStatus;
     }

@@ -22,11 +22,11 @@ public class FQReportingEntityContact extends BaseEntityContact {
 
 	@ManyToOne
 	@JoinColumn(name = "FQReporting_Id")
-	public FQReporting getFQReporting() {
+	public FQReporting getFqReporting() {
 		return fqReporting;
 	}
 
-	public void setFQReporting(FQReporting fqReporting) {
+	public void setFqReporting(FQReporting fqReporting) {
 		this.fqReporting = fqReporting;
 	}
 

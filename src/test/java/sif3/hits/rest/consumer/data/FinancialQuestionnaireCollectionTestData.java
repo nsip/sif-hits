@@ -29,7 +29,8 @@ public class FinancialQuestionnaireCollectionTestData
 	public FinancialQuestionnaireCollectionType getTestObject(String refId) {
 		IObjectFactory objectFactory = getObjectFactory();
 		FinancialQuestionnaireCollectionType financialQuestionnaire = new FinancialQuestionnaireCollectionType();
-
+		financialQuestionnaire.setRefId(refId);
+		
 		return financialQuestionnaire;
 	}
 

@@ -1,4 +1,4 @@
 <CensusCollections xmlns="http://www.sifassociation.org/datamodel/au/3.4">
-    <CensusCollection/>
-    <CensusCollection/>
+    <CensusCollection RefId="c1d64890-c1b2-4d84-863a-db72a7eda67e"/>
+    <CensusCollection RefId="129d9b09-683a-431f-9012-25506cb96c7e"/>
 </CensusCollections>

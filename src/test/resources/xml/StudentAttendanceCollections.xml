@@ -1,4 +1,4 @@
 <StudentAttendanceCollections xmlns="http://www.sifassociation.org/datamodel/au/3.4">
-    <StudentAttendanceCollection/>
-    <StudentAttendanceCollection/>
+    <StudentAttendanceCollection RefId="d7ac3be9-1f5d-4e75-9965-aca18822fae1"/>
+    <StudentAttendanceCollection RefId="69430a65-22fb-4a38-a9f1-a23600790e38"/>
 </StudentAttendanceCollections>

@@ -5,6 +5,7 @@ import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
 @Entity
@@ -18,6 +19,7 @@ public class FinancialQuestionnaireCollection {
 	private List<FQReporting> fqReportingList;
 	private List<FQCollectionLocalCode> localCodeList;
 
+	@Id
 	public String getRefId() {
 		return refId;
 	}

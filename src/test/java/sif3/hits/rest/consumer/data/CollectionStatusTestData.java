@@ -29,6 +29,7 @@ public class CollectionStatusTestData extends TestData<CollectionStatusType,Coll
     public CollectionStatusType getTestObject(String refId) {
         IObjectFactory objectFactory = getObjectFactory();
         CollectionStatusType collectionStatus = new CollectionStatusType();
+        collectionStatus.setRefId(refId);
         
         return collectionStatus;
     }
