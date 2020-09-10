@@ -1,1 +1,1671 @@
-<AddressCollection RefId="2939f015-4bd7-4762-b332-3456debebf0c" xmlns="http://www.sifassociation.org/datamodel/au/3.4"/>
+<AddressCollection RefId="2939f015-4bd7-4762-b332-3456debebf0c" xmlns="http://www.sifassociation.org/datamodel/au/3.4">
+    <AddressCollectionYear>2020</AddressCollectionYear>
+    <RoundCode>RoundCode</RoundCode>
+    <ReportingAuthorityCommonwealthId>RACW-Id</ReportingAuthorityCommonwealthId>
+    <SoftwareVendorInfo>
+        <SoftwareProduct>SW-Product</SoftwareProduct>
+        <SoftwareVersion>SW-Version</SoftwareVersion>
+    </SoftwareVendorInfo>
+    <AddressCollectionReportingList>
+        <AddressCollectionReporting>
+            <EntityLevel>EL-1</EntityLevel>
+            <SchoolInfoRefId>252159ce-e385-4dea-8440-26d300282781</SchoolInfoRefId>
+            <LocalId>LocalId1</LocalId>
+            <StateProvinceId>StateId1</StateProvinceId>
+            <CommonwealthId>CWID-1</CommonwealthId>
+            <ACARAId>48116</ACARAId>
+            <EntityName>Bens Test State High School</EntityName>
+            <EntityContact>
+                <Name Type="LGL">
+                    <Title>Ms</Title>
+                    <FamilyName>Person</FamilyName>
+                    <GivenName>Entity</GivenName>
+                    <MiddleName>Contact</MiddleName>
+                    <PreferredFamilyName>Person</PreferredFamilyName>
+                    <PreferredGivenName>Entity</PreferredGivenName>
+                    <FullName>Ms Entity Contact Person</FullName>
+                </Name>
+                <PositionTitle>Registrar</PositionTitle>
+                <Role>Role</Role>
+                <RegistrationDetails>Registration Details</RegistrationDetails>
+                <Qualifications>Qualifications</Qualifications>
+                <Address Type="0123" Role="012B">
+                    <Street>
+                        <Line1>Entity Contact Address</Line1>
+                        <Line2>145 Some Street</Line2>
+                    </Street>
+                    <City>Perth</City>
+                    <StateProvince>WA</StateProvince>
+                    <PostalCode>6000</PostalCode>
+                    <GridLocation>
+                        <Latitude>-31.952693</Latitude>
+                        <Longitude>115.871971</Longitude>
+                    </GridLocation>
+                </Address>
+                <Email Type="06">entity.contact@not.a.real.domain</Email>
+                <PhoneNumber Type="0096">
+                    <Number>(123) 456 7890</Number>
+                </PhoneNumber>
+            </EntityContact>
+            <AGContextualQuestionList>
+                <AGContextualQuestion>
+                    <AGContextCode>AC001</AGContextCode>
+                    <AGAnswer>Answer 1 1</AGAnswer>
+                </AGContextualQuestion>
+                <AGContextualQuestion>
+                    <AGContextCode>AC001</AGContextCode>
+                    <AGAnswer>Answer 1 2</AGAnswer>
+                </AGContextualQuestion>
+                <AGContextualQuestion>
+                    <AGContextCode>AC001</AGContextCode>
+                    <AGAnswer>Answer 1 3</AGAnswer>
+                </AGContextualQuestion>
+                <AGContextualQuestion>
+                    <AGContextCode>AC001</AGContextCode>
+                    <AGAnswer>Answer 1 4</AGAnswer>
+                </AGContextualQuestion>
+                <AGContextualQuestion>
+                    <AGContextCode>AC001</AGContextCode>
+                    <AGAnswer>Answer 1 5</AGAnswer>
+                </AGContextualQuestion>
+            </AGContextualQuestionList>
+            <AddressCollectionStudentList>
+                <AddressCollectionStudent>
+                    <LocalId>S202011</LocalId>
+                    <EducationLevel>Secondary</EducationLevel>
+                    <BoardingStatus>D</BoardingStatus>
+                    <ReportingParent2>N</ReportingParent2>
+                    <StudentAddress Type="0123" Role="012B">
+                        <Street>
+                            <Line1>11 Student Address Street</Line1>
+                        </Street>
+                        <City>Perth</City>
+                        <StateProvince>WA</StateProvince>
+                        <PostalCode>6000</PostalCode>
+                        <GridLocation>
+                            <Latitude>-31.952693</Latitude>
+                            <Longitude>115.871971</Longitude>
+                        </GridLocation>
+                    </StudentAddress>
+                    <Parent1>
+                        <ParentName Type="LGL">
+                            <Title>Mr</Title>
+                            <FamilyName>Parent</FamilyName>
+                            <GivenName>Parent</GivenName>
+                            <MiddleName>111</MiddleName>
+                            <PreferredFamilyName>Parent</PreferredFamilyName>
+                            <PreferredGivenName>Parent</PreferredGivenName>
+                            <FullName>Mr Parent 111 Parent</FullName>
+                        </ParentName>
+                        <AddressSameAsStudent>Y</AddressSameAsStudent>
+                        <ParentAddress Type="0123" Role="012B">
+                            <Street>
+                                <Line1>111Parent Address Street</Line1>
+                            </Street>
+                            <City>Perth</City>
+                            <StateProvince>WA</StateProvince>
+                            <PostalCode>6000</PostalCode>
+                            <GridLocation>
+                                <Latitude>-31.952693</Latitude>
+                                <Longitude>115.871971</Longitude>
+                            </GridLocation>
+                            <StatisticalAreas>
+                                <StatisticalArea SpatialUnitType="SpatialUnit">SA1</StatisticalArea>
+                                <StatisticalArea SpatialUnitType="SpatialUnit">SA2</StatisticalArea>
+                            </StatisticalAreas>
+                        </ParentAddress>
+                    </Parent1>
+                    <Parent2>
+                        <ParentName Type="LGL">
+                            <Title>Mr</Title>
+                            <FamilyName>Parent</FamilyName>
+                            <GivenName>Parent</GivenName>
+                            <MiddleName>112</MiddleName>
+                            <PreferredFamilyName>Parent</PreferredFamilyName>
+                            <PreferredGivenName>Parent</PreferredGivenName>
+                            <FullName>Mr Parent 112 Parent</FullName>
+                        </ParentName>
+                        <AddressSameAsStudent>Y</AddressSameAsStudent>
+                        <ParentAddress Type="0123" Role="012B">
+                            <Street>
+                                <Line1>112Parent Address Street</Line1>
+                            </Street>
+                            <City>Perth</City>
+                            <StateProvince>WA</StateProvince>
+                            <PostalCode>6000</PostalCode>
+                            <GridLocation>
+                                <Latitude>-31.952693</Latitude>
+                                <Longitude>115.871971</Longitude>
+                            </GridLocation>
+                        </ParentAddress>
+                    </Parent2>
+                </AddressCollectionStudent>
+                <AddressCollectionStudent>
+                    <LocalId>S202012</LocalId>
+                    <EducationLevel>Secondary</EducationLevel>
+                    <BoardingStatus>D</BoardingStatus>
+                    <ReportingParent2>N</ReportingParent2>
+                    <StudentAddress Type="0123" Role="012B">
+                        <Street>
+                            <Line1>12 Student Address Street</Line1>
+                        </Street>
+                        <City>Perth</City>
+                        <StateProvince>WA</StateProvince>
+                        <PostalCode>6000</PostalCode>
+                        <GridLocation>
+                            <Latitude>-31.952693</Latitude>
+                            <Longitude>115.871971</Longitude>
+                        </GridLocation>
+                    </StudentAddress>
+                    <Parent1>
+                        <ParentName Type="LGL">
+                            <Title>Mr</Title>
+                            <FamilyName>Parent</FamilyName>
+                            <GivenName>Parent</GivenName>
+                            <MiddleName>121</MiddleName>
+                            <PreferredFamilyName>Parent</PreferredFamilyName>
+                            <PreferredGivenName>Parent</PreferredGivenName>
+                            <FullName>Mr Parent 121 Parent</FullName>
+                        </ParentName>
+                        <AddressSameAsStudent>Y</AddressSameAsStudent>
+                        <ParentAddress Type="0123" Role="012B">
+                            <Street>
+                                <Line1>121Parent Address Street</Line1>
+                            </Street>
+                            <City>Perth</City>
+                            <StateProvince>WA</StateProvince>
+                            <PostalCode>6000</PostalCode>
+                            <GridLocation>
+                                <Latitude>-31.952693</Latitude>
+                                <Longitude>115.871971</Longitude>
+                            </GridLocation>
+                            <StatisticalAreas>
+                                <StatisticalArea SpatialUnitType="SpatialUnit">SA1</StatisticalArea>
+                                <StatisticalArea SpatialUnitType="SpatialUnit">SA2</StatisticalArea>
+                            </StatisticalAreas>
+                        </ParentAddress>
+                    </Parent1>
+                    <Parent2>
+                        <ParentName Type="LGL">
+                            <Title>Mr</Title>
+                            <FamilyName>Parent</FamilyName>
+                            <GivenName>Parent</GivenName>
+                            <MiddleName>122</MiddleName>
+                            <PreferredFamilyName>Parent</PreferredFamilyName>
+                            <PreferredGivenName>Parent</PreferredGivenName>
+                            <FullName>Mr Parent 122 Parent</FullName>
+                        </ParentName>
+                        <AddressSameAsStudent>Y</AddressSameAsStudent>
+                        <ParentAddress Type="0123" Role="012B">
+                            <Street>
+                                <Line1>122Parent Address Street</Line1>
+                            </Street>
+                            <City>Perth</City>
+                            <StateProvince>WA</StateProvince>
+                            <PostalCode>6000</PostalCode>
+                            <GridLocation>
+                                <Latitude>-31.952693</Latitude>
+                                <Longitude>115.871971</Longitude>
+                            </GridLocation>
+                        </ParentAddress>
+                    </Parent2>
+                </AddressCollectionStudent>
+                <AddressCollectionStudent>
+                    <LocalId>S202013</LocalId>
+                    <EducationLevel>Secondary</EducationLevel>
+                    <BoardingStatus>D</BoardingStatus>
+                    <ReportingParent2>N</ReportingParent2>
+                    <StudentAddress Type="0123" Role="012B">
+                        <Street>
+                            <Line1>13 Student Address Street</Line1>
+                        </Street>
+                        <City>Perth</City>
+                        <StateProvince>WA</StateProvince>
+                        <PostalCode>6000</PostalCode>
+                        <GridLocation>
+                            <Latitude>-31.952693</Latitude>
+                            <Longitude>115.871971</Longitude>
+                        </GridLocation>
+                    </StudentAddress>
+                    <Parent1>
+                        <ParentName Type="LGL">
+                            <Title>Mr</Title>
+                            <FamilyName>Parent</FamilyName>
+                            <GivenName>Parent</GivenName>
+                            <MiddleName>131</MiddleName>
+                            <PreferredFamilyName>Parent</PreferredFamilyName>
+                            <PreferredGivenName>Parent</PreferredGivenName>
+                            <FullName>Mr Parent 131 Parent</FullName>
+                        </ParentName>
+                        <AddressSameAsStudent>Y</AddressSameAsStudent>
+                        <ParentAddress Type="0123" Role="012B">
+                            <Street>
+                                <Line1>131Parent Address Street</Line1>
+                            </Street>
+                            <City>Perth</City>
+                            <StateProvince>WA</StateProvince>
+                            <PostalCode>6000</PostalCode>
+                            <GridLocation>
+                                <Latitude>-31.952693</Latitude>
+                                <Longitude>115.871971</Longitude>
+                            </GridLocation>
+                            <StatisticalAreas>
+                                <StatisticalArea SpatialUnitType="SpatialUnit">SA1</StatisticalArea>
+                                <StatisticalArea SpatialUnitType="SpatialUnit">SA2</StatisticalArea>
+                            </StatisticalAreas>
+                        </ParentAddress>
+                    </Parent1>
+                    <Parent2>
+                        <ParentName Type="LGL">
+                            <Title>Mr</Title>
+                            <FamilyName>Parent</FamilyName>
+                            <GivenName>Parent</GivenName>
+                            <MiddleName>132</MiddleName>
+                            <PreferredFamilyName>Parent</PreferredFamilyName>
+                            <PreferredGivenName>Parent</PreferredGivenName>
+                            <FullName>Mr Parent 132 Parent</FullName>
+                        </ParentName>
+                        <AddressSameAsStudent>Y</AddressSameAsStudent>
+                        <ParentAddress Type="0123" Role="012B">
+                            <Street>
+                                <Line1>132Parent Address Street</Line1>
+                            </Street>
+                            <City>Perth</City>
+                            <StateProvince>WA</StateProvince>
+                            <PostalCode>6000</PostalCode>
+                            <GridLocation>
+                                <Latitude>-31.952693</Latitude>
+                                <Longitude>115.871971</Longitude>
+                            </GridLocation>
+                        </ParentAddress>
+                    </Parent2>
+                </AddressCollectionStudent>
+                <AddressCollectionStudent>
+                    <LocalId>S202014</LocalId>
+                    <EducationLevel>Secondary</EducationLevel>
+                    <BoardingStatus>D</BoardingStatus>
+                    <ReportingParent2>N</ReportingParent2>
+                    <StudentAddress Type="0123" Role="012B">
+                        <Street>
+                            <Line1>14 Student Address Street</Line1>
+                        </Street>
+                        <City>Perth</City>
+                        <StateProvince>WA</StateProvince>
+                        <PostalCode>6000</PostalCode>
+                        <GridLocation>
+                            <Latitude>-31.952693</Latitude>
+                            <Longitude>115.871971</Longitude>
+                        </GridLocation>
+                    </StudentAddress>
+                    <Parent1>
+                        <ParentName Type="LGL">
+                            <Title>Mr</Title>
+                            <FamilyName>Parent</FamilyName>
+                            <GivenName>Parent</GivenName>
+                            <MiddleName>141</MiddleName>
+                            <PreferredFamilyName>Parent</PreferredFamilyName>
+                            <PreferredGivenName>Parent</PreferredGivenName>
+                            <FullName>Mr Parent 141 Parent</FullName>
+                        </ParentName>
+                        <AddressSameAsStudent>Y</AddressSameAsStudent>
+                        <ParentAddress Type="0123" Role="012B">
+                            <Street>
+                                <Line1>141Parent Address Street</Line1>
+                            </Street>
+                            <City>Perth</City>
+                            <StateProvince>WA</StateProvince>
+                            <PostalCode>6000</PostalCode>
+                            <GridLocation>
+                                <Latitude>-31.952693</Latitude>
+                                <Longitude>115.871971</Longitude>
+                            </GridLocation>
+                            <StatisticalAreas>
+                                <StatisticalArea SpatialUnitType="SpatialUnit">SA1</StatisticalArea>
+                                <StatisticalArea SpatialUnitType="SpatialUnit">SA2</StatisticalArea>
+                            </StatisticalAreas>
+                        </ParentAddress>
+                    </Parent1>
+                    <Parent2>
+                        <ParentName Type="LGL">
+                            <Title>Mr</Title>
+                            <FamilyName>Parent</FamilyName>
+                            <GivenName>Parent</GivenName>
+                            <MiddleName>142</MiddleName>
+                            <PreferredFamilyName>Parent</PreferredFamilyName>
+                            <PreferredGivenName>Parent</PreferredGivenName>
+                            <FullName>Mr Parent 142 Parent</FullName>
+                        </ParentName>
+                        <AddressSameAsStudent>Y</AddressSameAsStudent>
+                        <ParentAddress Type="0123" Role="012B">
+                            <Street>
+                                <Line1>142Parent Address Street</Line1>
+                            </Street>
+                            <City>Perth</City>
+                            <StateProvince>WA</StateProvince>
+                            <PostalCode>6000</PostalCode>
+                            <GridLocation>
+                                <Latitude>-31.952693</Latitude>
+                                <Longitude>115.871971</Longitude>
+                            </GridLocation>
+                        </ParentAddress>
+                    </Parent2>
+                </AddressCollectionStudent>
+                <AddressCollectionStudent>
+                    <LocalId>S202015</LocalId>
+                    <EducationLevel>Secondary</EducationLevel>
+                    <BoardingStatus>D</BoardingStatus>
+                    <ReportingParent2>N</ReportingParent2>
+                    <StudentAddress Type="0123" Role="012B">
+                        <Street>
+                            <Line1>15 Student Address Street</Line1>
+                        </Street>
+                        <City>Perth</City>
+                        <StateProvince>WA</StateProvince>
+                        <PostalCode>6000</PostalCode>
+                        <GridLocation>
+                            <Latitude>-31.952693</Latitude>
+                            <Longitude>115.871971</Longitude>
+                        </GridLocation>
+                    </StudentAddress>
+                    <Parent1>
+                        <ParentName Type="LGL">
+                            <Title>Mr</Title>
+                            <FamilyName>Parent</FamilyName>
+                            <GivenName>Parent</GivenName>
+                            <MiddleName>151</MiddleName>
+                            <PreferredFamilyName>Parent</PreferredFamilyName>
+                            <PreferredGivenName>Parent</PreferredGivenName>
+                            <FullName>Mr Parent 151 Parent</FullName>
+                        </ParentName>
+                        <AddressSameAsStudent>Y</AddressSameAsStudent>
+                        <ParentAddress Type="0123" Role="012B">
+                            <Street>
+                                <Line1>151Parent Address Street</Line1>
+                            </Street>
+                            <City>Perth</City>
+                            <StateProvince>WA</StateProvince>
+                            <PostalCode>6000</PostalCode>
+                            <GridLocation>
+                                <Latitude>-31.952693</Latitude>
+                                <Longitude>115.871971</Longitude>
+                            </GridLocation>
+                            <StatisticalAreas>
+                                <StatisticalArea SpatialUnitType="SpatialUnit">SA1</StatisticalArea>
+                                <StatisticalArea SpatialUnitType="SpatialUnit">SA2</StatisticalArea>
+                            </StatisticalAreas>
+                        </ParentAddress>
+                    </Parent1>
+                    <Parent2>
+                        <ParentName Type="LGL">
+                            <Title>Mr</Title>
+                            <FamilyName>Parent</FamilyName>
+                            <GivenName>Parent</GivenName>
+                            <MiddleName>152</MiddleName>
+                            <PreferredFamilyName>Parent</PreferredFamilyName>
+                            <PreferredGivenName>Parent</PreferredGivenName>
+                            <FullName>Mr Parent 152 Parent</FullName>
+                        </ParentName>
+                        <AddressSameAsStudent>Y</AddressSameAsStudent>
+                        <ParentAddress Type="0123" Role="012B">
+                            <Street>
+                                <Line1>152Parent Address Street</Line1>
+                            </Street>
+                            <City>Perth</City>
+                            <StateProvince>WA</StateProvince>
+                            <PostalCode>6000</PostalCode>
+                            <GridLocation>
+                                <Latitude>-31.952693</Latitude>
+                                <Longitude>115.871971</Longitude>
+                            </GridLocation>
+                        </ParentAddress>
+                    </Parent2>
+                </AddressCollectionStudent>
+            </AddressCollectionStudentList>
+        </AddressCollectionReporting>
+        <AddressCollectionReporting>
+            <EntityLevel>EL-2</EntityLevel>
+            <SchoolInfoRefId>252159ce-e385-4dea-8440-26d300282781</SchoolInfoRefId>
+            <LocalId>LocalId2</LocalId>
+            <StateProvinceId>StateId2</StateProvinceId>
+            <CommonwealthId>CWID-2</CommonwealthId>
+            <ACARAId>48116</ACARAId>
+            <EntityName>Bens Test State High School</EntityName>
+            <EntityContact>
+                <Name Type="LGL">
+                    <Title>Ms</Title>
+                    <FamilyName>Person</FamilyName>
+                    <GivenName>Entity</GivenName>
+                    <MiddleName>Contact</MiddleName>
+                    <PreferredFamilyName>Person</PreferredFamilyName>
+                    <PreferredGivenName>Entity</PreferredGivenName>
+                    <FullName>Ms Entity Contact Person</FullName>
+                </Name>
+                <PositionTitle>Registrar</PositionTitle>
+                <Role>Role</Role>
+                <RegistrationDetails>Registration Details</RegistrationDetails>
+                <Qualifications>Qualifications</Qualifications>
+                <Address Type="0123" Role="012B">
+                    <Street>
+                        <Line1>Entity Contact Address</Line1>
+                        <Line2>145 Some Street</Line2>
+                    </Street>
+                    <City>Perth</City>
+                    <StateProvince>WA</StateProvince>
+                    <PostalCode>6000</PostalCode>
+                    <GridLocation>
+                        <Latitude>-31.952693</Latitude>
+                        <Longitude>115.871971</Longitude>
+                    </GridLocation>
+                </Address>
+                <Email Type="06">entity.contact@not.a.real.domain</Email>
+                <PhoneNumber Type="0096">
+                    <Number>(123) 456 7890</Number>
+                </PhoneNumber>
+            </EntityContact>
+            <AGContextualQuestionList>
+                <AGContextualQuestion>
+                    <AGContextCode>AC001</AGContextCode>
+                    <AGAnswer>Answer 2 1</AGAnswer>
+                </AGContextualQuestion>
+                <AGContextualQuestion>
+                    <AGContextCode>AC001</AGContextCode>
+                    <AGAnswer>Answer 2 2</AGAnswer>
+                </AGContextualQuestion>
+                <AGContextualQuestion>
+                    <AGContextCode>AC001</AGContextCode>
+                    <AGAnswer>Answer 2 3</AGAnswer>
+                </AGContextualQuestion>
+                <AGContextualQuestion>
+                    <AGContextCode>AC001</AGContextCode>
+                    <AGAnswer>Answer 2 4</AGAnswer>
+                </AGContextualQuestion>
+                <AGContextualQuestion>
+                    <AGContextCode>AC001</AGContextCode>
+                    <AGAnswer>Answer 2 5</AGAnswer>
+                </AGContextualQuestion>
+            </AGContextualQuestionList>
+            <AddressCollectionStudentList>
+                <AddressCollectionStudent>
+                    <LocalId>S202021</LocalId>
+                    <EducationLevel>Secondary</EducationLevel>
+                    <BoardingStatus>D</BoardingStatus>
+                    <ReportingParent2>N</ReportingParent2>
+                    <StudentAddress Type="0123" Role="012B">
+                        <Street>
+                            <Line1>21 Student Address Street</Line1>
+                        </Street>
+                        <City>Perth</City>
+                        <StateProvince>WA</StateProvince>
+                        <PostalCode>6000</PostalCode>
+                        <GridLocation>
+                            <Latitude>-31.952693</Latitude>
+                            <Longitude>115.871971</Longitude>
+                        </GridLocation>
+                    </StudentAddress>
+                    <Parent1>
+                        <ParentName Type="LGL">
+                            <Title>Mr</Title>
+                            <FamilyName>Parent</FamilyName>
+                            <GivenName>Parent</GivenName>
+                            <MiddleName>211</MiddleName>
+                            <PreferredFamilyName>Parent</PreferredFamilyName>
+                            <PreferredGivenName>Parent</PreferredGivenName>
+                            <FullName>Mr Parent 211 Parent</FullName>
+                        </ParentName>
+                        <AddressSameAsStudent>Y</AddressSameAsStudent>
+                        <ParentAddress Type="0123" Role="012B">
+                            <Street>
+                                <Line1>211Parent Address Street</Line1>
+                            </Street>
+                            <City>Perth</City>
+                            <StateProvince>WA</StateProvince>
+                            <PostalCode>6000</PostalCode>
+                            <GridLocation>
+                                <Latitude>-31.952693</Latitude>
+                                <Longitude>115.871971</Longitude>
+                            </GridLocation>
+                            <StatisticalAreas>
+                                <StatisticalArea SpatialUnitType="SpatialUnit">SA1</StatisticalArea>
+                                <StatisticalArea SpatialUnitType="SpatialUnit">SA2</StatisticalArea>
+                            </StatisticalAreas>
+                        </ParentAddress>
+                    </Parent1>
+                    <Parent2>
+                        <ParentName Type="LGL">
+                            <Title>Mr</Title>
+                            <FamilyName>Parent</FamilyName>
+                            <GivenName>Parent</GivenName>
+                            <MiddleName>212</MiddleName>
+                            <PreferredFamilyName>Parent</PreferredFamilyName>
+                            <PreferredGivenName>Parent</PreferredGivenName>
+                            <FullName>Mr Parent 212 Parent</FullName>
+                        </ParentName>
+                        <AddressSameAsStudent>Y</AddressSameAsStudent>
+                        <ParentAddress Type="0123" Role="012B">
+                            <Street>
+                                <Line1>212Parent Address Street</Line1>
+                            </Street>
+                            <City>Perth</City>
+                            <StateProvince>WA</StateProvince>
+                            <PostalCode>6000</PostalCode>
+                            <GridLocation>
+                                <Latitude>-31.952693</Latitude>
+                                <Longitude>115.871971</Longitude>
+                            </GridLocation>
+                        </ParentAddress>
+                    </Parent2>
+                </AddressCollectionStudent>
+                <AddressCollectionStudent>
+                    <LocalId>S202022</LocalId>
+                    <EducationLevel>Secondary</EducationLevel>
+                    <BoardingStatus>D</BoardingStatus>
+                    <ReportingParent2>N</ReportingParent2>
+                    <StudentAddress Type="0123" Role="012B">
+                        <Street>
+                            <Line1>22 Student Address Street</Line1>
+                        </Street>
+                        <City>Perth</City>
+                        <StateProvince>WA</StateProvince>
+                        <PostalCode>6000</PostalCode>
+                        <GridLocation>
+                            <Latitude>-31.952693</Latitude>
+                            <Longitude>115.871971</Longitude>
+                        </GridLocation>
+                    </StudentAddress>
+                    <Parent1>
+                        <ParentName Type="LGL">
+                            <Title>Mr</Title>
+                            <FamilyName>Parent</FamilyName>
+                            <GivenName>Parent</GivenName>
+                            <MiddleName>221</MiddleName>
+                            <PreferredFamilyName>Parent</PreferredFamilyName>
+                            <PreferredGivenName>Parent</PreferredGivenName>
+                            <FullName>Mr Parent 221 Parent</FullName>
+                        </ParentName>
+                        <AddressSameAsStudent>Y</AddressSameAsStudent>
+                        <ParentAddress Type="0123" Role="012B">
+                            <Street>
+                                <Line1>221Parent Address Street</Line1>
+                            </Street>
+                            <City>Perth</City>
+                            <StateProvince>WA</StateProvince>
+                            <PostalCode>6000</PostalCode>
+                            <GridLocation>
+                                <Latitude>-31.952693</Latitude>
+                                <Longitude>115.871971</Longitude>
+                            </GridLocation>
+                            <StatisticalAreas>
+                                <StatisticalArea SpatialUnitType="SpatialUnit">SA1</StatisticalArea>
+                                <StatisticalArea SpatialUnitType="SpatialUnit">SA2</StatisticalArea>
+                            </StatisticalAreas>
+                        </ParentAddress>
+                    </Parent1>
+                    <Parent2>
+                        <ParentName Type="LGL">
+                            <Title>Mr</Title>
+                            <FamilyName>Parent</FamilyName>
+                            <GivenName>Parent</GivenName>
+                            <MiddleName>222</MiddleName>
+                            <PreferredFamilyName>Parent</PreferredFamilyName>
+                            <PreferredGivenName>Parent</PreferredGivenName>
+                            <FullName>Mr Parent 222 Parent</FullName>
+                        </ParentName>
+                        <AddressSameAsStudent>Y</AddressSameAsStudent>
+                        <ParentAddress Type="0123" Role="012B">
+                            <Street>
+                                <Line1>222Parent Address Street</Line1>
+                            </Street>
+                            <City>Perth</City>
+                            <StateProvince>WA</StateProvince>
+                            <PostalCode>6000</PostalCode>
+                            <GridLocation>
+                                <Latitude>-31.952693</Latitude>
+                                <Longitude>115.871971</Longitude>
+                            </GridLocation>
+                        </ParentAddress>
+                    </Parent2>
+                </AddressCollectionStudent>
+                <AddressCollectionStudent>
+                    <LocalId>S202023</LocalId>
+                    <EducationLevel>Secondary</EducationLevel>
+                    <BoardingStatus>D</BoardingStatus>
+                    <ReportingParent2>N</ReportingParent2>
+                    <StudentAddress Type="0123" Role="012B">
+                        <Street>
+                            <Line1>23 Student Address Street</Line1>
+                        </Street>
+                        <City>Perth</City>
+                        <StateProvince>WA</StateProvince>
+                        <PostalCode>6000</PostalCode>
+                        <GridLocation>
+                            <Latitude>-31.952693</Latitude>
+                            <Longitude>115.871971</Longitude>
+                        </GridLocation>
+                    </StudentAddress>
+                    <Parent1>
+                        <ParentName Type="LGL">
+                            <Title>Mr</Title>
+                            <FamilyName>Parent</FamilyName>
+                            <GivenName>Parent</GivenName>
+                            <MiddleName>231</MiddleName>
+                            <PreferredFamilyName>Parent</PreferredFamilyName>
+                            <PreferredGivenName>Parent</PreferredGivenName>
+                            <FullName>Mr Parent 231 Parent</FullName>
+                        </ParentName>
+                        <AddressSameAsStudent>Y</AddressSameAsStudent>
+                        <ParentAddress Type="0123" Role="012B">
+                            <Street>
+                                <Line1>231Parent Address Street</Line1>
+                            </Street>
+                            <City>Perth</City>
+                            <StateProvince>WA</StateProvince>
+                            <PostalCode>6000</PostalCode>
+                            <GridLocation>
+                                <Latitude>-31.952693</Latitude>
+                                <Longitude>115.871971</Longitude>
+                            </GridLocation>
+                            <StatisticalAreas>
+                                <StatisticalArea SpatialUnitType="SpatialUnit">SA1</StatisticalArea>
+                                <StatisticalArea SpatialUnitType="SpatialUnit">SA2</StatisticalArea>
+                            </StatisticalAreas>
+                        </ParentAddress>
+                    </Parent1>
+                    <Parent2>
+                        <ParentName Type="LGL">
+                            <Title>Mr</Title>
+                            <FamilyName>Parent</FamilyName>
+                            <GivenName>Parent</GivenName>
+                            <MiddleName>232</MiddleName>
+                            <PreferredFamilyName>Parent</PreferredFamilyName>
+                            <PreferredGivenName>Parent</PreferredGivenName>
+                            <FullName>Mr Parent 232 Parent</FullName>
+                        </ParentName>
+                        <AddressSameAsStudent>Y</AddressSameAsStudent>
+                        <ParentAddress Type="0123" Role="012B">
+                            <Street>
+                                <Line1>232Parent Address Street</Line1>
+                            </Street>
+                            <City>Perth</City>
+                            <StateProvince>WA</StateProvince>
+                            <PostalCode>6000</PostalCode>
+                            <GridLocation>
+                                <Latitude>-31.952693</Latitude>
+                                <Longitude>115.871971</Longitude>
+                            </GridLocation>
+                        </ParentAddress>
+                    </Parent2>
+                </AddressCollectionStudent>
+                <AddressCollectionStudent>
+                    <LocalId>S202024</LocalId>
+                    <EducationLevel>Secondary</EducationLevel>
+                    <BoardingStatus>D</BoardingStatus>
+                    <ReportingParent2>N</ReportingParent2>
+                    <StudentAddress Type="0123" Role="012B">
+                        <Street>
+                            <Line1>24 Student Address Street</Line1>
+                        </Street>
+                        <City>Perth</City>
+                        <StateProvince>WA</StateProvince>
+                        <PostalCode>6000</PostalCode>
+                        <GridLocation>
+                            <Latitude>-31.952693</Latitude>
+                            <Longitude>115.871971</Longitude>
+                        </GridLocation>
+                    </StudentAddress>
+                    <Parent1>
+                        <ParentName Type="LGL">
+                            <Title>Mr</Title>
+                            <FamilyName>Parent</FamilyName>
+                            <GivenName>Parent</GivenName>
+                            <MiddleName>241</MiddleName>
+                            <PreferredFamilyName>Parent</PreferredFamilyName>
+                            <PreferredGivenName>Parent</PreferredGivenName>
+                            <FullName>Mr Parent 241 Parent</FullName>
+                        </ParentName>
+                        <AddressSameAsStudent>Y</AddressSameAsStudent>
+                        <ParentAddress Type="0123" Role="012B">
+                            <Street>
+                                <Line1>241Parent Address Street</Line1>
+                            </Street>
+                            <City>Perth</City>
+                            <StateProvince>WA</StateProvince>
+                            <PostalCode>6000</PostalCode>
+                            <GridLocation>
+                                <Latitude>-31.952693</Latitude>
+                                <Longitude>115.871971</Longitude>
+                            </GridLocation>
+                            <StatisticalAreas>
+                                <StatisticalArea SpatialUnitType="SpatialUnit">SA1</StatisticalArea>
+                                <StatisticalArea SpatialUnitType="SpatialUnit">SA2</StatisticalArea>
+                            </StatisticalAreas>
+                        </ParentAddress>
+                    </Parent1>
+                    <Parent2>
+                        <ParentName Type="LGL">
+                            <Title>Mr</Title>
+                            <FamilyName>Parent</FamilyName>
+                            <GivenName>Parent</GivenName>
+                            <MiddleName>242</MiddleName>
+                            <PreferredFamilyName>Parent</PreferredFamilyName>
+                            <PreferredGivenName>Parent</PreferredGivenName>
+                            <FullName>Mr Parent 242 Parent</FullName>
+                        </ParentName>
+                        <AddressSameAsStudent>Y</AddressSameAsStudent>
+                        <ParentAddress Type="0123" Role="012B">
+                            <Street>
+                                <Line1>242Parent Address Street</Line1>
+                            </Street>
+                            <City>Perth</City>
+                            <StateProvince>WA</StateProvince>
+                            <PostalCode>6000</PostalCode>
+                            <GridLocation>
+                                <Latitude>-31.952693</Latitude>
+                                <Longitude>115.871971</Longitude>
+                            </GridLocation>
+                        </ParentAddress>
+                    </Parent2>
+                </AddressCollectionStudent>
+                <AddressCollectionStudent>
+                    <LocalId>S202025</LocalId>
+                    <EducationLevel>Secondary</EducationLevel>
+                    <BoardingStatus>D</BoardingStatus>
+                    <ReportingParent2>N</ReportingParent2>
+                    <StudentAddress Type="0123" Role="012B">
+                        <Street>
+                            <Line1>25 Student Address Street</Line1>
+                        </Street>
+                        <City>Perth</City>
+                        <StateProvince>WA</StateProvince>
+                        <PostalCode>6000</PostalCode>
+                        <GridLocation>
+                            <Latitude>-31.952693</Latitude>
+                            <Longitude>115.871971</Longitude>
+                        </GridLocation>
+                    </StudentAddress>
+                    <Parent1>
+                        <ParentName Type="LGL">
+                            <Title>Mr</Title>
+                            <FamilyName>Parent</FamilyName>
+                            <GivenName>Parent</GivenName>
+                            <MiddleName>251</MiddleName>
+                            <PreferredFamilyName>Parent</PreferredFamilyName>
+                            <PreferredGivenName>Parent</PreferredGivenName>
+                            <FullName>Mr Parent 251 Parent</FullName>
+                        </ParentName>
+                        <AddressSameAsStudent>Y</AddressSameAsStudent>
+                        <ParentAddress Type="0123" Role="012B">
+                            <Street>
+                                <Line1>251Parent Address Street</Line1>
+                            </Street>
+                            <City>Perth</City>
+                            <StateProvince>WA</StateProvince>
+                            <PostalCode>6000</PostalCode>
+                            <GridLocation>
+                                <Latitude>-31.952693</Latitude>
+                                <Longitude>115.871971</Longitude>
+                            </GridLocation>
+                            <StatisticalAreas>
+                                <StatisticalArea SpatialUnitType="SpatialUnit">SA1</StatisticalArea>
+                                <StatisticalArea SpatialUnitType="SpatialUnit">SA2</StatisticalArea>
+                            </StatisticalAreas>
+                        </ParentAddress>
+                    </Parent1>
+                    <Parent2>
+                        <ParentName Type="LGL">
+                            <Title>Mr</Title>
+                            <FamilyName>Parent</FamilyName>
+                            <GivenName>Parent</GivenName>
+                            <MiddleName>252</MiddleName>
+                            <PreferredFamilyName>Parent</PreferredFamilyName>
+                            <PreferredGivenName>Parent</PreferredGivenName>
+                            <FullName>Mr Parent 252 Parent</FullName>
+                        </ParentName>
+                        <AddressSameAsStudent>Y</AddressSameAsStudent>
+                        <ParentAddress Type="0123" Role="012B">
+                            <Street>
+                                <Line1>252Parent Address Street</Line1>
+                            </Street>
+                            <City>Perth</City>
+                            <StateProvince>WA</StateProvince>
+                            <PostalCode>6000</PostalCode>
+                            <GridLocation>
+                                <Latitude>-31.952693</Latitude>
+                                <Longitude>115.871971</Longitude>
+                            </GridLocation>
+                        </ParentAddress>
+                    </Parent2>
+                </AddressCollectionStudent>
+            </AddressCollectionStudentList>
+        </AddressCollectionReporting>
+        <AddressCollectionReporting>
+            <EntityLevel>EL-3</EntityLevel>
+            <SchoolInfoRefId>252159ce-e385-4dea-8440-26d300282781</SchoolInfoRefId>
+            <LocalId>LocalId3</LocalId>
+            <StateProvinceId>StateId3</StateProvinceId>
+            <CommonwealthId>CWID-3</CommonwealthId>
+            <ACARAId>48116</ACARAId>
+            <EntityName>Bens Test State High School</EntityName>
+            <EntityContact>
+                <Name Type="LGL">
+                    <Title>Ms</Title>
+                    <FamilyName>Person</FamilyName>
+                    <GivenName>Entity</GivenName>
+                    <MiddleName>Contact</MiddleName>
+                    <PreferredFamilyName>Person</PreferredFamilyName>
+                    <PreferredGivenName>Entity</PreferredGivenName>
+                    <FullName>Ms Entity Contact Person</FullName>
+                </Name>
+                <PositionTitle>Registrar</PositionTitle>
+                <Role>Role</Role>
+                <RegistrationDetails>Registration Details</RegistrationDetails>
+                <Qualifications>Qualifications</Qualifications>
+                <Address Type="0123" Role="012B">
+                    <Street>
+                        <Line1>Entity Contact Address</Line1>
+                        <Line2>145 Some Street</Line2>
+                    </Street>
+                    <City>Perth</City>
+                    <StateProvince>WA</StateProvince>
+                    <PostalCode>6000</PostalCode>
+                    <GridLocation>
+                        <Latitude>-31.952693</Latitude>
+                        <Longitude>115.871971</Longitude>
+                    </GridLocation>
+                </Address>
+                <Email Type="06">entity.contact@not.a.real.domain</Email>
+                <PhoneNumber Type="0096">
+                    <Number>(123) 456 7890</Number>
+                </PhoneNumber>
+            </EntityContact>
+            <AGContextualQuestionList>
+                <AGContextualQuestion>
+                    <AGContextCode>AC001</AGContextCode>
+                    <AGAnswer>Answer 3 1</AGAnswer>
+                </AGContextualQuestion>
+                <AGContextualQuestion>
+                    <AGContextCode>AC001</AGContextCode>
+                    <AGAnswer>Answer 3 2</AGAnswer>
+                </AGContextualQuestion>
+                <AGContextualQuestion>
+                    <AGContextCode>AC001</AGContextCode>
+                    <AGAnswer>Answer 3 3</AGAnswer>
+                </AGContextualQuestion>
+                <AGContextualQuestion>
+                    <AGContextCode>AC001</AGContextCode>
+                    <AGAnswer>Answer 3 4</AGAnswer>
+                </AGContextualQuestion>
+                <AGContextualQuestion>
+                    <AGContextCode>AC001</AGContextCode>
+                    <AGAnswer>Answer 3 5</AGAnswer>
+                </AGContextualQuestion>
+            </AGContextualQuestionList>
+            <AddressCollectionStudentList>
+                <AddressCollectionStudent>
+                    <LocalId>S202031</LocalId>
+                    <EducationLevel>Secondary</EducationLevel>
+                    <BoardingStatus>D</BoardingStatus>
+                    <ReportingParent2>N</ReportingParent2>
+                    <StudentAddress Type="0123" Role="012B">
+                        <Street>
+                            <Line1>31 Student Address Street</Line1>
+                        </Street>
+                        <City>Perth</City>
+                        <StateProvince>WA</StateProvince>
+                        <PostalCode>6000</PostalCode>
+                        <GridLocation>
+                            <Latitude>-31.952693</Latitude>
+                            <Longitude>115.871971</Longitude>
+                        </GridLocation>
+                    </StudentAddress>
+                    <Parent1>
+                        <ParentName Type="LGL">
+                            <Title>Mr</Title>
+                            <FamilyName>Parent</FamilyName>
+                            <GivenName>Parent</GivenName>
+                            <MiddleName>311</MiddleName>
+                            <PreferredFamilyName>Parent</PreferredFamilyName>
+                            <PreferredGivenName>Parent</PreferredGivenName>
+                            <FullName>Mr Parent 311 Parent</FullName>
+                        </ParentName>
+                        <AddressSameAsStudent>Y</AddressSameAsStudent>
+                        <ParentAddress Type="0123" Role="012B">
+                            <Street>
+                                <Line1>311Parent Address Street</Line1>
+                            </Street>
+                            <City>Perth</City>
+                            <StateProvince>WA</StateProvince>
+                            <PostalCode>6000</PostalCode>
+                            <GridLocation>
+                                <Latitude>-31.952693</Latitude>
+                                <Longitude>115.871971</Longitude>
+                            </GridLocation>
+                            <StatisticalAreas>
+                                <StatisticalArea SpatialUnitType="SpatialUnit">SA1</StatisticalArea>
+                                <StatisticalArea SpatialUnitType="SpatialUnit">SA2</StatisticalArea>
+                            </StatisticalAreas>
+                        </ParentAddress>
+                    </Parent1>
+                    <Parent2>
+                        <ParentName Type="LGL">
+                            <Title>Mr</Title>
+                            <FamilyName>Parent</FamilyName>
+                            <GivenName>Parent</GivenName>
+                            <MiddleName>312</MiddleName>
+                            <PreferredFamilyName>Parent</PreferredFamilyName>
+                            <PreferredGivenName>Parent</PreferredGivenName>
+                            <FullName>Mr Parent 312 Parent</FullName>
+                        </ParentName>
+                        <AddressSameAsStudent>Y</AddressSameAsStudent>
+                        <ParentAddress Type="0123" Role="012B">
+                            <Street>
+                                <Line1>312Parent Address Street</Line1>
+                            </Street>
+                            <City>Perth</City>
+                            <StateProvince>WA</StateProvince>
+                            <PostalCode>6000</PostalCode>
+                            <GridLocation>
+                                <Latitude>-31.952693</Latitude>
+                                <Longitude>115.871971</Longitude>
+                            </GridLocation>
+                        </ParentAddress>
+                    </Parent2>
+                </AddressCollectionStudent>
+                <AddressCollectionStudent>
+                    <LocalId>S202032</LocalId>
+                    <EducationLevel>Secondary</EducationLevel>
+                    <BoardingStatus>D</BoardingStatus>
+                    <ReportingParent2>N</ReportingParent2>
+                    <StudentAddress Type="0123" Role="012B">
+                        <Street>
+                            <Line1>32 Student Address Street</Line1>
+                        </Street>
+                        <City>Perth</City>
+                        <StateProvince>WA</StateProvince>
+                        <PostalCode>6000</PostalCode>
+                        <GridLocation>
+                            <Latitude>-31.952693</Latitude>
+                            <Longitude>115.871971</Longitude>
+                        </GridLocation>
+                    </StudentAddress>
+                    <Parent1>
+                        <ParentName Type="LGL">
+                            <Title>Mr</Title>
+                            <FamilyName>Parent</FamilyName>
+                            <GivenName>Parent</GivenName>
+                            <MiddleName>321</MiddleName>
+                            <PreferredFamilyName>Parent</PreferredFamilyName>
+                            <PreferredGivenName>Parent</PreferredGivenName>
+                            <FullName>Mr Parent 321 Parent</FullName>
+                        </ParentName>
+                        <AddressSameAsStudent>Y</AddressSameAsStudent>
+                        <ParentAddress Type="0123" Role="012B">
+                            <Street>
+                                <Line1>321Parent Address Street</Line1>
+                            </Street>
+                            <City>Perth</City>
+                            <StateProvince>WA</StateProvince>
+                            <PostalCode>6000</PostalCode>
+                            <GridLocation>
+                                <Latitude>-31.952693</Latitude>
+                                <Longitude>115.871971</Longitude>
+                            </GridLocation>
+                            <StatisticalAreas>
+                                <StatisticalArea SpatialUnitType="SpatialUnit">SA1</StatisticalArea>
+                                <StatisticalArea SpatialUnitType="SpatialUnit">SA2</StatisticalArea>
+                            </StatisticalAreas>
+                        </ParentAddress>
+                    </Parent1>
+                    <Parent2>
+                        <ParentName Type="LGL">
+                            <Title>Mr</Title>
+                            <FamilyName>Parent</FamilyName>
+                            <GivenName>Parent</GivenName>
+                            <MiddleName>322</MiddleName>
+                            <PreferredFamilyName>Parent</PreferredFamilyName>
+                            <PreferredGivenName>Parent</PreferredGivenName>
+                            <FullName>Mr Parent 322 Parent</FullName>
+                        </ParentName>
+                        <AddressSameAsStudent>Y</AddressSameAsStudent>
+                        <ParentAddress Type="0123" Role="012B">
+                            <Street>
+                                <Line1>322Parent Address Street</Line1>
+                            </Street>
+                            <City>Perth</City>
+                            <StateProvince>WA</StateProvince>
+                            <PostalCode>6000</PostalCode>
+                            <GridLocation>
+                                <Latitude>-31.952693</Latitude>
+                                <Longitude>115.871971</Longitude>
+                            </GridLocation>
+                        </ParentAddress>
+                    </Parent2>
+                </AddressCollectionStudent>
+                <AddressCollectionStudent>
+                    <LocalId>S202033</LocalId>
+                    <EducationLevel>Secondary</EducationLevel>
+                    <BoardingStatus>D</BoardingStatus>
+                    <ReportingParent2>N</ReportingParent2>
+                    <StudentAddress Type="0123" Role="012B">
+                        <Street>
+                            <Line1>33 Student Address Street</Line1>
+                        </Street>
+                        <City>Perth</City>
+                        <StateProvince>WA</StateProvince>
+                        <PostalCode>6000</PostalCode>
+                        <GridLocation>
+                            <Latitude>-31.952693</Latitude>
+                            <Longitude>115.871971</Longitude>
+                        </GridLocation>
+                    </StudentAddress>
+                    <Parent1>
+                        <ParentName Type="LGL">
+                            <Title>Mr</Title>
+                            <FamilyName>Parent</FamilyName>
+                            <GivenName>Parent</GivenName>
+                            <MiddleName>331</MiddleName>
+                            <PreferredFamilyName>Parent</PreferredFamilyName>
+                            <PreferredGivenName>Parent</PreferredGivenName>
+                            <FullName>Mr Parent 331 Parent</FullName>
+                        </ParentName>
+                        <AddressSameAsStudent>Y</AddressSameAsStudent>
+                        <ParentAddress Type="0123" Role="012B">
+                            <Street>
+                                <Line1>331Parent Address Street</Line1>
+                            </Street>
+                            <City>Perth</City>
+                            <StateProvince>WA</StateProvince>
+                            <PostalCode>6000</PostalCode>
+                            <GridLocation>
+                                <Latitude>-31.952693</Latitude>
+                                <Longitude>115.871971</Longitude>
+                            </GridLocation>
+                            <StatisticalAreas>
+                                <StatisticalArea SpatialUnitType="SpatialUnit">SA1</StatisticalArea>
+                                <StatisticalArea SpatialUnitType="SpatialUnit">SA2</StatisticalArea>
+                            </StatisticalAreas>
+                        </ParentAddress>
+                    </Parent1>
+                    <Parent2>
+                        <ParentName Type="LGL">
+                            <Title>Mr</Title>
+                            <FamilyName>Parent</FamilyName>
+                            <GivenName>Parent</GivenName>
+                            <MiddleName>332</MiddleName>
+                            <PreferredFamilyName>Parent</PreferredFamilyName>
+                            <PreferredGivenName>Parent</PreferredGivenName>
+                            <FullName>Mr Parent 332 Parent</FullName>
+                        </ParentName>
+                        <AddressSameAsStudent>Y</AddressSameAsStudent>
+                        <ParentAddress Type="0123" Role="012B">
+                            <Street>
+                                <Line1>332Parent Address Street</Line1>
+                            </Street>
+                            <City>Perth</City>
+                            <StateProvince>WA</StateProvince>
+                            <PostalCode>6000</PostalCode>
+                            <GridLocation>
+                                <Latitude>-31.952693</Latitude>
+                                <Longitude>115.871971</Longitude>
+                            </GridLocation>
+                        </ParentAddress>
+                    </Parent2>
+                </AddressCollectionStudent>
+                <AddressCollectionStudent>
+                    <LocalId>S202034</LocalId>
+                    <EducationLevel>Secondary</EducationLevel>
+                    <BoardingStatus>D</BoardingStatus>
+                    <ReportingParent2>N</ReportingParent2>
+                    <StudentAddress Type="0123" Role="012B">
+                        <Street>
+                            <Line1>34 Student Address Street</Line1>
+                        </Street>
+                        <City>Perth</City>
+                        <StateProvince>WA</StateProvince>
+                        <PostalCode>6000</PostalCode>
+                        <GridLocation>
+                            <Latitude>-31.952693</Latitude>
+                            <Longitude>115.871971</Longitude>
+                        </GridLocation>
+                    </StudentAddress>
+                    <Parent1>
+                        <ParentName Type="LGL">
+                            <Title>Mr</Title>
+                            <FamilyName>Parent</FamilyName>
+                            <GivenName>Parent</GivenName>
+                            <MiddleName>341</MiddleName>
+                            <PreferredFamilyName>Parent</PreferredFamilyName>
+                            <PreferredGivenName>Parent</PreferredGivenName>
+                            <FullName>Mr Parent 341 Parent</FullName>
+                        </ParentName>
+                        <AddressSameAsStudent>Y</AddressSameAsStudent>
+                        <ParentAddress Type="0123" Role="012B">
+                            <Street>
+                                <Line1>341Parent Address Street</Line1>
+                            </Street>
+                            <City>Perth</City>
+                            <StateProvince>WA</StateProvince>
+                            <PostalCode>6000</PostalCode>
+                            <GridLocation>
+                                <Latitude>-31.952693</Latitude>
+                                <Longitude>115.871971</Longitude>
+                            </GridLocation>
+                            <StatisticalAreas>
+                                <StatisticalArea SpatialUnitType="SpatialUnit">SA1</StatisticalArea>
+                                <StatisticalArea SpatialUnitType="SpatialUnit">SA2</StatisticalArea>
+                            </StatisticalAreas>
+                        </ParentAddress>
+                    </Parent1>
+                    <Parent2>
+                        <ParentName Type="LGL">
+                            <Title>Mr</Title>
+                            <FamilyName>Parent</FamilyName>
+                            <GivenName>Parent</GivenName>
+                            <MiddleName>342</MiddleName>
+                            <PreferredFamilyName>Parent</PreferredFamilyName>
+                            <PreferredGivenName>Parent</PreferredGivenName>
+                            <FullName>Mr Parent 342 Parent</FullName>
+                        </ParentName>
+                        <AddressSameAsStudent>Y</AddressSameAsStudent>
+                        <ParentAddress Type="0123" Role="012B">
+                            <Street>
+                                <Line1>342Parent Address Street</Line1>
+                            </Street>
+                            <City>Perth</City>
+                            <StateProvince>WA</StateProvince>
+                            <PostalCode>6000</PostalCode>
+                            <GridLocation>
+                                <Latitude>-31.952693</Latitude>
+                                <Longitude>115.871971</Longitude>
+                            </GridLocation>
+                        </ParentAddress>
+                    </Parent2>
+                </AddressCollectionStudent>
+                <AddressCollectionStudent>
+                    <LocalId>S202035</LocalId>
+                    <EducationLevel>Secondary</EducationLevel>
+                    <BoardingStatus>D</BoardingStatus>
+                    <ReportingParent2>N</ReportingParent2>
+                    <StudentAddress Type="0123" Role="012B">
+                        <Street>
+                            <Line1>35 Student Address Street</Line1>
+                        </Street>
+                        <City>Perth</City>
+                        <StateProvince>WA</StateProvince>
+                        <PostalCode>6000</PostalCode>
+                        <GridLocation>
+                            <Latitude>-31.952693</Latitude>
+                            <Longitude>115.871971</Longitude>
+                        </GridLocation>
+                    </StudentAddress>
+                    <Parent1>
+                        <ParentName Type="LGL">
+                            <Title>Mr</Title>
+                            <FamilyName>Parent</FamilyName>
+                            <GivenName>Parent</GivenName>
+                            <MiddleName>351</MiddleName>
+                            <PreferredFamilyName>Parent</PreferredFamilyName>
+                            <PreferredGivenName>Parent</PreferredGivenName>
+                            <FullName>Mr Parent 351 Parent</FullName>
+                        </ParentName>
+                        <AddressSameAsStudent>Y</AddressSameAsStudent>
+                        <ParentAddress Type="0123" Role="012B">
+                            <Street>
+                                <Line1>351Parent Address Street</Line1>
+                            </Street>
+                            <City>Perth</City>
+                            <StateProvince>WA</StateProvince>
+                            <PostalCode>6000</PostalCode>
+                            <GridLocation>
+                                <Latitude>-31.952693</Latitude>
+                                <Longitude>115.871971</Longitude>
+                            </GridLocation>
+                            <StatisticalAreas>
+                                <StatisticalArea SpatialUnitType="SpatialUnit">SA1</StatisticalArea>
+                                <StatisticalArea SpatialUnitType="SpatialUnit">SA2</StatisticalArea>
+                            </StatisticalAreas>
+                        </ParentAddress>
+                    </Parent1>
+                    <Parent2>
+                        <ParentName Type="LGL">
+                            <Title>Mr</Title>
+                            <FamilyName>Parent</FamilyName>
+                            <GivenName>Parent</GivenName>
+                            <MiddleName>352</MiddleName>
+                            <PreferredFamilyName>Parent</PreferredFamilyName>
+                            <PreferredGivenName>Parent</PreferredGivenName>
+                            <FullName>Mr Parent 352 Parent</FullName>
+                        </ParentName>
+                        <AddressSameAsStudent>Y</AddressSameAsStudent>
+                        <ParentAddress Type="0123" Role="012B">
+                            <Street>
+                                <Line1>352Parent Address Street</Line1>
+                            </Street>
+                            <City>Perth</City>
+                            <StateProvince>WA</StateProvince>
+                            <PostalCode>6000</PostalCode>
+                            <GridLocation>
+                                <Latitude>-31.952693</Latitude>
+                                <Longitude>115.871971</Longitude>
+                            </GridLocation>
+                        </ParentAddress>
+                    </Parent2>
+                </AddressCollectionStudent>
+            </AddressCollectionStudentList>
+        </AddressCollectionReporting>
+        <AddressCollectionReporting>
+            <EntityLevel>EL-4</EntityLevel>
+            <SchoolInfoRefId>252159ce-e385-4dea-8440-26d300282781</SchoolInfoRefId>
+            <LocalId>LocalId4</LocalId>
+            <StateProvinceId>StateId4</StateProvinceId>
+            <CommonwealthId>CWID-4</CommonwealthId>
+            <ACARAId>48116</ACARAId>
+            <EntityName>Bens Test State High School</EntityName>
+            <EntityContact>
+                <Name Type="LGL">
+                    <Title>Ms</Title>
+                    <FamilyName>Person</FamilyName>
+                    <GivenName>Entity</GivenName>
+                    <MiddleName>Contact</MiddleName>
+                    <PreferredFamilyName>Person</PreferredFamilyName>
+                    <PreferredGivenName>Entity</PreferredGivenName>
+                    <FullName>Ms Entity Contact Person</FullName>
+                </Name>
+                <PositionTitle>Registrar</PositionTitle>
+                <Role>Role</Role>
+                <RegistrationDetails>Registration Details</RegistrationDetails>
+                <Qualifications>Qualifications</Qualifications>
+                <Address Type="0123" Role="012B">
+                    <Street>
+                        <Line1>Entity Contact Address</Line1>
+                        <Line2>145 Some Street</Line2>
+                    </Street>
+                    <City>Perth</City>
+                    <StateProvince>WA</StateProvince>
+                    <PostalCode>6000</PostalCode>
+                    <GridLocation>
+                        <Latitude>-31.952693</Latitude>
+                        <Longitude>115.871971</Longitude>
+                    </GridLocation>
+                </Address>
+                <Email Type="06">entity.contact@not.a.real.domain</Email>
+                <PhoneNumber Type="0096">
+                    <Number>(123) 456 7890</Number>
+                </PhoneNumber>
+            </EntityContact>
+            <AGContextualQuestionList>
+                <AGContextualQuestion>
+                    <AGContextCode>AC001</AGContextCode>
+                    <AGAnswer>Answer 4 1</AGAnswer>
+                </AGContextualQuestion>
+                <AGContextualQuestion>
+                    <AGContextCode>AC001</AGContextCode>
+                    <AGAnswer>Answer 4 2</AGAnswer>
+                </AGContextualQuestion>
+                <AGContextualQuestion>
+                    <AGContextCode>AC001</AGContextCode>
+                    <AGAnswer>Answer 4 3</AGAnswer>
+                </AGContextualQuestion>
+                <AGContextualQuestion>
+                    <AGContextCode>AC001</AGContextCode>
+                    <AGAnswer>Answer 4 4</AGAnswer>
+                </AGContextualQuestion>
+                <AGContextualQuestion>
+                    <AGContextCode>AC001</AGContextCode>
+                    <AGAnswer>Answer 4 5</AGAnswer>
+                </AGContextualQuestion>
+            </AGContextualQuestionList>
+            <AddressCollectionStudentList>
+                <AddressCollectionStudent>
+                    <LocalId>S202041</LocalId>
+                    <EducationLevel>Secondary</EducationLevel>
+                    <BoardingStatus>D</BoardingStatus>
+                    <ReportingParent2>N</ReportingParent2>
+                    <StudentAddress Type="0123" Role="012B">
+                        <Street>
+                            <Line1>41 Student Address Street</Line1>
+                        </Street>
+                        <City>Perth</City>
+                        <StateProvince>WA</StateProvince>
+                        <PostalCode>6000</PostalCode>
+                        <GridLocation>
+                            <Latitude>-31.952693</Latitude>
+                            <Longitude>115.871971</Longitude>
+                        </GridLocation>
+                    </StudentAddress>
+                    <Parent1>
+                        <ParentName Type="LGL">
+                            <Title>Mr</Title>
+                            <FamilyName>Parent</FamilyName>
+                            <GivenName>Parent</GivenName>
+                            <MiddleName>411</MiddleName>
+                            <PreferredFamilyName>Parent</PreferredFamilyName>
+                            <PreferredGivenName>Parent</PreferredGivenName>
+                            <FullName>Mr Parent 411 Parent</FullName>
+                        </ParentName>
+                        <AddressSameAsStudent>Y</AddressSameAsStudent>
+                        <ParentAddress Type="0123" Role="012B">
+                            <Street>
+                                <Line1>411Parent Address Street</Line1>
+                            </Street>
+                            <City>Perth</City>
+                            <StateProvince>WA</StateProvince>
+                            <PostalCode>6000</PostalCode>
+                            <GridLocation>
+                                <Latitude>-31.952693</Latitude>
+                                <Longitude>115.871971</Longitude>
+                            </GridLocation>
+                            <StatisticalAreas>
+                                <StatisticalArea SpatialUnitType="SpatialUnit">SA1</StatisticalArea>
+                                <StatisticalArea SpatialUnitType="SpatialUnit">SA2</StatisticalArea>
+                            </StatisticalAreas>
+                        </ParentAddress>
+                    </Parent1>
+                    <Parent2>
+                        <ParentName Type="LGL">
+                            <Title>Mr</Title>
+                            <FamilyName>Parent</FamilyName>
+                            <GivenName>Parent</GivenName>
+                            <MiddleName>412</MiddleName>
+                            <PreferredFamilyName>Parent</PreferredFamilyName>
+                            <PreferredGivenName>Parent</PreferredGivenName>
+                            <FullName>Mr Parent 412 Parent</FullName>
+                        </ParentName>
+                        <AddressSameAsStudent>Y</AddressSameAsStudent>
+                        <ParentAddress Type="0123" Role="012B">
+                            <Street>
+                                <Line1>412Parent Address Street</Line1>
+                            </Street>
+                            <City>Perth</City>
+                            <StateProvince>WA</StateProvince>
+                            <PostalCode>6000</PostalCode>
+                            <GridLocation>
+                                <Latitude>-31.952693</Latitude>
+                                <Longitude>115.871971</Longitude>
+                            </GridLocation>
+                        </ParentAddress>
+                    </Parent2>
+                </AddressCollectionStudent>
+                <AddressCollectionStudent>
+                    <LocalId>S202042</LocalId>
+                    <EducationLevel>Secondary</EducationLevel>
+                    <BoardingStatus>D</BoardingStatus>
+                    <ReportingParent2>N</ReportingParent2>
+                    <StudentAddress Type="0123" Role="012B">
+                        <Street>
+                            <Line1>42 Student Address Street</Line1>
+                        </Street>
+                        <City>Perth</City>
+                        <StateProvince>WA</StateProvince>
+                        <PostalCode>6000</PostalCode>
+                        <GridLocation>
+                            <Latitude>-31.952693</Latitude>
+                            <Longitude>115.871971</Longitude>
+                        </GridLocation>
+                    </StudentAddress>
+                    <Parent1>
+                        <ParentName Type="LGL">
+                            <Title>Mr</Title>
+                            <FamilyName>Parent</FamilyName>
+                            <GivenName>Parent</GivenName>
+                            <MiddleName>421</MiddleName>
+                            <PreferredFamilyName>Parent</PreferredFamilyName>
+                            <PreferredGivenName>Parent</PreferredGivenName>
+                            <FullName>Mr Parent 421 Parent</FullName>
+                        </ParentName>
+                        <AddressSameAsStudent>Y</AddressSameAsStudent>
+                        <ParentAddress Type="0123" Role="012B">
+                            <Street>
+                                <Line1>421Parent Address Street</Line1>
+                            </Street>
+                            <City>Perth</City>
+                            <StateProvince>WA</StateProvince>
+                            <PostalCode>6000</PostalCode>
+                            <GridLocation>
+                                <Latitude>-31.952693</Latitude>
+                                <Longitude>115.871971</Longitude>
+                            </GridLocation>
+                            <StatisticalAreas>
+                                <StatisticalArea SpatialUnitType="SpatialUnit">SA1</StatisticalArea>
+                                <StatisticalArea SpatialUnitType="SpatialUnit">SA2</StatisticalArea>
+                            </StatisticalAreas>
+                        </ParentAddress>
+                    </Parent1>
+                    <Parent2>
+                        <ParentName Type="LGL">
+                            <Title>Mr</Title>
+                            <FamilyName>Parent</FamilyName>
+                            <GivenName>Parent</GivenName>
+                            <MiddleName>422</MiddleName>
+                            <PreferredFamilyName>Parent</PreferredFamilyName>
+                            <PreferredGivenName>Parent</PreferredGivenName>
+                            <FullName>Mr Parent 422 Parent</FullName>
+                        </ParentName>
+                        <AddressSameAsStudent>Y</AddressSameAsStudent>
+                        <ParentAddress Type="0123" Role="012B">
+                            <Street>
+                                <Line1>422Parent Address Street</Line1>
+                            </Street>
+                            <City>Perth</City>
+                            <StateProvince>WA</StateProvince>
+                            <PostalCode>6000</PostalCode>
+                            <GridLocation>
+                                <Latitude>-31.952693</Latitude>
+                                <Longitude>115.871971</Longitude>
+                            </GridLocation>
+                        </ParentAddress>
+                    </Parent2>
+                </AddressCollectionStudent>
+                <AddressCollectionStudent>
+                    <LocalId>S202043</LocalId>
+                    <EducationLevel>Secondary</EducationLevel>
+                    <BoardingStatus>D</BoardingStatus>
+                    <ReportingParent2>N</ReportingParent2>
+                    <StudentAddress Type="0123" Role="012B">
+                        <Street>
+                            <Line1>43 Student Address Street</Line1>
+                        </Street>
+                        <City>Perth</City>
+                        <StateProvince>WA</StateProvince>
+                        <PostalCode>6000</PostalCode>
+                        <GridLocation>
+                            <Latitude>-31.952693</Latitude>
+                            <Longitude>115.871971</Longitude>
+                        </GridLocation>
+                    </StudentAddress>
+                    <Parent1>
+                        <ParentName Type="LGL">
+                            <Title>Mr</Title>
+                            <FamilyName>Parent</FamilyName>
+                            <GivenName>Parent</GivenName>
+                            <MiddleName>431</MiddleName>
+                            <PreferredFamilyName>Parent</PreferredFamilyName>
+                            <PreferredGivenName>Parent</PreferredGivenName>
+                            <FullName>Mr Parent 431 Parent</FullName>
+                        </ParentName>
+                        <AddressSameAsStudent>Y</AddressSameAsStudent>
+                        <ParentAddress Type="0123" Role="012B">
+                            <Street>
+                                <Line1>431Parent Address Street</Line1>
+                            </Street>
+                            <City>Perth</City>
+                            <StateProvince>WA</StateProvince>
+                            <PostalCode>6000</PostalCode>
+                            <GridLocation>
+                                <Latitude>-31.952693</Latitude>
+                                <Longitude>115.871971</Longitude>
+                            </GridLocation>
+                            <StatisticalAreas>
+                                <StatisticalArea SpatialUnitType="SpatialUnit">SA1</StatisticalArea>
+                                <StatisticalArea SpatialUnitType="SpatialUnit">SA2</StatisticalArea>
+                            </StatisticalAreas>
+                        </ParentAddress>
+                    </Parent1>
+                    <Parent2>
+                        <ParentName Type="LGL">
+                            <Title>Mr</Title>
+                            <FamilyName>Parent</FamilyName>
+                            <GivenName>Parent</GivenName>
+                            <MiddleName>432</MiddleName>
+                            <PreferredFamilyName>Parent</PreferredFamilyName>
+                            <PreferredGivenName>Parent</PreferredGivenName>
+                            <FullName>Mr Parent 432 Parent</FullName>
+                        </ParentName>
+                        <AddressSameAsStudent>Y</AddressSameAsStudent>
+                        <ParentAddress Type="0123" Role="012B">
+                            <Street>
+                                <Line1>432Parent Address Street</Line1>
+                            </Street>
+                            <City>Perth</City>
+                            <StateProvince>WA</StateProvince>
+                            <PostalCode>6000</PostalCode>
+                            <GridLocation>
+                                <Latitude>-31.952693</Latitude>
+                                <Longitude>115.871971</Longitude>
+                            </GridLocation>
+                        </ParentAddress>
+                    </Parent2>
+                </AddressCollectionStudent>
+                <AddressCollectionStudent>
+                    <LocalId>S202044</LocalId>
+                    <EducationLevel>Secondary</EducationLevel>
+                    <BoardingStatus>D</BoardingStatus>
+                    <ReportingParent2>N</ReportingParent2>
+                    <StudentAddress Type="0123" Role="012B">
+                        <Street>
+                            <Line1>44 Student Address Street</Line1>
+                        </Street>
+                        <City>Perth</City>
+                        <StateProvince>WA</StateProvince>
+                        <PostalCode>6000</PostalCode>
+                        <GridLocation>
+                            <Latitude>-31.952693</Latitude>
+                            <Longitude>115.871971</Longitude>
+                        </GridLocation>
+                    </StudentAddress>
+                    <Parent1>
+                        <ParentName Type="LGL">
+                            <Title>Mr</Title>
+                            <FamilyName>Parent</FamilyName>
+                            <GivenName>Parent</GivenName>
+                            <MiddleName>441</MiddleName>
+                            <PreferredFamilyName>Parent</PreferredFamilyName>
+                            <PreferredGivenName>Parent</PreferredGivenName>
+                            <FullName>Mr Parent 441 Parent</FullName>
+                        </ParentName>
+                        <AddressSameAsStudent>Y</AddressSameAsStudent>
+                        <ParentAddress Type="0123" Role="012B">
+                            <Street>
+                                <Line1>441Parent Address Street</Line1>
+                            </Street>
+                            <City>Perth</City>
+                            <StateProvince>WA</StateProvince>
+                            <PostalCode>6000</PostalCode>
+                            <GridLocation>
+                                <Latitude>-31.952693</Latitude>
+                                <Longitude>115.871971</Longitude>
+                            </GridLocation>
+                            <StatisticalAreas>
+                                <StatisticalArea SpatialUnitType="SpatialUnit">SA1</StatisticalArea>
+                                <StatisticalArea SpatialUnitType="SpatialUnit">SA2</StatisticalArea>
+                            </StatisticalAreas>
+                        </ParentAddress>
+                    </Parent1>
+                    <Parent2>
+                        <ParentName Type="LGL">
+                            <Title>Mr</Title>
+                            <FamilyName>Parent</FamilyName>
+                            <GivenName>Parent</GivenName>
+                            <MiddleName>442</MiddleName>
+                            <PreferredFamilyName>Parent</PreferredFamilyName>
+                            <PreferredGivenName>Parent</PreferredGivenName>
+                            <FullName>Mr Parent 442 Parent</FullName>
+                        </ParentName>
+                        <AddressSameAsStudent>Y</AddressSameAsStudent>
+                        <ParentAddress Type="0123" Role="012B">
+                            <Street>
+                                <Line1>442Parent Address Street</Line1>
+                            </Street>
+                            <City>Perth</City>
+                            <StateProvince>WA</StateProvince>
+                            <PostalCode>6000</PostalCode>
+                            <GridLocation>
+                                <Latitude>-31.952693</Latitude>
+                                <Longitude>115.871971</Longitude>
+                            </GridLocation>
+                        </ParentAddress>
+                    </Parent2>
+                </AddressCollectionStudent>
+                <AddressCollectionStudent>
+                    <LocalId>S202045</LocalId>
+                    <EducationLevel>Secondary</EducationLevel>
+                    <BoardingStatus>D</BoardingStatus>
+                    <ReportingParent2>N</ReportingParent2>
+                    <StudentAddress Type="0123" Role="012B">
+                        <Street>
+                            <Line1>45 Student Address Street</Line1>
+                        </Street>
+                        <City>Perth</City>
+                        <StateProvince>WA</StateProvince>
+                        <PostalCode>6000</PostalCode>
+                        <GridLocation>
+                            <Latitude>-31.952693</Latitude>
+                            <Longitude>115.871971</Longitude>
+                        </GridLocation>
+                    </StudentAddress>
+                    <Parent1>
+                        <ParentName Type="LGL">
+                            <Title>Mr</Title>
+                            <FamilyName>Parent</FamilyName>
+                            <GivenName>Parent</GivenName>
+                            <MiddleName>451</MiddleName>
+                            <PreferredFamilyName>Parent</PreferredFamilyName>
+                            <PreferredGivenName>Parent</PreferredGivenName>
+                            <FullName>Mr Parent 451 Parent</FullName>
+                        </ParentName>
+                        <AddressSameAsStudent>Y</AddressSameAsStudent>
+                        <ParentAddress Type="0123" Role="012B">
+                            <Street>
+                                <Line1>451Parent Address Street</Line1>
+                            </Street>
+                            <City>Perth</City>
+                            <StateProvince>WA</StateProvince>
+                            <PostalCode>6000</PostalCode>
+                            <GridLocation>
+                                <Latitude>-31.952693</Latitude>
+                                <Longitude>115.871971</Longitude>
+                            </GridLocation>
+                            <StatisticalAreas>
+                                <StatisticalArea SpatialUnitType="SpatialUnit">SA1</StatisticalArea>
+                                <StatisticalArea SpatialUnitType="SpatialUnit">SA2</StatisticalArea>
+                            </StatisticalAreas>
+                        </ParentAddress>
+                    </Parent1>
+                    <Parent2>
+                        <ParentName Type="LGL">
+                            <Title>Mr</Title>
+                            <FamilyName>Parent</FamilyName>
+                            <GivenName>Parent</GivenName>
+                            <MiddleName>452</MiddleName>
+                            <PreferredFamilyName>Parent</PreferredFamilyName>
+                            <PreferredGivenName>Parent</PreferredGivenName>
+                            <FullName>Mr Parent 452 Parent</FullName>
+                        </ParentName>
+                        <AddressSameAsStudent>Y</AddressSameAsStudent>
+                        <ParentAddress Type="0123" Role="012B">
+                            <Street>
+                                <Line1>452Parent Address Street</Line1>
+                            </Street>
+                            <City>Perth</City>
+                            <StateProvince>WA</StateProvince>
+                            <PostalCode>6000</PostalCode>
+                            <GridLocation>
+                                <Latitude>-31.952693</Latitude>
+                                <Longitude>115.871971</Longitude>
+                            </GridLocation>
+                        </ParentAddress>
+                    </Parent2>
+                </AddressCollectionStudent>
+            </AddressCollectionStudentList>
+        </AddressCollectionReporting>
+    </AddressCollectionReportingList>
+</AddressCollection>

@@ -11,7 +11,7 @@ public class AddressAGContextualQuestion extends BaseAGContextualQuestion {
 	private AddressCollectionReporting addressCollectionReporting;
 
 	@ManyToOne
-	@JoinColumn(name = "AddressCollectionReporting_Id")
+	@JoinColumn(name = "AddressCR_Id")
 	public AddressCollectionReporting getAddressCollectionReporting() {
 		return addressCollectionReporting;
 	}

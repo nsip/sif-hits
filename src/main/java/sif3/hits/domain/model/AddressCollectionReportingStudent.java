@@ -38,7 +38,7 @@ public class AddressCollectionReportingStudent extends HitsEntity {
 	}
 
 	@ManyToOne
-	@JoinColumn(name = "AddressCollectionReporting_Id")
+	@JoinColumn(name = "AddressCR_Id")
 	public AddressCollectionReporting getAddressCollectionReporting() {
 		return addressCollectionReporting;
 	}

@@ -31,7 +31,7 @@ public class FQReportingEntityContactConverter extends BaseEntityContactConverte
 			IObjectFactory objectFactory = getObjectFactory();
 			target.setName(nameConverter.toSifModel(source.getName()));
 			target.setAddress(
-					objectFactory.createContactInfoTypeAddress(addressConverter.toSifModel(source.getAddress())));
+					objectFactory.createEntityContactInfoTypeAddress(addressConverter.toSifModel(source.getAddress())));
 		}
 	}
 

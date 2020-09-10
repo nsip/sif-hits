@@ -19,6 +19,7 @@ public class BaseNameOfRecord extends HitsEntity {
 	private String preferredGivenName;
 	private String suffix;
 	private String fullName;
+	private String nameType;
 
 	@Id
 	@GeneratedValue
@@ -108,6 +109,14 @@ public class BaseNameOfRecord extends HitsEntity {
 
 	public void setFullName(String fullName) {
 		this.fullName = fullName;
+	}
+
+	public String getNameType() {
+		return nameType;
+	}
+
+	public void setNameType(String nameType) {
+		this.nameType = nameType;
 	}
 
 }

@@ -18,4 +18,17 @@ public abstract class BaseNameOfRecordConverter<H extends BaseNameOfRecord>
 		}
 		return result;
 	}
+	
+	@Override
+	public void toSifModel(H source, NameOfRecordType target) {
+		super.toSifModel(source, target);
+		target.setType(source.getNameType());
+	}
+
+	@Override
+	public void toHitsModel(NameOfRecordType source, H target) {
+		super.toHitsModel(source, target);
+		target.setNameType(source.getType());
+	}
+
 }

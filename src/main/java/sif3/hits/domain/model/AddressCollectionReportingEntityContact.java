@@ -21,7 +21,7 @@ public class AddressCollectionReportingEntityContact extends BaseEntityContact {
 	private List<AddressCollectionReportingEntityContactAddress> addresses;
 
 	@ManyToOne
-	@JoinColumn(name = "AddressCollectionReporting_Id")
+	@JoinColumn(name = "AddressCR_Id")
 	public AddressCollectionReporting getAddressCollectionReporting() {
 		return addressCollectionReporting;
 	}

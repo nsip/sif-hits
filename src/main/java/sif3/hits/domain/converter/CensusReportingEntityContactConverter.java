@@ -30,7 +30,7 @@ public class CensusReportingEntityContactConverter extends BaseEntityContactConv
             super.toSifModel(source, target);
             IObjectFactory objectFactory = getObjectFactory();
             target.setName(nameConverter.toSifModel(source.getName()));
-            target.setAddress(objectFactory.createContactInfoTypeAddress(addressConverter.toSifModel(source.getAddress())));
+            target.setAddress(objectFactory.createEntityContactInfoTypeAddress(addressConverter.toSifModel(source.getAddress())));
         }
     }
 

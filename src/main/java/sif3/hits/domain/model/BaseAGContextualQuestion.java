@@ -1,5 +1,6 @@
 package sif3.hits.domain.model;
 
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
 
@@ -12,6 +13,7 @@ public abstract class BaseAGContextualQuestion extends HitsEntity {
 	private String answer;
 
 	@Id
+	@GeneratedValue
 	public Long getId() {
 		return id;
 	}
