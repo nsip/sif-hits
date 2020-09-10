@@ -8,7 +8,7 @@
     </SoftwareVendorInfo>
     <AddressCollectionReportingList>
         <AddressCollectionReporting>
-            <EntityLevel>EL-1</EntityLevel>
+            <EntityLevel>System</EntityLevel>
             <SchoolInfoRefId>252159ce-e385-4dea-8440-26d300282781</SchoolInfoRefId>
             <LocalId>LocalId1</LocalId>
             <StateProvinceId>StateId1</StateProvinceId>
@@ -423,7 +423,7 @@
             </AddressCollectionStudentList>
         </AddressCollectionReporting>
         <AddressCollectionReporting>
-            <EntityLevel>EL-2</EntityLevel>
+            <EntityLevel>System</EntityLevel>
             <SchoolInfoRefId>252159ce-e385-4dea-8440-26d300282781</SchoolInfoRefId>
             <LocalId>LocalId2</LocalId>
             <StateProvinceId>StateId2</StateProvinceId>
@@ -838,7 +838,7 @@
             </AddressCollectionStudentList>
         </AddressCollectionReporting>
         <AddressCollectionReporting>
-            <EntityLevel>EL-3</EntityLevel>
+            <EntityLevel>System</EntityLevel>
             <SchoolInfoRefId>252159ce-e385-4dea-8440-26d300282781</SchoolInfoRefId>
             <LocalId>LocalId3</LocalId>
             <StateProvinceId>StateId3</StateProvinceId>
@@ -1253,7 +1253,7 @@
             </AddressCollectionStudentList>
         </AddressCollectionReporting>
         <AddressCollectionReporting>
-            <EntityLevel>EL-4</EntityLevel>
+            <EntityLevel>System</EntityLevel>
             <SchoolInfoRefId>252159ce-e385-4dea-8440-26d300282781</SchoolInfoRefId>
             <LocalId>LocalId4</LocalId>
             <StateProvinceId>StateId4</StateProvinceId>

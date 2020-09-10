@@ -95,6 +95,7 @@ public class CensusReporting {
 		entityContacts.clear();
 		if (entityContact != null) {
 			entityContacts.add(entityContact);
+			entityContact.setCensusReporting(this);
 		}
 	}
 

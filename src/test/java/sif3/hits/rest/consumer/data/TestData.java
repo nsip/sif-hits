@@ -14,6 +14,7 @@ import sif.dd.au30.model.AUCodeSetsAddressRoleType;
 import sif.dd.au30.model.AUCodeSetsAddressTypeType;
 import sif.dd.au30.model.AUCodeSetsEmailTypeType;
 import sif.dd.au30.model.AUCodeSetsTelephoneNumberTypeType;
+import sif.dd.au30.model.AUCodeSetsYearLevelCodeType;
 import sif.dd.au30.model.AddressStreetType;
 import sif.dd.au30.model.AddressType;
 import sif.dd.au30.model.BaseNameType;
@@ -28,6 +29,8 @@ import sif.dd.au30.model.SoftwareVendorInfoContainerType;
 import sif.dd.au30.model.StatisticalAreaType;
 import sif.dd.au30.model.StatisticalAreasType;
 import sif.dd.au30.model.WellbeingDocumentType;
+import sif.dd.au30.model.YearLevelType;
+import sif.dd.au30.model.OtherCodeListType.OtherCode;
 import sif3.common.model.QueryCriteria;
 import sif3.hits.domain.converter.factory.IObjectFactory;
 import sif3.hits.domain.converter.factory.ObjectFactory;
@@ -222,6 +225,14 @@ public abstract class TestData<T, C> implements UsesConstants {
 		localCode.setLocalisedCode("Code" + index);
 		return localCode;
 	}
+	
+	protected YearLevelType getYearLevel(int i) {
+		IObjectFactory objectFactory = getObjectFactory();
+		YearLevelType yearLevel = objectFactory.createYearLevelType();
+		yearLevel.setCode(AUCodeSetsYearLevelCodeType.fromValue("" + i));
+		return yearLevel;
+	}
+
 
 	protected EntityContactInfoType getEntityContact() {
 		IObjectFactory objectFactory = getObjectFactory();
@@ -240,6 +251,14 @@ public abstract class TestData<T, C> implements UsesConstants {
 		entityContactInfoType.setEmail(getEmail("entity.contact@not.a.real.domain"));
 		entityContactInfoType.setPhoneNumber(getPhoneNumber("(123) 456 7890"));
 		return entityContactInfoType;
+	}
+	
+	protected OtherCode getOtherCode(String code) {
+		IObjectFactory objectFactory = getObjectFactory();
+		OtherCode otherCode = objectFactory.createOtherCodeListTypeOtherCode();
+		otherCode.setValue(code);
+		otherCode.setCodeset("Local");
+		return otherCode;
 	}
 
 	protected static IObjectFactory getObjectFactory() {

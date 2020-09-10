@@ -69,7 +69,7 @@ public class AddressCollectionTestData extends TestData<AddressCollectionType, A
 		AddressCollectionReportingType addressCollectionReportingType = objectFactory
 				.createAddressCollectionReportingType();
 		addressCollectionReportingType
-				.setEntityLevel(objectFactory.createAddressCollectionReportingTypeEntityLevel("EL-" + index));
+				.setEntityLevel(objectFactory.createAddressCollectionReportingTypeEntityLevel("System"));
 		addressCollectionReportingType.setSchoolInfoRefId(
 				objectFactory.createAddressCollectionReportingTypeSchoolInfoRefId(SchoolInfoTestData.REF_ID_1));
 		addressCollectionReportingType
