@@ -46,6 +46,11 @@ public class SchoolCourseInfoConsumerTest extends BaseTest<SchoolCourseInfoType,
 	}
 
 	@Override
+	public void setRefId(SchoolCourseInfoType object, String refId) {
+		object.setRefId(refId);
+	}
+
+	@Override
 	public List<SchoolCourseInfoType> getCollectionList(SchoolCourseInfoCollectionType collection) {
 		return Optional.ofNullable(collection).map(SchoolCourseInfoCollectionType::getSchoolCourseInfo)
 				.orElse(new ArrayList<>());
@@ -67,6 +72,12 @@ public class SchoolCourseInfoConsumerTest extends BaseTest<SchoolCourseInfoType,
 	@Category(IntegrationTest.class)
 	public void testUpdateSingle() {
 		super.testUpdateSingle();
+	}
+
+	@Test
+	@Category(IntegrationTest.class)
+	public void testFullUpdate() {
+		super.testFullUpdate();
 	}
 
 	@Test

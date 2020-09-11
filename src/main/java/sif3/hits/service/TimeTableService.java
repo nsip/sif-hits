@@ -2,6 +2,7 @@ package sif3.hits.service;
 
 import java.util.List;
 
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Service;
@@ -69,7 +70,7 @@ public class TimeTableService extends BaseService<TimeTableType, TimeTableCollec
   @Override
   protected TimeTable saveWithChildObjects(TimeTable hitsObject, RequestDTO<TimeTableType> dto, String zoneId, boolean create) {
     SchoolInfo schoolInfo = schoolInfoFilterDAO.findOneWithZone(hitsObject.getSchoolInfoRefId(), zoneId);
-    if (schoolInfo == null) {
+    if (schoolInfo == null && StringUtils.isNotBlank(hitsObject.getSchoolInfoRefId())) {
       throw new RuntimeException("SchoolInfo not found.");
     }
     hitsObject.setSchoolInfo(schoolInfo);

@@ -21,7 +21,7 @@ public class StudentAttendanceCollectionReportingEntityContact extends BaseEntit
 	private List<StudentAttendanceCollectionReportingEntityContactAddress> addresses;
 
 	@ManyToOne
-	@JoinColumn(name = "StudentAttendanceCollectionReporting_Id")
+	@JoinColumn(name = "StudentAttendanceCR_Id")
 	public StudentAttendanceCollectionReporting getStudentAttendanceCollectionReporting() {
 		return studentAttendanceCollectionReporting;
 	}

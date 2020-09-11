@@ -45,6 +45,11 @@ public class TermInfoConsumerTest extends BaseTest<TermInfoType, TermInfoCollect
 	}
 
 	@Override
+	public void setRefId(TermInfoType object, String refId) {
+		object.setRefId(refId);
+	}
+
+	@Override
 	public int getCollectionSize(TermInfoCollectionType collection) {
 		return Optional.ofNullable(collection).map(TermInfoCollectionType::getTermInfo).map(List::size).orElse(-1);
 	}
@@ -64,6 +69,12 @@ public class TermInfoConsumerTest extends BaseTest<TermInfoType, TermInfoCollect
 	@Category(IntegrationTest.class)
 	public void testUpdateSingle() {
 		super.testUpdateSingle();
+	}
+
+	@Test
+	@Category(IntegrationTest.class)
+	public void testFullUpdate() {
+		super.testFullUpdate();
 	}
 
 	@Test

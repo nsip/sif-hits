@@ -82,7 +82,7 @@ public class StudentAttendanceCollectionConverter
 			SoftwareVendorInfoContainerType softwareVendorInfoContainerType = getSoftwareVendorInfo(
 					source.getSoftwareVendorInfo());
 			target.setSoftwareProduct(softwareVendorInfoContainerType.getSoftwareProduct());
-			target.setSoftwareProduct(softwareVendorInfoContainerType.getSoftwareVersion());
+			target.setSoftwareVersion(softwareVendorInfoContainerType.getSoftwareVersion());
 
 			if (target.getLocalCodeList() == null) {
 				target.setLocalCodeList(new ArrayList<>());
