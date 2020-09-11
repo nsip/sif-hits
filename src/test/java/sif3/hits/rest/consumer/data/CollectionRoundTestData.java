@@ -3,8 +3,12 @@ package sif3.hits.rest.consumer.data;
 import java.util.Arrays;
 import java.util.List;
 
+import sif.dd.au30.model.AGRoundListType;
+import sif.dd.au30.model.AGRoundType;
+import sif.dd.au30.model.AUCodeSetsAGCollectionType;
 import sif.dd.au30.model.CollectionRoundCollectionType;
 import sif.dd.au30.model.CollectionRoundType;
+import sif.dd.au30.model.LocalCodeListType;
 import sif3.hits.domain.converter.factory.IObjectFactory;
 import sif3.hits.utils.RefIdGenerator;
 
@@ -32,10 +36,37 @@ public class CollectionRoundTestData extends TestData<CollectionRoundType,Collec
         CollectionRoundType collectionRound = new CollectionRoundType();
         collectionRound.setRefId(refId);
         
+        collectionRound.setAGCollection(objectFactory.createCollectionRoundTypeAGCollection(AUCodeSetsAGCollectionType.fromValue("SES")));
+		collectionRound.setCollectionYear(getDate("2020"));
+
+		AGRoundListType agRoundListType = objectFactory.createAGRoundListType();
+		for (int i = 1; i < 6; i++) {
+			agRoundListType.getAGRound().add(getAGRound(i));
+		}
+		collectionRound.setAGRoundList(agRoundListType);
+
+		LocalCodeListType collectionRoundLocalCodeListType = objectFactory.createLocalCodeListType();
+		for (int i = 1; i < 6; i++) {
+			collectionRoundLocalCodeListType.getLocalCode().add(getLocalCode(i));
+		}
+		collectionRound.setLocalCodeList(
+				objectFactory.createCollectionRoundTypeLocalCodeList(collectionRoundLocalCodeListType));
+        
         return collectionRound;
     }
 
-    public String getRefId(int index) {
+    private AGRoundType getAGRound(int i) {
+    	IObjectFactory objectFactory = getObjectFactory();
+    	AGRoundType agRoundType = objectFactory.createAGRoundType();
+    	agRoundType.setRoundCode("RC-" + i );
+    	agRoundType.setRoundName("Round " + i);
+    	agRoundType.setStartDate(getDate("2020-01-01"));
+    	agRoundType.setDueDate(getDate("2020-07-31"));
+    	agRoundType.setEndDate(getDate("2020-06-30"));
+		return agRoundType;
+	}
+
+	public String getRefId(int index) {
         String result = null;
         if (index >= 0 && index < REF_ID_RA.length) {
             result = REF_ID_RA[index];
