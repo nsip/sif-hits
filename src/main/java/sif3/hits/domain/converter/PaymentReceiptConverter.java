@@ -150,6 +150,9 @@ public class PaymentReceiptConverter extends HitsConverter<PaymentReceiptType, P
 			if (receivedAmount != null) {
 				target.setReceivedAmount(getBigDecimalValue(receivedAmount.getValue()));
 				target.setReceivedAmountType(receivedAmount.getType());
+			} else {
+				target.setReceivedAmount(null);
+				target.setReceivedAmountType(null);
 			}
 
 			target.setReceivedTransactionId(source.getReceivedTransactionId());
@@ -157,6 +160,8 @@ public class PaymentReceiptConverter extends HitsConverter<PaymentReceiptType, P
 			MonetaryAmountType monetaryAmountType = getJAXBValue(source.getTaxAmount());
 			if (monetaryAmountType != null) {
 				target.setTaxAmount(getBigDecimalValue(monetaryAmountType.getValue()));
+			} else {
+				target.setTaxAmount(null);
 			}
 
 			target.setTaxRate(getBigDecimalValue(getJAXBValue(source.getTaxRate())));

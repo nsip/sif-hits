@@ -42,11 +42,14 @@ public class InvoiceConverter extends HitsConverter<InvoiceType, Invoice> implem
 			target.setBillingDate(getDateValue(source.getBillingDate()));
 			target.setTransactionDescription(source.getTransactionDescription());
 
-			DebitOrCreditAmountType billedAmount = objectFactory.createDebitOrCreditAmountType();
-			billedAmount.setValue(getBigDecimalValue(source.getBilledAmount()));
-			billedAmount.setType(source.getBilledAmountType());
-			billedAmount.setCurrency(DEFAULT_CURRENCY_ENUM);
-			target.setBilledAmount(billedAmount);
+			if (StringUtils.isNotBlank(source.getBilledAmount())
+					|| StringUtils.isNotBlank(source.getBilledAmountType())) {
+				DebitOrCreditAmountType billedAmount = objectFactory.createDebitOrCreditAmountType();
+				billedAmount.setValue(getBigDecimalValue(source.getBilledAmount()));
+				billedAmount.setType(source.getBilledAmountType());
+				billedAmount.setCurrency(DEFAULT_CURRENCY_ENUM);
+				target.setBilledAmount(billedAmount);
+			}
 
 			target.setLedger(source.getLedger());
 			target.setChargedLocationInfoRefId(
@@ -96,6 +99,9 @@ public class InvoiceConverter extends HitsConverter<InvoiceType, Invoice> implem
 			if (source.getInvoicedEntity() != null) {
 				target.setInvoicedEntity(source.getInvoicedEntity().getValue());
 				target.setInvoicedEntitySIFRefObject(source.getInvoicedEntity().getSIFRefObject());
+			} else {
+				target.setInvoicedEntity(null);
+				target.setInvoicedEntitySIFRefObject(null);
 			}
 			target.setLocalId(getJAXBValue(source.getLocalId()));
 			target.setBillingDate(getDateValue(source.getBillingDate()));
@@ -104,6 +110,9 @@ public class InvoiceConverter extends HitsConverter<InvoiceType, Invoice> implem
 			if (source.getBilledAmount() != null) {
 				target.setBilledAmount(getBigDecimalValue(source.getBilledAmount().getValue()));
 				target.setBilledAmountType(source.getBilledAmount().getType());
+			} else {
+				target.setBilledAmount(null);
+				target.setBilledAmountType(null);
 			}
 
 			target.setLedger(source.getLedger());
@@ -114,6 +123,8 @@ public class InvoiceConverter extends HitsConverter<InvoiceType, Invoice> implem
 			MonetaryAmountType taxAmount = getJAXBValue(source.getTaxAmount());
 			if (taxAmount != null) {
 				target.setTaxAmount(getBigDecimalValue(taxAmount.getValue()));
+			} else {
+				target.setTaxAmount(null);
 			}
 
 			target.setCreatedBy(getJAXBValue(source.getCreatedBy()));

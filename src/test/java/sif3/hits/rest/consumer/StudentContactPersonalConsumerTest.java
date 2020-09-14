@@ -78,7 +78,7 @@ public class StudentContactPersonalConsumerTest
 	@Test
 	@Category(IntegrationTest.class)
 	public void testFullUpdate() {
-		super.testFullUpdate();
+		super.testFullUpdate(false);
 	}
 
 	@Test

@@ -75,7 +75,7 @@ public class VendorInfoConsumerTest extends BaseTest<VendorInfoType, VendorInfoC
 	@Test
 	@Category(IntegrationTest.class)
 	public void testFullUpdate() {
-		super.testFullUpdate();
+		super.testFullUpdate(false);
 	}
 
 	@Test

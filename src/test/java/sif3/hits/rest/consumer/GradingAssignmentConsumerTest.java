@@ -77,7 +77,7 @@ public class GradingAssignmentConsumerTest extends BaseTest<GradingAssignmentTyp
 	@Test
 	@Category(IntegrationTest.class)
 	public void testFullUpdate() {
-		super.testFullUpdate();
+		super.testFullUpdate(false);
 	}
 
 	@Test

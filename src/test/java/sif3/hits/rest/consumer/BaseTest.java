@@ -86,28 +86,49 @@ public abstract class BaseTest<T, C> {
 	}
 
 	protected void testFullUpdate() {
+		testFullUpdate(true);
+	}
+	
+	protected void testFullUpdate(boolean empty) {
 		ConsumerTest<T, C> tester = getTester();
 		TestData<T, C> testData = getTestData();
 		String refId = testData.getRefId(Integer.MAX_VALUE);
+		
+		try {
+			T emptyObject = tester.getEmptyObject();
+			T filledObject = testData.getTestObject(1);
 
-		T testObject = tester.getEmptyObject();
-		setRefId(testObject, refId);
-		tester.doCreateOne(testObject);
-
-		testObject = testData.getTestObject(1);
-		setRefId(testObject, refId);
-		tester.doUpdateOne(testObject, refId);
-
-		String xmlExpectedFrom = getXML(testObject);
-
-		List<Response> getResponses = tester.testGetSingle(refId);
-		T newObject = getSingleObject(getResponses);
-
-		tester.testDeleteOne(refId);
-
-		Assert.assertEquals("RefId mismatch", refId, getRefId(newObject));
-		String xmlExpectedTo = getXML(newObject);
-		sameObject(xmlExpectedFrom, xmlExpectedTo);
+			setRefId(emptyObject, refId);
+			setRefId(filledObject, refId);
+			
+			String xmlEmptyObject = getXML(emptyObject);
+			String xmlFilledObject = getXML(filledObject);
+			
+			tester.doCreateOne(emptyObject);
+			tester.doUpdateOne(filledObject, refId);
+	
+			List<Response> filledResponse = tester.testGetSingle(refId);
+			T newFilledObject = getSingleObject(filledResponse);
+			String xmlFilledUpdate = getXML(newFilledObject);
+			
+			tester.doUpdateOne(emptyObject, refId);
+	
+			List<Response> emptyResponse = tester.testGetSingle(refId);
+			T newEmptyObject = getSingleObject(emptyResponse);
+			String xmlEmptyUpdate = getXML(newEmptyObject);
+			
+			tester.testDeleteOne(refId);
+			
+			sameObject(xmlFilledObject, xmlFilledUpdate);
+			
+			if (empty) {
+				sameObject(xmlEmptyObject, xmlEmptyUpdate);
+			}
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		} finally {
+			tester.testDeleteOne(refId);
+		}
 	}
 
 	protected void testCreateUpdateDeleteSingle(T initialObject, T updatedObject) {

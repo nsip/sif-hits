@@ -88,7 +88,7 @@ public class TeachingGroupConsumerTest extends BaseTest<TeachingGroupType, Teach
 	@Test
 	@Category(IntegrationTest.class)
 	public void testFullUpdate() {
-		super.testFullUpdate();
+		super.testFullUpdate(false);
 	}
 
 	@Test

@@ -56,12 +56,14 @@ public class DebtorConverter extends HitsConverter<DebtorType, Debtor> {
 		if (source != null && target != null) {
 			target.setRefId(source.getRefId());
 			target.setLocalId(getJAXBValue(source.getLocalId()));
+			target.setBilledEntity(null);
+			target.setBilledEntitySIFRefObject(null);
 			if (source.getBilledEntity() != null) {
 				if (StringUtils.isNotBlank(source.getBilledEntity().getValue())
 						&& StringUtils.isNotBlank(source.getBilledEntity().getSIFRefObject())) {
 					target.setBilledEntity(source.getBilledEntity().getValue());
 					target.setBilledEntitySIFRefObject(source.getBilledEntity().getSIFRefObject());
-				}
+				}				
 			}
 			target.setBillingName(getJAXBValue(source.getBillingName()));
 			target.setBillingNote(getJAXBValue(source.getBillingNote()));

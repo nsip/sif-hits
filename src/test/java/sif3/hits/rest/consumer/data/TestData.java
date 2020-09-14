@@ -8,29 +8,33 @@ import java.util.List;
 
 import javax.xml.datatype.DatatypeConfigurationException;
 import javax.xml.datatype.DatatypeFactory;
+import javax.xml.datatype.Duration;
 import javax.xml.datatype.XMLGregorianCalendar;
 
 import sif.dd.au30.model.AUCodeSetsAddressRoleType;
 import sif.dd.au30.model.AUCodeSetsAddressTypeType;
+import sif.dd.au30.model.AUCodeSetsElectronicIdTypeType;
 import sif.dd.au30.model.AUCodeSetsEmailTypeType;
 import sif.dd.au30.model.AUCodeSetsTelephoneNumberTypeType;
 import sif.dd.au30.model.AUCodeSetsYearLevelCodeType;
 import sif.dd.au30.model.AddressStreetType;
 import sif.dd.au30.model.AddressType;
 import sif.dd.au30.model.BaseNameType;
+import sif.dd.au30.model.ElectronicIdType;
 import sif.dd.au30.model.EmailType;
 import sif.dd.au30.model.EntityContactInfoType;
 import sif.dd.au30.model.GridLocationType;
 import sif.dd.au30.model.LocalCodeType;
+import sif.dd.au30.model.MonetaryAmountType;
 import sif.dd.au30.model.NameOfRecordType;
 import sif.dd.au30.model.NameType;
+import sif.dd.au30.model.OtherCodeListType.OtherCode;
 import sif.dd.au30.model.PhoneNumberType;
 import sif.dd.au30.model.SoftwareVendorInfoContainerType;
 import sif.dd.au30.model.StatisticalAreaType;
 import sif.dd.au30.model.StatisticalAreasType;
 import sif.dd.au30.model.WellbeingDocumentType;
 import sif.dd.au30.model.YearLevelType;
-import sif.dd.au30.model.OtherCodeListType.OtherCode;
 import sif3.common.model.QueryCriteria;
 import sif3.hits.domain.converter.factory.IObjectFactory;
 import sif3.hits.domain.converter.factory.ObjectFactory;
@@ -87,6 +91,17 @@ public abstract class TestData<T, C> implements UsesConstants {
 		}
 		return result;
 	}
+	
+
+	protected static Duration getDurationDays(int days) {
+		Duration result = null;
+		try {
+			result = DatatypeFactory.newInstance().newDuration(days * 24 * 60 * 60 * 1000);
+		} catch (DatatypeConfigurationException e) {
+			e.printStackTrace();
+		}
+		return result;
+	}
 
 	protected static Calendar getCalendar(String date) {
 		XMLGregorianCalendar xmlCal = getDate(date);
@@ -104,16 +119,21 @@ public abstract class TestData<T, C> implements UsesConstants {
 		getAddress(address, streetNumber, street, true);
 		return address;
 	}
-	
+
 	public static void addStatAreas(AddressType address, int count) {
 		IObjectFactory objectFactory = getObjectFactory();
 		StatisticalAreasType statisticalAreasType = objectFactory.createStatisticalAreasType();
 		for (int i = 0; i < count; i++) {
 			StatisticalAreaType statisticalAreaType = objectFactory.createStatisticalAreaType();
 			statisticalAreaType.setSpatialUnitType("SpatialUnit");
-			statisticalAreaType.setValue("SA" + (i+1));
+			statisticalAreaType.setValue("SA" + (i + 1));
 			statisticalAreasType.getStatisticalArea().add(statisticalAreaType);
-			address.setStatisticalAreas(objectFactory.createAddressTypeStatisticalAreas(statisticalAreasType)); // ensures only set if count > 0
+			address.setStatisticalAreas(objectFactory.createAddressTypeStatisticalAreas(statisticalAreasType)); // ensures
+																												// only
+																												// set
+																												// if
+																												// count
+																												// > 0
 		}
 	}
 
@@ -207,6 +227,13 @@ public abstract class TestData<T, C> implements UsesConstants {
 				.createWellbeingDocumentTypeDocumentDescription("Plan document " + index + " for student 12345678."));
 		return wellbeingDocument;
 	}
+	
+	protected ElectronicIdType getElectronicId(String string) {
+		ElectronicIdType electronicIdType = new ElectronicIdType();
+		electronicIdType.setValue(string);
+		electronicIdType.setType(AUCodeSetsElectronicIdTypeType.fromValue("01"));
+		return electronicIdType;
+	}
 
 	protected SoftwareVendorInfoContainerType getSoftwareVendorInfo(String softwareProduct, String softwareVersion) {
 		SoftwareVendorInfoContainerType softwareVendorInfoContainerType = getObjectFactory()
@@ -225,14 +252,13 @@ public abstract class TestData<T, C> implements UsesConstants {
 		localCode.setLocalisedCode("Code" + index);
 		return localCode;
 	}
-	
+
 	protected YearLevelType getYearLevel(int i) {
 		IObjectFactory objectFactory = getObjectFactory();
 		YearLevelType yearLevel = objectFactory.createYearLevelType();
 		yearLevel.setCode(AUCodeSetsYearLevelCodeType.fromValue("" + i));
 		return yearLevel;
 	}
-
 
 	protected EntityContactInfoType getEntityContact() {
 		IObjectFactory objectFactory = getObjectFactory();
@@ -252,7 +278,14 @@ public abstract class TestData<T, C> implements UsesConstants {
 		entityContactInfoType.setPhoneNumber(getPhoneNumber("(123) 456 7890"));
 		return entityContactInfoType;
 	}
-	
+
+	protected MonetaryAmountType getMonetaryAmount(String string) {
+		MonetaryAmountType monetaryAmountType = new MonetaryAmountType();
+		monetaryAmountType.setValue(new BigDecimal(string));
+		monetaryAmountType.setCurrency(DEFAULT_CURRENCY_ENUM);
+		return monetaryAmountType;
+	}
+
 	protected OtherCode getOtherCode(String code) {
 		IObjectFactory objectFactory = getObjectFactory();
 		OtherCode otherCode = objectFactory.createOtherCodeListTypeOtherCode();

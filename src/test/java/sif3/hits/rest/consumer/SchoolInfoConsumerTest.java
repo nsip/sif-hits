@@ -75,7 +75,7 @@ public class SchoolInfoConsumerTest extends BaseTest<SchoolInfoType, SchoolInfoC
 	@Test
 	@Category(IntegrationTest.class)
 	public void testFullUpdate() {
-		super.testFullUpdate();
+		super.testFullUpdate(false);
 	}
 
 	@Test

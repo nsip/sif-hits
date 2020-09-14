@@ -9,7 +9,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "LibraryPatronStatus_Transaction_Fine")
+@Table(name = "LibraryPatronStatus_Transaction_FineInfo")
 public class LibraryTransactionFine extends HitsEntity {
 	private static final long serialVersionUID = 818018019564340272L;
 
