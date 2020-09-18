@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
-mvn clean package install
+mvn clean
+mvn package install
 if [[ "${1}" == "deps" ]]; then
     docker build -t sif-hits-deps -f dist/Dockerfile.deps .
 fi
