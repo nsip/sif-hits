@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 mvn clean
 mvn package install
+cp -R src/main/dist/keystores/* dist/keystores/
 if [[ "${1}" == "deps" ]]; then
     docker build -t sif-hits-deps -f dist/Dockerfile.deps .
 fi
