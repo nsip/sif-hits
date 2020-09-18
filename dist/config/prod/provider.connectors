@@ -1,2 +1,0 @@
-env.connector.url=http://hits.nsip.edu.au/SIF3InfraREST/hits
-env.connector.url.secure=https://hits.nsip.edu.au/SIF3InfraREST/hits

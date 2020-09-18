@@ -19,7 +19,7 @@ COPY dist/templates/consumer/HITS.xml /srv/sif/environments/consumer/template/HI
 COPY dist/templates/provider/HITS.xml /srv/sif/environments/provider/template/direct/HITS.xml
 COPY src/main/dist/keystores /srv/sif/keystores
 COPY dist/config/environment.properties /srv/sif/environment.properties
-COPY dist/log4j.properties /srv/sif/log4j.properties
+COPY dist/config/log4j.properties /srv/sif/log4j.properties
 COPY --from=deps /root/.m2/repository /root/.m2/repository
 WORKDIR /srv/src/sif-hits
 RUN chmod 700 /srv/src/*.sh && \
