@@ -42,7 +42,7 @@ public class CollectionStatusTestData extends TestData<CollectionStatusType, Col
 				objectFactory.createCollectionStatusTypeReportingAuthorityCommonwealthId("RACID"));
 		collectionStatus.setSubmittedBy(objectFactory.createCollectionStatusTypeSubmittedBy("Submitter"));
 		collectionStatus.setSubmissionTimestamp(
-				objectFactory.createCollectionStatusTypeSubmissionTimestamp(getCalendar("2020-06-04T16:23:30")));
+				objectFactory.createCollectionStatusTypeSubmissionTimestamp(getCalendar("2020-06-04T16:23:30Z")));
 		collectionStatus.setAGCollection(objectFactory.createCollectionStatusTypeAGCollection("SES"));
 		collectionStatus.setCollectionYear(getDate("2020"));
 		collectionStatus.setRoundCode("RoundC");

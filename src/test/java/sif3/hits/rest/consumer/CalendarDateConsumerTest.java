@@ -113,6 +113,7 @@ public class CalendarDateConsumerTest extends BaseTest<CalendarDateType, Calenda
 	@Test
 	@Category(IntegrationTest.class)
 	public void testUpdateSingleOtherCodes() {
+		logTestName("testUpdateSingleOtherCodes");
 		CalendarDateType initialObject = getSingleObjectFromXML(
 				calendarDateTester.getFileContents(testData.getSingleObjectXMLFilename()));
 		CalendarDateType updatedObject = getSingleObjectFromXML(

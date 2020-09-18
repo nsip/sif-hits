@@ -113,6 +113,7 @@ public class TimeTableSubjectConsumerTest extends BaseTest<TimeTableSubjectType,
 	@Test
 	@Category(IntegrationTest.class)
 	public void testUpdateCodes() {
+		logTestName("testUpdateCodes");
 		TimeTableSubjectType initialObject = getSingleObjectFromXML(
 				timeTableSubjectTester.getFileContents(testData.getSingleObjectXMLFilename()));
 		TimeTableSubjectType updatedObject = getSingleObjectFromXML(

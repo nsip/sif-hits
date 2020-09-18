@@ -1,0 +1,16 @@
+FROM maven:3-openjdk-8
+
+RUN mkdir -p mkdir -p /srv/src
+COPY pom.xml /srv/src/pom.xml
+COPY dist /srv/src/dist
+WORKDIR /srv/src
+RUN \
+  mvn install:install-file -Dfile=/srv/src/dist/sif3-common-${sif3.framework.version}.jar -DgroupId=sif3.framework -DartifactId=sif3-common -Dversion=${sif3.framework.version} -Dpackaging=jar && \
+  mvn install:install-file -Dfile=/srv/src/dist/sif3-infra-common-${sif3.framework.version}.jar -DgroupId=sif3.framework -DartifactId=sif3-infra-common -Dversion=${sif3.framework.version} -Dpackaging=jar  && \
+  mvn install:install-file -Dfile=/srv/src/dist/sif3-infra-model-${sif3.framework.version}.jar -DgroupId=sif3.framework -DartifactId=sif3-infra-model -Dversion=${sif3.framework.version} -Dpackaging=jar  && \
+  mvn install:install-file -Dfile=/srv/src/dist/sif3-infra-rest-${sif3.framework.version}.jar -DgroupId=sif3.framework -DartifactId=sif3-infra-rest -Dversion=${sif3.framework.version} -Dpackaging=jar  && \
+  mvn install:install-file -Dfile=/srv/src/dist/sifau-datamodel-${sif3.datamodel.version}.jar -DgroupId=sif3.datamodel -DartifactId=sifau-datamodel -Dversion=${sif3.datamodel.version} -Dpackaging=jar  && \
+  mvn de.qaware.maven:go-offline-maven-plugin:resolve-dependencies
+
+CMD []
+ENTRYPOINT []

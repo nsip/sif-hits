@@ -47,8 +47,13 @@ public abstract class BaseTest<T, C> {
 	public abstract List<T> getCollectionList(C collection);
 
 	public abstract int getCollectionSize(C collection);
+	
+	protected void logTestName(String test) {
+		L.info("Executing " + getTestData().getSingleObjectXMLFilename().replace(".xml", "") + " - " + test);
+	}
 
 	public void initialiseData() {
+		logTestName("initialiseData");
 		TestData<T, C> testData = getTestData();
 		ConsumerTest<T, C> tester = getTester();
 		for (int i = 0; i < OBJECT_COUNT; i++) {
@@ -65,6 +70,7 @@ public abstract class BaseTest<T, C> {
 	}
 
 	protected void testUpdateSingle() {
+		logTestName("testUpdateSingle");
 		ConsumerTest<T, C> tester = getTester();
 		TestData<T, C> testData = getTestData();
 		String testRefId = testData.getRefId(TEST_INDEX);
@@ -90,6 +96,7 @@ public abstract class BaseTest<T, C> {
 	}
 	
 	protected void testFullUpdate(boolean empty) {
+		logTestName("testFullUpdate");
 		ConsumerTest<T, C> tester = getTester();
 		TestData<T, C> testData = getTestData();
 		String refId = testData.getRefId(Integer.MAX_VALUE);
@@ -132,6 +139,7 @@ public abstract class BaseTest<T, C> {
 	}
 
 	protected void testCreateUpdateDeleteSingle(T initialObject, T updatedObject) {
+		logTestName("testCreateUpdateDeleteSingle");
 		ConsumerTest<T, C> tester = getTester();
 		TestData<T, C> testData = getTestData();
 
@@ -155,6 +163,7 @@ public abstract class BaseTest<T, C> {
 	}
 
 	protected void testGetSingle() {
+		logTestName("testGetSingle");
 		ConsumerTest<T, C> tester = getTester();
 		TestData<T, C> testData = getTestData();
 		String testRefId = testData.getRefId(TEST_INDEX);
@@ -165,6 +174,7 @@ public abstract class BaseTest<T, C> {
 	}
 
 	protected void testGetMany() {
+		logTestName("testGetMany");
 		int expectedRecords = 5;
 		ConsumerTest<T, C> tester = getTester();
 		TestData<T, C> testData = getTestData();
@@ -175,6 +185,7 @@ public abstract class BaseTest<T, C> {
 	}
 
 	protected void testCreateDelete(String xmlRefId) {
+		logTestName("testCreateDelete");
 		ConsumerTest<T, C> tester = getTester();
 		TestData<T, C> testData = getTestData();
 
@@ -187,6 +198,7 @@ public abstract class BaseTest<T, C> {
 	}
 
 	protected void testCreateDeleteMany(String[] xmlRefIdRa) {
+		logTestName("testCreateDeleteMany");
 		List<String> xmlRefIdList = Arrays.asList(xmlRefIdRa);
 		ConsumerTest<T, C> tester = getTester();
 		TestData<T, C> testData = getTestData();
@@ -219,6 +231,7 @@ public abstract class BaseTest<T, C> {
 
 	protected void testQBES() {
 		TestData<T, C> testData = getTestData();
+		logTestName("testQBES - " + testData.getExamplesForQuery().size());
 
 		List<T> examples = testData.getExamplesForQuery();
 		for (int i = 0; i < examples.size(); i++) {
@@ -242,6 +255,7 @@ public abstract class BaseTest<T, C> {
 
 	protected void testServicePaths() {
 		TestData<T, C> testData = getTestData();
+		logTestName("testServicePaths - " + testData.getServicePathQueries().size());
 
 		List<QueryCriteria> servicePaths = testData.getServicePathQueries();
 		for (int i = 0; i < servicePaths.size(); i++) {
@@ -407,9 +421,9 @@ public abstract class BaseTest<T, C> {
 
 	private boolean isTimestamp(String element) {
 		boolean result = false;
-		for (int i = 0; !result && i < TIMESTAMPS.size(); i++) {
-			result |= element.contains("<" + TIMESTAMPS.get(i) + ">");
-		}
+//		for (int i = 0; !result && i < TIMESTAMPS.size(); i++) {
+//			result |= element.contains("<" + TIMESTAMPS.get(i) + ">");
+//		}
 		return result;
 	}
 

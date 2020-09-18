@@ -72,7 +72,7 @@ import sif3.hits.rest.consumer.data.WellbeingResponseTestData;
 public class XMLGenerator {
 	private static final String PROJECT_PATH = "/Users/ben/Development/nsip/sif-hits";
 	private static final String XML_PATH = PROJECT_PATH + "/src/test/resources/xml";
-	private static final String CONFIG_PATH = PROJECT_PATH + "/config";
+	private static final String CONFIG_PATH = PROJECT_PATH + "/src/main/dist/config";
 	private static final String PROVIDER_PATH = PROJECT_PATH + "/src/main/java/sif3/hits/rest/provider";
 
 	public static void main(String[] args) throws MarshalException, UnsupportedMediaTypeExcpetion {

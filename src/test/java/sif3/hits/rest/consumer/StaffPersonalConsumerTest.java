@@ -121,6 +121,7 @@ public class StaffPersonalConsumerTest extends BaseTest<StaffPersonalType, Staff
 	@Test
 	@Category(IntegrationTest.class)
 	public void testDoubleByteName() {
+		logTestName("testDoubleByteName");
 		StaffPersonalType initialObject = getSingleObjectFromXML(
 				staffPersonalTester.getFileContents(testData.getSingleObjectXMLFilename()));
 		StaffPersonalType updatedObject = getSingleObjectFromXML(

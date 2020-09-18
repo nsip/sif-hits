@@ -124,6 +124,7 @@ public class StudentAttendanceTimeListConsumerTest
 	@Test
 	@Category(IntegrationTest.class)
 	public void testCreateConstraintError() {
+		logTestName("testCreateConstraintError");
 		List<Response> responses = studentAttendanceTimeListTester
 				.testGetSingle(StudentAttendanceTimeListTestData.REF_ID_1);
 		StudentAttendanceTimeListType studentAttendanceTimeList = getSingleObject(responses);
@@ -145,6 +146,7 @@ public class StudentAttendanceTimeListConsumerTest
 	@Test
 	@Category(IntegrationTest.class)
 	public void testUpdateConstraintError() throws Exception {
+		logTestName("testUpdateConstraintError");
 		StudentAttendanceTimeListType initialObject = getSingleObjectFromXML(
 				studentAttendanceTimeListTester.getFileContents(testData.getSingleObjectXMLFilename()));
 		List<Response> createResponse = studentAttendanceTimeListTester.doCreateOne(initialObject);

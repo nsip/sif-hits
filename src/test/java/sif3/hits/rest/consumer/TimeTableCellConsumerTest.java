@@ -107,6 +107,7 @@ public class TimeTableCellConsumerTest extends BaseTest<TimeTableCellType, TimeT
 	@Test
 	@Category(IntegrationTest.class)
 	public void testUpdateTeacherCover() {
+		logTestName("testUpdateTeacherCover");
 		TimeTableCellType initialObject = getSingleObjectFromXML(
 				timeTableCellTester.getFileContents(testData.getSingleObjectXMLFilename()));
 		TimeTableCellType updatedObject = getSingleObjectFromXML(

@@ -123,6 +123,7 @@ public class StudentPersonalConsumerTest extends BaseTest<StudentPersonalType, S
 	@Test
 	@Category(IntegrationTest.class)
 	public void testCreatePSIWithNullList() {
+		logTestName("testCreatePSIWithNullList");
 		StudentPersonalType initialObject = getSingleObjectFromXML(
 				studentPersonalTester.getFileContents(testData.getSingleObjectXMLFilename()));
 		initialObject.setOtherIdList(null);
@@ -138,6 +139,7 @@ public class StudentPersonalConsumerTest extends BaseTest<StudentPersonalType, S
 	@Test
 	@Category(IntegrationTest.class)
 	public void testCreatePSI() {
+		logTestName("testCreatePSI");
 		StudentPersonalType initialObject = getSingleObjectFromXML(
 				studentPersonalTester.getFileContents(testData.getSingleObjectXMLFilename()));
 		initialObject.getOtherIdList().getValue().getOtherId().clear();
@@ -153,6 +155,7 @@ public class StudentPersonalConsumerTest extends BaseTest<StudentPersonalType, S
 	@Test
 	@Category(IntegrationTest.class)
 	public void testNoCreatePSI() {
+		logTestName("testNoCreatePSI");
 		StudentPersonalType initialObject = getSingleObjectFromXML(
 				studentPersonalTester.getFileContents(testData.getSingleObjectXMLFilename()));
 		initialObject.getOtherIdList().getValue().getOtherId().clear();

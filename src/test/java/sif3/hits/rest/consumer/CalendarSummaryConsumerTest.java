@@ -119,6 +119,7 @@ public class CalendarSummaryConsumerTest extends BaseTest<CalendarSummaryType, C
 	@Test
 	@Category(IntegrationTest.class)
 	public void testUpdateSingleYearLevels() {
+		logTestName("testUpdateSingleYearLevels");
 		CalendarSummaryType initialObject = getSingleObjectFromXML(
 				calendarSummaryTester.getFileContents(testData.getSingleObjectXMLFilename()));
 		CalendarSummaryType updatedObject = getSingleObjectFromXML(

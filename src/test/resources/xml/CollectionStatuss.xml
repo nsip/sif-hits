@@ -4,7 +4,7 @@
         <ReportingAuthoritySystem>RepAuthSystem</ReportingAuthoritySystem>
         <ReportingAuthorityCommonwealthId>RACID</ReportingAuthorityCommonwealthId>
         <SubmittedBy>Submitter</SubmittedBy>
-        <SubmissionTimestamp>2020-06-04T16:23:30+08:00</SubmissionTimestamp>
+        <SubmissionTimestamp>2020-06-04T16:23:30Z</SubmissionTimestamp>
         <AGCollection>SES</AGCollection>
         <CollectionYear>2020</CollectionYear>
         <RoundCode>RoundC</RoundCode>
@@ -253,7 +253,7 @@
         <ReportingAuthoritySystem>RepAuthSystem</ReportingAuthoritySystem>
         <ReportingAuthorityCommonwealthId>RACID</ReportingAuthorityCommonwealthId>
         <SubmittedBy>Submitter</SubmittedBy>
-        <SubmissionTimestamp>2020-06-04T16:23:30+08:00</SubmissionTimestamp>
+        <SubmissionTimestamp>2020-06-04T16:23:30Z</SubmissionTimestamp>
         <AGCollection>SES</AGCollection>
         <CollectionYear>2020</CollectionYear>
         <RoundCode>RoundC</RoundCode>

@@ -95,7 +95,7 @@ public class LibraryPatronStatusTestData extends TestData<LibraryPatronStatusTyp
 	private LibraryMessageType getLibraryMessage(int i) {
 		IObjectFactory objectFactory = getObjectFactory();
 		LibraryMessageType libraryMessageType = objectFactory.createLibraryMessageType();
-		libraryMessageType.setSent(objectFactory.createLibraryMessageTypeSent(getCalendar("2020-04-22")));
+		libraryMessageType.setSent(objectFactory.createLibraryMessageTypeSent(getCalendar("2020-04-22Z")));
 		libraryMessageType.setText("Message Content : " + i);
 		libraryMessageType.setPriority("P" + i);
 		libraryMessageType.setPriorityCodeset("Local");
@@ -122,7 +122,7 @@ public class LibraryPatronStatusTestData extends TestData<LibraryPatronStatusTyp
 		IObjectFactory objectFactory = getObjectFactory();
 		FineInfoType fineInfoType = objectFactory.createFineInfoType();
 		
-		fineInfoType.setAssessed(getCalendar("2020-04-05"));
+		fineInfoType.setAssessed(getCalendar("2020-04-05Z"));
 		fineInfoType.setDescription(objectFactory.createFineInfoTypeDescription("Fine #" + i + j));
 		fineInfoType.setAmount(getMonetaryAmount("1." + i + j));
 		fineInfoType.setReference(objectFactory.createFineInfoTypeReference("Ref" + i + "." + j));
@@ -135,7 +135,7 @@ public class LibraryPatronStatusTestData extends TestData<LibraryPatronStatusTyp
 		IObjectFactory objectFactory = getObjectFactory();
 		HoldInfoType holdInfoType = objectFactory.createHoldInfoType();
 		
-		XMLGregorianCalendar baseCalendar = getDate("2020-06-01");
+		XMLGregorianCalendar baseCalendar = getDate("2020-06-01Z");
 		Duration duration = getDurationDays(i+j);
 		
 		holdInfoType.setDatePlaced(getDate(baseCalendar.toXMLFormat()));
@@ -157,8 +157,8 @@ public class LibraryPatronStatusTestData extends TestData<LibraryPatronStatusTyp
 		IObjectFactory objectFactory = getObjectFactory();
 		CheckoutInfoType checkoutInfoType = objectFactory.createCheckoutInfoType();
 
-		checkoutInfoType.setCheckedOutOn(getCalendar("2020-04-05"));
-		checkoutInfoType.setReturnBy(getCalendar("2020-05-05"));
+		checkoutInfoType.setCheckedOutOn(getCalendar("2020-04-05Z"));
+		checkoutInfoType.setReturnBy(getCalendar("2020-05-05Z"));
 		checkoutInfoType.setRenewalCount(objectFactory.createCheckoutInfoTypeRenewalCount(2L + i));
 
 		return checkoutInfoType;

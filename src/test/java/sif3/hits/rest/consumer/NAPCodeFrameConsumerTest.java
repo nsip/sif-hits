@@ -63,6 +63,7 @@ public class NAPCodeFrameConsumerTest extends BaseTest<NAPCodeFrameType, NAPCode
 	@Test
 	@Category({ IntegrationTest.class, InitialiseData.class })
 	public void initialiseData() {
+		logTestName("initialiseData");
 		NAPCodeFrameType codeFrame = new NAPCodeFrameType();
 		codeFrame.setRefId(NAPCodeFrameTestData.REF_ID_1);
 		codeFrame.setNAPTestRefId(NAPTestTestData.REF_ID_1);

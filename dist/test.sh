@@ -1,33 +1,46 @@
-#!/bin/bash
+#!/usr/bin/env bash
 if [ -z "$1" ]; then
 	echo "Create a new empty database in this environment. Either on the command line or through the dashboard."
-	echo "Then run this script with the Application Key as the only argument."
+	echo "Then run this container with the Application Key as the only argument."
 	echo "eg."
-	echo "   ./dist/test.sh 90c59ecb9bb84db19d52500bcd02ae5c"
+	echo "   docker run sif-hits-test 90c59ecb9bb84db19d52500bcd02ae5c"
 	exit 0
 fi
-echo ${DIR}
-SIF_HOME=/var/sif/hitsprovider
-DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
-cd $DIR/..
-echo "Backing up test resources"
-cp -R ${DIR}/../src/test/resources ${DIR}/../src/test/resbak
-echo "Copying resources from sif home"
-cp -R ${SIF_HOME}/environment.properties ${DIR}/../src/test/resources/
-cp -R ${SIF_HOME}/log4j.properties ${DIR}/../src/test/resources/
-cp ${SIF_HOME}/consumers/TestConsumer.properties ${DIR}/../src/test/resources/TestConsumer.properties
-cat ${SIF_HOME}/hibernate/sif3infra.hibernate.properties | grep -v c3p0 >  ${DIR}/../src/test/resources/sif3infra.hibernate.properties
-sed -i 's/^log4j.appender.file.*//' ${DIR}/../src/test/resources/log4j.properties
-sed -i 's/^log4j.rootLogger.*/log4j.rootLogger=ERROR, stdout/'  ${DIR}/../src/test/resources/log4j.properties
-sed -i 's/DEBUG/ERROR/' ${DIR}/../src/test/resources/log4j.properties
-sed -i 's/INFO/ERROR/' ${DIR}/../src/test/resources/log4j.properties
-sed -i 's/WARN/ERROR/' ${DIR}/../src/test/resources/log4j.properties
-echo "Setting current environment: $1"
-sed -i "s/^env.application.key=.*/env.application.key=$1/" ${DIR}/../src/test/resources/TestConsumer.properties
-sed -i "s/^env.userToken=.*/env.userToken=$1/" ${DIR}/../src/test/resources/TestConsumer.properties
-sed -i "s/^env.pwd=.*/env.pwd=$1/" ${DIR}/../src/test/resources/TestConsumer.properties
-echo "Executing tests ... Note: this will take a couple of minutes, don't panic"
+
+SIF_HOME=/srv/src/sif-hits/src/test/resources
+BAK_HOME=/srv/src/sif-hits/src/test/xxx
+TMP_HOME=/srv/src/sif-hits
+SITE=${APP_URL:=localhost:8080}
+RELEASE_NAME=sifhits-2.12.0
+FINAL_NAME=SIF3InfraREST
+
+mv ${SIF_HOME} ${BAK_HOME}
+mkdir -p ${SIF_HOME}
+
+mv ${BAK_HOME}/xml ${SIF_HOME}/xml
+cp ${BAK_HOME}/environment.properties ${SIF_HOME}/
+cp ${BAK_HOME}/log4j.properties ${SIF_HOME}/
+cp ${BAK_HOME}/c3p0.properties ${SIF_HOME}/
+touch ${SIF_HOME}/hibernate.properties
+sed -i 's/DEBUG/INFO/g' ${SIF_HOME}/log4j.properties
+
+
+echo Updating provider config for ${SITE}
+cat ${TMP_HOME}/dist/config/TestConsumer.properties > ${SIF_HOME}/TestConsumer.properties
+echo "" >> ${SIF_HOME}/TestConsumer.properties
+echo "env.application.key=${1}" >> ${SIF_HOME}/TestConsumer.properties
+echo "env.userToken=${1}" >> ${SIF_HOME}/TestConsumer.properties
+echo "env.pwd=${1}" >> ${SIF_HOME}/TestConsumer.properties
+echo "" >> ${SIF_HOME}/TestConsumer.properties
+echo "env.baseURI=http://${SITE}/SIF3InfraREST/hits/environments/environment" >> ${SIF_HOME}/TestConsumer.properties
+
+echo Updating database credentials
+cat ${TMP_HOME}/dist/config/sif3infra.hibernate.properties > ${SIF_HOME}/sif3infra.hibernate.properties
+echo "hibernate.connection.url=jdbc:mysql://${DB_URL:=localhost}:${DB_PORT:=3306}/hits_sif3_infra" >> ${SIF_HOME}/sif3infra.hibernate.properties
+echo "hibernate.connection.username=${DB_USER:=sif3}" >> ${SIF_HOME}/sif3infra.hibernate.properties
+echo "hibernate.connection.password=${DB_PASS:=sif3}" >> ${SIF_HOME}/sif3infra.hibernate.properties
+
 mvn -q -Dtest=ConsumerTests -DskipTests=false test
-echo "Restoring backed up test resources"
-rm -Rf ${DIR}/../src/test/resources
-mv ${DIR}/../src/test/resbak ${DIR}/../src/test/resources
+mvn surefire-report:report-only
+mvn site -DgenerateReports=false
+cp -R ${TMP_HOME}/target/site/* /srv/output/

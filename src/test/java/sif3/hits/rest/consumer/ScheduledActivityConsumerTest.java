@@ -122,6 +122,7 @@ public class ScheduledActivityConsumerTest extends BaseTest<ScheduledActivityTyp
 	@Test
 	@Category(IntegrationTest.class)
 	public void testUpdateTeachers() throws UnmarshalException, UnsupportedMediaTypeExcpetion, MarshalException {
+		logTestName("testUpdateTeachers");
 		ScheduledActivityType initialObject = getSingleObjectFromXML(
 				scheduledActivityTester.getFileContents(testData.getSingleObjectXMLFilename()));
 		ScheduledActivityType updatedObject = getSingleObjectFromXML(

@@ -30,6 +30,8 @@
         <jaxb.version>2.2.5</jaxb.version>
         <spring.version>4.0.3.RELEASE</spring.version>
         <spring.data.version>1.5.1.RELEASE</spring.data.version>
+
+        <finalName>SIF3InfraREST</finalName>
     </properties>
 
     <dependencies>
@@ -233,7 +235,7 @@
     </dependencies>
 
     <build>
-        <finalName>SIF3InfraREST</finalName>
+        <finalName>${finalName}</finalName>
         <resources>
             <resource>
                 <directory>src/main/resources</directory>
@@ -290,6 +292,28 @@
                     <url>${hits.connection.url}</url>
                     <user>${hits.connection.username}</user>
                     <password>${hits.connection.password}</password>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>de.qaware.maven</groupId>
+                <artifactId>go-offline-maven-plugin</artifactId>
+                <version>1.2.6</version>
+                <configuration>
+                    <dynamicDependencies>
+                        <DynamicDependency>
+                            <groupId>org.apache.maven.surefire</groupId>
+                            <artifactId>surefire-junit4</artifactId>
+                            <version>2.20.1</version>
+                            <repositoryType>PLUGIN</repositoryType>
+                        </DynamicDependency>
+                        <DynamicDependency>
+                            <groupId>com.querydsl</groupId>
+                            <artifactId>querydsl-apt</artifactId>
+                            <version>4.2.1</version>
+                            <classifier>jpa</classifier>
+                            <repositoryType>MAIN</repositoryType>
+                        </DynamicDependency>
+                    </dynamicDependencies>
                 </configuration>
             </plugin>
             <plugin>
@@ -363,6 +387,16 @@
                         </configuration>
                     </execution>
                 </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-report-plugin</artifactId>
+                <version>3.0.0-M5</version>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.skins</groupId>
+                <artifactId>maven-default-skin</artifactId>
+                <version>1.0</version>
             </plugin>
             <plugin>
                 <artifactId>maven-clean-plugin</artifactId>

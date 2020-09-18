@@ -130,6 +130,7 @@ public class TeachingGroupConsumerTest extends BaseTest<TeachingGroupType, Teach
 	@Test
 	@Category(IntegrationTest.class)
 	public void testUpdateTeachers() {
+		logTestName("testUpdateTeachers");
 		TeachingGroupType initialObject = getSingleObjectFromXML(
 				teachingGroupTester.getFileContents(testData.getSingleObjectXMLFilename()));
 		TeachingGroupType updatedObject = getSingleObjectFromXML(
@@ -142,6 +143,7 @@ public class TeachingGroupConsumerTest extends BaseTest<TeachingGroupType, Teach
 	@Test
 	@Category(IntegrationTest.class)
 	public void testUpdateStudents() {
+		logTestName("testUpdateStudents");
 		TeachingGroupType initialObject = getSingleObjectFromXML(
 				teachingGroupTester.getFileContents(testData.getSingleObjectXMLFilename()));
 		TeachingGroupType updatedObject = getSingleObjectFromXML(

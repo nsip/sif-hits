@@ -114,6 +114,7 @@ public class TimeTableConsumerTest extends BaseTest<TimeTableType, TimeTableColl
 	@Test
 	@Category(IntegrationTest.class)
 	public void testUpdateDays() {
+		logTestName("testUpdateDays");
 		TimeTableType initialObject = getSingleObjectFromXML(
 				timeTableTester.getFileContents(testData.getSingleObjectXMLFilename()));
 		TimeTableType updatedObject = getSingleObjectFromXML(
@@ -126,6 +127,7 @@ public class TimeTableConsumerTest extends BaseTest<TimeTableType, TimeTableColl
 	@Test
 	@Category(IntegrationTest.class)
 	public void testDeleteFailsConstraint() {
+		logTestName("testDeleteFailsConstraint");
 		List<Response> responses = timeTableTester.testDeleteOne(TimeTableTestData.REF_ID_1);
 		Assert.assertNotNull("Responses null", responses);
 		Assert.assertEquals("Response size not 1", 1, responses.size());

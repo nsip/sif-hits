@@ -1,25 +1,37 @@
 #!/bin/bash
-
-# env vars
-SIF_HOME=/var/sif/hitsprovider
-SITE=`cat ${SIF_HOME}/instance`
+SIF_HOME=/srv/sif
+TMP_HOME=/srv/src/sif-hits
+SITE=${APP_URL:=localhost:8080}
 RELEASE_NAME=sifhits-2.12.0
 FINAL_NAME=SIF3InfraREST
-TOMCAT_HOME=/var/lib/tomcat8
-TIMESTAMP=`date +%Y%m%dT%H%M%S`
-DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
+TOMCAT_HOME=/usr/local/tomcat
 
 echo Updating provider config for ${SITE}
-cp ${DIR}/../config/environments/provider/template/direct/HITS.xml ${SIF_HOME}/environments/provider/template/direct/HITS.xml
-cat ${DIR}/../config/sites/${SITE}/providers/HitsProvider.properties > ${SIF_HOME}/providers/HitsProvider.properties
-echo "" >> ${SIF_HOME}/providers/HitsProvider.properties
-cat ${DIR}/../config/provider.classes >> ${SIF_HOME}/providers/HitsProvider.properties
-cp ${DIR}/../config/sites/${SITE}/*.* ${SIF_HOME}/
+cat ${TMP_HOME}/dist/config/HitsProvider.properties > ${SIF_HOME}/HitsProvider.properties
+echo "" >> ${SIF_HOME}/HitsProvider.properties
+echo "env.connector.url=http://${SITE}/SIF3InfraREST/hits" >> ${SIF_HOME}/HitsProvider.properties
+echo "env.connector.url.secure=https://${SITE}/SIF3InfraREST/hits" >> ${SIF_HOME}/HitsProvider.properties
+echo "" >> ${SIF_HOME}/HitsProvider.properties
+cat ${TMP_HOME}/dist/config/provider.classes >> ${SIF_HOME}/HitsProvider.properties
 
-echo Deploying latest version to tomcat
-sudo service tomcat8 stop
-sudo cp ${TOMCAT_HOME}/webapps/${FINAL_NAME}.war ${TOMCAT_HOME}/webapps/${FINAL_NAME}.${TIMESTAMP}
-sudo cp $DIR/${RELEASE_NAME}.war ${TOMCAT_HOME}/webapps/${FINAL_NAME}.war
-sudo service tomcat8 start
+echo Updating database credentials
+cat ${TMP_HOME}/dist/config/sif3infra.hibernate.properties > ${SIF_HOME}/sif3infra.hibernate.properties
+echo "hibernate.connection.url=jdbc:mysql://${DB_URL:=localhost}:${DB_PORT:=3306}/hits_sif3_infra" >> ${SIF_HOME}/sif3infra.hibernate.properties
+echo "hibernate.connection.username=${DB_USER:=sif3}" >> ${SIF_HOME}/sif3infra.hibernate.properties
+echo "hibernate.connection.password=${DB_PASS:=sif3}" >> ${SIF_HOME}/sif3infra.hibernate.properties
 
+cat ${TMP_HOME}/dist/config/sifhits.database.properties > ${SIF_HOME}/sifhits.database.properties
+echo "hits.connection.url=jdbc:mysql://${DB_URL}:${DB_PORT}/hits_sif3_infra" >> ${SIF_HOME}/sifhits.database.properties
+echo "hits.connection.format=jdbc:mysql://${DB_URL}:${DB_PORT}/{0}" >> ${SIF_HOME}/sifhits.database.properties
+echo "hits.connection.username=${DB_USER}" >> ${SIF_HOME}/sifhits.database.properties
+echo "hits.connection.password=${DB_PASS}" >> ${SIF_HOME}/sifhits.database.properties
 
+echo "flyway.url=jdbc:mysql://${DB_URL}:${DB_PORT}/hits_sif3_infra" > ${SIF_HOME}/flyway.properties
+echo "flyway.user=${DB_USER}" >> ${SIF_HOME}/flyway.properties
+echo "flyway.password=${DB_PASS}" >> ${SIF_HOME}/flyway.properties
+
+pushd ${TMP_HOME}
+mvn -Dflyway.configFiles=${SIF_HOME}/flyway.properties flyway:migrate
+popd
+
+catalina.sh run

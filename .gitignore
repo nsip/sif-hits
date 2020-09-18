@@ -1,3 +1,4 @@
+test-results*
 .attach*
 .DS_Store
 sifhits.internal.database.properties
