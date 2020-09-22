@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 mvn clean
+mvn compile package
+mvn exec:java -Dexec.mainClass=sif3.hits.rest.consumer.util.XMLGenerator -Dexec.classpathScope=test
 mvn package install
 cp -R src/main/dist/keystores/* dist/keystores/
 if [[ "${1}" == "deps" ]]; then
