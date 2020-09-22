@@ -7,6 +7,12 @@ RUN mkdir -p /srv/sif/environments/consumer/template/job && \
  mkdir -p /srv/src/sif-hits && \
  touch /srv/sif/flyway.properties && touch /srv/sif/hibernate.properties && \
  sed -i 's/shared.loader=/shared.loader=\/srv\/sif\//g' conf/catalina.properties && \
+ mv conf/server.xml conf/server.xml.bak && \
+ LINE=`grep -n '<!-- Define an AJP 1.3 Connector on port 8009 -->' conf/server.xml.bak | cut -f1 -d:` && \
+ head -n ${LINE} conf/server.xml.bak > conf/server.xml && \
+ echo '    <Connector port="8009" protocol="AJP/1.3" redirectPort="8443" secretRequired="false" />' >> conf/server.xml && \
+ echo '' >> conf/server.xml && \
+ tail -n +${LINE} conf/server.xml.bak >> conf/server.xml && \
  apt update && \
  apt install -y maven
 COPY src /srv/src/sif-hits/src

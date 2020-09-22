@@ -4,7 +4,7 @@ if [ -z "$1" ]; then
 	echo "Then run this container with the Application Key as the only argument."
 	echo "eg."
 	echo "   docker run sif-hits-test 90c59ecb9bb84db19d52500bcd02ae5c"
-	exit 0
+	exit 1
 fi
 
 SIF_HOME=/srv/src/sif-hits/src/test/resources
