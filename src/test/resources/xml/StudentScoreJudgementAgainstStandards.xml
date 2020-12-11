@@ -7,7 +7,7 @@
         <StudentStateProvinceId>student-sp-id</StudentStateProvinceId>
         <StudentLocalId>student-local-id</StudentLocalId>
         <YearLevel>
-            <Code>5</Code>
+            <Code>4</Code>
         </YearLevel>
         <TeachingGroupRefId>8feeb970-94be-4b69-91b5-bf36188ed100</TeachingGroupRefId>
         <ClassLocalId>class-local-id</ClassLocalId>
@@ -47,7 +47,7 @@
         <StudentStateProvinceId>student-sp-id</StudentStateProvinceId>
         <StudentLocalId>student-local-id</StudentLocalId>
         <YearLevel>
-            <Code>5</Code>
+            <Code>4</Code>
         </YearLevel>
         <TeachingGroupRefId>8feeb970-94be-4b69-91b5-bf36188ed100</TeachingGroupRefId>
         <ClassLocalId>class-local-id</ClassLocalId>

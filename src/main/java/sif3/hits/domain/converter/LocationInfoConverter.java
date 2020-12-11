@@ -18,81 +18,89 @@ import sif3.hits.domain.model.LocationInfo;
 import sif3.hits.utils.UsesConstants;
 
 @Component
-public class LocationInfoConverter extends HitsConverter<ChargedLocationInfoType, LocationInfo>implements UsesConstants {
+public class LocationInfoConverter extends HitsConverter<ChargedLocationInfoType, LocationInfo>
+		implements UsesConstants {
 
-  @Autowired
-  private AddressConverter addressConverter;
+	@Autowired
+	private AddressConverter addressConverter;
 
-  public LocationInfoConverter() {
-    super(ChargedLocationInfoType.class, LocationInfo.class);
-  }
+	public LocationInfoConverter() {
+		super(ChargedLocationInfoType.class, LocationInfo.class);
+	}
 
-  @Override
-  public void toSifModel(LocationInfo source, ChargedLocationInfoType target) {
-    if (source != null && target != null) {
-      IObjectFactory objectFactory = getObjectFactory();
+	@Override
+	public void toSifModel(LocationInfo source, ChargedLocationInfoType target) {
+		if (source != null && target != null) {
+			IObjectFactory objectFactory = getObjectFactory();
 
-      target.setRefId(source.getRefId());
-      target.setDescription(objectFactory.createChargedLocationInfoTypeDescription(source.getDescription()));
-      target.setLocalId(objectFactory.createChargedLocationInfoTypeLocalId(source.getLocalId()));
-      target.setLocationType(source.getLocationType());
-      target.setName(source.getName());
-      target.setParentChargedLocationInfoRefId(objectFactory.createChargedLocationInfoTypeParentChargedLocationInfoRefId(source.getParentLocationInfoRefId()));
+			target.setRefId(source.getRefId());
+			target.setDescription(objectFactory.createChargedLocationInfoTypeDescription(source.getDescription()));
+			target.setLocalId(objectFactory.createChargedLocationInfoTypeLocalId(source.getLocalId()));
+			target.setLocationType(source.getLocationType());
+			target.setName(source.getName());
+			target.setParentChargedLocationInfoRefId(objectFactory
+					.createChargedLocationInfoTypeParentChargedLocationInfoRefId(source.getParentLocationInfoRefId()));
 
-      if (StringUtils.isNotBlank(source.getPhoneNumber())) {
-        PhoneNumberListType phoneNumberList = objectFactory.createPhoneNumberListType();
-        PhoneNumberType phoneNumber = objectFactory.createPhoneNumberType();
-        phoneNumber.setNumber(source.getPhoneNumber());
-        phoneNumber.setType(getEnumValue(DEFAULT_PHONE_TYPE, AUCodeSetsTelephoneNumberTypeType.class));
-        phoneNumberList.getPhoneNumber().add(phoneNumber);
-        target.setPhoneNumberList(objectFactory.createChargedLocationInfoTypePhoneNumberList(phoneNumberList));
-      }
+			if (StringUtils.isNotBlank(source.getPhoneNumber())) {
+				PhoneNumberListType phoneNumberList = objectFactory.createPhoneNumberListType();
+				PhoneNumberType phoneNumber = objectFactory.createPhoneNumberType();
+				phoneNumber.setNumber(source.getPhoneNumber());
+				phoneNumber.setType(getEnumValue(DEFAULT_PHONE_TYPE, AUCodeSetsTelephoneNumberTypeType.class));
+				phoneNumberList.getPhoneNumber().add(phoneNumber);
+				target.setPhoneNumberList(objectFactory.createChargedLocationInfoTypePhoneNumberList(phoneNumberList));
+			}
 
-      target.setSchoolInfoRefId(objectFactory.createChargedLocationInfoTypeSchoolInfoRefId(source.getSchoolInfoRefId()));
-      target.setSiteCategory(source.getSiteCategory());
-      target.setStateProvinceId(objectFactory.createChargedLocationInfoTypeStateProvinceId(source.getStateProvinceId()));
+			target.setSchoolInfoRefId(
+					objectFactory.createChargedLocationInfoTypeSchoolInfoRefId(source.getSchoolInfoRefId()));
+			target.setSiteCategory(source.getSiteCategory());
+			target.setStateProvinceId(
+					objectFactory.createChargedLocationInfoTypeStateProvinceId(source.getStateProvinceId()));
 
-      if (source.getAddresses() != null && !source.getAddresses().isEmpty()) {
-        AddressListType addressList = objectFactory.createAddressListType();
-        addressList.getAddress().addAll(addressConverter.toSifModelList(source.getAddresses(), AddressType.class));
-        target.setAddressList(objectFactory.createDebtorTypeAddressList(addressList));
-      }
-    }
-  }
+			if (source.getAddresses() != null && !source.getAddresses().isEmpty()) {
+				AddressListType addressList = objectFactory.createAddressListType();
+				addressList.getAddress()
+						.addAll(addressConverter.toSifModelList(source.getAddresses(), AddressType.class));
+				target.setAddressList(objectFactory.createDebtorTypeAddressList(addressList));
+			}
+		}
+	}
 
-  @Override
-  public void toHitsModel(ChargedLocationInfoType source, LocationInfo target) {
-    if (source != null && target != null) {
-      target.setRefId(source.getRefId());
+	@Override
+	public void toHitsModel(ChargedLocationInfoType source, LocationInfo target) {
+		if (source != null && target != null) {
+			target.setRefId(source.getRefId());
 
-      target.setDescription(getJAXBValue(source.getDescription()));
-      target.setLocalId(getJAXBValue(source.getLocalId()));
-      target.setLocationType(source.getLocationType());
-      target.setName(source.getName());
-      target.setParentLocationInfoRefId(getJAXBValue(source.getParentChargedLocationInfoRefId()));
+			target.setDescription(getJAXBValue(source.getDescription()));
+			target.setLocalId(getJAXBValue(source.getLocalId()));
+			target.setLocationType(source.getLocationType());
+			target.setName(source.getName());
+			target.setParentLocationInfoRefId(getJAXBValue(source.getParentChargedLocationInfoRefId()));
 
-      PhoneNumberListType phoneNumberList = getJAXBValue(source.getPhoneNumberList());
-      if (phoneNumberList != null && phoneNumberList.getPhoneNumber() != null && !phoneNumberList.getPhoneNumber().isEmpty()) {
-        target.setPhoneNumber(phoneNumberList.getPhoneNumber().get(0).getNumber());
-      }
+			PhoneNumberListType phoneNumberList = getJAXBValue(source.getPhoneNumberList());
+			if (phoneNumberList != null && phoneNumberList.getPhoneNumber() != null
+					&& !phoneNumberList.getPhoneNumber().isEmpty()) {
+				target.setPhoneNumber(phoneNumberList.getPhoneNumber().get(0).getNumber());
+			} else {
+				target.setPhoneNumber(null);
+			}
 
-      target.setSchoolInfoRefId(getJAXBValue(source.getSchoolInfoRefId()));
-      target.setSiteCategory(source.getSiteCategory());
-      target.setStateProvinceId(getJAXBValue(source.getStateProvinceId()));
+			target.setSchoolInfoRefId(getJAXBValue(source.getSchoolInfoRefId()));
+			target.setSiteCategory(source.getSiteCategory());
+			target.setStateProvinceId(getJAXBValue(source.getStateProvinceId()));
 
-      AddressListType addressList = getJAXBValue(source.getAddressList());
-      if (target.getAddresses() == null) {
-        target.setAddresses(new HashSet<Address>());
-      } else {
-        target.getAddresses().clear();
-      }
-      if (addressList != null && addressList.getAddress() != null && !addressList.getAddress().isEmpty()) {
-        target.getAddresses().addAll(addressConverter.toHitsModelList(addressList.getAddress()));
-        for (Address address : target.getAddresses()) {
-          address.setPersonRefId(target.getRefId());
-        }
-      }
-    }
-  }
+			AddressListType addressList = getJAXBValue(source.getAddressList());
+			if (target.getAddresses() == null) {
+				target.setAddresses(new HashSet<Address>());
+			} else {
+				target.getAddresses().clear();
+			}
+			if (addressList != null && addressList.getAddress() != null && !addressList.getAddress().isEmpty()) {
+				target.getAddresses().addAll(addressConverter.toHitsModelList(addressList.getAddress()));
+				for (Address address : target.getAddresses()) {
+					address.setPersonRefId(target.getRefId());
+				}
+			}
+		}
+	}
 
 }

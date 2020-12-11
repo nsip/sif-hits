@@ -5,12 +5,9 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
-import java.util.Optional;
 import java.util.Map.Entry;
 import java.util.Set;
 import java.util.stream.Collectors;
-
-import javax.xml.bind.JAXBElement;
 
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,7 +22,6 @@ import sif.dd.au30.model.TeachingGroupStudentType;
 import sif.dd.au30.model.TeachingGroupTeacherType;
 import sif.dd.au30.model.TeachingGroupType;
 import sif3.hits.domain.converter.factory.IObjectFactory;
-import sif3.hits.domain.model.StaffPersonal;
 import sif3.hits.domain.model.TeachingGroup;
 import sif3.hits.domain.model.TeachingGroupTeacher;
 import sif3.hits.domain.model.TimeTableCell;

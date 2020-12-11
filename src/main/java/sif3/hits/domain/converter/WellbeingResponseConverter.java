@@ -260,6 +260,7 @@ public class WellbeingResponseConverter extends HitsConverter<WellbeingResponseT
         target.setSuspensionResolutionNotes(null);
         target.setSuspensionEarlyReturnDate(null);
         target.setSuspensionStatus(null);
+        target.setSuspensionNotes(null);
         target.setDetentionCategory(null);
         target.setDetentionDate(null);
         target.setDetentionLocation(null);

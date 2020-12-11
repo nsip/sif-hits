@@ -1,0 +1,413 @@
+<LibraryPatronStatus RefId="40b1fe54-2587-4556-9222-91579eca1584" xmlns="http://www.sifassociation.org/datamodel/au/3.4">
+    <LibraryType>Academic</LibraryType>
+    <PatronRefId>c1deee9b-53ce-4c8f-9101-31bedf9c4836</PatronRefId>
+    <PatronLocalId>student-local-id</PatronLocalId>
+    <PatronRefObject>StudentPersonal</PatronRefObject>
+    <PatronName Type="LGL">
+        <FamilyName>Library</FamilyName>
+        <GivenName>Patron</GivenName>
+        <MiddleName></MiddleName>
+        <PreferredFamilyName>Library</PreferredFamilyName>
+        <PreferredGivenName>Patron</PreferredGivenName>
+        <FullName>Patron  Library</FullName>
+    </PatronName>
+    <ElectronicIdList>
+        <ElectronicId Type="01">213E1</ElectronicId>
+        <ElectronicId Type="01">213E2</ElectronicId>
+        <ElectronicId Type="01">213E3</ElectronicId>
+        <ElectronicId Type="01">213E4</ElectronicId>
+    </ElectronicIdList>
+    <TransactionList>
+        <Transaction>
+            <ItemInfo Type="Book">
+                <Title>Title 1</Title>
+                <Author>Author 1</Author>
+                <ElectronicId Type="01">12341</ElectronicId>
+                <CallNumber>Call1</CallNumber>
+                <ISBN>ISBN1</ISBN>
+                <Cost Currency="AUD">12.31</Cost>
+                <ReplacementCost Currency="AUD">33.31</ReplacementCost>
+            </ItemInfo>
+            <CheckoutInfo>
+                <CheckedOutOn>2020-04-05T00:00:00Z</CheckedOutOn>
+                <ReturnBy>2020-05-05T00:00:00Z</ReturnBy>
+                <RenewalCount>3</RenewalCount>
+            </CheckoutInfo>
+            <FineInfoList>
+                <FineInfo Type="Overdue">
+                    <Assessed>2020-04-05T00:00:00Z</Assessed>
+                    <Description>Fine #11</Description>
+                    <Amount Currency="AUD">1.11</Amount>
+                    <Reference>Ref1.1</Reference>
+                </FineInfo>
+                <FineInfo Type="Overdue">
+                    <Assessed>2020-04-05T00:00:00Z</Assessed>
+                    <Description>Fine #12</Description>
+                    <Amount Currency="AUD">1.12</Amount>
+                    <Reference>Ref1.2</Reference>
+                </FineInfo>
+                <FineInfo Type="Overdue">
+                    <Assessed>2020-04-05T00:00:00Z</Assessed>
+                    <Description>Fine #13</Description>
+                    <Amount Currency="AUD">1.13</Amount>
+                    <Reference>Ref1.3</Reference>
+                </FineInfo>
+                <FineInfo Type="Overdue">
+                    <Assessed>2020-04-05T00:00:00Z</Assessed>
+                    <Description>Fine #14</Description>
+                    <Amount Currency="AUD">1.14</Amount>
+                    <Reference>Ref1.4</Reference>
+                </FineInfo>
+                <FineInfo Type="Overdue">
+                    <Assessed>2020-04-05T00:00:00Z</Assessed>
+                    <Description>Fine #15</Description>
+                    <Amount Currency="AUD">1.15</Amount>
+                    <Reference>Ref1.5</Reference>
+                </FineInfo>
+            </FineInfoList>
+            <HoldInfoList>
+                <HoldInfo Type="Book">
+                    <DatePlaced>2020-06-01Z</DatePlaced>
+                    <DateNeeded>2020-06-03Z</DateNeeded>
+                    <ReservationExpiry>2020-06-05Z</ReservationExpiry>
+                    <MadeAvailable>2020-06-07Z</MadeAvailable>
+                    <Expires>2020-06-09Z</Expires>
+                </HoldInfo>
+                <HoldInfo Type="Book">
+                    <DatePlaced>2020-06-01Z</DatePlaced>
+                    <DateNeeded>2020-06-04Z</DateNeeded>
+                    <ReservationExpiry>2020-06-07Z</ReservationExpiry>
+                    <MadeAvailable>2020-06-10Z</MadeAvailable>
+                    <Expires>2020-06-13Z</Expires>
+                </HoldInfo>
+                <HoldInfo Type="Book">
+                    <DatePlaced>2020-06-01Z</DatePlaced>
+                    <DateNeeded>2020-06-05Z</DateNeeded>
+                    <ReservationExpiry>2020-06-09Z</ReservationExpiry>
+                    <MadeAvailable>2020-06-13Z</MadeAvailable>
+                    <Expires>2020-06-17Z</Expires>
+                </HoldInfo>
+                <HoldInfo Type="Book">
+                    <DatePlaced>2020-06-01Z</DatePlaced>
+                    <DateNeeded>2020-06-06Z</DateNeeded>
+                    <ReservationExpiry>2020-06-11Z</ReservationExpiry>
+                    <MadeAvailable>2020-06-16Z</MadeAvailable>
+                    <Expires>2020-06-21Z</Expires>
+                </HoldInfo>
+                <HoldInfo Type="Book">
+                    <DatePlaced>2020-06-01Z</DatePlaced>
+                    <DateNeeded>2020-06-07Z</DateNeeded>
+                    <ReservationExpiry>2020-06-13Z</ReservationExpiry>
+                    <MadeAvailable>2020-06-19Z</MadeAvailable>
+                    <Expires>2020-06-25Z</Expires>
+                </HoldInfo>
+            </HoldInfoList>
+        </Transaction>
+        <Transaction>
+            <ItemInfo Type="Book">
+                <Title>Title 2</Title>
+                <Author>Author 2</Author>
+                <ElectronicId Type="01">12342</ElectronicId>
+                <CallNumber>Call2</CallNumber>
+                <ISBN>ISBN2</ISBN>
+                <Cost Currency="AUD">12.32</Cost>
+                <ReplacementCost Currency="AUD">33.32</ReplacementCost>
+            </ItemInfo>
+            <CheckoutInfo>
+                <CheckedOutOn>2020-04-05T00:00:00Z</CheckedOutOn>
+                <ReturnBy>2020-05-05T00:00:00Z</ReturnBy>
+                <RenewalCount>4</RenewalCount>
+            </CheckoutInfo>
+            <FineInfoList>
+                <FineInfo Type="Overdue">
+                    <Assessed>2020-04-05T00:00:00Z</Assessed>
+                    <Description>Fine #21</Description>
+                    <Amount Currency="AUD">1.21</Amount>
+                    <Reference>Ref2.1</Reference>
+                </FineInfo>
+                <FineInfo Type="Overdue">
+                    <Assessed>2020-04-05T00:00:00Z</Assessed>
+                    <Description>Fine #22</Description>
+                    <Amount Currency="AUD">1.22</Amount>
+                    <Reference>Ref2.2</Reference>
+                </FineInfo>
+                <FineInfo Type="Overdue">
+                    <Assessed>2020-04-05T00:00:00Z</Assessed>
+                    <Description>Fine #23</Description>
+                    <Amount Currency="AUD">1.23</Amount>
+                    <Reference>Ref2.3</Reference>
+                </FineInfo>
+                <FineInfo Type="Overdue">
+                    <Assessed>2020-04-05T00:00:00Z</Assessed>
+                    <Description>Fine #24</Description>
+                    <Amount Currency="AUD">1.24</Amount>
+                    <Reference>Ref2.4</Reference>
+                </FineInfo>
+                <FineInfo Type="Overdue">
+                    <Assessed>2020-04-05T00:00:00Z</Assessed>
+                    <Description>Fine #25</Description>
+                    <Amount Currency="AUD">1.25</Amount>
+                    <Reference>Ref2.5</Reference>
+                </FineInfo>
+            </FineInfoList>
+            <HoldInfoList>
+                <HoldInfo Type="Book">
+                    <DatePlaced>2020-06-01Z</DatePlaced>
+                    <DateNeeded>2020-06-04Z</DateNeeded>
+                    <ReservationExpiry>2020-06-07Z</ReservationExpiry>
+                    <MadeAvailable>2020-06-10Z</MadeAvailable>
+                    <Expires>2020-06-13Z</Expires>
+                </HoldInfo>
+                <HoldInfo Type="Book">
+                    <DatePlaced>2020-06-01Z</DatePlaced>
+                    <DateNeeded>2020-06-05Z</DateNeeded>
+                    <ReservationExpiry>2020-06-09Z</ReservationExpiry>
+                    <MadeAvailable>2020-06-13Z</MadeAvailable>
+                    <Expires>2020-06-17Z</Expires>
+                </HoldInfo>
+                <HoldInfo Type="Book">
+                    <DatePlaced>2020-06-01Z</DatePlaced>
+                    <DateNeeded>2020-06-06Z</DateNeeded>
+                    <ReservationExpiry>2020-06-11Z</ReservationExpiry>
+                    <MadeAvailable>2020-06-16Z</MadeAvailable>
+                    <Expires>2020-06-21Z</Expires>
+                </HoldInfo>
+                <HoldInfo Type="Book">
+                    <DatePlaced>2020-06-01Z</DatePlaced>
+                    <DateNeeded>2020-06-07Z</DateNeeded>
+                    <ReservationExpiry>2020-06-13Z</ReservationExpiry>
+                    <MadeAvailable>2020-06-19Z</MadeAvailable>
+                    <Expires>2020-06-25Z</Expires>
+                </HoldInfo>
+                <HoldInfo Type="Book">
+                    <DatePlaced>2020-06-01Z</DatePlaced>
+                    <DateNeeded>2020-06-08Z</DateNeeded>
+                    <ReservationExpiry>2020-06-15Z</ReservationExpiry>
+                    <MadeAvailable>2020-06-22Z</MadeAvailable>
+                    <Expires>2020-06-29Z</Expires>
+                </HoldInfo>
+            </HoldInfoList>
+        </Transaction>
+        <Transaction>
+            <ItemInfo Type="Book">
+                <Title>Title 3</Title>
+                <Author>Author 3</Author>
+                <ElectronicId Type="01">12343</ElectronicId>
+                <CallNumber>Call3</CallNumber>
+                <ISBN>ISBN3</ISBN>
+                <Cost Currency="AUD">12.33</Cost>
+                <ReplacementCost Currency="AUD">33.33</ReplacementCost>
+            </ItemInfo>
+            <CheckoutInfo>
+                <CheckedOutOn>2020-04-05T00:00:00Z</CheckedOutOn>
+                <ReturnBy>2020-05-05T00:00:00Z</ReturnBy>
+                <RenewalCount>5</RenewalCount>
+            </CheckoutInfo>
+            <FineInfoList>
+                <FineInfo Type="Overdue">
+                    <Assessed>2020-04-05T00:00:00Z</Assessed>
+                    <Description>Fine #31</Description>
+                    <Amount Currency="AUD">1.31</Amount>
+                    <Reference>Ref3.1</Reference>
+                </FineInfo>
+                <FineInfo Type="Overdue">
+                    <Assessed>2020-04-05T00:00:00Z</Assessed>
+                    <Description>Fine #32</Description>
+                    <Amount Currency="AUD">1.32</Amount>
+                    <Reference>Ref3.2</Reference>
+                </FineInfo>
+                <FineInfo Type="Overdue">
+                    <Assessed>2020-04-05T00:00:00Z</Assessed>
+                    <Description>Fine #33</Description>
+                    <Amount Currency="AUD">1.33</Amount>
+                    <Reference>Ref3.3</Reference>
+                </FineInfo>
+                <FineInfo Type="Overdue">
+                    <Assessed>2020-04-05T00:00:00Z</Assessed>
+                    <Description>Fine #34</Description>
+                    <Amount Currency="AUD">1.34</Amount>
+                    <Reference>Ref3.4</Reference>
+                </FineInfo>
+                <FineInfo Type="Overdue">
+                    <Assessed>2020-04-05T00:00:00Z</Assessed>
+                    <Description>Fine #35</Description>
+                    <Amount Currency="AUD">1.35</Amount>
+                    <Reference>Ref3.5</Reference>
+                </FineInfo>
+            </FineInfoList>
+            <HoldInfoList>
+                <HoldInfo Type="Book">
+                    <DatePlaced>2020-06-01Z</DatePlaced>
+                    <DateNeeded>2020-06-05Z</DateNeeded>
+                    <ReservationExpiry>2020-06-09Z</ReservationExpiry>
+                    <MadeAvailable>2020-06-13Z</MadeAvailable>
+                    <Expires>2020-06-17Z</Expires>
+                </HoldInfo>
+                <HoldInfo Type="Book">
+                    <DatePlaced>2020-06-01Z</DatePlaced>
+                    <DateNeeded>2020-06-06Z</DateNeeded>
+                    <ReservationExpiry>2020-06-11Z</ReservationExpiry>
+                    <MadeAvailable>2020-06-16Z</MadeAvailable>
+                    <Expires>2020-06-21Z</Expires>
+                </HoldInfo>
+                <HoldInfo Type="Book">
+                    <DatePlaced>2020-06-01Z</DatePlaced>
+                    <DateNeeded>2020-06-07Z</DateNeeded>
+                    <ReservationExpiry>2020-06-13Z</ReservationExpiry>
+                    <MadeAvailable>2020-06-19Z</MadeAvailable>
+                    <Expires>2020-06-25Z</Expires>
+                </HoldInfo>
+                <HoldInfo Type="Book">
+                    <DatePlaced>2020-06-01Z</DatePlaced>
+                    <DateNeeded>2020-06-08Z</DateNeeded>
+                    <ReservationExpiry>2020-06-15Z</ReservationExpiry>
+                    <MadeAvailable>2020-06-22Z</MadeAvailable>
+                    <Expires>2020-06-29Z</Expires>
+                </HoldInfo>
+                <HoldInfo Type="Book">
+                    <DatePlaced>2020-06-01Z</DatePlaced>
+                    <DateNeeded>2020-06-09Z</DateNeeded>
+                    <ReservationExpiry>2020-06-17Z</ReservationExpiry>
+                    <MadeAvailable>2020-06-25Z</MadeAvailable>
+                    <Expires>2020-07-03Z</Expires>
+                </HoldInfo>
+            </HoldInfoList>
+        </Transaction>
+        <Transaction>
+            <ItemInfo Type="Book">
+                <Title>Title 4</Title>
+                <Author>Author 4</Author>
+                <ElectronicId Type="01">12344</ElectronicId>
+                <CallNumber>Call4</CallNumber>
+                <ISBN>ISBN4</ISBN>
+                <Cost Currency="AUD">12.34</Cost>
+                <ReplacementCost Currency="AUD">33.34</ReplacementCost>
+            </ItemInfo>
+            <CheckoutInfo>
+                <CheckedOutOn>2020-04-05T00:00:00Z</CheckedOutOn>
+                <ReturnBy>2020-05-05T00:00:00Z</ReturnBy>
+                <RenewalCount>6</RenewalCount>
+            </CheckoutInfo>
+            <FineInfoList>
+                <FineInfo Type="Overdue">
+                    <Assessed>2020-04-05T00:00:00Z</Assessed>
+                    <Description>Fine #41</Description>
+                    <Amount Currency="AUD">1.41</Amount>
+                    <Reference>Ref4.1</Reference>
+                </FineInfo>
+                <FineInfo Type="Overdue">
+                    <Assessed>2020-04-05T00:00:00Z</Assessed>
+                    <Description>Fine #42</Description>
+                    <Amount Currency="AUD">1.42</Amount>
+                    <Reference>Ref4.2</Reference>
+                </FineInfo>
+                <FineInfo Type="Overdue">
+                    <Assessed>2020-04-05T00:00:00Z</Assessed>
+                    <Description>Fine #43</Description>
+                    <Amount Currency="AUD">1.43</Amount>
+                    <Reference>Ref4.3</Reference>
+                </FineInfo>
+                <FineInfo Type="Overdue">
+                    <Assessed>2020-04-05T00:00:00Z</Assessed>
+                    <Description>Fine #44</Description>
+                    <Amount Currency="AUD">1.44</Amount>
+                    <Reference>Ref4.4</Reference>
+                </FineInfo>
+                <FineInfo Type="Overdue">
+                    <Assessed>2020-04-05T00:00:00Z</Assessed>
+                    <Description>Fine #45</Description>
+                    <Amount Currency="AUD">1.45</Amount>
+                    <Reference>Ref4.5</Reference>
+                </FineInfo>
+            </FineInfoList>
+            <HoldInfoList>
+                <HoldInfo Type="Book">
+                    <DatePlaced>2020-06-01Z</DatePlaced>
+                    <DateNeeded>2020-06-06Z</DateNeeded>
+                    <ReservationExpiry>2020-06-11Z</ReservationExpiry>
+                    <MadeAvailable>2020-06-16Z</MadeAvailable>
+                    <Expires>2020-06-21Z</Expires>
+                </HoldInfo>
+                <HoldInfo Type="Book">
+                    <DatePlaced>2020-06-01Z</DatePlaced>
+                    <DateNeeded>2020-06-07Z</DateNeeded>
+                    <ReservationExpiry>2020-06-13Z</ReservationExpiry>
+                    <MadeAvailable>2020-06-19Z</MadeAvailable>
+                    <Expires>2020-06-25Z</Expires>
+                </HoldInfo>
+                <HoldInfo Type="Book">
+                    <DatePlaced>2020-06-01Z</DatePlaced>
+                    <DateNeeded>2020-06-08Z</DateNeeded>
+                    <ReservationExpiry>2020-06-15Z</ReservationExpiry>
+                    <MadeAvailable>2020-06-22Z</MadeAvailable>
+                    <Expires>2020-06-29Z</Expires>
+                </HoldInfo>
+                <HoldInfo Type="Book">
+                    <DatePlaced>2020-06-01Z</DatePlaced>
+                    <DateNeeded>2020-06-09Z</DateNeeded>
+                    <ReservationExpiry>2020-06-17Z</ReservationExpiry>
+                    <MadeAvailable>2020-06-25Z</MadeAvailable>
+                    <Expires>2020-07-03Z</Expires>
+                </HoldInfo>
+                <HoldInfo Type="Book">
+                    <DatePlaced>2020-06-01Z</DatePlaced>
+                    <DateNeeded>2020-06-10Z</DateNeeded>
+                    <ReservationExpiry>2020-06-19Z</ReservationExpiry>
+                    <MadeAvailable>2020-06-28Z</MadeAvailable>
+                    <Expires>2020-07-07Z</Expires>
+                </HoldInfo>
+            </HoldInfoList>
+        </Transaction>
+    </TransactionList>
+    <MessageList>
+        <Message Priority="P1" PriorityCodeset="Local">
+            <Sent>2020-04-22T00:00:00Z</Sent>
+            <Text>Message Content : 1</Text>
+        </Message>
+        <Message Priority="P2" PriorityCodeset="Local">
+            <Sent>2020-04-22T00:00:00Z</Sent>
+            <Text>Message Content : 2</Text>
+        </Message>
+        <Message Priority="P3" PriorityCodeset="Local">
+            <Sent>2020-04-22T00:00:00Z</Sent>
+            <Text>Message Content : 3</Text>
+        </Message>
+        <Message Priority="P4" PriorityCodeset="Local">
+            <Sent>2020-04-22T00:00:00Z</Sent>
+            <Text>Message Content : 4</Text>
+        </Message>
+    </MessageList>
+    <NumberOfCheckouts>23</NumberOfCheckouts>
+    <NumberOfHoldItems>1</NumberOfHoldItems>
+    <NumberOfOverdues>0</NumberOfOverdues>
+    <NumberOfFines>1</NumberOfFines>
+    <FineAmount Currency="AUD">23.00</FineAmount>
+    <NumberOfRefunds>1</NumberOfRefunds>
+    <RefundAmount Currency="AUD">12.00</RefundAmount>
+    <LocalCodeList>
+        <LocalCode>
+            <LocalisedCode>Code1</LocalisedCode>
+            <Description>Description 1</Description>
+            <Element>Element 1</Element>
+            <ListIndex>1</ListIndex>
+        </LocalCode>
+        <LocalCode>
+            <LocalisedCode>Code2</LocalisedCode>
+            <Description>Description 2</Description>
+            <Element>Element 2</Element>
+            <ListIndex>2</ListIndex>
+        </LocalCode>
+        <LocalCode>
+            <LocalisedCode>Code3</LocalisedCode>
+            <Description>Description 3</Description>
+            <Element>Element 3</Element>
+            <ListIndex>3</ListIndex>
+        </LocalCode>
+        <LocalCode>
+            <LocalisedCode>Code4</LocalisedCode>
+            <Description>Description 4</Description>
+            <Element>Element 4</Element>
+            <ListIndex>4</ListIndex>
+        </LocalCode>
+    </LocalCodeList>
+</LibraryPatronStatus>

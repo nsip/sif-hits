@@ -7,6 +7,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import sif3.hits.domain.model.HitsEntity;
+
 @Entity
 @Table(name = "FQReporting_FQItem")
 public class FQItem extends HitsEntity {

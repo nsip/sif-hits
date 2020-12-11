@@ -1,0 +1,573 @@
+<FinancialQuestionnaireCollection RefId="d9743b6b-881b-4441-b82e-65b55b1ac3be" xmlns="http://www.sifassociation.org/datamodel/au/3.4">
+    <FQYear>2020</FQYear>
+    <RoundCode>RC</RoundCode>
+    <ReportingAuthorityCommonwealthId>RACID</ReportingAuthorityCommonwealthId>
+    <SoftwareVendorInfo>
+        <SoftwareProduct>SoftwareProduct</SoftwareProduct>
+        <SoftwareVersion>2.12.0r1234</SoftwareVersion>
+    </SoftwareVendorInfo>
+    <FQReportingList>
+        <FQReporting>
+            <EntityLevel>System</EntityLevel>
+            <SchoolInfoRefId>252159ce-e385-4dea-8440-26d300282781</SchoolInfoRefId>
+            <LocalId>LocalId</LocalId>
+            <StateProvinceId>SPID</StateProvinceId>
+            <CommonwealthId>4001</CommonwealthId>
+            <ACARAId>48116</ACARAId>
+            <EntityName>Bens Test State High School</EntityName>
+            <EntityContact>
+                <Name Type="LGL">
+                    <Title>Ms</Title>
+                    <FamilyName>Person</FamilyName>
+                    <GivenName>Entity</GivenName>
+                    <MiddleName>Contact</MiddleName>
+                    <PreferredFamilyName>Person</PreferredFamilyName>
+                    <PreferredGivenName>Entity</PreferredGivenName>
+                    <FullName>Ms Entity Contact Person</FullName>
+                </Name>
+                <PositionTitle>Registrar</PositionTitle>
+                <Role>Role</Role>
+                <RegistrationDetails>Registration Details</RegistrationDetails>
+                <Qualifications>Qualifications</Qualifications>
+                <Address Type="0123" Role="012B">
+                    <Street>
+                        <Line1>Entity Contact Address</Line1>
+                        <Line2>145 Some Street</Line2>
+                    </Street>
+                    <City>Perth</City>
+                    <StateProvince>WA</StateProvince>
+                    <PostalCode>6000</PostalCode>
+                    <GridLocation>
+                        <Latitude>-31.952693</Latitude>
+                        <Longitude>115.871971</Longitude>
+                    </GridLocation>
+                </Address>
+                <Email Type="06">entity.contact@not.a.real.domain</Email>
+                <PhoneNumber Type="0096">
+                    <Number>(123) 456 7890</Number>
+                </PhoneNumber>
+            </EntityContact>
+            <FQContextualQuestionList>
+                <FQContextualQuestion>
+                    <FQContext>Context-1-1</FQContext>
+                    <FQAnswer>Answer 1 1</FQAnswer>
+                </FQContextualQuestion>
+                <FQContextualQuestion>
+                    <FQContext>Context-1-2</FQContext>
+                    <FQAnswer>Answer 1 2</FQAnswer>
+                </FQContextualQuestion>
+                <FQContextualQuestion>
+                    <FQContext>Context-1-3</FQContext>
+                    <FQAnswer>Answer 1 3</FQAnswer>
+                </FQContextualQuestion>
+                <FQContextualQuestion>
+                    <FQContext>Context-1-4</FQContext>
+                    <FQAnswer>Answer 1 4</FQAnswer>
+                </FQContextualQuestion>
+                <FQContextualQuestion>
+                    <FQContext>Context-1-5</FQContext>
+                    <FQAnswer>Answer 1 5</FQAnswer>
+                </FQContextualQuestion>
+            </FQContextualQuestionList>
+            <FQItemList>
+                <FQItem>
+                    <FQItemCode>IC-11.1</FQItemCode>
+                    <TuitionAmount>111.23</TuitionAmount>
+                    <BoardingAmount>0</BoardingAmount>
+                    <SystemAmount>11.10</SystemAmount>
+                    <DioceseAmount>0</DioceseAmount>
+                    <FQComments>Comments</FQComments>
+                </FQItem>
+                <FQItem>
+                    <FQItemCode>IC-12.2</FQItemCode>
+                    <TuitionAmount>112.23</TuitionAmount>
+                    <BoardingAmount>0</BoardingAmount>
+                    <SystemAmount>21.10</SystemAmount>
+                    <DioceseAmount>0</DioceseAmount>
+                    <FQComments>Comments</FQComments>
+                </FQItem>
+                <FQItem>
+                    <FQItemCode>IC-13.3</FQItemCode>
+                    <TuitionAmount>113.23</TuitionAmount>
+                    <BoardingAmount>0</BoardingAmount>
+                    <SystemAmount>31.10</SystemAmount>
+                    <DioceseAmount>0</DioceseAmount>
+                    <FQComments>Comments</FQComments>
+                </FQItem>
+                <FQItem>
+                    <FQItemCode>IC-14.4</FQItemCode>
+                    <TuitionAmount>114.23</TuitionAmount>
+                    <BoardingAmount>0</BoardingAmount>
+                    <SystemAmount>41.10</SystemAmount>
+                    <DioceseAmount>0</DioceseAmount>
+                    <FQComments>Comments</FQComments>
+                </FQItem>
+                <FQItem>
+                    <FQItemCode>IC-15.5</FQItemCode>
+                    <TuitionAmount>115.23</TuitionAmount>
+                    <BoardingAmount>0</BoardingAmount>
+                    <SystemAmount>51.10</SystemAmount>
+                    <DioceseAmount>0</DioceseAmount>
+                    <FQComments>Comments</FQComments>
+                </FQItem>
+            </FQItemList>
+            <AGRuleList>
+                <AGRule>
+                    <AGRuleCode>Code-1-1</AGRuleCode>
+                    <AGRuleComment>Comment + 1-1</AGRuleComment>
+                    <AGRuleResponse>Response</AGRuleResponse>
+                    <AGRuleStatus>OK</AGRuleStatus>
+                </AGRule>
+                <AGRule>
+                    <AGRuleCode>Code-1-2</AGRuleCode>
+                    <AGRuleComment>Comment + 1-2</AGRuleComment>
+                    <AGRuleResponse>Response</AGRuleResponse>
+                    <AGRuleStatus>OK</AGRuleStatus>
+                </AGRule>
+                <AGRule>
+                    <AGRuleCode>Code-1-3</AGRuleCode>
+                    <AGRuleComment>Comment + 1-3</AGRuleComment>
+                    <AGRuleResponse>Response</AGRuleResponse>
+                    <AGRuleStatus>OK</AGRuleStatus>
+                </AGRule>
+                <AGRule>
+                    <AGRuleCode>Code-1-4</AGRuleCode>
+                    <AGRuleComment>Comment + 1-4</AGRuleComment>
+                    <AGRuleResponse>Response</AGRuleResponse>
+                    <AGRuleStatus>OK</AGRuleStatus>
+                </AGRule>
+                <AGRule>
+                    <AGRuleCode>Code-1-5</AGRuleCode>
+                    <AGRuleComment>Comment + 1-5</AGRuleComment>
+                    <AGRuleResponse>Response</AGRuleResponse>
+                    <AGRuleStatus>OK</AGRuleStatus>
+                </AGRule>
+            </AGRuleList>
+        </FQReporting>
+        <FQReporting>
+            <EntityLevel>System</EntityLevel>
+            <SchoolInfoRefId>252159ce-e385-4dea-8440-26d300282781</SchoolInfoRefId>
+            <LocalId>LocalId</LocalId>
+            <StateProvinceId>SPID</StateProvinceId>
+            <CommonwealthId>4001</CommonwealthId>
+            <ACARAId>48116</ACARAId>
+            <EntityName>Bens Test State High School</EntityName>
+            <EntityContact>
+                <Name Type="LGL">
+                    <Title>Ms</Title>
+                    <FamilyName>Person</FamilyName>
+                    <GivenName>Entity</GivenName>
+                    <MiddleName>Contact</MiddleName>
+                    <PreferredFamilyName>Person</PreferredFamilyName>
+                    <PreferredGivenName>Entity</PreferredGivenName>
+                    <FullName>Ms Entity Contact Person</FullName>
+                </Name>
+                <PositionTitle>Registrar</PositionTitle>
+                <Role>Role</Role>
+                <RegistrationDetails>Registration Details</RegistrationDetails>
+                <Qualifications>Qualifications</Qualifications>
+                <Address Type="0123" Role="012B">
+                    <Street>
+                        <Line1>Entity Contact Address</Line1>
+                        <Line2>145 Some Street</Line2>
+                    </Street>
+                    <City>Perth</City>
+                    <StateProvince>WA</StateProvince>
+                    <PostalCode>6000</PostalCode>
+                    <GridLocation>
+                        <Latitude>-31.952693</Latitude>
+                        <Longitude>115.871971</Longitude>
+                    </GridLocation>
+                </Address>
+                <Email Type="06">entity.contact@not.a.real.domain</Email>
+                <PhoneNumber Type="0096">
+                    <Number>(123) 456 7890</Number>
+                </PhoneNumber>
+            </EntityContact>
+            <FQContextualQuestionList>
+                <FQContextualQuestion>
+                    <FQContext>Context-2-1</FQContext>
+                    <FQAnswer>Answer 2 1</FQAnswer>
+                </FQContextualQuestion>
+                <FQContextualQuestion>
+                    <FQContext>Context-2-2</FQContext>
+                    <FQAnswer>Answer 2 2</FQAnswer>
+                </FQContextualQuestion>
+                <FQContextualQuestion>
+                    <FQContext>Context-2-3</FQContext>
+                    <FQAnswer>Answer 2 3</FQAnswer>
+                </FQContextualQuestion>
+                <FQContextualQuestion>
+                    <FQContext>Context-2-4</FQContext>
+                    <FQAnswer>Answer 2 4</FQAnswer>
+                </FQContextualQuestion>
+                <FQContextualQuestion>
+                    <FQContext>Context-2-5</FQContext>
+                    <FQAnswer>Answer 2 5</FQAnswer>
+                </FQContextualQuestion>
+            </FQContextualQuestionList>
+            <FQItemList>
+                <FQItem>
+                    <FQItemCode>IC-21.1</FQItemCode>
+                    <TuitionAmount>121.23</TuitionAmount>
+                    <BoardingAmount>0</BoardingAmount>
+                    <SystemAmount>12.20</SystemAmount>
+                    <DioceseAmount>0</DioceseAmount>
+                    <FQComments>Comments</FQComments>
+                </FQItem>
+                <FQItem>
+                    <FQItemCode>IC-22.2</FQItemCode>
+                    <TuitionAmount>122.23</TuitionAmount>
+                    <BoardingAmount>0</BoardingAmount>
+                    <SystemAmount>22.20</SystemAmount>
+                    <DioceseAmount>0</DioceseAmount>
+                    <FQComments>Comments</FQComments>
+                </FQItem>
+                <FQItem>
+                    <FQItemCode>IC-23.3</FQItemCode>
+                    <TuitionAmount>123.23</TuitionAmount>
+                    <BoardingAmount>0</BoardingAmount>
+                    <SystemAmount>32.20</SystemAmount>
+                    <DioceseAmount>0</DioceseAmount>
+                    <FQComments>Comments</FQComments>
+                </FQItem>
+                <FQItem>
+                    <FQItemCode>IC-24.4</FQItemCode>
+                    <TuitionAmount>124.23</TuitionAmount>
+                    <BoardingAmount>0</BoardingAmount>
+                    <SystemAmount>42.20</SystemAmount>
+                    <DioceseAmount>0</DioceseAmount>
+                    <FQComments>Comments</FQComments>
+                </FQItem>
+                <FQItem>
+                    <FQItemCode>IC-25.5</FQItemCode>
+                    <TuitionAmount>125.23</TuitionAmount>
+                    <BoardingAmount>0</BoardingAmount>
+                    <SystemAmount>52.20</SystemAmount>
+                    <DioceseAmount>0</DioceseAmount>
+                    <FQComments>Comments</FQComments>
+                </FQItem>
+            </FQItemList>
+            <AGRuleList>
+                <AGRule>
+                    <AGRuleCode>Code-2-1</AGRuleCode>
+                    <AGRuleComment>Comment + 2-1</AGRuleComment>
+                    <AGRuleResponse>Response</AGRuleResponse>
+                    <AGRuleStatus>OK</AGRuleStatus>
+                </AGRule>
+                <AGRule>
+                    <AGRuleCode>Code-2-2</AGRuleCode>
+                    <AGRuleComment>Comment + 2-2</AGRuleComment>
+                    <AGRuleResponse>Response</AGRuleResponse>
+                    <AGRuleStatus>OK</AGRuleStatus>
+                </AGRule>
+                <AGRule>
+                    <AGRuleCode>Code-2-3</AGRuleCode>
+                    <AGRuleComment>Comment + 2-3</AGRuleComment>
+                    <AGRuleResponse>Response</AGRuleResponse>
+                    <AGRuleStatus>OK</AGRuleStatus>
+                </AGRule>
+                <AGRule>
+                    <AGRuleCode>Code-2-4</AGRuleCode>
+                    <AGRuleComment>Comment + 2-4</AGRuleComment>
+                    <AGRuleResponse>Response</AGRuleResponse>
+                    <AGRuleStatus>OK</AGRuleStatus>
+                </AGRule>
+                <AGRule>
+                    <AGRuleCode>Code-2-5</AGRuleCode>
+                    <AGRuleComment>Comment + 2-5</AGRuleComment>
+                    <AGRuleResponse>Response</AGRuleResponse>
+                    <AGRuleStatus>OK</AGRuleStatus>
+                </AGRule>
+            </AGRuleList>
+        </FQReporting>
+        <FQReporting>
+            <EntityLevel>System</EntityLevel>
+            <SchoolInfoRefId>252159ce-e385-4dea-8440-26d300282781</SchoolInfoRefId>
+            <LocalId>LocalId</LocalId>
+            <StateProvinceId>SPID</StateProvinceId>
+            <CommonwealthId>4001</CommonwealthId>
+            <ACARAId>48116</ACARAId>
+            <EntityName>Bens Test State High School</EntityName>
+            <EntityContact>
+                <Name Type="LGL">
+                    <Title>Ms</Title>
+                    <FamilyName>Person</FamilyName>
+                    <GivenName>Entity</GivenName>
+                    <MiddleName>Contact</MiddleName>
+                    <PreferredFamilyName>Person</PreferredFamilyName>
+                    <PreferredGivenName>Entity</PreferredGivenName>
+                    <FullName>Ms Entity Contact Person</FullName>
+                </Name>
+                <PositionTitle>Registrar</PositionTitle>
+                <Role>Role</Role>
+                <RegistrationDetails>Registration Details</RegistrationDetails>
+                <Qualifications>Qualifications</Qualifications>
+                <Address Type="0123" Role="012B">
+                    <Street>
+                        <Line1>Entity Contact Address</Line1>
+                        <Line2>145 Some Street</Line2>
+                    </Street>
+                    <City>Perth</City>
+                    <StateProvince>WA</StateProvince>
+                    <PostalCode>6000</PostalCode>
+                    <GridLocation>
+                        <Latitude>-31.952693</Latitude>
+                        <Longitude>115.871971</Longitude>
+                    </GridLocation>
+                </Address>
+                <Email Type="06">entity.contact@not.a.real.domain</Email>
+                <PhoneNumber Type="0096">
+                    <Number>(123) 456 7890</Number>
+                </PhoneNumber>
+            </EntityContact>
+            <FQContextualQuestionList>
+                <FQContextualQuestion>
+                    <FQContext>Context-3-1</FQContext>
+                    <FQAnswer>Answer 3 1</FQAnswer>
+                </FQContextualQuestion>
+                <FQContextualQuestion>
+                    <FQContext>Context-3-2</FQContext>
+                    <FQAnswer>Answer 3 2</FQAnswer>
+                </FQContextualQuestion>
+                <FQContextualQuestion>
+                    <FQContext>Context-3-3</FQContext>
+                    <FQAnswer>Answer 3 3</FQAnswer>
+                </FQContextualQuestion>
+                <FQContextualQuestion>
+                    <FQContext>Context-3-4</FQContext>
+                    <FQAnswer>Answer 3 4</FQAnswer>
+                </FQContextualQuestion>
+                <FQContextualQuestion>
+                    <FQContext>Context-3-5</FQContext>
+                    <FQAnswer>Answer 3 5</FQAnswer>
+                </FQContextualQuestion>
+            </FQContextualQuestionList>
+            <FQItemList>
+                <FQItem>
+                    <FQItemCode>IC-31.1</FQItemCode>
+                    <TuitionAmount>131.23</TuitionAmount>
+                    <BoardingAmount>0</BoardingAmount>
+                    <SystemAmount>13.30</SystemAmount>
+                    <DioceseAmount>0</DioceseAmount>
+                    <FQComments>Comments</FQComments>
+                </FQItem>
+                <FQItem>
+                    <FQItemCode>IC-32.2</FQItemCode>
+                    <TuitionAmount>132.23</TuitionAmount>
+                    <BoardingAmount>0</BoardingAmount>
+                    <SystemAmount>23.30</SystemAmount>
+                    <DioceseAmount>0</DioceseAmount>
+                    <FQComments>Comments</FQComments>
+                </FQItem>
+                <FQItem>
+                    <FQItemCode>IC-33.3</FQItemCode>
+                    <TuitionAmount>133.23</TuitionAmount>
+                    <BoardingAmount>0</BoardingAmount>
+                    <SystemAmount>33.30</SystemAmount>
+                    <DioceseAmount>0</DioceseAmount>
+                    <FQComments>Comments</FQComments>
+                </FQItem>
+                <FQItem>
+                    <FQItemCode>IC-34.4</FQItemCode>
+                    <TuitionAmount>134.23</TuitionAmount>
+                    <BoardingAmount>0</BoardingAmount>
+                    <SystemAmount>43.30</SystemAmount>
+                    <DioceseAmount>0</DioceseAmount>
+                    <FQComments>Comments</FQComments>
+                </FQItem>
+                <FQItem>
+                    <FQItemCode>IC-35.5</FQItemCode>
+                    <TuitionAmount>135.23</TuitionAmount>
+                    <BoardingAmount>0</BoardingAmount>
+                    <SystemAmount>53.30</SystemAmount>
+                    <DioceseAmount>0</DioceseAmount>
+                    <FQComments>Comments</FQComments>
+                </FQItem>
+            </FQItemList>
+            <AGRuleList>
+                <AGRule>
+                    <AGRuleCode>Code-3-1</AGRuleCode>
+                    <AGRuleComment>Comment + 3-1</AGRuleComment>
+                    <AGRuleResponse>Response</AGRuleResponse>
+                    <AGRuleStatus>OK</AGRuleStatus>
+                </AGRule>
+                <AGRule>
+                    <AGRuleCode>Code-3-2</AGRuleCode>
+                    <AGRuleComment>Comment + 3-2</AGRuleComment>
+                    <AGRuleResponse>Response</AGRuleResponse>
+                    <AGRuleStatus>OK</AGRuleStatus>
+                </AGRule>
+                <AGRule>
+                    <AGRuleCode>Code-3-3</AGRuleCode>
+                    <AGRuleComment>Comment + 3-3</AGRuleComment>
+                    <AGRuleResponse>Response</AGRuleResponse>
+                    <AGRuleStatus>OK</AGRuleStatus>
+                </AGRule>
+                <AGRule>
+                    <AGRuleCode>Code-3-4</AGRuleCode>
+                    <AGRuleComment>Comment + 3-4</AGRuleComment>
+                    <AGRuleResponse>Response</AGRuleResponse>
+                    <AGRuleStatus>OK</AGRuleStatus>
+                </AGRule>
+                <AGRule>
+                    <AGRuleCode>Code-3-5</AGRuleCode>
+                    <AGRuleComment>Comment + 3-5</AGRuleComment>
+                    <AGRuleResponse>Response</AGRuleResponse>
+                    <AGRuleStatus>OK</AGRuleStatus>
+                </AGRule>
+            </AGRuleList>
+        </FQReporting>
+        <FQReporting>
+            <EntityLevel>System</EntityLevel>
+            <SchoolInfoRefId>252159ce-e385-4dea-8440-26d300282781</SchoolInfoRefId>
+            <LocalId>LocalId</LocalId>
+            <StateProvinceId>SPID</StateProvinceId>
+            <CommonwealthId>4001</CommonwealthId>
+            <ACARAId>48116</ACARAId>
+            <EntityName>Bens Test State High School</EntityName>
+            <EntityContact>
+                <Name Type="LGL">
+                    <Title>Ms</Title>
+                    <FamilyName>Person</FamilyName>
+                    <GivenName>Entity</GivenName>
+                    <MiddleName>Contact</MiddleName>
+                    <PreferredFamilyName>Person</PreferredFamilyName>
+                    <PreferredGivenName>Entity</PreferredGivenName>
+                    <FullName>Ms Entity Contact Person</FullName>
+                </Name>
+                <PositionTitle>Registrar</PositionTitle>
+                <Role>Role</Role>
+                <RegistrationDetails>Registration Details</RegistrationDetails>
+                <Qualifications>Qualifications</Qualifications>
+                <Address Type="0123" Role="012B">
+                    <Street>
+                        <Line1>Entity Contact Address</Line1>
+                        <Line2>145 Some Street</Line2>
+                    </Street>
+                    <City>Perth</City>
+                    <StateProvince>WA</StateProvince>
+                    <PostalCode>6000</PostalCode>
+                    <GridLocation>
+                        <Latitude>-31.952693</Latitude>
+                        <Longitude>115.871971</Longitude>
+                    </GridLocation>
+                </Address>
+                <Email Type="06">entity.contact@not.a.real.domain</Email>
+                <PhoneNumber Type="0096">
+                    <Number>(123) 456 7890</Number>
+                </PhoneNumber>
+            </EntityContact>
+            <FQContextualQuestionList>
+                <FQContextualQuestion>
+                    <FQContext>Context-4-1</FQContext>
+                    <FQAnswer>Answer 4 1</FQAnswer>
+                </FQContextualQuestion>
+                <FQContextualQuestion>
+                    <FQContext>Context-4-2</FQContext>
+                    <FQAnswer>Answer 4 2</FQAnswer>
+                </FQContextualQuestion>
+                <FQContextualQuestion>
+                    <FQContext>Context-4-3</FQContext>
+                    <FQAnswer>Answer 4 3</FQAnswer>
+                </FQContextualQuestion>
+                <FQContextualQuestion>
+                    <FQContext>Context-4-4</FQContext>
+                    <FQAnswer>Answer 4 4</FQAnswer>
+                </FQContextualQuestion>
+                <FQContextualQuestion>
+                    <FQContext>Context-4-5</FQContext>
+                    <FQAnswer>Answer 4 5</FQAnswer>
+                </FQContextualQuestion>
+            </FQContextualQuestionList>
+            <FQItemList>
+                <FQItem>
+                    <FQItemCode>IC-41.1</FQItemCode>
+                    <TuitionAmount>141.23</TuitionAmount>
+                    <BoardingAmount>0</BoardingAmount>
+                    <SystemAmount>14.40</SystemAmount>
+                    <DioceseAmount>0</DioceseAmount>
+                    <FQComments>Comments</FQComments>
+                </FQItem>
+                <FQItem>
+                    <FQItemCode>IC-42.2</FQItemCode>
+                    <TuitionAmount>142.23</TuitionAmount>
+                    <BoardingAmount>0</BoardingAmount>
+                    <SystemAmount>24.40</SystemAmount>
+                    <DioceseAmount>0</DioceseAmount>
+                    <FQComments>Comments</FQComments>
+                </FQItem>
+                <FQItem>
+                    <FQItemCode>IC-43.3</FQItemCode>
+                    <TuitionAmount>143.23</TuitionAmount>
+                    <BoardingAmount>0</BoardingAmount>
+                    <SystemAmount>34.40</SystemAmount>
+                    <DioceseAmount>0</DioceseAmount>
+                    <FQComments>Comments</FQComments>
+                </FQItem>
+                <FQItem>
+                    <FQItemCode>IC-44.4</FQItemCode>
+                    <TuitionAmount>144.23</TuitionAmount>
+                    <BoardingAmount>0</BoardingAmount>
+                    <SystemAmount>44.40</SystemAmount>
+                    <DioceseAmount>0</DioceseAmount>
+                    <FQComments>Comments</FQComments>
+                </FQItem>
+                <FQItem>
+                    <FQItemCode>IC-45.5</FQItemCode>
+                    <TuitionAmount>145.23</TuitionAmount>
+                    <BoardingAmount>0</BoardingAmount>
+                    <SystemAmount>54.40</SystemAmount>
+                    <DioceseAmount>0</DioceseAmount>
+                    <FQComments>Comments</FQComments>
+                </FQItem>
+            </FQItemList>
+            <AGRuleList>
+                <AGRule>
+                    <AGRuleCode>Code-4-1</AGRuleCode>
+                    <AGRuleComment>Comment + 4-1</AGRuleComment>
+                    <AGRuleResponse>Response</AGRuleResponse>
+                    <AGRuleStatus>OK</AGRuleStatus>
+                </AGRule>
+                <AGRule>
+                    <AGRuleCode>Code-4-2</AGRuleCode>
+                    <AGRuleComment>Comment + 4-2</AGRuleComment>
+                    <AGRuleResponse>Response</AGRuleResponse>
+                    <AGRuleStatus>OK</AGRuleStatus>
+                </AGRule>
+                <AGRule>
+                    <AGRuleCode>Code-4-3</AGRuleCode>
+                    <AGRuleComment>Comment + 4-3</AGRuleComment>
+                    <AGRuleResponse>Response</AGRuleResponse>
+                    <AGRuleStatus>OK</AGRuleStatus>
+                </AGRule>
+                <AGRule>
+                    <AGRuleCode>Code-4-4</AGRuleCode>
+                    <AGRuleComment>Comment + 4-4</AGRuleComment>
+                    <AGRuleResponse>Response</AGRuleResponse>
+                    <AGRuleStatus>OK</AGRuleStatus>
+                </AGRule>
+                <AGRule>
+                    <AGRuleCode>Code-4-5</AGRuleCode>
+                    <AGRuleComment>Comment + 4-5</AGRuleComment>
+                    <AGRuleResponse>Response</AGRuleResponse>
+                    <AGRuleStatus>OK</AGRuleStatus>
+                </AGRule>
+            </AGRuleList>
+        </FQReporting>
+    </FQReportingList>
+    <LocalCodeList>
+        <LocalCode>
+            <LocalisedCode>Code1</LocalisedCode>
+            <Description>Description 1</Description>
+            <Element>Element 1</Element>
+            <ListIndex>1</ListIndex>
+        </LocalCode>
+        <LocalCode>
+            <LocalisedCode>Code2</LocalisedCode>
+            <Description>Description 2</Description>
+            <Element>Element 2</Element>
+            <ListIndex>2</ListIndex>
+        </LocalCode>
+    </LocalCodeList>
+</FinancialQuestionnaireCollection>

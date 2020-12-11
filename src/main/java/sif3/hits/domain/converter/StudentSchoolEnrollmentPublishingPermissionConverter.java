@@ -1,6 +1,7 @@
 package sif3.hits.domain.converter;
 
 import org.springframework.stereotype.Component;
+
 import sif.dd.au30.model.AUCodeSetsPermissionCategoryCodeType;
 import sif.dd.au30.model.AUCodeSetsYesOrNoCategoryType;
 import sif.dd.au30.model.PublishingPermissionType;

@@ -13,15 +13,21 @@ import java.util.regex.Pattern;
 import sif.dd.au30.conversion.DataModelMarshalFactory;
 import sif3.common.exception.MarshalException;
 import sif3.common.exception.UnsupportedMediaTypeExcpetion;
+import sif3.hits.rest.consumer.data.AddressCollectionTestData;
 import sif3.hits.rest.consumer.data.CalendarDateTestData;
 import sif3.hits.rest.consumer.data.CalendarSummaryTestData;
+import sif3.hits.rest.consumer.data.CensusCollectionTestData;
 import sif3.hits.rest.consumer.data.ChargedLocationInfoTestData;
+import sif3.hits.rest.consumer.data.CollectionRoundTestData;
+import sif3.hits.rest.consumer.data.CollectionStatusTestData;
 import sif3.hits.rest.consumer.data.DebtorTestData;
 import sif3.hits.rest.consumer.data.FinancialAccountTestData;
+import sif3.hits.rest.consumer.data.FinancialQuestionnaireCollectionTestData;
 import sif3.hits.rest.consumer.data.GradingAssignmentScoreTestData;
 import sif3.hits.rest.consumer.data.GradingAssignmentTestData;
 import sif3.hits.rest.consumer.data.InvoiceTestData;
 import sif3.hits.rest.consumer.data.JournalTestData;
+import sif3.hits.rest.consumer.data.LibraryPatronStatusTestData;
 import sif3.hits.rest.consumer.data.NAPEventStudentLinkTestData;
 import sif3.hits.rest.consumer.data.NAPStudentResponseSetTestData;
 import sif3.hits.rest.consumer.data.NAPTestItemTestData;
@@ -39,6 +45,7 @@ import sif3.hits.rest.consumer.data.SchoolInfoTestData;
 import sif3.hits.rest.consumer.data.SessionInfoTestData;
 import sif3.hits.rest.consumer.data.StaffAssignmentTestData;
 import sif3.hits.rest.consumer.data.StaffPersonalTestData;
+import sif3.hits.rest.consumer.data.StudentAttendanceCollectionTestData;
 import sif3.hits.rest.consumer.data.StudentAttendanceSummaryTestData;
 import sif3.hits.rest.consumer.data.StudentAttendanceTimeListTestData;
 import sif3.hits.rest.consumer.data.StudentContactPersonalTestData;
@@ -65,7 +72,7 @@ import sif3.hits.rest.consumer.data.WellbeingResponseTestData;
 public class XMLGenerator {
 	private static final String PROJECT_PATH = "/Users/ben/Development/nsip/sif-hits";
 	private static final String XML_PATH = PROJECT_PATH + "/src/test/resources/xml";
-	private static final String CONFIG_PATH = PROJECT_PATH + "/config";
+	private static final String CONFIG_PATH = PROJECT_PATH + "/src/main/dist/config";
 	private static final String PROVIDER_PATH = PROJECT_PATH + "/src/main/java/sif3/hits/rest/provider";
 
 	public static void main(String[] args) throws MarshalException, UnsupportedMediaTypeExcpetion {
@@ -183,6 +190,20 @@ public class XMLGenerator {
 		generateTestXML(path, new TermInfoTestData(), TermInfoTestData.XML_REF_ID_1, TermInfoTestData.XML_REF_ID_2);
 		generateTestXML(path, new SchoolCourseInfoTestData(), SchoolCourseInfoTestData.XML_REF_ID_1,
 				SchoolCourseInfoTestData.XML_REF_ID_2);
+		generateTestXML(path, new AddressCollectionTestData(), AddressCollectionTestData.XML_REF_ID_1,
+				AddressCollectionTestData.XML_REF_ID_2);
+		generateTestXML(path, new CensusCollectionTestData(), CensusCollectionTestData.XML_REF_ID_1,
+				CensusCollectionTestData.XML_REF_ID_2);
+		generateTestXML(path, new CollectionRoundTestData(), CollectionRoundTestData.XML_REF_ID_1,
+				CollectionRoundTestData.XML_REF_ID_2);
+		generateTestXML(path, new CollectionStatusTestData(), CollectionStatusTestData.XML_REF_ID_1,
+				CollectionStatusTestData.XML_REF_ID_2);
+		generateTestXML(path, new FinancialQuestionnaireCollectionTestData(), FinancialQuestionnaireCollectionTestData.XML_REF_ID_1,
+				FinancialQuestionnaireCollectionTestData.XML_REF_ID_2);
+		generateTestXML(path, new StudentAttendanceCollectionTestData(), StudentAttendanceCollectionTestData.XML_REF_ID_1,
+				StudentAttendanceCollectionTestData.XML_REF_ID_2);
+		generateTestXML(path, new LibraryPatronStatusTestData(), LibraryPatronStatusTestData.XML_REF_ID_1,
+				LibraryPatronStatusTestData.XML_REF_ID_2);
 	}
 
 	public static <T, C> void generateTestXML(String path, TestData<T, C> testData, String refId1, String refId2)

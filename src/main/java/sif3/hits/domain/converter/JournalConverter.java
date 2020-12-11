@@ -88,6 +88,8 @@ public class JournalConverter extends HitsConverter<JournalType, Journal> implem
 			target.setLocalId(getJAXBValue(source.getLocalId()));
 			if (source.getAmount() != null) {
 				target.setAmount(getBigDecimalValue(source.getAmount().getValue()));
+			} else {
+				target.setAmount(null);
 			}
 			target.setApprovedBy(getJAXBValue(source.getApprovedBy()));
 			target.setApprovedDate(getDateValue(getJAXBValue(source.getApprovedDate())));
@@ -106,6 +108,9 @@ public class JournalConverter extends HitsConverter<JournalType, Journal> implem
 			if (originatingTransactionRefId != null) {
 				target.setOriginatingTransactionRefId(originatingTransactionRefId.getValue());
 				target.setOriginationTransactionSIFRefObject(originatingTransactionRefId.getSIFRefObject());
+			} else {
+				target.setOriginatingTransactionRefId(null);
+				target.setOriginationTransactionSIFRefObject(null);				
 			}
 
 			if (target.getJournalAdjustments() == null) {

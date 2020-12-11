@@ -115,7 +115,7 @@ public class StudentPersonalConverter extends HitsConverter<StudentPersonalType,
 			mostRecent.setOtherSchoolName(objectFactory.createStudentMostRecentContainerTypeOtherSchoolName(source.getMostRecentOtherSchoolName()));
 			mostRecent.setDisabilityLevelOfAdjustment(objectFactory.createStudentMostRecentContainerTypeDisabilityLevelOfAdjustment(source.getMostRecentDisabilityLevelOfAdjustment()));
 			mostRecent.setDisabilityCategory(objectFactory.createStudentMostRecentContainerTypeDisabilityCategory(source.getMostRecentDisabilityCategory()));
-			mostRecent.setCensusAge(objectFactory.createStudentMostRecentContainerTypeCensusAge(getBigDecimalValue(source.getMostRecentCensusAge())));
+			mostRecent.setCensusAge(objectFactory.createStudentMostRecentContainerTypeCensusAge(getBigIntegerValue(source.getMostRecentCensusAge())));
 			mostRecent.setDistanceEducationStudent(objectFactory.createStudentMostRecentContainerTypeDistanceEducationStudent(getEnumValue(source.getMostRecentDistanceEducationStudent(), AUCodeSetsYesOrNoCategoryType.class)));
 			mostRecent.setBoardingStatus(objectFactory.createStudentMostRecentContainerTypeBoardingStatus(getEnumValue(source.getMostRecentBoardingStatus(), AUCodeSetsBoardingType.class)));
 			
@@ -198,7 +198,7 @@ public class StudentPersonalConverter extends HitsConverter<StudentPersonalType,
 				target.setMostRecentOtherSchoolName(getJAXBValue(mostRecent.getOtherSchoolName()));
 				target.setMostRecentDisabilityLevelOfAdjustment(getJAXBValue(mostRecent.getDisabilityLevelOfAdjustment()));
 				target.setMostRecentDisabilityCategory(getJAXBValue(mostRecent.getDisabilityCategory()));
-				target.setMostRecentCensusAge(getBigDecimalValue(getJAXBValue(mostRecent.getCensusAge())));
+				target.setMostRecentCensusAge(getBigIntegerValue(getJAXBValue(mostRecent.getCensusAge())));
 				target.setMostRecentDistanceEducationStudent(getJAXBEnumValue(mostRecent.getDistanceEducationStudent()));
 				target.setMostRecentBoardingStatus(getJAXBEnumValue(mostRecent.getBoardingStatus()));
 				

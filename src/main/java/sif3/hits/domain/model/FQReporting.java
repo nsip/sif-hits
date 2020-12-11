@@ -1,170 +1,165 @@
 package sif3.hits.domain.model;
 
-import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.Transient;
+
 @Entity
-@Table(name = "FQReporting")
-public class FQReporting extends HitsEntity {
-    private static final long serialVersionUID = 2255931641297274283L;
+public class FQReporting {
+	private Long id;
+	private FinancialQuestionnaireCollection fqCollection;
+	private String entityLevel;
+	private String schoolInfoRefId;
+	private String localId;
+	private String stateProvinceId;
+	private String commonwealthId;
+	private String acaraId;
+	private String entityName;
+	private List<FQReportingEntityContact> entityContacts;
+	private List<FQReportingFQContextualQuestion> contextualQuestionList;
+	private List<FQItem> fqItemList;
+	private List<FQReportingAGRule> agRuleList;
 
-    private Long id;
-    private FinancialQuestionnaireSubmission fqSubmission;
-    private String fqRefId;
-    private String entityLevel;
-    private String schoolInfoRefId;
-    private String localId;
-    private String stateProvinceId;
-    private String commonwealthId;
-    private String acaraId;
-    private String entityName;
+	@Id
+	@GeneratedValue
+	public Long getId() {
+		return id;
+	}
 
-    private List<FQEntityContact> entityContacts;
-    private List<FQContextualQuestion> fqContextualQuestionList;
-    private List<FQItem> fqItemList;
-    private List<FQRule> fqRuleList;
+	public void setId(Long id) {
+		this.id = id;
+	}
 
-    @Id
-    @GeneratedValue
-    public Long getId() {
-        return id;
-    }
+	@ManyToOne
+	@JoinColumn(name = "FQCollection_RefId")
+	public FinancialQuestionnaireCollection getFqCollection() {
+		return fqCollection;
+	}
 
-    public void setId(Long id) {
-        this.id = id;
-    }
+	public void setFqCollection(FinancialQuestionnaireCollection fqCollection) {
+		this.fqCollection = fqCollection;
+	}
 
-    @ManyToOne
-    @JoinColumn(name = "FQSubmission_RefId")
-    public FinancialQuestionnaireSubmission getFqSubmission() {
-        return fqSubmission;
-    }
+	public String getEntityLevel() {
+		return entityLevel;
+	}
 
-    public void setFqSubmission(FinancialQuestionnaireSubmission fqSubmission) {
-        this.fqSubmission = fqSubmission;
-    }
+	public void setEntityLevel(String entityLevel) {
+		this.entityLevel = entityLevel;
+	}
 
-    public String getFqRefId() {
-        return fqRefId;
-    }
+	public String getSchoolInfoRefId() {
+		return schoolInfoRefId;
+	}
 
-    public void setFqRefId(String fqRefId) {
-        this.fqRefId = fqRefId;
-    }
+	public void setSchoolInfoRefId(String schoolInfoRefId) {
+		this.schoolInfoRefId = schoolInfoRefId;
+	}
 
-    public String getEntityLevel() {
-        return entityLevel;
-    }
+	public String getLocalId() {
+		return localId;
+	}
 
-    public void setEntityLevel(String entityLevel) {
-        this.entityLevel = entityLevel;
-    }
+	public void setLocalId(String localId) {
+		this.localId = localId;
+	}
 
-    @Column(name = "SchoolInfo_RefId")
-    public String getSchoolInfoRefId() {
-        return schoolInfoRefId;
-    }
+	public String getStateProvinceId() {
+		return stateProvinceId;
+	}
 
-    public void setSchoolInfoRefId(String schoolInfoRefId) {
-        this.schoolInfoRefId = schoolInfoRefId;
-    }
+	public void setStateProvinceId(String stateProvinceId) {
+		this.stateProvinceId = stateProvinceId;
+	}
 
-    public String getLocalId() {
-        return localId;
-    }
+	public String getCommonwealthId() {
+		return commonwealthId;
+	}
 
-    public void setLocalId(String localId) {
-        this.localId = localId;
-    }
+	public void setCommonwealthId(String commonwealthId) {
+		this.commonwealthId = commonwealthId;
+	}
 
-    public String getStateProvinceId() {
-        return stateProvinceId;
-    }
+	public String getAcaraId() {
+		return acaraId;
+	}
 
-    public void setStateProvinceId(String stateProvinceId) {
-        this.stateProvinceId = stateProvinceId;
-    }
+	public void setAcaraId(String acaraId) {
+		this.acaraId = acaraId;
+	}
 
-    public String getCommonwealthId() {
-        return commonwealthId;
-    }
+	public String getEntityName() {
+		return entityName;
+	}
 
-    public void setCommonwealthId(String commonwealthId) {
-        this.commonwealthId = commonwealthId;
-    }
+	public void setEntityName(String entityName) {
+		this.entityName = entityName;
+	}
 
-    public String getAcaraId() {
-        return acaraId;
-    }
+	// Actually One To One but easier to manage through hibernate this way.
+	@OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "fqReporting")
+	public List<FQReportingEntityContact> getEntityContacts() {
+		return entityContacts;
+	}
 
-    public void setAcaraId(String acaraId) {
-        this.acaraId = acaraId;
-    }
+	public void setEntityContacts(List<FQReportingEntityContact> entityContacts) {
+		this.entityContacts = entityContacts;
+	}
 
-    public String getEntityName() {
-        return entityName;
-    }
+	@Transient
+	public FQReportingEntityContact getEntityContact() {
+		FQReportingEntityContact result = null;
+		if (entityContacts != null && !entityContacts.isEmpty()) {
+			result = entityContacts.get(0);
+		}
+		return result;
+	}
 
-    public void setEntityName(String entityName) {
-        this.entityName = entityName;
-    }
+	@Transient
+	public void setEntityContact(FQReportingEntityContact entityContact) {
+		if (entityContacts == null) {
+			entityContacts = new ArrayList<>();
+		}
+		entityContacts.clear();
+		if (entityContact != null) {
+			entityContacts.add(entityContact);
+			entityContact.setFqReporting(this);
+		}
+	}
 
-    // Actually One To One but easier to manage through hibernate this way.
-    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "fqReporting")
-    public List<FQEntityContact> getEntityContacts() {
-        return entityContacts;
-    }
+	@OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "fqReporting")
+	public List<FQReportingFQContextualQuestion> getContextualQuestionList() {
+		return contextualQuestionList;
+	}
 
-    public void setEntityContacts(List<FQEntityContact> entityContacts) {
-        this.entityContacts = entityContacts;
-    }
+	public void setContextualQuestionList(List<FQReportingFQContextualQuestion> contextualQuestionList) {
+		this.contextualQuestionList = contextualQuestionList;
+	}
 
-    @Transient
-    public FQEntityContact getEntityContact() {
-        FQEntityContact result = null;
-        if (entityContacts != null && !entityContacts.isEmpty()) {
-            result = entityContacts.get(0);
-        }
-        return result;
-    }
+	@OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "fqReporting")
+	public List<FQItem> getFqItemList() {
+		return fqItemList;
+	}
 
-    @Transient
-    public void setEntityContact(FQEntityContact entityContact) {
-        if (entityContacts == null) {
-            entityContacts = new ArrayList<FQEntityContact>();
-        }
-        entityContacts.clear();
-        if (entityContact != null) {
-            entityContacts.add(entityContact);
-        }
-    }
+	public void setFqItemList(List<FQItem> fqItemList) {
+		this.fqItemList = fqItemList;
+	}
 
-    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "fqReporting")
-    public List<FQContextualQuestion> getFqContextualQuestionList() {
-        return fqContextualQuestionList;
-    }
+	@OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "fqReporting")
+	public List<FQReportingAGRule> getAgRuleList() {
+		return agRuleList;
+	}
 
-    public void setFqContextualQuestionList(List<FQContextualQuestion> fqContextualQuestionList) {
-        this.fqContextualQuestionList = fqContextualQuestionList;
-    }
-
-    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "fqReporting")
-    public List<FQItem> getFqItemList() {
-        return fqItemList;
-    }
-
-    public void setFqItemList(List<FQItem> fqItemList) {
-        this.fqItemList = fqItemList;
-    }
-
-    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "fqReporting")
-    public List<FQRule> getFqRuleList() {
-        return fqRuleList;
-    }
-
-    public void setFqRuleList(List<FQRule> fqRuleList) {
-        this.fqRuleList = fqRuleList;
-    }
+	public void setAgRuleList(List<FQReportingAGRule> agRuleList) {
+		this.agRuleList = agRuleList;
+	}
 
 }

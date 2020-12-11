@@ -2,6 +2,7 @@ package sif3.hits.domain.converter;
 
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Component;
+
 import sif.dd.au30.model.StudentSubjectChoiceType;
 import sif.dd.au30.model.SubjectAreaType;
 import sif3.hits.domain.converter.factory.IObjectFactory;

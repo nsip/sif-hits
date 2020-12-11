@@ -1,0 +1,500 @@
+<CollectionStatuss xmlns="http://www.sifassociation.org/datamodel/au/3.4">
+    <CollectionStatus RefId="ad8550d9-cada-43ff-813d-d2dd2946789f">
+        <ReportingAuthority>RepAuth</ReportingAuthority>
+        <ReportingAuthoritySystem>RepAuthSystem</ReportingAuthoritySystem>
+        <ReportingAuthorityCommonwealthId>RACID</ReportingAuthorityCommonwealthId>
+        <SubmittedBy>Submitter</SubmittedBy>
+        <SubmissionTimestamp>2020-06-04T16:23:30Z</SubmissionTimestamp>
+        <AGCollection>SES</AGCollection>
+        <CollectionYear>2020</CollectionYear>
+        <RoundCode>RoundC</RoundCode>
+        <AGReportingObjectResponseList>
+            <AGReportingObjectResponse>
+                <SubmittedRefId>abcde421-8fd0-4f4c-baac-7edb1fb3b324</SubmittedRefId>
+                <SIFRefId>abcde421-8fd0-4f4c-baac-7edb1fb3b324</SIFRefId>
+                <HTTPStatusCode>201</HTTPStatusCode>
+                <ErrorText>OK</ErrorText>
+                <CommonwealthId>CWID-1</CommonwealthId>
+                <EntityName>Bens Test State High School</EntityName>
+                <AGSubmissionStatusCode>In Progress</AGSubmissionStatusCode>
+                <AGRuleList>
+                    <AGRule>
+                        <AGRuleCode>R-1-1</AGRuleCode>
+                        <AGRuleComment>Comment 1-1</AGRuleComment>
+                        <AGRuleResponse>Response 1-1</AGRuleResponse>
+                        <AGRuleStatus>OK</AGRuleStatus>
+                    </AGRule>
+                    <AGRule>
+                        <AGRuleCode>R-1-2</AGRuleCode>
+                        <AGRuleComment>Comment 1-2</AGRuleComment>
+                        <AGRuleResponse>Response 1-2</AGRuleResponse>
+                        <AGRuleStatus>OK</AGRuleStatus>
+                    </AGRule>
+                    <AGRule>
+                        <AGRuleCode>R-1-3</AGRuleCode>
+                        <AGRuleComment>Comment 1-3</AGRuleComment>
+                        <AGRuleResponse>Response 1-3</AGRuleResponse>
+                        <AGRuleStatus>OK</AGRuleStatus>
+                    </AGRule>
+                    <AGRule>
+                        <AGRuleCode>R-1-4</AGRuleCode>
+                        <AGRuleComment>Comment 1-4</AGRuleComment>
+                        <AGRuleResponse>Response 1-4</AGRuleResponse>
+                        <AGRuleStatus>OK</AGRuleStatus>
+                    </AGRule>
+                    <AGRule>
+                        <AGRuleCode>R-1-5</AGRuleCode>
+                        <AGRuleComment>Comment 1-5</AGRuleComment>
+                        <AGRuleResponse>Response 1-5</AGRuleResponse>
+                        <AGRuleStatus>OK</AGRuleStatus>
+                    </AGRule>
+                </AGRuleList>
+            </AGReportingObjectResponse>
+            <AGReportingObjectResponse>
+                <SubmittedRefId>abcde421-8fd0-4f4c-baac-7edb1fb3b324</SubmittedRefId>
+                <SIFRefId>abcde421-8fd0-4f4c-baac-7edb1fb3b324</SIFRefId>
+                <HTTPStatusCode>202</HTTPStatusCode>
+                <ErrorText>OK</ErrorText>
+                <CommonwealthId>CWID-2</CommonwealthId>
+                <EntityName>Bens Test State High School</EntityName>
+                <AGSubmissionStatusCode>In Progress</AGSubmissionStatusCode>
+                <AGRuleList>
+                    <AGRule>
+                        <AGRuleCode>R-2-1</AGRuleCode>
+                        <AGRuleComment>Comment 2-1</AGRuleComment>
+                        <AGRuleResponse>Response 2-1</AGRuleResponse>
+                        <AGRuleStatus>OK</AGRuleStatus>
+                    </AGRule>
+                    <AGRule>
+                        <AGRuleCode>R-2-2</AGRuleCode>
+                        <AGRuleComment>Comment 2-2</AGRuleComment>
+                        <AGRuleResponse>Response 2-2</AGRuleResponse>
+                        <AGRuleStatus>OK</AGRuleStatus>
+                    </AGRule>
+                    <AGRule>
+                        <AGRuleCode>R-2-3</AGRuleCode>
+                        <AGRuleComment>Comment 2-3</AGRuleComment>
+                        <AGRuleResponse>Response 2-3</AGRuleResponse>
+                        <AGRuleStatus>OK</AGRuleStatus>
+                    </AGRule>
+                    <AGRule>
+                        <AGRuleCode>R-2-4</AGRuleCode>
+                        <AGRuleComment>Comment 2-4</AGRuleComment>
+                        <AGRuleResponse>Response 2-4</AGRuleResponse>
+                        <AGRuleStatus>OK</AGRuleStatus>
+                    </AGRule>
+                    <AGRule>
+                        <AGRuleCode>R-2-5</AGRuleCode>
+                        <AGRuleComment>Comment 2-5</AGRuleComment>
+                        <AGRuleResponse>Response 2-5</AGRuleResponse>
+                        <AGRuleStatus>OK</AGRuleStatus>
+                    </AGRule>
+                </AGRuleList>
+            </AGReportingObjectResponse>
+            <AGReportingObjectResponse>
+                <SubmittedRefId>abcde421-8fd0-4f4c-baac-7edb1fb3b324</SubmittedRefId>
+                <SIFRefId>abcde421-8fd0-4f4c-baac-7edb1fb3b324</SIFRefId>
+                <HTTPStatusCode>203</HTTPStatusCode>
+                <ErrorText>OK</ErrorText>
+                <CommonwealthId>CWID-3</CommonwealthId>
+                <EntityName>Bens Test State High School</EntityName>
+                <AGSubmissionStatusCode>In Progress</AGSubmissionStatusCode>
+                <AGRuleList>
+                    <AGRule>
+                        <AGRuleCode>R-3-1</AGRuleCode>
+                        <AGRuleComment>Comment 3-1</AGRuleComment>
+                        <AGRuleResponse>Response 3-1</AGRuleResponse>
+                        <AGRuleStatus>OK</AGRuleStatus>
+                    </AGRule>
+                    <AGRule>
+                        <AGRuleCode>R-3-2</AGRuleCode>
+                        <AGRuleComment>Comment 3-2</AGRuleComment>
+                        <AGRuleResponse>Response 3-2</AGRuleResponse>
+                        <AGRuleStatus>OK</AGRuleStatus>
+                    </AGRule>
+                    <AGRule>
+                        <AGRuleCode>R-3-3</AGRuleCode>
+                        <AGRuleComment>Comment 3-3</AGRuleComment>
+                        <AGRuleResponse>Response 3-3</AGRuleResponse>
+                        <AGRuleStatus>OK</AGRuleStatus>
+                    </AGRule>
+                    <AGRule>
+                        <AGRuleCode>R-3-4</AGRuleCode>
+                        <AGRuleComment>Comment 3-4</AGRuleComment>
+                        <AGRuleResponse>Response 3-4</AGRuleResponse>
+                        <AGRuleStatus>OK</AGRuleStatus>
+                    </AGRule>
+                    <AGRule>
+                        <AGRuleCode>R-3-5</AGRuleCode>
+                        <AGRuleComment>Comment 3-5</AGRuleComment>
+                        <AGRuleResponse>Response 3-5</AGRuleResponse>
+                        <AGRuleStatus>OK</AGRuleStatus>
+                    </AGRule>
+                </AGRuleList>
+            </AGReportingObjectResponse>
+            <AGReportingObjectResponse>
+                <SubmittedRefId>abcde421-8fd0-4f4c-baac-7edb1fb3b324</SubmittedRefId>
+                <SIFRefId>abcde421-8fd0-4f4c-baac-7edb1fb3b324</SIFRefId>
+                <HTTPStatusCode>204</HTTPStatusCode>
+                <ErrorText>OK</ErrorText>
+                <CommonwealthId>CWID-4</CommonwealthId>
+                <EntityName>Bens Test State High School</EntityName>
+                <AGSubmissionStatusCode>In Progress</AGSubmissionStatusCode>
+                <AGRuleList>
+                    <AGRule>
+                        <AGRuleCode>R-4-1</AGRuleCode>
+                        <AGRuleComment>Comment 4-1</AGRuleComment>
+                        <AGRuleResponse>Response 4-1</AGRuleResponse>
+                        <AGRuleStatus>OK</AGRuleStatus>
+                    </AGRule>
+                    <AGRule>
+                        <AGRuleCode>R-4-2</AGRuleCode>
+                        <AGRuleComment>Comment 4-2</AGRuleComment>
+                        <AGRuleResponse>Response 4-2</AGRuleResponse>
+                        <AGRuleStatus>OK</AGRuleStatus>
+                    </AGRule>
+                    <AGRule>
+                        <AGRuleCode>R-4-3</AGRuleCode>
+                        <AGRuleComment>Comment 4-3</AGRuleComment>
+                        <AGRuleResponse>Response 4-3</AGRuleResponse>
+                        <AGRuleStatus>OK</AGRuleStatus>
+                    </AGRule>
+                    <AGRule>
+                        <AGRuleCode>R-4-4</AGRuleCode>
+                        <AGRuleComment>Comment 4-4</AGRuleComment>
+                        <AGRuleResponse>Response 4-4</AGRuleResponse>
+                        <AGRuleStatus>OK</AGRuleStatus>
+                    </AGRule>
+                    <AGRule>
+                        <AGRuleCode>R-4-5</AGRuleCode>
+                        <AGRuleComment>Comment 4-5</AGRuleComment>
+                        <AGRuleResponse>Response 4-5</AGRuleResponse>
+                        <AGRuleStatus>OK</AGRuleStatus>
+                    </AGRule>
+                </AGRuleList>
+            </AGReportingObjectResponse>
+            <AGReportingObjectResponse>
+                <SubmittedRefId>abcde421-8fd0-4f4c-baac-7edb1fb3b324</SubmittedRefId>
+                <SIFRefId>abcde421-8fd0-4f4c-baac-7edb1fb3b324</SIFRefId>
+                <HTTPStatusCode>205</HTTPStatusCode>
+                <ErrorText>OK</ErrorText>
+                <CommonwealthId>CWID-5</CommonwealthId>
+                <EntityName>Bens Test State High School</EntityName>
+                <AGSubmissionStatusCode>In Progress</AGSubmissionStatusCode>
+                <AGRuleList>
+                    <AGRule>
+                        <AGRuleCode>R-5-1</AGRuleCode>
+                        <AGRuleComment>Comment 5-1</AGRuleComment>
+                        <AGRuleResponse>Response 5-1</AGRuleResponse>
+                        <AGRuleStatus>OK</AGRuleStatus>
+                    </AGRule>
+                    <AGRule>
+                        <AGRuleCode>R-5-2</AGRuleCode>
+                        <AGRuleComment>Comment 5-2</AGRuleComment>
+                        <AGRuleResponse>Response 5-2</AGRuleResponse>
+                        <AGRuleStatus>OK</AGRuleStatus>
+                    </AGRule>
+                    <AGRule>
+                        <AGRuleCode>R-5-3</AGRuleCode>
+                        <AGRuleComment>Comment 5-3</AGRuleComment>
+                        <AGRuleResponse>Response 5-3</AGRuleResponse>
+                        <AGRuleStatus>OK</AGRuleStatus>
+                    </AGRule>
+                    <AGRule>
+                        <AGRuleCode>R-5-4</AGRuleCode>
+                        <AGRuleComment>Comment 5-4</AGRuleComment>
+                        <AGRuleResponse>Response 5-4</AGRuleResponse>
+                        <AGRuleStatus>OK</AGRuleStatus>
+                    </AGRule>
+                    <AGRule>
+                        <AGRuleCode>R-5-5</AGRuleCode>
+                        <AGRuleComment>Comment 5-5</AGRuleComment>
+                        <AGRuleResponse>Response 5-5</AGRuleResponse>
+                        <AGRuleStatus>OK</AGRuleStatus>
+                    </AGRule>
+                </AGRuleList>
+            </AGReportingObjectResponse>
+        </AGReportingObjectResponseList>
+        <LocalCodeList>
+            <LocalCode>
+                <LocalisedCode>Code1</LocalisedCode>
+                <Description>Description 1</Description>
+                <Element>Element 1</Element>
+                <ListIndex>1</ListIndex>
+            </LocalCode>
+            <LocalCode>
+                <LocalisedCode>Code2</LocalisedCode>
+                <Description>Description 2</Description>
+                <Element>Element 2</Element>
+                <ListIndex>2</ListIndex>
+            </LocalCode>
+            <LocalCode>
+                <LocalisedCode>Code3</LocalisedCode>
+                <Description>Description 3</Description>
+                <Element>Element 3</Element>
+                <ListIndex>3</ListIndex>
+            </LocalCode>
+            <LocalCode>
+                <LocalisedCode>Code4</LocalisedCode>
+                <Description>Description 4</Description>
+                <Element>Element 4</Element>
+                <ListIndex>4</ListIndex>
+            </LocalCode>
+            <LocalCode>
+                <LocalisedCode>Code5</LocalisedCode>
+                <Description>Description 5</Description>
+                <Element>Element 5</Element>
+                <ListIndex>5</ListIndex>
+            </LocalCode>
+        </LocalCodeList>
+    </CollectionStatus>
+    <CollectionStatus RefId="344362a8-91b2-4687-a570-9607ce637bf1">
+        <ReportingAuthority>RepAuth</ReportingAuthority>
+        <ReportingAuthoritySystem>RepAuthSystem</ReportingAuthoritySystem>
+        <ReportingAuthorityCommonwealthId>RACID</ReportingAuthorityCommonwealthId>
+        <SubmittedBy>Submitter</SubmittedBy>
+        <SubmissionTimestamp>2020-06-04T16:23:30Z</SubmissionTimestamp>
+        <AGCollection>SES</AGCollection>
+        <CollectionYear>2020</CollectionYear>
+        <RoundCode>RoundC</RoundCode>
+        <AGReportingObjectResponseList>
+            <AGReportingObjectResponse>
+                <SubmittedRefId>abcde421-8fd0-4f4c-baac-7edb1fb3b324</SubmittedRefId>
+                <SIFRefId>abcde421-8fd0-4f4c-baac-7edb1fb3b324</SIFRefId>
+                <HTTPStatusCode>201</HTTPStatusCode>
+                <ErrorText>OK</ErrorText>
+                <CommonwealthId>CWID-1</CommonwealthId>
+                <EntityName>Bens Test State High School</EntityName>
+                <AGSubmissionStatusCode>In Progress</AGSubmissionStatusCode>
+                <AGRuleList>
+                    <AGRule>
+                        <AGRuleCode>R-1-1</AGRuleCode>
+                        <AGRuleComment>Comment 1-1</AGRuleComment>
+                        <AGRuleResponse>Response 1-1</AGRuleResponse>
+                        <AGRuleStatus>OK</AGRuleStatus>
+                    </AGRule>
+                    <AGRule>
+                        <AGRuleCode>R-1-2</AGRuleCode>
+                        <AGRuleComment>Comment 1-2</AGRuleComment>
+                        <AGRuleResponse>Response 1-2</AGRuleResponse>
+                        <AGRuleStatus>OK</AGRuleStatus>
+                    </AGRule>
+                    <AGRule>
+                        <AGRuleCode>R-1-3</AGRuleCode>
+                        <AGRuleComment>Comment 1-3</AGRuleComment>
+                        <AGRuleResponse>Response 1-3</AGRuleResponse>
+                        <AGRuleStatus>OK</AGRuleStatus>
+                    </AGRule>
+                    <AGRule>
+                        <AGRuleCode>R-1-4</AGRuleCode>
+                        <AGRuleComment>Comment 1-4</AGRuleComment>
+                        <AGRuleResponse>Response 1-4</AGRuleResponse>
+                        <AGRuleStatus>OK</AGRuleStatus>
+                    </AGRule>
+                    <AGRule>
+                        <AGRuleCode>R-1-5</AGRuleCode>
+                        <AGRuleComment>Comment 1-5</AGRuleComment>
+                        <AGRuleResponse>Response 1-5</AGRuleResponse>
+                        <AGRuleStatus>OK</AGRuleStatus>
+                    </AGRule>
+                </AGRuleList>
+            </AGReportingObjectResponse>
+            <AGReportingObjectResponse>
+                <SubmittedRefId>abcde421-8fd0-4f4c-baac-7edb1fb3b324</SubmittedRefId>
+                <SIFRefId>abcde421-8fd0-4f4c-baac-7edb1fb3b324</SIFRefId>
+                <HTTPStatusCode>202</HTTPStatusCode>
+                <ErrorText>OK</ErrorText>
+                <CommonwealthId>CWID-2</CommonwealthId>
+                <EntityName>Bens Test State High School</EntityName>
+                <AGSubmissionStatusCode>In Progress</AGSubmissionStatusCode>
+                <AGRuleList>
+                    <AGRule>
+                        <AGRuleCode>R-2-1</AGRuleCode>
+                        <AGRuleComment>Comment 2-1</AGRuleComment>
+                        <AGRuleResponse>Response 2-1</AGRuleResponse>
+                        <AGRuleStatus>OK</AGRuleStatus>
+                    </AGRule>
+                    <AGRule>
+                        <AGRuleCode>R-2-2</AGRuleCode>
+                        <AGRuleComment>Comment 2-2</AGRuleComment>
+                        <AGRuleResponse>Response 2-2</AGRuleResponse>
+                        <AGRuleStatus>OK</AGRuleStatus>
+                    </AGRule>
+                    <AGRule>
+                        <AGRuleCode>R-2-3</AGRuleCode>
+                        <AGRuleComment>Comment 2-3</AGRuleComment>
+                        <AGRuleResponse>Response 2-3</AGRuleResponse>
+                        <AGRuleStatus>OK</AGRuleStatus>
+                    </AGRule>
+                    <AGRule>
+                        <AGRuleCode>R-2-4</AGRuleCode>
+                        <AGRuleComment>Comment 2-4</AGRuleComment>
+                        <AGRuleResponse>Response 2-4</AGRuleResponse>
+                        <AGRuleStatus>OK</AGRuleStatus>
+                    </AGRule>
+                    <AGRule>
+                        <AGRuleCode>R-2-5</AGRuleCode>
+                        <AGRuleComment>Comment 2-5</AGRuleComment>
+                        <AGRuleResponse>Response 2-5</AGRuleResponse>
+                        <AGRuleStatus>OK</AGRuleStatus>
+                    </AGRule>
+                </AGRuleList>
+            </AGReportingObjectResponse>
+            <AGReportingObjectResponse>
+                <SubmittedRefId>abcde421-8fd0-4f4c-baac-7edb1fb3b324</SubmittedRefId>
+                <SIFRefId>abcde421-8fd0-4f4c-baac-7edb1fb3b324</SIFRefId>
+                <HTTPStatusCode>203</HTTPStatusCode>
+                <ErrorText>OK</ErrorText>
+                <CommonwealthId>CWID-3</CommonwealthId>
+                <EntityName>Bens Test State High School</EntityName>
+                <AGSubmissionStatusCode>In Progress</AGSubmissionStatusCode>
+                <AGRuleList>
+                    <AGRule>
+                        <AGRuleCode>R-3-1</AGRuleCode>
+                        <AGRuleComment>Comment 3-1</AGRuleComment>
+                        <AGRuleResponse>Response 3-1</AGRuleResponse>
+                        <AGRuleStatus>OK</AGRuleStatus>
+                    </AGRule>
+                    <AGRule>
+                        <AGRuleCode>R-3-2</AGRuleCode>
+                        <AGRuleComment>Comment 3-2</AGRuleComment>
+                        <AGRuleResponse>Response 3-2</AGRuleResponse>
+                        <AGRuleStatus>OK</AGRuleStatus>
+                    </AGRule>
+                    <AGRule>
+                        <AGRuleCode>R-3-3</AGRuleCode>
+                        <AGRuleComment>Comment 3-3</AGRuleComment>
+                        <AGRuleResponse>Response 3-3</AGRuleResponse>
+                        <AGRuleStatus>OK</AGRuleStatus>
+                    </AGRule>
+                    <AGRule>
+                        <AGRuleCode>R-3-4</AGRuleCode>
+                        <AGRuleComment>Comment 3-4</AGRuleComment>
+                        <AGRuleResponse>Response 3-4</AGRuleResponse>
+                        <AGRuleStatus>OK</AGRuleStatus>
+                    </AGRule>
+                    <AGRule>
+                        <AGRuleCode>R-3-5</AGRuleCode>
+                        <AGRuleComment>Comment 3-5</AGRuleComment>
+                        <AGRuleResponse>Response 3-5</AGRuleResponse>
+                        <AGRuleStatus>OK</AGRuleStatus>
+                    </AGRule>
+                </AGRuleList>
+            </AGReportingObjectResponse>
+            <AGReportingObjectResponse>
+                <SubmittedRefId>abcde421-8fd0-4f4c-baac-7edb1fb3b324</SubmittedRefId>
+                <SIFRefId>abcde421-8fd0-4f4c-baac-7edb1fb3b324</SIFRefId>
+                <HTTPStatusCode>204</HTTPStatusCode>
+                <ErrorText>OK</ErrorText>
+                <CommonwealthId>CWID-4</CommonwealthId>
+                <EntityName>Bens Test State High School</EntityName>
+                <AGSubmissionStatusCode>In Progress</AGSubmissionStatusCode>
+                <AGRuleList>
+                    <AGRule>
+                        <AGRuleCode>R-4-1</AGRuleCode>
+                        <AGRuleComment>Comment 4-1</AGRuleComment>
+                        <AGRuleResponse>Response 4-1</AGRuleResponse>
+                        <AGRuleStatus>OK</AGRuleStatus>
+                    </AGRule>
+                    <AGRule>
+                        <AGRuleCode>R-4-2</AGRuleCode>
+                        <AGRuleComment>Comment 4-2</AGRuleComment>
+                        <AGRuleResponse>Response 4-2</AGRuleResponse>
+                        <AGRuleStatus>OK</AGRuleStatus>
+                    </AGRule>
+                    <AGRule>
+                        <AGRuleCode>R-4-3</AGRuleCode>
+                        <AGRuleComment>Comment 4-3</AGRuleComment>
+                        <AGRuleResponse>Response 4-3</AGRuleResponse>
+                        <AGRuleStatus>OK</AGRuleStatus>
+                    </AGRule>
+                    <AGRule>
+                        <AGRuleCode>R-4-4</AGRuleCode>
+                        <AGRuleComment>Comment 4-4</AGRuleComment>
+                        <AGRuleResponse>Response 4-4</AGRuleResponse>
+                        <AGRuleStatus>OK</AGRuleStatus>
+                    </AGRule>
+                    <AGRule>
+                        <AGRuleCode>R-4-5</AGRuleCode>
+                        <AGRuleComment>Comment 4-5</AGRuleComment>
+                        <AGRuleResponse>Response 4-5</AGRuleResponse>
+                        <AGRuleStatus>OK</AGRuleStatus>
+                    </AGRule>
+                </AGRuleList>
+            </AGReportingObjectResponse>
+            <AGReportingObjectResponse>
+                <SubmittedRefId>abcde421-8fd0-4f4c-baac-7edb1fb3b324</SubmittedRefId>
+                <SIFRefId>abcde421-8fd0-4f4c-baac-7edb1fb3b324</SIFRefId>
+                <HTTPStatusCode>205</HTTPStatusCode>
+                <ErrorText>OK</ErrorText>
+                <CommonwealthId>CWID-5</CommonwealthId>
+                <EntityName>Bens Test State High School</EntityName>
+                <AGSubmissionStatusCode>In Progress</AGSubmissionStatusCode>
+                <AGRuleList>
+                    <AGRule>
+                        <AGRuleCode>R-5-1</AGRuleCode>
+                        <AGRuleComment>Comment 5-1</AGRuleComment>
+                        <AGRuleResponse>Response 5-1</AGRuleResponse>
+                        <AGRuleStatus>OK</AGRuleStatus>
+                    </AGRule>
+                    <AGRule>
+                        <AGRuleCode>R-5-2</AGRuleCode>
+                        <AGRuleComment>Comment 5-2</AGRuleComment>
+                        <AGRuleResponse>Response 5-2</AGRuleResponse>
+                        <AGRuleStatus>OK</AGRuleStatus>
+                    </AGRule>
+                    <AGRule>
+                        <AGRuleCode>R-5-3</AGRuleCode>
+                        <AGRuleComment>Comment 5-3</AGRuleComment>
+                        <AGRuleResponse>Response 5-3</AGRuleResponse>
+                        <AGRuleStatus>OK</AGRuleStatus>
+                    </AGRule>
+                    <AGRule>
+                        <AGRuleCode>R-5-4</AGRuleCode>
+                        <AGRuleComment>Comment 5-4</AGRuleComment>
+                        <AGRuleResponse>Response 5-4</AGRuleResponse>
+                        <AGRuleStatus>OK</AGRuleStatus>
+                    </AGRule>
+                    <AGRule>
+                        <AGRuleCode>R-5-5</AGRuleCode>
+                        <AGRuleComment>Comment 5-5</AGRuleComment>
+                        <AGRuleResponse>Response 5-5</AGRuleResponse>
+                        <AGRuleStatus>OK</AGRuleStatus>
+                    </AGRule>
+                </AGRuleList>
+            </AGReportingObjectResponse>
+        </AGReportingObjectResponseList>
+        <LocalCodeList>
+            <LocalCode>
+                <LocalisedCode>Code1</LocalisedCode>
+                <Description>Description 1</Description>
+                <Element>Element 1</Element>
+                <ListIndex>1</ListIndex>
+            </LocalCode>
+            <LocalCode>
+                <LocalisedCode>Code2</LocalisedCode>
+                <Description>Description 2</Description>
+                <Element>Element 2</Element>
+                <ListIndex>2</ListIndex>
+            </LocalCode>
+            <LocalCode>
+                <LocalisedCode>Code3</LocalisedCode>
+                <Description>Description 3</Description>
+                <Element>Element 3</Element>
+                <ListIndex>3</ListIndex>
+            </LocalCode>
+            <LocalCode>
+                <LocalisedCode>Code4</LocalisedCode>
+                <Description>Description 4</Description>
+                <Element>Element 4</Element>
+                <ListIndex>4</ListIndex>
+            </LocalCode>
+            <LocalCode>
+                <LocalisedCode>Code5</LocalisedCode>
+                <Description>Description 5</Description>
+                <Element>Element 5</Element>
+                <ListIndex>5</ListIndex>
+            </LocalCode>
+        </LocalCodeList>
+    </CollectionStatus>
+</CollectionStatuss>

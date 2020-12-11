@@ -1,0 +1,991 @@
+<CensusCollection RefId="c1d64890-c1b2-4d84-863a-db72a7eda67e" xmlns="http://www.sifassociation.org/datamodel/au/3.4">
+    <CensusYear>2020</CensusYear>
+    <RoundCode>RoundCode</RoundCode>
+    <ReportingAuthorityCommonwealthId>RACWID</ReportingAuthorityCommonwealthId>
+    <SoftwareVendorInfo>
+        <SoftwareProduct>SoftwareProduct</SoftwareProduct>
+        <SoftwareVersion>1.0.0</SoftwareVersion>
+    </SoftwareVendorInfo>
+    <CensusReportingList>
+        <CensusReporting>
+            <EntityLevel>System</EntityLevel>
+            <CommonwealthId>CWID-1</CommonwealthId>
+            <EntityName>Bens Test State High School</EntityName>
+            <EntityContact>
+                <Name Type="LGL">
+                    <Title>Ms</Title>
+                    <FamilyName>Person</FamilyName>
+                    <GivenName>Entity</GivenName>
+                    <MiddleName>Contact</MiddleName>
+                    <PreferredFamilyName>Person</PreferredFamilyName>
+                    <PreferredGivenName>Entity</PreferredGivenName>
+                    <FullName>Ms Entity Contact Person</FullName>
+                </Name>
+                <PositionTitle>Registrar</PositionTitle>
+                <Role>Role</Role>
+                <RegistrationDetails>Registration Details</RegistrationDetails>
+                <Qualifications>Qualifications</Qualifications>
+                <Address Type="0123" Role="012B">
+                    <Street>
+                        <Line1>Entity Contact Address</Line1>
+                        <Line2>145 Some Street</Line2>
+                    </Street>
+                    <City>Perth</City>
+                    <StateProvince>WA</StateProvince>
+                    <PostalCode>6000</PostalCode>
+                    <GridLocation>
+                        <Latitude>-31.952693</Latitude>
+                        <Longitude>115.871971</Longitude>
+                    </GridLocation>
+                </Address>
+                <Email Type="06">entity.contact@not.a.real.domain</Email>
+                <PhoneNumber Type="0096">
+                    <Number>(123) 456 7890</Number>
+                </PhoneNumber>
+            </EntityContact>
+            <CensusStaffList>
+                <CensusStaff>
+                    <StaffCohortId>StaffCohort-1-1</StaffCohortId>
+                    <StaffActivity>
+                        <Code>2215</Code>
+                        <OtherCodeList>
+                            <OtherCode Codeset="Local">111</OtherCode>
+                            <OtherCode Codeset="Local">112</OtherCode>
+                        </OtherCodeList>
+                    </StaffActivity>
+                    <CohortGender>M</CohortGender>
+                    <CohortIndigenousType>I</CohortIndigenousType>
+                    <PrimaryFTE>1</PrimaryFTE>
+                    <SecondaryFTE>1</SecondaryFTE>
+                    <JobFTE>11</JobFTE>
+                    <Headcount>211</Headcount>
+                </CensusStaff>
+                <CensusStaff>
+                    <StaffCohortId>StaffCohort-1-2</StaffCohortId>
+                    <StaffActivity>
+                        <Code>2215</Code>
+                        <OtherCodeList>
+                            <OtherCode Codeset="Local">121</OtherCode>
+                            <OtherCode Codeset="Local">122</OtherCode>
+                        </OtherCodeList>
+                    </StaffActivity>
+                    <CohortGender>F</CohortGender>
+                    <CohortIndigenousType>N</CohortIndigenousType>
+                    <PrimaryFTE>1</PrimaryFTE>
+                    <SecondaryFTE>1</SecondaryFTE>
+                    <JobFTE>12</JobFTE>
+                    <Headcount>212</Headcount>
+                </CensusStaff>
+                <CensusStaff>
+                    <StaffCohortId>StaffCohort-1-3</StaffCohortId>
+                    <StaffActivity>
+                        <Code>2215</Code>
+                        <OtherCodeList>
+                            <OtherCode Codeset="Local">131</OtherCode>
+                            <OtherCode Codeset="Local">132</OtherCode>
+                        </OtherCodeList>
+                    </StaffActivity>
+                    <CohortGender>X</CohortGender>
+                    <CohortIndigenousType>NS</CohortIndigenousType>
+                    <PrimaryFTE>1</PrimaryFTE>
+                    <SecondaryFTE>1</SecondaryFTE>
+                    <JobFTE>13</JobFTE>
+                    <Headcount>213</Headcount>
+                </CensusStaff>
+                <CensusStaff>
+                    <StaffCohortId>StaffCohort-1-4</StaffCohortId>
+                    <StaffActivity>
+                        <Code>2215</Code>
+                        <OtherCodeList>
+                            <OtherCode Codeset="Local">141</OtherCode>
+                            <OtherCode Codeset="Local">142</OtherCode>
+                        </OtherCodeList>
+                    </StaffActivity>
+                    <CohortGender>M</CohortGender>
+                    <CohortIndigenousType>I</CohortIndigenousType>
+                    <PrimaryFTE>1</PrimaryFTE>
+                    <SecondaryFTE>1</SecondaryFTE>
+                    <JobFTE>14</JobFTE>
+                    <Headcount>214</Headcount>
+                </CensusStaff>
+                <CensusStaff>
+                    <StaffCohortId>StaffCohort-1-5</StaffCohortId>
+                    <StaffActivity>
+                        <Code>2215</Code>
+                        <OtherCodeList>
+                            <OtherCode Codeset="Local">151</OtherCode>
+                            <OtherCode Codeset="Local">152</OtherCode>
+                        </OtherCodeList>
+                    </StaffActivity>
+                    <CohortGender>F</CohortGender>
+                    <CohortIndigenousType>N</CohortIndigenousType>
+                    <PrimaryFTE>1</PrimaryFTE>
+                    <SecondaryFTE>1</SecondaryFTE>
+                    <JobFTE>15</JobFTE>
+                    <Headcount>215</Headcount>
+                </CensusStaff>
+            </CensusStaffList>
+            <CensusStudentList>
+                <CensusStudent>
+                    <StudentCohortId>X-1-1</StudentCohortId>
+                    <YearLevel>
+                        <Code>2</Code>
+                    </YearLevel>
+                    <CensusAge>12</CensusAge>
+                    <CohortGender>M</CohortGender>
+                    <CohortIndigenousType>I</CohortIndigenousType>
+                    <EducationMode>D</EducationMode>
+                    <StudentOnVisa>N</StudentOnVisa>
+                    <OverseasStudent>N</OverseasStudent>
+                    <DisabilityLevelOfAdjustment>None</DisabilityLevelOfAdjustment>
+                    <DisabilityCategory>None</DisabilityCategory>
+                    <FTE>1</FTE>
+                </CensusStudent>
+                <CensusStudent>
+                    <StudentCohortId>X-1-2</StudentCohortId>
+                    <YearLevel>
+                        <Code>3</Code>
+                    </YearLevel>
+                    <CensusAge>13</CensusAge>
+                    <CohortGender>F</CohortGender>
+                    <CohortIndigenousType>N</CohortIndigenousType>
+                    <EducationMode>D</EducationMode>
+                    <StudentOnVisa>N</StudentOnVisa>
+                    <OverseasStudent>N</OverseasStudent>
+                    <DisabilityLevelOfAdjustment>None</DisabilityLevelOfAdjustment>
+                    <DisabilityCategory>None</DisabilityCategory>
+                    <FTE>1</FTE>
+                </CensusStudent>
+                <CensusStudent>
+                    <StudentCohortId>X-1-3</StudentCohortId>
+                    <YearLevel>
+                        <Code>4</Code>
+                    </YearLevel>
+                    <CensusAge>14</CensusAge>
+                    <CohortGender>X</CohortGender>
+                    <CohortIndigenousType>NS</CohortIndigenousType>
+                    <EducationMode>D</EducationMode>
+                    <StudentOnVisa>N</StudentOnVisa>
+                    <OverseasStudent>N</OverseasStudent>
+                    <DisabilityLevelOfAdjustment>None</DisabilityLevelOfAdjustment>
+                    <DisabilityCategory>None</DisabilityCategory>
+                    <FTE>1</FTE>
+                </CensusStudent>
+                <CensusStudent>
+                    <StudentCohortId>X-1-4</StudentCohortId>
+                    <YearLevel>
+                        <Code>5</Code>
+                    </YearLevel>
+                    <CensusAge>15</CensusAge>
+                    <CohortGender>M</CohortGender>
+                    <CohortIndigenousType>I</CohortIndigenousType>
+                    <EducationMode>D</EducationMode>
+                    <StudentOnVisa>N</StudentOnVisa>
+                    <OverseasStudent>N</OverseasStudent>
+                    <DisabilityLevelOfAdjustment>None</DisabilityLevelOfAdjustment>
+                    <DisabilityCategory>None</DisabilityCategory>
+                    <FTE>1</FTE>
+                </CensusStudent>
+                <CensusStudent>
+                    <StudentCohortId>X-1-5</StudentCohortId>
+                    <YearLevel>
+                        <Code>6</Code>
+                    </YearLevel>
+                    <CensusAge>16</CensusAge>
+                    <CohortGender>F</CohortGender>
+                    <CohortIndigenousType>N</CohortIndigenousType>
+                    <EducationMode>D</EducationMode>
+                    <StudentOnVisa>N</StudentOnVisa>
+                    <OverseasStudent>N</OverseasStudent>
+                    <DisabilityLevelOfAdjustment>None</DisabilityLevelOfAdjustment>
+                    <DisabilityCategory>None</DisabilityCategory>
+                    <FTE>1</FTE>
+                </CensusStudent>
+            </CensusStudentList>
+        </CensusReporting>
+        <CensusReporting>
+            <EntityLevel>System</EntityLevel>
+            <CommonwealthId>CWID-2</CommonwealthId>
+            <EntityName>Bens Test State High School</EntityName>
+            <EntityContact>
+                <Name Type="LGL">
+                    <Title>Ms</Title>
+                    <FamilyName>Person</FamilyName>
+                    <GivenName>Entity</GivenName>
+                    <MiddleName>Contact</MiddleName>
+                    <PreferredFamilyName>Person</PreferredFamilyName>
+                    <PreferredGivenName>Entity</PreferredGivenName>
+                    <FullName>Ms Entity Contact Person</FullName>
+                </Name>
+                <PositionTitle>Registrar</PositionTitle>
+                <Role>Role</Role>
+                <RegistrationDetails>Registration Details</RegistrationDetails>
+                <Qualifications>Qualifications</Qualifications>
+                <Address Type="0123" Role="012B">
+                    <Street>
+                        <Line1>Entity Contact Address</Line1>
+                        <Line2>145 Some Street</Line2>
+                    </Street>
+                    <City>Perth</City>
+                    <StateProvince>WA</StateProvince>
+                    <PostalCode>6000</PostalCode>
+                    <GridLocation>
+                        <Latitude>-31.952693</Latitude>
+                        <Longitude>115.871971</Longitude>
+                    </GridLocation>
+                </Address>
+                <Email Type="06">entity.contact@not.a.real.domain</Email>
+                <PhoneNumber Type="0096">
+                    <Number>(123) 456 7890</Number>
+                </PhoneNumber>
+            </EntityContact>
+            <CensusStaffList>
+                <CensusStaff>
+                    <StaffCohortId>StaffCohort-2-1</StaffCohortId>
+                    <StaffActivity>
+                        <Code>2215</Code>
+                        <OtherCodeList>
+                            <OtherCode Codeset="Local">211</OtherCode>
+                            <OtherCode Codeset="Local">212</OtherCode>
+                        </OtherCodeList>
+                    </StaffActivity>
+                    <CohortGender>F</CohortGender>
+                    <CohortIndigenousType>I</CohortIndigenousType>
+                    <PrimaryFTE>1</PrimaryFTE>
+                    <SecondaryFTE>1</SecondaryFTE>
+                    <JobFTE>21</JobFTE>
+                    <Headcount>221</Headcount>
+                </CensusStaff>
+                <CensusStaff>
+                    <StaffCohortId>StaffCohort-2-2</StaffCohortId>
+                    <StaffActivity>
+                        <Code>2215</Code>
+                        <OtherCodeList>
+                            <OtherCode Codeset="Local">221</OtherCode>
+                            <OtherCode Codeset="Local">222</OtherCode>
+                        </OtherCodeList>
+                    </StaffActivity>
+                    <CohortGender>X</CohortGender>
+                    <CohortIndigenousType>N</CohortIndigenousType>
+                    <PrimaryFTE>1</PrimaryFTE>
+                    <SecondaryFTE>1</SecondaryFTE>
+                    <JobFTE>22</JobFTE>
+                    <Headcount>222</Headcount>
+                </CensusStaff>
+                <CensusStaff>
+                    <StaffCohortId>StaffCohort-2-3</StaffCohortId>
+                    <StaffActivity>
+                        <Code>2215</Code>
+                        <OtherCodeList>
+                            <OtherCode Codeset="Local">231</OtherCode>
+                            <OtherCode Codeset="Local">232</OtherCode>
+                        </OtherCodeList>
+                    </StaffActivity>
+                    <CohortGender>M</CohortGender>
+                    <CohortIndigenousType>NS</CohortIndigenousType>
+                    <PrimaryFTE>1</PrimaryFTE>
+                    <SecondaryFTE>1</SecondaryFTE>
+                    <JobFTE>23</JobFTE>
+                    <Headcount>223</Headcount>
+                </CensusStaff>
+                <CensusStaff>
+                    <StaffCohortId>StaffCohort-2-4</StaffCohortId>
+                    <StaffActivity>
+                        <Code>2215</Code>
+                        <OtherCodeList>
+                            <OtherCode Codeset="Local">241</OtherCode>
+                            <OtherCode Codeset="Local">242</OtherCode>
+                        </OtherCodeList>
+                    </StaffActivity>
+                    <CohortGender>F</CohortGender>
+                    <CohortIndigenousType>I</CohortIndigenousType>
+                    <PrimaryFTE>1</PrimaryFTE>
+                    <SecondaryFTE>1</SecondaryFTE>
+                    <JobFTE>24</JobFTE>
+                    <Headcount>224</Headcount>
+                </CensusStaff>
+                <CensusStaff>
+                    <StaffCohortId>StaffCohort-2-5</StaffCohortId>
+                    <StaffActivity>
+                        <Code>2215</Code>
+                        <OtherCodeList>
+                            <OtherCode Codeset="Local">251</OtherCode>
+                            <OtherCode Codeset="Local">252</OtherCode>
+                        </OtherCodeList>
+                    </StaffActivity>
+                    <CohortGender>X</CohortGender>
+                    <CohortIndigenousType>N</CohortIndigenousType>
+                    <PrimaryFTE>1</PrimaryFTE>
+                    <SecondaryFTE>1</SecondaryFTE>
+                    <JobFTE>25</JobFTE>
+                    <Headcount>225</Headcount>
+                </CensusStaff>
+            </CensusStaffList>
+            <CensusStudentList>
+                <CensusStudent>
+                    <StudentCohortId>X-2-1</StudentCohortId>
+                    <YearLevel>
+                        <Code>2</Code>
+                    </YearLevel>
+                    <CensusAge>13</CensusAge>
+                    <CohortGender>F</CohortGender>
+                    <CohortIndigenousType>I</CohortIndigenousType>
+                    <EducationMode>D</EducationMode>
+                    <StudentOnVisa>N</StudentOnVisa>
+                    <OverseasStudent>N</OverseasStudent>
+                    <DisabilityLevelOfAdjustment>None</DisabilityLevelOfAdjustment>
+                    <DisabilityCategory>None</DisabilityCategory>
+                    <FTE>1</FTE>
+                </CensusStudent>
+                <CensusStudent>
+                    <StudentCohortId>X-2-2</StudentCohortId>
+                    <YearLevel>
+                        <Code>3</Code>
+                    </YearLevel>
+                    <CensusAge>14</CensusAge>
+                    <CohortGender>X</CohortGender>
+                    <CohortIndigenousType>N</CohortIndigenousType>
+                    <EducationMode>D</EducationMode>
+                    <StudentOnVisa>N</StudentOnVisa>
+                    <OverseasStudent>N</OverseasStudent>
+                    <DisabilityLevelOfAdjustment>None</DisabilityLevelOfAdjustment>
+                    <DisabilityCategory>None</DisabilityCategory>
+                    <FTE>1</FTE>
+                </CensusStudent>
+                <CensusStudent>
+                    <StudentCohortId>X-2-3</StudentCohortId>
+                    <YearLevel>
+                        <Code>4</Code>
+                    </YearLevel>
+                    <CensusAge>15</CensusAge>
+                    <CohortGender>M</CohortGender>
+                    <CohortIndigenousType>NS</CohortIndigenousType>
+                    <EducationMode>D</EducationMode>
+                    <StudentOnVisa>N</StudentOnVisa>
+                    <OverseasStudent>N</OverseasStudent>
+                    <DisabilityLevelOfAdjustment>None</DisabilityLevelOfAdjustment>
+                    <DisabilityCategory>None</DisabilityCategory>
+                    <FTE>1</FTE>
+                </CensusStudent>
+                <CensusStudent>
+                    <StudentCohortId>X-2-4</StudentCohortId>
+                    <YearLevel>
+                        <Code>5</Code>
+                    </YearLevel>
+                    <CensusAge>16</CensusAge>
+                    <CohortGender>F</CohortGender>
+                    <CohortIndigenousType>I</CohortIndigenousType>
+                    <EducationMode>D</EducationMode>
+                    <StudentOnVisa>N</StudentOnVisa>
+                    <OverseasStudent>N</OverseasStudent>
+                    <DisabilityLevelOfAdjustment>None</DisabilityLevelOfAdjustment>
+                    <DisabilityCategory>None</DisabilityCategory>
+                    <FTE>1</FTE>
+                </CensusStudent>
+                <CensusStudent>
+                    <StudentCohortId>X-2-5</StudentCohortId>
+                    <YearLevel>
+                        <Code>6</Code>
+                    </YearLevel>
+                    <CensusAge>17</CensusAge>
+                    <CohortGender>X</CohortGender>
+                    <CohortIndigenousType>N</CohortIndigenousType>
+                    <EducationMode>D</EducationMode>
+                    <StudentOnVisa>N</StudentOnVisa>
+                    <OverseasStudent>N</OverseasStudent>
+                    <DisabilityLevelOfAdjustment>None</DisabilityLevelOfAdjustment>
+                    <DisabilityCategory>None</DisabilityCategory>
+                    <FTE>1</FTE>
+                </CensusStudent>
+            </CensusStudentList>
+        </CensusReporting>
+        <CensusReporting>
+            <EntityLevel>System</EntityLevel>
+            <CommonwealthId>CWID-3</CommonwealthId>
+            <EntityName>Bens Test State High School</EntityName>
+            <EntityContact>
+                <Name Type="LGL">
+                    <Title>Ms</Title>
+                    <FamilyName>Person</FamilyName>
+                    <GivenName>Entity</GivenName>
+                    <MiddleName>Contact</MiddleName>
+                    <PreferredFamilyName>Person</PreferredFamilyName>
+                    <PreferredGivenName>Entity</PreferredGivenName>
+                    <FullName>Ms Entity Contact Person</FullName>
+                </Name>
+                <PositionTitle>Registrar</PositionTitle>
+                <Role>Role</Role>
+                <RegistrationDetails>Registration Details</RegistrationDetails>
+                <Qualifications>Qualifications</Qualifications>
+                <Address Type="0123" Role="012B">
+                    <Street>
+                        <Line1>Entity Contact Address</Line1>
+                        <Line2>145 Some Street</Line2>
+                    </Street>
+                    <City>Perth</City>
+                    <StateProvince>WA</StateProvince>
+                    <PostalCode>6000</PostalCode>
+                    <GridLocation>
+                        <Latitude>-31.952693</Latitude>
+                        <Longitude>115.871971</Longitude>
+                    </GridLocation>
+                </Address>
+                <Email Type="06">entity.contact@not.a.real.domain</Email>
+                <PhoneNumber Type="0096">
+                    <Number>(123) 456 7890</Number>
+                </PhoneNumber>
+            </EntityContact>
+            <CensusStaffList>
+                <CensusStaff>
+                    <StaffCohortId>StaffCohort-3-1</StaffCohortId>
+                    <StaffActivity>
+                        <Code>2215</Code>
+                        <OtherCodeList>
+                            <OtherCode Codeset="Local">311</OtherCode>
+                            <OtherCode Codeset="Local">312</OtherCode>
+                        </OtherCodeList>
+                    </StaffActivity>
+                    <CohortGender>X</CohortGender>
+                    <CohortIndigenousType>I</CohortIndigenousType>
+                    <PrimaryFTE>1</PrimaryFTE>
+                    <SecondaryFTE>1</SecondaryFTE>
+                    <JobFTE>31</JobFTE>
+                    <Headcount>231</Headcount>
+                </CensusStaff>
+                <CensusStaff>
+                    <StaffCohortId>StaffCohort-3-2</StaffCohortId>
+                    <StaffActivity>
+                        <Code>2215</Code>
+                        <OtherCodeList>
+                            <OtherCode Codeset="Local">321</OtherCode>
+                            <OtherCode Codeset="Local">322</OtherCode>
+                        </OtherCodeList>
+                    </StaffActivity>
+                    <CohortGender>M</CohortGender>
+                    <CohortIndigenousType>N</CohortIndigenousType>
+                    <PrimaryFTE>1</PrimaryFTE>
+                    <SecondaryFTE>1</SecondaryFTE>
+                    <JobFTE>32</JobFTE>
+                    <Headcount>232</Headcount>
+                </CensusStaff>
+                <CensusStaff>
+                    <StaffCohortId>StaffCohort-3-3</StaffCohortId>
+                    <StaffActivity>
+                        <Code>2215</Code>
+                        <OtherCodeList>
+                            <OtherCode Codeset="Local">331</OtherCode>
+                            <OtherCode Codeset="Local">332</OtherCode>
+                        </OtherCodeList>
+                    </StaffActivity>
+                    <CohortGender>F</CohortGender>
+                    <CohortIndigenousType>NS</CohortIndigenousType>
+                    <PrimaryFTE>1</PrimaryFTE>
+                    <SecondaryFTE>1</SecondaryFTE>
+                    <JobFTE>33</JobFTE>
+                    <Headcount>233</Headcount>
+                </CensusStaff>
+                <CensusStaff>
+                    <StaffCohortId>StaffCohort-3-4</StaffCohortId>
+                    <StaffActivity>
+                        <Code>2215</Code>
+                        <OtherCodeList>
+                            <OtherCode Codeset="Local">341</OtherCode>
+                            <OtherCode Codeset="Local">342</OtherCode>
+                        </OtherCodeList>
+                    </StaffActivity>
+                    <CohortGender>X</CohortGender>
+                    <CohortIndigenousType>I</CohortIndigenousType>
+                    <PrimaryFTE>1</PrimaryFTE>
+                    <SecondaryFTE>1</SecondaryFTE>
+                    <JobFTE>34</JobFTE>
+                    <Headcount>234</Headcount>
+                </CensusStaff>
+                <CensusStaff>
+                    <StaffCohortId>StaffCohort-3-5</StaffCohortId>
+                    <StaffActivity>
+                        <Code>2215</Code>
+                        <OtherCodeList>
+                            <OtherCode Codeset="Local">351</OtherCode>
+                            <OtherCode Codeset="Local">352</OtherCode>
+                        </OtherCodeList>
+                    </StaffActivity>
+                    <CohortGender>M</CohortGender>
+                    <CohortIndigenousType>N</CohortIndigenousType>
+                    <PrimaryFTE>1</PrimaryFTE>
+                    <SecondaryFTE>1</SecondaryFTE>
+                    <JobFTE>35</JobFTE>
+                    <Headcount>235</Headcount>
+                </CensusStaff>
+            </CensusStaffList>
+            <CensusStudentList>
+                <CensusStudent>
+                    <StudentCohortId>X-3-1</StudentCohortId>
+                    <YearLevel>
+                        <Code>2</Code>
+                    </YearLevel>
+                    <CensusAge>14</CensusAge>
+                    <CohortGender>X</CohortGender>
+                    <CohortIndigenousType>I</CohortIndigenousType>
+                    <EducationMode>D</EducationMode>
+                    <StudentOnVisa>N</StudentOnVisa>
+                    <OverseasStudent>N</OverseasStudent>
+                    <DisabilityLevelOfAdjustment>None</DisabilityLevelOfAdjustment>
+                    <DisabilityCategory>None</DisabilityCategory>
+                    <FTE>1</FTE>
+                </CensusStudent>
+                <CensusStudent>
+                    <StudentCohortId>X-3-2</StudentCohortId>
+                    <YearLevel>
+                        <Code>3</Code>
+                    </YearLevel>
+                    <CensusAge>15</CensusAge>
+                    <CohortGender>M</CohortGender>
+                    <CohortIndigenousType>N</CohortIndigenousType>
+                    <EducationMode>D</EducationMode>
+                    <StudentOnVisa>N</StudentOnVisa>
+                    <OverseasStudent>N</OverseasStudent>
+                    <DisabilityLevelOfAdjustment>None</DisabilityLevelOfAdjustment>
+                    <DisabilityCategory>None</DisabilityCategory>
+                    <FTE>1</FTE>
+                </CensusStudent>
+                <CensusStudent>
+                    <StudentCohortId>X-3-3</StudentCohortId>
+                    <YearLevel>
+                        <Code>4</Code>
+                    </YearLevel>
+                    <CensusAge>16</CensusAge>
+                    <CohortGender>F</CohortGender>
+                    <CohortIndigenousType>NS</CohortIndigenousType>
+                    <EducationMode>D</EducationMode>
+                    <StudentOnVisa>N</StudentOnVisa>
+                    <OverseasStudent>N</OverseasStudent>
+                    <DisabilityLevelOfAdjustment>None</DisabilityLevelOfAdjustment>
+                    <DisabilityCategory>None</DisabilityCategory>
+                    <FTE>1</FTE>
+                </CensusStudent>
+                <CensusStudent>
+                    <StudentCohortId>X-3-4</StudentCohortId>
+                    <YearLevel>
+                        <Code>5</Code>
+                    </YearLevel>
+                    <CensusAge>17</CensusAge>
+                    <CohortGender>X</CohortGender>
+                    <CohortIndigenousType>I</CohortIndigenousType>
+                    <EducationMode>D</EducationMode>
+                    <StudentOnVisa>N</StudentOnVisa>
+                    <OverseasStudent>N</OverseasStudent>
+                    <DisabilityLevelOfAdjustment>None</DisabilityLevelOfAdjustment>
+                    <DisabilityCategory>None</DisabilityCategory>
+                    <FTE>1</FTE>
+                </CensusStudent>
+                <CensusStudent>
+                    <StudentCohortId>X-3-5</StudentCohortId>
+                    <YearLevel>
+                        <Code>6</Code>
+                    </YearLevel>
+                    <CensusAge>18</CensusAge>
+                    <CohortGender>M</CohortGender>
+                    <CohortIndigenousType>N</CohortIndigenousType>
+                    <EducationMode>D</EducationMode>
+                    <StudentOnVisa>N</StudentOnVisa>
+                    <OverseasStudent>N</OverseasStudent>
+                    <DisabilityLevelOfAdjustment>None</DisabilityLevelOfAdjustment>
+                    <DisabilityCategory>None</DisabilityCategory>
+                    <FTE>1</FTE>
+                </CensusStudent>
+            </CensusStudentList>
+        </CensusReporting>
+        <CensusReporting>
+            <EntityLevel>System</EntityLevel>
+            <CommonwealthId>CWID-4</CommonwealthId>
+            <EntityName>Bens Test State High School</EntityName>
+            <EntityContact>
+                <Name Type="LGL">
+                    <Title>Ms</Title>
+                    <FamilyName>Person</FamilyName>
+                    <GivenName>Entity</GivenName>
+                    <MiddleName>Contact</MiddleName>
+                    <PreferredFamilyName>Person</PreferredFamilyName>
+                    <PreferredGivenName>Entity</PreferredGivenName>
+                    <FullName>Ms Entity Contact Person</FullName>
+                </Name>
+                <PositionTitle>Registrar</PositionTitle>
+                <Role>Role</Role>
+                <RegistrationDetails>Registration Details</RegistrationDetails>
+                <Qualifications>Qualifications</Qualifications>
+                <Address Type="0123" Role="012B">
+                    <Street>
+                        <Line1>Entity Contact Address</Line1>
+                        <Line2>145 Some Street</Line2>
+                    </Street>
+                    <City>Perth</City>
+                    <StateProvince>WA</StateProvince>
+                    <PostalCode>6000</PostalCode>
+                    <GridLocation>
+                        <Latitude>-31.952693</Latitude>
+                        <Longitude>115.871971</Longitude>
+                    </GridLocation>
+                </Address>
+                <Email Type="06">entity.contact@not.a.real.domain</Email>
+                <PhoneNumber Type="0096">
+                    <Number>(123) 456 7890</Number>
+                </PhoneNumber>
+            </EntityContact>
+            <CensusStaffList>
+                <CensusStaff>
+                    <StaffCohortId>StaffCohort-4-1</StaffCohortId>
+                    <StaffActivity>
+                        <Code>2215</Code>
+                        <OtherCodeList>
+                            <OtherCode Codeset="Local">411</OtherCode>
+                            <OtherCode Codeset="Local">412</OtherCode>
+                        </OtherCodeList>
+                    </StaffActivity>
+                    <CohortGender>M</CohortGender>
+                    <CohortIndigenousType>I</CohortIndigenousType>
+                    <PrimaryFTE>1</PrimaryFTE>
+                    <SecondaryFTE>1</SecondaryFTE>
+                    <JobFTE>41</JobFTE>
+                    <Headcount>241</Headcount>
+                </CensusStaff>
+                <CensusStaff>
+                    <StaffCohortId>StaffCohort-4-2</StaffCohortId>
+                    <StaffActivity>
+                        <Code>2215</Code>
+                        <OtherCodeList>
+                            <OtherCode Codeset="Local">421</OtherCode>
+                            <OtherCode Codeset="Local">422</OtherCode>
+                        </OtherCodeList>
+                    </StaffActivity>
+                    <CohortGender>F</CohortGender>
+                    <CohortIndigenousType>N</CohortIndigenousType>
+                    <PrimaryFTE>1</PrimaryFTE>
+                    <SecondaryFTE>1</SecondaryFTE>
+                    <JobFTE>42</JobFTE>
+                    <Headcount>242</Headcount>
+                </CensusStaff>
+                <CensusStaff>
+                    <StaffCohortId>StaffCohort-4-3</StaffCohortId>
+                    <StaffActivity>
+                        <Code>2215</Code>
+                        <OtherCodeList>
+                            <OtherCode Codeset="Local">431</OtherCode>
+                            <OtherCode Codeset="Local">432</OtherCode>
+                        </OtherCodeList>
+                    </StaffActivity>
+                    <CohortGender>X</CohortGender>
+                    <CohortIndigenousType>NS</CohortIndigenousType>
+                    <PrimaryFTE>1</PrimaryFTE>
+                    <SecondaryFTE>1</SecondaryFTE>
+                    <JobFTE>43</JobFTE>
+                    <Headcount>243</Headcount>
+                </CensusStaff>
+                <CensusStaff>
+                    <StaffCohortId>StaffCohort-4-4</StaffCohortId>
+                    <StaffActivity>
+                        <Code>2215</Code>
+                        <OtherCodeList>
+                            <OtherCode Codeset="Local">441</OtherCode>
+                            <OtherCode Codeset="Local">442</OtherCode>
+                        </OtherCodeList>
+                    </StaffActivity>
+                    <CohortGender>M</CohortGender>
+                    <CohortIndigenousType>I</CohortIndigenousType>
+                    <PrimaryFTE>1</PrimaryFTE>
+                    <SecondaryFTE>1</SecondaryFTE>
+                    <JobFTE>44</JobFTE>
+                    <Headcount>244</Headcount>
+                </CensusStaff>
+                <CensusStaff>
+                    <StaffCohortId>StaffCohort-4-5</StaffCohortId>
+                    <StaffActivity>
+                        <Code>2215</Code>
+                        <OtherCodeList>
+                            <OtherCode Codeset="Local">451</OtherCode>
+                            <OtherCode Codeset="Local">452</OtherCode>
+                        </OtherCodeList>
+                    </StaffActivity>
+                    <CohortGender>F</CohortGender>
+                    <CohortIndigenousType>N</CohortIndigenousType>
+                    <PrimaryFTE>1</PrimaryFTE>
+                    <SecondaryFTE>1</SecondaryFTE>
+                    <JobFTE>45</JobFTE>
+                    <Headcount>245</Headcount>
+                </CensusStaff>
+            </CensusStaffList>
+            <CensusStudentList>
+                <CensusStudent>
+                    <StudentCohortId>X-4-1</StudentCohortId>
+                    <YearLevel>
+                        <Code>2</Code>
+                    </YearLevel>
+                    <CensusAge>15</CensusAge>
+                    <CohortGender>M</CohortGender>
+                    <CohortIndigenousType>I</CohortIndigenousType>
+                    <EducationMode>D</EducationMode>
+                    <StudentOnVisa>N</StudentOnVisa>
+                    <OverseasStudent>N</OverseasStudent>
+                    <DisabilityLevelOfAdjustment>None</DisabilityLevelOfAdjustment>
+                    <DisabilityCategory>None</DisabilityCategory>
+                    <FTE>1</FTE>
+                </CensusStudent>
+                <CensusStudent>
+                    <StudentCohortId>X-4-2</StudentCohortId>
+                    <YearLevel>
+                        <Code>3</Code>
+                    </YearLevel>
+                    <CensusAge>16</CensusAge>
+                    <CohortGender>F</CohortGender>
+                    <CohortIndigenousType>N</CohortIndigenousType>
+                    <EducationMode>D</EducationMode>
+                    <StudentOnVisa>N</StudentOnVisa>
+                    <OverseasStudent>N</OverseasStudent>
+                    <DisabilityLevelOfAdjustment>None</DisabilityLevelOfAdjustment>
+                    <DisabilityCategory>None</DisabilityCategory>
+                    <FTE>1</FTE>
+                </CensusStudent>
+                <CensusStudent>
+                    <StudentCohortId>X-4-3</StudentCohortId>
+                    <YearLevel>
+                        <Code>4</Code>
+                    </YearLevel>
+                    <CensusAge>17</CensusAge>
+                    <CohortGender>X</CohortGender>
+                    <CohortIndigenousType>NS</CohortIndigenousType>
+                    <EducationMode>D</EducationMode>
+                    <StudentOnVisa>N</StudentOnVisa>
+                    <OverseasStudent>N</OverseasStudent>
+                    <DisabilityLevelOfAdjustment>None</DisabilityLevelOfAdjustment>
+                    <DisabilityCategory>None</DisabilityCategory>
+                    <FTE>1</FTE>
+                </CensusStudent>
+                <CensusStudent>
+                    <StudentCohortId>X-4-4</StudentCohortId>
+                    <YearLevel>
+                        <Code>5</Code>
+                    </YearLevel>
+                    <CensusAge>18</CensusAge>
+                    <CohortGender>M</CohortGender>
+                    <CohortIndigenousType>I</CohortIndigenousType>
+                    <EducationMode>D</EducationMode>
+                    <StudentOnVisa>N</StudentOnVisa>
+                    <OverseasStudent>N</OverseasStudent>
+                    <DisabilityLevelOfAdjustment>None</DisabilityLevelOfAdjustment>
+                    <DisabilityCategory>None</DisabilityCategory>
+                    <FTE>1</FTE>
+                </CensusStudent>
+                <CensusStudent>
+                    <StudentCohortId>X-4-5</StudentCohortId>
+                    <YearLevel>
+                        <Code>6</Code>
+                    </YearLevel>
+                    <CensusAge>19</CensusAge>
+                    <CohortGender>F</CohortGender>
+                    <CohortIndigenousType>N</CohortIndigenousType>
+                    <EducationMode>D</EducationMode>
+                    <StudentOnVisa>N</StudentOnVisa>
+                    <OverseasStudent>N</OverseasStudent>
+                    <DisabilityLevelOfAdjustment>None</DisabilityLevelOfAdjustment>
+                    <DisabilityCategory>None</DisabilityCategory>
+                    <FTE>1</FTE>
+                </CensusStudent>
+            </CensusStudentList>
+        </CensusReporting>
+        <CensusReporting>
+            <EntityLevel>System</EntityLevel>
+            <CommonwealthId>CWID-5</CommonwealthId>
+            <EntityName>Bens Test State High School</EntityName>
+            <EntityContact>
+                <Name Type="LGL">
+                    <Title>Ms</Title>
+                    <FamilyName>Person</FamilyName>
+                    <GivenName>Entity</GivenName>
+                    <MiddleName>Contact</MiddleName>
+                    <PreferredFamilyName>Person</PreferredFamilyName>
+                    <PreferredGivenName>Entity</PreferredGivenName>
+                    <FullName>Ms Entity Contact Person</FullName>
+                </Name>
+                <PositionTitle>Registrar</PositionTitle>
+                <Role>Role</Role>
+                <RegistrationDetails>Registration Details</RegistrationDetails>
+                <Qualifications>Qualifications</Qualifications>
+                <Address Type="0123" Role="012B">
+                    <Street>
+                        <Line1>Entity Contact Address</Line1>
+                        <Line2>145 Some Street</Line2>
+                    </Street>
+                    <City>Perth</City>
+                    <StateProvince>WA</StateProvince>
+                    <PostalCode>6000</PostalCode>
+                    <GridLocation>
+                        <Latitude>-31.952693</Latitude>
+                        <Longitude>115.871971</Longitude>
+                    </GridLocation>
+                </Address>
+                <Email Type="06">entity.contact@not.a.real.domain</Email>
+                <PhoneNumber Type="0096">
+                    <Number>(123) 456 7890</Number>
+                </PhoneNumber>
+            </EntityContact>
+            <CensusStaffList>
+                <CensusStaff>
+                    <StaffCohortId>StaffCohort-5-1</StaffCohortId>
+                    <StaffActivity>
+                        <Code>2215</Code>
+                        <OtherCodeList>
+                            <OtherCode Codeset="Local">511</OtherCode>
+                            <OtherCode Codeset="Local">512</OtherCode>
+                        </OtherCodeList>
+                    </StaffActivity>
+                    <CohortGender>F</CohortGender>
+                    <CohortIndigenousType>I</CohortIndigenousType>
+                    <PrimaryFTE>1</PrimaryFTE>
+                    <SecondaryFTE>1</SecondaryFTE>
+                    <JobFTE>51</JobFTE>
+                    <Headcount>251</Headcount>
+                </CensusStaff>
+                <CensusStaff>
+                    <StaffCohortId>StaffCohort-5-2</StaffCohortId>
+                    <StaffActivity>
+                        <Code>2215</Code>
+                        <OtherCodeList>
+                            <OtherCode Codeset="Local">521</OtherCode>
+                            <OtherCode Codeset="Local">522</OtherCode>
+                        </OtherCodeList>
+                    </StaffActivity>
+                    <CohortGender>X</CohortGender>
+                    <CohortIndigenousType>N</CohortIndigenousType>
+                    <PrimaryFTE>1</PrimaryFTE>
+                    <SecondaryFTE>1</SecondaryFTE>
+                    <JobFTE>52</JobFTE>
+                    <Headcount>252</Headcount>
+                </CensusStaff>
+                <CensusStaff>
+                    <StaffCohortId>StaffCohort-5-3</StaffCohortId>
+                    <StaffActivity>
+                        <Code>2215</Code>
+                        <OtherCodeList>
+                            <OtherCode Codeset="Local">531</OtherCode>
+                            <OtherCode Codeset="Local">532</OtherCode>
+                        </OtherCodeList>
+                    </StaffActivity>
+                    <CohortGender>M</CohortGender>
+                    <CohortIndigenousType>NS</CohortIndigenousType>
+                    <PrimaryFTE>1</PrimaryFTE>
+                    <SecondaryFTE>1</SecondaryFTE>
+                    <JobFTE>53</JobFTE>
+                    <Headcount>253</Headcount>
+                </CensusStaff>
+                <CensusStaff>
+                    <StaffCohortId>StaffCohort-5-4</StaffCohortId>
+                    <StaffActivity>
+                        <Code>2215</Code>
+                        <OtherCodeList>
+                            <OtherCode Codeset="Local">541</OtherCode>
+                            <OtherCode Codeset="Local">542</OtherCode>
+                        </OtherCodeList>
+                    </StaffActivity>
+                    <CohortGender>F</CohortGender>
+                    <CohortIndigenousType>I</CohortIndigenousType>
+                    <PrimaryFTE>1</PrimaryFTE>
+                    <SecondaryFTE>1</SecondaryFTE>
+                    <JobFTE>54</JobFTE>
+                    <Headcount>254</Headcount>
+                </CensusStaff>
+                <CensusStaff>
+                    <StaffCohortId>StaffCohort-5-5</StaffCohortId>
+                    <StaffActivity>
+                        <Code>2215</Code>
+                        <OtherCodeList>
+                            <OtherCode Codeset="Local">551</OtherCode>
+                            <OtherCode Codeset="Local">552</OtherCode>
+                        </OtherCodeList>
+                    </StaffActivity>
+                    <CohortGender>X</CohortGender>
+                    <CohortIndigenousType>N</CohortIndigenousType>
+                    <PrimaryFTE>1</PrimaryFTE>
+                    <SecondaryFTE>1</SecondaryFTE>
+                    <JobFTE>55</JobFTE>
+                    <Headcount>255</Headcount>
+                </CensusStaff>
+            </CensusStaffList>
+            <CensusStudentList>
+                <CensusStudent>
+                    <StudentCohortId>X-5-1</StudentCohortId>
+                    <YearLevel>
+                        <Code>2</Code>
+                    </YearLevel>
+                    <CensusAge>16</CensusAge>
+                    <CohortGender>F</CohortGender>
+                    <CohortIndigenousType>I</CohortIndigenousType>
+                    <EducationMode>D</EducationMode>
+                    <StudentOnVisa>N</StudentOnVisa>
+                    <OverseasStudent>N</OverseasStudent>
+                    <DisabilityLevelOfAdjustment>None</DisabilityLevelOfAdjustment>
+                    <DisabilityCategory>None</DisabilityCategory>
+                    <FTE>1</FTE>
+                </CensusStudent>
+                <CensusStudent>
+                    <StudentCohortId>X-5-2</StudentCohortId>
+                    <YearLevel>
+                        <Code>3</Code>
+                    </YearLevel>
+                    <CensusAge>17</CensusAge>
+                    <CohortGender>X</CohortGender>
+                    <CohortIndigenousType>N</CohortIndigenousType>
+                    <EducationMode>D</EducationMode>
+                    <StudentOnVisa>N</StudentOnVisa>
+                    <OverseasStudent>N</OverseasStudent>
+                    <DisabilityLevelOfAdjustment>None</DisabilityLevelOfAdjustment>
+                    <DisabilityCategory>None</DisabilityCategory>
+                    <FTE>1</FTE>
+                </CensusStudent>
+                <CensusStudent>
+                    <StudentCohortId>X-5-3</StudentCohortId>
+                    <YearLevel>
+                        <Code>4</Code>
+                    </YearLevel>
+                    <CensusAge>18</CensusAge>
+                    <CohortGender>M</CohortGender>
+                    <CohortIndigenousType>NS</CohortIndigenousType>
+                    <EducationMode>D</EducationMode>
+                    <StudentOnVisa>N</StudentOnVisa>
+                    <OverseasStudent>N</OverseasStudent>
+                    <DisabilityLevelOfAdjustment>None</DisabilityLevelOfAdjustment>
+                    <DisabilityCategory>None</DisabilityCategory>
+                    <FTE>1</FTE>
+                </CensusStudent>
+                <CensusStudent>
+                    <StudentCohortId>X-5-4</StudentCohortId>
+                    <YearLevel>
+                        <Code>5</Code>
+                    </YearLevel>
+                    <CensusAge>19</CensusAge>
+                    <CohortGender>F</CohortGender>
+                    <CohortIndigenousType>I</CohortIndigenousType>
+                    <EducationMode>D</EducationMode>
+                    <StudentOnVisa>N</StudentOnVisa>
+                    <OverseasStudent>N</OverseasStudent>
+                    <DisabilityLevelOfAdjustment>None</DisabilityLevelOfAdjustment>
+                    <DisabilityCategory>None</DisabilityCategory>
+                    <FTE>1</FTE>
+                </CensusStudent>
+                <CensusStudent>
+                    <StudentCohortId>X-5-5</StudentCohortId>
+                    <YearLevel>
+                        <Code>6</Code>
+                    </YearLevel>
+                    <CensusAge>20</CensusAge>
+                    <CohortGender>X</CohortGender>
+                    <CohortIndigenousType>N</CohortIndigenousType>
+                    <EducationMode>D</EducationMode>
+                    <StudentOnVisa>N</StudentOnVisa>
+                    <OverseasStudent>N</OverseasStudent>
+                    <DisabilityLevelOfAdjustment>None</DisabilityLevelOfAdjustment>
+                    <DisabilityCategory>None</DisabilityCategory>
+                    <FTE>1</FTE>
+                </CensusStudent>
+            </CensusStudentList>
+        </CensusReporting>
+    </CensusReportingList>
+</CensusCollection>

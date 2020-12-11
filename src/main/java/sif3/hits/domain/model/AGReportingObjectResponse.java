@@ -1,104 +1,115 @@
 package sif3.hits.domain.model;
 
-import javax.persistence.*;
 import java.util.List;
 
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+
 @Entity
-@Table(name = "AGStatusReport_ReportingObjectResponse")
-public class AGReportingObjectResponse {
-    private Long id;
-    private AGStatusReport agStatusReport;
-    private String submittedRefId;
-    private String sifRefId;
-    private String httpStatusCode;
-    private String errorText;
-    private String commonwealthId;
-    private String entityName;
-    private String agSubmissionStatusCode;
-    private List<AGRule> agRuleList;
+@Table(name = "CollectionStatus_AGReportingObjectResponse")
+public class AGReportingObjectResponse extends HitsEntity {
+	private static final long serialVersionUID = -8660963213427174360L;
 
-    @Id
-    @GeneratedValue
-    public Long getId() {
-        return id;
-    }
+	private Long id;
+	private CollectionStatus collectionStatus;
+	private String submittedRefId;
+	private String sifRefId;
+	private String httpStatusCode;
+	private String errorText;
+	private String commonwealthId;
+	private String entityName;
+	private String agSubmissionStatusCode;
+	private List<CollectionStatusReponseAGRule> agRuleList;
 
-    public void setId(Long id) {
-        this.id = id;
-    }
+	@Id
+	@GeneratedValue
+	public Long getId() {
+		return id;
+	}
 
-    @ManyToOne(optional =  false)
-    @JoinColumn(name = "AGStatusReport_RefId")
-    public AGStatusReport getAgStatusReport() {
-        return agStatusReport;
-    }
+	public void setId(Long id) {
+		this.id = id;
+	}
 
-    public void setAgStatusReport(AGStatusReport agStatusReport) {
-        this.agStatusReport = agStatusReport;
-    }
+	@ManyToOne
+	@JoinColumn(name = "CollectionStatus_RefId")
+	public CollectionStatus getCollectionStatus() {
+		return collectionStatus;
+	}
 
-    public String getSubmittedRefId() {
-        return submittedRefId;
-    }
+	public void setCollectionStatus(CollectionStatus collectionStatus) {
+		this.collectionStatus = collectionStatus;
+	}
 
-    public void setSubmittedRefId(String submittedRefId) {
-        this.submittedRefId = submittedRefId;
-    }
+	public String getSubmittedRefId() {
+		return submittedRefId;
+	}
 
-    public String getSifRefId() {
-        return sifRefId;
-    }
+	public void setSubmittedRefId(String submittedRefId) {
+		this.submittedRefId = submittedRefId;
+	}
 
-    public void setSifRefId(String sifRefId) {
-        this.sifRefId = sifRefId;
-    }
+	public String getSifRefId() {
+		return sifRefId;
+	}
 
-    public String getHttpStatusCode() {
-        return httpStatusCode;
-    }
+	public void setSifRefId(String sifRefId) {
+		this.sifRefId = sifRefId;
+	}
 
-    public void setHttpStatusCode(String httpStatusCode) {
-        this.httpStatusCode = httpStatusCode;
-    }
+	public String getHttpStatusCode() {
+		return httpStatusCode;
+	}
 
-    public String getErrorText() {
-        return errorText;
-    }
+	public void setHttpStatusCode(String httpStatusCode) {
+		this.httpStatusCode = httpStatusCode;
+	}
 
-    public void setErrorText(String errorText) {
-        this.errorText = errorText;
-    }
+	public String getErrorText() {
+		return errorText;
+	}
 
-    public String getCommonwealthId() {
-        return commonwealthId;
-    }
+	public void setErrorText(String errorText) {
+		this.errorText = errorText;
+	}
 
-    public void setCommonwealthId(String commonwealthId) {
-        this.commonwealthId = commonwealthId;
-    }
+	public String getCommonwealthId() {
+		return commonwealthId;
+	}
 
-    public String getEntityName() {
-        return entityName;
-    }
+	public void setCommonwealthId(String commonwealthId) {
+		this.commonwealthId = commonwealthId;
+	}
 
-    public void setEntityName(String entityName) {
-        this.entityName = entityName;
-    }
+	public String getEntityName() {
+		return entityName;
+	}
 
-    public String getAgSubmissionStatusCode() {
-        return agSubmissionStatusCode;
-    }
+	public void setEntityName(String entityName) {
+		this.entityName = entityName;
+	}
 
-    public void setAgSubmissionStatusCode(String agSubmissionStatusCode) {
-        this.agSubmissionStatusCode = agSubmissionStatusCode;
-    }
+	public String getAgSubmissionStatusCode() {
+		return agSubmissionStatusCode;
+	}
 
-    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "agReportingObjectResponse")
-    public List<AGRule> getAgRuleList() {
-        return agRuleList;
-    }
+	public void setAgSubmissionStatusCode(String agSubmissionStatusCode) {
+		this.agSubmissionStatusCode = agSubmissionStatusCode;
+	}
 
-    public void setAgRuleList(List<AGRule> agRuleList) {
-        this.agRuleList = agRuleList;
-    }
+	@OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "agReportingObjectResponse")
+	public List<CollectionStatusReponseAGRule> getAgRuleList() {
+		return agRuleList;
+	}
+
+	public void setAgRuleList(List<CollectionStatusReponseAGRule> agRuleList) {
+		this.agRuleList = agRuleList;
+	}
+
 }

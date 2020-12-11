@@ -1,12 +1,12 @@
 <!--
-		SIF Implementation Specification (Australia) 3.4.6
+		SIF Implementation Specification (Australia) 3.4.7
 
 
-		(March 6, 2020)
+		(August 5, 2020)
 		
 		Infrastructure Version: v3
 	-->
-<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://www.sifassociation.org/datamodel/au/3.4" targetNamespace="http://www.sifassociation.org/datamodel/au/3.4" elementFormDefault="qualified" version="3.4.6"
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://www.sifassociation.org/datamodel/au/3.4" targetNamespace="http://www.sifassociation.org/datamodel/au/3.4" elementFormDefault="qualified" version="3.4.7"
 >
   <!--SIFAUStudentBaselineProfileSBPAndSupportingObjects-->
 
@@ -6135,6 +6135,212 @@
   <xs:element name="TimeTableContainers" type="TimeTableContainerCollectionType" />
 
 
+  <!--LibraryPatronStatus-->
+
+  <xs:complexType name="LibraryPatronStatusType">
+    <xs:annotation>
+      <xs:appinfo>
+        <sifChar />
+        <privacyRating>High</privacyRating>
+      </xs:appinfo>
+      <xs:documentation>This object reports the current library status for the requested student or staff member.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="LibraryType" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <sifChar>M</sifChar>
+            <privacyRating>Low</privacyRating>
+          </xs:appinfo>
+          <xs:documentation>A library-defined language-independent value that refers to a specific patron type.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="PatronRefId" minOccurs="0" nillable="true" type="IdRefType">
+        <xs:annotation>
+          <xs:appinfo>
+            <sifChar>C</sifChar>
+            <privacyRating>Low</privacyRating>
+          </xs:appinfo>
+          <xs:documentation>The SIF wide unique identifier of a Patron. Either RefId or LocalId must be supplied here.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="PatronLocalId" minOccurs="0" nillable="true" type="LocalIdType">
+        <xs:annotation>
+          <xs:appinfo>
+            <sifChar>C</sifChar>
+            <privacyRating>High</privacyRating>
+          </xs:appinfo>
+          <xs:documentation>The Local unique identifier of a Patron. Either RefId or LocalId must be supplied here.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="PatronRefObject">
+        <xs:annotation>
+          <xs:appinfo>
+            <sifChar>M</sifChar>
+            <privacyRating>Low</privacyRating>
+          </xs:appinfo>
+          <xs:documentation>The type of patron mapped to a SIF supported object. Library automation products work with patrons who could be students or teachers.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:enumeration value="StudentPersonal" />
+            <xs:enumeration value="StaffPersonal" />
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="PatronName" minOccurs="0" nillable="true" type="NameOfRecordType">
+        <xs:annotation>
+          <xs:appinfo>
+            <sifChar>O</sifChar>
+            <privacyRating>High</privacyRating>
+          </xs:appinfo>
+          <xs:documentation>Name of Patron Member, optional, represents the name of the patron only at the time the object was generated.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="ElectronicIdList" minOccurs="0" nillable="true" type="ElectronicIdListType">
+        <xs:annotation>
+          <xs:appinfo>
+            <sifChar>O</sifChar>
+            <privacyRating>Low</privacyRating>
+          </xs:appinfo>
+          <xs:documentation>List of electronic identifiers associated with the patron.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="TransactionList" minOccurs="0" nillable="true" type="LibraryTransactionListType">
+        <xs:annotation>
+          <xs:appinfo>
+            <sifChar>O</sifChar>
+            <privacyRating>High</privacyRating>
+          </xs:appinfo>
+          <xs:documentation>List of transactions.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="MessageList" minOccurs="0" nillable="true" type="LibraryMessageListType">
+        <xs:annotation>
+          <xs:appinfo>
+            <sifChar>O</sifChar>
+            <privacyRating>High</privacyRating>
+          </xs:appinfo>
+          <xs:documentation>List of messages for/regarding the patron.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="NumberOfCheckouts" type="xs:unsignedInt">
+        <xs:annotation>
+          <xs:appinfo>
+            <sifChar>M</sifChar>
+            <privacyRating>High</privacyRating>
+          </xs:appinfo>
+          <xs:documentation>The total number of items that this patron currently has checked out including overdue items.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="NumberOfHoldItems" minOccurs="0" nillable="true" type="xs:unsignedInt">
+        <xs:annotation>
+          <xs:appinfo>
+            <sifChar>O</sifChar>
+            <privacyRating>High</privacyRating>
+          </xs:appinfo>
+          <xs:documentation>The total number of items that this patron currently has on hold.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="NumberOfOverdues" minOccurs="0" nillable="true" type="xs:unsignedInt">
+        <xs:annotation>
+          <xs:appinfo>
+            <sifChar>O</sifChar>
+            <privacyRating>High</privacyRating>
+          </xs:appinfo>
+          <xs:documentation>The total number of checkouts that are currently overdue.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="NumberOfFines" minOccurs="0" nillable="true" type="xs:unsignedInt">
+        <xs:annotation>
+          <xs:appinfo>
+            <sifChar>O</sifChar>
+            <privacyRating>High</privacyRating>
+          </xs:appinfo>
+          <xs:documentation>The total number of fines currently assessed to this patron.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="FineAmount" minOccurs="0" nillable="true" type="MonetaryAmountType">
+        <xs:annotation>
+          <xs:appinfo>
+            <sifChar>O</sifChar>
+            <privacyRating>High</privacyRating>
+          </xs:appinfo>
+          <xs:documentation>The total monetary amount of the fines that this patron currently owes the library expressed as a positive number.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="NumberOfRefunds" minOccurs="0" nillable="true" type="xs:unsignedInt">
+        <xs:annotation>
+          <xs:appinfo>
+            <sifChar>O</sifChar>
+            <privacyRating>High</privacyRating>
+          </xs:appinfo>
+          <xs:documentation>The total number of refunds currently credited to this patron.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="RefundAmount" minOccurs="0" nillable="true" type="MonetaryAmountType">
+        <xs:annotation>
+          <xs:appinfo>
+            <sifChar>O</sifChar>
+            <privacyRating>High</privacyRating>
+          </xs:appinfo>
+          <xs:documentation>The total monetary amount of the refunds that the library currently owes the patron expressed as a positive number.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="LocalCodeList" minOccurs="0" nillable="true" type="LocalCodeListType">
+        <xs:annotation>
+          <xs:appinfo>
+            <sifChar>O</sifChar>
+            <privacyRating>High</privacyRating>
+          </xs:appinfo>
+          <xs:documentation />
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="SIF_Metadata" minOccurs="0" nillable="true" type="SIF_MetadataType">
+        <xs:annotation>
+          <xs:appinfo>
+            <sifChar>O</sifChar>
+            <privacyRating>High</privacyRating>
+          </xs:appinfo>
+          <xs:documentation />
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="SIF_ExtendedElements" minOccurs="0" nillable="true" type="SIF_ExtendedElementsType">
+        <xs:annotation>
+          <xs:appinfo>
+            <sifChar>O</sifChar>
+            <privacyRating>High</privacyRating>
+          </xs:appinfo>
+          <xs:documentation />
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+    <xs:attribute name="RefId" use="required" type="RefIdType">
+      <xs:annotation>
+        <xs:appinfo>
+          <sifChar>M</sifChar>
+          <privacyRating>Low</privacyRating>
+        </xs:appinfo>
+        <xs:documentation>A GUID that identifies an instance of this object. This RefId may be a transient value; that is, it SHOULD be generated by the provider at the time the object is provided in a Response message.  This value MAY NOT be used in a later Request for the object.</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+
+  <xs:element name="LibraryPatronStatus" type="LibraryPatronStatusType">
+    <xs:key name="LibraryPatronStatusKey1">
+      <xs:selector xpath="." />
+      <xs:field xpath="./RefId" />
+    </xs:key>
+  </xs:element>
+
+  <xs:complexType name="LibraryPatronStatusCollectionType">
+    <xs:sequence>
+      <xs:element name="LibraryPatronStatus" type="LibraryPatronStatusType" minOccurs="0" maxOccurs="unbounded" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="LibraryPatronStatuss" type="LibraryPatronStatusCollectionType" />
+
+
   <!--Finance-->
 
 
@@ -12248,7 +12454,7 @@
         <sifChar />
         <privacyRating>High</privacyRating>
       </xs:appinfo>
-      <xs:documentation>A WellbeingAppeal is information about an “appeal” or a “request” in regard to a (negative/punitive) WellbeingResponse to a student event.</xs:documentation>
+      <xs:documentation>A WellbeingAppeal is information about an "appeal" or a "request" in regard to a (negative/punitive) WellbeingResponse to a student event.</xs:documentation>
     </xs:annotation>
     <xs:sequence>
       <xs:element name="LocalId" minOccurs="0" nillable="true" type="LocalIdType">
@@ -12403,7 +12609,7 @@
         <sifChar />
         <privacyRating>High</privacyRating>
       </xs:appinfo>
-      <xs:documentation>Event that impacts on a student's duty of care.  This has been modelled by Sentral as an Incident, by CEOM as a behaviour support incident and by WA previously as an "Incident Report" but looking to move to terminology such as a “Wellbeing Event”.  There is an emphasis that this 'event' was needed to track both 'positive' and 'negative' behaviours and it not just the recording of a discipline incident or an accident.  This event can be specific to a student, or a group of students, and is not global (e.g. a pandemic). Where an event involves more than one student, they can be listed in the person's involved or if part of a group, can be linked via a WellbeingPersonLink Object, new to the 3.4.5 Data Model.  Where the event has an impact on a student's wellbeing an individual record for each student should be generated, or linked via WellbeingPersonLink.  E.g. where a student is reporting that another student fell off his bike, then the reporting student is listed as a person involved, or where a student is part of a group, they can be connected via WellbeingPersonLink.</xs:documentation>
+      <xs:documentation>Event that impacts on a student's duty of care.  This has been modelled by Sentral as an Incident, by CEOM as a behaviour support incident and by WA previously as an "Incident Report" but looking to move to terminology such as a "Wellbeing Event".  There is an emphasis that this 'event' was needed to track both 'positive' and 'negative' behaviours and it not just the recording of a discipline incident or an accident.  This event can be specific to a student, or a group of students, and is not global (e.g. a pandemic). Where an event involves more than one student, they can be listed in the person's involved or if part of a group, can be linked via a WellbeingPersonLink Object, new to the 3.4.5 Data Model.  Where the event has an impact on a student's wellbeing an individual record for each student should be generated, or linked via WellbeingPersonLink.  E.g. where a student is reporting that another student fell off his bike, then the reporting student is listed as a person involved, or where a student is part of a group, they can be connected via WellbeingPersonLink.</xs:documentation>
     </xs:annotation>
     <xs:sequence>
       <xs:element name="StudentPersonalRefId" minOccurs="0" nillable="true" type="IdRefType">
@@ -13249,6 +13455,683 @@
 
 
   <!--AustralianGovernmentCollections-->
+
+
+  <!--FinancialQuestionnaireCollection-->
+
+  <xs:complexType name="FinancialQuestionnaireCollectionType">
+    <xs:annotation>
+      <xs:appinfo>
+        <sifChar />
+        <privacyRating>High</privacyRating>
+      </xs:appinfo>
+      <xs:documentation>Object for Australian Government collection submission collecting financial information from schools and school authorities.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="FQYear" type="SchoolYearType">
+        <xs:annotation>
+          <xs:appinfo>
+            <sifChar>M</sifChar>
+            <privacyRating>Low</privacyRating>
+          </xs:appinfo>
+          <xs:documentation>Data Year</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="RoundCode" type="xs:normalizedString">
+        <xs:annotation>
+          <xs:appinfo>
+            <sifChar>M</sifChar>
+            <privacyRating>Low</privacyRating>
+          </xs:appinfo>
+          <xs:documentation>Which Round of the collection is this submission for?</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="ReportingAuthorityCommonwealthId" type="xs:normalizedString">
+        <xs:annotation>
+          <xs:appinfo>
+            <sifChar>M</sifChar>
+            <privacyRating>Low</privacyRating>
+          </xs:appinfo>
+          <xs:documentation>Commonwealth identifier for the submitting entity.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="SoftwareVendorInfo" type="SoftwareVendorInfoContainerType">
+        <xs:annotation>
+          <xs:appinfo>
+            <sifChar>M</sifChar>
+            <privacyRating>Low</privacyRating>
+          </xs:appinfo>
+          <xs:documentation>
+       Container for elements containing information on the Software Product and Vendor.
+    </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="FQReportingList" minOccurs="0" nillable="true" type="FQReportingListType">
+        <xs:annotation>
+          <xs:appinfo>
+            <sifChar>O</sifChar>
+            <privacyRating>High</privacyRating>
+          </xs:appinfo>
+          <xs:documentation>A list of Financial Reports in this Financial Questionnaire AG Collection.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="LocalCodeList" minOccurs="0" nillable="true" type="LocalCodeListType">
+        <xs:annotation>
+          <xs:appinfo>
+            <sifChar>O</sifChar>
+            <privacyRating>High</privacyRating>
+          </xs:appinfo>
+          <xs:documentation />
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="SIF_Metadata" minOccurs="0" nillable="true" type="SIF_MetadataType">
+        <xs:annotation>
+          <xs:appinfo>
+            <sifChar>O</sifChar>
+            <privacyRating>High</privacyRating>
+          </xs:appinfo>
+          <xs:documentation />
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="SIF_ExtendedElements" minOccurs="0" nillable="true" type="SIF_ExtendedElementsType">
+        <xs:annotation>
+          <xs:appinfo>
+            <sifChar>O</sifChar>
+            <privacyRating />
+          </xs:appinfo>
+          <xs:documentation />
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+    <xs:attribute name="RefId" use="required" type="RefIdType">
+      <xs:annotation>
+        <xs:appinfo>
+          <sifChar>M</sifChar>
+          <privacyRating>High</privacyRating>
+        </xs:appinfo>
+        <xs:documentation>GUID for this Report. The application that owns this object is responsible for generating this unique Id.</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+
+  <xs:element name="FinancialQuestionnaireCollection" type="FinancialQuestionnaireCollectionType">
+    <xs:key name="FinancialQuestionnaireCollectionKey1">
+      <xs:selector xpath="." />
+      <xs:field xpath="@RefId" />
+    </xs:key>
+  </xs:element>
+
+  <xs:complexType name="FinancialQuestionnaireCollectionCollectionType">
+    <xs:sequence>
+      <xs:element name="FinancialQuestionnaireCollection" type="FinancialQuestionnaireCollectionType" minOccurs="0" maxOccurs="unbounded" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="FinancialQuestionnaireCollections" type="FinancialQuestionnaireCollectionCollectionType" />
+
+
+  <!--CollectionStatus-->
+
+  <xs:complexType name="CollectionStatusType">
+    <xs:annotation>
+      <xs:appinfo>
+        <sifChar />
+        <privacyRating>High</privacyRating>
+      </xs:appinfo>
+      <xs:documentation>Object reporting the processing status of a collection object submitted to the Australian Government. Object is published by the Australian Government collections hub.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="ReportingAuthority" type="xs:normalizedString">
+        <xs:annotation>
+          <xs:appinfo>
+            <sifChar>M</sifChar>
+            <privacyRating>High</privacyRating>
+          </xs:appinfo>
+          <xs:documentation>Authority who submitted the collection data.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="ReportingAuthoritySystem" minOccurs="0" nillable="true" type="xs:normalizedString">
+        <xs:annotation>
+          <xs:appinfo>
+            <sifChar>O</sifChar>
+            <privacyRating>High</privacyRating>
+          </xs:appinfo>
+          <xs:documentation>System of Reporting Authority if Systemic.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="ReportingAuthorityCommonwealthId" minOccurs="0" nillable="true" type="xs:normalizedString">
+        <xs:annotation>
+          <xs:appinfo>
+            <sifChar>O</sifChar>
+            <privacyRating>Low</privacyRating>
+          </xs:appinfo>
+          <xs:documentation>Commonwealth identifier for the submitting entity.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="SubmittedBy" minOccurs="0" nillable="true" type="xs:normalizedString">
+        <xs:annotation>
+          <xs:appinfo>
+            <sifChar>O</sifChar>
+            <privacyRating>High</privacyRating>
+          </xs:appinfo>
+          <xs:documentation>Extra information about submitter.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="SubmissionTimestamp" minOccurs="0" nillable="true" type="xs:dateTime">
+        <xs:annotation>
+          <xs:appinfo>
+            <sifChar>O</sifChar>
+            <privacyRating>Low</privacyRating>
+          </xs:appinfo>
+          <xs:documentation>Timestamp of the original collection submission that these entities were reported on.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="AGCollection" minOccurs="0" nillable="true" type="xs:normalizedString">
+        <xs:annotation>
+          <xs:appinfo>
+            <sifChar>O</sifChar>
+            <privacyRating>Low</privacyRating>
+          </xs:appinfo>
+          <xs:documentation>The type of AG Collection being reported on.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="CollectionYear" type="SchoolYearType">
+        <xs:annotation>
+          <xs:appinfo>
+            <sifChar>M</sifChar>
+            <privacyRating>Low</privacyRating>
+          </xs:appinfo>
+          <xs:documentation>Data Year</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="RoundCode" type="xs:normalizedString">
+        <xs:annotation>
+          <xs:appinfo>
+            <sifChar>M</sifChar>
+            <privacyRating>Low</privacyRating>
+          </xs:appinfo>
+          <xs:documentation>Which Round of the collection is this submission for?</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="AGReportingObjectResponseList" minOccurs="0" nillable="true" type="AGReportingObjectResponseListType">
+        <xs:annotation>
+          <xs:appinfo>
+            <sifChar>O</sifChar>
+            <privacyRating>High</privacyRating>
+          </xs:appinfo>
+          <xs:documentation>A list of the Reporting Objects being responded to.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="LocalCodeList" minOccurs="0" nillable="true" type="LocalCodeListType">
+        <xs:annotation>
+          <xs:appinfo>
+            <sifChar>O</sifChar>
+            <privacyRating>Extreme</privacyRating>
+          </xs:appinfo>
+          <xs:documentation />
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="SIF_Metadata" minOccurs="0" nillable="true" type="SIF_MetadataType">
+        <xs:annotation>
+          <xs:appinfo>
+            <sifChar>O</sifChar>
+            <privacyRating>Extreme</privacyRating>
+          </xs:appinfo>
+          <xs:documentation />
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="SIF_ExtendedElements" minOccurs="0" nillable="true" type="SIF_ExtendedElementsType">
+        <xs:annotation>
+          <xs:appinfo>
+            <sifChar>O</sifChar>
+            <privacyRating>Extreme</privacyRating>
+          </xs:appinfo>
+          <xs:documentation />
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+    <xs:attribute name="RefId" use="required" type="RefIdType">
+      <xs:annotation>
+        <xs:appinfo>
+          <sifChar>M</sifChar>
+          <privacyRating>High</privacyRating>
+        </xs:appinfo>
+        <xs:documentation>GUID for this Status Report. The application that owns this object is responsible for generating this unique Id.</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+
+  <xs:element name="CollectionStatus" type="CollectionStatusType">
+    <xs:key name="CollectionStatusKey1">
+      <xs:selector xpath="." />
+      <xs:field xpath="@RefId" />
+    </xs:key>
+  </xs:element>
+
+  <xs:complexType name="CollectionStatusCollectionType">
+    <xs:sequence>
+      <xs:element name="CollectionStatus" type="CollectionStatusType" minOccurs="0" maxOccurs="unbounded" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="CollectionStatuss" type="CollectionStatusCollectionType" />
+
+
+  <!--AddressCollection-->
+
+  <xs:complexType name="AddressCollectionType">
+    <xs:annotation>
+      <xs:appinfo>
+        <sifChar />
+        <privacyRating>High</privacyRating>
+      </xs:appinfo>
+      <xs:documentation>Object for Australian Government collection submission collecting addresses of students from schools and school authorities</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="AddressCollectionYear" type="SchoolYearType">
+        <xs:annotation>
+          <xs:appinfo>
+            <sifChar>M</sifChar>
+            <privacyRating>Low</privacyRating>
+          </xs:appinfo>
+          <xs:documentation>Data Year</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="RoundCode" type="xs:normalizedString">
+        <xs:annotation>
+          <xs:appinfo>
+            <sifChar>M</sifChar>
+            <privacyRating>Low</privacyRating>
+          </xs:appinfo>
+          <xs:documentation>Which Round of the collection is this submission for?</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="ReportingAuthorityCommonwealthId" minOccurs="0" nillable="true" type="xs:normalizedString">
+        <xs:annotation>
+          <xs:appinfo>
+            <sifChar>O</sifChar>
+            <privacyRating>Low</privacyRating>
+          </xs:appinfo>
+          <xs:documentation>Commonwealth identifier for the submitting entity.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="SoftwareVendorInfo" minOccurs="0" nillable="true" type="SoftwareVendorInfoContainerType">
+        <xs:annotation>
+          <xs:appinfo>
+            <sifChar>O</sifChar>
+            <privacyRating>Low</privacyRating>
+          </xs:appinfo>
+          <xs:documentation>
+       Container for elements containing information on the Software Product and Vendor.
+    </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="AddressCollectionReportingList" minOccurs="0" nillable="true" type="AddressCollectionReportingListType">
+        <xs:annotation>
+          <xs:appinfo>
+            <sifChar>O</sifChar>
+            <privacyRating>High</privacyRating>
+          </xs:appinfo>
+          <xs:documentation>A list of Address Collections.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="LocalCodeList" minOccurs="0" nillable="true" type="LocalCodeListType">
+        <xs:annotation>
+          <xs:appinfo>
+            <sifChar>O</sifChar>
+            <privacyRating>High</privacyRating>
+          </xs:appinfo>
+          <xs:documentation />
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="SIF_Metadata" minOccurs="0" nillable="true" type="SIF_MetadataType">
+        <xs:annotation>
+          <xs:appinfo>
+            <sifChar>O</sifChar>
+            <privacyRating>High</privacyRating>
+          </xs:appinfo>
+          <xs:documentation />
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="SIF_ExtendedElements" minOccurs="0" nillable="true" type="SIF_ExtendedElementsType">
+        <xs:annotation>
+          <xs:appinfo>
+            <sifChar>O</sifChar>
+            <privacyRating>High</privacyRating>
+          </xs:appinfo>
+          <xs:documentation />
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+    <xs:attribute name="RefId" use="required" type="RefIdType">
+      <xs:annotation>
+        <xs:appinfo>
+          <sifChar>M</sifChar>
+          <privacyRating>High</privacyRating>
+        </xs:appinfo>
+        <xs:documentation>GUID for this Report. The application that owns this object is responsible for generating this unique Id.</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+
+  <xs:element name="AddressCollection" type="AddressCollectionType">
+    <xs:key name="AddressCollectionKey1">
+      <xs:selector xpath="." />
+      <xs:field xpath="@RefId" />
+    </xs:key>
+  </xs:element>
+
+  <xs:complexType name="AddressCollectionCollectionType">
+    <xs:sequence>
+      <xs:element name="AddressCollection" type="AddressCollectionType" minOccurs="0" maxOccurs="unbounded" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="AddressCollections" type="AddressCollectionCollectionType" />
+
+
+  <!--StudentAttendanceCollection-->
+
+  <xs:complexType name="StudentAttendanceCollectionType">
+    <xs:annotation>
+      <xs:appinfo>
+        <sifChar />
+        <privacyRating>High</privacyRating>
+      </xs:appinfo>
+      <xs:documentation>Object for Australian Government collection submission collecting Student Attendance Information.The Student Attendance Collection captures attendance information for each school location by cohort. A cohort comprises the combination of year level, gender and indigeneity. There are a maximum of six possible cohorts per year level (see Cohort attribute in table below). Data is submitted to the collection at two reporting periods (Semester 1 and Term 3).  Student Attendance data is only captured for full-time students in Years  1 to 10.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="StudentAttendanceCollectionYear" type="SchoolYearType">
+        <xs:annotation>
+          <xs:appinfo>
+            <sifChar>M</sifChar>
+            <privacyRating>Low</privacyRating>
+          </xs:appinfo>
+          <xs:documentation>Data Year</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="RoundCode" type="xs:normalizedString">
+        <xs:annotation>
+          <xs:appinfo>
+            <sifChar>M</sifChar>
+            <privacyRating>Low</privacyRating>
+          </xs:appinfo>
+          <xs:documentation>Identifies the reference period for the collection. Schools report each reference period as a separate submission at different times of the school year.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="ReportingAuthorityCommonwealthId" minOccurs="0" nillable="true" type="xs:normalizedString">
+        <xs:annotation>
+          <xs:appinfo>
+            <sifChar>O</sifChar>
+            <privacyRating>Low</privacyRating>
+          </xs:appinfo>
+          <xs:documentation>Commonwealth identifier for the submitting entity, e.g. AGEID for the Approved Authority.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="SoftwareVendorInfo" minOccurs="0" nillable="true" type="SoftwareVendorInfoContainerType">
+        <xs:annotation>
+          <xs:appinfo>
+            <sifChar>O</sifChar>
+            <privacyRating>Low</privacyRating>
+          </xs:appinfo>
+          <xs:documentation>
+       Container for elements containing information on the Software Product and Vendor.
+    </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="StudentAttendanceCollectionReportingList" minOccurs="0" nillable="true" type="StudentAttendanceCollectionReportingListType">
+        <xs:annotation>
+          <xs:appinfo>
+            <sifChar>O</sifChar>
+            <privacyRating>High</privacyRating>
+          </xs:appinfo>
+          <xs:documentation>A list of identifying information for the location reporting to STATS collection.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="LocalCodeList" minOccurs="0" nillable="true" type="LocalCodeListType">
+        <xs:annotation>
+          <xs:appinfo>
+            <sifChar>O</sifChar>
+            <privacyRating>High</privacyRating>
+          </xs:appinfo>
+          <xs:documentation />
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="SIF_Metadata" minOccurs="0" nillable="true" type="SIF_MetadataType">
+        <xs:annotation>
+          <xs:appinfo>
+            <sifChar>O</sifChar>
+            <privacyRating>High</privacyRating>
+          </xs:appinfo>
+          <xs:documentation />
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="SIF_ExtendedElements" minOccurs="0" nillable="true" type="SIF_ExtendedElementsType">
+        <xs:annotation>
+          <xs:appinfo>
+            <sifChar>O</sifChar>
+            <privacyRating>High</privacyRating>
+          </xs:appinfo>
+          <xs:documentation />
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+    <xs:attribute name="RefId" use="required" type="RefIdType">
+      <xs:annotation>
+        <xs:appinfo>
+          <sifChar>M</sifChar>
+          <privacyRating>High</privacyRating>
+        </xs:appinfo>
+        <xs:documentation>GUID for this Report. The application that owns this object is responsible for generating this unique Id.</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+
+  <xs:element name="StudentAttendanceCollection" type="StudentAttendanceCollectionType">
+    <xs:key name="StudentAttendanceCollectionKey1">
+      <xs:selector xpath="." />
+      <xs:field xpath="@RefId" />
+    </xs:key>
+  </xs:element>
+
+  <xs:complexType name="StudentAttendanceCollectionCollectionType">
+    <xs:sequence>
+      <xs:element name="StudentAttendanceCollection" type="StudentAttendanceCollectionType" minOccurs="0" maxOccurs="unbounded" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="StudentAttendanceCollections" type="StudentAttendanceCollectionCollectionType" />
+
+
+  <!--CensusCollection-->
+
+  <xs:complexType name="CensusCollectionType">
+    <xs:annotation>
+      <xs:appinfo>
+        <sifChar />
+        <privacyRating>High</privacyRating>
+      </xs:appinfo>
+      <xs:documentation />
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="CensusYear" type="SchoolYearType">
+        <xs:annotation>
+          <xs:appinfo>
+            <sifChar>M</sifChar>
+            <privacyRating>Low</privacyRating>
+          </xs:appinfo>
+          <xs:documentation>Data Year</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="RoundCode" type="xs:normalizedString">
+        <xs:annotation>
+          <xs:appinfo>
+            <sifChar>M</sifChar>
+            <privacyRating>Low</privacyRating>
+          </xs:appinfo>
+          <xs:documentation>Which Round of the collection is this submission for?</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="ReportingAuthorityCommonwealthId" minOccurs="0" nillable="true" type="xs:normalizedString">
+        <xs:annotation>
+          <xs:appinfo>
+            <sifChar>O</sifChar>
+            <privacyRating>Low</privacyRating>
+          </xs:appinfo>
+          <xs:documentation>Commonwealth identifier for the submitting entity.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="SoftwareVendorInfo" minOccurs="0" nillable="true" type="SoftwareVendorInfoContainerType">
+        <xs:annotation>
+          <xs:appinfo>
+            <sifChar>O</sifChar>
+            <privacyRating>Low</privacyRating>
+          </xs:appinfo>
+          <xs:documentation>
+       Container for elements containing information on the Software Product and Vendor.
+    </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="CensusReportingList" minOccurs="0" nillable="true" type="CensusReportingListType">
+        <xs:annotation>
+          <xs:appinfo>
+            <sifChar>O</sifChar>
+            <privacyRating>High</privacyRating>
+          </xs:appinfo>
+          <xs:documentation>A list of Census Collections.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="SIF_Metadata" minOccurs="0" nillable="true" type="SIF_MetadataType">
+        <xs:annotation>
+          <xs:appinfo>
+            <sifChar>O</sifChar>
+            <privacyRating />
+          </xs:appinfo>
+          <xs:documentation />
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="SIF_ExtendedElements" minOccurs="0" nillable="true" type="SIF_ExtendedElementsType">
+        <xs:annotation>
+          <xs:appinfo>
+            <sifChar>O</sifChar>
+            <privacyRating />
+          </xs:appinfo>
+          <xs:documentation />
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+    <xs:attribute name="RefId" use="required" type="RefIdType">
+      <xs:annotation>
+        <xs:appinfo>
+          <sifChar>M</sifChar>
+          <privacyRating>High</privacyRating>
+        </xs:appinfo>
+        <xs:documentation>GUID for this Report. The application that owns this object is responsible for generating this unique Id.</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+
+  <xs:element name="CensusCollection" type="CensusCollectionType">
+    <xs:key name="CensusCollectionKey1">
+      <xs:selector xpath="." />
+      <xs:field xpath="@RefId" />
+    </xs:key>
+  </xs:element>
+
+  <xs:complexType name="CensusCollectionCollectionType">
+    <xs:sequence>
+      <xs:element name="CensusCollection" type="CensusCollectionType" minOccurs="0" maxOccurs="unbounded" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="CensusCollections" type="CensusCollectionCollectionType" />
+
+
+  <!--CollectionRound-->
+
+  <xs:complexType name="CollectionRoundType">
+    <xs:annotation>
+      <xs:appinfo>
+        <sifChar />
+        <privacyRating>High</privacyRating>
+      </xs:appinfo>
+      <xs:documentation>Object reporting the rounds available for submission of a particular Australian Government (AG) Collection. Object is published by the Australian Government Schools hub.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="AGCollection" minOccurs="0" nillable="true" type="AUCodeSetsAGCollectionType">
+        <xs:annotation>
+          <xs:appinfo>
+            <sifChar>O</sifChar>
+            <privacyRating>Low</privacyRating>
+          </xs:appinfo>
+          <xs:documentation>The type of AG Collection.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="CollectionYear" type="SchoolYearType">
+        <xs:annotation>
+          <xs:appinfo>
+            <sifChar>M</sifChar>
+            <privacyRating>Low</privacyRating>
+          </xs:appinfo>
+          <xs:documentation>Data Year</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="AGRoundList" type="AGRoundListType">
+        <xs:annotation>
+          <xs:appinfo>
+            <sifChar>M</sifChar>
+            <privacyRating>Low</privacyRating>
+          </xs:appinfo>
+          <xs:documentation>List of Rounds available for the particular collection.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="LocalCodeList" minOccurs="0" nillable="true" type="LocalCodeListType">
+        <xs:annotation>
+          <xs:appinfo>
+            <sifChar>O</sifChar>
+            <privacyRating>Extreme</privacyRating>
+          </xs:appinfo>
+          <xs:documentation />
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="SIF_Metadata" minOccurs="0" nillable="true" type="SIF_MetadataType">
+        <xs:annotation>
+          <xs:appinfo>
+            <sifChar>O</sifChar>
+            <privacyRating>Extreme</privacyRating>
+          </xs:appinfo>
+          <xs:documentation />
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="SIF_ExtendedElements" minOccurs="0" nillable="true" type="SIF_ExtendedElementsType">
+        <xs:annotation>
+          <xs:appinfo>
+            <sifChar>O</sifChar>
+            <privacyRating>Extreme</privacyRating>
+          </xs:appinfo>
+          <xs:documentation />
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+    <xs:attribute name="RefId" use="required" type="RefIdType">
+      <xs:annotation>
+        <xs:appinfo>
+          <sifChar>M</sifChar>
+          <privacyRating>High</privacyRating>
+        </xs:appinfo>
+        <xs:documentation>GUID for this Status Report. The application that owns this object is responsible for generating this unique Id.</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+
+  <xs:element name="CollectionRound" type="CollectionRoundType">
+    <xs:key name="CollectionRoundKey1">
+      <xs:selector xpath="." />
+      <xs:field xpath="@RefId" />
+    </xs:key>
+  </xs:element>
+
+  <xs:complexType name="CollectionRoundCollectionType">
+    <xs:sequence>
+      <xs:element name="CollectionRound" type="CollectionRoundType" minOccurs="0" maxOccurs="unbounded" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="CollectionRounds" type="CollectionRoundCollectionType" />
 
 
   <!--ZForFutureDeprecation-->
@@ -16970,6 +17853,11 @@
           <xs:documentation>Therapy Session</xs:documentation>
         </xs:annotation>
       </xs:enumeration>
+      <xs:enumeration value="214">
+        <xs:annotation>
+          <xs:documentation>Sent home (COVID symptoms)</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
       <xs:enumeration value="300">
         <xs:annotation>
           <xs:documentation>Truancy</xs:documentation>
@@ -17108,6 +17996,21 @@
       <xs:enumeration value="622">
         <xs:annotation>
           <xs:documentation>Representative Event</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="623">
+        <xs:annotation>
+          <xs:documentation>On-site program</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="624">
+        <xs:annotation>
+          <xs:documentation>Remote learning (exceptional)</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="625">
+        <xs:annotation>
+          <xs:documentation>Remote learning</xs:documentation>
         </xs:annotation>
       </xs:enumeration>
       <xs:enumeration value="699">
@@ -23233,7 +24136,7 @@
       </xs:enumeration>
       <xs:enumeration value="411">
         <xs:annotation>
-          <xs:documentation>Wakefield</xs:documentation>
+          <xs:documentation>Wakefield - Deprecated</xs:documentation>
         </xs:annotation>
       </xs:enumeration>
       <xs:enumeration value="497">
@@ -31493,7 +32396,7 @@
   </xs:simpleType>
   <xs:simpleType name="AUCodeSetsSchoolCoEdStatusType">
     <xs:annotation>
-      <xs:documentation><p>Sourced from DEEWR</p></xs:documentation>
+      <xs:documentation><p>Sourced from DESE, (previously DEEWR).</p></xs:documentation>
     </xs:annotation>
     <xs:restriction base="xs:token">
       <xs:enumeration value="C">
@@ -35833,6 +36736,11 @@
           <xs:documentation>Nephew/Niece</xs:documentation>
         </xs:annotation>
       </xs:enumeration>
+      <xs:enumeration value="14">
+        <xs:annotation>
+          <xs:documentation>Step-Sibling</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
       <xs:enumeration value="00">
         <xs:annotation>
           <xs:documentation>Spouse</xs:documentation>
@@ -36932,6 +37840,11 @@
   </xs:simpleType>
   <xs:simpleType name="AUCodeSetsYearLevelCodeType">
     <xs:restriction base="xs:token">
+      <xs:enumeration value="0">
+        <xs:annotation>
+          <xs:documentation>Year 1 minus 1</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
       <xs:enumeration value="1">
         <xs:annotation>
           <xs:documentation>Year 1</xs:documentation>
@@ -38391,7 +39304,7 @@
       </xs:enumeration>
       <xs:enumeration value="T">
         <xs:annotation>
-          <xs:documentation>Technology</xs:documentation>
+          <xs:documentation>Technologies</xs:documentation>
         </xs:annotation>
       </xs:enumeration>
       <xs:enumeration value="W">
@@ -39039,6 +39952,50 @@
       <xs:enumeration value="D">
         <xs:annotation>
           <xs:documentation>Day Student</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="AUCodeSetsAGContextQuestionType">
+    <xs:annotation>
+      <xs:documentation><p>AG Collection Contextual Question Codes</p></xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:token">
+      <xs:enumeration value="AC001">
+        <xs:annotation>
+          <xs:documentation>Are you reporting any boarding students?</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="AC002">
+        <xs:annotation>
+          <xs:documentation>What is the education level of this location?</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="AUCodeSetsAGCollectionType">
+    <xs:annotation>
+      <xs:documentation><p>Which AG Collection do these Rounds refer to?</p></xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:token">
+      <xs:enumeration value="SES">
+        <xs:annotation>
+          <xs:documentation>Address Collection</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="FQ">
+        <xs:annotation>
+          <xs:documentation>Financial Questionnaire</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="COI">
+        <xs:annotation>
+          <xs:documentation>Non-Government Schools Census</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="STATS">
+        <xs:annotation>
+          <xs:documentation>Student Attendance (STATS)</xs:documentation>
         </xs:annotation>
       </xs:enumeration>
     </xs:restriction>
@@ -39938,6 +40895,2204 @@
     </xs:restriction>
   </xs:simpleType>
 
+  <!--LibraryTransactionListType-->
+
+  <xs:complexType name="LibraryTransactionListType">
+    <xs:annotation>
+      <xs:appinfo>
+        <sifChar />
+        <privacyRating />
+      </xs:appinfo>
+      <xs:documentation>List of transactions.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="Transaction" minOccurs="0" maxOccurs="unbounded" type="LibraryTransactionType">
+        <xs:annotation>
+          <xs:appinfo>
+            <sifChar>OR</sifChar>
+            <privacyRating />
+          </xs:appinfo>
+          <xs:documentation>Contains information about library transactions for the referenced patron.  These include items that are checked out or have fines or holds placed on them.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+
+
+  <!--LibraryTransactionType-->
+
+  <xs:complexType name="LibraryTransactionType">
+    <xs:annotation>
+      <xs:appinfo>
+        <sifChar />
+        <privacyRating />
+      </xs:appinfo>
+      <xs:documentation>Contains information about library transactions for the referenced patron.  These include items that are checked out or have fines or holds placed on them.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="ItemInfo" minOccurs="0" nillable="true" type="LibraryItemInfoType">
+        <xs:annotation>
+          <xs:appinfo>
+            <sifChar>O</sifChar>
+            <privacyRating />
+          </xs:appinfo>
+          <xs:documentation>
+        If this transaction has an item associated with it, this element contains the information about the item.  Most Transaction elements will contain this element.  However, certain types of fines assessed to the student like "talking in class",  "running in library", etc. do not have a corresponding item so that Transaction instance would not contain an ItemInfo.
+				</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="CheckoutInfo" minOccurs="0" nillable="true" type="CheckoutInfoType">
+        <xs:annotation>
+          <xs:appinfo>
+            <sifChar>O</sifChar>
+            <privacyRating />
+          </xs:appinfo>
+          <xs:documentation>If the item is currently checked out to this person, this element contains the date and time that the item is due to be returned.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="FineInfoList" minOccurs="0" nillable="true" type="FineInfoListType">
+        <xs:annotation>
+          <xs:appinfo>
+            <sifChar>O</sifChar>
+            <privacyRating />
+          </xs:appinfo>
+          <xs:documentation>List of fines assessed.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="HoldInfoList" minOccurs="0" nillable="true" type="HoldInfoListType">
+        <xs:annotation>
+          <xs:appinfo>
+            <sifChar>O</sifChar>
+            <privacyRating />
+          </xs:appinfo>
+          <xs:documentation>List of holds placed.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+
+
+  <!--LibraryItemInfoType-->
+
+  <xs:complexType name="LibraryItemInfoType">
+    <xs:annotation>
+      <xs:appinfo>
+        <sifChar />
+        <privacyRating />
+      </xs:appinfo>
+      <xs:documentation>This element contains the information about the library item.  Most Transaction elements will contain this element.  However, certain types of fines assessed to the student like "talking in class",  "running in library", etc. do not have a corresponding item so that Transaction instance would not contain an ItemInfo.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="Title" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <sifChar>M</sifChar>
+            <privacyRating />
+          </xs:appinfo>
+          <xs:documentation>
+        The title of the item being referenced by this Transaction.
+				</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="Author" minOccurs="0" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <sifChar>O</sifChar>
+            <privacyRating />
+          </xs:appinfo>
+          <xs:documentation>
+        The author of the item being referenced by this Transaction.
+				</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="ElectronicId" minOccurs="0" nillable="true" type="ElectronicIdType">
+        <xs:annotation>
+          <xs:appinfo>
+            <sifChar>O</sifChar>
+            <privacyRating />
+          </xs:appinfo>
+          <xs:documentation>
+        Electronic identifier associated with this Transaction.
+				</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="CallNumber" minOccurs="0" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <sifChar>O</sifChar>
+            <privacyRating />
+          </xs:appinfo>
+          <xs:documentation>The library call number, if any, assigned to this item.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="ISBN" minOccurs="0" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <sifChar>O</sifChar>
+            <privacyRating />
+          </xs:appinfo>
+          <xs:documentation>ISBN (International Standard Book Number) is a unique identifier for this book.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="Cost" minOccurs="0" nillable="true" type="MonetaryAmountType">
+        <xs:annotation>
+          <xs:appinfo>
+            <sifChar>O</sifChar>
+            <privacyRating />
+          </xs:appinfo>
+          <xs:documentation>The cost of this item. </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="ReplacementCost" minOccurs="0" nillable="true" type="MonetaryAmountType">
+        <xs:annotation>
+          <xs:appinfo>
+            <sifChar>O</sifChar>
+            <privacyRating />
+          </xs:appinfo>
+          <xs:documentation>The replacement cost of this item. </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+    <xs:attribute name="Type" use="required" type="xs:token">
+      <xs:annotation>
+        <xs:appinfo>
+          <sifChar>M</sifChar>
+          <privacyRating />
+        </xs:appinfo>
+        <xs:documentation>Type of item being referenced.</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+
+
+  <!--CheckoutInfoType-->
+
+  <xs:complexType name="CheckoutInfoType">
+    <xs:annotation>
+      <xs:appinfo>
+        <sifChar />
+        <privacyRating />
+      </xs:appinfo>
+      <xs:documentation>If the item is currently checked out to this person, this element contains the date and time that the item is due to be returned.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="CheckedOutOn" type="xs:dateTime">
+        <xs:annotation>
+          <xs:appinfo>
+            <sifChar>M</sifChar>
+            <privacyRating />
+          </xs:appinfo>
+          <xs:documentation>The date and time that this item is was checked out.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="ReturnBy" type="xs:dateTime">
+        <xs:annotation>
+          <xs:appinfo>
+            <sifChar>M</sifChar>
+            <privacyRating />
+          </xs:appinfo>
+          <xs:documentation>The date and time that this item is due to be returned.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="RenewalCount" minOccurs="0" nillable="true" type="xs:unsignedInt">
+        <xs:annotation>
+          <xs:appinfo>
+            <sifChar>O</sifChar>
+            <privacyRating />
+          </xs:appinfo>
+          <xs:documentation>The number of times this item has been renewed by this patron. On initial checkout, this value will be 0.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+
+
+  <!--FineInfoListType-->
+
+  <xs:complexType name="FineInfoListType">
+    <xs:annotation>
+      <xs:appinfo>
+        <sifChar />
+        <privacyRating />
+      </xs:appinfo>
+      <xs:documentation>List of fines assessed.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="FineInfo" minOccurs="0" maxOccurs="unbounded" type="FineInfoType">
+        <xs:annotation>
+          <xs:appinfo>
+            <sifChar>OR</sifChar>
+            <privacyRating />
+          </xs:appinfo>
+          <xs:documentation>If the item has a fine assessed to this person, this element will contain the information about the fine.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+
+
+  <!--FineInfoType-->
+
+  <xs:complexType name="FineInfoType">
+    <xs:annotation>
+      <xs:appinfo>
+        <sifChar>OR</sifChar>
+        <privacyRating />
+      </xs:appinfo>
+      <xs:documentation>If the item has a fine assessed to this person, this element will contain the information about the fine.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="Assessed" type="xs:dateTime">
+        <xs:annotation>
+          <xs:appinfo>
+            <sifChar>M</sifChar>
+            <privacyRating />
+          </xs:appinfo>
+          <xs:documentation>The date and time that this fine was assessed to the patron.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="Description" minOccurs="0" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <sifChar>O</sifChar>
+            <privacyRating />
+          </xs:appinfo>
+          <xs:documentation>More detailed information concerning the assessed fine or refund.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="Amount" type="MonetaryAmountType">
+        <xs:annotation>
+          <xs:appinfo>
+            <sifChar>M</sifChar>
+            <privacyRating />
+          </xs:appinfo>
+          <xs:documentation>The current balance of the fine expressed as a positive number. </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="Reference" minOccurs="0" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <sifChar>O</sifChar>
+            <privacyRating />
+          </xs:appinfo>
+          <xs:documentation>An application-specific reference identifier for the fine being assessed, paid, or refunded.  It is intended to identify a specific fine transaction allowing consumers to include this information in Billing or Payment events sent to the library application.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+    <xs:attribute name="Type" use="required" type="xs:token">
+      <xs:annotation>
+        <xs:appinfo>
+          <sifChar>M</sifChar>
+          <privacyRating />
+        </xs:appinfo>
+        <xs:documentation>Type of fine assessed to this patron and item.  A corresponding ItemInfo is required for all FineInfo types except "Other" and "Refund" where it is permissible to omit the ItemInfo element if there isn't an item associated with the fine.</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+
+
+  <!--HoldInfoListType-->
+
+  <xs:complexType name="HoldInfoListType">
+    <xs:annotation>
+      <xs:appinfo>
+        <sifChar />
+        <privacyRating />
+      </xs:appinfo>
+      <xs:documentation>List of holds placed.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="HoldInfo" minOccurs="0" maxOccurs="unbounded" type="HoldInfoType">
+        <xs:annotation>
+          <xs:appinfo>
+            <sifChar>OR</sifChar>
+            <privacyRating />
+          </xs:appinfo>
+          <xs:documentation>If the item has a hold placed on it by a patron, this element will contain the information about the hold.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+
+
+  <!--HoldInfoType-->
+
+  <xs:complexType name="HoldInfoType">
+    <xs:annotation>
+      <xs:appinfo>
+        <sifChar />
+        <privacyRating />
+      </xs:appinfo>
+      <xs:documentation>If the item has a hold placed on it by a patron, this element will contain the information about the hold.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="DatePlaced" type="xs:date">
+        <xs:annotation>
+          <xs:appinfo>
+            <sifChar>M</sifChar>
+            <privacyRating />
+          </xs:appinfo>
+          <xs:documentation>The date that the patron placed the hold.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="DateNeeded" minOccurs="0" nillable="true" type="xs:date">
+        <xs:annotation>
+          <xs:appinfo>
+            <sifChar>O</sifChar>
+            <privacyRating />
+          </xs:appinfo>
+          <xs:documentation>The date that the patron needs this item by.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="ReservationExpiry" minOccurs="0" nillable="true" type="xs:date">
+        <xs:annotation>
+          <xs:appinfo>
+            <sifChar>O</sifChar>
+            <privacyRating />
+          </xs:appinfo>
+          <xs:documentation>The date when this reservation will expire freeing the item to be assigned to another patron.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="MadeAvailable" minOccurs="0" nillable="true" type="xs:date">
+        <xs:annotation>
+          <xs:appinfo>
+            <sifChar>O</sifChar>
+            <privacyRating />
+          </xs:appinfo>
+          <xs:documentation>The date that this item became available for the patron to pick up.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="Expires" minOccurs="0" nillable="true" type="xs:date">
+        <xs:annotation>
+          <xs:appinfo>
+            <sifChar>O</sifChar>
+            <privacyRating />
+          </xs:appinfo>
+          <xs:documentation>The date when this ready hold will expire freeing the item to be assigned to another patron.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+    <xs:attribute name="Type" use="required" type="xs:token">
+      <xs:annotation>
+        <xs:appinfo>
+          <sifChar>M</sifChar>
+          <privacyRating />
+        </xs:appinfo>
+        <xs:documentation>The type of hold being referenced.</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+
+
+  <!--LibraryMessageListType-->
+
+  <xs:complexType name="LibraryMessageListType">
+    <xs:annotation>
+      <xs:appinfo>
+        <sifChar>O</sifChar>
+        <privacyRating />
+      </xs:appinfo>
+      <xs:documentation>List of messages for/regarding the patron.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="Message" minOccurs="0" maxOccurs="unbounded" type="LibraryMessageType">
+        <xs:annotation>
+          <xs:appinfo>
+            <sifChar>OR</sifChar>
+            <privacyRating />
+          </xs:appinfo>
+          <xs:documentation />
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+
+
+  <!--LibraryMessageType-->
+
+  <xs:complexType name="LibraryMessageType">
+    <xs:annotation>
+      <xs:appinfo>
+        <sifChar />
+        <privacyRating />
+      </xs:appinfo>
+      <xs:documentation />
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="Sent" minOccurs="0" nillable="true" type="xs:dateTime">
+        <xs:annotation>
+          <xs:appinfo>
+            <sifChar>O</sifChar>
+            <privacyRating />
+          </xs:appinfo>
+          <xs:documentation>The date and time that this message was originally sent.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="Text" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <sifChar>M</sifChar>
+            <privacyRating />
+          </xs:appinfo>
+          <xs:documentation>The contents of the message.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+    <xs:attribute name="Priority" use="required" type="xs:token">
+      <xs:annotation>
+        <xs:appinfo>
+          <sifChar>M</sifChar>
+          <privacyRating />
+        </xs:appinfo>
+        <xs:documentation>The level of urgency associated with this message.</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="PriorityCodeset" use="optional" type="xs:token">
+      <xs:annotation>
+        <xs:appinfo>
+          <sifChar>O</sifChar>
+          <privacyRating />
+        </xs:appinfo>
+        <xs:documentation>A unique indicator (usually a URL) that points to the codeset used.</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+
+
+  <!--StudentAttendanceCollectionReportingListType-->
+
+  <xs:complexType name="StudentAttendanceCollectionReportingListType">
+    <xs:annotation>
+      <xs:appinfo>
+        <sifChar />
+        <privacyRating />
+      </xs:appinfo>
+      <xs:documentation>A list of identifying information for the location reporting to STATS collection.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="StudentAttendanceCollectionReporting" maxOccurs="unbounded" type="StudentAttendanceCollectionReportingType">
+        <xs:annotation>
+          <xs:appinfo>
+            <sifChar>MR</sifChar>
+            <privacyRating />
+          </xs:appinfo>
+          <xs:documentation>The AddressCollection being reported on.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+
+
+  <!--StudentAttendanceCollectionReportingType-->
+
+  <xs:complexType name="StudentAttendanceCollectionReportingType">
+    <xs:annotation>
+      <xs:appinfo>
+        <sifChar>MR</sifChar>
+        <privacyRating />
+      </xs:appinfo>
+      <xs:documentation>The StudentAttendanceCollection being reported on.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="EntityLevel" minOccurs="0" nillable="true" type="xs:normalizedString">
+        <xs:annotation>
+          <xs:appinfo>
+            <sifChar>O</sifChar>
+            <privacyRating>Medium</privacyRating>
+          </xs:appinfo>
+          <xs:documentation>Level of the Submission, current valid values "System", "Office", "Location", "Special School Location".</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="SchoolInfoRefId" minOccurs="0" nillable="true" type="IdRefType">
+        <xs:annotation>
+          <xs:appinfo>
+            <sifChar>O</sifChar>
+            <privacyRating>High</privacyRating>
+          </xs:appinfo>
+          <xs:documentation>A pointer back to the SchoolInfo object underlying this Report if it exists.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="LocalId" minOccurs="0" nillable="true" type="LocalIdType">
+        <xs:annotation>
+          <xs:appinfo>
+            <sifChar>O</sifChar>
+            <privacyRating>Low</privacyRating>
+          </xs:appinfo>
+          <xs:documentation>The locally-assigned identifier for the entity being reported on.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="StateProvinceId" minOccurs="0" nillable="true" type="StateProvinceIdType">
+        <xs:annotation>
+          <xs:appinfo>
+            <sifChar>O</sifChar>
+            <privacyRating>Low</privacyRating>
+          </xs:appinfo>
+          <xs:documentation>The state-assigned identifier for entity being reported on.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="CommonwealthId" type="xs:normalizedString">
+        <xs:annotation>
+          <xs:appinfo>
+            <sifChar>M</sifChar>
+            <privacyRating>Low</privacyRating>
+          </xs:appinfo>
+          <xs:documentation>Commonwealth identifier for this school/campus or entity being reported on.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="ACARAId" minOccurs="0" nillable="true" type="xs:normalizedString">
+        <xs:annotation>
+          <xs:appinfo>
+            <sifChar>O</sifChar>
+            <privacyRating>Low</privacyRating>
+          </xs:appinfo>
+          <xs:documentation>ACARA identifier for this school/campus.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="EntityName" minOccurs="0" nillable="true" type="xs:normalizedString">
+        <xs:annotation>
+          <xs:appinfo>
+            <sifChar>O</sifChar>
+            <privacyRating>Medium</privacyRating>
+          </xs:appinfo>
+          <xs:documentation>Name of the Entity who this submission is for, if a School, it will be the SchoolName.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="EntityContact" type="EntityContactInfoType">
+        <xs:annotation>
+          <xs:appinfo>
+            <sifChar>M</sifChar>
+            <privacyRating>High</privacyRating>
+          </xs:appinfo>
+          <xs:documentation>Information on the Contact for the submission.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="StatsCohortYearLevelList" minOccurs="0" nillable="true" type="StatsCohortYearLevelListType">
+        <xs:annotation>
+          <xs:appinfo>
+            <sifChar>O</sifChar>
+            <privacyRating>High</privacyRating>
+          </xs:appinfo>
+          <xs:documentation>A list of co-horts being reported on for this collection.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+
+
+  <!--StatsCohortYearLevelListType-->
+
+  <xs:complexType name="StatsCohortYearLevelListType">
+    <xs:annotation>
+      <xs:appinfo>
+        <sifChar />
+        <privacyRating />
+      </xs:appinfo>
+      <xs:documentation>A list of Year Levels being reported on.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="StatsCohortYearLevel" maxOccurs="unbounded" type="StatsCohortYearLevelType">
+        <xs:annotation>
+          <xs:appinfo>
+            <sifChar>MR</sifChar>
+            <privacyRating />
+          </xs:appinfo>
+          <xs:documentation>The Stats Year Level being reported on. 11MINUS was previously known as primary ungraded and 12PLUS was previously known as secondary ungraded. 11 MINUS and 12PLUS are valid entries for Special Schools only</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+
+
+  <!--StatsCohortYearLevelType-->
+
+  <xs:complexType name="StatsCohortYearLevelType">
+    <xs:annotation>
+      <xs:appinfo>
+        <sifChar />
+        <privacyRating />
+      </xs:appinfo>
+      <xs:documentation>The Stats Year Level being reported on.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="CohortYearLevel" type="YearLevelType">
+        <xs:annotation>
+          <xs:appinfo>
+            <sifChar>M</sifChar>
+            <privacyRating />
+          </xs:appinfo>
+          <xs:documentation>The year level of the students represented by this cohort.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="StatsCohortList" type="StatsCohortListType">
+        <xs:annotation>
+          <xs:appinfo>
+            <sifChar>M</sifChar>
+            <privacyRating />
+          </xs:appinfo>
+          <xs:documentation>A list of Stats Cohorts for the YearLevel.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+
+
+  <!--StatsCohortListType-->
+
+  <xs:complexType name="StatsCohortListType">
+    <xs:annotation>
+      <xs:appinfo>
+        <sifChar />
+        <privacyRating />
+      </xs:appinfo>
+      <xs:documentation>A list of Stats Cohorts.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="StatsCohort" maxOccurs="unbounded" type="StatsCohortType">
+        <xs:annotation>
+          <xs:appinfo>
+            <sifChar>MR</sifChar>
+            <privacyRating />
+          </xs:appinfo>
+          <xs:documentation>A Stats cohort.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+
+
+  <!--StatsCohortType-->
+
+  <xs:complexType name="StatsCohortType">
+    <xs:annotation>
+      <xs:appinfo>
+        <sifChar>MR</sifChar>
+        <privacyRating />
+      </xs:appinfo>
+      <xs:documentation>The individual stats cohort.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="StatsCohortId" type="LocalIdType">
+        <xs:annotation>
+          <xs:appinfo>
+            <sifChar>M</sifChar>
+            <privacyRating />
+          </xs:appinfo>
+          <xs:documentation>The locally-assigned identifier for this cohort. Generated by the school, this will be used by DESE as a reference for the payload. It will be used when identifying warnings and errors, if any, for a particular cohort.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="StatsIndigenousStudentType">
+        <xs:annotation>
+          <xs:appinfo>
+            <sifChar>M</sifChar>
+            <privacyRating />
+          </xs:appinfo>
+          <xs:documentation>Student cohort type.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:enumeration value="T" />
+            <xs:enumeration value="I" />
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="CohortGender">
+        <xs:annotation>
+          <xs:appinfo>
+            <sifChar>M</sifChar>
+            <privacyRating />
+          </xs:appinfo>
+          <xs:documentation>Collection cohorts are male, female or other.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:enumeration value="M" />
+            <xs:enumeration value="F" />
+            <xs:enumeration value="X" />
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="DaysInReferencePeriod" type="xs:integer">
+        <xs:annotation>
+          <xs:appinfo>
+            <sifChar>M</sifChar>
+            <privacyRating />
+          </xs:appinfo>
+          <xs:documentation>Number of school days for the cohort in Semester 1 / Term 3 (Cohort specific).Tested against expected norms, Warnings will be given for values at the extremes of the norm. Error is given if over the extreme end of the norm.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="PossibleSchoolDays" type="xs:integer">
+        <xs:annotation>
+          <xs:appinfo>
+            <sifChar>M</sifChar>
+            <privacyRating />
+          </xs:appinfo>
+          <xs:documentation>Sum of days all students in the cohort are enrolled during the reference period. Refers to full-time students only in each Cohort. This field must not contain decimal points and must not be comma delimited.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="AttendanceDays">
+        <xs:simpleType>
+          <xs:restriction base="xs:decimal">
+            <xs:annotation>
+              <xs:appinfo>
+                <sifChar>M</sifChar>
+                <privacyRating />
+              </xs:appinfo>
+              <xs:documentation>Sum of attendance days for all students in the cohort during the reference period. Must be less than or equal to the number of Possible School Days. Can include partial attendance days. The field must not be comma delimited.</xs:documentation>
+            </xs:annotation>
+            <xs:minInclusive value="0" xmlns:xs="http://www.w3.org/2001/XMLSchema" />
+            <xs:fractionDigits value="2" xmlns:xs="http://www.w3.org/2001/XMLSchema" />
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="AttendanceLess90Percent" type="xs:integer">
+        <xs:annotation>
+          <xs:appinfo>
+            <sifChar>M</sifChar>
+            <privacyRating />
+          </xs:appinfo>
+          <xs:documentation>Count of full-time students in the cohort who attended school less than 90% of possible school days in the reference period. Number of students where (Attendance days ÷ Possible School Days) × 100 LT 90. The number must not be comma delimited</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="AttendanceGTE90Percent" type="xs:integer">
+        <xs:annotation>
+          <xs:appinfo>
+            <sifChar>M</sifChar>
+            <privacyRating />
+          </xs:appinfo>
+          <xs:documentation>Count of full-time students in the cohort who attended school for 90% or more of the possible school days in the reference period. Number of students where (Attendance days ÷ Possible School Days) × 100 ≥ 90. The field must not be comma delimited.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="PossibleSchoolDaysGT90PercentAttendance" type="xs:integer">
+        <xs:annotation>
+          <xs:appinfo>
+            <sifChar>M</sifChar>
+            <privacyRating />
+          </xs:appinfo>
+          <xs:documentation>Sum of days enrolled for Students in the cohort with attendance rates of 90% or more. A subset of ‘Possible School Days’ used to calculate Full-time equivalent estimate. This field must not contain decimal points and must not be comma delimited.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+
+
+  <!--AddressCollectionReportingListType-->
+
+  <xs:complexType name="AddressCollectionReportingListType">
+    <xs:annotation>
+      <xs:appinfo>
+        <sifChar />
+        <privacyRating />
+      </xs:appinfo>
+      <xs:documentation>A list of AddressCollection Reports.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="AddressCollectionReporting" maxOccurs="unbounded" type="AddressCollectionReportingType">
+        <xs:annotation>
+          <xs:appinfo>
+            <sifChar>MR</sifChar>
+            <privacyRating />
+          </xs:appinfo>
+          <xs:documentation>The AddressCollection being reported on.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+
+
+  <!--AddressCollectionReportingType-->
+
+  <xs:complexType name="AddressCollectionReportingType">
+    <xs:annotation>
+      <xs:appinfo>
+        <sifChar>MR</sifChar>
+        <privacyRating />
+      </xs:appinfo>
+      <xs:documentation>The AddressCollection being reported on.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="EntityLevel" minOccurs="0" nillable="true" type="xs:normalizedString">
+        <xs:annotation>
+          <xs:appinfo>
+            <sifChar>O</sifChar>
+            <privacyRating>Medium</privacyRating>
+          </xs:appinfo>
+          <xs:documentation>Level of the Submission, current valid values "System", "Office", "Location", "Special School Location".</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="SchoolInfoRefId" minOccurs="0" nillable="true" type="IdRefType">
+        <xs:annotation>
+          <xs:appinfo>
+            <sifChar>O</sifChar>
+            <privacyRating>High</privacyRating>
+          </xs:appinfo>
+          <xs:documentation>A pointer back to the SchoolInfo object underlying this Report if it exists.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="LocalId" minOccurs="0" nillable="true" type="LocalIdType">
+        <xs:annotation>
+          <xs:appinfo>
+            <sifChar>O</sifChar>
+            <privacyRating>Low</privacyRating>
+          </xs:appinfo>
+          <xs:documentation>The locally-assigned identifier for the entity being reported on.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="StateProvinceId" minOccurs="0" nillable="true" type="StateProvinceIdType">
+        <xs:annotation>
+          <xs:appinfo>
+            <sifChar>O</sifChar>
+            <privacyRating>Low</privacyRating>
+          </xs:appinfo>
+          <xs:documentation>The state-assigned identifier for entity being reported on.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="CommonwealthId" type="xs:normalizedString">
+        <xs:annotation>
+          <xs:appinfo>
+            <sifChar>M</sifChar>
+            <privacyRating>Low</privacyRating>
+          </xs:appinfo>
+          <xs:documentation>Commonwealth identifier for this school/campus or entity being reported on.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="ACARAId" minOccurs="0" nillable="true" type="xs:normalizedString">
+        <xs:annotation>
+          <xs:appinfo>
+            <sifChar>O</sifChar>
+            <privacyRating>Low</privacyRating>
+          </xs:appinfo>
+          <xs:documentation>ACARA identifier for this school/campus.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="EntityName" minOccurs="0" nillable="true" type="xs:normalizedString">
+        <xs:annotation>
+          <xs:appinfo>
+            <sifChar>O</sifChar>
+            <privacyRating>Medium</privacyRating>
+          </xs:appinfo>
+          <xs:documentation>Name of the Entity who this submission is for, if a School, it will be the SchoolName.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="EntityContact" type="EntityContactInfoType">
+        <xs:annotation>
+          <xs:appinfo>
+            <sifChar>M</sifChar>
+            <privacyRating>High</privacyRating>
+          </xs:appinfo>
+          <xs:documentation>Information on the Contact for the submission.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="AGContextualQuestionList" minOccurs="0" nillable="true" type="AGContextualQuestionListType">
+        <xs:annotation>
+          <xs:appinfo>
+            <sifChar>O</sifChar>
+            <privacyRating>High</privacyRating>
+          </xs:appinfo>
+          <xs:documentation>A list of questions to set the context for the AG Collection.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="AddressCollectionStudentList" minOccurs="0" nillable="true" type="AddressCollectionStudentListType">
+        <xs:annotation>
+          <xs:appinfo>
+            <sifChar>O</sifChar>
+            <privacyRating>High</privacyRating>
+          </xs:appinfo>
+          <xs:documentation>A list of Students being reported on for this Address Collection.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+
+
+  <!--AddressCollectionStudentListType-->
+
+  <xs:complexType name="AddressCollectionStudentListType">
+    <xs:annotation>
+      <xs:appinfo>
+        <sifChar />
+        <privacyRating />
+      </xs:appinfo>
+      <xs:documentation>A list of Students Addresses.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="AddressCollectionStudent" maxOccurs="unbounded" type="AddressCollectionStudentType">
+        <xs:annotation>
+          <xs:appinfo>
+            <sifChar>MR</sifChar>
+            <privacyRating />
+          </xs:appinfo>
+          <xs:documentation>A Student and their Address.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+
+
+  <!--AddressCollectionStudentType-->
+
+  <xs:complexType name="AddressCollectionStudentType">
+    <xs:annotation>
+      <xs:appinfo>
+        <sifChar>MR</sifChar>
+        <privacyRating />
+      </xs:appinfo>
+      <xs:documentation>The student and addresses being reported on.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="LocalId" type="LocalIdType">
+        <xs:annotation>
+          <xs:appinfo>
+            <sifChar>M</sifChar>
+            <privacyRating />
+          </xs:appinfo>
+          <xs:documentation>The locally-assigned identifier for this student.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="EducationLevel" type="AUCodeSetsEducationLevelType">
+        <xs:annotation>
+          <xs:appinfo>
+            <sifChar>M</sifChar>
+            <privacyRating />
+          </xs:appinfo>
+          <xs:documentation>Primary or Secondary for AG Collection reporting.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="BoardingStatus" minOccurs="0" nillable="true" type="AUCodeSetsBoardingType">
+        <xs:annotation>
+          <xs:appinfo>
+            <sifChar>O</sifChar>
+            <privacyRating />
+          </xs:appinfo>
+          <xs:documentation>Is this student a Boarding  or Day Student for AG Collection reporting?</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="ReportingParent2">
+        <xs:annotation>
+          <xs:appinfo>
+            <sifChar>M</sifChar>
+            <privacyRating />
+          </xs:appinfo>
+          <xs:documentation>Is this student reporting a 2nd Parent for the Address Collection?</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:enumeration value="N" />
+            <xs:enumeration value="Y" />
+            <xs:enumeration value="U" />
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="StudentAddress" type="AddressType">
+        <xs:annotation>
+          <xs:appinfo>
+            <sifChar>M</sifChar>
+            <privacyRating />
+          </xs:appinfo>
+          <xs:documentation>Residential Address of the student for the AG Address Collection.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="Parent1" type="AGParentType">
+        <xs:annotation>
+          <xs:appinfo>
+            <sifChar>M</sifChar>
+            <privacyRating />
+          </xs:appinfo>
+          <xs:documentation>Name and address of Parent1 for the AG Address Collection.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="Parent2" minOccurs="0" nillable="true" type="AGParentType">
+        <xs:annotation>
+          <xs:appinfo>
+            <sifChar>O</sifChar>
+            <privacyRating />
+          </xs:appinfo>
+          <xs:documentation>Name and address of Parent2 for the AG Address Collection.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+
+
+  <!--AGParentType-->
+
+  <xs:complexType name="AGParentType">
+    <xs:annotation>
+      <xs:appinfo>
+        <sifChar />
+        <privacyRating />
+      </xs:appinfo>
+      <xs:documentation>Parent Name and Address for AG Collections.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="ParentName" type="NameOfRecordType">
+        <xs:annotation>
+          <xs:appinfo>
+            <sifChar>M</sifChar>
+            <privacyRating />
+          </xs:appinfo>
+          <xs:documentation>Name of Parent for the AG Address Collection. Note: Type attribute value of LGL must be used here</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="AddressSameAsStudent" type="AUCodeSetsYesOrNoCategoryType">
+        <xs:annotation>
+          <xs:appinfo>
+            <sifChar>M</sifChar>
+            <privacyRating />
+          </xs:appinfo>
+          <xs:documentation>Is this address the same as the Student's?</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="ParentAddress" type="AddressType">
+        <xs:annotation>
+          <xs:appinfo>
+            <sifChar>M</sifChar>
+            <privacyRating />
+          </xs:appinfo>
+          <xs:documentation>Residential Address of Parent for the AG Address Collection.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+
+
+  <!--AGRoundListType-->
+
+  <xs:complexType name="AGRoundListType">
+    <xs:annotation>
+      <xs:appinfo>
+        <sifChar />
+        <privacyRating />
+      </xs:appinfo>
+      <xs:documentation>A list of Rounds available for an AG Collection</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="AGRound" minOccurs="0" maxOccurs="unbounded" type="AGRoundType">
+        <xs:annotation>
+          <xs:appinfo>
+            <sifChar>OR</sifChar>
+            <privacyRating />
+          </xs:appinfo>
+          <xs:documentation>Details of a particular round available for AG Collection.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+
+
+  <!--AGRoundType-->
+
+  <xs:complexType name="AGRoundType">
+    <xs:annotation>
+      <xs:appinfo>
+        <sifChar />
+        <privacyRating />
+      </xs:appinfo>
+      <xs:documentation>Details of a particular round available for AG Collection.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="RoundCode" type="xs:normalizedString">
+        <xs:annotation>
+          <xs:appinfo>
+            <sifChar>M</sifChar>
+            <privacyRating />
+          </xs:appinfo>
+          <xs:documentation>Code of the particular AGCollection round.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="RoundName" type="xs:normalizedString">
+        <xs:annotation>
+          <xs:appinfo>
+            <sifChar>M</sifChar>
+            <privacyRating />
+          </xs:appinfo>
+          <xs:documentation>Name of the particular AGCollection round.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="StartDate" type="xs:date">
+        <xs:annotation>
+          <xs:appinfo>
+            <sifChar>M</sifChar>
+            <privacyRating />
+          </xs:appinfo>
+          <xs:documentation>Start date of the particular AGCollection round.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="DueDate" type="xs:date">
+        <xs:annotation>
+          <xs:appinfo>
+            <sifChar>M</sifChar>
+            <privacyRating />
+          </xs:appinfo>
+          <xs:documentation>Due date of the particular AGCollection round.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="EndDate" type="xs:date">
+        <xs:annotation>
+          <xs:appinfo>
+            <sifChar>M</sifChar>
+            <privacyRating />
+          </xs:appinfo>
+          <xs:documentation>End date of the particular AGCollection round.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+
+
+  <!--AGContextualQuestionListType-->
+
+  <xs:complexType name="AGContextualQuestionListType">
+    <xs:annotation>
+      <xs:appinfo>
+        <sifChar />
+        <privacyRating />
+      </xs:appinfo>
+      <xs:documentation>A list of Contextual Questions for an AG Collection</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="AGContextualQuestion" minOccurs="0" maxOccurs="unbounded" type="AGContextualQuestionType">
+        <xs:annotation>
+          <xs:appinfo>
+            <sifChar>OR</sifChar>
+            <privacyRating />
+          </xs:appinfo>
+          <xs:documentation>A Contextual Question required for an AG Collection.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+
+
+  <!--AGContextualQuestionType-->
+
+  <xs:complexType name="AGContextualQuestionType">
+    <xs:annotation>
+      <xs:appinfo>
+        <sifChar />
+        <privacyRating />
+      </xs:appinfo>
+      <xs:documentation>The AG contextual question.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="AGContextCode" type="AUCodeSetsAGContextQuestionType">
+        <xs:annotation>
+          <xs:appinfo>
+            <sifChar>M</sifChar>
+            <privacyRating />
+          </xs:appinfo>
+          <xs:documentation>AG Context Question.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="AGAnswer" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <sifChar>M</sifChar>
+            <privacyRating />
+          </xs:appinfo>
+          <xs:documentation>Associated Answer.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+
+
+  <!--CensusReportingListType-->
+
+  <xs:complexType name="CensusReportingListType">
+    <xs:annotation>
+      <xs:appinfo>
+        <sifChar />
+        <privacyRating />
+      </xs:appinfo>
+      <xs:documentation>A list of Census Reports.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="CensusReporting" maxOccurs="unbounded" type="CensusReportingType">
+        <xs:annotation>
+          <xs:appinfo>
+            <sifChar>MR</sifChar>
+            <privacyRating />
+          </xs:appinfo>
+          <xs:documentation>The Census being reported on.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+
+
+  <!--CensusReportingType-->
+
+  <xs:complexType name="CensusReportingType">
+    <xs:annotation>
+      <xs:appinfo>
+        <sifChar>M</sifChar>
+        <privacyRating />
+      </xs:appinfo>
+      <xs:documentation>The Census being reported on.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="EntityLevel" minOccurs="0" nillable="true" type="xs:normalizedString">
+        <xs:annotation>
+          <xs:appinfo>
+            <sifChar>O</sifChar>
+            <privacyRating>Medium</privacyRating>
+          </xs:appinfo>
+          <xs:documentation>Level of the Submission, current valid values "System", "Office", "Location", "Special School Location".</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="CommonwealthId" type="xs:normalizedString">
+        <xs:annotation>
+          <xs:appinfo>
+            <sifChar>M</sifChar>
+            <privacyRating>Low</privacyRating>
+          </xs:appinfo>
+          <xs:documentation>Commonwealth identifier for this school/campus or entity being reported on.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="EntityName" minOccurs="0" nillable="true" type="xs:normalizedString">
+        <xs:annotation>
+          <xs:appinfo>
+            <sifChar>O</sifChar>
+            <privacyRating>Medium</privacyRating>
+          </xs:appinfo>
+          <xs:documentation>Name of the Entity who this submission is for, if a School, it will be the SchoolName.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="EntityContact" type="EntityContactInfoType">
+        <xs:annotation>
+          <xs:appinfo>
+            <sifChar>M</sifChar>
+            <privacyRating>High</privacyRating>
+          </xs:appinfo>
+          <xs:documentation>Information on the Contact for the submission.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="CensusStaffList" minOccurs="0" nillable="true" type="CensusStaffListType">
+        <xs:annotation>
+          <xs:appinfo>
+            <sifChar>O</sifChar>
+            <privacyRating>High</privacyRating>
+          </xs:appinfo>
+          <xs:documentation>A list of Staff being reported on for this Census Collection.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="CensusStudentList" minOccurs="0" nillable="true" type="CensusStudentListType">
+        <xs:annotation>
+          <xs:appinfo>
+            <sifChar>O</sifChar>
+            <privacyRating>High</privacyRating>
+          </xs:appinfo>
+          <xs:documentation>A list of Students being reported on for this Census Collection.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+
+
+  <!--CensusStaffListType-->
+
+  <xs:complexType name="CensusStaffListType">
+    <xs:annotation>
+      <xs:appinfo>
+        <sifChar />
+        <privacyRating />
+      </xs:appinfo>
+      <xs:documentation>A list of staff associated with the Census.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="CensusStaff" maxOccurs="unbounded" type="CensusStaffType">
+        <xs:annotation>
+          <xs:appinfo>
+            <sifChar>MR</sifChar>
+            <privacyRating />
+          </xs:appinfo>
+          <xs:documentation>The staff member being reported on.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+
+
+  <!--CensusStaffType-->
+
+  <xs:complexType name="CensusStaffType">
+    <xs:annotation>
+      <xs:appinfo>
+        <sifChar>MR</sifChar>
+        <privacyRating />
+      </xs:appinfo>
+      <xs:documentation>The cohort of staff being reported on.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="StaffCohortId" type="LocalIdType">
+        <xs:annotation>
+          <xs:appinfo>
+            <sifChar>M</sifChar>
+            <privacyRating>Low</privacyRating>
+          </xs:appinfo>
+          <xs:documentation>The locally assigned identifier for this staff cohort.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="StaffActivity" type="StaffActivityExtensionType">
+        <xs:annotation>
+          <xs:appinfo>
+            <sifChar>M</sifChar>
+            <privacyRating>Low</privacyRating>
+          </xs:appinfo>
+          <xs:documentation>The major function which the staff members are spending their time performing e.g. teaching.  Limited to the values of 1100 - Teacher in school n.f.d., 1103 - Principal, 1200 -Specialist support in school n.f.d., 1300 - Administration and clerical in school n.f.d., 1400 - Building Operations in school n.f.d. for Census Reporting. </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="CohortGender">
+        <xs:annotation>
+          <xs:appinfo>
+            <sifChar>M</sifChar>
+            <privacyRating />
+          </xs:appinfo>
+          <xs:documentation>Gender of staff for this cohort. Collection cohorts are male, female or other.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:enumeration value="M" />
+            <xs:enumeration value="F" />
+            <xs:enumeration value="X" />
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="CohortIndigenousType">
+        <xs:annotation>
+          <xs:appinfo>
+            <sifChar>M</sifChar>
+            <privacyRating />
+          </xs:appinfo>
+          <xs:documentation>Indigenous Indicator of the staff for this cohort.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:enumeration value="I" />
+            <xs:enumeration value="N" />
+            <xs:enumeration value="NS" />
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="PrimaryFTE" minOccurs="0" nillable="true">
+        <xs:simpleType>
+          <xs:restriction base="xs:decimal">
+            <xs:annotation>
+              <xs:appinfo>
+                <sifChar>O</sifChar>
+                <privacyRating>Low</privacyRating>
+              </xs:appinfo>
+              <xs:documentation>For each member of the cohort, on a full-time-equivalent basis, the proportion of the staff member’s job that goes toward supporting the primary school component of the location. For staff at combined (primary and secondary) locations, this field plus the secondary FTE field equals the total FTE for the staff member’s job. (Format is x.x, with a full time workload being equal to 1 FTE. Primary FTE plus Secondary FTE should not exceed 1.</xs:documentation>
+            </xs:annotation>
+            <xs:minInclusive value="0" xmlns:xs="http://www.w3.org/2001/XMLSchema" />
+            <xs:maxInclusive value="1" xmlns:xs="http://www.w3.org/2001/XMLSchema" />
+            <xs:fractionDigits value="1" xmlns:xs="http://www.w3.org/2001/XMLSchema" />
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="SecondaryFTE" minOccurs="0" nillable="true">
+        <xs:simpleType>
+          <xs:restriction base="xs:decimal">
+            <xs:annotation>
+              <xs:appinfo>
+                <sifChar>O</sifChar>
+                <privacyRating>Low</privacyRating>
+              </xs:appinfo>
+              <xs:documentation>For each member of the cohort, on a full-time-equivalent basis, the proportion of the staff member’s job that goes toward supporting the primary school component of the location. For staff at combined (primary and secondary) locations, this field plus the secondary FTE field equals the total FTE for the staff member’s job. (Format is x.x, with a full time workload being equal to 1 FTE. Primary FTE plus Secondary FTE should not exceed 1.</xs:documentation>
+            </xs:annotation>
+            <xs:minInclusive value="0" xmlns:xs="http://www.w3.org/2001/XMLSchema" />
+            <xs:maxInclusive value="1" xmlns:xs="http://www.w3.org/2001/XMLSchema" />
+            <xs:fractionDigits value="1" xmlns:xs="http://www.w3.org/2001/XMLSchema" />
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="JobFTE" minOccurs="0" nillable="true">
+        <xs:simpleType>
+          <xs:restriction base="xs:decimal">
+            <xs:annotation>
+              <xs:appinfo>
+                <sifChar>O</sifChar>
+                <privacyRating>Low</privacyRating>
+              </xs:appinfo>
+              <xs:documentation>The full-time-equivalent measure of the job for each member of the cohort. (Format is x.x, with a full time workload being equal to 1 FTE.) Note: This field is used instead of Primary FTE and Secondary FTE, where the client is a system or diocese office and is not a school location where primary or secondary education is delivered.</xs:documentation>
+            </xs:annotation>
+            <xs:minInclusive value="0" xmlns:xs="http://www.w3.org/2001/XMLSchema" />
+            <xs:fractionDigits value="1" xmlns:xs="http://www.w3.org/2001/XMLSchema" />
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="Headcount" type="xs:integer">
+        <xs:annotation>
+          <xs:appinfo>
+            <sifChar>M</sifChar>
+            <privacyRating>Low</privacyRating>
+          </xs:appinfo>
+          <xs:documentation>Count of staff for this cohort.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+
+
+  <!--StaffAssignmentMostRecentContainerType-->
+
+  <xs:complexType name="StaffAssignmentMostRecentContainerType">
+    <xs:annotation>
+      <xs:appinfo>
+        <sifChar>O</sifChar>
+        <privacyRating />
+      </xs:appinfo>
+      <xs:documentation>Container for elements reflecting the most recent assignment of a staff member or information that may need to be calculated from other information.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="PrimaryFTE" minOccurs="0" nillable="true">
+        <xs:simpleType>
+          <xs:restriction base="xs:decimal">
+            <xs:annotation>
+              <xs:appinfo>
+                <sifChar>O</sifChar>
+                <privacyRating>Low</privacyRating>
+              </xs:appinfo>
+              <xs:documentation>Full-time job equivalent ratio associated with teaching at the Primary level. (Format is x.xx; an employee who is full-time and who is 50% of their time on this assignment would be represented as 0.50)</xs:documentation>
+            </xs:annotation>
+            <xs:minInclusive value="0" xmlns:xs="http://www.w3.org/2001/XMLSchema" />
+            <xs:maxInclusive value="1" xmlns:xs="http://www.w3.org/2001/XMLSchema" />
+            <xs:fractionDigits value="2" xmlns:xs="http://www.w3.org/2001/XMLSchema" />
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="SecondaryFTE" minOccurs="0" nillable="true">
+        <xs:simpleType>
+          <xs:restriction base="xs:decimal">
+            <xs:annotation>
+              <xs:appinfo>
+                <sifChar>O</sifChar>
+                <privacyRating>Low</privacyRating>
+              </xs:appinfo>
+              <xs:documentation>Full-time job equivalent ratio associated with teaching at the Secondary level. (Format is x.xx; an employee who is full-time and who is 50% of their time on this assignment would be represented as 0.50)</xs:documentation>
+            </xs:annotation>
+            <xs:minInclusive value="0" xmlns:xs="http://www.w3.org/2001/XMLSchema" />
+            <xs:maxInclusive value="1" xmlns:xs="http://www.w3.org/2001/XMLSchema" />
+            <xs:fractionDigits value="2" xmlns:xs="http://www.w3.org/2001/XMLSchema" />
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+
+
+  <!--CensusStudentListType-->
+
+  <xs:complexType name="CensusStudentListType">
+    <xs:annotation>
+      <xs:appinfo>
+        <sifChar />
+        <privacyRating />
+      </xs:appinfo>
+      <xs:documentation>A list of students associated with the Census.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="CensusStudent" maxOccurs="unbounded" type="CensusStudentType">
+        <xs:annotation>
+          <xs:appinfo>
+            <sifChar>MR</sifChar>
+            <privacyRating />
+          </xs:appinfo>
+          <xs:documentation>The student cohort being reported on.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+
+
+  <!--CensusStudentType-->
+
+  <xs:complexType name="CensusStudentType">
+    <xs:annotation>
+      <xs:appinfo>
+        <sifChar>MR</sifChar>
+        <privacyRating />
+      </xs:appinfo>
+      <xs:documentation>The student cohort being reported on.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="StudentCohortId" type="LocalIdType">
+        <xs:annotation>
+          <xs:appinfo>
+            <sifChar>M</sifChar>
+            <privacyRating />
+          </xs:appinfo>
+          <xs:documentation>The locally assigned identifier for this student cohort.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="YearLevel" type="YearLevelType">
+        <xs:annotation>
+          <xs:appinfo>
+            <sifChar>M</sifChar>
+            <privacyRating />
+          </xs:appinfo>
+          <xs:documentation>Year Level of this cohort.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="CensusAge" type="xs:integer">
+        <xs:annotation>
+          <xs:appinfo>
+            <sifChar>M</sifChar>
+            <privacyRating />
+          </xs:appinfo>
+          <xs:documentation>Age of the Student calculated for Non-gov Census reporting. Age must be provided as on 1 July for the reporting year. </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="CohortGender">
+        <xs:annotation>
+          <xs:appinfo>
+            <sifChar>M</sifChar>
+            <privacyRating />
+          </xs:appinfo>
+          <xs:documentation>Gender of students for this cohort. Collection cohorts are male, female or other.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:enumeration value="M" />
+            <xs:enumeration value="F" />
+            <xs:enumeration value="X" />
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="CohortIndigenousType">
+        <xs:annotation>
+          <xs:appinfo>
+            <sifChar>M</sifChar>
+            <privacyRating />
+          </xs:appinfo>
+          <xs:documentation>Indigenous indicator of the students for this cohort.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:enumeration value="I" />
+            <xs:enumeration value="N" />
+            <xs:enumeration value="NS" />
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="EducationMode">
+        <xs:annotation>
+          <xs:appinfo>
+            <sifChar>M</sifChar>
+            <privacyRating />
+          </xs:appinfo>
+          <xs:documentation>The type of education being delivered to the students for this cohort. Is this student a Boarding, Day or a Distance Education Student for Non-gov Census reporting?</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:enumeration value="D" />
+            <xs:enumeration value="B" />
+            <xs:enumeration value="DE" />
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="StudentOnVisa">
+        <xs:annotation>
+          <xs:appinfo>
+            <sifChar>M</sifChar>
+            <privacyRating />
+          </xs:appinfo>
+          <xs:documentation>Students who are not Australian citizens are students on a visa.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:enumeration value="Y" />
+            <xs:enumeration value="N" />
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="OverseasStudent">
+        <xs:annotation>
+          <xs:appinfo>
+            <sifChar>M</sifChar>
+            <privacyRating />
+          </xs:appinfo>
+          <xs:documentation>Overseas students are students who are on a visa specifically related to studying in Australia. You must always report overseas students as students on visas.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:enumeration value="Y" />
+            <xs:enumeration value="N" />
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="DisabilityLevelOfAdjustment">
+        <xs:annotation>
+          <xs:appinfo>
+            <sifChar>M</sifChar>
+            <privacyRating />
+          </xs:appinfo>
+          <xs:documentation>Disability Level of Adjustment	Level of adjustment for students with disability using the Nationally Consistent Collection of Data on Students with Disability (NCCD) model.None if there is no adjustment.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:enumeration value="QDTP" />
+            <xs:enumeration value="Supplementary" />
+            <xs:enumeration value="Substantial" />
+            <xs:enumeration value="Extensive" />
+            <xs:enumeration value="None" />
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="DisabilityCategory">
+        <xs:annotation>
+          <xs:appinfo>
+            <sifChar>M</sifChar>
+            <privacyRating />
+          </xs:appinfo>
+          <xs:documentation>Category for students with disability using the Nationally Consistent Collection of Data on Students with Disability (NCCD) model. None if no disability.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:enumeration value="Physical" />
+            <xs:enumeration value="Cognitive" />
+            <xs:enumeration value="Social-Emotional" />
+            <xs:enumeration value="Sensory" />
+            <xs:enumeration value="None" />
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="FTE">
+        <xs:simpleType>
+          <xs:restriction base="xs:decimal">
+            <xs:annotation>
+              <xs:appinfo>
+                <sifChar>M</sifChar>
+                <privacyRating />
+              </xs:appinfo>
+              <xs:documentation>Full-time equivalent for the student cohort e.g. a cohort of students who attend 50% of time would be represented as 0.5.</xs:documentation>
+            </xs:annotation>
+            <xs:minInclusive value="0" xmlns:xs="http://www.w3.org/2001/XMLSchema" />
+            <xs:maxInclusive value="1" xmlns:xs="http://www.w3.org/2001/XMLSchema" />
+            <xs:fractionDigits value="2" xmlns:xs="http://www.w3.org/2001/XMLSchema" />
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="Headcount" type="xs:integer">
+        <xs:annotation>
+          <xs:appinfo>
+            <sifChar>M</sifChar>
+            <privacyRating>Low</privacyRating>
+          </xs:appinfo>
+          <xs:documentation>Count of students for this cohort.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+
+
+  <!--AGReportingObjectResponseListType-->
+
+  <xs:complexType name="AGReportingObjectResponseListType">
+    <xs:annotation>
+      <xs:appinfo>
+        <sifChar />
+        <privacyRating />
+      </xs:appinfo>
+      <xs:documentation>A list of the Reporting Objects being responsed to.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="AGReportingObjectResponse" minOccurs="0" maxOccurs="unbounded" type="AGReportingObjectResponseType">
+        <xs:annotation>
+          <xs:appinfo>
+            <sifChar>OR</sifChar>
+            <privacyRating />
+          </xs:appinfo>
+          <xs:documentation>The AG Reporting Object's response.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+
+
+  <!--AGReportingObjectResponseType-->
+
+  <xs:complexType name="AGReportingObjectResponseType">
+    <xs:annotation>
+      <xs:appinfo>
+        <sifChar />
+        <privacyRating />
+      </xs:appinfo>
+      <xs:documentation>The AG Reporting Object's response.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="SubmittedRefId" minOccurs="0" nillable="true" type="IdRefType">
+        <xs:annotation>
+          <xs:appinfo>
+            <sifChar>O</sifChar>
+            <privacyRating />
+          </xs:appinfo>
+          <xs:documentation>Original Reporting RefId of the submission.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="SIFRefId" minOccurs="0" nillable="true" type="IdRefType">
+        <xs:annotation>
+          <xs:appinfo>
+            <sifChar>O</sifChar>
+            <privacyRating />
+          </xs:appinfo>
+          <xs:documentation>AG assigned for a submission (they can be the same as the original submission but at the discretion of the AG). Only required to be sent if different from the initial RefId submitted.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="HTTPStatusCode" minOccurs="0" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <sifChar>O</sifChar>
+            <privacyRating />
+          </xs:appinfo>
+          <xs:documentation>HTTP Status Code of the original submission.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="ErrorText" minOccurs="0" nillable="true" type="xs:normalizedString">
+        <xs:annotation>
+          <xs:appinfo>
+            <sifChar>O</sifChar>
+            <privacyRating />
+          </xs:appinfo>
+          <xs:documentation>Text associated with an error status.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="CommonwealthId" type="xs:normalizedString">
+        <xs:annotation>
+          <xs:appinfo>
+            <sifChar>M</sifChar>
+            <privacyRating>Low</privacyRating>
+          </xs:appinfo>
+          <xs:documentation>Commonwealth identifier for this school/campus or entity being reported on.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="EntityName" minOccurs="0" nillable="true" type="xs:normalizedString">
+        <xs:annotation>
+          <xs:appinfo>
+            <sifChar>O</sifChar>
+            <privacyRating>Medium</privacyRating>
+          </xs:appinfo>
+          <xs:documentation>Name of the Entity who this submission is for, if a School, it will be the SchoolName.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="AGSubmissionStatusCode" type="AUCodeSetsAGSubmissionStatusType">
+        <xs:annotation>
+          <xs:appinfo>
+            <sifChar>M</sifChar>
+            <privacyRating>Low</privacyRating>
+          </xs:appinfo>
+          <xs:documentation>AG Status Code of the entity's submission.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="AGRuleList" minOccurs="0" nillable="true" type="AGRuleListType">
+        <xs:annotation>
+          <xs:appinfo>
+            <sifChar>O</sifChar>
+            <privacyRating>High</privacyRating>
+          </xs:appinfo>
+          <xs:documentation>A list of Rules associated with this submission.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+
+
+  <!--FQReportingListType-->
+
+  <xs:complexType name="FQReportingListType">
+    <xs:annotation>
+      <xs:appinfo>
+        <sifChar />
+        <privacyRating />
+      </xs:appinfo>
+      <xs:documentation>A list of Financial Questionnaire Reports.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="FQReporting" maxOccurs="unbounded" type="FQReportingType">
+        <xs:annotation>
+          <xs:appinfo>
+            <sifChar>MR</sifChar>
+            <privacyRating />
+          </xs:appinfo>
+          <xs:documentation>The Financial Questionnaire being reported on.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+
+
+  <!--FQReportingType-->
+
+  <xs:complexType name="FQReportingType">
+    <xs:annotation>
+      <xs:appinfo>
+        <sifChar>MR</sifChar>
+        <privacyRating />
+      </xs:appinfo>
+      <xs:documentation>The Financial Questionnaire being reported on.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="EntityLevel" type="xs:normalizedString">
+        <xs:annotation>
+          <xs:appinfo>
+            <sifChar>M</sifChar>
+            <privacyRating>Medium</privacyRating>
+          </xs:appinfo>
+          <xs:documentation>Level of the Submission, current valid values "School", "Diocese", "System".</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="SchoolInfoRefId" minOccurs="0" nillable="true" type="IdRefType">
+        <xs:annotation>
+          <xs:appinfo>
+            <sifChar>O</sifChar>
+            <privacyRating>High</privacyRating>
+          </xs:appinfo>
+          <xs:documentation>A pointer back to the SchoolInfo object underlying this Report if it exists.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="LocalId" minOccurs="0" nillable="true" type="LocalIdType">
+        <xs:annotation>
+          <xs:appinfo>
+            <sifChar>O</sifChar>
+            <privacyRating>Low</privacyRating>
+          </xs:appinfo>
+          <xs:documentation>The locally-assigned identifier for the entity being reported on.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="StateProvinceId" minOccurs="0" nillable="true" type="StateProvinceIdType">
+        <xs:annotation>
+          <xs:appinfo>
+            <sifChar>O</sifChar>
+            <privacyRating>Low</privacyRating>
+          </xs:appinfo>
+          <xs:documentation>The state-assigned identifier for entity being reported on.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="CommonwealthId" type="xs:normalizedString">
+        <xs:annotation>
+          <xs:appinfo>
+            <sifChar>M</sifChar>
+            <privacyRating>Low</privacyRating>
+          </xs:appinfo>
+          <xs:documentation>Commonwealth identifier for this school/campus or entity being reported on.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="ACARAId" minOccurs="0" nillable="true" type="xs:normalizedString">
+        <xs:annotation>
+          <xs:appinfo>
+            <sifChar>O</sifChar>
+            <privacyRating>Low</privacyRating>
+          </xs:appinfo>
+          <xs:documentation>ACARA identifier for this school/campus.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="EntityName" minOccurs="0" nillable="true" type="xs:normalizedString">
+        <xs:annotation>
+          <xs:appinfo>
+            <sifChar>O</sifChar>
+            <privacyRating>Medium</privacyRating>
+          </xs:appinfo>
+          <xs:documentation>Name of the Entity who this submission is for, if a School, it will be the SchoolName.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="EntityContact" type="EntityContactInfoType">
+        <xs:annotation>
+          <xs:appinfo>
+            <sifChar>M</sifChar>
+            <privacyRating>High</privacyRating>
+          </xs:appinfo>
+          <xs:documentation>Information on the Contact for the submission.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="FQContextualQuestionList" minOccurs="0" nillable="true" type="FQContextualQuestionListType">
+        <xs:annotation>
+          <xs:appinfo>
+            <sifChar>O</sifChar>
+            <privacyRating>High</privacyRating>
+          </xs:appinfo>
+          <xs:documentation>A list of Financial questions to set the context for the AG Collection.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="FQItemList" type="FQItemListType">
+        <xs:annotation>
+          <xs:appinfo>
+            <sifChar>M</sifChar>
+            <privacyRating>High</privacyRating>
+          </xs:appinfo>
+          <xs:documentation>A list of Financial Items being reported on for the AG Collection.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="AGRuleList" minOccurs="0" nillable="true" type="AGRuleListType">
+        <xs:annotation>
+          <xs:appinfo>
+            <sifChar>O</sifChar>
+            <privacyRating>High</privacyRating>
+          </xs:appinfo>
+          <xs:documentation>A list of Rules associated with this submission.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+
+
+  <!--FQContextualQuestionListType-->
+
+  <xs:complexType name="FQContextualQuestionListType">
+    <xs:annotation>
+      <xs:appinfo>
+        <sifChar />
+        <privacyRating />
+      </xs:appinfo>
+      <xs:documentation>A list of Contextual Questions.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="FQContextualQuestion" minOccurs="0" maxOccurs="unbounded" type="FQContextualQuestionType">
+        <xs:annotation>
+          <xs:appinfo>
+            <sifChar>OR</sifChar>
+            <privacyRating />
+          </xs:appinfo>
+          <xs:documentation>The Contextual Question.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+
+
+  <!--FQContextualQuestionType-->
+
+  <xs:complexType name="FQContextualQuestionType">
+    <xs:annotation>
+      <xs:appinfo>
+        <sifChar />
+        <privacyRating />
+      </xs:appinfo>
+      <xs:documentation>The FQItem contextual question.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="FQContext" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <sifChar>M</sifChar>
+            <privacyRating />
+          </xs:appinfo>
+          <xs:documentation>Context Question.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="FQAnswer" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <sifChar>M</sifChar>
+            <privacyRating />
+          </xs:appinfo>
+          <xs:documentation>Associated Answer.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+
+
+  <!--FQItemListType-->
+
+  <xs:complexType name="FQItemListType">
+    <xs:annotation>
+      <xs:appinfo>
+        <sifChar />
+        <privacyRating />
+      </xs:appinfo>
+      <xs:documentation>A list of FQ Items reported on.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="FQItem" minOccurs="0" maxOccurs="unbounded" type="FQItemType">
+        <xs:annotation>
+          <xs:appinfo>
+            <sifChar>OR</sifChar>
+            <privacyRating />
+          </xs:appinfo>
+          <xs:documentation>The FQItem being reported on.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+
+
+  <!--FQItemType-->
+
+  <xs:complexType name="FQItemType">
+    <xs:annotation>
+      <xs:appinfo>
+        <sifChar />
+        <privacyRating />
+      </xs:appinfo>
+      <xs:documentation>The FQItem being reported on.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="FQItemCode" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <sifChar>M</sifChar>
+            <privacyRating />
+          </xs:appinfo>
+          <xs:documentation>Financial Questionnaire Item Code</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="TuitionAmount" minOccurs="0" nillable="true" type="xs:decimal">
+        <xs:annotation>
+          <xs:appinfo>
+            <sifChar>O</sifChar>
+            <privacyRating />
+          </xs:appinfo>
+          <xs:documentation>Amount associated with Tuition.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="BoardingAmount" minOccurs="0" nillable="true" type="xs:decimal">
+        <xs:annotation>
+          <xs:appinfo>
+            <sifChar>O</sifChar>
+            <privacyRating />
+          </xs:appinfo>
+          <xs:documentation>Amount associated with Boarding.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="SystemAmount" minOccurs="0" nillable="true" type="xs:decimal">
+        <xs:annotation>
+          <xs:appinfo>
+            <sifChar>O</sifChar>
+            <privacyRating />
+          </xs:appinfo>
+          <xs:documentation>Amount associated with the System.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="DioceseAmount" minOccurs="0" nillable="true" type="xs:decimal">
+        <xs:annotation>
+          <xs:appinfo>
+            <sifChar>O</sifChar>
+            <privacyRating />
+          </xs:appinfo>
+          <xs:documentation>Amount associated with the Diocese.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="FQComments" minOccurs="0" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <sifChar>O</sifChar>
+            <privacyRating />
+          </xs:appinfo>
+          <xs:documentation>Comments associated with a FQ Item</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+
+
+  <!--AGRuleListType-->
+
+  <xs:complexType name="AGRuleListType">
+    <xs:annotation>
+      <xs:appinfo>
+        <sifChar />
+        <privacyRating />
+      </xs:appinfo>
+      <xs:documentation>A list of Rules associated with the Item.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="AGRule" minOccurs="0" maxOccurs="unbounded" type="AGRuleType">
+        <xs:annotation>
+          <xs:appinfo>
+            <sifChar>OR</sifChar>
+            <privacyRating />
+          </xs:appinfo>
+          <xs:documentation>Rule associated with the Collection Item.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+
+
+  <!--AGRuleType-->
+
+  <xs:complexType name="AGRuleType">
+    <xs:annotation>
+      <xs:appinfo>
+        <sifChar />
+        <privacyRating />
+      </xs:appinfo>
+      <xs:documentation>Rule.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="AGRuleCode" minOccurs="0" nillable="true" type="xs:normalizedString">
+        <xs:annotation>
+          <xs:appinfo>
+            <sifChar>O</sifChar>
+            <privacyRating />
+          </xs:appinfo>
+          <xs:documentation>Collection Data Rule Code.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="AGRuleComment" minOccurs="0" nillable="true" type="xs:normalizedString">
+        <xs:annotation>
+          <xs:appinfo>
+            <sifChar>O</sifChar>
+            <privacyRating />
+          </xs:appinfo>
+          <xs:documentation>Comment associated with a Rule.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="AGRuleResponse" minOccurs="0" nillable="true" type="xs:normalizedString">
+        <xs:annotation>
+          <xs:appinfo>
+            <sifChar>O</sifChar>
+            <privacyRating />
+          </xs:appinfo>
+          <xs:documentation>Response associated with a Rule comment on response to a submission.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="AGRuleStatus" minOccurs="0" nillable="true" type="xs:normalizedString">
+        <xs:annotation>
+          <xs:appinfo>
+            <sifChar>O</sifChar>
+            <privacyRating />
+          </xs:appinfo>
+          <xs:documentation>Status associated with a particular Rule, if there is one.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+
+
+  <!--SoftwareVendorInfoContainerType-->
+
+  <xs:complexType name="SoftwareVendorInfoContainerType">
+    <xs:annotation>
+      <xs:appinfo>
+        <sifChar>O</sifChar>
+        <privacyRating />
+      </xs:appinfo>
+      <xs:documentation>Container for elements containing information on the Software Product and Vendor.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="SoftwareProduct" type="xs:normalizedString">
+        <xs:annotation>
+          <xs:appinfo>
+            <sifChar>M</sifChar>
+            <privacyRating />
+          </xs:appinfo>
+          <xs:documentation>Product used to create the Submission.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="SoftwareVersion" type="xs:normalizedString">
+        <xs:annotation>
+          <xs:appinfo>
+            <sifChar>M</sifChar>
+            <privacyRating />
+          </xs:appinfo>
+          <xs:documentation>Version of the software used to create the Submission.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+
+
   <!--TimeTableScheduleType-->
 
   <xs:complexType name="TimeTableScheduleType">
@@ -40486,72 +43641,6 @@
             <privacyRating>Low</privacyRating>
           </xs:appinfo>
           <xs:documentation>A List of schedule information that can be published by an SIS which is a subset of information available in the TimeTableCell object.</xs:documentation>
-        </xs:annotation>
-      </xs:element>
-    </xs:sequence>
-  </xs:complexType>
-
-
-  <!--ApplicableLawListType-->
-
-  <xs:complexType name="ApplicableLawListType">
-    <xs:annotation>
-      <xs:appinfo>
-        <sifChar />
-        <privacyRating />
-      </xs:appinfo>
-      <xs:documentation>.</xs:documentation>
-    </xs:annotation>
-    <xs:sequence>
-      <xs:element name="ApplicableLaw" minOccurs="0" maxOccurs="unbounded" type="ApplicableLawType">
-        <xs:annotation>
-          <xs:appinfo>
-            <sifChar>OR</sifChar>
-            <privacyRating />
-          </xs:appinfo>
-          <xs:documentation />
-        </xs:annotation>
-      </xs:element>
-    </xs:sequence>
-  </xs:complexType>
-
-
-  <!--ApplicableLawType-->
-
-  <xs:complexType name="ApplicableLawType">
-    <xs:annotation>
-      <xs:appinfo>
-        <sifChar />
-        <privacyRating />
-      </xs:appinfo>
-      <xs:documentation>.</xs:documentation>
-    </xs:annotation>
-    <xs:sequence>
-      <xs:element name="ApplicableCountry" type="xs:normalizedString">
-        <xs:annotation>
-          <xs:appinfo>
-            <sifChar>M</sifChar>
-            <privacyRating />
-          </xs:appinfo>
-          <xs:documentation />
-        </xs:annotation>
-      </xs:element>
-      <xs:element name="ApplicableLawName" type="xs:normalizedString">
-        <xs:annotation>
-          <xs:appinfo>
-            <sifChar>M</sifChar>
-            <privacyRating />
-          </xs:appinfo>
-          <xs:documentation />
-        </xs:annotation>
-      </xs:element>
-      <xs:element name="ApplicableLawURL" minOccurs="0" nillable="true" type="xs:anyURI">
-        <xs:annotation>
-          <xs:appinfo>
-            <sifChar>O</sifChar>
-            <privacyRating />
-          </xs:appinfo>
-          <xs:documentation />
         </xs:annotation>
       </xs:element>
     </xs:sequence>
@@ -45761,7 +48850,7 @@
           </xs:restriction>
         </xs:simpleType>
       </xs:element>
-      <xs:element name="CensusAge" minOccurs="0" nillable="true" type="xs:decimal">
+      <xs:element name="CensusAge" minOccurs="0" nillable="true" type="xs:integer">
         <xs:annotation>
           <xs:appinfo>
             <sifChar>O</sifChar>

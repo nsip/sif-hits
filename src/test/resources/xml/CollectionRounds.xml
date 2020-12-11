@@ -1,0 +1,148 @@
+<CollectionRounds xmlns="http://www.sifassociation.org/datamodel/au/3.4">
+    <CollectionRound RefId="9336bb8c-729f-482a-87f5-b495862e1ef9">
+        <AGCollection>SES</AGCollection>
+        <CollectionYear>2020</CollectionYear>
+        <AGRoundList>
+            <AGRound>
+                <RoundCode>RC-1</RoundCode>
+                <RoundName>Round 1</RoundName>
+                <StartDate>2020-01-01</StartDate>
+                <DueDate>2020-07-31</DueDate>
+                <EndDate>2020-06-30</EndDate>
+            </AGRound>
+            <AGRound>
+                <RoundCode>RC-2</RoundCode>
+                <RoundName>Round 2</RoundName>
+                <StartDate>2020-01-01</StartDate>
+                <DueDate>2020-07-31</DueDate>
+                <EndDate>2020-06-30</EndDate>
+            </AGRound>
+            <AGRound>
+                <RoundCode>RC-3</RoundCode>
+                <RoundName>Round 3</RoundName>
+                <StartDate>2020-01-01</StartDate>
+                <DueDate>2020-07-31</DueDate>
+                <EndDate>2020-06-30</EndDate>
+            </AGRound>
+            <AGRound>
+                <RoundCode>RC-4</RoundCode>
+                <RoundName>Round 4</RoundName>
+                <StartDate>2020-01-01</StartDate>
+                <DueDate>2020-07-31</DueDate>
+                <EndDate>2020-06-30</EndDate>
+            </AGRound>
+            <AGRound>
+                <RoundCode>RC-5</RoundCode>
+                <RoundName>Round 5</RoundName>
+                <StartDate>2020-01-01</StartDate>
+                <DueDate>2020-07-31</DueDate>
+                <EndDate>2020-06-30</EndDate>
+            </AGRound>
+        </AGRoundList>
+        <LocalCodeList>
+            <LocalCode>
+                <LocalisedCode>Code1</LocalisedCode>
+                <Description>Description 1</Description>
+                <Element>Element 1</Element>
+                <ListIndex>1</ListIndex>
+            </LocalCode>
+            <LocalCode>
+                <LocalisedCode>Code2</LocalisedCode>
+                <Description>Description 2</Description>
+                <Element>Element 2</Element>
+                <ListIndex>2</ListIndex>
+            </LocalCode>
+            <LocalCode>
+                <LocalisedCode>Code3</LocalisedCode>
+                <Description>Description 3</Description>
+                <Element>Element 3</Element>
+                <ListIndex>3</ListIndex>
+            </LocalCode>
+            <LocalCode>
+                <LocalisedCode>Code4</LocalisedCode>
+                <Description>Description 4</Description>
+                <Element>Element 4</Element>
+                <ListIndex>4</ListIndex>
+            </LocalCode>
+            <LocalCode>
+                <LocalisedCode>Code5</LocalisedCode>
+                <Description>Description 5</Description>
+                <Element>Element 5</Element>
+                <ListIndex>5</ListIndex>
+            </LocalCode>
+        </LocalCodeList>
+    </CollectionRound>
+    <CollectionRound RefId="a081f37a-d096-44fa-9a60-37decd372109">
+        <AGCollection>SES</AGCollection>
+        <CollectionYear>2020</CollectionYear>
+        <AGRoundList>
+            <AGRound>
+                <RoundCode>RC-1</RoundCode>
+                <RoundName>Round 1</RoundName>
+                <StartDate>2020-01-01</StartDate>
+                <DueDate>2020-07-31</DueDate>
+                <EndDate>2020-06-30</EndDate>
+            </AGRound>
+            <AGRound>
+                <RoundCode>RC-2</RoundCode>
+                <RoundName>Round 2</RoundName>
+                <StartDate>2020-01-01</StartDate>
+                <DueDate>2020-07-31</DueDate>
+                <EndDate>2020-06-30</EndDate>
+            </AGRound>
+            <AGRound>
+                <RoundCode>RC-3</RoundCode>
+                <RoundName>Round 3</RoundName>
+                <StartDate>2020-01-01</StartDate>
+                <DueDate>2020-07-31</DueDate>
+                <EndDate>2020-06-30</EndDate>
+            </AGRound>
+            <AGRound>
+                <RoundCode>RC-4</RoundCode>
+                <RoundName>Round 4</RoundName>
+                <StartDate>2020-01-01</StartDate>
+                <DueDate>2020-07-31</DueDate>
+                <EndDate>2020-06-30</EndDate>
+            </AGRound>
+            <AGRound>
+                <RoundCode>RC-5</RoundCode>
+                <RoundName>Round 5</RoundName>
+                <StartDate>2020-01-01</StartDate>
+                <DueDate>2020-07-31</DueDate>
+                <EndDate>2020-06-30</EndDate>
+            </AGRound>
+        </AGRoundList>
+        <LocalCodeList>
+            <LocalCode>
+                <LocalisedCode>Code1</LocalisedCode>
+                <Description>Description 1</Description>
+                <Element>Element 1</Element>
+                <ListIndex>1</ListIndex>
+            </LocalCode>
+            <LocalCode>
+                <LocalisedCode>Code2</LocalisedCode>
+                <Description>Description 2</Description>
+                <Element>Element 2</Element>
+                <ListIndex>2</ListIndex>
+            </LocalCode>
+            <LocalCode>
+                <LocalisedCode>Code3</LocalisedCode>
+                <Description>Description 3</Description>
+                <Element>Element 3</Element>
+                <ListIndex>3</ListIndex>
+            </LocalCode>
+            <LocalCode>
+                <LocalisedCode>Code4</LocalisedCode>
+                <Description>Description 4</Description>
+                <Element>Element 4</Element>
+                <ListIndex>4</ListIndex>
+            </LocalCode>
+            <LocalCode>
+                <LocalisedCode>Code5</LocalisedCode>
+                <Description>Description 5</Description>
+                <Element>Element 5</Element>
+                <ListIndex>5</ListIndex>
+            </LocalCode>
+        </LocalCodeList>
+    </CollectionRound>
+</CollectionRounds>

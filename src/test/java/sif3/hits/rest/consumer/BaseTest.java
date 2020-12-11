@@ -22,342 +22,409 @@ import sif3.common.ws.Response;
 import sif3.hits.rest.consumer.data.TestData;
 
 public abstract class BaseTest<T, C> {
-    private static final Logger L = LoggerFactory.getLogger(BaseTest.class);
-    
-    public static final String CONSUMER = "TestConsumer";
-    private static final int OBJECT_COUNT = 5;
-    private static final int TEST_INDEX = 0;
+	private static final Logger L = LoggerFactory.getLogger(BaseTest.class);
 
-    private Pattern TAG_PATTERN = Pattern.compile("^[^\\<]*(<[^\\>]*>).*$");
-    private List<String> TIMESTAMPS = Arrays.asList("CreationDateTime", "WellbeingEventCreationTimeStamp", "ResolutionMeetingTime", "SubmissionTimestamp");
+	public static final String CONSUMER = "TestConsumer";
+	private static final int OBJECT_COUNT = 5;
+	private static final int TEST_INDEX = 0;
 
-    public abstract TestData<T, C> getTestData();
+	private Pattern TAG_PATTERN = Pattern.compile("^[^\\<]*(<[^\\>]*>).*$");
+	private List<String> TIMESTAMPS = Arrays.asList("CreationDateTime", "WellbeingEventCreationTimeStamp",
+			"ResolutionMeetingTime", "SubmissionTimestamp");
 
-    public abstract ConsumerTest<T, C> getTester();
+	public abstract TestData<T, C> getTestData();
 
-    public void doSimpleUpdate(T object) {
-        // Do nothing by default
-    }
+	public abstract ConsumerTest<T, C> getTester();
 
-    public abstract String getRefId(T object);
+	public void doSimpleUpdate(T object) {
+		// Do nothing by default
+	}
 
-    public abstract List<T> getCollectionList(C collection);
+	public abstract String getRefId(T object);
 
-    public abstract int getCollectionSize(C collection);
+	public abstract void setRefId(T object, String refId);
 
-    public void initialiseData() {
-        TestData<T, C> testData = getTestData();
-        ConsumerTest<T, C> tester = getTester();
-        for (int i = 0; i < OBJECT_COUNT; i++) {
-            T singleObject = testData.getTestObject(i);
-            tester.doCreateOne(singleObject);
-            tester.doUpdateOne(singleObject, getRefId(singleObject));
-            if (i == TEST_INDEX || testData.verifyAllInitialObjects()) {
-                String xmlExpectedFrom = getXML(singleObject);
-                T getResult = tester.doGetOne(getRefId(singleObject));
-                String xmlExpectedTo = getXML(getResult);
-                sameObject(xmlExpectedFrom, xmlExpectedTo);
-            }
-        }
-    }
+	public abstract List<T> getCollectionList(C collection);
 
-    protected void testUpdateSingle() {
-        ConsumerTest<T, C> tester = getTester();
-        TestData<T, C> testData = getTestData();
-        String testRefId = testData.getRefId(TEST_INDEX);
+	public abstract int getCollectionSize(C collection);
+	
+	protected void logTestName(String test) {
+		L.info("Executing " + getTestData().getSingleObjectXMLFilename().replace(".xml", "") + " - " + test);
+	}
 
-        List<Response> responses = tester.testGetSingle(testRefId);
-        T singleObject = getSingleObject(responses);
-        doSimpleUpdate(singleObject);
-        Assert.assertEquals("RefId mismatch", testRefId, getRefId(singleObject));
-        String xmlExpectedFrom = getXML(singleObject);
+	public void initialiseData() {
+		logTestName("initialiseData");
+		TestData<T, C> testData = getTestData();
+		ConsumerTest<T, C> tester = getTester();
+		for (int i = 0; i < OBJECT_COUNT; i++) {
+			T singleObject = testData.getTestObject(i);
+			tester.doCreateOne(singleObject);
+			tester.doUpdateOne(singleObject, getRefId(singleObject));
+			if (i == TEST_INDEX || testData.verifyAllInitialObjects()) {
+				String xmlExpectedFrom = getXML(singleObject);
+				T getResult = tester.doGetOne(getRefId(singleObject));
+				String xmlExpectedTo = getXML(getResult);
+				sameObject(xmlExpectedFrom, xmlExpectedTo);
+			}
+		}
+	}
 
-        List<Response> updateResponses = tester.doUpdateOne(singleObject, testRefId);
-        checkNoContent(updateResponses);
+	protected void testUpdateSingle() {
+		logTestName("testUpdateSingle");
+		ConsumerTest<T, C> tester = getTester();
+		TestData<T, C> testData = getTestData();
+		String testRefId = testData.getRefId(TEST_INDEX);
 
-        List<Response> getResponses = tester.testGetSingle(testRefId);
-        T newObject = getSingleObject(getResponses);
-        Assert.assertEquals("RefId mismatch", testRefId, getRefId(newObject));
-        String xmlExpectedTo = getXML(newObject);
-        sameObject(xmlExpectedFrom, xmlExpectedTo);
-    }
+		List<Response> responses = tester.testGetSingle(testRefId);
+		T singleObject = getSingleObject(responses);
+		doSimpleUpdate(singleObject);
+		Assert.assertEquals("RefId mismatch", testRefId, getRefId(singleObject));
+		String xmlExpectedFrom = getXML(singleObject);
 
-    protected void testCreateUpdateDeleteSingle(T initialObject, T updatedObject) {
-        ConsumerTest<T, C> tester = getTester();
-        TestData<T, C> testData = getTestData();
+		List<Response> updateResponses = tester.doUpdateOne(singleObject, testRefId);
+		checkNoContent(updateResponses);
 
-        List<Response> createResponse = tester.doCreateOne(initialObject);
-        String testRefId = getRefId(initialObject);
-        List<Response> getResponses = tester.testGetSingle(testRefId);
-        T createdObject = getSingleObject(getResponses);
-        sameObject(initialObject, createdObject);
+		List<Response> getResponses = tester.testGetSingle(testRefId);
+		T newObject = getSingleObject(getResponses);
+		Assert.assertEquals("RefId mismatch", testRefId, getRefId(newObject));
+		String xmlExpectedTo = getXML(newObject);
+		sameObject(xmlExpectedFrom, xmlExpectedTo);
+	}
 
-        tester.doUpdateOne(updatedObject, testRefId);
-        List<Response> updateResponse = tester.testGetSingle(testRefId);
-        T newObject = getSingleObject(updateResponse);
-        sameObject(updatedObject, newObject);
+	protected void testFullUpdate() {
+		testFullUpdate(true);
+	}
+	
+	protected void testFullUpdate(boolean empty) {
+		logTestName("testFullUpdate");
+		ConsumerTest<T, C> tester = getTester();
+		TestData<T, C> testData = getTestData();
+		String refId = testData.getRefId(Integer.MAX_VALUE);
+		
+		try {
+			T emptyObject = tester.getEmptyObject();
+			T filledObject = testData.getTestObject(1);
 
-        List<Response> finalResponses = tester.testGetSingle(testRefId);
-        T finalObject = getSingleObject(finalResponses);
-        sameObject(updatedObject, finalObject);
+			setRefId(emptyObject, refId);
+			setRefId(filledObject, refId);
+			
+			String xmlEmptyObject = getXML(emptyObject);
+			String xmlFilledObject = getXML(filledObject);
+			
+			tester.doCreateOne(emptyObject);
+			tester.doUpdateOne(filledObject, refId);
+	
+			List<Response> filledResponse = tester.testGetSingle(refId);
+			T newFilledObject = getSingleObject(filledResponse);
+			String xmlFilledUpdate = getXML(newFilledObject);
+			
+			tester.doUpdateOne(emptyObject, refId);
+	
+			List<Response> emptyResponse = tester.testGetSingle(refId);
+			T newEmptyObject = getSingleObject(emptyResponse);
+			String xmlEmptyUpdate = getXML(newEmptyObject);
+			
+			tester.testDeleteOne(refId);
+			
+			sameObject(xmlFilledObject, xmlFilledUpdate);
+			
+			if (empty) {
+				sameObject(xmlEmptyObject, xmlEmptyUpdate);
+			}
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		} finally {
+			tester.testDeleteOne(refId);
+		}
+	}
 
-        List<Response> deleteResponses = tester.testDeleteOne(testRefId);
-        checkNoContent(deleteResponses);
-    }
+	protected void testCreateUpdateDeleteSingle(T initialObject, T updatedObject) {
+		logTestName("testCreateUpdateDeleteSingle");
+		ConsumerTest<T, C> tester = getTester();
+		TestData<T, C> testData = getTestData();
 
-    protected void testGetSingle() {
-        ConsumerTest<T, C> tester = getTester();
-        TestData<T, C> testData = getTestData();
-        String testRefId = testData.getRefId(TEST_INDEX);
+		List<Response> createResponse = tester.doCreateOne(initialObject);
+		String testRefId = getRefId(initialObject);
+		List<Response> getResponses = tester.testGetSingle(testRefId);
+		T createdObject = getSingleObject(getResponses);
+		sameObject(initialObject, createdObject);
 
-        List<Response> responses = tester.testGetSingle(testRefId);
-        T singleObject = getSingleObject(responses);
-        Assert.assertEquals("RefId mismatch", testRefId, getRefId(singleObject));
-    }
+		tester.doUpdateOne(updatedObject, testRefId);
+		List<Response> updateResponse = tester.testGetSingle(testRefId);
+		T newObject = getSingleObject(updateResponse);
+		sameObject(updatedObject, newObject);
 
-    protected void testGetMany() {
-        int expectedRecords = 5;
-        ConsumerTest<T, C> tester = getTester();
-        TestData<T, C> testData = getTestData();
+		List<Response> finalResponses = tester.testGetSingle(testRefId);
+		T finalObject = getSingleObject(finalResponses);
+		sameObject(updatedObject, finalObject);
 
-        List<Response> responses = tester.testGetMany(expectedRecords, 1);
-        C collectionObject = getCollectionObject(responses);
-        Assert.assertEquals("Collection size incorrect", expectedRecords, getCollectionSize(collectionObject));
-    }
+		List<Response> deleteResponses = tester.testDeleteOne(testRefId);
+		checkNoContent(deleteResponses);
+	}
 
-    protected void testCreateDelete(String xmlRefId) {
-        ConsumerTest<T, C> tester = getTester();
-        TestData<T, C> testData = getTestData();
+	protected void testGetSingle() {
+		logTestName("testGetSingle");
+		ConsumerTest<T, C> tester = getTester();
+		TestData<T, C> testData = getTestData();
+		String testRefId = testData.getRefId(TEST_INDEX);
 
-        List<Response> createResponses = tester.testCreateOne(testData.getSingleObjectXMLFilename());
-        T singleObject = getSingleObject(createResponses);
-        Assert.assertEquals("RefId mismatch", xmlRefId, getRefId(singleObject));
+		List<Response> responses = tester.testGetSingle(testRefId);
+		T singleObject = getSingleObject(responses);
+		Assert.assertEquals("RefId mismatch", testRefId, getRefId(singleObject));
+	}
 
-        List<Response> deleteResponses = tester.testDeleteOne(xmlRefId);
-        checkNoContent(deleteResponses);
-    }
+	protected void testGetMany() {
+		logTestName("testGetMany");
+		int expectedRecords = 5;
+		ConsumerTest<T, C> tester = getTester();
+		TestData<T, C> testData = getTestData();
 
-    protected void testCreateDeleteMany(String[] xmlRefIdRa) {
-        List<String> xmlRefIdList = Arrays.asList(xmlRefIdRa);
-        ConsumerTest<T, C> tester = getTester();
-        TestData<T, C> testData = getTestData();
+		List<Response> responses = tester.testGetMany(expectedRecords, 1);
+		C collectionObject = getCollectionObject(responses);
+		Assert.assertEquals("Collection size incorrect", expectedRecords, getCollectionSize(collectionObject));
+	}
 
-        List<BulkOperationResponse<CreateOperationStatus>> createResponses = tester.testCreateMany(testData.getMultiObjectXMLFilename());
-        Assert.assertNotNull("Responses null", createResponses);
-        Assert.assertEquals("Response size not 1", 1, createResponses.size());
-        BulkOperationResponse<CreateOperationStatus> createResponse = createResponses.get(0);
-        Assert.assertNotNull("Response object null", createResponse.getOperationStatuses());
-        Assert.assertEquals("Response count incorrect", xmlRefIdRa.length, createResponse.getOperationStatuses().size());
-        for (CreateOperationStatus operationStatus : createResponse.getOperationStatuses()) {
-            Assert.assertTrue("RefId not expected", xmlRefIdList.contains(operationStatus.getAdvisoryID()));
-            Assert.assertEquals("HttpStatus not CREATED", HttpStatus.CREATED.value(), operationStatus.getStatus());
-        }
+	protected void testCreateDelete(String xmlRefId) {
+		logTestName("testCreateDelete");
+		ConsumerTest<T, C> tester = getTester();
+		TestData<T, C> testData = getTestData();
 
-        List<BulkOperationResponse<OperationStatus>> deleteResponses = tester.testDeleteMany(xmlRefIdRa);
-        Assert.assertNotNull("Responses null", deleteResponses);
-        Assert.assertEquals("Responses size not 1", 1, deleteResponses.size());
-        BulkOperationResponse<OperationStatus> deleteResponse = deleteResponses.get(0);
-        Assert.assertNotNull("Response object null", deleteResponse.getOperationStatuses());
-        Assert.assertEquals("Response count incorrect", xmlRefIdRa.length, deleteResponse.getOperationStatuses().size());
-        for (OperationStatus operationStatus : deleteResponse.getOperationStatuses()) {
-            Assert.assertTrue("RefId not expected", xmlRefIdList.contains(operationStatus.getResourceID()));
-            Assert.assertEquals("HttpStatus not OK", HttpStatus.OK.value(), operationStatus.getStatus());
-        }
-    }
+		List<Response> createResponses = tester.testCreateOne(testData.getSingleObjectXMLFilename());
+		T singleObject = getSingleObject(createResponses);
+		Assert.assertEquals("RefId mismatch", xmlRefId, getRefId(singleObject));
 
-    protected void testQBES() {
-        TestData<T, C> testData = getTestData();
+		List<Response> deleteResponses = tester.testDeleteOne(xmlRefId);
+		checkNoContent(deleteResponses);
+	}
 
-        List<T> examples = testData.getExamplesForQuery();
-        for (int i = 0; i < examples.size(); i++) {
-            testQBE(examples.get(i), i);
-        }
-    }
+	protected void testCreateDeleteMany(String[] xmlRefIdRa) {
+		logTestName("testCreateDeleteMany");
+		List<String> xmlRefIdList = Arrays.asList(xmlRefIdRa);
+		ConsumerTest<T, C> tester = getTester();
+		TestData<T, C> testData = getTestData();
 
-    protected void testQBE(T example, int index) {
-        ConsumerTest<T, C> tester = getTester();
-        TestData<T, C> testData = getTestData();
+		List<BulkOperationResponse<CreateOperationStatus>> createResponses = tester
+				.testCreateMany(testData.getMultiObjectXMLFilename());
+		Assert.assertNotNull("Responses null", createResponses);
+		Assert.assertEquals("Response size not 1", 1, createResponses.size());
+		BulkOperationResponse<CreateOperationStatus> createResponse = createResponses.get(0);
+		Assert.assertNotNull("Response object null", createResponse.getOperationStatuses());
+		Assert.assertEquals("Response count incorrect", xmlRefIdRa.length,
+				createResponse.getOperationStatuses().size());
+		for (CreateOperationStatus operationStatus : createResponse.getOperationStatuses()) {
+			Assert.assertTrue("RefId not expected", xmlRefIdList.contains(operationStatus.getAdvisoryID()));
+			Assert.assertEquals("HttpStatus not CREATED", HttpStatus.CREATED.value(), operationStatus.getStatus());
+		}
 
-        List<Response> responses = tester.testQBE(example, 1000, 0);
-        C collection = getCollectionObject(responses);
-        List<T> list = getCollectionList(collection);
-        Assert.assertNotNull("List null", list);
-        Assert.assertFalse("Collection empty", list.isEmpty());
-        for (T object : list) {
-            Assert.assertTrue("Object does not match example", testData.isExampleObject(object, index));
-        }
-    }
+		List<BulkOperationResponse<OperationStatus>> deleteResponses = tester.testDeleteMany(xmlRefIdRa);
+		Assert.assertNotNull("Responses null", deleteResponses);
+		Assert.assertEquals("Responses size not 1", 1, deleteResponses.size());
+		BulkOperationResponse<OperationStatus> deleteResponse = deleteResponses.get(0);
+		Assert.assertNotNull("Response object null", deleteResponse.getOperationStatuses());
+		Assert.assertEquals("Response count incorrect", xmlRefIdRa.length,
+				deleteResponse.getOperationStatuses().size());
+		for (OperationStatus operationStatus : deleteResponse.getOperationStatuses()) {
+			Assert.assertTrue("RefId not expected", xmlRefIdList.contains(operationStatus.getResourceID()));
+			Assert.assertEquals("HttpStatus not OK", HttpStatus.OK.value(), operationStatus.getStatus());
+		}
+	}
 
-    protected void testServicePaths() {
-        TestData<T, C> testData = getTestData();
+	protected void testQBES() {
+		TestData<T, C> testData = getTestData();
+		logTestName("testQBES - " + testData.getExamplesForQuery().size());
 
-        List<QueryCriteria> servicePaths = testData.getServicePathQueries();
-        for (int i = 0; i < servicePaths.size(); i++) {
-            testServicePath(servicePaths.get(i), i);
-        }
-    }
+		List<T> examples = testData.getExamplesForQuery();
+		for (int i = 0; i < examples.size(); i++) {
+			testQBE(examples.get(i), i);
+		}
+	}
 
-    protected void testServicePath(QueryCriteria servicePath, int index) {
-        ConsumerTest<T, C> tester = getTester();
-        TestData<T, C> testData = getTestData();
+	protected void testQBE(T example, int index) {
+		ConsumerTest<T, C> tester = getTester();
+		TestData<T, C> testData = getTestData();
 
-        List<Response> responses = tester.testServicePath(servicePath, 1000, 0);
-        C collection = getCollectionObject(responses);
-        List<T> list = getCollectionList(collection);
-        Assert.assertNotNull("List null", list);
-        Assert.assertFalse("Collection empty", list.isEmpty());
-        for (T object : list) {
-            Assert.assertTrue("Object does not match service path", testData.isServicePathObject(object, index));
-        }
-    }
+		List<Response> responses = tester.testQBE(example, 1000, 0);
+		C collection = getCollectionObject(responses);
+		List<T> list = getCollectionList(collection);
+		Assert.assertNotNull("List null", list);
+		Assert.assertFalse("Collection empty", list.isEmpty());
+		for (T object : list) {
+			Assert.assertTrue("Object does not match example", testData.isExampleObject(object, index));
+		}
+	}
 
-    protected T getSingleObject(List<Response> responses) {
-        Assert.assertNotNull("Responses null", responses);
-        Assert.assertEquals("Response size not 1", 1, responses.size());
-        Response response = responses.get(0);
-        Assert.assertNotNull("Response object null", response.getDataObject());
-        T singleObject = (T) response.getDataObject();
-        return singleObject;
-    }
+	protected void testServicePaths() {
+		TestData<T, C> testData = getTestData();
+		logTestName("testServicePaths - " + testData.getServicePathQueries().size());
 
-    protected C getCollectionObject(List<Response> responses) {
-        Assert.assertNotNull("Responses null", responses);
-        Assert.assertEquals("Response size not 1", 1, responses.size());
-        Response response = responses.get(0);
-        Assert.assertNotNull("Response object null", response.getDataObject());
-        C collectionObject = (C) response.getDataObject();
-        return collectionObject;
-    }
+		List<QueryCriteria> servicePaths = testData.getServicePathQueries();
+		for (int i = 0; i < servicePaths.size(); i++) {
+			testServicePath(servicePaths.get(i), i);
+		}
+	}
 
-    protected void checkNoContent(List<Response> responses) {
-        Assert.assertNotNull("Responses null", responses);
-        Assert.assertEquals("Response size not 1", 1, responses.size());
-        Assert.assertEquals("Response status not NO_CONTENT", HttpStatus.NO_CONTENT.value(), responses.get(0).getStatus());
-    }
+	protected void testServicePath(QueryCriteria servicePath, int index) {
+		ConsumerTest<T, C> tester = getTester();
+		TestData<T, C> testData = getTestData();
 
-    protected void sameObject(T leftObject, T rightObject) {
-        String xmlExpectedFrom = getXML(leftObject);
-        String xmlExpectedTo = getXML(rightObject);
-        sameObject(xmlExpectedFrom, xmlExpectedTo);
-    }
+		List<Response> responses = tester.testServicePath(servicePath, 1000, 0);
+		C collection = getCollectionObject(responses);
+		List<T> list = getCollectionList(collection);
+		Assert.assertNotNull("List null", list);
+		Assert.assertFalse("Collection empty", list.isEmpty());
+		for (T object : list) {
+			Assert.assertTrue("Object does not match service path", testData.isServicePathObject(object, index));
+		}
+	}
 
-    protected void sameObject(String left, String right) {
-        boolean semiEquals = semiEquals(left, right);
-        if (!semiEquals) {
-            L.debug("From:\n" + left);
-            L.debug("\nTo:\n" + right);
-            Assert.assertEquals("XML Differs", left, right);
-        }
-    }
+	protected T getSingleObject(List<Response> responses) {
+		Assert.assertNotNull("Responses null", responses);
+		Assert.assertEquals("Response size not 1", 1, responses.size());
+		Response response = responses.get(0);
+		Assert.assertNotNull("Response object null", response.getDataObject());
+		T singleObject = (T) response.getDataObject();
+		return singleObject;
+	}
 
-    protected String getXML(Object object) {
-        String xml = null;
-        try {
-            ConsumerTest<T, C> tester = getTester();
-            xml = tester.getXML(object);
-        } catch (UnsupportedMediaTypeExcpetion unsupportedMediaTypeExcpetion) {
-            Assert.assertNull("Exception occurred", unsupportedMediaTypeExcpetion);
-        } catch (MarshalException e) {
-            Assert.assertNull("Exception occurred", e);
-        } catch (Exception e) {
-            Assert.assertNull("Exception occurred", e);
-        }
-        Assert.assertNotNull("Unable to convert to XML", xml);
-        return xml;
-    }
+	protected C getCollectionObject(List<Response> responses) {
+		Assert.assertNotNull("Responses null", responses);
+		Assert.assertEquals("Response size not 1", 1, responses.size());
+		Response response = responses.get(0);
+		Assert.assertNotNull("Response object null", response.getDataObject());
+		C collectionObject = (C) response.getDataObject();
+		return collectionObject;
+	}
 
-    protected T getSingleObjectFromXML(String xml) {
-        T result = null;
-        try {
-            ConsumerTest<T, C> tester = getTester();
-            result = tester.fromXML(xml);
-        } catch (UnsupportedMediaTypeExcpetion unsupportedMediaTypeExcpetion) {
-            Assert.assertNull("Exception occurred", unsupportedMediaTypeExcpetion);
-        } catch (UnmarshalException e) {
-            Assert.assertNull("Exception occurred", e);
-        } catch (Exception e) {
-            Assert.assertNull("Exception occurred", e);
-        }
-        Assert.assertNotNull("Unable to convert from XML", result);
-        return result;
-    }
+	protected void checkNoContent(List<Response> responses) {
+		Assert.assertNotNull("Responses null", responses);
+		Assert.assertEquals("Response size not 1", 1, responses.size());
+		Assert.assertEquals("Response status not NO_CONTENT", HttpStatus.NO_CONTENT.value(),
+				responses.get(0).getStatus());
+	}
 
-    protected C getCollectionObjectFromXML(String xml) {
-        C result = null;
-        try {
-            ConsumerTest<T, C> tester = getTester();
-            result = tester.collectionFromXML(xml);
-        } catch (UnsupportedMediaTypeExcpetion unsupportedMediaTypeExcpetion) {
-            Assert.assertNull("Exception occurred", unsupportedMediaTypeExcpetion);
-        } catch (UnmarshalException e) {
-            Assert.assertNull("Exception occurred", e);
-        } catch (Exception e) {
-            Assert.assertNull("Exception occurred", e);
-        }
-        Assert.assertNotNull("Unable to convert from XML", result);
-        return result;
-    }
+	protected void sameObject(T leftObject, T rightObject) {
+		String xmlExpectedFrom = getXML(leftObject);
+		String xmlExpectedTo = getXML(rightObject);
+		sameObject(xmlExpectedFrom, xmlExpectedTo);
+	}
 
-    protected boolean semiEquals(String xmlFrom, String xmlTo) {
-        String[] fromStrings = xmlFrom.split("\n");
-        List<String> fromElements = Arrays.asList(fromStrings);
-        String[] toStrings = xmlTo.split("\n");
-        List<String> toElements = Arrays.asList(toStrings);
-        boolean allSame = fromElements.size() == toElements.size();
-        for (int i = 0; i < fromElements.size(); i++) {
-            String element = fromElements.get(i);
-            boolean same = true;
-            if (isTimestamp(element)) {
-                same = simpleFrequency(fromElements, element) == simpleFrequency(toElements, element);
-            } else {
-                same = Collections.frequency(fromElements, element) == Collections.frequency(toElements, element);
-            }
-            if (!same) {
-                L.debug("Error:" + element);
-            }
-            allSame &= same;
-        }
-        for (int i = 0; i < toElements.size(); i++) {
-            String element = toElements.get(i);
-            boolean same = true;
-            if (isTimestamp(element)) {
-                same = simpleFrequency(fromElements, element) == simpleFrequency(toElements, element);
-            } else {
-                same = Collections.frequency(fromElements, element) == Collections.frequency(toElements, element);
-            }
-            if (!same) {
-                L.debug("Error:" + element);
-            }
-            allSame &= same;
-        }
-        return allSame;
-    }
+	protected void sameObject(String left, String right) {
+		boolean semiEquals = semiEquals(left, right);
+		if (!semiEquals) {
+			L.debug("From:\n" + left);
+			L.debug("\nTo:\n" + right);
+			Assert.assertEquals("XML Differs", left, right);
+		}
+	}
 
-    private int simpleFrequency(List<String> elements, String search) {
-        int result = 0;
-        String tag = getTag(search);
-        for (String s : elements) {
-            if (tag.equals(getTag(s))) {
-                result++;
-            }
-        }
-        return result;
-    }
+	protected String getXML(Object object) {
+		String xml = null;
+		try {
+			ConsumerTest<T, C> tester = getTester();
+			xml = tester.getXML(object);
+		} catch (UnsupportedMediaTypeExcpetion unsupportedMediaTypeExcpetion) {
+			Assert.assertNull("Exception occurred", unsupportedMediaTypeExcpetion);
+		} catch (MarshalException e) {
+			Assert.assertNull("Exception occurred", e);
+		} catch (Exception e) {
+			Assert.assertNull("Exception occurred", e);
+		}
+		Assert.assertNotNull("Unable to convert to XML", xml);
+		return xml;
+	}
 
-    private String getTag(String element) {
-        Matcher m = TAG_PATTERN.matcher(element);
-        if (m.matches()) {
-            return m.group(1);
-        }
-        return element;
-    }
+	protected T getSingleObjectFromXML(String xml) {
+		T result = null;
+		try {
+			ConsumerTest<T, C> tester = getTester();
+			result = tester.fromXML(xml);
+		} catch (UnsupportedMediaTypeExcpetion unsupportedMediaTypeExcpetion) {
+			Assert.assertNull("Exception occurred", unsupportedMediaTypeExcpetion);
+		} catch (UnmarshalException e) {
+			Assert.assertNull("Exception occurred", e);
+		} catch (Exception e) {
+			Assert.assertNull("Exception occurred", e);
+		}
+		Assert.assertNotNull("Unable to convert from XML", result);
+		return result;
+	}
 
-    private boolean isTimestamp(String element) {
-        boolean result = false;
-        for (int i = 0; !result && i < TIMESTAMPS.size(); i++) {
-            result |= element.contains("<" + TIMESTAMPS.get(i) + ">");
-        }
-        return result;
-    }
+	protected C getCollectionObjectFromXML(String xml) {
+		C result = null;
+		try {
+			ConsumerTest<T, C> tester = getTester();
+			result = tester.collectionFromXML(xml);
+		} catch (UnsupportedMediaTypeExcpetion unsupportedMediaTypeExcpetion) {
+			Assert.assertNull("Exception occurred", unsupportedMediaTypeExcpetion);
+		} catch (UnmarshalException e) {
+			Assert.assertNull("Exception occurred", e);
+		} catch (Exception e) {
+			Assert.assertNull("Exception occurred", e);
+		}
+		Assert.assertNotNull("Unable to convert from XML", result);
+		return result;
+	}
+
+	protected boolean semiEquals(String xmlFrom, String xmlTo) {
+		String[] fromStrings = xmlFrom.split("\n");
+		List<String> fromElements = Arrays.asList(fromStrings);
+		String[] toStrings = xmlTo.split("\n");
+		List<String> toElements = Arrays.asList(toStrings);
+		boolean allSame = fromElements.size() == toElements.size();
+		for (int i = 0; i < fromElements.size(); i++) {
+			String element = fromElements.get(i);
+			boolean same = true;
+			if (isTimestamp(element)) {
+				same = simpleFrequency(fromElements, element) == simpleFrequency(toElements, element);
+			} else {
+				same = Collections.frequency(fromElements, element) == Collections.frequency(toElements, element);
+			}
+			if (!same) {
+				L.debug("Error:" + element);
+			}
+			allSame &= same;
+		}
+		for (int i = 0; i < toElements.size(); i++) {
+			String element = toElements.get(i);
+			boolean same = true;
+			if (isTimestamp(element)) {
+				same = simpleFrequency(fromElements, element) == simpleFrequency(toElements, element);
+			} else {
+				same = Collections.frequency(fromElements, element) == Collections.frequency(toElements, element);
+			}
+			if (!same) {
+				L.debug("Error:" + element);
+			}
+			allSame &= same;
+		}
+		return allSame;
+	}
+
+	private int simpleFrequency(List<String> elements, String search) {
+		int result = 0;
+		String tag = getTag(search);
+		for (String s : elements) {
+			if (tag.equals(getTag(s))) {
+				result++;
+			}
+		}
+		return result;
+	}
+
+	private String getTag(String element) {
+		Matcher m = TAG_PATTERN.matcher(element);
+		if (m.matches()) {
+			return m.group(1);
+		}
+		return element;
+	}
+
+	private boolean isTimestamp(String element) {
+		boolean result = false;
+//		for (int i = 0; !result && i < TIMESTAMPS.size(); i++) {
+//			result |= element.contains("<" + TIMESTAMPS.get(i) + ">");
+//		}
+		return result;
+	}
 
 }

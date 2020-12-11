@@ -85,6 +85,8 @@ public class PurchaseOrderConverter extends HitsConverter<PurchaseOrderType, Pur
             MonetaryAmountType monetaryAmountType = getJAXBValue(source.getTaxAmount());
             if (monetaryAmountType != null) {
                 target.setTaxAmount(getBigDecimalValue(monetaryAmountType.getValue()));
+            } else {
+            	target.setTaxAmount(null);
             }
 
             target.setTaxRate(getBigDecimalValue(getJAXBValue(source.getTaxRate())));

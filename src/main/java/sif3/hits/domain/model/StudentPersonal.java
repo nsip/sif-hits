@@ -1,7 +1,14 @@
 package sif3.hits.domain.model;
 
-import javax.persistence.*;
 import java.util.Set;
+
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
+import javax.persistence.Transient;
 
 @Entity
 public class StudentPersonal extends HitsEntity implements StudentPerson, AddressPerson {
